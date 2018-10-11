@@ -1,0 +1,124 @@
+/*
+Carousel
+
+Carousel cannot be displayed on the styleguide due to a javascript dependency 
+
+Styleguide 5.20
+*/
+
+.carousel {
+	display: block;
+	&--wrapper,
+	&--article {
+		position: relative;
+	}
+	&--wrapper {
+		.no-flexbox & {
+			overflow: hidden;
+		}
+	}
+	&--row {
+		display: flex;
+		overflow-x: scroll;
+		.no-flexbox & {
+			width: 36 / 18 * 100vw;
+		}
+	}
+	&--article {
+		width: 4 / 6 * 100vw;
+		flex: 1 0 (4 / 6 * 100vw);
+		.no-flexbox & {
+			display: inline-block;
+			float: left;
+		}
+		&__author {
+			position: absolute;
+			top: gutter();
+			left: gutter();
+			background: rgba($white, .84);
+		}
+		.topic-teaser {
+			padding: gutter();
+			min-height: rhythm(26); /* Totally arbitrary min height based on two title row heights */
+		}
+	}
+	&-switch {
+		position: absolute;
+	    top: 25%;
+	    transform: translateY(-75%);
+	    width: rhythm(21);
+	    height: rhythm(21);
+	    font-size: to-unit(30px);
+	    color: $white;
+	    background: $color-theme;
+	    &:first-of-type {
+	    	left: 0;
+	    }
+	    &:last-of-type {
+	    	right: 0;
+	    }
+		.slideshow__container & {
+			top: 50%;
+			transform: translateY(-50%);
+			.icon {
+				display: block;
+				line-height: 1;
+			}
+			@include breakpoint($lt-small-desktop) {
+				width: 43px;
+				height: 43px;
+			}
+		}
+	}
+	&__content {
+		position: absolute;
+		top: 0;
+		right: $gutter-width / 2;
+		bottom: 0;
+		left: $gutter-width / 2;
+	}
+	@include breakpoint($gt-large-handheld) {
+		// &--article {
+		// 	width: 10 / 12 * 100vw;
+		// 	flex: 1 0 (10 / 12 * 100vw);
+		// }
+		&-switch {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		&--article {
+			&__author {
+				top: auto;
+				bottom: gutter(1);
+				left: gutter(1);
+			}
+			.topic-teaser {
+				position: absolute;
+				left: gutter(1);
+				top: gutter(1);
+				margin-right: 6 / 18 * 100vw;
+				@include theme-transparent-background(84%);
+				&__title {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		&--article {
+			width: 12 / 18 * 100vw;
+			flex: 1 0 (12 / 18 * 100vw);
+
+			&__author {
+				left: gutter(2);
+			}
+			.topic-teaser {
+				left: gutter(2);
+				top: gutter(2);
+				margin-right: 5 / 18 * 100vw;
+			}
+		}
+	}
+}

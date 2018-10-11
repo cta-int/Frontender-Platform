@@ -1,0 +1,35 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+
+{% block script %}
+    <script type="text/javascript">
+        jQuery(function($) {
+            $('.alphabet').find('.alphabet__item').find('a').on('click', function(model) {
+                model.preventDefault();
+
+                Actionable.prototype.ajax({
+                    method: 'ajax',
+                    url: '/{{ locale }}/partial?layout=modules/index/topics.html.twig&model=channels&' + $(this).attr('href').replace('?', ''),
+                    states: {},
+                    target: '#topics'
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer trailer-inside">
+            <div>
+                {% include "modules/newsletter-signup/newsletter-signup.html.twig" with {labels: newsletter_labels} %}
+            </div>
+        </div>
+        <div class="layout__cell">
+            <div id="topics">
+                {% include "modules/index/topics.html.twig" %}
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

@@ -1,0 +1,29 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/share.html.twig" as share %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+
+<div class="grid__cell  |  trailer  |  gutters">
+    <div class="tile  |  well well--neutral well--slim-fit">
+        <div class="tile__head media media--middle">
+            <p class="meta  |  gutters media__body media__stretcher">cta.int</p>
+            {% for label in article.analysis.agrovoc.concepts|slice(0, 1) %}
+                <a class="tile__label  |  label  |  media__figure" href="{#{ route({'page': 'search'}) ~ '?concepts[]=' }#}{{ label._id }}">{{ label.label|t(locales) }}</a>
+            {% endfor %}
+        </div>
+        <article class="tile__body  |  gutters  |  leader  |  trailer">
+            <div class="trailer--small icon icon--theme icon--leaf"></div>
+            <h2 class="title">
+                <a class="is-heir" href="{#{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }#}">{{ article.headline|t(locales) }}</a>
+            </h2>
+            <p class="post__intro">{{ article.about|t(locales) }}</p>
+        </article>
+        <div class="tile__footer  |  divider divider--inverse divider--top media media--middle">
+            <p class="gutters media__body media__stretcher">{{ date.article(article.datePublished) }}</p>
+            <div class="media__figure">
+                {{ share.press_article(article) }}
+            </div>
+        </div>
+    </div>
+</div>

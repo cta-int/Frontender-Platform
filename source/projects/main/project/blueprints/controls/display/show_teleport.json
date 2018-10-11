@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show channel link"
+    },
+    "control": "project/show"
+}

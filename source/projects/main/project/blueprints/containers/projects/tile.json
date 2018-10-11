@@ -1,0 +1,415 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Project tile",
+        "fr": "Project tile"
+    },
+    "description": {
+        "en": "Tabbed project tile",
+        "fr": "Tabbed project tile"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "label": {
+                        "en": "Container class",
+                        "fr": "Container class"
+                    },
+                    "type": "text",
+                    "value": ""
+                },
+                "colour_theme": {
+                    "value": "theme--blue",
+                    "control": "project/colour_theme"
+                },
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Project tile",
+                    "fr": "Project tile"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/teaser-tab/teaser-tab.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings",
+                            "fr": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            }
+                        }
+                    },
+                    "region": {
+                        "label": {
+                            "en": "Region",
+                            "fr": "Region"
+                        },
+                        "controls": {
+                            "name": {
+                                "label": {
+                                    "en": "Region name",
+                                    "fr": "Region name"
+                                },
+                                "type": "text",
+                                "value": "Pacific"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Tab identifier",
+                                    "fr": "Tab identifier"
+                                },
+                                "type": "text",
+                                "value": "pacific"
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "API",
+                                    "fr": "API"
+                                },
+                                "type": "text",
+                                "value": "events",
+                                "control":"project/model/name"
+                            },
+                            "id": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Resource ID",
+                                    "fr": "Resource ID"
+                                },
+                                "type": "lookup",
+                                "value": "112949e5-80eb-4738-aacd-3d636fa307e1"
+                            },
+                            "includeRelated": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Include related content",
+                                    "fr": "Include related content"
+                                },
+                                "type": "list",
+                                "options": [
+                                    {
+                                        "value": "true",
+                                        "label": {
+                                            "en": "Yes",
+                                            "fr": "Yes"
+                                        }
+                                    },
+                                    {
+                                        "value": "false",
+                                        "label": {
+                                            "en": "No",
+                                            "fr": "No"
+                                        }
+                                    }
+                                ],
+                                "value": "true"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Overview",
+                                "fr": "Overview"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template": "modules/teaser-tab/teaser-tab-details.html.twig",
+                            "template_config": {
+                                "tab": {
+                                    "label": {
+                                        "en": "Tab settings",
+                                        "fr": "Tab settings"
+                                    },
+                                    "controls": {
+                                        "id": {
+                                            "label": {
+                                                "en": "Tab identifier",
+                                                "fr": "Tab identifier"
+                                            },
+                                            "type": "text",
+                                            "value": "overview"
+                                        },
+                                        "name": {
+                                            "label": {
+                                                "en": "Tab title",
+                                                "fr": "Tab title"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Project Overview",
+                                                "fr": "Project Overview"
+                                            }
+                                        },
+                                        "icon": {
+                                            "label": {
+                                                "en": "Tab icon",
+                                                "fr": "Tab icon"
+                                            },
+                                            "type": "list",
+                                            "options": [
+                                                {
+                                                    "value": "icon--eye",
+                                                    "label": {
+                                                        "en": "Eye",
+                                                        "fr": "Eye"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "icon--map",
+                                                    "label": {
+                                                        "en": "Map",
+                                                        "fr": "Map"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "icon--heart",
+                                                    "label": {
+                                                        "en": "Impact",
+                                                        "fr": "Impact"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "icon--users",
+                                                    "label": {
+                                                        "en": "Sponsors",
+                                                        "fr": "Sponsors"
+                                                    }
+                                                }
+                                            ],
+                                            "value": "icon--eye"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Region of Impact",
+                                "fr": "Region of Impact"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template": "modules/teaser-tab/teaser-tab-map.html.twig",
+                            "template_config": {
+                                "tab": {
+                                    "label": {
+                                        "en": "Tab settings",
+                                        "fr": "Tab settings"
+                                    },
+                                    "controls": {
+                                        "id": {
+                                            "label": {
+                                                "en": "Tab identifier",
+                                                "fr": "Tab identifier"
+                                            },
+                                            "type": "text",
+                                            "value": "map"
+                                        },
+                                        "name": {
+                                            "label": {
+                                                "en": "Tab title",
+                                                "fr": "Tab title"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Region of Impact",
+                                                "fr": "Region of Impact"
+                                            }
+                                        },
+                                        "icon": {
+                                            "label": {
+                                                "en": "Tab icon",
+                                                "fr": "Tab icon"
+                                            },
+                                            "type": "text",
+                                            "value": "icon--map"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Impact Stories",
+                                "fr": "Impact Stories"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template": "modules/teaser-tab/teaser-tab-impact.html.twig",
+                            "template_config": {
+                                "tab": {
+                                    "label": {
+                                        "en": "Tab settings",
+                                        "fr": "Tab settings"
+                                    },
+                                    "controls": {
+                                        "id": {
+                                            "label": {
+                                                "en": "Tab identifier",
+                                                "fr": "Tab identifier"
+                                            },
+                                            "type": "text",
+                                            "value": "impact"
+                                        },
+                                        "name": {
+                                            "label": {
+                                                "en": "Tab title",
+                                                "fr": "Tab title"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Impact Stories",
+                                                "fr": "Impact Stories"
+                                            }
+                                        },
+                                        "icon": {
+                                            "label": {
+                                                "en": "Tab icon",
+                                                "fr": "Tab icon"
+                                            },
+                                            "type": "text",
+                                            "value": "icon--heart"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Content",
+                                        "fr": "Content"
+                                    },
+                                    "controls": {
+                                        "quote": {
+                                            "value": {
+                                                "en": "Promoting Nutritious Food Systems in the Pacific Islands",
+                                                "fr": "Promoting Nutritious Food Systems in the Pacific Islands"
+                                            },
+                                            "label": {
+                                                "en": "Quote"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "quote_source": {
+                                            "value": {
+                                                "en": "Jane doe",
+                                                "fr": "Jane doe"
+                                            },
+                                            "label": {
+                                                "en": "Quote source"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "quote_date": {
+                                            "value": {
+                                                "en": "30 March 2017",
+                                                "fr": "30 March 2017"
+                                            },
+                                            "label": {
+                                                "en": "Quote date"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Project Sponsors",
+                                "fr": "Project Sponsors"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template": "modules/teaser-tab/teaser-tab-sponsors.html.twig",
+                            "template_config": {
+                                "tab": {
+                                    "label": {
+                                        "en": "Tab settings",
+                                        "fr": "Tab settings"
+                                    },
+                                    "controls": {
+                                        "id": {
+                                            "label": {
+                                                "en": "Tab identifier",
+                                                "fr": "Tab identifier"
+                                            },
+                                            "type": "text",
+                                            "value": "sponsors"
+                                        },
+                                        "name": {
+                                            "label": {
+                                                "en": "Tab title",
+                                                "fr": "Tab title"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Project Sponsors",
+                                                "fr": "Project Sponsors"
+                                            }
+                                        },
+                                        "icon": {
+                                            "label": {
+                                                "en": "Tab icon",
+                                                "fr": "Tab icon"
+                                            },
+                                            "type": "text",
+                                            "value": "icon--users"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

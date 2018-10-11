@@ -1,0 +1,102 @@
+/*
+ICT Update – Issue
+
+Uses the issue-label. The Issue label can be placed above or below the cover image. Use trailer/leader for extra spacing.
+
+The squared issue label is not part of the semantics of the HTML and is rendered through the data-issue attribute.
+
+markup:
+<aside class="gutters">
+    <div class="issue-label issue-label--l media media--middle anchor--reset leader">
+        <div class="issue-label__nr" data-issue-nr="85"></div>
+        <div class="issue-label__caption">
+            <p>
+                <strong>Issue 85</strong>
+                <span>June 2017</span>
+            </p>
+        </div>
+    </div>
+    <figure>
+        <figcaption class="title title--lead title--section leader--small anchor--reset">Applications for agriculture</figcaption>
+        <img class="0" src="https://res.cloudinary.com/cta/image/upload/w_480/pkdnckzvvuymywupcrl6" srcset="https://res.cloudinary.com/cta/image/upload/w_480/pkdnckzvvuymywupcrl6 480w,https://res.cloudinary.com/cta/image/upload/w_320/pkdnckzvvuymywupcrl6 320w,https://res.cloudinary.com/cta/image/upload/w_240/pkdnckzvvuymywupcrl6 240w" sizes="100vw, (min-width: 480px) 480px" alt="Array">
+    </figure>
+</aside>
+
+sg-wrapper:
+<div style="width: 350px;">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.50.3
+*/
+
+.issue {
+  margin-top: rhythm(12);
+  &__cover {
+    display: block;
+    max-width: 100%;
+  }
+  &--s &__cover {
+    width: rhythm(40);
+  }
+  .anchor--shy {
+    /* In order to decrease the size of the anchor */
+    display: inline-block;
+  }
+}
+
+/*
+Issue aside
+
+markup:
+<article class="grid__cell grid grid--stories  |  posting  |  trailer">
+    <a class="anchor--shy anchor--reset  |  is-heir  |   grid grid--posts" href="">
+        <figure class="grid__cell  |  gutters  |  trailer--tiny">
+            <img class="image image--stretch" alt="Drones for agriculture" src="https://res.cloudinary.com/cta/image/upload/v1505735714/pkdnckzvvuymywupcrl6.jpg">
+        </figure>
+        <div class="grid__cell  |  gutters">
+            <div class="issue-label  |  media  |  trailer--small">
+                <div class="issue-label__nr" data-issue-nr="85"></div>
+                <div class="issue-label__caption anchor--reset">
+                    <p>
+                        <strong>Issue 85</strong><br>
+                        <span>June 2017</span>
+                    </p>
+                </div>
+            </div>
+            <h3 class="title title--lead title--section">Applications for agriculture</h3>
+            <span class="read-more">View issue</span>
+        </div>
+    </a>
+</article>
+
+sg-wrapper:
+<div style="width: 450px;">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.50.3.1
+*/
+
+
+/*
+Issue below
+
+markup:
+<a class="anchor--shy anchor--reset  |  is-heir" href="">
+    <figure>
+        <img class="image image--stretch" alt="Issue 84" src="https://res.cloudinary.com/cta/image/upload/v1494857266/ulzr5sayvjioztg4nptf.jpg">
+        <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
+            <div class="issue-label__nr" data-issue-nr="84"></div>
+            <span class="issue-label__caption">Issue 84 February 2017</span>
+        </figcaption>
+    </figure>
+</a>
+
+sg-wrapper:
+<div style="width: 200px;">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.50.3.2
+*/

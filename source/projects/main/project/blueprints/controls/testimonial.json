@@ -1,0 +1,31 @@
+{
+    "value": {
+        "body": {
+            "en": "I gained a lot in terms of self-confidence. I learnt so many tools that make my work more effective. In future I will be able to do more for the young people than I am doing now.",
+            "fr": "I gained a lot in terms of self-confidence. I learnt so many tools that make my work more effective. In future I will be able to do more for the young people than I am doing now."
+        },
+        "source": {
+            "en": "Yagoub Husna, CTA Data assistant",
+            "fr": "Yagoub Husna, CTA Data assistant"
+        }
+    },
+    "label": {
+        "en": "Testimonial"
+    },
+    "type": "compound",
+    "controls": {
+        "body": {
+            "label": {
+                "en": "Testimonial"
+            },
+            "control": "core/textarea"
+        },
+        "source": {
+            "label": {
+                "en": "Source"
+            },
+            "control": "core/text"
+        }
+    },
+    "control": "core/abstract"
+}

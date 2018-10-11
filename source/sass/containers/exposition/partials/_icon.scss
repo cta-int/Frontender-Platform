@@ -1,0 +1,181 @@
+$font-path: "/assets/fonts" !default;
+
+$icon-chevron-left: "\e90d";
+$icon-chevron-right: "\e90e";
+$icon-cross: "\e90f";
+$icon-plus: "\e9b0";
+$icon-facebook-with-circle: "\e900";
+$icon-facebook: "\e901";
+$icon-flickr-with-circle: "\e902";
+$icon-google-with-circle: "\e903";
+$icon-linkedin-with-circle: "\e904";
+$icon-linkedin: "\e911";
+$icon-twitter-with-circle: "\e905";
+$icon-twitter: "\e906";
+$icon-globe: "\e907";
+$icon-leaf: "\e908";
+$icon-mail: "\e909";
+$icon-open-book: "\e90a";
+$icon-plus: "\e90b";
+$icon-print: "\e90c";
+
+@font-face {
+  font-family: 'cta-report';
+  src:  url('#{$font-path}/cta-report.eot?98pg0n');
+  src:  url('#{$font-path}/cta-report.eot?98pg0n#iefix') format('embedded-opentype'),
+    url('#{$font-path}/cta-report.ttf?98pg0n') format('truetype'),
+    url('#{$font-path}/cta-report.woff?98pg0n') format('woff'),
+    url('#{$font-path}/cta-report.svg?98pg0n#cta-report') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+// scss-lint:disable ImportantRule VendorPrefix DuplicateProperty
+.cta-report-icon,
+[data-icon]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cta-report' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* data-attribute ================ */
+  content: attr(data-icon);
+}
+
+// scss-lint:enable ImportantRule VendorPrefix DuplicateProperty
+
+.cta-report-icon {
+  &--l {
+    @include breakpoint($gt-large-handheld) {
+      font-size: 2em;
+    }
+  }
+  &--drop {
+    position: relative;
+    top: 0.05em;
+    font-size: 1.3em;
+  }
+  &--theme {
+    color: $color-theme;
+  }
+}
+
+
+.icon-chevron-left {
+  &:before {
+    content: $icon-chevron-left;
+  }
+}
+
+.icon-chevron-right {
+  &:before {
+    content: $icon-chevron-right;
+  }
+}
+
+.icon-cross {
+  &:before {
+    content: $icon-cross;
+  }
+}
+
+.icon-facebook-with-circle {
+  &:before {
+    content: $icon-facebook-with-circle;
+  }
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+
+.icon-flickr-with-circle {
+  &:before {
+    content: $icon-flickr-with-circle;
+  }
+}
+
+.icon-google-with-circle {
+  &:before {
+    content: $icon-google-with-circle;
+  }
+}
+
+.icon-linkedin-with-circle {
+  &:before {
+    content: $icon-linkedin-with-circle;
+  }
+}
+
+.icon-linkedin {
+  &:before {
+    content: $icon-linkedin;
+  }
+}
+
+.icon-twitter-with-circle {
+  &:before {
+    content: $icon-twitter-with-circle;
+  }
+}
+
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+
+.icon-globe {
+  &:before {
+    content: $icon-globe;
+  }
+}
+
+.icon-leaf {
+  &:before {
+    content: $icon-leaf;
+  }
+}
+
+.icon-mail {
+  &:before {
+    content: $icon-mail;
+  }
+}
+
+.icon-open-book {
+  &:before {
+    content: $icon-open-book;
+  }
+}
+
+.icon-plus {
+  &:before {
+    content: $icon-plus;
+  }
+}
+
+.icon-print {
+  &:before {
+    content: $icon-print;
+  }
+}

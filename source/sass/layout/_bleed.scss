@@ -1,0 +1,25 @@
+/*
+Bleed
+
+Pulls container into its parent's gutter space
+
+.bleed - Negative half gutter-width to either side
+.bleed--left - Negative half gutter-width to left side
+.bleed--right - Negative half gutter-width to right side
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.6
+*/
+
+.bleed {
+  margin-left: gutter(-1 / 2);
+  margin-right: gutter(-1 / 2);
+  &--left {
+    margin-left: gutter(-1 / 2);
+  }
+  &--right {
+    margin-right: gutter(-1 / 2);
+  }
+}

@@ -1,0 +1,31 @@
+/*
+Tier Group
+
+~DISCONTINUED~
+A tier group allows content to be aligned vertically. This implementation relies on Flex, the fallback is a naturally stacked group of elements.
+A tier is used in the [`Hero` module - Styleguide 6.9](/#/section/6.9)
+
+markup:
+<div class="tier-group">
+	<div class="tier">
+		I am a top-aligned tier.
+	</div>
+	<div class="tier tier--align-bottom">
+		I am a bottom-aligned tier.
+	</div>
+</div>
+
+Styleguide 2.9
+*/
+
+.tier {
+  flex-grow: 1;
+  &--align-bottom {
+    flex-grow: 0;
+  }
+  &-group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

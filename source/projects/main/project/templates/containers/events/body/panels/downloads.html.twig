@@ -1,0 +1,25 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="panel  |  wing--right" id="downloads">
+  <h2 class="title">
+    <a class="panel__trigger  |  gutters  |  is-heir" href="#downloads">{{ 'Downloads'|t(locales) }}</a>
+  </h2>
+  <div class="panel__body">
+    <ul class="grid grid--musketeers  |  reset">
+    	{% for download in model.mediaObject | findType('document') %}
+        <li class="grid__cell  |  leader--normal  |  trailer--normal  |  gutters">
+			<h2 class="title title--apropos"><a href="{{ download.metadata.url }}" target="_blank">{{ download.description }}</a></h2>
+			<div class="media  |  leader--small">
+				<div class="media__figure">
+					<a class="icon icon--download" href="{{ download.metadata.url }}" target="_blank"></a>
+				</div>
+				<div class="media__body  |  gutters">
+					<a class="block-link  |  download-size" href="{{ download.metadata.url }}" target="_blank">{{ download.name|default(download.description) }}</a>
+					<p class="download-size">{{ 'format'|t(locales) }} {{ download.contentType|extension }}, {{ download.metadata.url|getFileSize }}</p>
+				</div>
+			</div>
+	      </li>
+        {% endfor %}
+    </ul>
+  </div>
+</section>

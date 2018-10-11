@@ -1,0 +1,27 @@
+{
+    "label": {
+        "en": "Slogan"
+    },
+    "controls": {
+        "image": {
+            "control": "project/slogan"
+        },
+        "alt": {
+            "label": {
+                "en": "Alternative text"
+            },
+            "value": {
+                "en": "Seeding Innovation, Harvesting Prosperity",
+                "fr": "Seeding Innovation, Harvesting Prosperity"
+            },
+            "control": "core/text"
+        },
+        "backdrop": {
+            "label": {
+                "en": "Show backdrop"
+            },
+            "value": 0,
+            "control": "project/show"
+        }
+    }
+}

@@ -1,0 +1,216 @@
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/location.html.twig" as location %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout layout--reverse">
+    <div class="layout__cell layout__cell--main">
+        <div class="layout">
+            <div class="layout__cell layout__cell--main  |  trailer--hero">
+
+                <div class="social__share  |  trailer  |  gutters">
+                    {{ share.bar_article(model, true) }}
+                </div>
+
+                <footer class="gutters  |  trailer--hero">
+                    {# todo link to view with all similar article.articleTypes #}
+                    <p class="meta">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.publication %}{{ 'in'|t(locales) }} <a href="{{ route({'page': model.path_prefix ~ 'article', 'id': model.issue._id}) }}">{{ model.publication|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|t(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                    <div class="media__content  |  body--whisper  |  leader--tiny">
+                        {{ author.job(model.link.person.author) }}
+                    </div>
+                </footer>
+
+                <div class="post-anchor  |  clear">
+                    {% if model.about %}
+                        <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                    {% endif %}
+
+                    {# render the content blocks - if the first block is a list,
+                    we treat it as the article takeaways #}
+                    {% for i, contentBlock in model.contentBlocks %}
+                        {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                            <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                            </div>
+                        {% else %}
+                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if model.analysis.agrovoc.concepts %}
+                    <div class="gutters  |  trailer  |  leader">
+                        <ul class="reset  |  tag-list  |  list--inline">
+                            {% for label in model.analysis.agrovoc.concepts|slice(0, 20) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
+                    {{ share.bar_article(model) }}
+                </div>
+
+                {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
+                {% if ctaOrg %}
+                    <aside class="well well--slim-fit well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
+                        <h2 class="title title--apropos  |  leader--small  |  trailer--small  |  gutters">{{ 'About'|t(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
+
+                        {% if ctaOrg.description %}
+                            <p class="body--whisper  |  trailer--small  |  gutters">{{ ctaOrg.description|t(locales) }}</p>
+                        {% endif %}
+                    </aside>
+                {% endif %}
+
+                <aside class="gutters-outside  |  divider divider--top  |  leader--hero leader-inside--small">
+                    <h2 class="title title--sub-section  |  leader--small  |  trailer--small">{{ 'disclaimer'|t(locales) }}</h2>
+                    <p class="body--quiet">{{ 'disclaimer_text'|t(locales) }}</p>
+                </aside>
+
+                {% if model.bibliographicalReferences|t(locales)|length > 0 or model.footnotes|length > 0 %}
+                    <div class="media  |  leader--hero">
+
+
+                        {% if model.bibliographicalReferences|length > 0 %}
+                            <section class="media__body  |  gutters">
+                                <h2 class="title title--sub-section">{{ 'bibliographical references'|t(locales) }}</h2>
+                                {% for reference in model.bibliographicalReferences %}
+                                    <div class="leader  |  trailer">
+                                        <p class="meta meta--lowercase">{{ reference.name }}</p>
+                                        <a href="{{ reference.url }}" class="body--quiet" target="_blank">{{ 'view_reference'|t(locales) }}</a>
+                                    </div>
+                                {% endfor %}
+                            </section>
+                        {% endif %}
+                        {% if model.footnotes|length > 0 %}
+                            <section class="media__body  |  gutters">
+                                <h2 class="title title--sub-section  |  trailer">{{ 'footnotes'|t(locales) }}</h2>
+
+                                {{ model.footnotes.content|raw }}
+                            </section>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+                {% if show_digital_identifier|default(1) or show_publisher|default(1) %}
+                    {% if model.isbn %}
+                        <dl class="meta  |  trailer--hero  |  gutters">
+                            <dt><strong>{{ 'ISBN'|t(locales) }}:</strong></dt>
+                            <dl>{{ model.isbn }}</dl>
+
+                            {% if model.link.organization.sourceOrganization|length > 0 %}
+                                <dt class="leader--small leader-inside--tiny"><strong>{{ 'Publisher'|t(locales) }}:</strong></dt>
+                                {% for organization in model.link.organization.sourceOrganization %}
+                                    <dl>{{ organization.name|t(locales) }}</dl>
+                                {% endfor %}
+                            {% endif %}
+                        </dl>
+                    {% endif %}
+                {% endif %}
+
+                {% if show_partners|default(1) and model.link.organization.partnerOrganization|length > 0 %}
+                    <section class="trailer--hero  |  gutters">
+                        <h2 class="title title--apropos">{{ 'Partners'|t(locales) }}</h2>
+                        <ul class="reset">
+                            {% for organization in model.link.organization.partnerOrganization %}
+                                <li class="leader--small">{{ organization.alternateName ? organization.alternateName|t(locales) : organization.name|t(locales) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
+
+                {% if show_internal_links|default(1) and model.internalLink|length > 0 %}
+                    <section class="trailer--hero  |  gutters">
+                        <h2 class="title title--apropos  |  trailer--small">{{ 'Internal links'|t(locales) }}</h2>
+                        {% for link in model.internalLink %}
+                            <a href="{{ link.url }}">{{ link.name }}</a>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+
+                {% if show_external_links|default(1) and model.externalLink|length > 0  %}
+                    <section class="trailer--hero  |  gutters">
+                        <h2 class="title title--apropos  |  trailer--small">{{ 'External links'|t(locales) }}</h2>
+                        {% for link in model.externalLink %}
+                            {% include 'partials/icon-link.html.twig' with {link: link} %}
+                        {% endfor %}
+                    </section>
+                {% endif %}
+
+                {% if show_downloads|default(1) and model.link.mediaObject|findType('file')|length > 0 %}
+                    <section class="trailer--hero  |  gutters">
+                        <h2 class="title title--apropos  |  trailer--small">{{ 'Downloads'|t(locales) }}</h2>
+
+                        {% for file in model.link.mediaObject|findType('file') %}
+                            {% include 'partials/download.html.twig' with {file: file} %}
+                        {% endfor %}
+                    </section>
+                {% endif %}
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
+                    {{ share.bar_article(model) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+
+        {% if model.analysis.geoname.geonames|locationSpecific %}
+            <div class="mini-map  |  well well--neutral well--slim-fit  |  gutters-outside  |  trailer--hero">
+                <div class="mini-map__map">
+                    <div id="map" style="height: 250px;"></div>
+                    {{ location.map(model.analysis.geoname.geonames | locationSpecific, "#map") }}
+                </div>
+                <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                    {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if model.link.person.author|filterArray('description', null)|length > 0 %}
+            <aside class="trailer--hero">
+                {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the authors'|t(locales) }}</h2>
+                {% else %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the author'|t(locales) }}</h2>
+                {% endif %}
+
+                {% for auth in model.link.person.author|filterArray('familyName', null) %}
+                    <div class="media  |  leader--normal  |  trailer--normal">
+                        <div class="media__figure  |  gutters">
+                            {{ image.person(auth, 50) }}
+                        </div>
+                        <div class="media__body  |  gutter--right  |  body--whisper">
+                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            {% if auth.description %}
+                                <p class="">{{ auth.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </aside>
+        {% endif %}
+
+        {% if model.import.sourceSite|length > 0 %}
+            <div class="gutters  |  trailer">
+                <p class="meta">{{ 'Link to the' }} <a href="{{ model.import.sourceSite }}" target="_blank">{{ 'original article' }}</a></p>
+            </div>
+        {% endif %}
+
+        {% if model.link.organization.sourceOrganization|filterCTA(false)|length > 0 %}
+            {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
+                {% if organization.description %}
+                    <aside class="trailer--hero">
+                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|t(locales) }} {{ organization.name|t(locales) }}</h1>
+                        <p class="body--whisper  |  gutters">
+                            {{ organization.description|t(locales) }}
+                        </p>
+                    </aside>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

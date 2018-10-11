@@ -1,0 +1,49 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Region of Impact",
+        "fr": "Region of Impact"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "modules/teaser-tab/teaser-tab-map.html.twig",
+    "template_config": {
+        "tab": {
+            "label": {
+                "en": "Tab settings",
+                "fr": "Tab settings"
+            },
+            "controls": {
+                "id": {
+                    "label": {
+                        "en": "Tab identifier",
+                        "fr": "Tab identifier"
+                    },
+                    "type": "text",
+                    "value": "map"
+                },
+                "name": {
+                    "label": {
+                        "en": "Tab title",
+                        "fr": "Tab title"
+                    },
+                    "type": "text",
+                    "value": {
+                        "en": "Region of Impact",
+                        "fr": "Region of Impact"
+                    }
+                },
+                "icon": {
+                    "label": {
+                        "en": "Tab icon",
+                        "fr": "Tab icon"
+                    },
+                    "type": "text",
+                    "value": "icon--map"
+                }
+            }
+        }
+    }
+}

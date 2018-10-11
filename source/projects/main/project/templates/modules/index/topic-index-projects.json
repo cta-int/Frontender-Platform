@@ -1,0 +1,66 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Projects Index",
+        "fr": "Projects Index"
+    },
+    "description": {
+        "en": "Alphabetised list of projects",
+        "fr": "Alphabetised list of projects"
+    },
+    "template": "modules/index/topic-index-projects.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Content",
+                "fr": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Event\\Search",
+                    "control": "core/hidden"
+                },
+                "type": {
+                    "value": "event.Project",
+                    "control": "core/hidden"
+                },
+                "id": {
+                    "value": [],
+                    "control": "project/model/id",
+                    "lookup": {
+                        "model": "Event\\Search",
+                        "multiple": true
+                    }
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "trailer trailer-inside",
+                    "control": "project/container_class"
+                },
+                "show_max": {
+                    "value": 5,
+                    "control": "core/number"
+                }
+            }
+        }
+    }
+}

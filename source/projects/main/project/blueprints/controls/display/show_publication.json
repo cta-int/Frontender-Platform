@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show publication"
+    },
+    "control": "project/show_on_items"
+}

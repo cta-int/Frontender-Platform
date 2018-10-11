@@ -1,0 +1,26 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'well  |  is-root  |  trailer  |  is-illustrated')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <form class="layout  |  trailer--hero" method="get" action="{{ route({page: 'search'}) }}">
+        <div class="layout__cell  |  layout__cell--aside  |  wings  |  trailer">
+            {% if containers|length > 1 %}
+                {% include containers|first.template with containers|first %}
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--main  |  wing--right  |  trailer--hero trailer-inside">
+            <h3 class="title title--lead trailer  |  gutters">{{ labels.title|t(locales) }}</h3>
+
+            {% include 'partials/search-fields/keyword.html.twig' with {config: {container_class: 'leader--small gutters'}} %}
+
+            {% include containers|last.template with containers|last %}
+
+        </div>
+    </form>
+    <figure class="search__illustrations-set">
+        <span class="search__illustration illustration illustration--fish-barn"></span>
+        <span class="search__illustration illustration illustration--fishing-shore"></span>
+        <span class="search__illustration illustration illustration--fishing-boat"></span>
+        <span class="water-illustration"></span>
+    </figure>
+</{{ config.container_tag|default('div') }}>

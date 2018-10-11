@@ -1,0 +1,207 @@
+/*
+Menu
+
+The *Menu* block is used in navigational elements.
+
+When used with a list element, the list element will need to be reset using the reset class.
+
+.menu.menu--responsive - Horizontal menu
+.menu.menu--stacked.menu--responsive - Vertical menu
+.menu.menu--secondary.menu--responsive - Vertical menu
+
+markup:
+<ul class="{$modifiers}">
+  <li><a class="menu__item" href="javascript:void();">Agribusiness</a></li>
+  <li><a class="menu__item" href="javascript:void();">ICTS for agriculture</a></li>
+  <li><a class="menu__item" href="javascript:void();">Climate resilient agriculture</a></li>
+  <li><a class="menu__item" href="javascript:void();">Events</a></li>
+  <li><a class="menu__item" href="javascript:void();">Projects</a></li>
+</ul>
+
+sg-wrapper:
+<div style="height: 250px";>
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.1
+*/
+
+// scss-lint:disable MergeableSelector
+.menu {
+  // padding: 0 rhythm(5);
+  // padding: 0;
+  @extend .reset;
+  @extend .list--inline;
+  &__item {
+    @extend %meta-text;
+    display: inline-block;
+    padding: rhythm(2) rhythm(5);
+    font-size: 12px;
+    line-height: line-height(16px, 1);
+    text-decoration: none;
+    color: $color-body;
+  }
+  &__social-icons {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      text-align: center;
+      .icon {
+          vertical-align: baseline;
+          line-height: 36px;
+          font-size: to-unit(24px);
+          padding: 0 gutter();
+      }
+  }
+  &--stacked &__item {
+    display: block;
+  }
+  &--footer {
+    text-align: right;
+  }
+  &--footer &__item {
+    border-right: 1px solid $color-body;
+    &:hover {
+      color: $color-anchor;
+    }
+  }
+  &--footer li:last-child &__item {
+    border-right: 0;
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .menu {
+    &__item {
+      padding: rhythm(3.5) rhythm(5);
+      font-size: to-unit(14px);
+      line-height: line-height(16px, 1);
+      color: $white;
+    }
+    &--secondary &__item {
+      padding: 0 rhythm(5);
+    }
+    &__social-icons {
+        display: none;
+    }
+  }
+}
+
+@include breakpoint($gt-medium-desktop) {
+  .menu {
+
+    .network-navigation &,
+    .network-navigation &__social-icons {
+        display: inline-block;
+    }
+
+
+    &__social-icons {
+        position: static;
+        vertical-align: top;
+        padding: 0 2em;
+        float: right;
+        .icon {
+            vertical-align: middle;
+            padding: 0 rhythm(2);
+            font-size: to-unit(15px, 14px);
+            line-height: line-height(39px, 1);
+        }
+    }
+  }
+}
+
+/*
+Menu
+
+The *Menu* block is used in navigational elements.
+
+When used with a list element, the list element will need to be reset using the reset class.
+
+markup:
+<div class="is-heir is-inactive is-conducive media__stretcher" id="network-navigation">
+  <button class="menu-toggle" data-toggle="network-navigation">CTA <span data-icon=""></span></button>
+  <ul class="fx menu menu--responsive">
+    <li><a class="menu__item" href="javascript:void();">Home</a></li>
+    <li><a class="menu__item" href="javascript:void();">About CTA</a></li>
+    <li><a class="menu__item" href="javascript:void();">Contact</a></li>
+    <li><a class="menu__item" href="javascript:void();">Working with CTA</a></li>
+    <li><a class="menu__item" href="javascript:void();">Publications</a></li>
+    <li><a class="menu__item" href="javascript:void();">Spore</a></li>
+    <li><a class="menu__item" href="javascript:void();">ICT Update</a></li>
+    <li><a class="menu__item" href="javascript:void();">Press</a></li>
+  </ul>
+</div>
+
+sg-wrapper:
+<nav class="network-navigation">
+<sg-wrapper-content/>
+</nav>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra pellentesque ligula ut feugiat. Nullam elit libero, rutrum eu odio sed, tempus iaculis lectus. Phasellus felis ex, malesuada vitae libero ac, auctor finibus sapien. Sed odio enim, molestie eu pretium sit amet, commodo ut enim. Praesent eget mi eget enim hendrerit interdum. Ut sit amet orci libero. Vestibulum et leo pretium, semper nisl non, aliquam arcu. Pellentesque malesuada eros a elit imperdiet, sed tempor enim malesuada. Praesent accumsan malesuada eros, in sodales tortor sagittis at. Duis sollicitudin, est sed lobortis semper, felis est hendrerit massa, a tincidunt nulla risus in lectus. Praesent eleifend vestibulum nunc sed mollis. Ut dapibus nisi turpis, id lobortis justo scelerisque vitae. Morbi vel augue in ipsum dignissim aliquet. Vestibulum justo est, venenatis ut massa eu, dignissim vulputate lorem. Morbi porta est quis erat vulputate tristique.</p>
+<script>
+jQuery("document").ready(function($){
+    $("[data-toggle]").toggle();
+});
+</script>
+
+Styleguide 4.1.1
+*/
+
+.menu {
+  &-toggle {
+    position: relative;
+    @extend .menu__item;
+    padding: rhythm(2) rhythm(5);
+    border: 0;
+    background-color: mix($color-black, $white, 76%);
+    &:hover + .menu--responsive {
+      @extend .menu--responsive:hover;
+    }
+  }
+  &:hover &-toggle:after {
+    display: none;
+  }
+  &--responsive {
+    position: absolute;
+    z-index: 3;
+    background: mix($color-black, $white, 76%);
+  }
+  .is-inactive &--responsive &__item,
+  .is-active &--responsive &__item,
+  .is-current &--responsive &__item {
+    display: block;
+  }
+  .is-inactive &--responsive {
+    min-height: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  .is-active &--responsive,
+  .is-current &--responsive,
+  &--responsive:hover {
+    min-height: rhythm(10);
+    height: auto;
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .menu {
+    &-toggle {
+      display: none;
+    }
+    .is-inactive &--responsive &__item,
+    .is-active &--responsive &__item,
+    .is-current &--responsivie &__item {
+      display: inline-block;
+    }
+    .is-inactive &--responsive,
+    .is-active &--responsive,
+    .is-current &--responsive {
+      position: static;
+      height: auto;
+    }
+  }
+}
+// scss-lint:enable MergeableSelector

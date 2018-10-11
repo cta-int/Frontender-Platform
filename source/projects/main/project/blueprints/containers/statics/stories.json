@@ -1,0 +1,297 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Stories"
+    },
+    "description": {
+        "en": "Facts and figures"
+    },
+    "template": "containers/global/stories/stories.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "lead": {
+                    "label": {
+                        "en": "Lead title"
+                    },
+                    "value": {
+                        "en": "CTA In numbers",
+                        "fr": "CTA In numbers"
+                    },
+                    "control": "core/text"
+                },
+                "body": {
+                    "label": {
+                        "en": "Body text",
+                        "fr": "Body text"
+                    },
+                    "value": {
+                        "en": "Our world in numbers - CTA facts and figures at a glance",
+                        "fr": "Our world in numbers - CTA facts and figures at a glance"
+                    },
+                    "control": "core/textarea"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "trailer-inside--small",
+                    "control": "project/trailer_inside"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Statistic 1"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/global/greenshoot/greenshoot.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Greenshoot"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "figure": {
+                                "value": {
+                                    "en": "60",
+                                    "fr": "60"
+                                },
+                                "label": {
+                                    "en": "Figure"
+                                },
+                                "control": "core/text"
+                            },
+                            "caption": {
+                                "value": {
+                                    "en": "Different nationalities from ACP and EU countries",
+                                    "fr": "Different nationalities from ACP and EU countries"
+                                },
+                                "label": {
+                                    "en": "Caption"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "story": {
+                                "value": "globe-plane",
+                                "label": {
+                                    "en": "Story"
+                                },
+                                "control": "project/story"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Statistic 2"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/global/greenshoot/greenshoot.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Greenshoot"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "figure": {
+                                "value": {
+                                    "en": "12",
+                                    "fr": "12"
+                                },
+                                "label": {
+                                    "en": "Figure"
+                                },
+                                "control": "core/text"
+                            },
+                            "caption": {
+                                "value": {
+                                    "en": "Different languages spoken in our offices",
+                                    "fr": "Different languages spoken in our offices"
+                                },
+                                "label": {
+                                    "en": "Caption"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "story": {
+                                "value": "conversation",
+                                "label": {
+                                    "en": "Story"
+                                },
+                                "control": "project/story"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Statistic 3"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/global/greenshoot/greenshoot.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Greenshoot"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "figure": {
+                                "value": {
+                                    "en": "200",
+                                    "fr": "200"
+                                },
+                                "label": {
+                                    "en": "Figure"
+                                },
+                                "control": "core/text"
+                            },
+                            "caption": {
+                                "value": {
+                                    "en": "Events attended in the last two years",
+                                    "fr": "Events attended in the last two years"
+                                },
+                                "label": {
+                                    "en": "Caption"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "story": {
+                                "value": "speakers",
+                                "label": {
+                                    "en": "Story"
+                                },
+                                "control": "project/story"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Statistic 4"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/global/greenshoot/greenshoot.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Greenshoot"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "figure": {
+                                "value": {
+                                    "en": "500",
+                                    "fr": "500"
+                                },
+                                "label": {
+                                    "en": "Figure"
+                                },
+                                "control": "core/text"
+                            },
+                            "caption": {
+                                "value": {
+                                    "en": "Tons of magazines published in the last three years",
+                                    "fr": "Tons of magazines published in the last three years"
+                                },
+                                "label": {
+                                    "en": "Caption"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "story": {
+                                "value": "printing-press-publisher",
+                                "label": {
+                                    "en": "Story"
+                                },
+                                "control": "project/story"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

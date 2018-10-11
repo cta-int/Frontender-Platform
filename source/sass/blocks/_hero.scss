@@ -1,0 +1,671 @@
+/*
+Hero
+
+The hero unit has modifiers for each teaser type – see sections below.
+
+1. Set background color for when image load is slow
+2. Let padding define the initial size of the hero container
+3. Move on top of absolutely positioned image
+4. Progressive enhancement: Hide the image but retain it's position in the
+   flow, use javascript to move it to the background of its parent
+5. Progressive enhancement: on small handheld devices, stretch the image to
+   the available viewport height (minus the masthead)
+6. When the hero sits underneath the navigation, its height is added to the
+   hero height
+
+
+.hero - Hero cover
+.hero.is-crowned - Pulls the cover underneath the masthead
+.hero.hero--bleed - Full width/height hero (excludes the navigation area)
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<figure class="{$modifiers}" style="background-image: url('https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb');">
+  <img class="hero__figure  |  image image--stretch" width="1260" height="750" alt="" src="https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb" />
+  <figcaption class="hero__headline">
+    <sg-insert>4.11-1</sg-insert>
+  </figcaption>
+</figure>
+
+sg-wrapper:
+<div class="js flexbox">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.41
+*/
+
+// scss-lint:disable DuplicateProperty
+/*
+ * 1. Set background color for when image load is slow
+ * 2. Let padding define the initial size of the hero container
+ * 3. Move on top of absolutely positioned image
+ * 4. Progressive enhancement: Hide the image but retain it's position in the
+ *    flow, use javascript to move it to the background of its parent
+ * 5. Progressive enhancement: on small handheld devices, stretch the image to
+ *    the available viewport height (minus the masthead)
+ * 6. When the hero sits underneath the navigation, its height is added to the
+ *    hero height
+ */
+.hero {
+  @include theme-opaque-background(100%); /* 1 */
+  position: relative;
+  overflow: hidden;
+  &__figure {
+    display: block;
+    width: 100%;
+  }
+  &--headline {
+    height: 100vh;
+    background-size: cover;
+  }
+  &__headline {
+    position: absolute; /* 3 */
+    right: gutter(1);
+    bottom: gutter(2);
+    left: 0;
+    // overflow: auto; /* Cannot set overflow, will hide top part of quote teaser */
+    &--left {
+      left: 0;
+    }
+  }
+  &--topic-teaser &__headline {
+    right: gutter();
+    left: gutter();
+  }
+  &--topic-teaser &__headline--left {
+    left: 0;
+  }
+  &--slogan &__headline {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &--carousel &__headline {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+  &--quote-teaser &__headline {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0,.26);
+  }
+  &--video {
+      // Force 16:9 aspect ratio
+      position: relative;
+      padding: 56.25% 0 0 0;
+      iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+  }
+  // &--tab-teaser {
+  //   top: rhythm(78 / 4); /* 2 */
+  //   &.is-crowned /* 6 */ {
+  //     top: rhythm(26) + rhythm(78 / 4);
+  //   }
+  // }
+  // &--quote-teaser &__headline {
+  //     right: 0;
+  //     left: 0;
+  // }
+  // &--feature-teaser &__headline {
+  //   .flexbox & {
+  //     display: flex;
+  //     align-self: center;
+  //   }
+  // }
+  // &--feature-teaser &__headline {
+  //   .flexbox & {
+  //     align-self: flex-end;
+  //   }
+  // }
+  @include breakpoint($lt-large-handheld) {
+      &--quote-teaser &__headline {
+          display: flex;
+          align-items: center;
+          .no-flexbox {
+              padding-top: rhythm(46);
+          }
+      }
+  }
+  // @include breakpoint("#{$lt-large-handheld} and #{$portrait}") {
+  //    &--quote-teaser {
+  //        height: 3 / 2 * 100vw;
+  //    }
+  // }
+  // @include breakpoint("#{$lt-large-handheld} and #{$landscape}") {
+  //    &--quote-teaser {
+  //        height: 2 / 3 * 100vw;
+  //    }
+  // }
+  // @include breakpoint("#{$gt-large-handheld} and #{$lt-small-desktop}") {
+  //    &--quote-teaser {
+  //        height: 2 / 3 * 100vw;
+  //    }
+  // }
+  // @include breakpoint("(min-width: 800px) and (max-width: 1280px) and #{$portrait}") {
+  //    &--quote-teaser {
+  //        height: 3 / 2 * 100vw;
+  //    }
+  // }
+  // @include breakpoint("(min-width: 1280px) and (max-width: 800px) and #{$landscape}") {
+  //    &--quote-teaser {
+  //        height: 1 / 3 * 100vw;
+  //    }
+  //     &--quote-teaser {
+  //       &.is-crowned {
+  //        height: 1 / 2 * 100vw;
+  //       }
+  //    }
+  // }
+  // @include breakpoint("(max-aspect-ratio: 1/1)") {
+  //    &--quote-teaser {
+  //        height: 16 / 8 * 100vw;
+  //    }
+  //     &--quote-teaser {
+  //       &.is-crowned{
+  //        height: 15 / 10 * 100vw;
+  //       }
+  //    }
+  // }
+  // @include breakpoint("(min-aspect-ratio: 1/1)") {
+  //    &--quote-teaser {
+  //        height:  6 / 16 * 100vw;
+  //    }
+  //     &--quote-teaser {
+  //       &.is-crowned {
+  //        height: 8 / 16 * 100vw;
+  //       }
+  //    }
+  // }
+  // @include breakpoint("(min-aspect-ratio: 16/9)") {
+  //   &--quote-teaser {
+  //       &.is-crowned {
+  //         height: 7 / 16 * 100vw;
+  //       }
+  //    }
+  // }
+  // @include breakpoint("(min-aspect-ratio: 16/9) and (min-width: 1800px)") {
+  //    &--quote-teaser {
+  //        height: 5 / 16 * 100vw;
+  //    }
+  // }
+
+  @include breakpoint($landscape) {
+    &--topic-teaser &__headline,
+    &--event-teaser &__headline {
+      right: 1 / 6 * 100vw;
+    }
+  }
+  @include breakpoint($gt-medium-handheld) {
+    // &--topic-teaser &__headline,
+    &--event-teaser &__headline {
+      right: 2 / 6 * 100vw;
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    &__headline {
+        bottom: rhythm(20);
+    }
+    &--topic-teaser &__headline {
+        bottom: rhythm(3);
+    }
+    &--quote-teaser &__headline {
+        background: none;
+    }
+    &--tab-teaser &__headline {
+        bottom: rhythm(20);
+    }
+    &--quote-teaser &__headline {
+        top: rhythm(20);
+        left: 0;
+        // width: 6 / 12 * 100vw;
+    }
+    &--quote-teaser-end &__headline {
+        left: auto;
+        right: 1 / 12 * 100vw;
+        &.layout--narrow {
+            right: -1 / 12 * 100vw;
+        }
+    }
+    &--quote-teaser.is-crowned &__headline {
+        top: rhythm(36);
+    }
+    &--slogan &__headline {
+      top: 50%;
+      bottom: auto;
+      left: 1 / 12 * 100vw;
+      transform: translateX(0) translateY(-50%);
+    }
+    &--quote-teaser-end &__headline,
+    &--quote-teaser-end.is-crowned &__headline {
+        top: auto;
+        bottom: rhythm(20);
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    &--topic-teaser &__headline {
+      left: 1 / 18 * 100vw;
+      margin-right: gutter();
+      margin-left: gutter();
+    }
+    &--topic-teaser &__headline--left {
+      left: 0;
+      margin-left: 0;
+    }
+    &--topic-teaser &__headline {
+        right: percentage(4 / 18);
+    }
+    &--event-teaser &__headline,
+    &--feature-teaser &__headline {
+      right: 8 / 18 * 100vw;
+    }
+    &--bleed {
+      height: calc(100vh - 39px);
+    }
+    &--quote-teaser &__headline {
+        top: rhythm(30);
+        // width: 10 / 18 * 100vw;
+    }
+    &--quote-teaser-end &__headline {
+        left: auto;
+        right: 1 / 18 * 100vw;
+        &.layout--narrow {
+            right: -1 / 18 * 100vw;
+        }
+    }
+    &--quote-teaser.is-crowned &__headline {
+        top: rhythm(47);
+    }
+    &--quote-teaser-end &__headline,
+    &--quote-teaser-end.is-crowned &__headline {
+        top: auto;
+        bottom: rhythm(30);
+    }
+    &--carousel {
+      max-height: 75vh;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &--topic-teaser &__headline {
+        bottom: rhythm(10);
+    }
+    &--event-teaser &__headline {
+      right: 10 / 18 * 100vw;
+    }
+    &--carousel &__headline {
+      position: absolute;
+      right: 3 / 12 * 100%;
+      left: 1 / 18 * 100vw;
+      top: rhythm(20);
+      bottom: auto;
+    }
+    &--event-teaser {
+      .no-flexbox & {
+        max-height: rhythm(200);
+      }
+    }
+    &--feature-teaser &__headline {
+      right: 9 / 18 * 100vw;
+    }
+    &--slogan &__headline {
+      left: 2 / 18 * 100vw;
+    }
+    &--quote-teaser &__headline {
+        left: 0;
+        // width: 7 / 18 * 100vw;
+    }
+    &--quote-teaser-end &__headline {
+        left: auto;
+        right: 1 / 18 * 100vw;
+        &.layout--narrow {
+            right: -1 / 18 * 100vw;
+        }
+    }
+  }
+  @include breakpoint($gt-large-desktop) {
+    &--topic-teaser &__headline {
+      right: 10 / 18 * 100vw;
+      bottom: rhythm(20);
+    }
+    &--carousel &__headline {
+      right: 6 / 12 * 100%;
+    }
+  }
+}
+// scss-lint:enable DuplicateProperty
+
+.ie9-hero {
+  .no-flexbox & {
+    max-height: rhythm(200);
+    overflow: hidden;
+  }
+}
+
+/*
+Hero - event-teaser
+
+.hero.hero--event-teaser - Hero cover
+.hero.hero--event-teaser.is-crowned - Pulls the cover underneath the masthead
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<figure class="{$modifiers}" style="background-image: url('https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb');">
+  <img class="hero__figure  |  image image--stretch" width="1260" height="750" alt="" src="https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb" />
+  <figcaption class="hero__headline">
+    <sg-insert>4.11-1</sg-insert>
+  </figcaption>
+</figure>
+
+sg-wrapper:
+<div class="js flexbox">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.4.1
+*/
+
+/*
+Hero - tab-teaser
+
+.hero.hero--tab-teaser - Hero cover
+.hero.hero--tab-teaser.is-crowned - Pulls the cover underneath the masthead
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<div class="{$modifiers}" style="background-image: url('https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb');">
+  <img class="hero__figure  |  image image--stretch" width="1260" height="750" alt="" src="https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb" />
+  <div class="hero__headline">
+    <sg-insert>4.27</sg-insert>
+  </div>
+  <div class="timeline timeline--overlay  |  stack">
+    <div class="stack__unit stack__pin  |  is-gt-small-desktop  |  meta">
+      <div class="timeline__label  |  gutters">Project timeline</div>
+    </div>
+    <div class="stack__unit  |  meta">
+      <div class="timeline__item  |  is-complete  |  gutters">2016</div>
+    </div>
+    <div class="stack__unit  |  meta">
+      <div class="timeline__item  |  is-active  |  gutters">2017</div>
+    </div>
+    <div class="stack__unit  |  meta">
+      <div class="timeline__item  |  gutters">2018</div>
+    </div>
+    <div class="stack__unit  |  meta">
+      <div class="timeline__item  |  gutters">2019</div>
+    </div>
+  </div>
+</div>
+
+sg-wrapper:
+<div class="js flexbox">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.4.2
+*/
+
+
+/*
+Hero - topic-teaser
+
+.hero.hero--topic-teaser - Hero cover
+.hero.hero--topic-teaser.is-crowned - Pulls the cover underneath the masthead
+
+markup:
+<figure class="ie9-hero hero hero--topic-teaser">
+    <picture class="not-crown hero__figure  |  image image--stretch">
+        <img class="hero__figure  |  image image--stretch" src="https://res.cloudinary.com/cta/image/upload/w_2560,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg" alt="Leading image">
+    </picture>
+    <figcaption class="hero__headline">
+        <sg-insert>4.29</sg-insert>
+    </figcaption>
+</figure>
+
+Styleguide 5.4.3
+*/
+
+
+/*
+Hero - feature-teaser
+
+.hero.hero--feature-teaser - Hero cover
+.hero.hero--feature-teaser.is-crowned - Pulls the cover underneath the masthead
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<figure class="{$modifiers}" style="background-image: url('https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb');">
+  <img class="hero__figure  |  image image--stretch" width="1260" height="750" alt="" src="https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb" />
+  <figcaption class="hero__headline">
+    <sg-insert>4.31</sg-insert>
+  </figcaption>
+</figure>
+
+sg-wrapper:
+<div class="js flexbox">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.4.4
+*/
+
+/*
+Hero - poster with quote
+
+markup:
+<figure class="ie9-hero hero hero--quote-teaser">
+    <picture class="not-crown hero__figure  |  image image--stretch">
+        <img class="hero__figure  |  image image--stretch" src="https://res.cloudinary.com/cta/image/upload/w_2560,ar_16:5,g_faces:center,f_auto,c_fill/vginbhzfz4usmvi6vrk9" alt="Michail Hailu, Director of CTA">
+    </picture>
+    <figcaption class="hero__headline">
+        <div class="layout ">
+            <div class="quote-teaser wings">
+                <blockquote class="quote quote--hero  |  gutters">
+                    After many years of neglect, agriculture is back on the global agenda as a major vehicle for poverty reduction and economic growth and so this renewed interest bodes well for CTA's work.
+                    <footer>
+                        <cite class="quote__meta  |  meta  |  leader--tiny">MICHAEL HAILU, CTA DIRECTOR</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </figcaption>
+</figure>
+
+Styleguide 5.4.5
+*/
+
+// .hero--poster {
+//   &__headline {
+//     padding-top: rhythm(120);
+//     padding-bottom: rhythm(10);
+//     .hero--bleed & {
+//       padding-top: 0;
+//       padding-bottom: 0;
+//     }
+//     .hero--quote & {
+//       max-width: percentage(7 / 18);
+//     }
+//   }
+//   &--quote {
+//     &.hero--bleed {
+//       padding-bottom: 390px;
+//       padding-top: 130px;
+//     }
+//   }
+// }
+
+
+/*
+Hero - Headline
+
+.hero.hero--headline - Headline
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<figure class="{$modifiers}  |  gutter--right" style="background-image: url('https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?w=1200&h=900&auto=compress&cs=tinysrgb');">
+  <figcaption class="headline">
+    <div class="leader  |  trailer  |  wings">
+      <a class="title title--headline  |  gutters" href="javascript:void()">Female Farmers</a>
+      <p class="gutters  |  leader  |  trailer">A Youth in Agriculture workshop was held as part of the Caribbean Farmers Network (CaFAN's) overall strategy to get more young people involved in farming. More than 45 people, 40 of them under 35, attended the CTA-supported workshop, which was held in Grenada in January.</p>
+      <a class="gutters  |  read-more" href="javascript:void()">Read more...</a>
+    </div>
+    <div class="pin-box  |  wings">
+      <div class="pin-box__cell  |  gutters">
+        <ul class="reset">
+          <li class="trailer--tiny">
+            <a class="block-link block-link--icon  |  is-heir" href="javascript:void()">Launch of the Fish Farming AgriHack in West Africa</a>
+          </li>
+          <li class="trailer--tiny">
+            <a class="block-link block-link--icon  |  is-heir" href="javascript:void()">Meet the winners of the Durban AgriHack Talent Challenge</a>
+          </li>
+          <li class="trailer--tiny">
+            <a class="block-link block-link--icon  |  is-heir" href="javascript:void()">The Durban AgriHack Challenge is now open: Win cash prize and develop your career opportunities!</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <em class="headline__tax  |  wings"><span class="label  |  gutters">Youth & Agriculture</span></em>
+  </figcaption>
+</figure>
+
+sg-wrapper:
+<div class="js flexbox">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.4.6
+*/
+
+// @include breakpoint($gt-small-desktop) {
+//   .hero--headline {
+//     .headline {
+//       min-width: percentage(8 / 18);
+//     }
+//   }
+// }
+
+/*
+Hero - map
+
+.hero.hero--map - Toggleable slider menu
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<figure class="hero hero--map hero--event-teaser  |  is-active" style="background-image: url('https://res.cloudinary.com/idemo/image/upload/c_fill,g_faces,h_800,w_1920/Map_nyp0nt.jpg');">
+  <img class="hero__figure  |  image image--stretch" width="1260" height="750" alt="" src="https://res.cloudinary.com/idemo/image/upload/c_fill,g_faces,h_800,w_1920/Map_nyp0nt.jpg" />
+  <figcaption class="hero__headline">
+    <div class="stack">
+      <div class="hero--map__body  |  teaser  |  stack__unit">
+        <div class="leader  |  trailer  |  wings">
+          <h2 class="title  |  gutters">We empower agricultural and rural communities in Africa, the Caribbean and the Pacific.</h2>
+          <ul class="legenda__list  |  reset  |  gutters  |  leader  |  grid layout--even">
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--gold"></span>
+              <a class="is-heir" href="javascript:void()">Caribbean</a>
+            </li>
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--orange"></span>
+              <a class="is-heir" href="javascript:void()">Western Africa</a>
+            </li>
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--red"></span>
+              <a class="is-heir" href="javascript:void()">Eastern Africa</a>
+            </li>
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--purple"></span>
+              <a class="is-heir" href="javascript:void()">Central Africa</a>
+            </li>
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--yellow"></span>
+              <a class="is-heir" href="javascript:void()">Southern Africa</a>
+            </li>
+            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+              <span class="legenda__item--identifier legenda__item--blue"></span>
+              <a class="is-heir" href="javascript:void()">Pacific</a>
+            </li>
+          </ul>
+          <form class="gutters  |  leader">
+            <label class="title title--sub-section">Search a country/region</label>
+            <input class="fld" type="text" />
+          </form>
+        </div>
+      </div>
+      <div class="hero--map__toggle  |  stack__unit stack__pin" data-toggle=".hero--map">
+        <span class="toggle  |  icon"></span>
+      </div>
+    </div>
+  </figcaption>
+</figure>
+
+
+Styleguide 5.4.7
+*/
+
+.hero--map {
+  .hero__headline {
+    @include breakpoint($gt-small-desktop) {
+      width: percentage(6 / 18);
+    }
+  }
+  &__body {
+    visibility: hidden;
+    .is-active & {
+      visibility: visible;
+    }
+  }
+  &__toggle {
+    @include theme-opaque-background(100%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    width: rhythm(11);
+    cursor: pointer;
+    .no-flexbox .is-inactive & {
+      display: table;
+      height: 100%;
+      .toggle {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .is-active & {
+      position: relative;
+    }
+    .toggle {
+      font-size: rhythm(8);
+      &:before {
+        content: $icon-chevron-right;
+      }
+      .is-active & {
+        &:before {
+          content: $icon-chevron-left;
+        }
+      }
+    }
+    .no-flexbox & {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  a {
+    transition-duration: 0s;
+  }
+  .legenda__item--identifier {
+    vertical-align: bottom;
+    width: rhythm(5);
+    height: rhythm(5);
+  }
+}

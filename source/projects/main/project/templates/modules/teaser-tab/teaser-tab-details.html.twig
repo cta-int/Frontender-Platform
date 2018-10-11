@@ -1,0 +1,46 @@
+{% import "macros/concept.html.twig" as concept %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="tab-teaser__panel tab-teaser__panel--info  |  stack stack--stacked" id="{{ tab.id ~ event._id }}">
+    <div class="tab-teaser__panel-wing  |  stack__unit  |  leader-inside">
+        <div class="gutters">
+            <div class="gutter  |  meta">{{ 'Project'|t(locales) }}</div>
+            <h2 class="tab-teaser__title  |  title  |  gutter  |  leader--tiny  |  trailer--tiny">
+                <a href="{{ resource_route }}">
+                    {{ model.name|t(locales) }}
+                </a>
+            </h2>
+            <p class="tab-teaser__about  |  body--whisper  |  gutter">{{ model.description|striptags[:140] ~ '…' }}</p>
+            <a class="read-more  |  gutter" href="{{ resource_route }}">{{ 'Read more'|t(locales) }}</a>
+        </div>
+    </div>
+    <div class="stack__unit stack__pin">
+        <ul class="reset  |  tab-teaser__panel-wing  |  leader">
+            {% for related in model.event|slice(0,2) %}
+                <li class="gutters  |  leader--tiny  |  trailer--tiny">
+                    <a class="block-link block-link--icon  |  is-heir" href="{{ resource_route }}">{{ related.headline|t(locales) }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="pin-box  |  stack  |  leader  |  tab-teaser__panel-wing">
+            <div class="pin-box__cell  |  stack__unit stack__pin  |  leader-inside  |  trailer-inside  | gutters">
+                <div class="media  |  location">
+                    <span class="icon icon--theme icon--map-marker"></span>
+                    <div class="location__body  |  media__content">
+                        <span class="is-narrative">{{ 'Region'|t(locales) }}:</span>
+                        {{ region.name|t(locales) }}
+                    </div>
+                </div>
+            </div>
+            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  | gutters">
+                <ul class="label-list reset list--inline">
+                    {% for item in model.analysis.agrovoc.concepts | slice(0, 3) %}
+                        <li>
+                            {{ concept.label(item, locale) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

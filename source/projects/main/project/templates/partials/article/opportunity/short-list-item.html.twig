@@ -1,0 +1,25 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article class="media  |  bleed">
+    <div class="media__figure  |  gutters">
+        <span class="stamp stamp--{{ model.procurementStatus }}">
+              <span class="stamp__body">{{ model.procurementStatus|t(locales) }}</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <h2 class="title title">
+            <a class="is-heir" href="{{ route({page: model.articleType|replace({'_': '-'}), id: model._id, slug: model.headline|t(locales)|slugify}) }}">{{ model.headline }}</a>
+        </h2>
+        {% if(model.link.organization.sourceOrganization) %}
+            <div class="media  |  location  |  leader--small">
+                <div class="location__body  |  media__content">
+                    <div class="media  |  location">
+                      <div class="location__body  |  media__content">
+                        {{ model.link.organization.sourceOrganization|first.location.address.addressLocality|t(locales) }}, {{ model.link.organization.sourceOrganization|first.location.address.addressCountry|t(locales) }}
+                      </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</article>

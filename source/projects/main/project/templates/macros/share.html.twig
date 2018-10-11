@@ -1,0 +1,179 @@
+{% macro bar_event(event, light, context = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {% import _self as share %}
+
+    {{ share.bar({
+        light: light|default(false),
+        facebook: {
+            caption: event.name
+        },
+        linkedin: false,
+        twitter: true,
+        print: true,
+        mail: {
+            subject: event.name,
+            content: current_url()
+        }
+    }, context) }}
+{% endmacro %}
+
+{% macro bar_article(article, light, context = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    
+    {% import _self as share %}
+
+    {{ share.bar({
+        light: light|default(false),
+        facebook: {
+            caption: article.headline
+        },
+        linkedin: false,
+        twitter: true,
+        print: true,
+        mail: {
+            subject: article.headline,
+            content: current_url()
+        }
+    }, context) }}
+{% endmacro %}
+
+{% macro press_article(article, light, context = null) %}
+    {% import _self as share %}
+    {% set url = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {{ share.bar({
+        url: url,
+        light: light|default(false),
+        facebook: {
+            caption: article.headline
+        },
+        linkedin: false,
+        twitter: true,
+        print: false,
+        mail: false
+    }, context) }}
+{% endmacro %}
+
+{% macro bar_ictupdate_article(article, light, context = null) %}
+    {% import _self as share %}
+
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {{ share.bar({
+        light: light|default(false),
+        facebook: {
+            caption: article.headline
+        },
+        ictupdate: {
+            number: article.issue.number,
+            issue: article.issue._id
+        },
+        linkedin: false,
+        twitter: true,
+        print: true,
+        mail: {
+            subject: article.headline,
+            content: current_url()
+        }
+    }, context) }}
+{% endmacro %}
+
+{% macro bar_article_linkedin(article, light, context = null) %}
+    {% import _self as share %}
+
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set url = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+    
+    {{ share.bar({
+        url: url,
+        light: light|default(false),
+        facebook: {
+            caption: article.headline
+        },
+        linkedin: true,
+        twitter: true,
+        print: true,
+        mail: {
+            subject: article.headline,
+            content: url|default(current_url())
+        }
+    }, context) }}
+{% endmacro %}
+
+{% macro bar(config, context = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    <ul class="share-list reset list--float">
+        {% if config.label and config.label.text and config.label.link %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label" title="{{ config.label.text }}" href="{{ config.label.link }}">{{ config.label.text }}</a>
+            </li>
+        {% endif %}
+        {% if config.ictupdate %}
+            {% if config.ictupdate.number %}
+                <li class="share-list__item divider  divider--left">
+                    <a class="label {% if config.light %} share--whisper{% endif %}" href="{{ route({page: 'ictupdate/issue', id: config.ictupdate.issue}) }}">
+                        {{ 'Issue'|t(locales) }} {{ config.ictupdate.number }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+        {% if config.linkedin %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label share{% if config.light %} share--whisper{% endif %} share--linkedin share--linkedin-branded" title="{{ 'Share on Linkedin'|t(locales) }}" onclick="window.open(this.href,'', 'width=715,height=450'); return false;" href="https://www.linkedin.com/shareArticle?mini=true&url={{ config.url|default(current_url()) }}&title={{ config.mail.subject|replace({' ':'-'}) }}" target="_blank">
+                    <span data-icon="linkedin"  class="icon icon--linkedin">
+                        <span>
+                            <span class="is-narrative">{{ 'Share on Linkedin'|t(locales) }}</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if config.facebook %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label share{% if config.light %} share--whisper{% endif %} share--facebook share--facebook-branded" title="Share on Facebook" onclick="window.open(this.href,'', 'width=715,height=450'); return false;" href="https://www.facebook.com/dialog/feed?app_id={{ config.facebook.app_id|default('102374709929723') }}&display=popup&caption={{ config.facebook.caption|replace({' ':'-'}) }}&redirect_uri={{ config.url|default(current_url()) }}&link={{ config.url|default(current_url()) }}" target="_blank">
+                    <span data-icon="facebook" class="icon icon--facebook">
+                        <span>
+                            <span class="is-narrative">Share on Facebook</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if config.twitter %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label share{% if config.light %} share--whisper{% endif %} share--twitter share--twitter-branded" title="Share on Twitter" onclick="window.open(this.href,'', 'width=715,height=450'); return false;" href="http://www.twitter.com/share?url={{ config.url|default(current_url()) }}" target="_blank">
+                    <span data-icon="twitter" class="icon icon--twitter">
+                        <span>
+                            <span class="is-narrative">Share on Twitter</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if config.print %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label share{% if config.light %} share--whisper{% endif %} share--print" title="Print" href="javascript:print();">
+                    <span data-icon="print" class="icon icon--print">
+                        <span>
+                            <span class="is-narrative">Print</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+        {% if config.mail %}
+            <li class="share-list__item divider  divider--left">
+                <a class="label share{% if config.light %} share--whisper{% endif %} share--email" title="Send link via E-mail" href="mailto:?subject={{ config.mail.subject|replace({' ':'-'}) }}&body={{ config.mail.content|replace({' ':'-'}) }}">
+                    <span data-icon="email" class="icon icon--envelope">
+                        <span>
+                            <span class="is-narrative">Send link via E-mail</span>
+                        </span>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endmacro %}

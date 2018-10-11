@@ -1,0 +1,27 @@
+{
+    "body_class": {
+        "hidden": "1",
+        "access": "all",
+        "label": {
+            "en": "Body class",
+            "fr": "Body class"
+        },
+        "type": "text",
+        "value": ""
+    },
+    "body_class": {
+        "value": "theme theme--green",
+        "label": {
+            "en": "Body class"
+        },
+        "control": "project/container_class"
+    },
+    "colour_theme": {
+        "value": "theme theme--green",
+        "control": "project/colour_theme"
+    },
+    "colour_background": {
+        "value": "",
+        "control": "project/colour_background"
+    }
+}

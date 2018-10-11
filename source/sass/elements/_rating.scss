@@ -1,0 +1,96 @@
+/*
+Rating
+
+.rating.rating--10 - Rated 10 out of 100
+.rating.rating--20 - Rated 20 out of 100
+.rating.rating--30 - Rated 30 out of 100
+.rating.rating--40 - Rated 40 out of 100
+.rating.rating--50 - Rated 50 out of 100
+.rating.rating--60 - Rated 60 out of 100
+.rating.rating--70 - Rated 70 out of 100
+.rating.rating--80 - Rated 80 out of 100
+.rating.rating--90 - Rated 90 out of 100
+.rating.rating--100 - Rated 100 out of 100
+
+markup:
+<div class="{$modifiers}">
+  <span class="rating__stars--inactive">★★★★★</span>
+  <span class="rating__stars--active">★★★★★</span>
+</div>
+
+Styleguide 3.47
+*/
+
+.rating {
+	max-width: 0;
+  position: relative;
+  color: mix($gray, $white, 26%);
+  &--10 {
+  	max-width: .5em;	
+  }
+  &--20 {
+  	max-width: 1em;
+  }
+  &--30 {
+  	max-width: 1.5em;
+  }
+  &--40 {
+  	max-width: 2em;
+  }
+  &--50 {
+  	max-width: 2.5em;
+  }
+  &--60 {
+  	max-width: 3em;
+  }
+  &--70 {
+  	max-width: 3.5em;
+  }
+  &--80 {
+  	max-width: 4em;
+  }
+  &--90 {
+  	max-width: 4.5em;
+  }
+  &--100 {
+  	max-width: 5em;
+  }
+}
+.rating__stars {
+	&--active {
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		color: #EB942C;
+		max-width: inherit;
+		overflow: hidden;
+    .theme--blue & {
+      color: $color-blue;
+    }
+    .theme--lime & {
+      color: $color-lime;
+    }
+    .theme--yellow & {
+      color: $color-yellow;
+    }
+    .theme--gold & {
+      color: $color-gold;
+    }
+    .theme--orange & {
+      color: $color-orange;
+    }
+    .theme--salmon & {
+      color: $color-salmon;
+    }
+    .theme--red & {
+      color: $color-red;
+    }
+    .theme--burgundy & {
+      color: $color-burgundy;
+    }
+    .theme--purple & {
+      color: $color-purple;
+    }
+	}
+}

@@ -1,0 +1,55 @@
+{% set hasContent = false %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% for loopContainer in containers %}
+    {% if loopContainer.model.articles | length > 0 %}
+        {% set hasContent = true %}
+    {% elseif loopContainer.model.events | length > 0 %}
+        {% set hasContent = true %}
+    {% endif %}
+{% endfor %}
+
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: tab_config.selector|default('.panel-group')
+    }
+}) }}
+
+{% if hasContent %}
+    {% import "macros/template.html.twig" as helper %}
+    {% set layout = [config.layout|default('layout')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+            <nav class="gutters">
+                <ul class="is-gt-small-desktop  |  reset">
+                    {% for loopContainer in containers %}
+                        {% if (loopContainer.model.articles|length > 0 or loopContainer.model.events|length > 0) or config.show_empty_panels %}
+                            <li>
+                                <a class="{{ ["title title--tab", loopContainer.config.tab_class, loopContainer.config.active ? "is-active"]|join(" | ") }}" href="#{{ loopContainer.labels.panel_title|t(locales)|slugify }}">{{ loopContainer.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="{{ ['panel-group', 'layout__cell', 'wing--right', show_outer_wing ? 'wing--right']|join(' ') }}" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+            {% for loopContainer in containers %}
+                {% if (loopContainer.model.articles|length > 0 or loopContainer.model.events|length > 0) or config.show_empty_panels %}
+                    <section class="{{ loopContainer.config.active == true ? "is-active " : "is-inactive " }}{{ ["panel", loopContainer.config.panel_class]|join(" | ") }}" id="{{ loopContainer.labels.panel_title|t(locales)|slugify }}">
+                        <h2 class="panel__title  |  title">
+                            <a class="panel__trigger  |  gutters" href="#{{ loopContainer.labels.panel_title|t(locales)|slugify }}">{{ loopContainer.labels.panel_title|t(locales) }}</a>
+                        </h2>
+                        <div class="panel__body">
+                            {% if loopContainer.links %}
+                                {% for link in loopContainer.links %}
+                                    <a class="meta  |  gutters" href="{{ route({page: link.path.page }) }}">{{ link.label|t(locales) }}</a>
+                                {% endfor %}
+                            {% endif %}
+                            {% include loopContainer.template with loopContainer %}
+                        </div>
+                    </section>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </{{ config.container_tag|default('div') }}>
+{% endif %}

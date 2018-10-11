@@ -1,0 +1,75 @@
+/*
+Container header
+
+.container-header - Container header
+.container-header.container-header--slim-fit - Removes margin from top and bottom
+
+markup:
+<header class="wings  |  {$modifiers}">
+    <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+        Upcoming events
+    </h2>
+    <div class="container-header__filter  |  gutters">
+        <div class="filter is-inactive" id="event-sort-by3">
+            <button class="filter__trigger  |  title" data-toggle="#event-sort-by3">Sort by</button>
+            <ul class="filter__options  |  reset  |  fx">
+                <li><a class="filter__item  |  fx" href="?sortProperty=startDateUTC&amp;sortDirection=desc" data-action="ajax" data-target="#somecontainer">Date (newer-older)</a></li>
+                <li><a class="filter__item  filter__item--selected  |  fx" href="?sortProperty=startDateUTC&amp;sortDirection=asc">Date (older-newer)</a></li>
+                <li><a class="filter__item  |  fx" href="?sortProperty=name&amp;sortDirection=desc">Alphabetical order (A-Z)</a></li>
+                <li><a class="filter__item  |  fx" href="?sortProperty=name&amp;sortDirection=asc">Alphabetical order (Z-A)</a></li>
+            </ul>
+        </div>
+        <div class="filter is-inactive" id="event-filter-by2">
+            <button class="filter__trigger  |  title" data-toggle="#event-filter-by2">Filter by</button>
+            <ul class="filter__options  |  reset  |  fx">
+                <li><a class="filter__item  |  fx filter__item--selected" href="?upcoming=true">Upcoming</a></li>
+                <li><a class="filter__item  |  fx" href="?upcoming=false&amp;sortProperty=startDateUTC&amp;sortDirection=desc">Passed</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+Styleguide 4.21
+*/
+
+.container-header {
+  @include clearfix();
+  margin-top: rhythm(11);
+  margin-bottom: rhythm(10);
+  &__title,
+  &__filter {
+    display: inline-block;
+    width: 100%;
+  }
+  &__title {
+    float: left;
+  }
+  &__title + &__filter {
+    margin-top: rhythm(5);
+  }
+  @include breakpoint($gt-small-desktop) {
+    margin-top: rhythm(15);
+    margin-bottom: rhythm(15);
+    &__title + &__filter {
+      margin-top: rhythm(3);
+    }
+    &__filter {
+      float: right;
+    }
+    &__title,
+    &__filter {
+      width: auto;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    margin-top: rhythm(30);
+    margin-bottom: rhythm(27);
+  }
+  &--slim-fit {
+      margin-top: 0;
+      margin-bottom: 0;
+  }
+  &--filter {
+      margin-top: 0;
+  }
+}

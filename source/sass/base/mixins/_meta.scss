@@ -1,0 +1,52 @@
+/*
+Meta
+
+Styleguide 1.6.3
+*/
+
+@mixin meta() {
+  font-family: $font-family--meta;
+  text-transform: uppercase;
+}
+
+@mixin meta-9px() {
+  /* small meta*/
+  font-size: to-unit(9px);
+  line-height: to-unit(rhythm(3), 1, 10px);
+}
+
+@mixin meta-10px() {
+  /* small meta*/
+  font-size: to-unit(10px);
+  line-height: to-unit(rhythm(4), 1, 10px);
+}
+
+@mixin meta-11px() {
+  /* small meta*/
+  font-size: to-unit(11px);
+  line-height: to-unit(rhythm(4), 1, 11px);
+}
+
+@mixin meta-12px() {
+  /* regular meta */
+  font-size: to-unit(12px);
+  line-height: to-unit(rhythm(5), 1, 12px);
+}
+
+@mixin meta-13px() {
+  /* regular meta */
+  font-size: to-unit(13px);
+  line-height: to-unit(rhythm(5), 1, 13px);
+}
+
+@mixin meta-14px() {
+  /* regular meta */
+  font-size: to-unit(14px);
+  line-height: to-unit(rhythm(5), 1, 14px);
+}
+
+@mixin meta-16px() {
+  /* regular meta */
+  font-size: to-unit(16px);
+  line-height: to-unit(rhythm(6), 1, 16px);
+}

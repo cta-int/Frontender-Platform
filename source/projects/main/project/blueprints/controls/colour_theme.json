@@ -1,0 +1,89 @@
+{
+    "value": "",
+    "label": {
+        "en": "Theme colour",
+        "fr": "Theme colour"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "Auto",
+                "fr": "Auto"
+            }
+        },
+        {
+            "value": "theme theme--green",
+            "label": {
+                "en": "Green",
+                "fr": "Green"
+            }
+        },
+        {
+            "value": "theme theme--blue",
+            "label": {
+                "en": "Blue",
+                "fr": "Blue"
+            }
+        },
+        {
+            "value": "theme theme--lime",
+            "label": {
+                "en": "Lime",
+                "fr": "Lime"
+            }
+        },
+        {
+            "value": "theme theme--yellow",
+            "label": {
+                "en": "Yellow",
+                "fr": "Yellow"
+            }
+        },
+        {
+            "value": "theme theme--gold",
+            "label": {
+                "en": "Gold",
+                "fr": "Gold"
+            }
+        },
+        {
+            "value": "theme theme--orange",
+            "label": {
+                "en": "Orange",
+                "fr": "Orange"
+            }
+        },
+        {
+            "value": "theme theme--salmon",
+            "label": {
+                "en": "Salmon",
+                "fr": "Salmon"
+            }
+        },
+        {
+            "value": "theme theme--red",
+            "label": {
+                "en": "Red",
+                "fr": "Red"
+            }
+        },
+        {
+            "value": "theme theme--burgundy",
+            "label": {
+                "en": "Burgundy",
+                "fr": "Burgundy"
+            }
+        },
+        {
+            "value": "theme theme--purple",
+            "label": {
+                "en": "Purple",
+                "fr": "Purple"
+            }
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<aside class="gutters">
+    <h2 class="title  |  trailer--tiny">{{ labels.title|t(locales) }}</h2>
+    <p class="body--whisper  |  trailer trailer--small">{{ labels.body|t(locales) }}</p>
+    {% if labels.list_items|length %}
+    <ul class="reset  | list  list--theme">
+        {% for list_item in labels.list_items %}
+        <li>{{ list_item|t(locales) }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</aside>

@@ -1,0 +1,32 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="panel  |  wing--right" id="organisers">
+    <h2 class="title">
+          <a class="panel__trigger  |  gutters  |  is-heir" href="#organisers">{{ 'Organisers'|t(locales) }}</a>
+    </h2>
+    <div class="panel__body">
+        <ul class="reset">
+            {% for organizer in model.organizer %}
+                <li class="leader  |  trailer">
+                    <article class="organisation-profile  |  wing--right">
+                        {% if(organizer.avatar) %}
+                            <div class="organisation-profile__brand  |  gutters">
+                                <img class="image" src="{{ organizer.avatar }}" alt=""/>
+                            </div>
+                        {% endif %}
+                        <div class="organisation-profile__name  |  gutters">
+                            <h3 class="title  |  leader  |  trailer--small">{{ organizer.name }}</h3>
+                            <p>{{ organizer.description }}</p>
+
+                            {% if organizer.website %}
+                                <p class="leader--small">
+                                    <a class="block-link" href="{{ organizer.website }}" target="_blank">{{ 'visit official website'|t(locales) }}</a>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

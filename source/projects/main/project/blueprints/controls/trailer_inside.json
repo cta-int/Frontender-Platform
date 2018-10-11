@@ -1,0 +1,47 @@
+{
+    "value": "",
+    "label": {
+        "en": "Bottom padding"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "None"
+            }
+        },
+        {
+            "value": "trailer-inside--tiny",
+            "label": {
+                "en": "Tiny"
+            }
+        },
+        {
+            "value": "trailer-inside--small",
+            "label": {
+                "en": "Small"
+            }
+        },
+        {
+            "value": "trailer-inside",
+            "label": {
+                "en": "Default"
+            }
+        },
+        {
+            "value": "trailer-inside--hero",
+            "label": {
+                "en": "Hero"
+            }
+        },
+        {
+            "value": "trailer-inside--giant",
+            "label": {
+                "en": "Giant"
+            }
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ ["layout", config.container_class]|join("  |  ") }}">
+    <div class="layout__cell  layout__cell--main  |  gutters">
+        <div class="gutter">
+            <p class="lead  |  trailer  |  gutter">{{ labels.controls.lead.value|t(locales) }}</p>
+            <p class="trailer  |  gutter">{{ labels.controls.body.value|t(locales) }}</p>
+        </div>
+    </div>
+    <aside class="layout__cell layout__cell--aside  |  gutters">
+        <h2 class="title  |  trailer--tiny">{{ 'Ongoing opportunities'|t(locales) }}</h2>
+        <p class="body--whisper  |  trailer trailer--small">{{ opportunities|t(locales) }}</p>
+        <ul class="reset">
+            <li class="block-link"><a href="#{{ content.controls.container_content.slug }}">{{ content.container_content|t(locales) }}</a></li>
+            <li class="block-link"><a href="#{{ content.controls.container_content.slug }}">{{ content.container_content|t(locales) }}</a></li>
+            <li class="block-link"><a href="#{{ content.controls.container_content.slug }}">{{ content.container_content|t(locales) }}</a></li>
+            <li class="block-link"><a href="#{{ content.controls.container_content.slug }}">{{ content.container_content|t(locales) }}</a></li>
+        </ul>
+    </aside>
+</div>

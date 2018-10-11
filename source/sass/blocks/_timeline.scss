@@ -1,0 +1,197 @@
+/*
+Timeline
+
+Review: do we need different border and type colour on timeline--overlay?
+
+.timeline - Regular timeline
+.timeline.timeline--l - Timeline with added padding
+.timeline.timeline--overlay - With a transparent light background
+.timeline.timeline--10 - 10% Active year
+.timeline.timeline--20 - 20% Active year
+.timeline.timeline--30 - 30% Active year
+.timeline.timeline--40 - 40% Active year
+.timeline.timeline--50 - 50% Active year
+.timeline.timeline--60 - 60% Active year
+.timeline.timeline--70 - 70% Active year
+.timeline.timeline--80 - 80% Active year
+.timeline.timeline--90 - 90% Active year
+
+markup:
+<div class="{$modifiers}  |  stack">
+  <div class="stack__unit stack__pin  |  is-gt-small-desktop  |  meta">
+    <div class="timeline__label  |  gutters">Project timeline</div>
+  </div>
+  <div class="stack__unit  |  meta">
+    <div class="timeline__item  |  is-complete  |  gutters">
+      <span class="timeline__date">2016</span>
+    </div>
+  </div>
+  <div class="stack__unit  |  meta">
+    <div class="timeline__item  |  is-active  |  gutters">
+      <span class="timeline__date">2017</span>
+    </div>
+  </div>
+  <div class="stack__unit  |  meta">
+    <div class="timeline__item  |  gutters">
+      <span class="timeline__date">2018</span>
+    </div>
+  </div>
+  <div class="stack__unit  |  meta">
+    <div class="timeline__item  |  gutters">
+      <span class="timeline__date">2019</span>
+    </div>
+  </div>
+</div>
+
+sg-wrapper:
+<div class="theme theme--salmon">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.30
+*/
+
+.timeline {
+  &__label {
+    font-size: 10px;
+  }
+  &__label,
+  &__item {
+    padding-top: rhythm(2);
+    padding-bottom: rhythm(2);
+    white-space: nowrap;
+    text-align: center;
+    line-height: rhythm(5);
+  }
+  &__item {
+    border: 1px solid rgba($color-body, .26);
+    border-width: 0 0 0 1px;
+    .well--neutral & {
+      border-color: $white;
+    }
+  }
+  &__label,
+  &__item.is-complete {
+    border-right: 1px solid rgba($white, .26);
+  }
+  &__label,
+  &__item.is-complete {
+    @include theme-opaque-background(100%);
+    white-space: nowrap;
+  }
+  &__date {
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+  &__item.is-active {
+    position: relative;
+    @include theme-border();
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      content: "";
+      display: block;
+    }
+    &:after {
+      width: rhythm((5 + 4) / 2); /* Line-height plus padding*/
+      height: rhythm((5 + 4) / 2);
+      border: rhythm((5 + 4) / 2) solid;
+      border-color: transparent;
+      border-left-color: inherit;
+      transform: scale(.5, 1) translate(rhythm((5 + 4) / -2), 0);
+    }
+    &:before {
+      @include theme-opaque-background(100%);
+    }
+  }
+  &--bold &__date {
+    font-weight: bold;
+  }
+  &--l &__label,
+  &--l &__item {
+    padding-top: rhythm(4);
+    padding-bottom: rhythm(4);
+  }
+  &--l &__item.is-active {
+    &:after {
+      width: rhythm((5 + 8) / 2); /* Line-height plus padding*/
+      height: rhythm((5 + 8) / 2);
+      border: rhythm((5 + 8) / 2) solid;
+      border-color: transparent;
+      border-left-color: inherit;
+      transform: scale(.5, 1) translate(rhythm((5 + 8) / -2), 0);
+    }
+  }
+  &--overlay {
+    background: rgba($white, .8);
+  }
+  &--10 &__item.is-active {
+    &:before { width: 10%; }
+    &:after { left: 10%; }
+  }
+  &__label,
+  &__item.is-complete,
+  &--50 &__item.is-active,
+  &--60 &__item.is-active,
+  &--70 &__item.is-active,
+  &--80 &__item.is-active,
+  &--90 &__item.is-active {
+    color: $white;
+  }
+  &--20 &__item.is-active {
+    &:before { width: 20%; }
+    &:after { left: 20%; }
+  }
+  &--30 &__item.is-active {
+    &:before { width: 30%; }
+    &:after { left: 30%; }
+  }
+  &--40 &__item.is-active {
+    &:before { width: 40%; }
+    &:after { left: 40%; }
+  }
+  &--50 &__item.is-active {
+    &:before { width: 50%; }
+    &:after { left: 50%; }
+  }
+  &--60 &__item.is-active {
+    &:before { width: 60%; }
+    &:after { left: 60%; }
+  }
+  &--70 &__item.is-active {
+    &:before { width: 70%; }
+    &:after { left: 70%; }
+  }
+  &--80 &__item.is-active {
+    &:before { width: 80%; }
+    &:after { left: 80%; }
+  }
+  &--90 &__item.is-active {
+    &:before { width: 90%; }
+    &:after { left: 90%; }
+  }
+  .no-flexbox &,
+  .no-flexbox &--overlay {
+    width: 100%;
+  }
+  @include breakpoint($gt-large-handheld) {
+    &__item {
+      text-align: left;
+    }
+    &--20 &__item.is-active,
+    &--30 &__item.is-active,
+    &--40 &__item.is-active {
+      color: $white;
+    }
+  }
+  .hero & {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}

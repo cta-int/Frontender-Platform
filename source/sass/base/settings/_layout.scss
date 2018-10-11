@@ -1,0 +1,51 @@
+/*
+Layout
+
+$grids - Layouts accross breakpoints.
+
+markup:
+<pre>{$modifiers}</pre>
+
+Styleguide 1.3.8
+*/
+
+// Get the defaults from the layouts map
+$columns: 6;
+$gutter-width: rhythm(10);
+
+$grids: (
+  $gt-large-handheld: (
+    debug-color: $cyan, // #0ff
+    columns: 12,
+    rhythm: $rhythm,
+    gutter-width: $gutter-width,
+    wings: 0,
+    layouts: (
+			split: (
+				main: (columns: 6, wings: (0, 0)),
+				aside: (columns: 6, wings: (0, 0))
+			),
+			sidebar: (
+				main: (columns: 6, wings: (0, 0)),
+				aside: (columns: 6, wings: (0, 0))
+			)
+		)
+  ),
+  $gt-small-desktop: (
+    debug-color: $becca, // #639
+    columns: 18,
+    rhythm: $rhythm,
+    gutter-width: $gutter-width,
+    wings: 0,
+    layouts: (
+			split: (
+				main: (columns: 14, wings: (2, 2) ),
+				aside: (columns: 14, wings: (2, 2) )
+			),
+			sidebar: (
+				main: (columns: 17, wings: (2, 0)),
+				aside: (columns: 9, wings: (2, 2))
+			)
+		)
+  )
+);

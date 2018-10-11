@@ -1,0 +1,14 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout {{ config.show_narrow_layout ? ' layout--narrow' }}">
+    <div class="quote-teaser wings">
+        <blockquote class="quote quote--hero {% if config.quote_light == 'true' %}quote--light{% endif %}  |  gutters  |  is-gt-small-desktop">
+            {{ labels.quote|t(locales) }}
+            {% if labels.cite %}
+            <footer>
+                <cite class="quote__meta  |  meta  |  leader--tiny">{{ labels.cite|t(locales) }}</cite>
+            </footer>
+            {% endif %}
+        </blockquote>
+    </div>
+</div>

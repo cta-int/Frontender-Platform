@@ -1,0 +1,27 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<figure {{ helper.class_attribute(config, 'hero hero--map hero--event-teaser')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <img class="hero__figure  |  image image--stretch" width="1680" height="900" alt="CTA Regions" src="https://res.cloudinary.com/cta/image/upload/v1522829452/lcrehglg6ptp5j2ecq4f.png"/>
+    <figcaption class="hero__headline  |  is-root  |  is-gt-small-desktop">
+        <div class="stack">
+            <div class="hero--map__body  |  teaser  |  stack__unit">
+                <div class="leader  |  trailer  |  wings">
+                    <h2 class="title  |  gutters">{{ 'regions_information'|t(locales) }}</h2>
+                    <ul class="legenda__list  |  reset  |  gutters  |  leader  |  grid layout--even">
+                        {% for link in template_config.links.region %}
+                            <li class="layout__cell  |  title title--sub-section  |  trailer--small">
+                                <span class="legenda__item--identifier legenda__item--{{ link.colour|replace({'theme theme--': ''}) }}"></span>
+                                <a class="is-heir" href="{{ route({page:'channel', slug: link.label|t(locales)|slugify, id: link.id}) }}">{{link.label|t(locales) }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="hero--map__toggle  |  stack__unit stack__pin" data-toggle=".hero--map">
+                <span class="toggle  |  icon"></span>
+            </div>
+        </div>
+    </figcaption>
+</figure>

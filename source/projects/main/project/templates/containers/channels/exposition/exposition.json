@@ -1,0 +1,164 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition",
+        "fr": "Exposition"
+    },
+    "description": {
+        "en": "Article exposition",
+        "fr": "Article exposition"
+    },
+    "template": "containers/channels/exposition/exposition.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "alignment": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Align articles",
+                        "fr": "Align articles"
+                    },
+                    "type": "list",
+                    "value": "left",
+                    "options": [{
+                            "value": "left",
+                            "label": {
+                                "en": "Left",
+                                "fr": "Left"
+                            }
+                        },
+                        {
+                            "value": "right",
+                            "label": {
+                                "en": "Right",
+                                "fr": "Right"
+                            }
+                        }
+                    ]
+                },
+                "story": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Illustration",
+                        "fr": "Illustration"
+                    },
+                    "type": "list",
+                    "value": "promoting_agribusiness",
+                    "options": [{
+                            "value": "promoting_agribusiness",
+                            "label": {
+                                "en": "Promoting agribusiness",
+                                "fr": "Promoting agribusiness"
+                            }
+                        },
+                        {
+                            "value": "climate_illustration",
+                            "label": {
+                                "en": "Farmer growing crops",
+                                "fr": "Farmer growing crops"
+                            }
+                        },
+                        {
+                            "value": "ict-innovation_illustration",
+                            "label": {
+                                "en": "Life cycle of a tree",
+                                "fr": "Life cycle of a tree"
+                            }
+                        },
+                        {
+                            "value": "knowledge_illustration",
+                            "label": {
+                                "en": "Group of people sharing knowledge",
+                                "fr": "Group of people sharing knowledge"
+                            }
+                        },
+                        {
+                            "value": "policy_illustration",
+                            "label": {
+                                "en": "Transport illustration",
+                                "fr": "Transport illustration"
+                            }
+                        }
+                    ]
+                },
+                "colour_theme": {
+                    "value": "green",
+                    "control": "project/colour_theme"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content",
+                "fr": "Content"
+            },
+            "controls": {
+                "name": {
+                    "hidden": "1",
+                    "access": "developer",
+                    "label": {
+                        "en": "API Resource",
+                        "fr": "API Resource"
+                    },
+                    "type": "text",
+                    "value": "Channel\\Articles"
+                },
+                "id": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Channel ID",
+                        "fr": "Channel ID"
+                    },
+                    "type": "text",
+                    "value": "7a45897b-ab0c-4373-bbd7-1e4bac2f7e96"
+                },
+                "limit": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Number of articles",
+                        "fr": "Number of articles"
+                    },
+                    "type": "list",
+                    "value": "3",
+                    "options": [{
+                            "value": "3",
+                            "label": {
+                                "en": "3",
+                                "fr": "3"
+                            }
+                        },
+                        {
+                            "value": "4",
+                            "label": {
+                                "en": "4",
+                                "fr": "4"
+                            }
+                        },
+                        {
+                            "value": "5",
+                            "label": {
+                                "en": "5",
+                                "fr": "5"
+                            }
+                        },
+                        {
+                            "value": "6",
+                            "label": {
+                                "en": "6",
+                                "fr": "6"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

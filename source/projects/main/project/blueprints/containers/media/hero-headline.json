@@ -1,0 +1,167 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Hero with story and headline"
+    },
+    "description": {
+        "en": "A hero container with title and an optional story"
+    },
+    "template": "containers/media/headline/headline-static.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Image",
+                "fr": "Image"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "media",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        },
+        "content": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Title",
+                        "fr": "Titre"
+                    },
+                    "label": {
+                        "en": "Headline"
+                    },
+                    "control": "core/text"
+                },
+                "subtitle": {
+                    "value": {
+                        "en": "Subtitle or tagline",
+                        "fr": "Sous titre"
+                    },
+                    "label": {
+                        "en": "Subtitle"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "figure",
+                    "control": "project/container_tag"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "show_greenshoot": {
+                    "value": 1,
+                    "label": {
+                        "en": "Show story"
+                    },
+                    "control": "project/show"
+                },
+                "show_divider": {
+                    "value": 1,
+                    "label": {
+                        "en": "Show divider"
+                    },
+                    "control": "project/show"
+                },
+                "show_image_info": {
+                    "value": 1,
+                    "label": {
+                        "en": "Show image credits"
+                    },
+                    "control": "project/show"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Greenshoot"
+                },
+                "description": {
+                    "en": "Greenshoot"
+                },
+                "template": "modules/global/greenshoot/greenshoot.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Greenshoot"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "figure": {
+                                "value": {
+                                    "en": "60",
+                                    "fr": "60"
+                                },
+                                "label": {
+                                    "en": "Figure"
+                                },
+                                "control": "core/text"
+                            },
+                            "caption": {
+                                "value": {
+                                    "en": "different nationalities from ACP and EU countries",
+                                    "fr": "different nationalities from ACP and EU countries"
+                                },
+                                "label": {
+                                    "en": "Caption"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "story": {
+                                "value": "globe-plane",
+                                "label": {
+                                    "en": "Story"
+                                },
+                                "control": "project/story"
+                            }
+                        }
+                    }
+                }
+
+            }
+        ]
+    }
+}

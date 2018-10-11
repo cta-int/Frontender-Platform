@@ -1,0 +1,112 @@
+{
+    "fe-id": "null",
+    "name": {
+        "en": "Project details"
+    },
+    "description": {
+        "en": "Project headline and body"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "container_tag": {
+                    "value": "article",
+                    "control": "project/container_tag"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Project headline"
+                },
+                "description": {
+                    "en": "Project headline"
+                },
+                "template": "containers/events/headline/headline.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Resource"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "{id}",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "analysis": {
+                                "value": "true",
+                                "control": "project/model/analysis"
+                            },
+                            "includeRelated": {
+                                "value": "true",
+                                "control": "project/model/include_related"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Project body"
+                },
+                "description": {
+                    "en": "Project body"
+                },
+                "template": "containers/events/body/body.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Resource"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "{id}",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "analysis": {
+                                "value": "true",
+                                "control": "project/model/analysis"
+                            },
+                            "includeRelated": {
+                                "value": "true",
+                                "control": "project/model/include_related"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

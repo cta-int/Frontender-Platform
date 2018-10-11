@@ -1,0 +1,113 @@
+/*
+Tabs
+
+.tab - Generic tab
+.tab.is-active - Active tab with triangle border
+
+markup:
+<a class="{$modifiers}  |  meta" href="javascript:void();">Tab</a>
+
+Styleguide 3.36
+*/
+
+.tab {
+	padding: rhythm(2) rhythm(6);
+	&.is-active,
+	&.is-current {
+		position: relative;
+		color: $white;
+		background: $color-theme;
+		&:after,
+		&:before {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			border: solid transparent;
+		}
+		&:before {
+			border-top-color: $color-theme;
+			border-width: rhythm(2);
+			margin-left: rhythm(2) * -1;
+		}
+		.theme--blue & {
+      background-color: $color-blue;
+      &:before {
+      	border-top-color: $color-blue;
+      }
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+      &:before {
+      	border-top-color: $color-lime;
+      }
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+      &:before {
+      	border-top-color: $color-yellow;
+      }
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+      &:before {
+      	border-top-color: $color-gold;
+      }
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+      &:before {
+      	border-top-color: $color-orange;
+      }
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+      &:before {
+      	border-top-color: $color-salmon;
+      }
+    }
+    .theme--red & {
+      background-color: $color-red;
+      &:before {
+      	border-top-color: $color-red;
+      }
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+      &:before {
+      	border-top-color: $color-burgundy;
+      }
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+      &:before {
+      	border-top-color: $color-purple;
+      }
+    }
+	}
+}
+
+/*
+Tabs in different themes
+
+.theme.theme--cta - Standard tab
+.theme.theme--blue - Blue tab
+.theme.theme--lime - Lime tab
+.theme.theme--yellow - Yellow tab
+.theme.theme--gold - Gold tab
+.theme.theme--orange - Orange tab
+.theme.theme--salmon - Salmon tab
+.theme.theme--red - Red tab
+.theme.theme--burgundy - Burgundy tab
+.theme.theme--purple - Purple tab
+
+markup:
+<a class="tab  |  is-active  |  meta" href="javascript:void();">Tab</a>
+
+sg-wrapper:
+<div class="{$modifiers}">
+		<sg-wrapper-content/>
+</div>
+
+Styleguide 3.36.1
+*/

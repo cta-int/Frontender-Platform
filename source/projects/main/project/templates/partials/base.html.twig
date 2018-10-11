@@ -1,0 +1,226 @@
+{% import "macros/template.html.twig" as helper %}
+
+{{ block('body')|processAssets }}
+
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale }}">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-724238-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-724238-2');
+        </script>
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),model:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TZ5C3Q');</script>
+        <!-- End Google Tag Manager -->
+
+        <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+
+        {% block title %} {% endblock %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block meta %} {% endblock %}
+        {% block link %} {% endblock %}
+
+        <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon-precomposed.png">
+        <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/favicon/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/favicon/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/favicon/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/favicon/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/favicon/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon-180x180.png">
+
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="144x144">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="72x72">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="48x48">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="36x36">
+
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon.ico">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
+
+        <link href="{{ hashedPath('/assets/css/screen.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ hashedPath('/assets/javascript/slick.css') }}" type="text/css" rel="stylesheet" />
+
+        {{ renderAssets('link')|raw }}
+        {{ renderAssets('styles')|raw }}
+
+        {% block stylesheets %} {% endblock %}
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ hashedPath('/assets/javascript/modernizr-custom.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/picturefill.min.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/srcset.min.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/jquery.modules.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/jquery.plugins.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/tabs.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/fonts.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/menu.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBapliRZ4fGbMlwkMDdNmMr_aIMOItshA" type="text/javascript"></script>
+        <script src="{{ hashedPath('/assets/javascript/gmaps.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/matchmedia.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/resize.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/srcset.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/selectize.min.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/actionable.js') }}"></script>
+        <script src="{{ hashedPath('/assets/javascript/slick.min.js') }}"></script>
+        <script type="text/javascript">
+            jQuery(function($) {
+                $('.hero').srcset('> img');
+                $('.tab-teaser').tabs({
+                    children: '.tab-teaser__panel',
+                    attribute: 'href',
+                    allowMultiple: false,
+                    openFirst: true
+                });
+                $('.container-header__filter').filters({
+                    children: '.filter',
+                    attribute: 'data-toggle'
+                });
+                /*$("body").append($("<button class=\"button\" style=\"position: fixed; right: 30px; bottom: 30px;\">Show/Hide Grid</button>").on("click", function(el){
+                  $("body").toggleClass("debug-grid");
+                }));*/
+                $('#ctx-item__location, #ctx-item__article, #ctx-item__country').selectize({
+                    allowEmptyOption: true
+                });
+                $('#ctx-item__topic').selectize({
+                    maxItems: 3,
+                    allowEmptyOption: true
+                });
+                $('#ctx-item__date').selectize({
+                    allowEmptyOption: true
+                });
+                $(document).on('click', 'a[href]', function(model) {
+                    var href = $(this).attr('href');
+
+                    if(href.charAt(0) === '#' && $(this).attr('data-prevent-scroll') === undefined) {
+                        model.preventDefault();
+
+                        var $target = $(href),
+                            offset = $target.offset().top;
+
+                        $('html,body').stop().animate({
+                            scrollTop: offset
+                        }, 500);
+                    }
+                });
+
+                $(document).on('click', 'a.pagination-pager', function(model) {
+                    model.preventDefault();
+
+                    var states = $(this).data('pagination-states'),
+                        urlKeys = $(this).attr('href').replace('?', '').split('&'),
+                        config = $(this).data('pagination-config') || '',
+                        self = this;
+
+
+                    for(var index in urlKeys) {
+                        if(urlKeys.hasOwnProperty(index)) {
+                            var parts = urlKeys[index].split('=');
+                            states[parts[0]] = parts[1];
+                        }
+                    }
+
+                    $(self).addClass('loading');
+
+                    // Get all the data.
+                    Actionable.prototype.ajax({
+                        method: 'get',
+                        target: $(this).data('pagination-target'),
+                        url: '/en/partial?layout=' + $(this).data('pagination-layout') + '&model=' + $(this).data('pagination-model') + '&config=' + JSON.stringify(config),
+                        states: states,
+                        append: true
+                    }, function() {
+                        var parent = $(self).parents('[data-pagination-parent]').first();
+                        if(parent) {
+                            parent.remove();
+                        }
+
+                        $(self).remove();
+                    })
+                });
+            });
+        </script>
+        {{ renderAssets('script')|raw }}
+        <!-- Hotjar Tracking Code for cta.int -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:10580,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+        <!-- Heap Analytics tracking code -->
+        <script type="text/javascript">
+            window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+            heap.load("1820974936");
+        </script>
+
+        <script>
+          !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+          arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+          d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+          insertBefore(d,q)}(window,document,'script','_gs');
+
+          _gs('GSN-309811-I');
+        </script>
+    </head>
+
+    <body{{ helper.class_attribute(config, '')|raw }}>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ5C3Q"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        {{ block('body') }}
+
+        <script>
+            {{ renderAssets('beforeBodyEnd')|raw }}
+        </script>
+
+        <script type='text/javascript'>
+            var _sf_async_config={};
+            /** CONFIGURATION START **/
+            _sf_async_config.uid = 39651;
+            _sf_async_config.domain = 'cta.int';
+            _sf_async_config.useCanonical = true;
+            _sf_async_config.sections = 'events,projects,regions,topics,blogs,working-with-cta,press,youth,digitalisation,climate';  //CHANGE THIS
+            _sf_async_config.authors = 'Change this to your Author name';    //CHANGE THIS
+            /** CONFIGURATION END **/
+            (function(){
+              function loadChartbeat() {
+                window._sf_endpt=(new Date()).getTime();
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+                document.body.appendChild(e);
+              }
+              var oldonload = window.onload;
+              window.onload = (typeof window.onload != 'function') ?
+                 loadChartbeat : function() { oldonload(); loadChartbeat(); };
+            })();
+        </script>
+    </body>
+
+</html>

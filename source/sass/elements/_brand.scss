@@ -1,0 +1,32 @@
+/*
+Brand
+
+The masthead brand
+
+.brand--cta - CTA brand
+.brand--cta.brand--extension - Increased size
+
+markup:
+<figure class="{$modifiers}">
+  <figcaption class="is-narrative">CTA Homepage</figcaption>
+</figure>
+
+Styleguide 3.17
+*/
+
+.brand--cta {
+  @include cta-logo(rhythm(26), 3px);
+  @include breakpoint($gt-small-desktop) {
+    @include cta-logo(rhythm(52));
+  }
+}
+
+.brand--extension {
+  height: rhythm(26);
+  position: relative;
+  top: rhythm(8);
+  @include breakpoint($gt-small-desktop) {
+    height: rhythm(52);
+    top: rhythm(16);
+  }
+}

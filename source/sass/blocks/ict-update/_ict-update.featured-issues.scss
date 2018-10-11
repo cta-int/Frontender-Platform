@@ -1,0 +1,82 @@
+/*
+ICT Update – Featured Issues
+
+markup:
+<div class="layout  |  well">
+    <aside class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer-inside">
+        <div class="topics topics" data-fe-id="aab1193f72e3388e">
+            <h3 class="title title--lead trailer  |  gutters">Topics</h3>
+            <ul class="label-list reset list--inline  |  gutters">
+                <li>
+                    <a class="label label--s" href="">resources</a>
+                </li>
+                <li>
+                    <a class="label label--s" href="">groups</a>
+                </li>
+                <li>
+                    <a class="label label--s" href="">time</a>
+                </li>
+                <li>
+                    <a class="label label--s" href="">technology</a>
+                </li>
+                <li>
+                    <a class="label label--s" href="">products</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="layout__cell  |  wing--right">
+        <div class="grid grid--stories">
+            <article class="grid__cell grid grid--stories  |  posting  |  trailer">
+                <a class="anchor--shy anchor--reset  |  is-heir  |   grid grid--posts" href="">
+                    <figure class="grid__cell  |  gutters  |  trailer--tiny">
+                        <img class="image image--stretch" alt="Drones for agriculture" src="https://res.cloudinary.com/cta/image/upload/v1505735714/pkdnckzvvuymywupcrl6.jpg">
+                    </figure>
+                    <div class="grid__cell  |  gutters">
+                        <div class="issue-label  |  media  |  trailer--small">
+                            <div class="issue-label__nr" data-issue-nr="85"></div>
+                            <div class="issue-label__caption anchor--reset">
+                                <p>
+                                    <strong>Issue 85</strong><br>
+                                    <span>June 2017</span>
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="title title--lead title--section">Applications for agriculture</h3>
+                        <span class="read-more">View issue</span>
+                    </div>
+                </a>
+            </article>
+            <div class="grid__cell">
+                <ul class="reset trellis trellis--l">
+                    <li class="trellis__cell trailer gutters">
+                        <a class="anchor--shy anchor--reset  |  is-heir" href="">
+                            <figure>
+                                <img class="image image--stretch" alt="Issue 84" src="https://res.cloudinary.com/cta/image/upload/v1494857266/ulzr5sayvjioztg4nptf.jpg">
+                                <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
+                                    <div class="issue-label__nr" data-issue-nr="84"></div>
+                                    <span class="issue-label__caption">Issue 84 February 2017</span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li class="trellis__cell trailer gutters">
+                        <a class="anchor--shy anchor--reset  |  is-heir" href="">
+                            <figure>
+                                <img class="image image--stretch" alt="Issue 83" src="https://res.cloudinary.com/cta/image/upload/v1494910410/q6fohw6gnw1u1p5b5wzz.jpg">
+                                <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
+                                    <div class="issue-label__nr" data-issue-nr="83"></div>
+                                    <span class="issue-label__caption">Issue 83 October 2016</span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <a class="button button--stretch leader trailer" href="">All issues</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.50.1
+*/

@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "Hidden"
+    },
+    "type": "hidden",
+    "control": "core/abstract"
+}

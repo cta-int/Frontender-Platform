@@ -1,0 +1,45 @@
+{
+    "labels": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "field_label": {
+                "value": {
+                    "en": "Location",
+                    "fr": "Location"
+                },
+                "label": {
+                    "en": "Label"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "selected": {
+                "value": "",
+                "control": "project/region"
+            },
+            "container_class": {
+                "value": "ctx-form__item grid__cell gutters",
+                "control": "core/hidden"
+            }
+        }
+    },
+    "model": {
+        "label": {
+            "en": "Countries"
+        },
+        "controls": {
+            "name": {
+                "value": "Geoname\\Country",
+                "control": "core/hidden"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{# Create an ad-hoc config for the teleport link #}
+{% set teleport_config = {
+    container_tag: "h2",
+    trailer: "trailer",
+    container_class: "title"
+} %}
+{% if config.show_teleport %}
+    {% include("modules/teleport/teleport.html.twig") with {config: teleport_config} %}
+{% endif %}
+
+{#
+All post settings have a vaue of 0, 1 or 2
+0: Hide on all Articles
+1: Show on all Articles
+2: Only show on first article
+#}
+{% set hero_config = {
+        show_author_name: config.show_author_name in [1,2],
+        show_lead_image: config.show_lead_image in [1,2],
+        show_publication_date: config.show_publication_date in [1,2],
+        show_read_more: config.show_read_more in [1,2],
+        show_topic: config.show_topic in [1,2],
+        show_publication: config.show_publication in [1,2],
+        show_stand_first: config.show_stand_first in [1,2]
+} %}
+{% set post_config = {
+        show_author_name: config.show_author_name in [1],
+        show_lead_image: config.show_lead_image in [1],
+        show_publication_date: config.show_publication_date in [1],
+        show_read_more: config.show_read_more in [1],
+        show_topic: config.show_topic in [1],
+        show_publication: config.show_publication in [1],
+        show_stand_first: config.show_stand_first in [1]
+} %}
+
+{% include(config.template) with {model: model.articles|first, config: hero_config} %}
+
+{% for article in model.articles|slice(1) %}
+    <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small"/>
+    {% include config.template with {model: article, config: post_config} %}
+{% endfor %}

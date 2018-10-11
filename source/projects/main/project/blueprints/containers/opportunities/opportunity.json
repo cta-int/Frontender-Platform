@@ -1,0 +1,110 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Single opportunity"
+    },
+    "description": {
+        "en": "Single opportunity"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/articles/headline/headline.html.twig"
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Body"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/articles/body/body.html.twig",
+                "template_config": {
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Contract awarding procedures"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/contract-awarding-procedures/contract-awarding-procedures-snippet.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "ab903292-b219-40a8-9712-fec319dcb8b8",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "analysis": {
+                                            "value": "true",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Contract conditions"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/contract-conditions/contract-conditions-snippet.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "04e71f7f-8554-48ad-944c-6610a2101da7",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "analysis": {
+                                            "value": "true",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

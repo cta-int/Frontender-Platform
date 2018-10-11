@@ -1,0 +1,27 @@
+/*
+Video embed styling
+
+Styleguide 3.38
+*/
+
+.video {
+  margin-bottom: gutter();
+  & {
+    display: block;
+  }
+  &__frame {
+    padding-bottom: gutter();
+  }
+  &__frame {
+    position: relative;
+    padding-bottom: 56.25%; /* 1 */
+    height: 0;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

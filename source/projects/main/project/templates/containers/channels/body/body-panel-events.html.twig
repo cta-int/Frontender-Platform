@@ -1,0 +1,13 @@
+{# import "macros/pagination.html.twig" as pagination #}
+
+{% if model.events|length > 0 %}
+    {% include "modules/events/detailed-list/detailed-list.html.twig" %}
+
+    {#% if events_total > container.model.params.limit %}
+        {{ pagination.extend(events, events_total, model|default(container.model), {
+            model_name: 'Channel\\Events',
+            target: "#" ~ slug,
+            layout: "modules/events/detailed-list/detailed-list.html.twig"
+        }) }}
+    {% endif %#}
+{% endif %}

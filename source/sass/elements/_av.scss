@@ -1,0 +1,37 @@
+/*
+AV (Audio/Video)
+
+Overlays a play button in the right bottom corner. Place directly below an image.
+
+markup:
+<span class="av">
+  <span class="icon icon--controller-play"><span class="is-narrative">Play</span></span>
+</span>
+
+sg-wrapper:
+<div class="gutters" style="width: 200px;">
+  <img class="image image--stretch" src="https://images.unsplash.com/reserve/Ceszw9OoQD6rwMhfDl9R_render0006.jpg?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop="/>
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 3.23
+*/
+
+.av {
+  @include theme-opaque-background(100%);
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: rhythm(-12);
+  left: rhythm(-3);
+  width: rhythm(9);
+  height: rhythm(9);
+  text-align: center;
+  font-size: .75em;
+  color: $white;
+  &,
+  & .icon--controller-play {
+    /* Icon was slightly off-center, added same line-height as parent to ensure that the icon is centered */
+    line-height: rhythm(9);
+  }
+}

@@ -1,0 +1,20 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article class="media  |  bleed">
+    <div class="media__figure  |  gutters">
+        <span class="stamp">
+              <span class="stamp__body">{{ model.datePublished|tdate('%Y') }}</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <p class="meta">{{ model.datePublished|tdate('%e %B %Y') }}</p>
+        <h2 class="title  |  leader--tiny  |  trailer--tiny">
+            <a class="is-heir  anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline }}</a>
+        </h2>
+        <div class="media  |  location">
+            <div class="location__body  |  media__content">
+                {{ model.about }}
+            </div>
+        </div>
+    </div>
+</article>

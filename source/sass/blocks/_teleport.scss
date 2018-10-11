@@ -1,0 +1,35 @@
+/*
+Teleport
+
+markup:
+<div class="teleport  |  media">
+	<h2 class="teleport__label  |  media__content media__stretcher  |  title  |  gutter">Container title</h2>
+	<a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="javascript:void()"><span class="is-narrative">View all in Container title</span></a>
+</div>
+
+Styleguide 4.16
+*/
+
+.teleport {
+	& + & {
+		margin-top: rhythm(4);
+	}
+	&__label {
+		line-height: 1.125;
+	}
+	&__trigger {
+		line-height: 1em
+	}
+	&__trigger:before {
+		position: relative;
+    top: 0.08em;
+		// font-size: 13px;
+		font-size: 2em;
+		@include theme-color;
+	}
+	&__label {
+		.no-flexbox & {
+			width: percentage(3 / 4);
+		}
+	}
+}

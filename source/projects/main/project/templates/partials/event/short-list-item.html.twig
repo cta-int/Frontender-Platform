@@ -1,0 +1,17 @@
+{% import "macros/date.html.twig" as date %}
+<a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="{{ route({'page': 'event', 'id': event._id}) }}">
+    <div class="stack__unit stack__pin">
+        <div class="gutter-outside">
+            {{ date.tile(event.startDate) }}
+        </div>
+    </div>
+    <div class="stack__unit">
+        <h2 class="title title">{{ event.name }}</h2>
+
+        {{ date.event_short(event.startDate, event.endDate, event.timezone) }}
+
+        {% if event.location.address.addressLocality %}
+            <div class="body--whisper">{{ event.location.address.addressLocality }}, {{ event.location.address.addressCountry }}</div>
+        {% endif %}
+    </div>
+</a>

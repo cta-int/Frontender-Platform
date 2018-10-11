@@ -1,0 +1,50 @@
+{
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "lead": {
+                "value": {
+                    "en": "Agribusinesses that can effectively link farmers to national, regional and international markets will contribute to poverty alleviation, export-led growth, food import substitution, enhanced food security and job creation.",
+                    "fr": "Agribusinesses that can effectively link farmers to national, regional and international markets will contribute to poverty alleviation, export-led growth, food import substitution, enhanced food security and job creation."
+                },
+                "label": {
+                    "en": "Lead paragraph"
+                },
+                "control": "core/textarea"
+            },
+            "body": {
+                "value": [
+                    {
+                        "en": "The additional investment in agriculture by private sector and public sector alike signals a renewed recognition that agriculture is a potent driver of economic growth and poverty reduction.",
+                        "fr": "The additional investment in agriculture by private sector and public sector alike signals a renewed recognition that agriculture is a potent driver of economic growth and poverty reduction."
+                    },
+                    {
+                        "en": "Building on the work done to enhance regional trade and develop value chains, CTA is well placed to support the development of small and medium-sized enterprises (SMEs).",
+                        "fr": "Building on the work done to enhance regional trade and develop value chains, CTA is well placed to support the development of small and medium-sized enterprises (SMEs)."
+                    }
+                ],
+                "label": {
+                    "en": "Body"
+                },
+                "control": "core/textarea",
+                "repeatable": true,
+                "minimal": 1
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "large_lead": {
+                "label": {
+                    "en": "Display large lead"
+                },
+                "control": "core/boolean"
+            }
+        }
+    }
+}

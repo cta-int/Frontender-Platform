@@ -1,0 +1,29 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/share.html.twig" as share %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+
+<div class="grid__cell  |  gutters  |  trailer">
+    <div class="tile  |  well well--neutral well--slim-fit {{ ["", container_class]|join("  |  ") }}">
+        <div>
+            <a class="tile__head  |  anchor anchor--shy" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+                {{ image.post_hero(model.link.mediaObject|lead) }}
+            </a>
+        </div>
+        <article class="tile__body  |  gutters  |  leader  |  trailer">
+            <div class="trailer--small icon icon--theme icon--leaf"></div>
+            <h2 class="title">
+                <a class="is-heir" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">{{ model.headline|t(locales) }}</a>
+            </h2>
+            <p class="meta  |  leader--small">cta.int</p>
+        </article>
+        <div class="tile__footer  |  divider divider--inverse divider--top media media--middle">
+            <p class="gutters media__body media__stretcher">{{ date.article(model.datePublished) }}</p>
+            <div class="media__figure">
+                {{ share.press_article(model) }}
+            </div>
+        </div>
+    </div>
+</div>

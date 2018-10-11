@@ -1,0 +1,276 @@
+/*
+Index
+
+markup:
+<h1 class="title  |  trailer  |  gutters">Attendees</h1>
+<div class="trellis trellis--l ">
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">A</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">B</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--large--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">C</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">F</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">G</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">H</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">L</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">O</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">P</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--large--large  |  gutters">
+    <div class="trailer">
+      <div class="letter">T</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="trellis__cell  |  trailer--hero  |  gutters">
+    <div class="trailer">
+      <div class="letter">Z</div>
+    </div>
+    <ul class="reset">
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+      <li class="trailer--large">
+        <div>
+          Abhishek Rawat
+        </div>
+        <div class="body--whisper">
+          <p>Landmark Group</p>
+          <p>United Arab Emirates</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+Styleguide 4.24
+*/

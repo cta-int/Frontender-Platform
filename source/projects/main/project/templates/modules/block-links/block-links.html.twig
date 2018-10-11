@@ -1,0 +1,7 @@
+<ul class="reset  |  gutters">
+    {% for loopContainer in containers %}
+        <li>
+            {% include loopContainer.template with loopContainer %}
+        </li>
+    {% endfor %}
+</ul>

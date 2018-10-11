@@ -1,0 +1,83 @@
+/*
+Profile list
+
+markup:
+  <div class="profile__list  |  trailer--hero">
+    <h1 class="title  |  trailer  |  gutters">Keynotes</h1>
+    <div class="grid  grid--teletubbies">
+      <sg-insert>3.27</sg-insert>
+      <sg-insert>3.27</sg-insert>
+      <sg-insert>3.27</sg-insert>
+      <sg-insert>3.27</sg-insert>
+      <sg-insert>3.27</sg-insert>
+      <sg-insert>3.27</sg-insert>
+    </div>
+  </div>
+
+Styleguide 4.25
+*/
+
+.profile__list {
+  .grid__cell {
+    flex: 0 1 percentage(1/2);
+    max-width: percentage(1/2);
+  }
+}
+
+.profile--small {
+  .grid__cell {
+    flex: 0 1 percentage(1/3);
+    max-width: percentage(1/3);
+  }
+}
+
+@include breakpoint($gt-medium-handheld) {
+  .profile__list {
+    .grid__cell {
+      flex: 0 1 percentage(1/3);
+      max-width: percentage(1/3);
+    }
+  }
+  .profile--small {
+    .grid__cell {
+      flex: 0 1 percentage(1/4);
+      max-width: percentage(1/4);
+    }
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .profile__list {
+    .grid__cell {
+      flex: 0 1 percentage(1/4);
+      max-width: percentage(1/4);
+    }
+  }
+  .profile--small {
+    .grid__cell {
+      flex: 0 1 percentage(1/6);
+      max-width: percentage(1/6);
+    }
+  }
+}
+
+/*
+Profile list, name only
+
+markup:
+<div class="profile__list  |  profile--small  |  trailer--hero">
+  <h1 class="title  |  trailer  |  gutters">Visitors</h1>
+  <div class="trellis">
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+    <sg-insert>3.27.1</sg-insert>
+  </div>
+</div>
+
+Styleguide 4.25.1
+*/

@@ -1,0 +1,66 @@
+/*
+Alphabet
+
+.alphabet - Alphabet grid
+
+markup:
+<ol class="{$modifiers}  |  reset  |  list list--inline">
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-active" href="javascript:void();">All</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">A</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">B</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">A</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">C</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">D</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">E</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">F</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">G</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">H</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">I</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">J</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">K</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">L</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">M</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">N</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">O</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">P</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">Q</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">R</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">S</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">T</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">U</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">V</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">W</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">X</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">Y</a></li>
+	<li class="alphabet__item"><a class="alphabet__trigger  |  is-inactive" href="javascript:void();">Z</a></li>
+</ol>
+
+Styleguide 4.28
+*/
+
+.alphabet {
+	display: flex;
+	flex-wrap: wrap;	
+	&__item {
+		flex: 0 0 percentage(1/8);
+		max-width: percentage(1/8);
+		min-width: percentage(1/8);
+	}
+	&__trigger {
+		display: inline-block;
+		padding-top: rhythm(2);
+		padding-bottom: rhythm(2);
+		font-family: $font-family--meta;
+		text-transform: capitalize;
+		@include meta-16px();
+	}
+	&__trigger.is-inactive {
+		color: $color-body;
+	}
+	.no-flexbox & {
+		display: block;
+		&__item {
+			display: inline-block;
+		}
+	}
+}

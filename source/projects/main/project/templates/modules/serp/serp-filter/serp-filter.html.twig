@@ -1,0 +1,15 @@
+{{ 'modules/serp/serp-filter/serp-filter.js.twig'|addScript('beforeBodyEnd') }}
+
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<form class="gutters leader-inside--hero trailer" data-search-attributes>
+    <h2 class="title title--section">{{ labels.title|t(locales)|default('Filter results'|t(locales)) }}</h2>
+    <fieldset class="leader trailer">
+        <input type="hidden" name="q" value="{{ query.q }}">
+
+        {% for loopContainer in containers %}
+            {% include loopContainer.template with loopContainer %}
+        {% endfor %}
+    </fieldset>
+    <button class="button button--stretch">{{ labels.button|t(locales)|default('Search'|t(locales)) }}</button>
+</form>

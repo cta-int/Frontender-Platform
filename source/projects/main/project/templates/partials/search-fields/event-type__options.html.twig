@@ -1,0 +1,14 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<option {% if config.selected == 'event.Conference' or query.type == 'event.Conference' %}selected="selected" {% endif %} value="event.Conference">{{ 'Conferences'|t(locales) }}</option>
+<option {% if config.selected == 'event.Workshop' or query.type == 'event.Workshop' %}selected="selected" {% endif %} value="event.Workshop">{{ 'Workshops'|t(locales) }}</option>
+<option {% if config.selected == 'event.Seminar' or query.type == 'event.Seminar' %}selected="selected" {% endif %} value="event.Seminar">{{ 'Seminars'|t(locales) }}</option>
+<option {% if config.selected == 'event.Training (online)' or query.event.type == 'Training (online)' %}selected="selected" {% endif %} value="event.Trainings (online)">{{ 'Training (online)'|t(locales) }}</option>
+<option {% if config.selected == 'event.Training' or query.type == 'event.Training' %}selected="selected" {% endif %} value="event.Training">{{ 'Trainings'|t(locales) }}</option>
+<option {% if config.selected == 'event.Briefing' or query.type == 'event.Briefing' %}selected="selected" {% endif %} value="event.Briefing">{{ 'Briefings'|t(locales) }}</option>
+<option {% if config.selected == 'event.Meeting' or query.type == 'event.Meeting' %}selected="selected" {% endif %} value="event.Meeting">{{ 'Meetings'|t(locales) }}</option>
+<option {% if config.selected == 'event.Hackathon' or query.type == 'event.Hackathon' %}selected="selected" {% endif %} value="event.Hackathon">{{ 'Hackathons'|t(locales) }}</option>
+<option {% if config.selected == 'event.Forum' or query.type == 'event.Forum' %}selected="selected" {% endif %} value="event.Forum">{{ 'Forums'|t(locales) }}</option>
+<option {% if config.selected == 'event.Field visit' or query.type == 'event.Field visit' %}selected="selected" {% endif %} value="event.Field visit">{{ 'Field visits'|t(locales) }}</option>
+<option {% if config.selected == 'event.Project' or query.type == 'event.Project' %}selected="selected" {% endif %} value="event.Project">{{ 'Projects'|t(locales) }}</option>
+<option {% if config.selected == 'event.Other' or query.type == 'event.Other' %}selected="selected" {% endif %} value="event.Other">{{ 'Other'|t(locales) }}</option>

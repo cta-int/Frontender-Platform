@@ -1,0 +1,45 @@
+{
+    "value": "cta-promo.html.twig",
+    "label": {
+        "en": "Slogan"
+    },
+    "options": [
+        {
+            "label": {
+                "en": "None"
+            },
+            "value": 0
+        },
+        {
+            "label": {
+                "en": "CTA Promo"
+            },
+            "value": "cta-promo.html.twig"
+        },
+        {
+            "label": {
+                "en": "Youth Promo"
+            },
+            "value": "youth-promo.html.twig"
+        },
+        {
+            "label": {
+                "en": "Women - EN"
+            },
+            "value": "women-promo.html.twig"
+        },
+        {
+            "label": {
+                "en": "Agriculture key"
+            },
+            "value": "agriculture-key.html.twig"
+        },
+        {
+            "label": {
+                "en": "AGRF 2018"
+            },
+            "value": "agrf-2018.html.twig"
+        }
+    ],
+    "control": "core/list"
+}

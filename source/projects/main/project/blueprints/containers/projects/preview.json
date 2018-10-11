@@ -1,0 +1,155 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Project preview container"
+    },
+    "description": {
+        "en": "Project previews from a single channel"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "wings": {
+                    "value": "wings",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_tag": {
+                    "value": "article",
+                    "control": "project/container_tag"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Project tile"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/projects/preview/preview.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "trailer--hero trailer-inside--hero",
+                                "control": "project/container_class"
+                            },
+                            "divider": {
+                                "value": "divider divider--bottom",
+                                "control": "project/divider"
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "ae9374a7-f48f-4707-8efa-4426769e8a56",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

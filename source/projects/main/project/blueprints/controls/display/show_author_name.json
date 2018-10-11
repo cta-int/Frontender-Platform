@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show author name"
+    },
+    "control": "project/show_on_items"
+}

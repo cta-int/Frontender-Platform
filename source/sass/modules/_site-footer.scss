@@ -1,0 +1,185 @@
+/*
+Site footer
+
+markup:
+<div class="site-footer layout">
+	<div class="layout__cell layout__cell--aside  |  site-footer__meta  |   wings">
+		<div class="trailer--normal">
+			<img class="gutters" src="/images/logos/europe-logo.png" alt="European Union">
+			<img class="gutters" src="/images/logos/acp-logo.png" alt="ACP">
+		</div>
+		<p class="gutters  |  meta meta--s meta--lowercase">CTA is a joint institution operating under the framework of the Cotonou Agreement between the ACP Group of States (Africa, the Caribbean and the Pacific) and the EU Member States (European Union). CTA is funded by the European Union.</p>
+		<div class="gutters  |  leader  |  txt-meta  |  layout__cell layout__cell--aside">
+			<a class="anchor--shy  is-heir  |  meta meta--s  |  gutter--right" href="">Disclaimer</a>
+			<a class="anchor--shy  is-heir  |  meta meta--s  |  gutter--right" href="">Copyrights</a>
+			<a class="anchor--shy  is-heir  |  meta meta--s  |  gutter--right" href="">Privacy statement</a>
+		</div>
+	</div>
+	<div class="layout__cell layout__cell--main  |  layout layout--footer">
+		<div class="layout__cell layout__cell--main  |  site-footer__links">
+			<div class="grid grid--musketeers">
+				<div class="grid__cell  |  gutters">
+					<h2 class="title  |  site-footer__title">About CTA</h2>
+					<ul class="reset">
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">About CTA</a>
+						</li>
+					</ul>
+				</div>
+				<div class="grid__cell  |  gutters">
+					<h2 class="title  |  site-footer__title">Regions</h2>
+					<ul class="reset">
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Caribbean</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Central Africa</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Eastern Africa</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Western Africa</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Southern Africa</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Pacific</a>
+						</li>
+					</ul>
+				</div>
+				<div class="grid__cell  |  gutters">
+					<h2 class="title  |  site-footer__title">Focus Areas</h2>
+					<ul class="reset">
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Agribusiness</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">ICTs for agriculture</a>
+						</li>
+						<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+							<a class="is-heir" href="">Climate resilient agriculture</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="layout__cell layout__cell--aside  |  site-footer__social  |  wings">
+			<div>
+				<h2 class="title  |  site-footer__title  |  gutters">CTA Flash</h2>
+				<p class="body--whisper  |  gutters  |  tweets">
+					RT <a href="" target="_blank">@UAV4Ag</a>: African Union Executive Council decision EX CL/Dec. 986-1007(XXXII) requests AU and Member States to harness <a href="" target="_blank">#drone</a>					tech for #a…
+				</p>
+				<p class="meta meta--lowercase meta--s |  leader--small  |  gutters">4 hours ago</p>
+			</div>
+			<div class="trailer  |  site-footer__share">
+				<span class="gutters  |  title  |  site-footer__title">follow us</span>
+				<a class="anchor--shy  is-heir" href="" target="_blank"><span class="icon icon--facebook icon--s  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="" target="_blank"><span class="icon icon--twitter icon--s  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="" target="_blank"><span class="icon icon--linkedin icon--s  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href=""><span class="icon icon--vimeo icon--s  |  gutter--right"></span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+Styleguide 5.2
+*/
+
+.site-footer {
+	background-color: mix($color-black, $white, 76%);
+	color: $white;
+	color: rgba($white, .80);
+	padding-top: rhythm(10);
+	padding-bottom: rhythm(10);
+	.is-illustrated + & {
+		padding-top: rhythm(20); /* Add extra padding when a container with overlapping illustrations is placed above the site-footer */
+	}
+	a.meta:hover,
+	&__link:hover,
+	.icon:hover {
+		color: $white !important;
+	}
+	&__meta {
+		// color: rgba($white, .60);
+		flex-basis: 6 / 18 * 100vw;
+		max-width: 6 / 18 * 100vw;
+		.no-flexbox & {
+			width: percentage(6 / 13);
+			max-width: percentage(6 / 13);
+		}
+		.meta {
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 500;
+			line-height: 1.3;
+		}
+	}
+	&__title,
+	&__share {
+		margin-top: rhythm(10);
+		margin-bottom: rhythm(8);
+	}
+	&__title {
+		color: rgba($white, .4);
+		@include title-14px();
+	}
+	&__link {
+		@include title-12px();
+	}
+	.txt-meta {
+		a {
+			text-transform: uppercase;
+		}
+	}
+	.icon {
+		font-size: to-unit(28px);
+	}
+	@include breakpoint($gt-small-desktop) {
+		.layout--footer {
+			overflow: hidden;
+		}
+		.layout &__links {
+			flex-basis: 6 / 18 * 100vw;
+			max-width: 6 / 18 * 100vw;
+			.no-flexbox & {
+				width: percentage(6 / 13);
+				max-width: percentage(6 / 13);
+			}
+		}
+		.layout &__social {
+			flex-basis: 5 / 18 * 100vw;
+			max-width: 5 / 18 * 100vw;
+			.no-flexbox & {
+				width: percentage(5 / 13);
+				max-width: percentage(5 / 13);
+			}
+		}
+		&__share {
+			.title {
+				font-size: to-unit(12px);
+			}
+			.title,
+			.icon {
+				line-height: rhythm(7);
+			}
+		}
+		&__title {
+			margin-top: 0;
+			font-size: to-unit(16px);
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		.layout &__social {
+			flex-basis: 5 / 18 * 100vw;
+			max-width: 5 / 18 * 100vw;
+			padding-left: 1 / 18 * 100vw;
+			padding-right: 1 / 36 * 100vw;
+			.no-flexbox & {
+				width: percentage(5 / 13);
+				max-width: percentage(5 / 13);
+			}
+		}
+	}
+}

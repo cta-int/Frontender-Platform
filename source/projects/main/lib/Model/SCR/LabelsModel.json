@@ -1,0 +1,11 @@
+{
+    "label": {
+        "en-GB": "Labels",
+        "fr-FR": "Labels"
+    },
+    "map": {
+        "id": "_id",
+        "title": "name",
+        "thumbnail": ""
+    }
+}

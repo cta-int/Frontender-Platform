@@ -1,0 +1,75 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if model|first.link.organization.partnerOrganization %}
+        <strong class="meta">{{ 'ICT Update issue'|t(locales) }} {{ model|first.number }} {{ 'was produced in collaboration with'|t(locales) }}
+            :</strong>
+        {% for organization in model|first.link.organization.partnerOrganization %}
+            {% if(organization.website) %}
+                <a href="{{ organization.website }}" target="_blank">
+                    <div class="anchor anchor--shy anchor--reset">
+                        {% if(organization.avatar) %}
+                            <img class="issue__cover" alt="{{ organization.name|t(locales) }}" src="{{ organization.avatar }}">
+                        {% endif %}
+                    </div>
+                </a>
+            {% else %}
+                {% if(organization.avatar) %}
+                    <img class="issue__cover" alt="{{ organization.name|t(locales) }}" src="{{ organization.avatar }}">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="leader--hero">
+        <div class="issue-label issue-label--l  |  media media--middle  |  leader--small  |  trailer--small">
+            <div class="issue-label__nr" data-issue-nr="{{ model|first.number }}"></div>
+            <div class="issue-label__caption">
+                <p>
+                    <strong>{{ 'Issue'|t(locales) }} {{ model|first.number }}</strong>
+                    <span>{{ model|first.datePublished|tdate('%e %B %Y') }}</span>
+                </p>
+            </div>
+        </div>
+
+        <h3 class="title title--lead title--section  |  trailer--small">{{ model|first.headline|t(locales) }}</h3>
+        {% if model|first.link.mediaObject|lead %}
+            <img class="issue__cover" alt="{{ model|first.headline|t(locales) }}"
+                 src="{{ model|first.link.mediaObject|lead.metadata.url }}">
+        {% endif %}
+
+        {% if(model|first.issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0) %}
+            <div class="leader--small">
+                <a class="button button--stretch"
+                   href="{{ model|first.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}"
+                   target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <form class="leader--hero" method="post" action="https://ctaint.wufoo.eu/forms/m7p5x7/#public">
+        <input type="hidden" name="idstamp" value="Ppma7o+2LxA/UkYd/IPXFAGOYgNad6m5vGqo2v42qFo=">
+
+        <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|t(locales) }}</h2>
+        <fieldset class="leader trailer">
+            <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|t(locales) }}</label>
+            <input class="fld" type="text" id="firstname" name="Field6">
+            <label class="fld-label title title--meta" for="lastname">{{ 'Lastname'|t(locales) }}</label>
+            <input class="fld" type="text" id="lastname" name="Field7">
+            <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|t(locales) }}</label>
+            <input class="fld" type="text" name="Field1" id="email">
+
+            <label class="fld-label title title--meta">{{ 'Language'|t(locales) }}</label>
+            <label><input class="fld-radio" name="Field10" type="radio" value="English"><span
+                        class="fld-radio">{{ 'English'|t(locales) }}</span></label>
+            <label><input class="fld-radio" name="Field10" type="radio" value="French"><span
+                        class="fld-radio">{{ 'French'|t(locales) }}</span></label>
+        </fieldset>
+        <button class="button button--stretch">{{ labels.button|default('Subscribe'|t(locales))|t(locales) }}</button>
+    </form>
+
+
+    {# {{ article.issue.headline|t(locales) }} #}
+</{{ config.container_tag|default('div') }}

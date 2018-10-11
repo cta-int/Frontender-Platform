@@ -1,0 +1,101 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "articles",
+                "control": "core/hidden"
+            },
+            "articleType": {
+                "value": "tender_award_notice",
+                "control": "project/model/article_type"
+            },
+            "limit": {
+                "value": "5",
+                "control": "project/model/limit"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Award notices",
+                    "fr": "Procurements"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "link": {
+                "value": {
+                    "label": {
+                        "en": "See all award notices",
+                        "fr": "See all award notices"
+                    },
+                    "page": "working-with-cta/award-notices",
+                    "id": ""
+                },
+                "label": {
+                    "en": "Link"
+                },
+                "control": "core/route"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "show_title": {
+                "value": 1,
+                "label": {
+                    "en": "Show title"
+                },
+                "control": "project/show"
+            },
+            "show_link": {
+                "value": 1,
+                "label": {
+                    "en": "Show link"
+                },
+                "control": "project/show"
+            },
+            "show_lead_image": {
+                "value": 0,
+                "control": "core/hidden"
+            },
+            "show_stand_first": {
+                "value": 0,
+                "control": "core/hidden"
+            },
+            "show_publication_date": {
+                "value": 1,
+                "control": "core/hidden"
+            },
+            "show_author_name": {
+                "value": 1,
+                "control": "core/hidden"
+            },
+            "show_read_more": {
+                "value": 0,
+                "control": "core/hidden"
+            },
+            "show_topic": {
+                "value": 1,
+                "control": "core/hidden"
+            },
+            "show_publication": {
+                "value": 1,
+                "control": "core/hidden"
+            }
+        }
+    }
+}

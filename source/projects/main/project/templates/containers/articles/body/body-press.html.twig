@@ -1,0 +1,83 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+
+{% set layout = [config.layout|default('layout layout--split divider divider--top')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+<{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--main wings leader-inside--hero trailer-inside--hero{{ not config.show_secondary_first and config.show_divider|default(1) ? ' layout__cell--divider'}}">
+
+        <header class="trailer--hero">
+            {# todo link to view with all similar article.articleTypes #}
+            <p class="meta gutters">{{ model.datePublished|tdate('%A, %e %B %Y') }}</p>
+            <h1 class="title title--section gutters">
+                {{ model.headline }}
+            </h1>
+        </header>
+        <div class="post-anchor clear">
+            {% if model.about %}
+                <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+            {% endif %}
+
+            {# render the content blocks - if the first block is a list,
+            we treat it as the article takeaways #}
+            {% for i, contentBlock in model.contentBlocks %}
+                {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                    <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                        {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                    </div>
+                {% elseif contentBlock.type == 'media' %}
+                {% else %}
+                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'contentBlock': contentBlock} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if model.link.mediaObject|findType('file')|length > 0 %}
+            <footer class="gutters">
+                <div class="leader--hero leader-inside divider divider--top">
+                    <h3 class="title trailer">{{ 'Downloads'|t(locales) }}</h3>
+
+                    {% for file in model.link.mediaObject|findType('file') %}
+                        {% include 'partials/download.html.twig' with {file: file} %}
+                    {% endfor %}
+                </div>
+            </footer>
+        {% endif %}
+    </div>
+    <div class="layout__cell layout__cell--aside">
+
+        {% if model.link.mediaObject|findType('image')|length %}
+            <div class="wings trailer-inside--hero leader-inside--hero">
+                <h1 class="title title--section gutters">
+                    {{ 'Related media'|t(locales) }}
+                </h1>
+
+                <div class="grid grid--even">
+                    {% for file in model.link.mediaObject|findType('image') %}
+                        <div class="grid__cell gutters leader">
+                            {% include 'partials/article/post-tile/media-download.html.twig' with {file: file, model: model} %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if model.similar.articles|filterArray('articleType', 'press')|length %}
+            <div class="wings trailer-inside--hero leader-inside--hero divider divider--top">
+                <h1 class="title title--section gutters">
+                    {{ 'Related press releases'|t(locales) }}
+                </h1>
+                <ul class="leader trellis">
+                    {% for model in model.similar.articles|filterArray('articleType', 'press') %}
+                        <li class="trellis__cell gutters">
+                            <a href="{{ route({'page': 'article', 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                                {{ model.headline|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</{{ config.container_tag|default('article') }}>

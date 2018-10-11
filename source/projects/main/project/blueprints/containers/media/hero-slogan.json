@@ -1,0 +1,110 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Hero"
+    },
+    "description": {
+        "en": "Hero with optional promotional slogan"
+    },
+    "template": "containers/media/hero/hero-slogan.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "media",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "figure",
+                    "control": "project/container_tag"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                },
+                "section_link": {
+                    "value": {
+                        "page": "about-cta",
+                        "id": ""
+                    },
+                    "label": {
+                        "en": "Hero link"
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Slogan"
+                },
+                "description": {
+                    "en": "Slogan"
+                },
+                "template": "modules/global/teaser-slogan/teaser-slogan.html.twig",
+                "template_config": {
+                    "slogan": {
+                        "label": {
+                            "en": "Slogan"
+                        },
+                        "controls": {
+                            "image": {
+                                "control": "project/slogan"
+                            },
+                            "alt": {
+                                "label": {
+                                    "en": "Alternative text"
+                                },
+                                "value": {
+                                    "en": "Seeding Innovation, Harvesting Prosperity",
+                                    "fr": "Seeding Innovation, Harvesting Prosperity"
+                                },
+                                "control": "core/text"
+                            },
+                            "backdrop": {
+                                "label": {
+                                    "en": "Show backdrop"
+                                },
+                                "value": 1,
+                                "control": "project/show"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

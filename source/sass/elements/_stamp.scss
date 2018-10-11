@@ -1,0 +1,48 @@
+/*
+Stamp
+
+.stamp - Stamp block
+.stamp.stamp--expiring - Expired stamp
+.stamp.stamp--closed - Closed stamp
+
+markup:
+<span class="{$modifiers}">
+  <span class="stamp__body">open</span>
+</span>
+
+Styleguide 3.39
+*/
+
+.stamp {
+  // @include theme-opaque-background(100%);
+  background-color: $color-green;
+  @extend %meta-text;
+  @include meta-9px;
+  width: rhythm(14);
+  height: rhythm(14);
+  display: block;
+  color: $white;
+  &__body {
+    display: block;
+    padding: 4px 0 0 2px;
+    line-height: 1;
+  }
+  &--expiring {
+    background-color: $color-orange;
+  }
+  &--closed,
+  &--cancelled {
+    background-color: mix($color-body, $white, 54%);
+  }
+  @include breakpoint($gt-large-handheld) {
+    @include meta-12px;
+    width: rhythm(21);
+    height: rhythm(21);
+    &__body {
+      padding: rhythm(3) 0 0 rhythm();
+    }
+    &--cancelled {
+      @include meta-10px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<a class="block-link block-link--icon" href="{{ route({page: link.path.page}) }}">
+    {{ channel.name|t(locales) }}
+</a>

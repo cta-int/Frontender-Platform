@@ -1,0 +1,54 @@
+{% import "macros/template.html.twig" as helper %}
+
+{% if config.layout|default('layout')|trim is same as('layout') %}
+
+    {% set layout = [config.layout|default('layout')|trim, config.vertical_alignment ? config.vertical_alignment|trim, not config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+        {% if config.show_secondary_first %}
+            <div class="layout__cell layout__cell--aside{{ config.show_divider ? ' layout__cell--divider'}} |  {{ config.show_side_wings|default(1) ? '  |  wings'}}">
+                {% for loopContainer in containers|slice(1) %}
+                    {% include loopContainer.template with loopContainer %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="layout__cell layout__cell--main{{ config.show_outer_wing|default(1) ? '  |  wing--right'}}">
+            {% include containers|first.template with containers|first %}
+        </div>
+
+        {% if not config.show_secondary_first %}
+            <div class="layout__cell layout__cell--aside{{ config.show_divider ? ' layout__cell--divider'}} |  {{ not config.show_narrow ? 'wings' }}">
+                {% for loopContainer in containers|slice(1) %}
+                    {% include loopContainer.template with loopContainer %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </{{ config.container_tag|default('div') }}>
+{% else %}
+    {% set layout = [config.layout|default('layout')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+        {% if config.show_secondary_first %}
+        <div class="layout__cell layout__cell--aside {{ config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [1,3] ? 'wings'}}">
+            {% for loopContainer in containers|slice(1) %}
+                {% include loopContainer.template with loopContainer %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="layout__cell layout__cell--main{{ config.show_secondary_first and config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [2,3] ? 'wings'}}">
+            {% include containers|first.template with containers|first %}
+        </div>
+
+        {% if  not config.show_secondary_first %}
+        <div class="layout__cell layout__cell--aside {{ not config.show_secondary_first and config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [1,3] ? 'wings'}}">
+            {% for loopContainer in containers|slice(1) %}
+                {% include loopContainer.template with loopContainer %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </{{ config.container_tag|default('div') }}>
+{% endif %}

@@ -1,0 +1,26 @@
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/articles/press/press.js.twig'|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: tab_config.selector|default('.panel-group')
+    }
+}) }}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<h2 class="title title--section  |  trailer  |  gutters">{{ labels.title|t(locales) }}</h2>
+
+<ul class="list list--inline  |  leader  |  trailer  |  gutters" data-press-tabs>
+    {% for loopContainer in containers %}
+        <li>
+            <a class="tab  |  meta" href="#{{ loopContainer.labels.title|t(locales) }}">{{ loopContainer.labels.title|t(locales) }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="panel-group" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+    {% for loopContainer in containers %}
+        <section class="panel" id="{{ container.labels.title|t(locales) }}">
+            {% include loopContainer.template with {model: loopContainer.model|first.article} %}
+        </section>
+    {% endfor %}
+</div>

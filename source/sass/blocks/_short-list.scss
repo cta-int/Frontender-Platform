@@ -1,0 +1,188 @@
+/*
+Short List
+
+A short list is used for title lists. The divider line is optional and can be set with a class on each list item (divider divider--bottom).
+
+Styleguide 4.13
+*/
+
+.short-list {
+  &__item {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: rhythm(8);
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  // .title {
+  //   @include title-14px();
+  // }
+  .meta {
+    @include meta-11px();
+  }
+  .location {
+    @include small-location();
+  }
+  .date {
+    @include small-date();
+  }
+  @include breakpoint($gt-medium-handheld) {
+    .grid--musketeers & {
+      .title {
+        @include title-16px();
+      }
+      .meta {
+        @include meta-12px();
+      }
+      .location {
+        @include regular-location();
+      }
+      .date {
+        @include large-date();
+      }
+    }
+  }
+  // @include breakpoint("(min-width: #{to-unit(600px)})") {
+  //   .grid--teletubbies & {
+  //     .title {
+  //       @include title-12px();
+  //     }
+  //     .meta {
+  //       @include meta-11px();
+  //     }
+  //     .location {
+  //       @include small-location();
+  //     }
+  //     .date {
+  //       @include small-date();
+  //     }
+  //   }
+  // }
+  @include breakpoint($gt-small-desktop) {
+    .grid--musketeers & {
+      /* Three-columns */
+      .title {
+        @include title-12px();
+      }
+      .meta {
+        @include meta-11px();
+      }
+      .location {
+        @include small-location();
+      }
+      .date {
+        @include small-date();
+      }
+    }
+    .grid--teletubbies & {
+      /* Two-columns */
+      .title {
+        @include title-16px();
+      }
+      .meta {
+        @include meta-12px();
+      }
+      .location {
+        @include regular-location();
+      }
+      .date {
+        @include large-date();
+      }
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    .grid--musketeers & {
+      /* Three-columns */
+      .title {
+        @include title-16px();
+      }
+      .meta {
+        @include meta-12px();
+      }
+      .location {
+        @include regular-location();
+      }
+      .date {
+        @include large-date();
+      }
+    }
+    .grid--teletubbies & {
+      /* Four-columns */
+      .title {
+        @include title-12px();
+      }
+      .meta {
+        @include meta-11px();
+      }
+      .location {
+        @include small-location();
+      }
+      .date {
+        @include small-date();
+      }
+    }
+  }
+  @include breakpoint($gt-large-desktop) {
+    .grid--teletubbies & {
+      /* Four-columns */
+      .title {
+        @include title-16px();
+      }
+      .meta {
+        @include meta-12px();
+      }
+      .location {
+        @include regular-location();
+      }
+      .date {
+        @include large-date();
+      }
+    }
+  }
+}
+
+/*
+Short List, with articles
+
+markup:
+<ul class="reset  |  short-list">
+  <li class="short-list__item">
+    <div class="meta  |  trailer--tiny"><time datetime="">25</time>-<time datetime="">30 September 2016</time></div>
+    <a class="anchor--reset anchor--shy" href="javascript:void();">
+      <h2 class="title">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing</h2>
+    </a>
+    <p class="author  |  leader--tiny">
+      by <a href="javascript:void();">Clayton Wilson</a>
+    </p>
+  </li>
+</ul>
+
+Styleguide 4.13.1
+*/
+
+
+/*
+Short List, for events
+
+markup:
+<ul class="reset  |  short-list">
+  <li class="short-list__item">
+    <a class="anchor--reset anchor--shy  |  stack" href="javascript:void();">
+      <div class="stack__unit stack__pin">
+        <span class="date  |  gutter-outside">
+          <span class="date__head">Dec</span>
+          <span class="date__body">31</span>
+        </span>
+      </div>
+      <div class="stack__unit">
+        <h2 class="title">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing</h2>
+        <div class="meta  |  leader--tiny"><time datetime="">25</time>-<time datetime="">27 September 2017</time></div>
+        <div class="location  |  leader--tiny">Brussels, Brussels, BE</div>
+      </div>
+    </a>
+  </li>
+</ul>
+
+Styleguide 4.13.2
+*/

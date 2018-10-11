@@ -1,0 +1,55 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/label.html.twig" as label %}
+{% import "macros/author.html.twig" as author %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="media  |  post">
+    <div class="media__body  |  gutter">
+        {% if config.show_publication_date|default(1) %}
+            {{ date.article(model.datePublished) }}
+        {% endif %}
+
+        {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length > 0 %}
+            <span class="meta">
+                {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
+            </span>
+        {% endif %}
+
+        <h3 class="title  |  anchor--reset">
+    		    <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+    		       	{{ model.headline }}
+    		    </a>
+  	    </h3>
+
+        {% if config.show_author_name and model.link.person.author | length > 0 %}
+            <p class="post__author  |  author">
+                {{ author.long(model.link.person.author) }}
+            </p>
+        {% endif %}
+
+        {% if config.show_topic and model.analysis.agrovoc.concepts | first.broader | first.label | length > 0 %}
+            <p class="author  |  leader--tiny">{{ 'in'|t(locales) }}
+                <a href="{{ route({page: 'search'}) ~ '?concepts[]=' }}{{ model.analysis.agrovoc.concepts|first.broader|first._id }}">{{ model.analysis.agrovoc.concepts|first.broader|first.label|t(locales) }}</a>
+            </p>
+        {% endif %}
+
+        {% if config.show_topic and model.articleType|length > 0 %}
+            <p class="author  |  leader--tiny">{{ 'in'|t(locales) }} <a href="/search?q=&location=&time=&type={{ model.articleType }}">{{ model.articleType }}</a></p>
+        {% endif %}
+
+        {% if config.show_stand_first|default(1) %}
+           <p class="post__intro">{{ model.about|raw }}</p>
+        {% endif %}
+
+        {% if show_read_more|default(1) %}
+           <a class="read-more" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">{{ 'Read more'|t(locales) }}</a>
+        {% endif %}
+    </div>
+    {% if config.show_read_more|default(1) and model.link.mediaObject|lead %}
+        <div class="media__figure  |  trailer--tiny">
+            <a class="anchor anchor--shy" href="{{ route({page: 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+                {{ image.post(model.link.mediaObject|lead) }}
+            </a>
+        </div>
+    {% endif %}
+</div>

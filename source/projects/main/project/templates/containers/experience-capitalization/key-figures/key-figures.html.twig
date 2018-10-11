@@ -1,0 +1,102 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'wings  |  no-overflow  |  keys-figures  |  exposition-wrapper')|raw }} id="section1" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="section section--hidden  |  gutter-outside--right">
+        <p class="section-number">1</p>
+    </div>
+    <h2 class="heading  |  section-heading  |  gutters  |  keys-header">{{ labels.title|t(locales) }}</h2>
+    <div class="keys  |  leader-inside--hero">
+        <div class="keys-row">
+            <div class="keys-fact keys--has-icon keys-bleed  |  is-root  |  gutters--double">
+                <p class="statistic">1,934</p>
+                <p class="lead-paragraph  |  leader--small">farmers accessed drought-tolerant seeds during the seed fairs held in rural villages of Mali and Zimbabwe respectively</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/crops.png" alt="crops" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">176</p>
+                <p class="lead-paragraph  |  leader--small">experts from 34 countries participated in the Blending4Ag conference on Innovative Partnerships for Agricultural Finance</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">210</p>
+                <p class="lead-paragraph  |  leader--small">articles, TV news and radio broadcast covered the Caribbean Week of Agriculture and</p>
+                <p class="statistic statistic--s">5,200</p>
+                <p class="lead-paragraph  |  leader--small">tweets were sent</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">55,369</p>
+                <p class="lead-paragraph  |  leader--small">small scale producers have increased adaptive capacity to climate change as a result of PGIS processes</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">467,878</p>
+                <p class="lead-paragraph  |  leader--small">publications were downloaded from CTA Publishing website</p>
+            </div>
+            <div class="keys-fact keys--has-icon  |  is-root  |  gutters--double">
+                <p class="statistic">€ 700,000</p>
+                <p class="lead-paragraph  |  leader--small">were invested by international companies and organisations in young ICT agripreneur startups involved in CTA’s AgriHack activities</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/farm.png" alt="farm" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">80,000</p>
+                <p class="lead-paragraph  |  leader--small">producers in Uganda, out of which</p>
+                <p class="statistic statistic--s">35,000</p>
+                <p class="lead-paragraph  |  leader--small">women, were sensitized through the MUIIS project, to increase their productivity thanks to tailor-made information service</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact keys--has-icon  |  is-root  |  gutters--double">
+                <p class="statistic">5,070</p>
+                <p class="lead-paragraph  |  leader--small">new individuals subscribed to Spore magazine</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/lesson.png" alt="study" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">353</p>
+                <p class="lead-paragraph  |  leader--small">producers were trained in standards, norms and finance in the Caribbean</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">103</p>
+                <p class="lead-paragraph  |  leader--small">Organisations in Africa joined the Global Open Data in Agriculture and Nutrition (GODAN) initiative thanks to CTA support to the 1st African Open Data Conference and to the GODAN Global Summit</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">284</p>
+                <p class="lead-paragraph  |  leader--small">blogs were created through YoBloco Awards and other social media trainings,</p>
+                <p class="statistic statistic--s">46%</p>
+                <p class="lead-paragraph  |  leader--small">of blogs creators are women</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact keys--has-icon keys-bleed keys-bleed--right  |  is-root  |  gutters--double">
+                <p class="statistic">1,630</p>
+                <p class="lead-paragraph  |  leader--small">downloads of the CTA/WUR publication on “Innovation Systems: Strategies in support of Smallholder Farmers” were recorded</p>
+                <div class="keys-illustration  |  gutters--double">
+                    <img src="/assets/images/illustrations/farm2.png" alt="farm" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">250</p>
+                <p class="lead-paragraph  |  leader--small">news stories and TV shows were published or broadcasted on the Cassava Forum in Yaoundé by</p>
+                <p class="statistic statistic--s">40</p>
+                <p class="lead-paragraph  |  leader--small">journalists and media agencies</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">49</p>
+                <p class="lead-paragraph  |  leader--small">people were trained in participatory geographic information systems (PGIS) of which</p>
+                <p class="statistic statistic--s">54%</p>
+                <p class="lead-paragraph  |  leader--small">of trainees were aged between 18 and 35</p>
+                <p class="statistic statistic--s">35%</p>
+                <p class="lead-paragraph  |  leader--small">of trainees were women</p>
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

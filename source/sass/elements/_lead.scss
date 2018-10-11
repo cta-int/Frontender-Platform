@@ -1,0 +1,21 @@
+/*
+Lead paragraph [REVIEW]
+
+.lead - Lead paragraph
+.lead.lead--l - Extra large lead paragraph
+
+markup:
+<p class="{$modifiers}">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit Sed Do Eiusmod</p>
+
+Styleguide 3.37
+*/
+
+.lead {
+  font-size: 1.2em;
+  &--l {
+  	color: rgba($black, .64);
+  	@include breakpoint($gt-small-desktop) {
+  		font-size: to-unit(28px);
+  	}
+  }
+}

@@ -1,0 +1,137 @@
+/*
+Title [REVIEW]
+
+Titles are different from headings. They are used in title and headline blocks and story lists. If you want to style an article heading, use the heading class.
+
+.title - This smaller headline is used in story lists
+.title.title--lead - Larger headline
+.title.title--tile - In between --lead and --headline
+.title.title--headline - This smaller headline is used in story lists
+.title.title--section - Extra margin top and bottom
+.title.title--sub-section - About us small title
+.title.title--apropos -  Apropos title
+.title.title--container - Container title
+.title.title--filter - Filter title
+.title.title--tab - Tab title
+.title.title--eror - Error title
+.title.title--hero - Hero title
+.title.title--event - Event title
+.title.title--thin - Thin title
+.title.title--statistic - Statistic title
+
+markup:
+<h1 class="{$modifiers}">Extra, extra – read all about it!</h1>
+
+Styleguide 3.3
+*/
+.title {
+  @extend %meta-text;
+  font-weight: 600;
+  @include title-16px();
+  max-width: 100%;
+  overflow: hidden;
+  a &,
+  & a {
+    text-decoration: none;
+  }
+  &--sub-section {
+    @include title-12px();
+  }
+  &--apropos {
+    @include title-14px();
+  }
+  &--section,
+  &--container {
+    @include title-20px();
+  }
+  &--filter {
+    @include meta-11px();
+  }
+  // &--statistic {
+  //   @include title-30px();
+  // }
+  &--tab {
+    @include title-14px();
+    padding-bottom: rhythm(2);
+    color: inherit;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    &.is-current {
+      @include theme-color();
+    }
+  }
+  &--error {
+    @include theme-color();
+    font-size: to-unit(120px);
+    line-height: 1;
+    @include breakpoint($gt-medium-desktop) {
+      font-size: to-unit(180px);
+    }
+  }
+  &--hero,
+  &--tile,
+  &--headline,
+  &--event {
+    @include title-18px();
+  }
+  &--thin {
+    font-weight: normal;
+  }
+  &--event {
+    font-weight: normal;
+    text-transform: none;
+  }
+  @include breakpoint($gt-medium-handheld) {
+    &--hero,
+    &--tile,
+    &--headline,
+    &--event {
+      @include title-24px();
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    &--statistic {
+      font-size: to-unit(60px);
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    &--container {
+      @include title-26px();
+    }
+    &--hero {
+      @include title-20px();
+    }
+    &--lead {
+      @include title-18px();
+    }
+    &--headline {
+      @include title-30px();
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &--filter {
+      @include meta-12px();
+    }
+    &--headline {
+      @include title-48px();
+    }
+  }
+  @include breakpoint($gt-large-desktop) {
+    &--hero {
+      @include title-30px();
+    }
+    &--container {
+      @include title-30px();
+    }
+  }
+  .theme--dark & {
+      opacity: .94;
+  }
+  .theme--dark &--tile {
+      line-height: 1.1;
+  }
+  &--inverse {
+    color: $white;
+  }
+}

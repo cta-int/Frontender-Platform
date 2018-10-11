@@ -1,0 +1,8 @@
+{% include "partials/article/post-hero.html.twig" with {model: model.articles|first} %}
+<{{ config.container_tag|default('div') }} class="{{ ['grid grid--posts  |  leader--hero  |  wing--right', container_class]|join('  |  ') }}">
+    {% for article in model.articles|slice(1, 4) %}
+        <div class="grid__cell  |  gutters">
+            {% include "partials/article/post.html.twig" with {model: article} %}
+        </div>
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>

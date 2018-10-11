@@ -1,0 +1,31 @@
+{
+    "value": {
+        "label": {
+            "en": "",
+            "fr": ""
+        },
+        "url": {
+            "en": "",
+            "fr": ""
+        }
+    },
+    "label": {
+        "en": "Link"
+    },
+    "type": "compound",
+    "controls": {
+        "label": {
+            "label": {
+                "en": "Label"
+            },
+            "control": "core/text"
+        },
+        "url": {
+            "label": {
+                "en": "URL"
+            },
+            "control": "core/text"
+        }
+    },
+    "control": "core/abstract"
+}

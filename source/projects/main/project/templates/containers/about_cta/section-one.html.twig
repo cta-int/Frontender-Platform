@@ -1,0 +1,67 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="about-cta">
+        <div class="about-cta--container  |  layout--narrow  |  wings">
+            <div class="is-root trailer-inside">
+                <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">01</span></div>
+                <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">{{ {en: 'Message from the director', fr: "Message du directeur"}|t(locales) }}</h2>
+                <div class="layout">
+                    <div class="gutters">
+                        <p class="title title--tile"><strong>
+                            {{ {en: 'Innovations in next generation agriculture are guiding a sustainable path to food and nutrition security.',
+                                fr: 'Les innovations dans l’agriculture de demain constituent un moyen durable d’atteindre la sécurité alimentaire et nutritionnelle.'}|t(locales) }}
+                        </strong></p>
+                        <p class="paragraph--lead  |  trailer  |  leader">
+                            {{ {en: 'As the impacts of climate change and conflicts threaten progress towards addressing global hunger, we need to apply new thinking in agriculture. Agricultural innovation can strengthen the resilience of agri-food systems and offer adaptation strategies to mitigate the impacts of climate change.',
+                                fr: 'Alors que les impacts du changement climatique et des conflits menacent les progrès dans l’éradication de la faim dans le monde, nous devons repenser l’agriculture. L’innovation agricole peut renforcer la résilience des systèmes agroalimentaires et offrir des stratégies d’adaptation pour atténuer les impacts du changement climatique.'}|t(locales) }}
+                        </p>
+                    </div>
+                    <div class="layout__cell  |  gutters trailer-inside--hero">
+                    </div>
+                </div>
+                <div class="layout layout--even">
+                    <div class="layout__cell  |  gutters">
+                        <p class="trailer">
+                            {{ {en: 'At CTA, the Technical Centre for Agricultural and Rural Co-operation, we believe that investment in the right innovations in agriculture will help to catalyse development.',
+                                fr: 'Au Centre technique de coopération agricole et rurale (CTA), nous sommes convaincus que l’investissement dans les bonnes innovations agricoles contribuera à catalyser le développement.'}|t(locales) }}
+                        </p>
+                        <p class="trailer">
+                            {{ {en: "Youth, digitilisation and climate resilience are CTA’s priority intervention areas in its refreshed strategic plan, 2018-2020, which, are critical to driving progress towards the Sustainable Development Goals. All three are in line with the The European Consensus on Development, based around the 5 Ps: people, planet, prosperity, peace and partnership.",
+                                fr: "La jeunesse, la digitalisation et la résistance au changement climatique comptent parmi les domaines d’intervention prioritaires du CTA, comme l’indique son nouveau plan stratégique pour 2018-2020. Ils sont essentiels pour emmener des progrès dans la réalisation des Objectifs de développement durable. Et tous trois sont conformes au consensus européen pour le développement, basé sur les 5 « P » : peuples, planète, prospérité, paix et partenariat."}|t(locales) }}
+                        </p>
+                        <p class="trailer">
+                            {{ {en: 'African, Caribbean and Pacific (ACP) countries have identified youth employment as a key determinant factor for sustainable development. An empowered workforce starts with the engagement of youth and youth organisations. At CTA we have learned how to harness the vitality and spirit of youth. Through our ‘Agrihack’ contests we have offered many young entrepreneurs a step-up to becoming the next generation agribusiness leaders driving change in the agricultural revolution.',
+                                fr: "Les pays d’Afrique, des Caraïbes et du Pacifique (ACP) ont identifié l’emploi des jeunes comme le premier contributeur au développement durable. Une main d’œuvre autonomisée commence par l’implication des jeunes et des organisations de la jeunesse. Au CTA, nous avons appris à exploiter la vitalité et l’enthousiasme des jeunes. À travers nos concours « Agrihack », nous avons offert à de nombreux jeunes entrepreneurs un tremplin pour devenir la nouvelle génération de chefs d’agro-entreprise, qui stimulent la révolution agricole."}|t(locales) }}
+                        </p>
+
+                    </div>
+                    <div class="layout__cell  |  gutters">
+                        <p class="trailer">
+                            {{ {en: 'Many of these ‘agripreneurs’ bring ICT solutions to age-old problems. In the digitalisation of agriculture, we see smallholder farmers being offered new ways to improve their livelihoods. The implications for productivity, reduction of food waste and even gender equity are enormous and CTA is now considered a guiding force in this area.',
+                                fr: "Grâce à l’utilisation des TIC, bon nombre de ces « agripreneurs » trouvent des solutions à des problèmes de longue date. Dans le cadre de la digitalisation de l’agriculture, nous constatons que de nouvelles méthodes sont proposées aux petits exploitants pour améliorer leurs moyens de subsistance. Les implications pour la productivité, la réduction du gaspillage alimentaire et même l’égalité des sexes sont considérables et le CTA est aujourd’hui considéré comme un leader dans ce domaine."}|t(locales) }}
+                        </p>
+                        <p class="trailer">
+                            {{ {en: 'Digitalisation is also at the heart of climate-smart agriculture. Many solutions that can help agricultural systems to adapt and mitigate the effects of climate change have emerged. The challenge is in the delivery of these solutions to farmers that need them the most. CTA therefore focuses on the development of partnerships to guide the implementation of climate-smart agriculture.',
+                                fr: "La digitalisation est aussi au cœur de l’agriculture intelligente face au climat. De nombreuses solutions pouvant aider les systèmes agricoles à atténuer les effets du changement climatique et à s’y adapter ont émergé. Le défi consiste à fournir ces solutions aux agriculteurs qui en ont le plus besoin. Pour ce faire, le CTA se concentre sur le développement de partenariats pour orienter la mise en œuvre de l’agriculture climato-intelligente."}|t(locales) }}
+                        </p>
+                        <p class="trailer">
+                            {{ {en: 'We will achieve nothing without such partnerships, and so, I look forward to continuing our important work together with the support of the ACP Group of States and the European Union.',
+                                fr: "Nous n’arriverons à rien sans ces partenariats. Par conséquent, je me réjouis de poursuivre notre précieux travail avec le soutien du Groupe des États ACP et l’Union européenne."}|t(locales) }}
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="about-cta__core-values  |  trailer-inside--giant  |  leader-inside--giant">
+                    <img class="image image--stretch" src="/images/content/about-cta/core-values.svg" alt="CTA's core values">
+                    <div class="goal goal--filled">
+                        <p class="body--whisper">
+                            {{ 'Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam.'|t(locales) }}
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>

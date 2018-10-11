@@ -1,0 +1,25 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="is-inactive  |  tab-teaser__panel  |  stack stack--stacked" id="{{ tab.id ~ event._id }}">
+    <div class="tab-teaser__panel-wing  |  leader-inside--hero  |  stack__unit">
+        <div class="stack__unit  |  gutters">
+            <blockquote class="quote  |  trailer--small  |  gutter">{{ labels.quote|t(locales) }}</blockquote>
+            <p class="meta meta--s  |  leader-inside--small leader-inside--tiny  |  trailer--tiny trailer-inside--tiny  |  gutter">{{ labels.quote_source|t(locales) }}</p>
+            <p class="body--whisper  |  gutter">{{ labels.quote_date|t(locales) }}</p>
+        </div>
+    </div>
+    {% if model.keyFigure|length > 0 %}
+        <div class="stack__unit stack__pin">
+            <div class="stack__unit  stack__pin  |  pin-box  |  stack  |  leader">
+                {% for figure in model.keyFigure|slice(0, 4) %}
+                    <div class="leader-inside  |  trailer-inside  |  stack__unit  | gutters  |  divider divider--right">
+                        <figure class="stat stat--s stat--padded">
+                          <p class="stat__figure">{{ figure.value|t(locales) }}</p>
+                          <figcaption class="stat__caption  |  meta meta--s"><span class="is-narrative">{{ figure.value|t(locales) }} </span>{{ figure.description|t(locales) }}</figcaption>
+                        </figure>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>

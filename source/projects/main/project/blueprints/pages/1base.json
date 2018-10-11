@@ -1,0 +1,1033 @@
+{
+    "fe-id": null,
+    "template": "layouts/global.html.twig",
+    "name": {
+        "en": "Base page"
+    },
+    "description": {
+        "en": "Page with masthead and footer"
+    },
+    "template_config": {
+        "attributes": {
+            "label": {
+                "en": "Attributes"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Page"
+                    },
+                    "label": {
+                        "en": "Page title"
+                    },
+                    "control": "core/text"
+                },
+                "meta_description": {
+                    "value": {
+                        "en": "",
+                        "fr": ""
+                    },
+                    "label": {
+                        "en": "Serp Description"
+                    },
+                    "control": "core/text"
+                },
+                "meta_keywords": {
+                    "value": {
+                        "en": "",
+                        "fr": ""
+                    },
+                    "label": {
+                        "en": "Serp keywords"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Config"
+            },
+            "controls": {
+                "body_class": {
+                    "value": "",
+                    "label": {
+                        "en": "Body class"
+                    },
+                    "control": "project/container_class"
+                },
+                "colour_background": {
+                    "value": "",
+                    "control": "project/colour_background"
+                },
+                "colour_theme": {
+                    "value": "",
+                    "control": "project/colour_theme"
+                }
+            }
+        }
+    },
+    "containers": [
+      {
+          "fe-id": null,
+          "name": {
+              "en": "Masthead"
+          },
+          "description": {
+              "en": "CTA's main masthead"
+          },
+          "template": "containers/global/group/group.html.twig",
+          "template_config": {
+              "config": {
+                  "label": {
+                      "en": "Settings"
+                  },
+                  "controls": {
+                      "container_tag": {
+                          "value": "header",
+                          "control": "core/hidden"
+                      },
+                      "container_class": {
+                          "value": "masthead",
+                          "control": "core/hidden"
+                      }
+                  }
+              },
+              "containers": [{
+                      "fe-id": null,
+                      "name": {
+                          "en": "Network navigation"
+                      },
+                      "description": {
+                          "en": ""
+                      },
+                      "template": "modules/network-navigation/network-navigation.html.twig",
+                      "template_config": {
+                          "mobile": {
+                              "label": {
+                                  "en": "Mobile Settings"
+                              },
+                              "controls": {
+                                  "menu_label": {
+                                      "value": {
+                                          "en": "Menu",
+                                          "fr": "Menu"
+                                      },
+                                      "label": {
+                                          "en": "Menu label (mobile only)"
+                                      },
+                                      "control": "core/text"
+                                  },
+                                  "show_menu_label": {
+                                      "value": 0,
+                                      "label": {
+                                          "en": "Show menu label (mobile only)"
+                                      },
+                                      "control": "project/show"
+                                  },
+                                  "menu_icon": {
+                                      "value": "leaf",
+                                      "label": {
+                                          "en": "Menu icon (mobile only)"
+                                      },
+                                      "control": "core/list",
+                                      "options": [{
+                                              "label": {
+                                                  "en": "Leaf"
+                                              },
+                                              "value": "leaf"
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Home"
+                                              },
+                                              "value": "home"
+                                          }
+                                      ]
+                                  }
+                              }
+                          },
+                          "links": {
+                              "label": {
+                                  "en": "Network navigation"
+                              },
+                              "controls": {
+                                  "links": {
+                                      "value": [{
+                                              "label": {
+                                                  "en": "About CTA",
+                                                  "fr": "À propos CTA"
+                                              },
+                                              "page": "about-cta",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Contact",
+                                                  "fr": "Contact"
+                                              },
+                                              "page": "contact",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Working with CTA",
+                                                  "fr": "Travailler avec CTA"
+                                              },
+                                              "page": "working-with-cta",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Publications",
+                                                  "fr": "Publications"
+                                              },
+                                              "page": "https://publications.cta.int/",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Spore",
+                                                  "fr": "Spore"
+                                              },
+                                              "page": "http://spore.cta.int/",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "ICT Update",
+                                                  "fr": "ICT Update"
+                                              },
+                                              "page": "ictupdate",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Press",
+                                                  "fr": "Presse"
+                                              },
+                                              "page": "press",
+                                              "id": ""
+                                          }
+                                      ],
+                                      "label": {
+                                          "en": "Links"
+                                      },
+                                      "control": "core/route",
+                                      "repeatable": true
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  {
+                      "fe-id": null,
+                      "name": {
+                          "en": "Main navigation"
+                      },
+                      "description": {
+                          "en": ""
+                      },
+                      "template": "modules/main-navigation/main-navigation.html.twig",
+                      "template_config": {
+                          "main_menu": {
+                              "label": {
+                                  "en": "Main navigation"
+                              },
+                              "controls": {
+                                  "brand": {
+                                      "label": {
+                                          "en": "Brand"
+                                      },
+                                      "value": "cta.html.twig",
+                                      "options": [{
+                                              "label": {
+                                                  "en": "CTA"
+                                              },
+                                              "value": "cta.html.twig"
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "CTA Publishing"
+                                              },
+                                              "value": "cta-publishing.html.twig"
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "ICT Update"
+                                              },
+                                              "value": "ictupdate.html.twig"
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Spore Magazine"
+                                              },
+                                              "value": "spore.html.twig"
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Apps4Ag"
+                                              },
+                                              "value": "apps4ag.html.twig"
+                                          }
+                                      ],
+                                      "control": "project/brand"
+                                  },
+                                  "links": {
+                                      "value": [{
+                                              "label": {
+                                                  "en": "Agribusiness",
+                                                  "fr": "Agribusiness"
+                                              },
+                                              "page": "agribusiness",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "ICTs for agriculture",
+                                                  "fr": "TICs pour l' agriculture"
+                                              },
+                                              "page": "icts-for-agriculture",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Climate resilient agriculture",
+                                                  "fr": "L'agriculture résiliente climatique"
+                                              },
+                                              "page": "climate-resilient-agriculture",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Events",
+                                                  "fr": "Événements"
+                                              },
+                                              "page": "events",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Projects",
+                                                  "fr": "Projets"
+                                              },
+                                              "page": "projects",
+                                              "id": ""
+                                          }
+                                      ],
+                                      "label": {
+                                          "en": "Links"
+                                      },
+                                      "control": "core/route",
+                                      "repeatable": true
+                                  }
+                              }
+                          },
+                          "browse_menu": {
+                              "label": {
+                                  "en": "Browse navigation"
+                              },
+                              "controls": {
+                                  "links": {
+                                      "value": [{
+                                              "label": {
+                                                  "en": "Regions",
+                                                  "fr": "Régions"
+                                              },
+                                              "page": "regions",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Topics",
+                                                  "fr": "Sujets"
+                                              },
+                                              "page": "topics",
+                                              "id": ""
+                                          },
+                                          {
+                                              "label": {
+                                                  "en": "Blog",
+                                                  "fr": "Blog"
+                                              },
+                                              "page": "blog",
+                                              "id": ""
+                                          }
+                                      ],
+                                      "label": {
+                                          "en": "Links"
+                                      },
+                                      "control": "core/route",
+                                      "repeatable": true
+                                  }
+                              }
+                          },
+                          "settings": {
+                              "label": {
+                                  "en": "Settings"
+                              },
+                              "controls": {
+                                  "show_menu": {
+                                      "value": "",
+                                      "label": {
+                                          "en": "Hide menu (Only use this when the hero is crowned)"
+                                      },
+                                      "control": "core/list",
+                                      "options": [{
+                                              "value": "No",
+                                              "label": {
+                                                  "en": "No"
+                                              }
+                                          },
+                                          {
+                                              "value": "site-navigation--network",
+                                              "label": {
+                                                  "en": "Yes"
+                                              }
+                                          }
+                                      ]
+                                  }
+                              }
+                          }
+                      }
+                  }
+              ]
+          }
+      },
+      {
+          "fe-id": null,
+          "name": {
+              "en": "Search"
+          },
+          "description": {
+              "en": "General search container for all content types"
+          },
+          "template": "containers/global/search/search.html.twig",
+          "template_config": {
+              "config": {
+                  "label": {
+                      "en": "Settings"
+                  },
+                  "controls": {
+
+                  }
+              },
+              "model": {
+                  "label": {
+                      "en": "Model"
+                  },
+                  "controls": {
+                      "name": {
+                          "value": "search",
+                          "control": "core/hidden"
+                      },
+                      "types": {
+                          "value": "article,event",
+                          "control": "core/hidden"
+                      },
+                      "q": {
+                          "value": "{ query.q }",
+                          "control": "core/hidden"
+                      },
+                      "limit": {
+                          "value": "10",
+                          "control": "core/hidden"
+                      },
+                      "time": {
+                          "value": "{ query.time }",
+                          "control": "core/hidden"
+                      },
+                      "concept": {
+                          "value": "{ query.concepts }",
+                          "control": "core/hidden"
+                      },
+                      "location": {
+                          "value": "{ query.location }",
+                          "control": "core/hidden"
+                      },
+                      "type": {
+                          "value": "{ query.type }",
+                          "control": "core/hidden"
+                      }
+                  }
+              },
+              "labels": {
+                  "label": {
+                      "en": "Labels"
+                  },
+                  "controls": {
+                      "title": {
+                          "value": {
+                              "en": "Find articles and events",
+                              "fr": "Find articles and events"
+                          },
+                          "label": {
+                              "en": "Title"
+                          },
+                          "control": "core/text"
+                      }
+                  }
+              },
+              "containers": [{
+                      "fe-id": null,
+                      "template": "modules/tag-cloud/tag-cloud.html.twig",
+                      "name": {
+                          "en": "Cloud tag",
+                          "fr": "Cloud tag"
+                      },
+                      "description": {
+                          "en": "",
+                          "fr": ""
+                      },
+                      "template_config": {
+                          "config": {
+                              "label": {
+                                  "en": "Settings",
+                                  "fr": "Settings"
+                              },
+                              "controls": {
+                                  "container_class": {
+                                      "value": "topics",
+                                      "control": "project/container_class"
+                                  }
+                              }
+                          },
+                          "labels": {
+                              "label": {
+                                  "en": "Labels"
+                              },
+                              "controls": {
+                                  "container_title": {
+                                      "label": {
+                                          "en": "Title"
+                                      },
+                                      "control": "core/text",
+                                      "value": {
+                                          "en": "Topics",
+                                          "fr": "Topics"
+                                      }
+                                  }
+                              }
+                          },
+                          "containers": [{
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Agrovoc tag 1"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template_config": {
+                                      "model": {
+                                          "label": {
+                                              "en": "Agrovoc",
+                                              "fr": "Agrovoc"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "terms",
+                                                  "control": "project/model/name"
+                                              },
+                                              "id": {
+                                                  "label": {
+                                                      "en": "Agrovoc ID"
+                                                  },
+                                                  "value": "c_9001017",
+                                                  "control": "project/model/id"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Agrovoc tag 2"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template_config": {
+                                      "model": {
+                                          "label": {
+                                              "en": "Agrovoc",
+                                              "fr": "Agrovoc"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "terms",
+                                                  "control": "project/model/name"
+                                              },
+                                              "id": {
+                                                  "label": {
+                                                      "en": "Agrovoc ID"
+                                                  },
+                                                  "value": "c_50227",
+                                                  "control": "project/model/id"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Agrovoc tag 3"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template_config": {
+                                      "model": {
+                                          "label": {
+                                              "en": "Agrovoc",
+                                              "fr": "Agrovoc"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "terms",
+                                                  "control": "project/model/name"
+                                              },
+                                              "id": {
+                                                  "label": {
+                                                      "en": "Agrovoc ID"
+                                                  },
+                                                  "value": "c_7778",
+                                                  "control": "project/model/id"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Agrovoc tag 4"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template_config": {
+                                      "model": {
+                                          "label": {
+                                              "en": "Agrovoc",
+                                              "fr": "Agrovoc"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "terms",
+                                                  "control": "project/model/name"
+                                              },
+                                              "id": {
+                                                  "label": {
+                                                      "en": "Agrovoc ID"
+                                                  },
+                                                  "value": "c_7644",
+                                                  "control": "project/model/id"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Agrovoc tag 5"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template_config": {
+                                      "model": {
+                                          "label": {
+                                              "en": "Agrovoc",
+                                              "fr": "Agrovoc"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "terms",
+                                                  "control": "project/model/name"
+                                              },
+                                              "id": {
+                                                  "label": {
+                                                      "en": "Agrovoc ID"
+                                                  },
+                                                  "value": "c_6211",
+                                                  "control": "project/model/id"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      "fe-id": null,
+                      "name": {
+                          "en": "Fields"
+                      },
+                      "description": {
+                          "en": ""
+                      },
+                      "template": "containers/global/group/group.html.twig",
+                      "template_config": {
+                          "config": {
+                              "label": {
+                                  "en": "Settings"
+                              },
+                              "controls": {
+                                  "container_class": {
+                                      "value": "grid grid--contextual",
+                                      "control": "core/hidden"
+                                  }
+                              }
+                          },
+                          "containers": [{
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Content type"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template": "partials/search-fields/content-type.html.twig",
+                                  "template_config": {
+                                      "labels": {},
+                                      "config": {
+                                          "label": {
+                                              "en": "Settings"
+                                          },
+                                          "controls": {
+                                              "container_class": {
+                                                  "value": "ctx-form__item grid__cell gutters",
+                                                  "control": "core/hidden"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Time frame"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template": "partials/search-fields/period.html.twig",
+                                  "template_config": {
+                                      "labels": {},
+                                      "config": {
+                                          "label": {
+                                              "en": "Settings"
+                                          },
+                                          "controls": {
+                                              "container_class": {
+                                                  "value": "ctx-form__item grid__cell gutters",
+                                                  "control": "core/hidden"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Country"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template": "partials/search-fields/country.html.twig",
+                                  "template_config": {
+                                      "labels": {},
+                                      "config": {
+                                          "label": {
+                                              "en": "Settings"
+                                          },
+                                          "controls": {
+                                              "container_class": {
+                                                  "value": "ctx-form__item grid__cell gutters",
+                                                  "control": "core/hidden"
+                                              }
+                                          }
+                                      },
+                                      "model": {
+                                          "label": {
+                                              "en": "Countries"
+                                          },
+                                          "controls": {
+                                              "name": {
+                                                  "value": "Geoname\\Country",
+                                                  "control": "core/hidden"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              {
+                                  "fe-id": null,
+                                  "name": {
+                                      "en": "Submit"
+                                  },
+                                  "description": {
+                                      "en": ""
+                                  },
+                                  "template": "partials/search-fields/submit-button.html.twig",
+                                  "template_config": {
+                                      "labels": {},
+                                      "config": {
+                                          "label": {
+                                              "en": "Settings"
+                                          },
+                                          "controls": {
+                                              "container_class": {
+                                                  "value": "ctx-form__item grid__cell gutters",
+                                                  "control": "core/hidden"
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          ]
+                      }
+                  }
+              ]
+          }
+      },
+      {
+          "fe-id": null,
+          "name": {
+              "en": "Footer"
+          },
+          "description": {
+              "en": "Main CTA corporate site footer"
+          },
+          "template": "containers/global/footer/footer.html.twig",
+          "template_config": {
+              "model": {
+                  "label": {
+                      "en": "Content",
+                      "fr": "Content"
+                  },
+                  "controls": {
+                      "name": {
+                          "value": "twitter",
+                          "control": "project/model/name",
+                          "options": [{
+                              "label": {
+                                  "en": "Twitter",
+                                  "fr": "Twitter"
+                              },
+                              "value": "twitter"
+                          }]
+                      },
+                      "username": {
+                          "label": {
+                              "en": "Twitter handle",
+                              "fr": "Twitter handle"
+                          },
+                          "value": "CTAFlash",
+                          "control": "core/text"
+                      },
+                      "hashtag": {
+                          "label": {
+                              "en": "Hashtag",
+                              "fr": "Hashtag"
+                          },
+                          "value": "",
+                          "control": "core/text"
+                      },
+                      "limit": {
+                          "label": {
+                              "en": "Limit",
+                              "fr": "Limit"
+                          },
+                          "value": 20,
+                          "control": "core/number"
+                      }
+                  }
+              },
+              "content": {
+                  "label": {
+                      "en": "Static content"
+                  },
+                  "controls": {
+                      "body": {
+                          "value": {
+                              "en": "CTA is a joint institution operating under the framework of the Cotonou Agreement between the ACP Group of States (Africa, the Caribbean and the Pacific) and the EU Member States (European Union). CTA is funded by the European Union.",
+                              "fr": "CTA fonctionne dans le cadre de l'Accord de Cotonou et est financé par l'UE."
+                          },
+                          "label": {
+                              "en": "Footer body"
+                          },
+                          "control": "core/textarea"
+                      },
+                      "links": {
+                          "value": [{
+                                  "label": {
+                                      "en": "Disclaimer",
+                                      "fr": "Avertissement"
+                                  },
+                                  "page": "disclaimer",
+                                  "id": ""
+                              },
+                              {
+                                  "label": {
+                                      "en": "Copyrights",
+                                      "fr": "Droits d’auteur"
+                                  },
+                                  "page": "copyrights",
+                                  "id": ""
+                              },
+                              {
+                                  "label": {
+                                      "en": "Privacy statement",
+                                      "fr": "Déclaration de confidentailité"
+                                  },
+                                  "page": "privacy-statement",
+                                  "id": ""
+                              }
+                          ],
+                          "label": {
+                              "en": "Links"
+                          },
+                          "control": "core/route",
+                          "repeatable": true
+                      }
+                  }
+              },
+              "first_column": {
+                  "label": {
+                      "en": "Column 1"
+                  },
+                  "controls": {
+                      "title": {
+                          "value": {
+                              "en": "About CTA",
+                              "fr": "À propos CTA"
+                          },
+                          "label": {
+                              "en": "Title"
+                          },
+                          "control": "core/text"
+                      },
+                      "links": {
+                          "value": [{
+                              "label": {
+                                  "en": "About CTA",
+                                  "fr": "À propos CTA"
+                              },
+                              "page": "about-cta",
+                              "id": ""
+                          }],
+                          "label": {
+                              "en": "Links"
+                          },
+                          "control": "core/route",
+                          "repeatable": true
+                      }
+                  }
+              },
+              "second_column": {
+                  "label": {
+                      "en": "Column 2"
+                  },
+                  "controls": {
+                      "title": {
+                          "value": {
+                              "en": "Regions",
+                              "fr": "Régions"
+                          },
+                          "label": {
+                              "en": "Title"
+                          },
+                          "control": "core/text"
+                      },
+                      "links": {
+                          "value": [
+                              {
+                                  "label": {
+                                      "en": "Caribbean",
+                                      "fr": "Caraïbes"
+                                  },
+                                  "page": "channel",
+                                  "id": "216a5964-0897-4eeb-ac95-cf7f199f0602"
+                              },
+                              {
+                                  "label": {
+                                      "en": "Central Africa",
+                                      "fr": "Afrique centrale"
+                                  },
+                                  "page": "channel",
+                                  "id": "857c927c-2d73-4bc6-8039-3fab70489dd9"
+                              },
+                              {
+                                  "label": {
+                                      "en": "Eastern Africa",
+                                      "fr": "Afrique du l'est"
+                                  },
+                                  "page": "channel",
+                                  "id": "52e3acc1-1b9e-41e9-8bf6-bfe487642562"
+                              },
+                              {
+                                  "label": {
+                                      "en": "Western Africa",
+                                      "fr": "Afrique de l'ouest"
+                                  },
+                                  "page": "channel",
+                                  "id": "30597942-bb27-47d2-99d8-96dc76e0fcad"
+                              },
+                              {
+                                  "label": {
+                                      "en": "Southern Africa",
+                                      "fr": "Afrique du sud"
+                                  },
+                                  "page": "channel",
+                                  "id": "a38ed776-ef17-4a56-abb3-f9320679a103"
+                              },
+                              {
+                                  "label": {
+                                      "en": "Pacific",
+                                      "fr": "Pacifque"
+                                  },
+                                  "page": "channel",
+                                  "id": "259ac34a-a476-43cb-a7db-849b061615a4"
+                              }
+                          ],
+                          "label": {
+                              "en": "Links"
+                          },
+                          "control": "core/route",
+                          "repeatable": true
+                      }
+                  }
+              },
+              "config": {
+                  "label": {
+                      "en": "Settings"
+                  },
+                  "controls": {
+                      "container_tag": {
+                          "value": "div",
+                          "control": "project/container_tag"
+                      },
+                      "leader": {
+                          "value": "",
+                          "control": "project/leader"
+                      },
+                      "trailer": {
+                          "value": "",
+                          "control": "project/trailer"
+                      },
+                      "container_class": {
+                          "value": "",
+                          "control": "project/container_class"
+                      }
+                  }
+              }
+          }
+      }
+    ]
+}

@@ -1,0 +1,17 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/concept.html.twig" as concept %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if(model.related.articles|length > 7) %}
+<div class="{{ [container_class]|join('  |  ') }}">
+	<h2 class="title  |  gutters">{{ 'Also in this issue'|t(locales) }}</h2>
+	<div class="grid grid--rows">
+		{% for model in model.related.articles|slice(6) %}
+			<article class="grid__cell  |  leader  |  gutters">
+				{% include 'partials/article/post-row.html.twig' with {model: article} %}
+			</article>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}

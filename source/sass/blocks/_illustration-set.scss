@@ -1,0 +1,104 @@
+/*
+Illustration set
+
+This illustration set is used at the bottom of search elements.
+
+markup:
+<div class="search__illustrations-set">
+    <span class="search__illustration illustration illustration--fish-market"></span>
+    <span class="search__illustration illustration illustration--fishing-shore"></span>
+    <span class="search__illustration illustration illustration--fishing-boat"></span>
+    <span class="water-illustration"></span>
+</div>
+
+sg-wrapper:
+<div class="well  |  is-root" style="height: 250px;">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.17
+*/
+
+.search__illustrations-set {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.search__illustration {
+  position: relative;
+  vertical-align: bottom;
+  display: inline-block;
+  color: $white;
+  &.illustration {
+    z-index: 10;
+    &--fish-market {
+      position: absolute;
+      bottom: -1px;
+      font-size: to-unit(70px);
+      margin-left: 30px;
+      display: none;
+      @include breakpoint($gt-large-handheld) {
+        display: block;
+      }
+    }
+    &--fishing-shore,
+    &--fishing-boat{
+      position: absolute;
+
+      font-size: to-unit(120px);
+    }
+    &--fish-barn {
+      display: none;
+      position: absolute;
+      font-size: to-unit(63px);
+      bottom: 0;
+      @include breakpoint($gt-large-handheld) {
+        display: block;
+        left: auto;
+        margin-left: percentage(1 / 18)
+      }
+    }
+    &--fishing-shore {
+      left: -6px;
+      bottom: -68px;
+      @include breakpoint($gt-large-handheld) {
+        left: auto;
+        margin-left: percentage(6 / 18);
+      }
+      @include breakpoint($gt-small-desktop) {
+        margin-left: percentage(7 / 18);
+      }
+    }
+    &--fishing-boat {
+      margin-left: percentage(12 / 18);
+      display: none;
+      bottom: -66px;
+      @include breakpoint($gt-large-handheld) {
+        display: block;
+      }
+      @include breakpoint($gt-small-desktop) {
+        margin-left: percentage(13 / 18);
+      }
+    }
+  }
+}
+
+.water-illustration {
+  mask-image: url("/images/line-art/water.svg");
+  background-color: $white;
+  background-repeat: repeat-x;
+  color: $black;
+  position: absolute;
+  bottom: -1px;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  @include breakpoint($gt-large-handheld) {
+    width: percentage(10 / 18);
+  }
+  @include breakpoint($gt-medium-desktop) {
+    width: percentage(11 / 18);
+  }
+}

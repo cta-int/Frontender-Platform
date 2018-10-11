@@ -1,0 +1,49 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "media",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                "control": "project/model/id"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "figure",
+                "control": "project/container_tag"
+            },
+            "crown": {
+                "value": "",
+                "control": "project/crown"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "containers": []
+}

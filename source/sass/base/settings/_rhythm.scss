@@ -1,0 +1,14 @@
+/*
+Rhythm
+
+This measure is used to calculate vertical measurements like line-height and top and bottom paddings and margins. All vertical measurements need to be a whole multiple of this value to maintain consistent vertical rhythm.
+
+$rhythm - 3px
+
+markup:
+{$modifiers}
+
+Styleguide 1.3.1
+*/
+
+$rhythm: 3px;

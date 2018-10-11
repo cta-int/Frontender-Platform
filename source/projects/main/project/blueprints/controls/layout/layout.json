@@ -1,0 +1,29 @@
+{
+    "value": "layout",
+    "label": {
+        "en": "Layout"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "layout",
+            "label": {
+                "en": "Default, a larger main column"
+            }
+        },
+        {
+            "value": "layout layout--split",
+            "label": {
+                "en": "A slightly larger main column"
+            }
+        },
+        {
+            "value": "layout layout--even",
+            "label": {
+                "en": "Two equally wide columns"
+            }
+        }
+    ]
+}

@@ -1,0 +1,105 @@
+/*
+Filter
+
+Requires: Toggle script
+
+markup:
+<div class="filter" id="1234">
+  <button class="filter__trigger  |  title" data-toggle="1234">Sort by</button>
+  <ul class="filter__options  |  reset">
+    <li><a class="filter__item  |  fx" href="javascript:void()">Date (newer-older)</a></li>
+    <li><a class="filter__item  filter__item--selected  |  fx" href="javascript:void()">Date (older-newer)</a></li>
+    <li><a class="filter__item  |  fx" href="javascript:void()">Alphabetical order (A-Z)</a></li>
+    <li><a class="filter__item  |  fx" href="javascript:void()">Alphabetical order (Z-A)</a></li>
+  </ul>
+</div>
+<div class="is-active  |  filter" id="5678">
+  <button class="filter__trigger  |  title" data-toggle="5678">Filter by</button>
+  <ul class="filter__options  |  reset">
+    <li><a class="filter__item filter__item--selected  |  fx" href="javascript:void()">Relevance</a></li>
+    <li><a class="filter__item  |  fx" href="javascript:void()">Upcoming</a></li>
+    <li><a class="filter__item  |  fx" href="javascript:void()">Passed</a></li>
+  </ul>
+</div>
+
+Styleguide 3.26
+*/
+
+.filter {
+  position: relative;
+  display: inline-block;
+  padding-right: rhythm(2);
+  &:last-child,
+  &--last {
+    padding-right: 0;
+  }
+  &__trigger {
+    @include meta-11px();
+    &:after {
+      @extend .icon !optional;
+      content: $icon-chevron-down;
+      color: mix($black, $white, 26%);
+      margin-left: rhythm();
+    }
+  }
+  &__options {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    background: $white;
+    border: 1px solid mix($color-body, $white, 54%);
+    top: 130%;
+    top: calc(100% + rhythm(4));
+    max-height: rhythm(66);
+    overflow-y: scroll;
+    .container-header__filter & {
+      right: 0;
+    }
+  }
+  &.is-active &__options {
+
+  }
+  &__item {
+    display: block;
+    padding: rhythm(3) gutter();
+    font-family: $font-family--meta;
+    font-size: to-unit(14px, 1em, 16px);
+    line-height: to-unit(15px, 1, 14px);
+    white-space: nowrap;
+    &--selected {
+      background: mix($color-body, $white, 10%);
+    }
+    &,
+    &:hover,
+    &:focus {
+      color: mix($color-body, $white, 76%);
+    }
+    &:hover,
+    &:focus {
+      background: mix($color-body, $white, 26%);
+    }
+  }
+  &.is-active &__options {
+    opacity: 1;
+    visibility: visible;
+  }
+  &.is-active &__trigger {
+    &:after {
+      transform: rotate(180deg);
+      /* Psuedo elements are inline by default, it's not possible to rotate an inline element.  */
+      display: inline-block;
+    }
+  }
+  &:hover  &__options,
+  &:focus  &__options {
+    .no-js & {
+      display: inline-block;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &__trigger {
+      @include meta-12px();
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{% if model.articles|length %}
+    {% import "macros/date.html.twig" as date %}
+
+    {% set pages = {
+        vacancy: {
+            page: 'working-with-cta/vacancies',
+            label: {
+                'en': 'Vacancies',
+                'fr': 'Postes vacants'
+            }
+        },
+        internship: {
+            page: 'working-with-cta/internships',
+            label: {
+                'en': 'Internships',
+                'fr': 'Stage'
+            }
+        },
+        call_for_external_expert: {
+            page: 'working-with-cta/calls-for-external-experts',
+            label: {
+                'en': 'Calls for external experts',
+                'fr': 'Appel à des experts externes'
+            }
+        },
+        call_for_tender: {
+            page: 'working-with-cta/calls-for-tenders',
+            label: {
+                'en': 'Calls for tenders',
+                'fr': 'Appels d’offre'
+            }
+        },
+        call_for_proposal: {
+            page: 'working-with-cta/calls-for-proposals',
+            label: {
+                'en': 'Calls for proposals',
+                'fr': 'Appel à proposition'
+            }
+        },
+        partnership: {
+            page: 'working-with-cta/partnerships',
+            label: {
+                'en': 'Partnerships',
+                'fr': 'Partenariat'
+            }
+        }
+    } %}
+
+    <div class="title--section  |  trailer">
+        {% include("modules/teleport/teleport-link.html.twig") with {
+            link: config.link|default(attribute(pages, model.articles|first.articleType))
+        } %}
+    </div>
+    <ul class="reset  |  short-list">
+        {% for model in model.articles %}
+            <li class="short-list__item">
+                {% include "partials/article/opportunity/short-list-item.html.twig" %}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endif %}

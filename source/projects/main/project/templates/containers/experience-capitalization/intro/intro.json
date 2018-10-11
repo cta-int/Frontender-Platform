@@ -1,0 +1,102 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition hero container",
+        "fr": "Exposition hero container"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "containers/experience-capitalization/intro/intro.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Background image"
+            },
+            "controls": {
+                "name": {
+                    "label": {
+                        "en": "Resource Model",
+                        "fr": "Resource Model"
+                    },
+                    "type": "text",
+                    "value": "media"
+                },
+                "id": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Resource ID",
+                        "fr": "Resource ID"
+                    },
+                    "type": "text",
+                    "value": "34b8b49c-8ed9-4973-b9a2-7028eaf332c0"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels",
+                "fr": "Labels"
+            },
+            "controls": {
+                "container_title": {
+                    "value": {
+                        "en": "Shaping the future",
+                        "fr": "Shaping the future"
+                    },
+                    "label": {
+                        "en": "Headline"
+                    },
+                    "control": "core/text"
+                },
+                "container_subtitle":  {
+                    "value": {
+                        "en": "Experience Capitalization",
+                        "fr": "Experience Capitalization"
+                    },
+                    "label": {
+                        "en": "Subtitle",
+                        "fr": "Subtitle"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Config",
+                "fr": "Config"
+            },
+            "controls": {
+                "show_exposition_menu": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Display exposition menu",
+                        "fr": "Display exposition menu"
+                    },
+                    "type": "list",
+                    "value": "1",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": {
+                                "en": "Show menu",
+                                "fr": "Show menu"
+                            }
+                        },
+                        {
+                            "value": "0",
+                            "label": {
+                                "en": "Hide menu",
+                                "fr": "Hide menu"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

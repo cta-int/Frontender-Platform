@@ -1,0 +1,34 @@
+{
+    "labels": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "field_label": {
+                "value": {
+                    "en": "Period",
+                    "fr": "Period"
+                },
+                "label": {
+                    "en": "Label"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "selected": {
+                "value": true,
+                "control": "project/model/upcoming"
+            },
+            "container_class": {
+                "value": "ctx-form__item grid__cell gutters",
+                "control": "core/hidden"
+            }
+        }
+    }
+}

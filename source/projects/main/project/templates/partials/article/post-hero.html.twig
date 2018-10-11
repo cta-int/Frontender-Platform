@@ -1,0 +1,59 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="post post--hero  |  layout">
+    {% if show_lead_image|default(1) %}
+        <div class="post__media  |  layout__cell  |  gutters">
+            <a class="anchor anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                {{ image.post_hero(model.link.mediaObject|lead) }}
+            </a>
+        </div>
+    {% endif %}
+    <div class="post__content  |  layout__cell layout__cell--aside layout__cell--aside--l  |  stack stack--stacked  |  wing--right">
+        <div class="stack__unit  |  gutters">
+
+            {% if show_publication_date|default(1) %}
+                {{ date.article(model.datePublished) }}
+            {% endif %}
+
+            {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length > 0 %}
+                <span class="meta">
+                    {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
+                </span>
+            {% endif %}
+
+            {% if show_channel|default(0) %}
+                <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
+            {% endif %}
+
+            <h3 class="title title--tile anchor--reset">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                    {{ model.headline }}
+                </a>
+            </h3>
+
+            {% if show_author_name|default(1) and model.link.person.author|first.name  %}
+                <div class="media media--middle  |  bleed">
+                    <div class="media__figure  |  gutters">
+                        <img class="image image--stretch" width="30" height="30" alt="{{ model.link.person.author|first.name }}" src="{{ model.link.person.author|first.avatar }}">
+                    </div>
+                    <div class="media__content  |  body--whisper">
+                        {{ author.single(model.link.person.author) }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if show_stand_first|default(1) %}
+    	       <p class="post__intro">{{ model.about|raw }}</p>
+            {% endif %}
+
+            {% if show_read_more|default(1) %}
+    	       <a class="read-more" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|t(locales) }}</a>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

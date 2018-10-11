@@ -1,0 +1,42 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'article-headline  |  leader-inside--hero  |  trailer-inside--normal  |  layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout  |  layout__cell layout__cell--main">
+        <div class="layout__cell layout__cell--main  |  gutters">
+            <h1 class="article-headline__title  |  trailer trailer-inside--tiny  |  title title--headline">{{ channel.name|t(locales) }}</h1>
+            {% if channel.description %}
+                <p class="article-headline__byline  |  meta  |  trailer">{{ channel.description|t(locales) }}</p>
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--aside  | wings">
+            <div class="gutters">
+                {% if channel.query.must|filterArray('type', 'geo')|first %}
+                    {% include "partials/location.html.twig" with {
+                        "location": channel.query.must|filterArray('type', 'geo')|first,
+                        "dark": true
+                    } %}
+                {% endif %}
+                {% if channel.query.must|filterArray('type', 'concept') %}
+                    <ul class="reset label-list label-list--dark reset list--inline  leader--normal">
+                        {% for label in channel.query.must|filterArray('type', 'concept') %}
+                            <li>
+                                {{ concept.tag_name(label, locale) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside  |  wings  |  trailer trailer-inside--small">
+        {% if labels.description %}
+            <p class="gutters">{{ labels.description|t(locales) }}</p>
+        {% else %}
+            <span class="is-silent">&nbsp;</span>
+        {% endif %}
+    </div>
+</{{ config.container_tag|default('header') }}>

@@ -1,0 +1,26 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% set events = [] %}
+{% for container in containers %}
+	{% set events = events|merge([container.data.event]) %}
+{% endfor %}
+
+<div class="{{ []|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    {% if show_teleport %}
+        {% include("modules/teleport/teleport.html.twig")  %}
+    {% endif %}
+
+    {% if container_title %}
+        <h2 class="title title--section  |  trailer--hero">{{ container_title|t(locales) }}</h2>
+    {% endif %}
+
+    <ul class="reset  |  trailer{{ show_short_list|default(1) ? '  |  short-list' }}">
+        {% for event in events %}
+            <li class="{{ show_short_list|default(1) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                {% include 'partials/event/short-list-item.html.twig' %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

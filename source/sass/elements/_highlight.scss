@@ -1,0 +1,57 @@
+/*
+Highlight
+
+.theme.theme--cta - Standard highlight
+.theme.theme--blue - Blue highlight
+.theme.theme--lime - Lime highlight
+.theme.theme--yellow - Yellow highlight
+.theme.theme--gold - Gold highlight
+.theme.theme--orange - Orange highlight
+.theme.theme--salmon - Salmon highlight
+.theme.theme--red - Red highlight
+.theme.theme--burgundy - Burgundy highlight
+.theme.theme--purple - Purple highlight
+
+markup:
+<div class="highlight" style="height: 250px">
+	My container is highlighted
+</div>
+
+sg-wrapper:
+<div class="{$modifiers}">
+		<sg-wrapper-content/>
+</div>
+
+Styleguide 3.49
+*/
+
+.highlight {
+	background: mix($white, $color-theme, 74%);
+	.theme--blue & {
+    background: mix($white, $color-blue, 74%);
+  }
+  .theme--lime {
+    background-color: mix($white, $color-lime, 74%);
+  }
+  .theme--yellow & {
+    background-color: mix($white, $color-yellow, 74%);
+  }
+  .theme--gold & {
+    background-color: mix($white, $color-gold, 74%);
+  }
+  .theme--orange & {
+    background-color: mix($white, $color-orange, 74%);
+  }
+  .theme--salmon & {
+    background-color: mix($white, $color-salmon, 74%);
+  }
+  .theme--red & {
+    background-color: mix($white, $color-red, 74%);
+  }
+  .theme--burgundy & {
+    background-color: mix($white, $color-burgundy, 74%);
+  }
+  .theme--purple & {
+    background-color: mix($white, $color-purple, 74%);
+  }
+}

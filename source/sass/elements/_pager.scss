@@ -1,0 +1,24 @@
+/*
+Pager
+
+Styleguide 3.24
+
+markup:
+<div class="pager-container">
+  <button class="button pager__previous">Previous events</button>
+  <button class="button pager__next">Next events</button>
+</div>
+
+*/
+
+.pager-container {
+  
+}
+.pager {
+  &__previous {
+    float: left;
+  }
+  &__next {
+    float: right;
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "value": "",
+    "label": {
+        "en": "Bottom margin"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "None"
+            }
+        },
+        {
+            "value": "trailer--tiny",
+            "label": {
+                "en": "Tiny"
+            }
+        },
+        {
+            "value": "trailer--small",
+            "label": {
+                "en": "Small"
+            }
+        },
+        {
+            "value": "trailer",
+            "label": {
+                "en": "Default"
+            }
+        },
+        {
+            "value": "trailer--hero",
+            "label": {
+                "en": "Hero"
+            }
+        },
+        {
+            "value": "trailer--giant",
+            "label": {
+                "en": "Giant"
+            }
+        }
+    ]
+}

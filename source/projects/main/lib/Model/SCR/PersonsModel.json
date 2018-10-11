@@ -1,0 +1,11 @@
+{
+    "label": {
+        "en-GB": "Persons",
+        "fr-FR": "Persons"
+    },
+    "map": {
+        "id": "_id",
+        "title": "name",
+        "thumbnail": "avatar"
+    }
+}

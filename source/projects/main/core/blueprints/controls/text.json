@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "My field"
+    },
+    "type": "text",
+    "control": "core/abstract"
+}

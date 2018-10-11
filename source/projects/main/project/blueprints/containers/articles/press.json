@@ -1,0 +1,485 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Press"
+    },
+    "description": {
+        "en": "Press article and media tiles"
+    },
+    "template": "containers/articles/press/press.html.twig",
+    "template_config": {
+        "header": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "articles": {
+                    "value": {
+                        "container_title": {
+                            "en": "Press",
+                            "fr": "Press"
+                        },
+                        "wings": "wings",
+                        "show_margins": "container-header--slim-fit",
+                        "divider": "divider divider--top",
+                        "leader_inside": "leader-inside--hero",
+                        "trailer_inside": "trailer-inside--hero"
+                    },
+                    "type": "compound",
+                    "label": {
+                        "en": "Articles header"
+                    },
+                    "controls": {
+                        "container_title": {
+                            "label": {
+                                "en": "Title"
+                            },
+                            "control": "core/text"
+                        },
+                        "wings": {
+                            "control": "core/hidden"
+                        },
+                        "show_margins": {
+                            "control": "core/hidden"
+                        },
+                        "divider": {
+                            "control": "core/hidden"
+                        },
+                        "leader_inside": {
+                            "control": "core/hidden"
+                        },
+                        "trailer_inside": {
+                            "control": "core/hidden"
+                        }
+                    },
+                    "control": "core/abstract"
+                },
+                "media": {
+                    "value": {
+                        "container_title": {
+                            "en": "Photos and videos",
+                            "fr": "Photos and videos"
+                        },
+                        "wings": "wings",
+                        "show_margins": "container-header--slim-fit",
+                        "divider": "divider divider--top",
+                        "leader_inside": "leader-inside--hero",
+                        "trailer_inside": "trailer-inside--hero"
+                    },
+                    "type": "compound",
+                    "label": {
+                        "en": "Articles header"
+                    },
+                    "controls": {
+                        "container_title": {
+                            "label": {
+                                "en": "Title"
+                            },
+                            "control": "core/text"
+                        },
+                        "wings": {
+                            "control": "core/hidden"
+                        },
+                        "show_margins": {
+                            "control": "core/hidden"
+                        },
+                        "divider": {
+                            "control": "core/hidden"
+                        },
+                        "leader_inside": {
+                            "control": "core/hidden"
+                        },
+                        "trailer_inside": {
+                            "control": "core/hidden"
+                        }
+                    },
+                    "control": "core/abstract"
+                },
+                "title": {
+                    "label": {
+                        "en": "Twitter title",
+                        "fr": "Twitter title"
+                    },
+                    "value": {
+                        "en": "CTA Flash",
+                        "fr": "CTA Flash"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                },
+                "layout": {
+                    "value": "layout",
+                    "label": {
+                        "en": "Layout"
+                    },
+                    "control": "project/layout/layout"
+                },
+                "show_divider": {
+                    "value": 0,
+                    "control": "project/layout/show_divider"
+                },
+                "show_narrow": {
+                    "value": 0,
+                    "control": "project/layout/show_narrow"
+                },
+                "show_outer_wing": {
+                    "value": 1,
+                    "control": "project/layout/show_outer_wing"
+                }
+            }
+        },
+        "tab_config": {
+            "label": {
+                "en": "Tab settings"
+            },
+            "controls": {
+                "selector": {
+                    "value": ".panel-group",
+                    "control": "core/text"
+                },
+                "children": {
+                    "value": ".panel",
+                    "control": "core/text"
+                },
+                "attribute": {
+                    "value": "href",
+                    "control": "core/text"
+                },
+                "allow_multiple": {
+                    "value": 0,
+                    "label": {
+                        "en": "Allow multiple open panels"
+                    },
+                    "control": "core/boolean"
+                },
+                "open_first": {
+                    "value": 1,
+                    "label": {
+                        "en": "Open the first panel"
+                    },
+                    "control": "core/boolean"
+                },
+                "scroll_to": {
+                    "value": 1,
+                    "label": {
+                        "en": "Scroll to open panel"
+                    },
+                    "control": "core/boolean"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content",
+                "fr": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "twitter",
+                    "control": "project/model/name",
+                    "options": [{
+                        "label": {
+                            "en": "Twitter",
+                            "fr": "Twitter"
+                        },
+                        "value": "twitter"
+                    }]
+                },
+                "hashtag": {
+                    "value": "CTAFlash",
+                    "control": "core/text"
+                },
+                "limit": {
+                    "value": 20,
+                    "control": "core/number"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Communiqués"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/articles/post-tiles/post-tiles--article.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "6",
+                                "control": "project/model/limit"
+                            },
+                            "articleType": {
+                                "value": "communique",
+                                "control": "project/model/article_type"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "panel_title": {
+                                "value": {
+                                    "en": "Communiqués",
+                                    "fr": "Communiqués"
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "controls": {
+                            "active": {
+                                "value": 1,
+                                "label": {
+                                    "en": "Open tab"
+                                },
+                                "control": "project/show"
+                            },
+                            "tab_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Tab class"
+                                },
+                                "control": "project/container_class"
+                            },
+                            "panel_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Panel class"
+                                },
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Speeches"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/articles/post-tiles/post-tiles--article.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "6",
+                                "control": "project/model/limit"
+                            },
+                            "articleType": {
+                                "value": "speech",
+                                "control": "project/model/article_type"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "panel_title": {
+                                "value": {
+                                    "en": "Speeches",
+                                    "fr": "Speeches"
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "controls": {
+                            "active": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Open tab"
+                                },
+                                "control": "project/show"
+                            },
+                            "tab_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Tab class"
+                                },
+                                "control": "project/container_class"
+                            },
+                            "panel_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Panel class"
+                                },
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Stories"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/articles/post-tiles/post-tiles--article.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                "control": "project/model/id",
+                               "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "6",
+                                "control": "project/model/limit"
+                            },
+                            "articleType": {
+                                "value": "blog",
+                                "control": "project/model/article_type"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "panel_title": {
+                                "value": {
+                                    "en": "Stories",
+                                    "fr": "Stories"
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "controls": {
+                            "active": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Open tab"
+                                },
+                                "control": "project/show"
+                            },
+                            "tab_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Tab class"
+                                },
+                                "control": "project/container_class"
+                            },
+                            "panel_class": {
+                                "value": "",
+                                "label": {
+                                    "en": "Panel class"
+                                },
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

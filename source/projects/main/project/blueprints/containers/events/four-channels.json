@@ -1,0 +1,367 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "Four columns of events"
+    },
+    "description": {
+        "en": "Container with four channel columns, each containing a list of events"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "wings",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [{
+                                        "value": "",
+                                        "label": {
+                                            "en": "No"
+                                        }
+                                    },
+                                    {
+                                        "value": "container-header--filter",
+                                        "label": {
+                                            "en": "Yes"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": 1,
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+
+                        }
+                    },
+                    "containers": []
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Channel grid"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/channels/channels.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_tag": {
+                                "value": "section",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            }
+                        }
+                    },
+                    "containers": [{
+                            "fe-id": null,
+                            "name": {
+                                "en": "Event channel"
+                            },
+                            "description": {
+                                "en": "Event channel"
+                            },
+                            "template": "modules/events/channel/channel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "2bee40cf-fcaa-41b8-8bc7-2e3a4b0545d4",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": 4,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "show_teleport": {
+                                            "value": 1,
+                                            "control": "project/display/show_teleport"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Event channel"
+                            },
+                            "description": {
+                                "en": "Event channel"
+                            },
+                            "template": "modules/events/channel/channel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "8ee09e5e-db66-483f-a4ba-b1193e35a079",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": 4,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "show_teleport": {
+                                            "value": 1,
+                                            "control": "project/display/show_teleport"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Event channel"
+                            },
+                            "description": {
+                                "en": "Event channel"
+                            },
+                            "template": "modules/events/channel/channel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "f7c8824c-d5c0-4cb4-b81b-f7721e13305f",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": 4,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "show_teleport": {
+                                            "value": 1,
+                                            "control": "project/display/show_teleport"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Event channel"
+                            },
+                            "description": {
+                                "en": "Event channel"
+                            },
+                            "template": "modules/events/channel/channel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": 4,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "show_teleport": {
+                                            "value": 1,
+                                            "control": "project/display/show_teleport"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

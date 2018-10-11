@@ -1,0 +1,41 @@
+{% import "macros/pagination.html.twig" as pagination %}
+{% set pagination_id = random() %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if model.articles | length > 0 %}
+    <div id="{{ pagination_id }}">
+        {# This is only here to make the view worth looking at. #}
+        {% if options.show_first_hr|default(false) %}
+            <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+        {% endif %}
+
+        {% for article in model.articles %}
+            {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
+            {% if not loop.last %}
+                <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if config.show_link|default(0) %}
+      <div class="body--align-center | leader-inside--hero  |  trailer trailer-inside">
+
+        {% include 'partials/menu-link.html.twig' with {link: labels.link, config: {anchor_class: 'button'}} %}
+      </div>
+    {% else %}
+        <div class="body--align-center | leader-inside--hero  |  trailer trailer-inside" data-pagination-parent>
+            {{ pagination.extend(model, articles_total, model, {
+                model_name: 'Channel\\Articles',
+                target: "#" ~ pagination_id,
+                layout: "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                config: {
+                    options: {
+                        show_first_hr: true
+                    }
+                }
+            }) }}
+        </div>
+    {% endif %}
+{% else %}
+    <p class="leader--hero  |  trailer--hero  |  gutters">{{ 'there are no matching opportunities at this time'|t(locales) }}</p>
+{% endif %}

@@ -1,0 +1,11 @@
+{% import "macros/pagination.html.twig" as pagination %}
+
+{# map variables names so the template can always handle articles #}
+{% for article in articles %}
+    {% include "partials/article/nested-media-with-fixed-aside.html.twig" %}
+    {% if not loop.last %}
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+    {% endif %}
+{% endfor %}
+
+{{ pagination.pages(articles, articles_total, model|default(container.model)) }}

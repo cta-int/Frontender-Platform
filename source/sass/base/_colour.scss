@@ -1,0 +1,116 @@
+// to do: import piecss colour constants
+
+/*
+Colour
+
+Styleguide 1.1
+*/
+
+/*
+Base colours
+
+$color-black - #000
+$color-green - #67ab43
+$color-dark-green - #1d673b
+
+markup:
+<div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+
+Styleguide 1.1.1
+*/
+
+$color-black: $black;
+$color-green: #67ab43;
+$color-dark-green: #1d673b;
+
+
+/*
+Spot colours
+
+$color-blue - #56c0dd
+$color-lime - #c1d435
+$color-yellow - #facf21
+$color-gold - #eb942c
+$color-orange - #e26435
+$color-salmon - #eb735d
+$color-red - #ec2d10
+$color-burgundy - #ba222a
+$color-purple - #9b3381
+
+markup:
+<div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+
+Styleguide 1.1.2
+*/
+
+$color-blue: #56c0dd;
+$color-lime: #c1d435;
+$color-yellow: #facf21;
+$color-gold: #eb942c;
+$color-orange: #e26435;
+$color-salmon: #eb735d;
+$color-red: #ec2d10;
+$color-burgundy: #ba222a;
+$color-purple: #9b3381;
+
+
+/*
+Social media colours
+
+$color-rss - RSS Orange
+$color-twitter - Official Twitter blue
+$color-facebook - Official Facebook blue
+$color-linkedin - Official LinkedIn blue
+$color-youtube - Official YouTube red
+$color-youtube--dark - Official YouTube red (darker shade)
+
+markup:
+<div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+
+Styleguide 1.1.3
+*/
+
+$color-rss: #f60;
+$color-twitter: #55acee;
+$color-facebook: #3b5998;
+$color-linkedin: #0077b5;
+$color-youtube: #e52d27;
+$color-youtube--dark: #b31217;
+$color-instagram: #fcaf45;
+$color-vimeo: #162221;
+
+/*
+Applied colours
+
+$color-background - Background colour
+$color-body - Body colour
+$color-theme - Theme colour
+$color-primary - Primary colour
+$color-secondary - Secondary colour
+$color-button - Primary button colour
+
+markup:
+<div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+
+Styleguide 1.1.4
+*/
+
+$color-background: $white;
+$color-border: #ccc;
+$color-body: mix($color-black, $white, 76%);
+$color-theme: $color-green;
+$color-primary: $color-dark-green;
+$color-secondary: $color-green;
+
+/* Mixing colours */
+$color-highlight: $white;
+$color-shadow: $color-black;
+
+/* Button colours */
+$color-button: $color-secondary;
+
+/* Links colours */
+$color-anchor: mix($color-highlight, $color-green, 30%);
+$color-anchor--hover: $color-yellow;
+$color-anchor--active: mix($color-shadow, $color-yellow, 30%);
+$color-anchor--visited: mix($color-shadow, $color-green, 30%);

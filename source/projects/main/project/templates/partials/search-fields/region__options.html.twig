@@ -1,0 +1,8 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<option value="7729891" {% if config.selected == '7729891' or query.location == '7729891' %}selected="selected" {% endif %}>{{ 'Caribbean'|t(locales) }}</option>
+<option value="7729886" {% if config.selected == '7729886' or query.location == '7729886' %}selected="selected" {% endif %}>{{ 'Central Africa'|t(locales) }}</option>
+<option value="7729889" {% if config.selected == '7729889' or query.location == '7729889' %}selected="selected" {% endif %}>{{ 'Eastern Africa'|t(locales) }}</option>
+<option value="9406051" {% if config.selected == '9406051' or query.location == '9406051' %}selected="selected" {% endif %}>{{ 'Southern Africa'|t(locales) }}</option>
+<option value="7729885" {% if config.selected == '7729885' or query.location == '7729885' %}selected="selected" {% endif %}>{{ 'Western Africa'|t(locales) }}</option>
+<option value="2363254" {% if config.selected == '2363254' or query.location == '2363254' %}selected="selected" {% endif %}>{{ 'Pacific'|t(locales) }}</option>

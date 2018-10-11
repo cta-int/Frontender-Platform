@@ -1,0 +1,202 @@
+/*
+Grid
+
+### Flexbox with inline-block fallback
+
+Display: inline-block; mimics the behaviour of flexbox a bit better than floating elements when you have alternating widths of your grid cells and you want them to stay in line.
+
+If you require your columns to stretch to the full height of your container, use the table and table-cell properties. This will not be a good solution if you want to wrap grid cells on multiple rows but is a good fit if you can control the number of grid cells in a row.
+
+.grid - If flexbox is supported, all children will behave like flex items. If not, children are required to have a `.grid__cell class declared on them.
+.grid.grid--stories - When wide enough, the cells will be half the available width.
+.grid.grid--musketeers - Smaller containers
+.grid.grid--teletubbies - Smaller containers
+.grid.grid--posts - Two columns on mobile, four on larger breakpoints
+.grid.grid--even - Always 2 columns
+.grid.grid--rows - Stacked on mobile, two on larger breakpoints, each row divided with border
+.grid.grid--tiles - Stacked on mobile, two on larger breakpoints, three on largest breakpoints
+.grid.grid--align-middle - Align content vertically centered
+.grid.grid--align-end - Align content to flex end (bottom or right depending on flex direction)
+
+markup:
+<div class="{$modifiers}">
+	 <div class="grid__cell">1</div><!--
+  --><div class="grid__cell">2<br>lines</div><!--
+  --><div class="grid__cell">3</div><!--
+  --><div class="grid__cell">4</div><!--
+  --><div class="grid__cell">5</div>
+</div>
+
+Styleguide 2.7
+*/
+/*
+ * 1. IE Fallback
+ */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    .no-flexbox & {
+        display: block;
+        @extend .clear !optional;
+    }
+
+    &__cell {
+        flex: 0 1 100%;
+        max-width: 100%;
+
+        &--stretcher {
+            flex: 0 1 100% !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        .no-flexbox & {
+            float: left;
+            width: percentage(1);
+        }
+    }
+
+    &--posts &__cell,
+    &--even &__cell {
+        flex-basis: percentage(1 / 2);
+        max-width: percentage(1 / 2);
+
+        .no-flexbox & {
+            width: percentage(1 / 2);
+        }
+    }
+
+    &--align-middle {
+        align-items: center;
+    }
+
+    &--align-end {
+        align-items: flex-end;
+    }
+
+    &--contextual {
+        .ctx-form__item {
+            @include breakpoint($gt-large-handheld) {
+                flex: 1 0 percentage(1 / 4);
+            }
+        }
+    }
+
+    &--rows {}
+
+    @include breakpoint("(min-width: #{to-unit(600px)})") {
+        &--tiles &__cell,
+        &--teletubbies &__cell {
+            flex-basis: percentage(2 / 4);
+            max-width: percentage(2 / 4);
+
+            .no-flexbox & {
+                width: percentage(2 / 4);
+            }
+        }
+    }
+
+    @include breakpoint($gt-large-handheld) {
+        &--posts &__cell {
+            flex-basis: percentage(1 / 4);
+            max-width: percentage(1 / 4);
+
+            .no-flexbox & {
+                width: percentage(1 / 4);
+            }
+        }
+    }
+
+    @include breakpoint($gt-small-desktop) {
+        &--musketeers &__cell {
+            flex-basis: percentage(1 / 3);
+            max-width: percentage(1 / 3);
+
+            .no-flexbox & {
+                width: percentage(1 / 3);
+                display: inline-block;
+                vertical-align: top;
+                font-size: 16px;
+                float: none;
+            }
+        }
+
+        &--musketeers {
+            .no-flexbox & {
+                font-size: 0;
+            }
+        }
+
+        &--tiles &__cell,
+        &--stories &__cell {
+            flex-basis: percentage(1 / 2);
+            max-width: percentage(1 / 2);
+
+            .no-flexbox & {
+                width: percentage(1 / 2);
+            }
+        }
+
+        &--rows &__cell {
+            position: relative;
+            margin-top: rhythm(15);
+            padding-top: rhythm(15);
+        }
+        &--rows &__cell::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            @include theme-opaque-background(26%);
+        }
+        &--rows &__cell.gutters:nth-child(odd)::before {
+            left: gutter();
+            width: calc(#{12 / 18 * 100vw} - #{gutter(1)});
+        }
+        &--rows &__cell.gutters:nth-child(even)::before {
+            right: gutter();
+        }
+    }
+
+    @include breakpoint($gt-medium-desktop) {
+        &--teletubbies &__cell {
+            flex-basis: percentage(1 / 4);
+            max-width: percentage(1 / 4);
+
+            .no-flexbox & {
+                width: percentage(1 / 4);
+            }
+        }
+
+        &--wide &__cell {
+            flex-basis: 100%;
+            width: 100%;
+            max-width: 100%;
+
+            .no-flexbox & {
+                width: 100%;
+            }
+        }
+    }
+
+
+
+    @include breakpoint($gt-large-desktop) {
+        &--tiles &__cell {
+            flex-basis: percentage(1 / 3);
+            max-width: percentage(1 / 3);
+
+            .no-flexbox & {
+                width: percentage(1 / 3);
+                display: inline-block;
+                vertical-align: top;
+                font-size: 16px;
+                float: none;
+            }
+        }
+    }
+}

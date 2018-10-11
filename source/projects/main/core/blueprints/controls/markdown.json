@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "Markdown"
+    },
+    "type": "markdown",
+    "control": "core/abstract"
+}

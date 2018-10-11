@@ -1,0 +1,75 @@
+/*
+Icon tabs
+
+.icon-tab - Tab
+.icon-tab.is-current - Active tab
+
+markup:
+<a class="{$modifiers}  |  icon icon--eye" href="#panel1">
+  <span class="is-narrative">Project description</span>
+</a>
+
+Styleguide 3.29
+*/
+
+/*
+ * 1.  The after element is transitioning with different timing, so we cancel
+ *     the transition that is applied to the anchor element
+ */
+.icon-tab {
+  @include theme-opaque-background(100%);
+  display: inline-block;
+  width: rhythm(14);
+  height: rhythm(14);
+  line-height: rhythm(14);
+  text-align: center;
+  font-size: 24px;
+  &,
+  &:visited,
+  &:hover {
+    color: $white !important;
+  }
+  &:hover {
+    background: $color-body;
+  }
+  &.is-current {
+    position: relative;
+    transition-property: none; /* 1 */
+    @include theme-border();
+    &:after {
+      position: absolute;
+      top: 100%;
+      content: "";
+      display: block;
+      width: rhythm(14);
+      height: rhythm(14 / 2);
+      border: rhythm(14 / 2) solid;
+      border-top-color: inherit;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      transform: scale(1, .5) translate(0, rhythm(14 / -2));
+    }
+    &:hover:after {
+      border-top-color: $color-body;
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    font-size: 24px;
+    &.is-current {
+      &:after {
+        top: 0;
+        right: 100%;
+        border-right-color: inherit;
+        border-left-color: transparent;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        transform: scale(.5, 1) translate(rhythm(14 / 2), 0);
+      }
+      &:hover:after {
+        border-top-color: transparent;
+        border-right-color: $color-body;
+      }
+    }
+  }
+}

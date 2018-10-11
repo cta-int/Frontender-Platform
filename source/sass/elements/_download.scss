@@ -1,0 +1,38 @@
+/*
+Download
+
+markup:
+<ul class="reset">
+    <li class="trailer--small">
+        <div class="media  |  leader--small">
+            <div class="media__figure">
+                <a class="icon icon--download" href="javascript:void();"></a>
+            </div>
+            <div class="media__body  |  gutters">
+                <a class="block-link" href="javascript:void();">CTA's Strategic Plan 2016-2020</a>
+                <p class="download-size">Synthesis version, 622 KB</p>
+            </div>
+        </div>
+    </li>
+    <li class="trailer-small">
+        <div class="media  |  leader--small">
+            <div class="media__figure">
+                <a class="icon icon--download" href="javascript:void();"></a>
+            </div>
+            <div class="media__body  |  gutters">
+                <a class="block-link" href="javascript:void();">CTA's Strategic Plan 2016-2020</a>
+                <p class="download-size">Full version, 622 KB</p>
+            </div>
+        </div>
+    </li>
+</ul>
+
+Styleguide 3.34
+*/
+
+
+.download {
+	&-size {
+		@include text-12px;
+	}
+}

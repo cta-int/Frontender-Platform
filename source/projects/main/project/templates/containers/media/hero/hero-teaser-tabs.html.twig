@@ -1,0 +1,54 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ ["hero hero--tab-teaser", container_class]|join("  |  ") }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="ie9-hero">
+        {{ image.hero(article.link.mediaObject[0], is_crowned|default(0), "hero__figure  |  image image--stretch") }}
+    </div>
+    <div class="hero__headline">
+        <div class="tab-teaser  |  teaser">
+            <ul class="tab-teaser__tabs  |  reset">
+                {% for container in containers %}
+                    <li>
+                        <a class="{{ container.data.tab_class }}" href="#{{ container.data.tab_id ~ article._id }}">
+                            <span class="is-narrative">{{ container.data.tab_name }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-teaser__panels">
+                {% for loopContainer in containers %}
+                    {% include loopContainer.template with { article: article, region: region, tab_id: container.data.tab_id ~ article._id } %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="timeline timeline--overlay  |  timeline--{{ yearPassedPercentage() }}  |  stack">
+        <div class="stack__unit stack__pin  |  is-gt-small-desktop  |  meta">
+            <div class="timeline__label  |  gutters">{{ 'project_timeline'|t(locales) }}</div>
+        </div>
+        <div class="stack__unit  |  meta">
+            <div class="timeline__item  |  {{ '2016'|yearStatus('is-complete', 'is-active') }}  |  gutters">
+                <span class="timeline__date">2016</span>
+            </div>
+        </div>
+        <div class="stack__unit  |  meta">
+            <div class="timeline__item  |  {{ '2017'|yearStatus('is-complete', 'is-active') }}  |  gutters">
+                <span class="timeline__date">2017</span>
+            </div>
+        </div>
+        <div class="stack__unit  |  meta">
+            <div class="timeline__item  |  {{ '2018'|yearStatus('is-complete', 'is-active') }}  |  gutters">
+                <span class="timeline__date">2018</span>
+            </div>
+        </div>
+        <div class="stack__unit  |  meta">
+            <div class="timeline__item  |  {{ '2019'|yearStatus('is-complete', 'is-active') }}  |  gutters">
+                <span class="timeline__date">2019</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,223 @@
+/*
+Contextual Search
+
+markup:
+<div class="well  |  is-root  |  trailer  |  is-illustrated">
+    <form class="layout  |  trailer--hero" method="get" action="/en/search">
+        <div class="layout__cell  |  layout__cell--aside  |  wings  |  trailer">
+            <div class="topics topics" data-fe-id="">
+                <h3 class="title title--lead trailer  |  gutters">Topics</h3>
+                <ul class="label-list reset list--inline  |  gutters">
+                    <li>
+                        <a class="label label--s" href="/en/search?concepts[]=c_9001017">resources</a>
+                    </li>
+                    <li>
+                        <a class="label label--s" href="/en/search?concepts[]=c_50227">groups</a>
+                    </li>
+                    <li>
+                        <a class="label label--s" href="/en/search?concepts[]=c_7778">time</a>
+                    </li>
+                    <li>
+                        <a class="label label--s" href="/en/search?concepts[]=c_7644">technology</a>
+                    </li>
+                    <li>
+                        <a class="label label--s" href="/en/search?concepts[]=c_6211">products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layout__cell layout__cell--main  |  wing--right  |  trailer--hero trailer-inside">
+            <h3 class="title title--lead trailer  |  gutters">Find events</h3>
+            <div class="leader--small gutters ctx-form__item ctx-item__search">
+                <div class="fld">
+                    <label for="ctx-item__search" class="fld-label">Labels</label>
+                    <input id="ctx-item__search" name="q" class="placeholder-visible" value="">
+                </div>
+            </div>
+            <div class="grid grid--contextual">
+                <div class="ctx-form__item grid__cell gutters ctx-item__content-type  |  ctx-item__date">
+                    <div class="fld">
+                        <label for="ctx-item__article-selectized" class="fld-label">Event type</label>
+                        <select id="ctx-item__article" name="type" class="placeholder-visible selectized" tabindex="-1" style="display: none;"><option value="" selected="selected">All</option></select>
+                        <div class="selectize-control placeholder-visible single">
+                            <div class="selectize-input items full has-options has-items">
+                                <div class="item" data-value="">All</div><input type="text" autocomplete="off" tabindex="" id="ctx-item__article-selectized" style="width: 4px;"></div>
+                            <div class="selectize-dropdown single placeholder-visible" style="display: none;">
+                                <div class="selectize-dropdown-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctx-form__item grid__cell gutters ctx-item__date">
+                    <div class="fld">
+                        <label for="ctx-item__date-selectized" class="fld-label">Period</label>
+                        <select id="ctx-item__date" name="upcoming" class="placeholder-visible selectized" tabindex="-1" style="display: none;"><option value="true" selected="selected">Upcoming</option></select>
+                        <div class="selectize-control placeholder-visible single">
+                            <div class="selectize-input items full has-options has-items">
+                                <div class="item" data-value="true">Upcoming</div><input type="text" autocomplete="off" tabindex="" id="ctx-item__date-selectized" style="width: 4px;"></div>
+                            <div class="selectize-dropdown single placeholder-visible" style="display: none;">
+                                <div class="selectize-dropdown-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctx-form__item grid__cell gutters ctx-item__location">
+                    <div class="fld">
+                        <label for="ctx-item__country-selectized" class="fld-label">Region or country</label>
+                        <select id="ctx-item__country" name="location" class="placeholder-visible selectized" tabindex="-1" style="display: none;"><option value="" selected="selected">All</option></select>
+                        <div class="selectize-control placeholder-visible single">
+                            <div class="selectize-input items full has-options has-items">
+                                <div class="item" data-value="">All</div><input type="text" autocomplete="off" tabindex="" id="ctx-item__country-selectized" style="width: 4px;"></div>
+                            <div class="selectize-dropdown single placeholder-visible" style="display: none;">
+                                <div class="selectize-dropdown-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctx-form__item grid__cell gutters ctx-item__submit">
+                    <button class="button button--wide" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <figure class="search__illustrations-set">
+        <span class="search__illustration illustration illustration--fish-barn"></span>
+        <span class="search__illustration illustration illustration--fishing-shore"></span>
+        <span class="search__illustration illustration illustration--fishing-boat"></span>
+        <span class="water-illustration"></span>
+    </figure>
+</div>
+
+Styleguide 5.10
+*/
+
+.ctx {
+  &__topics,
+  &__search {
+    display: inline-block;
+    width: 100%;
+    .no-flexbox & {
+      @include breakpoint($gt-small-desktop) {
+        width: percentage(13 / 18);
+        float: left;
+      }
+    }
+  }
+  &__search {
+    margin-top: rhythm(10);
+    @include breakpoint($gt-small-desktop) {
+      margin-top: 0;
+    }
+  }
+}
+.ctx-form {
+  &__item {
+    .fld-label {
+      margin-bottom: rhythm(4);
+      font-size: to-unit(10px);
+    }
+    @include breakpoint($gt-large-handheld) {
+      max-width: percentage(1 / 4);
+    }
+  }
+}
+.ctx-item {
+  &__search {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0;
+    @include breakpoint($gt-large-handheld) {
+      margin-bottom: rhythm(10);
+      max-width: 100%;
+    }
+    .item.item {
+      @extend %meta-text;
+      color: mix($color-body, $white, 26%);
+      font-size: to-unit(27px);
+      font-weight: 600;
+      @include breakpoint($gt-small-desktop) {
+        font-size: to-unit(45px);
+      }
+    }
+  }
+  &__submit {
+    @include breakpoint($gt-large-handheld) {
+      align-self: flex-end;
+    }
+    .button {
+      margin-top: rhythm(10);
+      width: 100%;
+      @include breakpoint($gt-large-handheld) {
+        width: auto;
+        float: right;
+      }
+    }
+  }
+}
+.selectize-control {
+  position: relative;
+  cursor: pointer;
+  input {
+    @extend %reset;
+    font-size: to-unit(12px);
+    font-family: $font-family--meta;
+    color: $color-body;
+    background: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+  .item {
+    @extend %meta-text;
+    display: inline-block;
+    font-size: to-unit(13px);
+  }
+  .option {
+    @extend %meta-text;
+    @extend %fx;
+    padding: rhythm(1) rhythm(2);
+    font-size: to-unit(13px);
+    text-transform: capitalize;
+    cursor: pointer;
+    &:hover {
+      background: mix($gray, $white, 26%);
+    }
+  }
+  .optgroup-header {
+    @extend %meta-text;
+    @extend %fx;
+    padding: rhythm(1) rhythm(2);
+    font-size: to-unit(13px);
+    font-weight: bold;
+    text-transform: capitalize;
+    border-bottom: 1px solid $color-body;
+  }
+  &.single {
+    .selectize-input {
+      &:before {
+        position: absolute;
+        font-family: "cta-icons";
+        content: $icon-chevron-down;
+        right: 0;
+        top: -2px;
+      }
+      &.dropdown-active {
+        &:before {
+          content: $icon-chevron-up;
+        }
+      }
+    }
+  }
+}
+.selectize-dropdown {
+  position: absolute;
+  margin-top: rhythm(2);
+  background: $white;
+  border: 1px solid mix($gray, $white, 26%);
+  z-index: 11;
+  &-content {
+    .option.selected {
+      background: mix($color-body, $white, 10%);
+    }
+  }
+}

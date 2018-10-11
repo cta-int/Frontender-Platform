@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    {% for loopContainer in containers %}
+        {% include loopContainer.template with loopContainer %}
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+    <title>{{ attributes.head.title }}</title>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

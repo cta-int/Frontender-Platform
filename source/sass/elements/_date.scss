@@ -1,0 +1,44 @@
+/*
+Date
+
+.date - Date block
+.date.date--inline - Floats date block to the left
+.date__project - Project date
+
+markup:
+<span class="{$modifiers}">
+  <span class="date__head">Dec</span>
+  <span class="date__body">31</span>
+</span>
+
+Styleguide 3.10
+*/
+
+.date {
+  @extend %meta-text;
+  @include small-date();
+  @include theme-opaque-background(100%);
+  display: inline-block;
+  background: $color-theme;
+  color: $white;
+  &__head,
+  &__body {
+    display: block;
+    line-height: 1;
+  }
+  &__body {
+    font-weight: $font-weight--meta;
+  }
+  &--inline {
+    float: left;
+    margin-right: 1em;
+  }
+  @include breakpoint($gt-large-handheld) {
+    @include large-date();
+  }
+  &__project {
+    @extend %meta-text;
+    @include text-12px;
+    color: #757575;
+  }
+}

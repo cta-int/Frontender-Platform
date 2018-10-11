@@ -1,0 +1,727 @@
+{
+    "baseUrl": "http://sharedcontent.cta.int/",
+    "operations": {
+        "getLink": {
+            "httpMethod": "GET",
+            "uri": "/links",
+            "responseModel": "json",
+            "parameters": {
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "doc_type": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "doc_id": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getEvents": {
+            "httpMethod": "GET",
+            "uri": "/events",
+            "responseModel": "json",
+            "parameters": {
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "analysis": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "true"
+                }
+            }
+        },
+        "getEvent": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "analysis": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "true"
+                }
+            }
+        },
+        "getMedium": {
+            "httpMethod": "GET",
+            "uri": "/media/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "getEventAttendee": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}/attendees",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getCountry": {
+            "httpMethod": "GET",
+            "uri": "/geoname/list/country",
+            "responseModel": "json"
+        },
+        "getEventArticles": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}/related/articles",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "bookmarked": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "explain": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getEventEvent": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}/related/events",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "explain": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getEventsSearch": {
+            "httpMethod": "POST",
+            "uri": "/events/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "integer"
+                }
+            }
+        },
+        "getArticlesSearch": {
+            "httpMethod": "POST",
+            "uri": "/articles/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getArticlesSearches": {
+            "httpMethod": "POST",
+            "uri": "/articles/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getMedia": {
+            "httpMethod": "GET",
+            "uri": "/media",
+            "responseModel": "json",
+            "parameters": {
+                "type": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string",
+                    "default": 100
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getMediaSearches": {
+            "httpMethod": "POST",
+            "uri": "/media/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getArticles": {
+            "httpMethod": "GET",
+            "uri": "/articles",
+            "responseModel": "json",
+            "parameters": {
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "analysis": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "true"
+                }
+            }
+        },
+        "getArticle": {
+            "httpMethod": "GET",
+            "uri": "/articles/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "analysis": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "true"
+                }
+            }
+        },
+        "getArticleArticles": {
+            "httpMethod": "GET",
+            "uri": "/articles/{id}/related/articles",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "bookmarked": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "explain": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getChannelArticle": {
+            "httpMethod": "GET",
+            "uri": "/channels/{id}/articles",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "format": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "scr"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "sortDirection": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "asc"
+                },
+                "sortProperty": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "datePublished"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "articleType": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "imageWeight": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getSearchResults": {
+            "httpMethod": "POST",
+            "uri": "/{type}/search",
+            "responseModel": "json",
+            "parameters": {
+                "type": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "query": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getChannelEvent": {
+            "httpMethod": "GET",
+            "uri": "/channels/{id}/events",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "format": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "scr"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "timezoneOffset": {
+                    "location": "query",
+                    "type": "integer"
+                },
+                "upcoming": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "includeCancelled": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "start": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "end": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "sortDirection": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "asc"
+                },
+                "sortProperty": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "startDateUTC"
+                },
+                "eventType": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getChannelPerson": {
+            "httpMethod": "GET",
+            "uri": "/channels/{id}/events",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getChannels": {
+            "httpMethod": "GET",
+            "uri": "/channels",
+            "responseModel": "json",
+            "parameters": {
+                "type": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "article"
+                },
+                "label_id": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getChannel": {
+            "httpMethod": "GET",
+            "uri": "/channels/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "getTerm": {
+            "httpMethod": "GET",
+            "uri": "/agrovoc/concepts/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "getTerms": {
+            "httpMethod": "GET",
+            "uri": "/agrovoc/concepts/top",
+            "responseModel": "json",
+            "parameters": {}
+        },
+        "getNarrowerTerms": {
+            "httpMethod": "GET",
+            "uri": "/agrovoc/concepts/narrower/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "getPerson": {
+            "httpMethod": "GET",
+            "uri": "/persons/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "getLabel": {
+            "httpMethod": "GET",
+            "uri": "/labels/{id}",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "getLabels": {
+            "httpMethod": "GET",
+            "uri": "/labels",
+            "responseModel": "json",
+            "parameters": {}
+        }
+    },
+    "models": {
+        "json": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

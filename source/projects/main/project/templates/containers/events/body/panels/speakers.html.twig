@@ -1,0 +1,52 @@
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="panel  |  wing--right" id="speakers">
+    <h2 class="title">
+        <a class="panel__trigger  |  gutters  |  is-heir" href="#speakers">{{ 'Speakers'|t(locales) }}</a>
+    </h2>
+
+    <div class="panel__body">
+            {% if model.chair | length > 0 %}
+                <div class="profile__list  |  trailer--hero">
+                    <h3 class="trailer  |  gutters">{{ 'Chairs'|t(locales) }}</h3>
+                    <div class="grid  grid--teletubbies">
+                        {% for chair in model.chair %}
+                            <div class="grid__cell  |  gutters  |  trailer">
+                                {% include 'partials/person/tile.html.twig' with {person: chair} %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% if event.keynote | length > 0 %}
+            <div class="profile__list  |  trailer--hero">
+                <h3 class="trailer  |  gutters">{{ 'Keynote speakers'|t(locales) }}</h3>
+
+                <div class="grid  grid--teletubbies">
+                    {% for keynote in event.keynote %}
+                        <div class="grid__cell  |  gutters  |  trailer">
+                            {% include 'partials/person/tile.html.twig' with {person: keynote} %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'translator'] %}
+            {% if attribute(model, type) | length > 0 %}
+                <div class="profile__list  |  trailer--hero">
+                    <h3 class="trailer  |  gutters">{{ ('event_' ~ type)|t(locales) }}</h3>
+                    <div class="grid  grid--teletubbies">
+                        {% for person in attribute(model, type) %}
+                            <div class="grid__cell  |  gutters  |  trailer">
+                                {% include 'partials/person/tile.html.twig' %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</section>

@@ -1,0 +1,53 @@
+{
+    "value": "",
+    "label": {
+        "en": "Opportunity type"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "vacancy",
+            "label": {
+                "en": "Vacancy announcement",
+                "fr": "Vacancy announcement"
+            }
+        },
+        {
+            "value": "internship",
+            "label": {
+                "en": "Internship vacancy announcement",
+                "fr": "Internship vacancy announcement"
+            }
+        },
+        {
+            "value": "call_for_external_expert",
+            "label": {
+                "en": "Call for external expert",
+                "fr": "Call for external expert"
+            }
+        },
+        {
+            "value": "call_for_tender",
+            "label": {
+                "en": "Call for tender",
+                "fr": "Call for tender"
+            }
+        },
+        {
+            "value": "call_for_proposal",
+            "label": {
+                "en": "Call for proposal",
+                "fr": "Call for proposal"
+            }
+        },
+        {
+            "value": "partnership",
+            "label": {
+                "en": "Call for partnership",
+                "fr": "Call for partnership"
+            }
+        }
+    ]
+}

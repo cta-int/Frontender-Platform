@@ -1,0 +1,202 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Channel Index",
+        "fr": "Channel Index"
+    },
+    "description": {
+        "en": "Alphabetised list of channels",
+        "fr": "Alphabetised list of channels"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "trailer-inside--giant",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Index",
+                    "fr": "Index"
+                },
+                "description": {
+                    "en": "Alphabetised list of channels",
+                    "fr": "Alphabetised list of channels"
+                },
+                "template": "modules/index/topic-index.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channels",
+                                "control": "project/model/name"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings",
+                            "fr": "Settings"
+                        },
+                        "controls": {
+                            "container_tag": {
+                                "value": "div",
+                                "control": "project/container_tag"
+                            },
+                            "wings": {
+                                "value": "",
+                                "control": "project/wings"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_class": {
+                                "value": "trailer trailer-inside",
+                                "control": "project/container_class"
+                            }
+                        }
+                    },
+                    "newsletter_labels": {
+                        "label": {
+                            "en": "Newsletter Signup Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "hidden": "0",
+                                "access": "all",
+                                "type": "text",
+                                "value": {
+                                    "en": "Don\u2019t miss the opportunity to work with CTA. Subscribe now!",
+                                    "fr": "Ne pas manquer l'opportunit\u00e9 de travailler avec CTA. Abbonez-vous maintenant!"
+                                },
+                                "label": {
+                                    "en": "Newsletter title",
+                                    "fr": "Newsletter title"
+                                }
+                            },
+                            "button": {
+                                "hidden": "0",
+                                "access": "all",
+                                "type": "text",
+                                "value": {
+                                    "en": "Subscribe",
+                                    "fr": "Souscrire"
+                                },
+                                "label": {
+                                    "en": "Newsletter button label",
+                                    "fr": "Newsletter button label"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

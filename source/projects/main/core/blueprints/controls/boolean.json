@@ -1,0 +1,22 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Boolean"
+    },
+    "type": "list",
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "No"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Yes"
+            }
+        }
+    ],
+    "control": "core/abstract"
+}

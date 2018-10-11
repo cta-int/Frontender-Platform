@@ -1,0 +1,12 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+<figure class="{{ ["hero hero--feature-teaser", container_class]|join(" | ") }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    {{ image.hero(medium, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
+    <figcaption class="hero__headline">
+        {% for LoopContainer in containers %}
+            {% include loopContainer.template with loopContainer %}
+        {% endfor %}
+    </figcaption>
+</figure>

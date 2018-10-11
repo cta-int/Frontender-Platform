@@ -1,0 +1,66 @@
+/*
+Contact hero
+
+markup:
+<div class="trailer--hero layout layout--split  |  is-root">
+    <div class="layout__cell  |  contact--hero" style="background: url(http://res.cloudinary.com/cta/image/upload/h_900,w_1200,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg.png) center center; background-size: cover;"></div>
+    <div class="layout__cell  |  well--neutral">
+        <div class="contact  |  leader--hero  |  trailer--hero">
+            <h2 class="title title--section  |  trailer  |  gutters"></h2>
+            <div class="layout layout--even">
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">General enquiries</h2>
+                    <p class="trailer--small  |   title--apropos">Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet..</p>
+                    <a class="title--apropos" href="">info@cta.int</a>
+                </div>
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">MEDIA AND PRESS</h2>
+                    <p class="trailer--small  |   title--apropos">Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet..</p>
+                    <a class="title--apropos" href="">stéphane.gambier@cta.int</a>
+                </div>
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">Partnerships</h2>
+                    <p class="trailer--small  |   title--apropos">Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet..</p>
+                    <a class="title--apropos" href="">deborah.kleinbussink@cta.int</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact--column">
+        <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
+            <div class="gutters">
+                <h2 class="title  |  trailer--normal">Head office</h2>
+                <p class="meta">Agro Business Park 2</p>
+                <p class="meta">6708 PW Wageningen</p>
+                <p class="meta  |  trailer--small">The Netherlands</p>
+                <p class="meta">Tel: +31 (0)317 467100</p>
+                <p class="meta">Fax: +31 (0)317 460067</p>
+                <a class="block-link block-link--inverse  |  leader--normal" href="" target="_blank">Get directions</a>
+            </div>
+        </div>
+        <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
+            <div class="gutters">
+                <h2 class="title  |  trailer--normal">Brussels office</h2>
+                <p class="meta">39 Rue Montoyer</p>
+                <p class="meta">1000 Brussels</p>
+                <p class="meta  |  trailer--small">Belgium</p>
+                <p class="meta">Tel: +32 (0) 2 5137436</p>
+                <p class="meta">Fax: +32 (0) 2 5113868</p>
+                <a class="block-link block-link--inverse  |  leader--normal" href="" target="_blank">Get directions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 3.54
+*/
+
+.contact {
+  &--hero {
+		// min-height: rhythm(100);
+        padding-bottom: rhythm(100);
+        @include breakpoint($gt-small-desktop) {
+            padding-bottom: rhythm(175);
+        }
+	}
+}

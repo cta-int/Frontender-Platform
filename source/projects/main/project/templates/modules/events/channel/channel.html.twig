@@ -1,0 +1,21 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ [container_class]|join('  |  ') }}">
+    {% if config.show_teleport %}
+        <div class="title--section  |  trailer">
+            {% include("modules/teleport/teleport.html.twig") with {config: teleport_config} %}
+        </div>
+    {% endif %}
+
+    {% if container_title %}
+        <h2 class="title title--section  |  trailer">{{ container_title|t(locales) }}</h2>
+    {% endif %}
+
+    <ul class="reset  |  trailer{{ show_short_list|default(1) ? '  |  short-list' }}">
+        {% for event in model.events %}
+            <li class="{{ show_short_list|default(1) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                {% include 'partials/event/short-list-item.html.twig' with {model: model.events} %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

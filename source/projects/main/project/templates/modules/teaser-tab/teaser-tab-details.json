@@ -1,0 +1,78 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Overview",
+        "fr": "Overview"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "modules/teaser-tab/teaser-tab-details.html.twig",
+    "template_config": {
+        "tab": {
+            "label": {
+                "en": "Tab settings",
+                "fr": "Tab settings"
+            },
+            "controls": {
+                "id": {
+                    "label": {
+                        "en": "Tab identifier",
+                        "fr": "Tab identifier"
+                    },
+                    "type": "text",
+                    "value": "overview"
+                },
+                "name": {
+                    "label": {
+                        "en": "Tab title",
+                        "fr": "Tab title"
+                    },
+                    "type": "text",
+                    "value": {
+                        "en": "Project Overview",
+                        "fr": "Project Overview"
+                    }
+                },
+                "icon": {
+                    "label": {
+                        "en": "Tab icon",
+                        "fr": "Tab icon"
+                    },
+                    "type": "list",
+                    "options": [{
+                            "value": "icon--eye",
+                            "label": {
+                                "en": "Eye",
+                                "fr": "Eye"
+                            }
+                        },
+                        {
+                            "value": "icon--map",
+                            "label": {
+                                "en": "Map",
+                                "fr": "Map"
+                            }
+                        },
+                        {
+                            "value": "icon--heart",
+                            "label": {
+                                "en": "Impact",
+                                "fr": "Impact"
+                            }
+                        },
+                        {
+                            "value": "icon--users",
+                            "label": {
+                                "en": "Sponsors",
+                                "fr": "Sponsors"
+                            }
+                        }
+                    ],
+                    "value": "icon--eye"
+                }
+            }
+        }
+    }
+}

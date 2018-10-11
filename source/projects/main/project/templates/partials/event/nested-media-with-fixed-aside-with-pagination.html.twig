@@ -1,0 +1,24 @@
+{% import "macros/pagination.html.twig" as pagination %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<ul class="{{ ['reset  |  trailer trailer-inside', container_class]|join('  |  ') }}">
+    {% for event in model.events %}
+        <li>
+            {% include "partials/event/nested-media-with-fixed-aside.html.twig" with {model: event} %}
+            {% if not loop.last %}
+                <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{#{ pagination.extend(model, events_total, model, {
+    model_name: 'Channel\\Events',
+    target: '#' ~ config.id|t(locales) ~ ' > ul:last-of-type',
+    layout: "partials/event/nested-media-with-fixed-aside-with-pagination.html.twig",
+    config: {
+        config: {
+            id: config.id
+        }
+    }
+}) }#}

@@ -1,0 +1,435 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Search"
+    },
+    "description": {
+        "en": "General search container for all content types"
+    },
+    "template": "containers/global/search/search.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Model"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "search",
+                    "control": "project/model/name"
+                },
+                "types": {
+                    "value": "article,event",
+                    "control": "core/hidden"
+                },
+                "q": {
+                    "value": "{ query.q }",
+                    "control": "core/hidden"
+                },
+                "limit": {
+                    "value": "10",
+                    "control": "core/hidden"
+                },
+                "time": {
+                    "value": "{ query.time }",
+                    "control": "core/hidden"
+                },
+                "concept": {
+                    "value": "{ query.concepts }",
+                    "control": "core/hidden"
+                },
+                "location": {
+                    "value": "{ query.location }",
+                    "control": "core/hidden"
+                },
+                "type": {
+                    "value": "{ query.type }",
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Find articles and events",
+                        "fr": "Find articles and events"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "template": "modules/tag-cloud/tag-cloud.html.twig",
+                "name": {
+                    "en": "Cloud tag",
+                    "fr": "Cloud tag"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings",
+                            "fr": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "topics",
+                                "control": "project/container_class"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "Topics",
+                                    "fr": "Topics"
+                                }
+                            }
+                        }
+                    },
+                    "containers": [{
+                            "fe-id": null,
+                            "name": {
+                                "en": "Agrovoc tag 1"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Agrovoc",
+                                        "fr": "Agrovoc"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "terms",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "label": {
+                                                "en": "Agrovoc ID"
+                                            },
+                                            "value": "c_9001017",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Agrovoc tag 2"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Agrovoc",
+                                        "fr": "Agrovoc"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "terms",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "label": {
+                                                "en": "Agrovoc ID"
+                                            },
+                                            "value": "c_50227",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Agrovoc tag 3"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Agrovoc",
+                                        "fr": "Agrovoc"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "terms",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "label": {
+                                                "en": "Agrovoc ID"
+                                            },
+                                            "value": "c_7778",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Agrovoc tag 4"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Agrovoc",
+                                        "fr": "Agrovoc"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "terms",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "label": {
+                                                "en": "Agrovoc ID"
+                                            },
+                                            "value": "c_7644",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Agrovoc tag 5"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Agrovoc",
+                                        "fr": "Agrovoc"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "terms",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "label": {
+                                                "en": "Agrovoc ID"
+                                            },
+                                            "value": "c_6211",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Fields"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "grid grid--contextual",
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "containers": [{
+                            "fe-id": null,
+                            "name": {
+                                "en": "Content type"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/content-type.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "ctx-form__item grid__cell gutters",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Time frame"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/period.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "ctx-form__item grid__cell gutters",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Country"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/country.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "ctx-form__item grid__cell gutters",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Countries"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Geoname\\Country",
+                                            "control": "project/model/name"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Submit"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/submit-button.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "ctx-form__item grid__cell gutters",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

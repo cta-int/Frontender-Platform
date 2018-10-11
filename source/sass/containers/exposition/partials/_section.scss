@@ -1,0 +1,89 @@
+.section {
+	display: inline-block;
+	position: relative;
+	left: $gutter-width / 2;
+	border: 2px solid $white;
+	height: rhythm(20);
+	width: rhythm(20);
+	&--hidden {
+		display: none;
+		@include breakpoint($gt-medium-desktop) {
+			visibility: hidden;
+			display: inline-block;
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		left: 0;
+		height: rhythm(31);
+		width: rhythm(31);
+	}
+	&--right {
+		.section-number {
+			left: rhythm(3);
+		}
+		.section {
+			left: 0;
+		}
+	}
+	.exposition__section & {
+		left: 0;
+	}
+	&-number {
+		position: absolute;
+		right: rhythm(3);
+		bottom: rhythm(3);
+		color: $white;
+    font-family: "Open Sans",sans-serif;
+    font-size: 1.125em;
+    line-height: 1;
+    font-weight: 700;
+		@include breakpoint($gt-small-desktop) {
+			font-size: 1.875em;
+		}
+	}
+}
+
+.section-heading {
+	display: inline-block;
+	color: $color-yellow;
+	line-height: 1;
+	margin: 0;
+	.theme--green & {
+		color: $color-green;
+	}
+	.theme--blue & {
+		color: $color-blue;
+	}
+	.theme--lime & {
+		color: $color-lime;
+	}
+	.theme--yellow & {
+		color: $color-yellow;
+	}
+	.theme--gold & {
+		color: $color-gold;
+	}
+	.theme--orange & {
+		color: #E36729;
+	}
+	.theme--salmon & {
+		color: $color-salmon
+	}
+	.theme--red & {
+		color: $color-red;
+	}
+	.theme--burgundy & {
+		color: $color-burgundy;
+	}
+	.theme--purple & {
+		color: $color-purple;
+	}
+	.exposition & {
+		color: $white;
+	}
+	@include breakpoint($gt-small-desktop) {
+		&__trailer {
+			margin-bottom: rhythm(85);
+		}
+	}
+}

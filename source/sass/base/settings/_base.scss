@@ -1,0 +1,10 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+@import "../../node_modules/piecss/sass/piecss/behavior/base/settings";
+
+$line-height-unit: 1;
+
+$reset-margin: (body, fieldset, figure, h1, input, optgroup, select, textarea, p, article);
+
+$single-direction-elements: ();

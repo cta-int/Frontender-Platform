@@ -1,0 +1,245 @@
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout layout--split">
+    <div class="layout__cell layout__cell--main  |  trailer-inside--hero  |  divider divider--right">
+        <div class="wings">
+            <div class="social__share  |  trailer  |  gutters">
+                {{ share.bar_article(model, true) }}
+            </div>
+            <div class="post-body">
+                {% if model.editorialComment %}
+                    {% include 'partials/content-blocks/paragraph-lead.html.twig' with {'content': model.editorialComment} %}
+                {% endif %}
+                {# render the content blocks - if the first block is a list,
+                we treat it as the event takeaways #}
+                {% for i, contentBlock in model.contentBlocks %}
+                    {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                        <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-p' with {'content': contentBlock} %}
+                        </div>
+                    {% else %}
+                        {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype | default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                    {% endif %}
+                {% endfor %}
+                {% if model.analysis.agrovoc.concepts %}
+                    <div class="gutters  |  trailer  |  leader">
+                        <ul class="reset  |  tag-list  |  list--inline">
+                            {% for label in model.analysis.agrovoc.concepts | slice(0, 20) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer">
+                    {{ share.bar_article(model) }}
+                </div>
+            </div>
+            {% if model.link.person.author %}
+                <div class="gutters  |  leader  |  trailer">
+                    <h2 class="title title--apropos">Contact details</h2>
+                    <div class="layout layout--even">
+                        {% for auth in model.link.person.author | filterArray('biography', null) %}
+                            <div class="layout__cell">
+                                <div class="media  |  leader--small">
+                                    <div class="media__figure">
+                                        {{ image.person(auth, 50) }}
+                                    </div>
+                                    <p class="media__body  |  body--whisper  |  gutters">
+                                        {{ auth.biography }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside  |  stack stack--stacked">
+        <aside class="trailer--hero">
+
+
+            {# article label:programme #}
+            {# http://sharedcontent.cta.int:80/events/112949e5-80eb-4738-aacd-3d636fa307e1/related/articles?language=en&limit=100&skip=0&explain=false #}
+            {% if model.similar.articles|length > 0 %}
+                <div class="divider divider--bottom  |  leader-inside  |  trailer-inside--hero">
+                    <div class="wings">
+                        <h2 class="title title--section  |  gutters">{{ {'en': 'Related articles', 'fr': 'En savoir plus'}|t(locales) }}</h2>
+                        {% for model in model.similar.articles|slice(0,1) %}
+                            <div class="layout layout--even  |  leader">
+                                <div class="layout__cell  |  gutters">
+                                    <div class="post__media">
+                                        <a class="anchor anchor--shy" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+                                            {{ image.post(model.link.mediaObject|lead) }}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="layout__cell  |  gutters">
+                                    {{ date.article(model.datePublished) }}
+                                    <h3 class="title  |  anchor--reset">
+                                        <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+                                            {{ model.headline }}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <ul class="reset  |  grid grid--stories">
+                            {% for model in model.similar.articles|slice(1,4) %}
+                                <li class="grid__cell  |  leader  |  gutters">
+                                    {% include "partials/article/post.html.twig" with {'show_lead_image': 0, 'show_stand_first': 0, 'show_read_more': 0} %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Events will be matched on labels (programme). #}
+            {# It is possible that that other events are returned, so we will filter only on projects here. #}
+            {% if model.similar.articles|filterArray('articleType', 'review')|length > 0 %}
+                <div class="divider divider--bottom  |  wings  |  leader-inside  |  trailer-inside--hero">
+                    <h2 class="title title--section  |  trailer--small  |  gutters">{{ {'en': 'Related publications', 'fr': 'Publications'}|t(locales) }}</h2>
+                    <ul class="reset  |  grid grid--stories">
+                        {% for model in model.similar.articles|filterArray('articleType', 'review')|slice(0,4) %}
+                            <li class="grid__cell  |  post  |  leader  |  gutters">
+                                <h3 class="title  |  anchor--reset">
+                                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': 'article', 'slug': model.headline|t(locales)|slugify,'id': model._id}) }}">
+                                        {{ model.headline|t(locales) }}
+                                    </a>
+                                </h3>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+
+            <div class="grid grid--stories  |  leader  |  wings">
+                {% if model.sponsor | length > 0 %}
+                    <div class="grid__cell  |  gutters  |  trailer  |  leader">
+                        <h3 class="title  |  trailer--normal">{{ 'Funders'|t(locales) }}</h3>
+                        {% for sponsor in model.sponsor %}
+                            <div class="media  |  trailer--small">
+                                <div class="media__figure">
+                                    {% if (sponsor.avatar) %}
+                                        {% if (sponsor.website) %}
+                                            <a href="{{ sponsor.website }}" target="_blank">
+                                        {% endif %}
+                                        <img class="image" height="50" width="50" src="{{ sponsor.avatar }}" alt=""/>
+                                        {% if (sponsor.website) %}
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                {% if (sponsor.avatar) %}
+                                    <div class="is-center  |  block-link  |  media__body  |  gutters">{{ sponsor.name|t(locales) }}</div>
+                                {% else %}
+                                    <div class="media__body">
+                                        {% if (sponsor.website) %}
+                                            <a href="{{ sponsor.website }}" target="_blank">
+                                                <span class="is-lt-small-desktop">
+                                                    {{ sponsor.name|t(locales) }}
+                                                </span>
+                                                <span class="is-gt-small-desktop">
+                                                    {{ sponsor.alternateName ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) }}
+                                                </span>
+                                            </a>
+                                        {% else %}
+                                            <span class="is-lt-small-desktop">
+                                                {{ sponsor.name|t(locales) }}
+                                            </span>
+                                            <span class="is-gt-small-desktop">
+                                                {{ sponsor.alternateName ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if model.organizer | length > 0 %}
+                    <div class="grid__cell  |  gutters  |  trailer  |  leader">
+                        <h3 class="title  |  trailer--normal">{{ 'Implementing organisations'|t(locales) }}</h3>
+                        {% for organizer in model.organizer %}
+                            <div class="media  |  trailer--small">
+                                <div class="media__figure">
+                                    {% if (organizer.avatar) %}
+                                        {% if (organizer.website) %}
+                                            <a href="{{ organizer.website }}" target="_blank">
+                                            {% endif %}
+                                            <img class="image" height="50" width="50" src="{{ organizer.avatar }}" alt=""/>
+                                            {% if (organizer.website) %}
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                {% if (organizer.avatar) %}
+                                    <div class="is-center  |  block-link  |  media__body  |  gutters">{{ organizer.name|t(locales) }}</div>
+                                {% else %}
+                                    <div class="media__body">
+                                        {% if (organizer.website) %}
+                                            <a href="{{ organizer.website }}" target="_blank">
+                                                <span class="is-lt-small-desktop">
+                                                    {{ sponsor.name|t(locales) }}
+                                                </span>
+                                                <span class="is-gt-small-desktop">
+                                                    {{ sponsor.alternateName ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) }}
+                                                </span>
+                                            </a>
+                                        {% else %}
+                                            <span class="is-lt-small-desktop">
+                                                {{ sponsor.name|t(locales) }}
+                                            </span>
+                                            <span class="is-gt-small-desktop">
+                                                {{ sponsor.alternateName ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if model.analysis.geoname.geonames | length > 0 %}
+                    <div class="grid__cell  |  gutters  |  trailer  |  leader">
+                        <h3 class="title  |  trailer--normal">{{ 'Countries'|t(locales) }}</h3>
+                        <ul class="reset">
+                            {% for country in model.analysis.geoname.geonames %}
+                                <li class="block-link block-link--theme">{{ country.label|t(locales) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if model.link.mediaObject | findType('file') | length > 0 %}
+                    <div class="grid__cell  |  gutters  |  trailer  |  leader">
+                        <section class="trailer--hero">
+                            <h3 class="title  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h3>
+
+                            {% for file in model.link.mediaObject | findType('file') %}
+                                {% include 'partials/download.html.twig' with {file: file} %}
+                            {% endfor %}
+                        </section>
+                    </div>
+                {% endif %}
+                {% if model.externalLink | length > 0 %}
+                    <div class="grid__cell  |  gutters  |  trailer  |  leader">
+                        <section class="trailer--hero">
+                            <h3 class="title  |  trailer--normal">{{ 'External links'|t(locales) }}</h3>
+                            {% for link in model.externalLink %}
+                                {% include 'partials/icon-link.html.twig' with {link: link} %}
+                            {% endfor %}
+                        </section>
+                    </div>
+                {% endif %}
+            </div>
+        </aside>
+    </div>
+</div>

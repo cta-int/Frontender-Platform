@@ -1,0 +1,24 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+
+{% set class = helper.class(config)|trim %}
+{% set panel_link = route({ 'page': links.section_link.page }) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme }}">
+	<div class="hero hero--carousel">
+	    <a class="anchor anchor--shy is-heir" href="{{ panel_link }}">
+	      {{ image.carousel(model, "hero__figure  |  image image--stretch") }}
+	        <div class="topic-teaser  |  teaser  |  gutter">
+	          <h2 class="topic-teaser__title  |  title">{{ labels.title|t(locales) }}</h2>
+	          <p class="is-gt-large-handheld  |  leader--normal  |  trailer--normal">{{ labels.body|t(locales) }}</p>
+	          <span class="block-link block-link--inverse is-gt-large-handheld" href="{{ page_link }}">{{ links.section_link.label|t(locales) }}</span>
+	        </div>
+		</a>
+		{% if links.article_link.page %}
+			<span class="gutters  |  carousel--article__author  |  leader-inside--small  |  trailer-inside--small  |  meta meta--bold meta--theme">
+				{% include 'partials/menu-link.html.twig' with {link: links.article_link, config: {anchor_class: ''}} %}
+			</span>
+		{% endif %}
+	</div>
+</{{ config.container_tag|default('div') }}>

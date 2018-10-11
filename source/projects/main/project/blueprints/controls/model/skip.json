@@ -1,0 +1,9 @@
+{
+    "value": "{ query.skip }",
+    "label": {
+        "en": "Skip"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "number"
+}

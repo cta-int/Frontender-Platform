@@ -1,0 +1,42 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "Channel\\Articles",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "{ id }",
+                "control": "project/model/id"
+            },
+            "articleType": {
+                "value": "impact",
+                "control": "project/model/article_type"
+            },
+            "limit": {
+                "value": "5",
+                "control": "project/model/limit"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "container_title": {
+                "value": {
+                    "en": "Impact Stories",
+                    "fr": "Article d'impact"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            }
+        }
+    }
+}

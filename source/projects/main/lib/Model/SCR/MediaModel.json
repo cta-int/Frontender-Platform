@@ -1,0 +1,11 @@
+{
+    "label": {
+        "en-GB": "Media",
+        "fr-FR": "Media"
+    },
+    "map": {
+        "id": "_id",
+        "title": "originalFilename",
+        "thumbnail": "metadata.thumbnailUrl"
+    }
+}

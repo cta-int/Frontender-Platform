@@ -1,0 +1,91 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Experience Capitalization footer"
+    },
+    "description": {
+        "en": "Simple footer with disclaimer"
+    },
+    "template": "containers/experience-capitalization/footer/footer.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en": "Labels",
+                "fr": "Labels"
+            },
+            "controls": {
+                "title": {
+                    "label": {
+                        "en": "Title",
+                        "fr": "Title"
+                    },
+                    "value": {
+                        "en": "CTA is a joint international institution of the African, Caribbean and Pacific (ACP) Group of States and the European Union (EU). CTA operates under the framework of the Cotonou Agreement and is funded by the EU.",
+                        "fr": "CTA is a joint international institution of the African, Caribbean and Pacific (ACP) Group of States and the European Union (EU). CTA operates under the framework of the Cotonou Agreement and is funded by the EU."
+                    },
+                    "control": "core/textarea"
+                },
+                "disclaimer": {
+                    "label": {
+                        "en": "Disclaimer",
+                        "fr": "Disclaimer"
+                    },
+                    "value": {
+                        "en": "This document has been produced with the financial assistance of the European Union. The contents of this document are the sole responsibility of CTA and can under no circumstances be regarded as reflecting the position of the European Union.",
+                        "fr": "This document has been produced with the financial assistance of the European Union. The contents of this document are the sole responsibility of CTA and can under no circumstances be regarded as reflecting the position of the European Union."
+                    },
+                    "control": "core/textarea"
+                }
+
+            }
+        },
+        "links": {
+            "label": {
+                "en": "Links"
+            },
+            "controls": {
+                "link": {
+                    "value": {
+                        "label": {
+                            "en": "www.cta.int",
+                            "fr": "www.cta.int"
+                        },
+                        "page": "/"
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "footer",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "leader-inside--hero",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "trailer-inside",
+                    "control": "project/trailer_inside"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        }
+    }
+}

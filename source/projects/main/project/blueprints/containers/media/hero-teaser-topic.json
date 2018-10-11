@@ -1,0 +1,119 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Hero Topic Teaser"
+    },
+    "description": {
+        "en": "Hero Topic Teaser - hero image with teaser box"
+    },
+    "template": "containers/media/hero/hero-teaser-topic.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "media",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "figure",
+                    "control": "project/container_tag"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Teaser"
+                },
+                "description": {
+                    "en": "Teaser"
+                },
+                "template": "modules/global/teaser-topic/teaser-topic.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "label": {
+                                "value": {
+                                    "en": "Agribusiness",
+                                    "fr": "Agribusiness"
+                                },
+                                "label": {
+                                    "en": "Label"
+                                },
+                                "control": "core/text"
+                            },
+                            "title": {
+                                "value": {
+                                    "en": "Agribusiness",
+                                    "fr": "Agribusiness"
+                                },
+                                "label": {
+                                    "en": "Headline"
+                                },
+                                "control": "core/text"
+                            },
+                            "body": {
+                                "value": {
+                                    "en": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people."
+                                },
+                                "label": {
+                                    "en": "Body"
+                                },
+                                "control": "core/textarea"
+                            },
+                            "slug": {
+                                "value": {
+                                    "label": {
+                                        "en": "View blog"
+                                    },
+                                    "page": "ictupdate",
+                                    "id": ""
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

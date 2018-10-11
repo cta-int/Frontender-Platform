@@ -1,0 +1,19 @@
+<article class="vacancies  |  trailer">
+  <div class="stack">
+    <div class="stack__unit vacancies-container">
+      <span class="vacancies__status  |  gutter-outside">
+        <span class="vacancies__body">Open</span>
+      </span>
+    </div>
+    <div class="stack__unit">
+      <a class="anchor--reset anchor--shy  |  stack" href="javascript:void(0);">
+        <h2 class="title"><a href="{{ route({'page': model.articleType|default('article'), 'id': model._id}) }}">{{ model.headline }}</a></h2>
+      </a>
+      <div class="body--whisper  |  leader--small">
+      	{% if model.link.organization.sourceOrganization | length > 1 %}
+      		{{ model.link.organization.sourceOrganization|first.address.addressLocality ~ ', ' ~ model.link.organization.sourceOrganization|first.address.addressCountry }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,1 @@
+{% include 'containers/events/body/body-' ~ model.type|lower|replace({' ': '-'})|default('champion') ~ '.html.twig' %}

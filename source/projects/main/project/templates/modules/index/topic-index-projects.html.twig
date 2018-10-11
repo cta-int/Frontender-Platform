@@ -1,0 +1,33 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="trellis trellis--l trellis__topic">
+    {% for character, group in model | sortArray('name') | filterAlphabet('name', query.topic_filter) | formatAlphabet('name') %}
+        <div class="trellis__cell  |  trailer--hero  |  gutters">
+            <div class="trailer">
+                <div class="letter">{{ character }}</div>
+            </div>
+            <ul class="reset list list--theme">
+                {% if query.topic_filter %}
+                    {% for model in group %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) }}">
+                                {{ model.name|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for model in group|slice(0, config.show_max) %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) }}">
+                                {{ model.name|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            {% if config.show_max and group|length > config.show_max and not query.topic_filter %}
+                <a href="?topic_filter={{ character | lower }}">[…]</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

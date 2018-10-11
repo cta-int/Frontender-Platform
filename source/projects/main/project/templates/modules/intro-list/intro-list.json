@@ -1,0 +1,51 @@
+{
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Title",
+                    "fr": "Title"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "body": {
+                "value": {
+                    "en": "Smarter agri-food systems: more productive, more integrated, less wasteful and more profitable, inclusive and sustainable.",
+                    "fr": "Smarter agri-food systems: more productive, more integrated, less wasteful and more profitable, inclusive and sustainable."
+                },
+                "label": {
+                    "en": "Body"
+                },
+                "control": "core/textarea"
+            },
+            "list_items": {
+                "value": [
+                    {
+                        "en": "One",
+                        "fr": "Un"
+                    },
+                    {
+                        "en": "Two",
+                        "fr": "Deux"
+                    },
+                    {
+                        "en": "Three",
+                        "fr": "Trois"
+                    }
+                ],
+                "label": {
+                    "en": "List item"
+                },
+                "control": "core/text",
+                "repeatable": true,
+                "minimal": 2
+            }
+        }
+    }
+}

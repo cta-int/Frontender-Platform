@@ -1,0 +1,35 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="trellis trellis--l trellis__topic">
+    {% for character, group in model | filterAlphabet('name', query.topic_filter) | formatAlphabet('name') %}
+        <div class="trellis__cell  |  trailer--hero  |  gutters">
+            <div class="trailer">
+                <div class="letter">{{ character }}</div>
+            </div>
+            <ul class="reset">
+                {% if query.topic_filter %}
+                    {% for modelItem in group %}
+                        {% set link = route({page: 'channel', slug: modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ link }}">
+                                {{ modelItem.name|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for modelItem in group|slice(0, config.show_max) %}
+                        {% set link = route({page: 'channel', slug: modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ link }}">
+                                {{ modelItem.name|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            {% if config.show_max and group|length > config.show_max and not query.topic_filter %}
+                <a href="?topic_filter={{ character | lower }}">[…]</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

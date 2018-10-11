@@ -1,0 +1,196 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+
+        }
+    },
+    "model": {
+        "label": {
+            "en": "Model"
+        },
+        "controls": {
+            "name": {
+                "value": "search",
+                "control": "core/hidden"
+            },
+            "types": {
+                "value": "article,event",
+                "control": "core/hidden"
+            },
+            "q": {
+                "value": "{ query.q }",
+                "control": "core/hidden"
+            },
+            "limit": {
+                "value": "10",
+                "control": "core/hidden"
+            },
+            "time": {
+                "value": "{ query.time }",
+                "control": "core/hidden"
+            },
+            "concepts": {
+                "value": "{ query.concepts }",
+                "control": "core/hidden"
+            },
+            "location": {
+                "value": "{ query.location }",
+                "control": "core/hidden"
+            },
+            "type": {
+                "value": "{ query.type }",
+                "control": "core/hidden"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Find articles and events",
+                    "fr": "Find articles and events"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "containers": [
+        {
+            "fe-id": null,
+            "name": {
+                "en": "Fields"
+            },
+            "description": {
+                "en": ""
+            },
+            "template": "containers/global/group/group.html.twig",
+            "template_config": {
+                "config": {
+                    "label": {
+                        "en": "Settings"
+                    },
+                    "controls": {
+                        "container_class": {
+                            "value": "grid grid--contextual",
+                            "control": "core/hidden"
+                        }
+                    }
+                },
+                "containers": [
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Content type"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template": "partials/search-fields/content-type.html.twig",
+                        "template_config": {
+                            "config": {
+                                "label": {
+                                    "en": "Settings"
+                                },
+                                "controls": {
+                                    "container_class": {
+                                        "value": "grid__cell gutters",
+                                        "control": "core/hidden"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Time frame"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template": "partials/search-fields/period.html.twig",
+                        "template_config": {
+                            "config": {
+                                "label": {
+                                    "en": "Settings"
+                                },
+                                "controls": {
+                                    "container_class": {
+                                        "value": "grid__cell gutters",
+                                        "control": "core/hidden"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Country"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template": "partials/search-fields/country.html.twig",
+                        "template_config": {
+                            "config": {
+                                "label": {
+                                    "en": "Settings"
+                                },
+                                "controls": {
+                                    "container_class": {
+                                        "value": "grid__cell gutters",
+                                        "control": "core/hidden"
+                                    }
+                                }
+                            },
+                            "model": {
+                                "label": {
+                                    "en": "Countries"
+                                },
+                                "controls": {
+                                    "name": {
+                                        "value": "Geoname\\Country",
+                                        "control": "core/hidden"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Submit"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template": "partials/search-fields/submit-button.html.twig",
+                        "template_config": {
+                            "config": {
+                                "label": {
+                                    "en": "Settings"
+                                },
+                                "controls": {
+                                    "container_class": {
+                                        "value": "grid__cell gutters",
+                                        "control": "core/hidden"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+/*
+Pull-quote
+
+markup:
+<blockquote class="pull-quote">
+  Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit Sed Do Eiusmod
+</blockquote>
+
+Styleguide 3.46
+*/
+
+.pull-quote {
+    position: relative;
+    display: block;
+    margin-top: rhythm(6);
+    padding-left: rhythm(3);
+    color: rgba(0,0,0,.54);
+    font-size: 1.375em;
+    &::before {
+        content: "";
+        position: absolute;
+        right: 100%;
+        top: rhythm(2);
+        bottom: rhythm(2);
+        border-right: rhythm(2) solid;
+        @include theme-border;
+    }
+    @include breakpoint($gt-large-handheld) {
+        float: right;
+        width: 50%;
+        margin-left: 1em;
+    }
+    @include breakpoint($gt-small-desktop) {
+        width: 3 / 18 * 100vw;
+    }
+}

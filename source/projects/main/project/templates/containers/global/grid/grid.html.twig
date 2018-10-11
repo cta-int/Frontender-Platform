@@ -1,0 +1,10 @@
+
+<{{ config.container_tag|default('div') }} class="{{[container_class]|join('  |  ') }}">
+<div class="grid grid--posts  |  gutters">
+    {% for loopContainer in containers %}
+        <div class="grid__cell">
+            {% include loopContainer.template with loopContainer %}
+        </div>
+    {% endfor %}
+</div>
+</{{ config.container_tag|default('div') }}>

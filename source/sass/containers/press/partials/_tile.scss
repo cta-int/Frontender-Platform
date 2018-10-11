@@ -1,0 +1,25 @@
+.tile {
+  flex-direction: column;
+  height: 100%;
+  &,
+  &__head,
+  &__footer {
+    display: flex;
+  }
+  &__head,
+  &__footer {
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__body {
+    flex-grow: 1;
+    .icon {
+      font-size: to-unit(20px);
+    }
+  }
+  &__label {
+    padding: rhythm(3) rhythm(5);
+    font-size: to-unit(11px);
+    line-height: line-height(11px, 1);
+  }
+}

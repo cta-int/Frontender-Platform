@@ -1,0 +1,81 @@
+/*
+Legend
+
+This legend is used on the About us page as asset for the world map.
+
+markup:
+<div class="legenda">
+  <ul class="legenda__list  |  reset">
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--gold"></span>Caribbean</li>
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--orange"></span>Western Africa</li>
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--red"></span>Eastern Africa</li>
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--purple"></span>Central Africa</li>
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--yellow"></span>Southern Africa</li>
+    <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--blue"></span>Pacific</li>
+  </ul>
+</div>
+
+sg-wrapper:
+<div class="theme theme--dark">
+    <div class="about-cta  |  leader-inside  |  trailer-inside  |  gutters">
+        <sg-wrapper-content/>
+    </div>
+</div>
+
+Styleguide 4.35
+*/
+
+.legenda__item {
+  color: $white;
+  &--identifier {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: rhythm(4);
+    &-l {
+      width: 16px;
+      height: 16px;
+      margin-top: 4px;
+    }
+  }
+  &--gold,
+  &--identifier.theme--gold {
+    background: $color-gold;
+  }
+  &--orange,
+  &--identifier.theme--orange {
+    background: $color-orange;
+  }
+  &--red,
+  &--identifier.theme--red {
+    background: $color-red;
+  }
+  &--purple,
+  &--identifier.theme--purple {
+    background: $color-purple;
+  }
+  &--yellow,
+  &--identifier.theme--yellow {
+    background: $color-yellow;
+  }
+  &--blue,
+  &--identifier.theme--blue {
+    background: $color-blue;
+  }
+  &--lime,
+  &--identifier.theme--lime {
+    background: $color-lime;
+  }
+  &--green,
+  &--identifier.theme--lime {
+    background: $color-green;
+  }
+  &--salmon,
+  &--identifier.theme--salmon {
+    background: $color-salmon;
+  }
+  &--burgundy,
+  &--identifier.theme--burgundy {
+    background: $color-burgundy;
+  }
+}

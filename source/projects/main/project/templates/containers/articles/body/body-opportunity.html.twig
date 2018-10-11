@@ -1,0 +1,112 @@
+{% import "macros/share.html.twig" as share %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout layout--reverse">
+    <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="layout">
+            <div class="layout__cell layout__cell--main  |  trailer">
+
+                <div class="social__share  |  trailer  |  gutters">
+                    {{ share.bar_article_linkedin(model, true) }}
+                </div>
+
+                <footer class="gutters  |  trailer--hero">
+                    <p class="meta">{{ 'published on'|t(locales) }} {{ model.datePublished|tdate('%A, %e %B %Y') }}. {% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'Updated on'|t(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                </footer>
+
+                <div>
+                    {% if model.about %}
+                        <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                    {% endif %}
+
+                        {% for contentBlock in article.contentBlocks %}
+                        {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                    {% endfor %}
+                </div>
+
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
+                    {{ share.bar_article_linkedin(model) }}
+                </div>
+
+            </div>
+            <div class="layout__cell layout__cell--aside  |  wings">
+
+                {% if model.procurementStatus %}
+                    <div class="gutters  |  trailer">
+                        <span class="stamp stamp--{{ model.procurementStatus }}">
+                            <span class="stamp__body">{{ model.procurementStatus|t(locales) }}</span>
+                        </span>
+                    </div>
+                {% endif %}
+
+                <dl class="meta  |  trailer--hero  |  gutters">
+                    {% if model.procurementStartDate %}
+                        <dt><strong>{{ labels.procurementStartDate|default('indicative starting date')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ model.procurementStartDate|tdate('%e %B %Y') }} {{ model.procurementStartDisplay|t(locales) }}
+                        </dd>
+                    {%  endif %}
+                    {% if model.articleType not in ['vacancy', 'internship'] %}
+                        {% if model.procurementEndDate %}
+                        <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ model.procurementEndDate|tdate('%e %B %Y') }} {{ model.procurementEndDisplay|t(locales) }}
+                        </dd>
+                        {% endif %}
+                    {% endif %}
+                    {% if model.procurementType %}
+                        <dt><strong>{{ labels.procurementType|default('type of contract')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">{{ model.procurementType|t(locales) }}</dd>
+                    {% endif %}
+
+                    {% if model.analysis.geoname.geonames|locationSpecific %}
+                        <dt><strong>{{ 'Location'|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">{% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}</dd>
+                    {% endif %}
+                </dl>
+
+                {% if model.related.articles|filterArray('articleType', 'tender_award_notice')|length > 0 %}
+                    <section class="trailer trailer-inside--small  |  gutters">
+                        <h2 class="title title--apropos  |  trailer--small">{{ 'Awards notice'|t(locales) }}</h2>
+                        {% for item in model.related.articles|filterArray('articleType', 'tender_award_notice') %}
+                            <p class="anchor  |  body--whisper"><a href="{{ route({'page': 'article', 'id': item._id}) }}">{{ item.headline|t(locales) }}</a></p>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+
+                {% if model.related.articles|filterArray('articleType', 'tender_highlight')|length > 0 %}
+                    <section class="trailer trailer-inside--small  |  gutters">
+                        <p class="title title--apropos  |  trailer--small">{{ 'Highlights for tenders'|t(locales) }}</p>
+
+                        {% for item in model.related.articles|filterArray('articleType', 'tender_highlight') %}
+                            <p class="anchor  |  body--whisper  |  trailer--small">
+                                <a href="{{ route({'page': item.path_prefix ~ 'article', 'id': item._id}) }}">{{ item.headline|t(locales) }}</a>
+                            </p>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+
+                {% if model.link.mediaObject|findType('file')|length > 0 %}
+                    <section class="trailer trailer-inside--small  |  gutters">
+                        <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h2>
+
+                        {% for file in model.link.mediaObject|findType('file') %}
+                            {% include 'partials/download.html.twig' with {file: file} %}
+                        {% endfor %}
+                    </section>
+                {% endif %}
+
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
+                    {{ share.bar_article_linkedin(model) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  leader-inside--hero  |  trailer-inside--hero">
+        <aside>
+            {% for loopContainer in containers %}
+                {% include loopContainer.template with loopContainer %}
+            {% endfor %}
+        </aside>
+    </div>
+</div>

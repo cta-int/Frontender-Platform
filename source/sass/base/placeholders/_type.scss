@@ -1,0 +1,43 @@
+/*
+Font sizes
+
+Styleguide 1.5.1
+*/
+
+%type {
+  &--xs {
+    font-size: to-unit(10px);
+    line-height: line-height(12px, 1);
+  }
+  &--s {
+    font-size: to-unit(11px);
+    line-height: line-height(12px, 1);
+  }
+  &--l {
+
+  }
+  &--xl {
+
+  }
+  &--xxl {
+
+  }
+  @include breakpoint($gt-large-handheld) {
+    &--xs,
+    &--s {
+      font-size: to-unit(12px);
+    }
+    &--xs {
+      line-height: line-height(12px, 1);
+    }
+    &--s {
+      line-height: line-height(15px, 1);
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    &--s {
+      // font-size: to-unit(13px);
+      // line-height: line-height(15px, 1);
+    }
+  }
+}

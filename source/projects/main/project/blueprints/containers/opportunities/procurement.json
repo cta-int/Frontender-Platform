@@ -1,0 +1,215 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Procurement"
+    },
+    "description": {
+        "en": "Procurement support body container"
+    },
+    "template": "containers/global/layout/layout.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_tag": {
+                    "value": "article",
+                    "control": "project/container_tag"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                },
+                "colour_theme": {
+                    "value": "",
+                    "control": "project/colour_theme"
+                },
+                "layout": {
+                    "value": "layout layout--split",
+                    "label": {
+                        "en": "Layout"
+                    },
+                    "control": "project/layout/layout"
+                },
+                "show_secondary_first": {
+                    "value": 0,
+                    "control": "project/layout/show_secondary_first"
+                },
+                "show_divider": {
+                    "value": 1,
+                    "control": "project/layout/show_divider"
+                },
+                "show_narrow": {
+                    "value": 0,
+                    "control": "project/layout/show_narrow"
+                },
+                "vertical_alignment": {
+                    "value": "",
+                    "label": {
+                        "en": "Vertical alignment"
+                    },
+                    "control": "core/list",
+                    "options": [
+                        {
+                            "value": "",
+                            "label": {
+                                "en": "Align top"
+                            }
+                        },
+                        {
+                            "value": "layout--align-end",
+                            "label": {
+                                "en": "Align bottom"
+                            }
+                        },
+                        {
+                            "value": "layout--align-middle",
+                            "label": {
+                                "en": "Align middle"
+                            }
+                        }
+                    ]
+                },
+                "show_outer_wing": {
+                    "value": 0,
+                    "control": "project/layout/show_outer_wing"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Article body"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/articles/opportunities/procurement/procurement.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Article"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "ab903292-b219-40a8-9712-fec319dcb8b8",
+                                "label": {
+                                    "en": "Select article"
+                                },
+                                "options": [
+                                    {
+                                        "label": {
+                                            "en": "Awarding procedures"
+                                        },
+                                        "value": "ab903292-b219-40a8-9712-fec319dcb8b8"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Contract conditions"
+                                        },
+                                        "value": "04e71f7f-8554-48ad-944c-6610a2101da7"
+                                    }
+                                ],
+                                "control": "core/list",
+                                "type":"lookup"
+                            },
+                            "analysis": {
+                                "value": "true",
+                                "control": "project/model/analysis"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Award notices"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/articles/opportunities/short-list-procurements/short-list-procurements.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_tag": {
+                                "value": "main",
+                                "control": "core/hidden"
+                            },
+                            "container_class": {
+                                "value": "layout__cell layout__cell--aside  |  leader-inside--hero  |  trailer-inside--giant  |  wings",
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Article"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": 9,
+                                "control": "project/model/limit"
+                            },
+                            "articleType": {
+                                "value": "tender_award_notice",
+                                "control": "project/model/article_type"
+                            },
+                            "sortDirection": {
+                                "value": "desc",
+                                "control": "project/model/sort_direction"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

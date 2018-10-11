@@ -1,0 +1,76 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set model = ArticlesSearches|sortArray('headline', 'asc') %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout  |  well" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <aside class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer-inside">
+        {% include containers[0].template with containers[0] %}
+    </aside>
+
+    {% if model | length > 0 %}
+        {% set issue_nr = null %}
+        {% for label in model|first.link.label|filterArray('type', 'issue') %}
+            {% set issue_nr = label.name|issueNumber %}
+        {% endfor %}
+        <div class="layout__cell  |  wing--right">
+            <div class="grid grid--stories">
+                <article class="grid__cell grid grid--stories  |  posting  |  trailer">
+                    <a class="anchor--shy anchor--reset  |  is-heir  |   grid grid--posts" href="{{ route({'page': 'ictupdate/article', 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                        <figure class="grid__cell  |  gutters  |  trailer--tiny">
+                            <img class="image image--stretch" alt="Drones for agriculture" src="{{ model|first.link.mediaObject|lead.metadata.url }}">
+                        </figure>
+                        <div class="grid__cell  |  gutters">
+                            <div class="issue-label  |  media  |  trailer--small">
+                                <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
+                                <div class="issue-label__caption anchor--reset">
+                                    <p>
+                                        <strong>{{ 'Issue'|t(locales) }}
+                                            {{ issue_nr }}</strong><br>
+                                        <span>{{ model|first.datePublished|tdate('%B %Y') }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <h3 class="title title--lead title--section">{{ model|first.headline|t(locales) }}</h3>
+                            <span class="read-more">{{ 'View issue'|t(locales) }}</span>
+                        </div>
+                    </a>
+                </article>
+
+                {% if model | length > 1 %}
+                    <div class="grid__cell">
+                        <ul class="reset trellis trellis--l">
+                            {% for issue in model | slice(1) %}
+
+                                {% set issue_nr = null %}
+                                {% for label in issue.link.label|filterArray('type', 'issue') %}
+                                    {% set issue_nr = label.name|issueNumber %}
+                                {% endfor %}
+
+                                <li class="trellis__cell trailer gutters">
+                                    <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                        <figure>
+                                            <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
+                                            <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
+                                                <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
+                                                <span class="issue-label__caption">
+                                                    {{ 'Issue'|t(locales) }}
+                                                    {{ issue_nr }}
+                                                    {{ issue.datePublished|tdate('%B %Y') }}
+                                                </span>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+
+                                    {% if loop.last %}
+                                        <a class="button button--stretch leader trailer" href="{{ route({'page': 'ictupdate/issues'}) }}">{{ 'All issues'|t(locales) }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

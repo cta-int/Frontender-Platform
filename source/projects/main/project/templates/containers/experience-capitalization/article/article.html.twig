@@ -1,0 +1,39 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+
+<div class="post  |  fx  |  theme--{{ page.theme }}">
+    <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
+    <div class="standout standout--post  |  fx">
+        <header class="post-header">
+            <figure class="post-hero">
+                <img
+                    src="{{ page.image }}.jpg"
+                    srcset="{{ page.image }}.jpg 250w,
+                            {{ page.image }}--m.jpg 500w,
+                            {{ page.image }}--l.jpg 1000w,
+                            {{ page.image }}--xl.jpg 1500w"
+                    sizes="(min-width: 768px) 66vw, 100vw"
+                    alt="{{ page.title }}">
+                <figcaption class="image-caption">{{ page.caption }}</figcaption>
+            </figure>
+            <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
+                <h2 class="category  |  trailer--small">{{ page.category }}</h2>
+                <h1 class="title title--headline">{{ page.title }}</h1>
+            </div>
+        </header>
+        <article class="post-body  |  gutters  |  wings  |  paragraph">
+            {% include social-small.html %}
+
+	           {{ content }}
+
+            {% include social.html %}
+        </article>
+
+        {% if page.prev and page.next %}
+            {% include pagination_{{page.lang}}.html prev=page.prev next=page.next %}
+        {% endif %}
+    </div>
+</div>

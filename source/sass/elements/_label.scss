@@ -1,0 +1,177 @@
+/*
+Label
+
+.label - Label
+.label:hover - Label hover state
+.label:active - Label active state
+.label.label--square - Square label, for use with icon
+.label.label--s - Smaller tag
+.label.label--stretch - Stretched Label
+
+markup:
+<span class="{$modifiers}">Featured Article</span>
+
+Styleguide 3.9
+*/
+
+.label {
+  display: inline-block;
+  padding: rhythm(1) rhythm(2.5);
+  font-family: $font-family--meta;
+  text-transform: uppercase;
+  background: $color-theme;
+  font-size: to-unit(8px);
+  font-weight: 600;
+  letter-spacing: .05em;
+  line-height: line-height(12px, 1);
+  font-style: normal;
+  /* In case this is an anchor tag */
+  text-decoration: none;
+  &,
+  &:hover {
+    color: $white;
+  }
+  &:hover {
+    box-shadow: 2px 2px 8px rgba($color-black, .26);
+  }
+  &:active {
+    box-shadow: -1px -1px 8px rgba($color-black, .26);
+  }
+  .headline__tax &,
+  &.headline__tax {
+    box-shadow: none;
+  }
+  &--symbol {
+  }
+  &--stretch {
+    width: 100%;
+  }
+  &-list--dark & {
+    background: mix($color-theme, $color-body, 60%);
+    .theme--blue & {
+      background: mix($color-blue, $color-body, 60%);
+    }
+    .theme--lime & {
+      background: mix($color-lime, $color-body, 60%);
+    }
+    .theme--yellow & {
+      background: mix($color-yellow, $color-body, 60%);
+    }
+    .theme--gold & {
+      background: mix($color-gold, $color-body, 60%);
+    }
+    .theme--orange & {
+      background: mix($color-orange, $color-body, 60%);
+    }
+    .theme--salmon & {
+      background: mix($color-salmon, $color-body, 60%);
+    }
+    .theme--red & {
+      background: mix($color-red, $color-body, 60%);
+    }
+    .theme--burgundy & {
+      background: mix($color-burgundy, $color-body, 60%);
+    }
+    .theme--purple & {
+      background: mix($color-purple, $color-body, 60%);
+    }
+  }
+  .theme--blue & {
+    background-color: $color-blue;
+  }
+  .theme--lime & {
+    background-color: $color-lime;
+  }
+  .theme--yellow & {
+    background-color: $color-yellow;
+  }
+  .theme--gold & {
+    background-color: $color-gold;
+  }
+  .theme--orange & {
+    background-color: $color-orange;
+  }
+  .theme--salmon & {
+    background-color: $color-salmon;
+  }
+  .theme--red & {
+    background-color: $color-red;
+  }
+  .theme--burgundy & {
+    background-color: $color-burgundy;
+  }
+  .theme--purple & {
+    background-color: $color-purple;
+  }
+}
+
+// scss-lint:disable QualifyingElement
+a.label {
+  &,
+  &:visited,
+  &:hover {
+    color: $white;
+  }
+}
+// scss-lint:enable QualifyingElement
+
+@include breakpoint($gt-small-desktop) {
+  .label {
+    padding: rhythm(3.5) rhythm(10);
+    font-size: to-unit(14px);
+    line-height: line-height(14px, 1);
+    font-weight: 400;
+  }
+  .label.label--s {
+    padding: rhythm(1.5) rhythm(2);
+    font-size: to-unit(9px);
+    line-height: line-height(12px, 1);
+  }
+}
+
+.posting__content {
+  .label {
+    margin-bottom: rhythm(2);
+  }
+}
+
+.list--float {
+  .label {
+    padding: rhythm(3.5) rhythm(10);
+    font-size: to-unit(14px);
+    line-height: rhythm(5);
+  }
+  .share {
+    padding: 0;
+    line-height: rhythm(12);
+  }
+}
+
+/*
+Label List
+
+.label-list - Label List
+
+markup:
+<ul class="{$modifiers} reset list--inline">
+  <li><a class="label label--s" href="javascript:void();">GIS</a></li>
+  <li><a class="label label--s" href="javascript:void();">GPS</a></li>
+  <li><a class="label label--s" href="javascript:void();">Hardware</a></li>
+  <li><a class="label label--s" href="javascript:void();">Internet</a></li>
+  <li><a class="label label--s" href="javascript:void();">Measuring</a></li>
+  <li><a class="label label--s" href="javascript:void();">Monitoring</a></li>
+  <li><a class="label label--s" href="javascript:void();">Radio</a></li>
+  <li><a class="label label--s" href="javascript:void();">Software</a></li>
+  <li><a class="label label--s" href="javascript:void();">Telehony</a></li>
+  <li><a class="label label--s" href="javascript:void();">TV & Video</a></li>
+</ul>
+
+Styleguide 3.9.1
+*/
+
+.label-list {
+  .label {
+    float: left;
+    margin: 0 rhythm(2) rhythm() 0;
+  }
+}

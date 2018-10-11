@@ -1,0 +1,36 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ ["well well--darker", "leader-inside", "trailer-inside", container_class]|join("  |  ") }}">
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside  |  wing--left">
+            <div class="gutters">
+                <h3 class="title  |  trailer--small">
+                    {{ 'Green shoots for the future'|t(locales) }}
+                </h3>
+                <p class="trailer">
+                    {{ labels.quote|t(locales) }}
+                </p>
+                <div class="title--filter  |  trailer-inside">
+                    {{ labels.quote_source|t(locales) }}
+                </div>
+            </div>
+        </div>
+        {% if event.keyFigure|length > 0 %}
+            <div class="layout__cell  |  is-center  |  wing--right">
+				<div class="grid grid--posts  |  grid-decoration  |  gutters">
+                    {% for figure in event.keyFigure|slice(0, 4) %}
+					    <figure class="stat  |  grid__cell">
+					        <p class="stat__figure  |  trailer">{{ figure.value|t(locales) }}</p>
+					        <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+					        	<span class="is-narrative">{{ figure.value|t(locales) }} </span>{{ figure.description|t(locales) }}</figcaption>
+					    </figure>
+                    {% endfor %}
+				</div>
+            </div>
+        {% else %}
+            <div class="layout__cell">
+        		&nbsp;
+        	</div>
+        {% endif %}
+    </div>
+</div>

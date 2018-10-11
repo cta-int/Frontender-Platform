@@ -1,0 +1,38 @@
+.heading {
+	.header &,
+	.exposition-title & {
+		font-size: to-unit(27px);
+	  font-family: "Open Sans",sans-serif;
+	  text-transform: uppercase;
+		@include breakpoint($gt-medium-handheld) {
+			font-size: to-unit(40px);
+		}
+		@include breakpoint($gt-large-desktop) {
+			font-size: to-unit(50px);
+		}
+	}
+	.header & {
+		color: $white;
+		border-top: 5px solid $white;
+		padding-top: rhythm(4);
+		margin-top: 0;
+		@include breakpoint($gt-small-desktop) {
+			border-top: 8px solid $white;
+		}
+	}
+}
+
+.sub-heading {
+	@include meta;
+	font-size: to-unit(18px);
+	margin-top: rhythm(5);
+	margin-bottom: rhythm(7);
+	letter-spacing: 1px;
+	font-weight: 400;
+	.header & {
+		color: $white;
+	}
+	@include breakpoint($gt-large-handheld) {
+		font-size: to-unit(26px);
+	}
+}

@@ -1,0 +1,35 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Display wings"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "Hide"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Show on secondary column"
+            }
+        },
+        {
+            "value": 2,
+            "label": {
+                "en": "Show on main column"
+            }
+        },
+        {
+            "value": 3,
+            "label": {
+                "en": "Show on both columns"
+            }
+        }
+    ]
+}

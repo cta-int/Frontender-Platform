@@ -1,0 +1,466 @@
+/*
+Datepicker
+
+markup:
+<button class="picker-trigger reset" data-toggle=".picker__holder" data-icon="home"></button>
+<div class="picker__holder" tabindex="-1">
+    <div class="picker__frame">
+        <div class="picker__wrap">
+            <div class="picker__box">
+                <div class="picker__header">
+                    <div class="picker__month">February</div>
+                    <div class="picker__year">2017</div>
+                    <div class="picker__nav--prev" data-nav="-1" role="button" aria-controls="P572228808_table" title="Previous month"> </div>
+                    <div class="picker__nav--next" data-nav="1" role="button" aria-controls="P572228808_table" title="Next month"> </div>
+                </div>
+                <table class="picker__table" id="P572228808_table" role="grid" aria-controls="P572228808" aria-readonly="true">
+                    <thead>
+                        <tr>
+                            <th class="picker__weekday" scope="col" title="Sunday">M</th>
+                            <th class="picker__weekday" scope="col" title="Monday">T</th>
+                            <th class="picker__weekday" scope="col" title="Tuesday">W</th>
+                            <th class="picker__weekday" scope="col" title="Wednesday">T</th>
+                            <th class="picker__weekday" scope="col" title="Thursday">F</th>
+                            <th class="picker__weekday" scope="col" title="Friday">S</th>
+                            <th class="picker__weekday" scope="col" title="Saturday">S</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--outfocus" data-pick="1485644400000" role="gridcell" aria-label="29 January, 2017">29</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--outfocus" data-pick="1485730800000" role="gridcell" aria-label="30 January, 2017">30</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--outfocus" data-pick="1485817200000" role="gridcell" aria-label="31 January, 2017">31</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus picker__day--today" data-pick="1485903600000" role="gridcell" aria-label="1 February, 2017">1</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1485990000000" role="gridcell" aria-label="2 February, 2017">2</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486076400000" role="gridcell" aria-label="3 February, 2017">3</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486162800000" role="gridcell" aria-label="4 February, 2017">4</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486249200000" role="gridcell" aria-label="5 February, 2017">5</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486335600000" role="gridcell" aria-label="6 February, 2017">6</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486422000000" role="gridcell" aria-label="7 February, 2017">7</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486508400000" role="gridcell" aria-label="8 February, 2017">8</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486594800000" role="gridcell" aria-label="9 February, 2017">9</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486681200000" role="gridcell" aria-label="10 February, 2017">10</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486767600000" role="gridcell" aria-label="11 February, 2017">11</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486854000000" role="gridcell" aria-label="12 February, 2017">12</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1486940400000" role="gridcell" aria-label="13 February, 2017">13</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus picker__day--selected picker__day--highlighted" data-pick="1487026800000" role="gridcell" aria-label="14 February, 2017" aria-selected="true" aria-activedescendant="true">14</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487113200000" role="gridcell" aria-label="15 February, 2017">15</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487199600000" role="gridcell" aria-label="16 February, 2017">16</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487286000000" role="gridcell" aria-label="17 February, 2017">17</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487372400000" role="gridcell" aria-label="18 February, 2017">18</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487458800000" role="gridcell" aria-label="19 February, 2017">19</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487545200000" role="gridcell" aria-label="20 February, 2017">20</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487631600000" role="gridcell" aria-label="21 February, 2017">21</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487718000000" role="gridcell" aria-label="22 February, 2017">22</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487804400000" role="gridcell" aria-label="23 February, 2017">23</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487890800000" role="gridcell" aria-label="24 February, 2017">24</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1487977200000" role="gridcell" aria-label="25 February, 2017">25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1488063600000" role="gridcell" aria-label="26 February, 2017">26</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1488150000000" role="gridcell" aria-label="27 February, 2017">27</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--infocus" data-pick="1488236400000" role="gridcell" aria-label="28 February, 2017">28</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--outfocus" data-pick="1488322800000" role="gridcell" aria-label="1 March, 2017">1</div>
+                            </td>
+                            <td role="presentation">
+                                <div class="picker__day picker__day--outfocus" data-pick="1488409200000" role="gridcell" aria-label="2 March, 2017">2</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<div class="layout">
+  <div class="layout__cell layout__cell--aside">
+    <sg-wrapper-content/>
+  </div>
+  <div class="layout__cell layout__cell--main layout">
+  </div>
+</div>
+
+Styleguide 3.20
+*/
+
+/*
+Datepicker themes
+
+.theme--blue - Blue
+.theme--lime - Lime
+.theme--yellow - Yellow
+.theme--gold - Gold
+.theme--salmon - Salmon
+.theme--orange - Orange
+.theme--red - Red
+.theme--burgundy - Burgundy
+.theme--purple - Purple
+
+markup:
+<div class="{$modifiers}">
+  <div class="picker__holder" tabindex="-1">
+      <div class="picker__frame">
+          <div class="picker__wrap">
+              <div class="picker__box">
+                  <div class="picker__header">
+                      <div class="picker__month">February</div>
+                      <div class="picker__year">2017</div>
+                      <div class="picker__nav--prev" data-nav="-1" role="button" aria-controls="P572228808_table" title="Previous month"> </div>
+                      <div class="picker__nav--next" data-nav="1" role="button" aria-controls="P572228808_table" title="Next month"> </div>
+                  </div>
+                  <table class="picker__table" id="P572228808_table" role="grid" aria-controls="P572228808" aria-readonly="true">
+                      <thead>
+                          <tr>
+                              <th class="picker__weekday" scope="col" title="Sunday">M</th>
+                              <th class="picker__weekday" scope="col" title="Monday">T</th>
+                              <th class="picker__weekday" scope="col" title="Tuesday">W</th>
+                              <th class="picker__weekday" scope="col" title="Wednesday">T</th>
+                              <th class="picker__weekday" scope="col" title="Thursday">F</th>
+                              <th class="picker__weekday" scope="col" title="Friday">S</th>
+                              <th class="picker__weekday" scope="col" title="Saturday">S</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--outfocus" data-pick="1485644400000" role="gridcell" aria-label="29 January, 2017">29</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--outfocus" data-pick="1485730800000" role="gridcell" aria-label="30 January, 2017">30</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--outfocus" data-pick="1485817200000" role="gridcell" aria-label="31 January, 2017">31</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus picker__day--today" data-pick="1485903600000" role="gridcell" aria-label="1 February, 2017">1</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1485990000000" role="gridcell" aria-label="2 February, 2017">2</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486076400000" role="gridcell" aria-label="3 February, 2017">3</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486162800000" role="gridcell" aria-label="4 February, 2017">4</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486249200000" role="gridcell" aria-label="5 February, 2017">5</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486335600000" role="gridcell" aria-label="6 February, 2017">6</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486422000000" role="gridcell" aria-label="7 February, 2017">7</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486508400000" role="gridcell" aria-label="8 February, 2017">8</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486594800000" role="gridcell" aria-label="9 February, 2017">9</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486681200000" role="gridcell" aria-label="10 February, 2017">10</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486767600000" role="gridcell" aria-label="11 February, 2017">11</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486854000000" role="gridcell" aria-label="12 February, 2017">12</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1486940400000" role="gridcell" aria-label="13 February, 2017">13</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus picker__day--selected picker__day--highlighted" data-pick="1487026800000" role="gridcell" aria-label="14 February, 2017" aria-selected="true" aria-activedescendant="true">14</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487113200000" role="gridcell" aria-label="15 February, 2017">15</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487199600000" role="gridcell" aria-label="16 February, 2017">16</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487286000000" role="gridcell" aria-label="17 February, 2017">17</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487372400000" role="gridcell" aria-label="18 February, 2017">18</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487458800000" role="gridcell" aria-label="19 February, 2017">19</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487545200000" role="gridcell" aria-label="20 February, 2017">20</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487631600000" role="gridcell" aria-label="21 February, 2017">21</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487718000000" role="gridcell" aria-label="22 February, 2017">22</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487804400000" role="gridcell" aria-label="23 February, 2017">23</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487890800000" role="gridcell" aria-label="24 February, 2017">24</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1487977200000" role="gridcell" aria-label="25 February, 2017">25</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1488063600000" role="gridcell" aria-label="26 February, 2017">26</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1488150000000" role="gridcell" aria-label="27 February, 2017">27</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--infocus" data-pick="1488236400000" role="gridcell" aria-label="28 February, 2017">28</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--outfocus" data-pick="1488322800000" role="gridcell" aria-label="1 March, 2017">1</div>
+                              </td>
+                              <td role="presentation">
+                                  <div class="picker__day picker__day--outfocus" data-pick="1488409200000" role="gridcell" aria-label="2 March, 2017">2</div>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+Styleguide 3.20.1
+*/
+
+.picker-trigger {
+  display: block;
+  background: transparent;
+  color: $color-theme;
+  @include theme-color();
+  &.is-active {
+    opacity: 0.7;
+  }
+  @include breakpoint($gt-large-handheld) {
+    display: none;
+  }
+}
+
+.picker {
+  &__holder {
+    @extend %meta-text;
+    @extend %fx;
+    font-weight: 600;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: to-unit(12px);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: $color-body;
+    box-sizing: border-box;
+    max-height: 0;
+    background: $white;
+    overflow: hidden;
+    z-index: 10;
+    @include breakpoint($gt-large-handheld) {
+      position: relative;
+      width: auto;
+      left: auto;
+      border: none;
+      font-size: to-unit(14px);
+      max-height: to-unit(500px);
+      padding-left: 0;
+      padding-right: 0;
+    }
+    &.is-active {
+      max-height: to-unit(500px);
+    }
+    td {
+      text-align: center;
+      width: percentage(1 / 7);
+      border-collapse: collapse;
+      padding: rhythm(0.5);
+      @include breakpoint($gt-large-handheld) {
+        padding: rhythm(0);
+      }
+    }
+  }
+  &__frame {
+    border: 1px solid mix($white, $gray, 40%);
+    @include breakpoint($gt-large-handheld) {
+      border: none;
+    }
+  }
+}
+.picker__weekday {
+  padding-bottom: rhythm(3);
+  font-weight: bold;
+  text-align: center;
+  width: percentage(1 / 7);
+}
+.picker__weekday,
+.picker__day--today {
+  color: $color-theme;
+  @include theme-color();
+}
+
+.picker__day--selected,
+.picker__day:hover {
+  background: $color-theme;
+  color: $white;
+  @include theme-opaque-background(100%);
+}
+
+.picker {
+  &__header {
+    position: relative;
+    text-align: center;
+    font-size: to-unit(18px);
+    margin-bottom: rhythm(8);
+    padding-top: rhythm(6);
+    @include breakpoint($gt-large-handheld) {
+      padding-top: 0;
+    }
+  }
+  &__month,
+  &__year {
+    display: inline;
+    margin: 0 rhythm(1);
+  }
+  &__nav {
+    &--prev,
+    &--next {
+      position: absolute;
+      font-size: to-unit(24px);
+      top: rhythm(4);
+      display: block;
+      width: rhythm(10);
+      height: rhythm(10);
+      cursor: pointer;
+      background: mix($white, $gray, 40%);
+      @include breakpoint($gt-large-handheld) {
+        top: 0;
+        width: rhythm(9);
+        height: rhythm(9);
+        font-size: to-unit(20px);
+        line-height: to-unit(21px);
+      }
+      &:before {
+        font-family: "cta-icons";
+        color: $white;
+      }
+    }
+    &--prev {
+      left: 0;
+      @include breakpoint($gt-large-handheld) {
+        left: 10px;
+      }
+      &:before {
+        content: $icon-chevron-left;
+      }
+    }
+    &--next {
+      right: 0;
+      @include breakpoint($gt-large-handheld) {
+        right: 10px;
+      }
+      &:before {
+        content: $icon-chevron-right;
+      }
+    }
+  }
+  &__table {
+    width: 100%;
+  }
+  &__day {
+    @extend %fx !optional;
+    cursor: pointer;
+    display: inline-block;
+    padding: rhythm(1.5);
+    width: rhythm(10);
+    height: rhythm(10);
+    &--outfocus {
+      color: mix($white, $gray, 30%);
+    }
+  }
+}

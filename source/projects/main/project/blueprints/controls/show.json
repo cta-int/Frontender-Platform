@@ -1,0 +1,23 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Show"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "Hide"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Show"
+            }
+        }
+    ]
+}

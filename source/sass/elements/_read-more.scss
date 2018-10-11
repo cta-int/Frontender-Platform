@@ -1,0 +1,20 @@
+/*
+Read more
+
+Read more link
+
+markup:
+<a class="read-more" href="javascript:void(0);">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit Sed Do Eiusmod</a>
+
+Styleguide 3.31
+*/
+
+.read-more {
+  @extend %meta-text !optional;
+  @include meta-12px;
+  @include theme-color;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: rhythm(2);
+  margin-bottom: rhythm(2);
+}

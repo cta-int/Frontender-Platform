@@ -1,0 +1,72 @@
+/*
+Topic Teaser
+
+.topic-teaser - Topic teaser block
+
+markup:
+<div class="topic-teaser  |  teaser | ">
+    <div class="topic-teaser__label  |  meta meta--inverse">ICT Update Issue 85</div>
+    <h1 class="topic-teaser__title  |  title title--headline  |  trailer--normal">Applications for agriculture</h1>
+    <p class="topic-teaser__body">Investment in mobile agricultural services is likely to be most effective where the technology is integrated into specific systems and organisational routines that are developed by new or established local innovators. They are the drivers for developing new processes and new networks on the ground that promote scale efficiencies along the value chain.</p>
+    <div class="leader leader-inside--normal">
+        <a class="button button--inverse" href="/en/ictupdate/issue-85">View issue</a>
+    </div>
+</div>
+
+Styleguide 4.29
+*/
+
+.topic-teaser {
+  @include theme-transparent-background(76%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: gutter() gutter(1);
+  color: $white;
+  @include breakpoint($gt-large-handheld) {
+    padding: gutter(1) gutter(1);
+  }
+  &__body {
+  }
+  &__label {}
+  &__title {
+    @include title-18px();
+    @include breakpoint($gt-large-handheld) {
+      @include title-24px();
+      margin: rhythm(2) 0 rhythm(6);
+    }
+  }
+  .hero--carousel & {
+    @include theme-transparent-background(100%);
+    @include breakpoint($gt-medium-desktop) {
+      @include theme-transparent-background(76%);
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    &__label {
+      @include meta-14px();
+    }
+    &__title {
+      @include title-30px();
+    }
+    &__body {
+        font-size: 1.2em;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    padding: gutter(2) gutter(2);
+    .hero--carousel & {
+      padding: rhythm(10) rhythm(10) rhythm(8);
+    }
+    &__label {
+      @include meta-16px();
+    }
+    &__title {
+      @include title-48px();
+      margin: rhythm(3) 0 rhythm(8);
+      .hero--carousel & {
+        @include title-40px();
+        margin-top: 0;
+      }
+    }
+  }
+}

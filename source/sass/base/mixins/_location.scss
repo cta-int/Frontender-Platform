@@ -1,0 +1,17 @@
+/*
+Location
+
+Styleguide 1.6.5
+*/
+
+@mixin small-location() {
+  /* small meta*/
+  font-size: to-unit(12px);
+  line-height: to-unit(rhythm(4), 1, 12px);
+}
+
+@mixin regular-location() {
+  /* regular meta */
+  font-size: to-unit(14px);
+  line-height: to-unit(rhythm(5), 1, 14px);
+}

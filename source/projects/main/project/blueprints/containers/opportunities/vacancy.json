@@ -1,0 +1,99 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Single vacancy"
+    },
+    "description": {
+        "en": "Single vacancy"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/articles/headline/headline.html.twig"
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Body"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/articles/body/body.html.twig",
+                "template_config": {
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Newsletter signup"
+                            },
+                            "description": {
+                                "en": "Newsletter signup"
+                            },
+                            "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "leader": {
+                                            "value": "",
+                                            "control": "project/leader"
+                                        },
+                                        "leader_inside": {
+                                            "value": "",
+                                            "control": "project/leader_inside"
+                                        },
+                                        "trailer": {
+                                            "value": "",
+                                            "control": "project/trailer"
+                                        },
+                                        "trailer_inside": {
+                                            "value": "",
+                                            "control": "project/trailer_inside"
+                                        },
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en": "Don’t miss the opportunity to work with CTA. Subscribe now!",
+                                                "fr": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "button": {
+                                            "value": {
+                                                "en": "Subscribe",
+                                                "fr": "Souscrire"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

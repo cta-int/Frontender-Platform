@@ -1,0 +1,13 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="trailer--small">
+    <div class="media  |  leader--small">
+        <div class="media__figure">
+            <a class="icon icon--download" href="{{ file.metadata.url }}" target="_blank"></a>
+        </div>
+        <div class="media__body  |  gutters">
+            <a class="block-link  |  download-size" href="{{ file.metadata.url }}" target="_blank">{{ file.name|default(file.metadata.url)|t(locales) }}</a>
+            <p class="download-size">{{ 'format'|t(locales) }} {{ file.contentType|extension }}, {{ file.metadata.url|getFileSize }}</p>
+        </div>
+    </div>
+</div>

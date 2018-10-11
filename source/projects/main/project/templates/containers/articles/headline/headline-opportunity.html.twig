@@ -1,0 +1,104 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set show_story = false %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set stories = [{
+    title: {
+        "en-GB": "Working with CTA",
+        "fr-FR": "Travailler avec CTA"
+    },
+    figure: {
+        "en-GB": "60",
+        "fr-FR": "60"
+    },
+    caption: {
+        "en-GB": "different nationalities from ACP and EU countries",
+        "fr-FR": "different nationalities from ACP and EU countries"
+    },
+    story: "globe-plane"
+},{
+    title: {
+        "en-GB": "Working with CTA",
+        "fr-FR": "Travailler avec CTA"
+    },
+    figure: {
+        "en-GB": "12",
+        "fr-FR": "12"
+    },
+    caption: {
+        "en-GB": "foreign languages spoken in our offices",
+        "fr-FR": "foreign languages spoken in our offices"
+    },
+    story: "conversation"
+},{
+    title: {
+        "en-GB": "Working with CTA",
+        "fr-FR": "Travailler avec CTA"
+    },
+    figure: {
+        "en-GB": "500",
+        "fr-FR": "500"
+    },
+    caption: {
+        "en-GB": "tons of magazines published in the last three years",
+        "fr-FR": "tons of magazines published in the last three years"
+    },
+    story: "printing-press-publisher"
+},{
+    title: {
+        "en-GB": "Working with CTA",
+        "fr-FR": "Travailler avec CTA"
+    },
+    figure: {
+        "en-GB": "200",
+        "fr-FR": "200"
+    },
+    caption: {
+        "en-GB": "events attended in the last three years",
+        "fr-FR": "events attended in the last three years"
+    },
+    story: "speakers"
+}]%}
+
+<header class="{{ [container_class]|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    {% if medium %}
+        {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
+    {% endif %}
+    <div class="article-headline  |  layout layout--reverse">
+        <div class="layout  layout--align-middle  |  layout__cell layout__cell--main">
+            <div class="layout__cell layout__cell--main  |  gutters">
+                <div class="leader-inside  |  trailer">
+                    <h1 class="article-headline__title  |  title title--headline">{{ model.headline }}</h1>
+                    {% if model.alternativeHeadline %}
+                        <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="layout__cell layout__cell--aside  | wings">
+                {% if model.link.mediaObject|lead %}
+                    <div class="leader--ie-l">
+                        {% if model.link.mediaObject|lead.about %}
+                            <p class="caption  |  gutters">{{ model.link.mediaObject|lead.about }}</p>
+                        {% endif %}
+                        {% if model.link.mediaObject|lead.credit %}
+                            <p class="credit  |  gutters">{{ model.link.mediaObject|lead.credit }}</p>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <span class="is-silent">&nbsp;</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="is-gt-small-desktop  |  layout__cell layout__cell--aside{{ show_divider|default(1) ? ' layout__cell--divider'}}  |  gutters{{ show_story ? '  |  stack stack--stacked' }}">
+            {% if show_story %}
+                <div class="stack__unit stack__pin">
+                    {% include 'modules/global/greenshoot/greenshoot.html.twig' with {content: stories[random(3)]} %}
+                </div>
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </div>
+    </div>
+</header>

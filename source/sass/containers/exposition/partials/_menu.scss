@@ -1,0 +1,60 @@
+.menu {
+	flex: 0 0 5 / 6 * 100vw;
+	background: $color-theme;
+	font-family: $open-sans-family;
+	text-transform: uppercase;
+  width: 5 / 6 * 100vw;
+  text-align: left;
+  @include breakpoint($gt-large-handheld) {
+    flex: 0 0 6 / 18 * 100vw;
+    right: 6 / 18 * -100vw;
+    width: 6 / 18 * 100vw;
+  }
+  @include breakpoint($gt-medium-desktop) {
+  	width: 3 / 18 * 100vw;
+  	flex: 0 0 3 / 18 * 100vw;
+  }
+	&__item-ec {
+		border-bottom: 1px solid rgba(255, 255, 255, .6);
+		font-size: to-unit(12px);
+		font-weight: bold;
+		padding: rhythm(4) 0;
+	    a {
+	      color: $white;
+	    }
+		a:hover {
+			color: $color-body;
+		}
+	}
+	&__item-exposition {
+		border-bottom: 1px solid rgba(255, 255, 255, .6);
+		font-size: to-unit(12px);
+		font-weight: bold;
+		padding: rhythm(4) 0;
+	    a {
+	      color: $white;
+	    }
+		a:hover {
+			color: $color-body;
+		}
+	}
+	&-list {
+		.menu__item-ec:last-child {
+			border: 0;
+		}
+		.menu__item-exposition:last-child {
+			border: 0;
+		}
+	}
+	&__label {
+		color: mix($color-body, $white, 80%);
+		width: auto;
+		padding-right: rhythm(1);
+		&::after {
+			content: ".";
+		}
+		@include breakpoint($gt-large-handheld) {
+			width: 100%;
+		}
+	}
+}

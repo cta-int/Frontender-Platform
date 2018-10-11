@@ -1,0 +1,355 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Opportunities"
+    },
+    "description": {
+        "en": "List of a single opportunity type with newsletter signup"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Title"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "Events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "Articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "All events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "All articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/layout/layout.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "crown": {
+                                "value": "",
+                                "control": "project/crown"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "vertical_alignment": {
+                                "value": "",
+                                "label": {
+                                    "en": "Vertical alignment"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "Align top"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-end",
+                                        "label": {
+                                            "en": "Align bottom"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-middle",
+                                        "label": {
+                                            "en": "Align middle"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_outer_wing": {
+                                "value": 0,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Opportunity list"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "vacancy",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Newsletter"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "trailer",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en": "Be sure you don't miss our latest updates.",
+                                                "fr": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "button": {
+                                            "value": {
+                                                "en": "Subscribe",
+                                                "fr": "Souscrire"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

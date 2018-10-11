@@ -1,0 +1,28 @@
+/*
+looper
+
+Two stacked time periods, one active one inactive. Swapping them switches the active and inactive.
+
+markup:
+<div class="looper-group">
+    <a class="looper looper--active  |  anchor--reset anchor--shy  |  title" href="javascript:void();">This month</a>
+    <a class="looper looper--inactive  |  anchor--reset anchor--shy  |  title" href="javascript:void();">Last month</a>
+</div>
+
+Styleguide 4.14
+*/
+
+.looper {
+  display: block;
+  @include title-18px();
+  &--inactive {
+    color: mix($color-body, $white, 26%);
+    font-weight: 400;
+  }
+  &-group {
+    margin-bottom: rhythm(7);
+  }
+  @include breakpoint($gt-large-handheld) {
+    @include title-20px();
+  }
+}

@@ -1,0 +1,6 @@
+
+<aside class="{{ [container_class]|join("  |  ") }}">
+{% for loopContainer in containers %}
+    {% include loopContainer.template with loopContainer %}
+{% endfor %}
+</aside>

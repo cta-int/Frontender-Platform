@@ -1,0 +1,5 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if config.show_link|default(0) %}
+    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({'page': 'events'}) }}">{{ 'View all'|t(locales) }} {{ labels.container_title|lower|t(locales) }}</a>
+{% endif %}

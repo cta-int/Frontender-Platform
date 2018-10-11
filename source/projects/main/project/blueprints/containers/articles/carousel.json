@@ -1,0 +1,507 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Carousel"
+    },
+    "description": {
+        "en": "Carousel of featured topics"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": "Carousel header"
+                },
+                "template": "containers/global/carousel/carousel-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "CTA’s key areas of focus",
+                                    "fr": "CTA’s key areas of focus"
+                                }
+                            },
+                            "body": {
+                                "label": {
+                                    "en": "Body"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "In these key areas, we link consumers to producers in order to create benefits for everybody involved in the value chain.",
+                                    "fr": "In these key areas, we link consumers to producers in order to create benefits for everybody involved in the value chain."
+                                }
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "leader": {
+                                "value": "",
+                                "control": "project/leader"
+                            },
+                            "leader_inside": {
+                                "value": "leader-inside",
+                                "control": "project/leader_inside"
+                            },
+                            "trailer": {
+                                "value": "",
+                                "control": "project/trailer"
+                            },
+                            "trailer_inside": {
+                                "value": "trailer-inside",
+                                "control": "project/trailer_inside"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Body"
+                },
+                "description": {
+                    "en": "Carousel body"
+                },
+                "template": "containers/global/carousel/carousel.html.twig",
+                "template_config": {
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Panel"
+                            },
+                            "description": {
+                                "en": "First panel"
+                            },
+                            "template": "containers/global/carousel/carousel-panel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Background image"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "control":"project/model/name",
+                                            "label": {
+                                                "en": "Resource Model",
+                                                "fr": "Resource Model"
+                                            },
+                                            "type": "text",
+                                            "value": "media"
+                                        },
+                                        "id": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Resource ID",
+                                                "fr": "Resource ID"
+                                            },
+                                            "type": "lookup",
+                                            "value": "34b8b49c-8ed9-4973-b9a2-7028eaf332c0"
+                                        }
+                                    }
+                                },
+                                "links": {
+                                    "label": {
+                                        "en": "Links"
+                                    },
+                                    "controls": {
+                                        "section_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read more",
+                                                    "fr": "Read more"
+                                                },
+                                                "page": "agribusiness",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Panel link"
+                                            },
+                                            "control": "core/route"
+                                        },
+                                        "article_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read their story",
+                                                    "fr": "Read their story"
+                                                },
+                                                "page": "article",
+                                                "id": "f6eeeae9-8053-4aca-975d-6df85a795343"
+                                            },
+                                            "label": {
+                                                "en": "Article link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Content",
+                                        "fr": "Content"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Headline",
+                                                "fr": "Headline"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Agribusiness",
+                                                "fr": "Agribusiness"
+                                            }
+                                        },
+                                        "body": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Body",
+                                                "fr": "Body"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people.",
+                                                "fr": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people."
+                                            }
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings",
+                                        "fr": "Settings"
+                                    },
+                                    "controls": {
+                                        "colour_theme": {
+                                            "value": "theme theme--gold",
+                                            "blueprint": "project/controls/colour_theme"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Panel"
+                            },
+                            "description": {
+                                "en": "Second panel"
+                            },
+                            "template": "containers/global/carousel/carousel-panel.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Background image",
+                                        "fr": "Background image"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "control":"project/model/name",
+                                            "label": {
+                                                "en": "Resource Model",
+                                                "fr": "Resource Model"
+                                            },
+                                            "type": "text",
+                                            "value": "media"
+                                        },
+                                        "id": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Resource ID",
+                                                "fr": "Resource ID"
+                                            },
+                                            "type": "lookup",
+                                            "value": "164230f7-6a72-4565-b6fd-9b9c2161035d"                                        
+                                        }
+                                    }
+                                },
+                                "links": {
+                                    "label": {
+                                        "en": "Links",
+                                        "fr": "Links"
+                                    },
+                                    "controls": {
+                                        "section_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read more",
+                                                    "fr": "Read more"
+                                                },
+                                                "page": "icts-for-agriculture",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Panel link"
+                                            },
+                                            "control": "core/route"
+                                        },
+                                        "article_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read their story",
+                                                    "fr": "Read their story"
+                                                },
+                                                "page": "article",
+                                                "id": "3a7e1e43-e341-4b5b-ac5b-c7f610d018c2"
+                                            },
+                                            "label": {
+                                                "en": "Article link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Content",
+                                        "fr": "Content"
+
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Headline",
+                                                "fr": "Headline"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "ICTs for agriculture",
+                                                "fr": "ICTs for agriculture"
+                                            }
+                                        },
+                                        "body": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Body",
+                                                "fr": "Body"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "The rapid technological changes taking place, especially in the areas of the Internet, mobile and data applications, create an enormous opportunity for growth in the agricultural sector.",
+                                                "fr": "The rapid technological changes taking place, especially in the areas of the Internet, mobile and data applications, create an enormous opportunity for growth in the agricultural sector."
+                                            }
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings",
+                                        "fr": "Settings"
+                                    },
+                                    "controls": {
+                                        "colour_theme": {
+                                            "value": "theme theme--red",
+                                            "control": "project/colour_theme"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "template": "containers/global/carousel/carousel-panel.html.twig",
+                            "name": {
+                                "en": "Panel"
+                            },
+                            "description": {
+                                "en": "Third panel"
+                            },
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Background image",
+                                        "fr": "Background image"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "control":"project/model/name",                                     
+                                            "label": {
+                                                "en": "Resource Model",
+                                                "fr": "Resource Model"
+                                            },
+                                            "type": "text",
+                                            "value": "media"
+                                        },
+                                        "id": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Resource ID",
+                                                "fr": "Resource ID"
+                                            },
+                                            "type": "lookup",
+                                            "value": "967af8af-892d-42c6-9d93-454c2813b925"
+                                        }
+                                    }
+                                },
+                                "links": {
+                                    "label": {
+                                        "en": "Links",
+                                        "fr": "Links"
+                                    },
+                                    "controls": {
+                                        "section_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read more",
+                                                    "fr": "Read more"
+                                                },
+                                                "page": "climate-resilient-agriculture",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Panel link"
+                                            },
+                                            "control": "core/route"
+                                        },
+                                        "article_link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Read their story",
+                                                    "fr": "Read their story"
+                                                },
+                                                "page": "article",
+                                                "id": "b9c8f294-6ec0-4162-b50d-7283f0d7d3af"
+                                            },
+                                            "label": {
+                                                "en": "Article link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Content",
+                                        "fr": "Content"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Headline",
+                                                "fr": "Headline"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Climate resilient agriculture",
+                                                "fr": "Climate resilient agriculture"
+                                            }
+                                        },
+                                        "body": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Body",
+                                                "fr": "Body"
+                                            },
+                                            "type": "text",
+                                            "value": {
+                                                "en": "Building resilience for adaptation to climate change in the agriculture sector aims to increase the adaptive capacity of farmers and systems, both to recover from shocks and to be prepared for changes.",
+                                                "fr": "Building resilience for adaptation to climate change in the agriculture sector aims to increase the adaptive capacity of farmers and systems, both to recover from shocks and to be prepared for changes."
+                                            }
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings",
+                                        "fr": "Settings"
+                                    },
+                                    "controls": {
+                                        "colour_theme": {
+                                            "value": "theme theme--green",
+                                            "control": "project/colour_theme"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

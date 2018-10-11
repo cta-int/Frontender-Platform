@@ -1,0 +1,23 @@
+/*
+Theme
+
+The theme class defines which spot colour is used.
+
+.theme--blue - Blue
+.theme--lime - Lime
+.theme--yellow - Yellow
+.theme--gold - Gold
+.theme--salmon - Salmon
+.theme--orange - Orange
+.theme--red - Red
+.theme--burgundy - Burgundy
+.theme--purple - Purple
+
+markup:
+<div class="{$modifiers}">
+  <sg-insert>3.4-1</sg-insert>
+  <sg-insert>3.9-1</sg-insert>
+</div>
+
+Styleguide 3.12
+*/

@@ -1,0 +1,80 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Communiquè"
+    },
+    "description": {
+        "en": ""
+    },
+    "template": "containers/channels/body/body-panel-articles.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "active": {
+                    "value": 1,
+                    "label": {
+                        "en": "Open tab"
+                    },
+                    "control": "project/show"
+                },
+                "tab_class": {
+                    "value": "",
+                    "label": {
+                        "en": "Tab class"
+                    },
+                    "control": "project/container_class"
+                },
+                "panel_class": {
+                    "value": "",
+                    "label": {
+                        "en": "Panel class"
+                    },
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Channel\\Articles",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "{ id }",
+                    "control": "project/model/id"
+                },
+                "articleType": {
+                    "value": "communique",
+                    "control": "project/model/article_type"
+                },
+                "limit": {
+                    "value": "5",
+                    "control": "project/model/limit"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "panel_title": {
+                    "value": {
+                        "en": "Communiquè",
+                        "fr": "Communiqué"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+/*
+Paragraph
+
+.paragraph - Regular paragraph
+paragraph--lead - Lead paragraph
+paragraph--lead-xl - Extra large lead paragraph
+
+markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac velit faucibus, aliquam nunc ut, tempor odio. Cras ultrices eget erat id molestie. Vivamus euismod venenatis neque. Pellentesque mollis eros risus, nec mattis quam laoreet ac.</p>
+
+Styleguide 3.44
+*/
+
+.paragraph {
+    margin-top: rhythm(6);
+    &--lead {
+        font-size: to-unit(20px);
+        line-height: to-unit(rhythm(9), 1, 20px);
+    }
+    &--lead-xl /* Used on the About CTA page */ {
+        font-size: to-unit(28px);
+        line-height: to-unit(rhythm(11), 1, 28px);
+    }
+    .heading + & {
+        margin-top: rhythm(8);
+    }
+    strong {
+        font-weight: 600;
+    }
+}

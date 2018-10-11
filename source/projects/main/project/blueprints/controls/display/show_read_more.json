@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show read more"
+    },
+    "control": "project/show_on_items"
+}

@@ -1,0 +1,21 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} {{ helper.class_attribute(config, 'well well--darkest  |  is-illustrated  |  is-root')|raw }}>
+	<div class="layout layout--narrow  |  trailer">
+		<div class="layout__cell  |  leader  |  trailer  |  gutters  |  body--align-center">
+			<h2 class="title title--hero title--inverse">{{ content.title|t(locales) }}</h2>
+			<p class="wings  |  leader--small  |  trailer  |  meta--inverse">{{ content.body|t(locales) }}</p>
+			<a class="button button--inverse"  href="{{ content.slug.page|t(locales) }}" target="_blank">{{ content.slug.label|t(locales) }}</a>
+		</div>
+	</div>
+	{% if content.show_icons == 'true' %}
+		<div class="search__illustrations-set">
+	    <span class="search__illustration illustration illustration--fish-barn"></span>
+	    <span class="search__illustration illustration illustration--fishing-shore"></span>
+	    <span class="search__illustration illustration illustration--fishing-boat"></span>
+	    <span class="water-illustration"></span>
+	  </div>
+	{% endif %}
+</{{ config.container_tag|default('div') }}>

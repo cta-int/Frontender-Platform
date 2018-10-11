@@ -1,0 +1,45 @@
+{
+    "value": "",
+    "label": {
+        "en": "Region"
+    },
+    "options": [
+        {
+            "value": "7729891",
+            "label": {
+                "en": "Caribbean"
+            }
+        },
+        {
+            "value": "7729886",
+            "label": {
+                "en": "Central Africa"
+            }
+        },
+        {
+            "value": "7729889",
+            "label": {
+                "en": "Eastern Africa"
+            }
+        },
+        {
+            "value": "9406051",
+            "label": {
+                "en": "Southern Africa"
+            }
+        },
+        {
+            "value": "7729885",
+            "label": {
+                "en": "Western Africa"
+            }
+        },
+        {
+            "value": "2363254",
+            "label": {
+                "en": "Pacific"
+            }
+        }
+    ],
+    "control": "core/list"
+}

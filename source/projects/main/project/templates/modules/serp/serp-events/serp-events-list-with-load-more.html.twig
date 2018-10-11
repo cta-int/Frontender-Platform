@@ -1,0 +1,26 @@
+{% import "macros/pagination.html.twig" as pagination %}
+
+{% if config.show_first_hr|default(false) %}
+    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+{% endif %}
+
+{% for event in event %}
+    {% include 'partials/event/nested-media-with-fixed-aside.html.twig' with {highlight: true} %}
+
+    {% if not loop.last %}
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+    {% endif %}
+{% endfor %}
+
+<div class="leader--hero  |  trailer--hero" data-pagination-parent>
+    {{ pagination.extend(event, event_total, event_model, {
+        model_name: 'Event\\Search',
+        target: "[data-serp-events]",
+        layout: "modules/serp/serp-events/serp-events-list-with-load-more.html.twig",
+        config: {
+            config: {
+                show_first_hr: 'true'
+            }
+        }
+    }) }}
+</div>

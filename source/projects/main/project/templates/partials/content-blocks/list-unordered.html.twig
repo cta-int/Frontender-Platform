@@ -1,0 +1,3 @@
+<div class="paragraph  |  gutters">
+{{ contentBlock.content|appendBlankTarget|replace({'b>': 'strong>', '<i>': '<em>', '</i>': '</em>'})|striptags('<strong><em><u><a><sub><sup><br><ul><li>')|raw }}
+</div>

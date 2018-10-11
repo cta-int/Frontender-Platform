@@ -1,0 +1,19 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="is-inactive  |  tab-teaser__panel tab-teaser--logos" id="{{ tab.id ~ event._id }}">
+    {% if model.sponsor | length > 0 %}
+        <div class="trellis trellis--l |  wings">
+            {% for sponsor in model.sponsor %}
+                <div class="trellis__cell  |  gutters  |  leader  |  trailer">
+                    {% if sponsor.avatar %}
+                        <a href="{{ sponsor.website }}" target="_blank">
+                            <img class="image" src="{{ sponsor.avatar }}" alt="{{ sponsor.name|t(locales) }}">
+                        </a>
+                    {% else %}
+                        <p>{{ sponsor.name|t(locales) }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

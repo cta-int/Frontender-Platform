@@ -1,0 +1,35 @@
+{
+    "value": "wings",
+    "label": {
+        "en": "Wings"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "None"
+            }
+        },
+        {
+            "value": "wings",
+            "label": {
+                "en": "Left and right"
+            }
+        },
+        {
+            "value": "wing--left",
+            "label": {
+                "en": "Left"
+            }
+        },
+        {
+            "value": "wing--right",
+            "label": {
+                "en": "Right"
+            }
+        }
+    ]
+}

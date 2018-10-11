@@ -1,0 +1,219 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="credits  |  gutters" {{ helper.container_id_attribute(frontender, "frontender")|raw }} style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ config.credit_image }}');">
+    <div class="standout  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="standout-content  |  wings" {% if query.fromFrontender %} style="min-height: 45vw; height: 45vw; max-height: 100vw;"{% endif %}>
+            <h2 class="category  |  trailer">{{ config.credit_title|t(locales) }}</h2>
+            <div class="credit  |  trailer--hero  |  bleed">
+                <div class="credit__cell  |  gutters">
+                    <p class="credits-department  |  trailer">Director's office</p>
+                    <ul class="reset">
+                        <li class="trailer--small">
+                            <p>Michael Hailu</p>
+                            <p class="job-title">Director</p>
+                        </li>
+                        <li>
+                            <p>Deborah Kleinbussink</p>
+                            <p class="job-title">Executive Assistant/Board Secretary</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="credit__cell  |  gutters">
+                    <p class="credits-department  |  trailer">Brussels office</p>
+                    <ul class="reset">
+                        <li class="trailer--small">
+                            <p>Isolina Boto </p>
+                            <p class="job-title">Manager of Brussels Office</p>
+                        </li>
+                        <li>
+                            <p>Angeles Salvador </p>
+                            <p class="job-title">Project Assistant (from Wageningen office)</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">Knowledge Management &amp; Communication (KMC) Programme</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell  |  gutters">
+                        <li class="trailer--small">
+                            <p>Thierry Doudet</p>
+                            <p class="job-title">Programme Manager</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Stéphane Gambier</p>
+                            <p class="job-title">Sr Programme Coord/Communication</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Paul Neate</p>
+                            <p class="job-title">Sr Programme Coord/Communication</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Krishan Bheenick</p>
+                            <p class="job-title">Sr Programme Coord/Knowledge Management</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Thierry Lewyllie</p>
+                            <p class="job-title">Programme Coord/Web</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Murielle Vandreck</p>
+                            <p class="job-title">Programme Coord/Publications</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Bianca Beks</p>
+                            <p class="job-title">Associate Programme Coord/Publications</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell  |  gutters">
+                        <li class="trailer--small">
+                            <p>Anne Legroscollard</p>
+                            <p class="job-title">Associate Programme Coord/Communication</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Mirjam Bos</p>
+                            <p class="job-title">Administrative Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Evelyne Kort-Nerincx</p>
+                            <p class="job-title">Administrative Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Merche Rodriguez</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Gabriela Gonçalves Bahre</p>
+                            <p class="job-title">Data Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Husna Yagoub</p>
+                            <p class="job-title">Data Assistant</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">Policies, Markets &amp; ICT (PMI) Programme</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Lamon Rutten</p>
+                            <p class="job-title">Programme Manager</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Chris Addison</p>
+                            <p class="job-title">Sr Programme Data4Ag</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Oluyede Ajayi</p>
+                            <p class="job-title">Sr Programme Coord/ARD Policy</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Juan Cheaz</p>
+                            <p class="job-title">Sr Programme Coord/Ag. Policy &amp; Value Chains</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Vincent Fautre</p>
+                            <p class="job-title">Sr Programme Coord/Value Chains</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Judith Ann Francis</p>
+                            <p class="job-title">Sr Programme Coord/S&amp;T Policy</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Giacomo Rambaldi</p>
+                            <p class="job-title">Sr Programme Coord/ICT</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Souleymane Zeba</p>
+                            <p class="job-title">Sr Programme Coord/Agric. Policy &amp; Value Chain</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Benjamin Addom</p>
+                            <p class="job-title">Programme Coord/ICT</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Ken Lohento</p>
+                            <p class="job-title">Programme Coord/ICT</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Armelle Degrave</p>
+                            <p class="job-title">Associate Programme Coord/PMI</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Caroline Andriessen</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Marion van Boven</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Pavlina Ivanova</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Emil Jejov</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Carolina van Loenen</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">Learning, Monitoring and Evaluation (LME) Unit</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small  |  credit__cell">
+                            <p>Ibrahim Khadar</p>
+                            <p class="job-title">Unit Manager</p>
+                        </li>
+                        <li class="trailer--small  |  credit__cell">
+                            <p>Tarikua Getachew Woldetsadick</p>
+                            <p class="job-title">Associate Programme Coord/LME</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small  |  credit__cell">
+                            <p>Raya Dekkers</p>
+                            <p class="job-title">Administrative Assistant</p>
+                        </li>
+                        <li class="trailer--small  |  credit__cell">
+                            <p>Annemiek Leuvenink</p>
+                            <p class="job-title">Project Assistant</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">Financial Control</p>
+                <ul class="reset  |  credit  |  bleed">
+                    <li class="trailer--small  |  credit__cell  |  gutters">
+                        <p>Carmen Broeders</p>
+                        <p class="job-title">Financial Controller (until 19/09/2016)</p>
+                    </li>
+                    <li class="trailer--small  |  credit__cell  |  gutters">
+                        <p>Kim Swerts</p>
+                        <p class="job-title">Financial Control Officer (from 20/09/2016)</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p class="caption">©{{ config.credit_copyright|t(locales) }}</p>
+    <div class="header__sponsor" style="position: absolute;">
+        <!-- @TODO Replace with 3 sponsor icons, awaiting feedback from CTA -->
+        <img src="http://a-year-in-review-2016.cta.int/assets/images/header/europe-logo.png" alt="sponsors">
+    </div>
+</div>

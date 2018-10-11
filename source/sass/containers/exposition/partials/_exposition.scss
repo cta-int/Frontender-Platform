@@ -1,0 +1,166 @@
+.exposition {
+	display: flex;
+	height: rhythm(100);
+	width: 0;
+	background: 0 0;
+	// margin-bottom: rhythm(20);
+	&-wrapper {
+		background: $color-body;
+		position: relative;
+		@include breakpoint($gt-medium-desktop) {
+			&:last-of-type {
+				padding-bottom: rhythm(50);
+			}
+		}
+	}
+	&-visible {
+		width: 100%;
+	}
+	@include breakpoint($gt-small-desktop) {
+		width: 10 / 18 * 100vw;
+		height: rhythm(194);
+		&-visible {
+			width: 16 / 18 * 100vw;
+		}
+		&--right.exposition-visible {
+			margin-left: auto;
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		width: 8 / 18 * 100vw;
+		&-visible {
+			width: 14 / 18 * 100vw;
+		}
+	}
+	&--large {
+		@include breakpoint($lt-small-desktop) {
+			height: rhythm(150);
+		}
+		@include breakpoint($gt-small-desktop) {
+			height: rhythm(220);
+		}
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 100%;
+		top: 0;
+		bottom: 0;
+		// z-index: -1;
+		transition: ease-out 1s;
+		transition-delay: 0.25s;
+		background: $color-theme;
+		.theme--green & {
+			background: $color-green;
+		}
+		.theme--blue & {
+			background: $color-blue
+		}
+		.theme--lime & {
+			background: $color-lime;
+		}
+		.theme--yellow & {
+			background: $color-yellow;
+		}
+		.theme--gold & {
+			background: $color-gold;
+		}
+		.theme--orange & {
+			background: $color-orange;
+		}
+		.theme--salmon & {
+			background: $color-salmon;
+		}
+		.theme--red & {
+			background: $color-red;
+		}
+		.theme--burgundy & {
+			background: $color-burgundy;
+		}
+		.theme--purple & {
+			background: $color-purple;
+		}
+	}
+	.theme--left &::after {
+		left: 100%;
+		right: 0;
+	}
+	.theme--left &-visible::after,
+	&-visible::after {
+		right: 0;
+		left: 0;
+	}
+	&-title {
+		position: relative;
+		align-self: center;
+		width: 100%;
+		@include breakpoint($lt-small-desktop) {
+			text-align: center;
+		}
+		@include breakpoint($gt-small-desktop) {
+			width: 8 / 18 * 100vw;
+			padding-left: 1 / 18 * 100vw;
+			padding-right: 1 / 18 * 100vw;
+			&--right {
+				text-align: right;
+				margin-left: auto;
+			}
+		}
+	}
+	&__section,
+	&__illustration,
+	&__illustration img {
+		visibility: hidden;
+		.exposition-visible & {
+			visibility: visible;
+		}
+	}
+	&__section {
+		position: absolute;
+		top: rhythm(4) * -1;
+		left: rhythm(4) * -1;
+		@include breakpoint($gt-medium-desktop) {
+			top: rhythm(12) * -1;
+			left: rhythm(12) * -1;
+		}
+	}
+	&__section.section--right {
+		right: rhythm(4) * -1;
+		left: inherit;
+		@include breakpoint($gt-medium-desktop) {
+			right: rhythm(12) * -1;
+		}
+	}
+	&__section,
+	&__illustration,
+	&-title {
+		z-index: 1;
+	}
+	.lead-paragraph {
+		color: $white;
+	}
+	&__illustration {
+		position: absolute;
+		width: 250px;
+		left: 0;
+		bottom: -11px;
+		@include breakpoint($gt-medium-handheld) {
+			width: 400px;
+		}
+		@include breakpoint($gt-small-desktop) {
+			width: auto;
+			bottom: -17px;
+		}
+		img {
+			width: 0;
+			.exposition-visible & {
+				width: 100%;
+			}
+		}
+		&--right {
+			right: 0;
+			left: inherit;
+		}
+	}
+}

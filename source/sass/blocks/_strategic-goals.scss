@@ -1,0 +1,100 @@
+/*
+Strategic goals
+
+markup:
+<div class="strategic-goals  |  gutters-outside">
+    <div class="grid grid--musketeers">
+        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+            <div class="title title--sub-section">
+                <span class="strategic-goals__number">01</span>
+                <div class="strategic-goals__title">Profitable smallholder value chains</div>
+            </div>
+            <span class="strategic-goals__illustration illustration illustration--fish-market-supplier"></span>
+        </div>
+        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+            <div class="title title--sub-section">
+                <span class="strategic-goals__number">02</span>
+                <div class="strategic-goals__title">Conducive agricultural policies</div>
+            </div>
+            <span class="strategic-goals__illustration illustration illustration--factory"></span>
+        </div>
+        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+            <div class="title title--sub-section">
+                <span class="strategic-goals__number">03</span>
+                <div class="strategic-goals__title">Enhanced capacity for knowledge management</div>
+            </div>
+            <span class="strategic-goals__illustration illustration illustration--farmer-presentation"></span>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<div class="theme theme--dark">
+    <div class="about-cta  |  leader-inside  |  trailer-inside--hero  |  gutters">
+        <sg-wrapper-content/>
+    </div>
+</div>
+
+Styleguide 4.37
+*/
+
+.strategic-goals {
+  @include theme-opaque-background(100%);
+  color: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &__item {
+    position: relative;
+    min-height: rhythm(70);
+    border-bottom: 1px solid mix($color-green, $color-body, 26%);
+    @include breakpoint($gt-large-handheld) {
+      min-height: rhythm(86);
+    }
+    &:before {
+      @include theme-opaque-background(100%);
+      border-color: mix($color-green, $color-body, 26%);
+      position: absolute;
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 50%;
+      bottom: -7px;
+      left: -7px;
+      z-index: 1;
+    }
+  }
+  &__illustration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+.illustration {
+  &--fish-market-supplier {
+    font-size: 6em;
+    color: $color-blue;
+    transform: translateY(38%);
+    @include breakpoint($gt-large-handheld) {
+      font-size: 6vw;
+    }
+  }
+  &--factory {
+    font-size: 6em;
+    color: $color-salmon;
+    @include breakpoint($gt-large-handheld) {
+      font-size: 5vw;
+    }
+  }
+  &--farmer-presentation {
+    font-size: 10em;
+    color: $color-yellow;
+    bottom: -1px;
+    @include breakpoint($gt-large-handheld) {
+      font-size: 8vw;
+    }
+  }
+}

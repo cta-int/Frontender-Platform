@@ -1,0 +1,71 @@
+/*
+Impact stories
+
+markup:
+<section class="impact-stories  |  well">
+    <header class="trailer--hero  |  leader-inside  |  wings">
+        <h2 class="title title--container  |  gutters">Impact stories</h2>
+    </header>
+    <div class="layout layout--reverse trailer-inside--small">
+        <div class="layout__cell  |  wing--right">
+            <a class="post post--hero  |  layout layout--even  |  anchor anchor--shy  |  is-heir" href="/en/article/satellite-based-crop-advice-sid0e6cbabe4-0bf2-4848-a8f9-88f45fcc26ee">
+                <div class="post__media  |  layout__cell  |  gutters">
+                    <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_750,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5" srcset="http://res.cloudinary.com/cta/image/upload/w_1480,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 1500w,http://res.cloudinary.com/cta/image/upload/w_1280,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 1280w,http://res.cloudinary.com/cta/image/upload/w_740,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 750w,http://res.cloudinary.com/cta/image/upload/w_640,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 640w,http://res.cloudinary.com/cta/image/upload/w_480,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 480w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/i7f2tfwpinjayoskaap5 320w" sizes="(min-width: 1024px) 50vw, (min-width: 768px) 100vw" width="360" height="240" alt="">
+                </div>
+                <div class="post__content  |  layout__cell layout__cell--aside  |  stack stack--stacked">
+                    <div class="stack__unit  |  gutters">
+                        <blockquote class="quote  |  leader--small  |  trailer--normal">
+                            There are a number of innovations that can be brought to scale, to counter the threats of climate change.
+                        </blockquote>
+                        <div class="meta">Bruce Campbell, Director of the CGIAR Research Programme on Climate Change</div>
+                    </div>
+                    <div class="stack__unit stack__pin  |  gutters">
+                        <div class="pin-box  |  leader-inside--small">
+                            <span><time class="meta" datetime="2017-04-19T20:29:48+00:00">19 April 2017</time></span>
+                            <h3 class="title">Satellite-based crop advice</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="short-list  |  gutters  |  trailer">
+                <ul class="reset  |  short-list">
+                    <li class="short-list__item">
+                        <div class="trailer--tiny"> <time class="meta" datetime="2017-04-20T02:24:48+00:00">20 April 2017</time>
+                        </div>
+                        <a href="/en/article/-sid05152d5fc-3ea4-4e04-9c06-043f20f55780">
+                            <h2 class="block-link">New site for ICT Update launched</h2>
+                        </a>
+                    </li>
+                    <li class="short-list__item">
+                        <div class="trailer--tiny"> <time class="meta" datetime="2017-04-20T02:29:36+00:00">20 April 2017</time>
+                        </div>
+                        <a href="/en/article/-sid0cb5dedc2-7d88-49ab-a557-1e64a0db1c0d">
+                            <h2 class="block-link">Supporting young e-agriculture start-ups</h2>
+                        </a>
+                    </li>
+                    <li class="short-list__item">
+                        <div class="trailer--tiny"> <time class="meta" datetime="2017-04-20T02:19:20+00:00">20 April 2017</time>
+                        </div>
+                        <a href="/en/article/-sid0d3dbbc9a-241c-4c11-9504-20d94fe49236">
+                            <h2 class="block-link">ICTs for agriculture: a must for youth and farmers</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+sg-wrapper:
+<div class="theme--salmon">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.14
+*/
+
+.impact-stories {
+  padding-top: 0;
+}

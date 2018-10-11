@@ -1,0 +1,54 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Video hero"
+    },
+    "description": {
+        "en": "Hero with video"
+    },
+    "template": "containers/media/hero/hero-video.html.twig",
+    "template_config": {
+        "content": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "video": {
+                    "label": {
+                        "en": "Video link (YouTube or Vimeo embed link)",
+                        "fr": "Video link (YouTube or Vimeo embed link)"
+                    },
+                    "value": {
+                        "en": "https://player.vimeo.com/video/266512829",
+                        "fr": "https://player.vimeo.com/video/266512829"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": []
+    }
+}

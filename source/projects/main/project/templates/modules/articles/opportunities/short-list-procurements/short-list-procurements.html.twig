@@ -1,0 +1,22 @@
+{% import "macros/pagination.html.twig" as pagination %}
+{% import "macros/date.html.twig" as date %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if config.show_looper|default(1) %}
+    <div class="looper-group  |  gutters">
+        {#<a class="looper looper--active  |  anchor--reset anchor--shy  |  title" href="?year={{ 'now'|tdate('%y') }}">{{ 'current year'|t(locales) }}</a>#}
+        <span class="looper looper--inactive  |  anchor--reset anchor--shy  |  title">{{ labels.title|t(locales)|default('Procurements'|t(locales)) }}</span>
+    </div>
+{% elseif config.show_title|default(1) %}
+    <h2 class="title title--section  |  gutters">{{ labels.title|t(locales)|default('Procurements'|t(locales)) }}</h2>
+{% endif %}
+
+<ul class="reset  |  gutters" id="procurements">
+    {% include "modules/articles/opportunities/short-list-procurements/short-list-procurements-list.html.twig" %}
+</ul>
+
+{% if config.show_link|default(1) and labels.link is defined %}
+    <p class="leader leader-inside  |  anchor  |  gutters">
+        {% include 'partials/menu-link.html.twig' with {link: labels.link, config: {anchor_class: 'block-link block-link--icon'}} %}
+    </p>
+{% endif %}

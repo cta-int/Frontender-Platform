@@ -1,0 +1,58 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Single project preview tile"
+    },
+    "description": {
+        "en": "A single tile to preview the contents of a project"
+    },
+    "template": "containers/projects/preview/preview.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                },
+                "divider": {
+                    "value": "divider divider--bottom",
+                    "control": "project/divider"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "trailer--hero",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "trailer-inside--hero",
+                    "control": "project/trailer_inside"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "events",
+                    "control": "core/hidden"
+                },
+                "id": {
+                    "value": "ae9374a7-f48f-4707-8efa-4426769e8a56",
+                    "control": "project/model/id"
+                }
+            }
+        }
+    }
+}

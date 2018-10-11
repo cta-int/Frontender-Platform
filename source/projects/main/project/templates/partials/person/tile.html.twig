@@ -1,0 +1,39 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/location.html.twig" as location %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="profile">
+    <div class="profile__image">
+        {{ image.speaker(person) }}
+    </div>
+    <div class="profile__text">
+        {% if person.honorificPrefix %}
+            <h4 class="profile__name  |  title  |  trailer--small">{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}</h4>
+        {% else %}
+            <h4 class="profile__name  |  title  |  trailer--small">{{ person.givenName }} {{ person.familyName }}</h4>
+        {% endif %}
+
+        {% if person.jobTitle %}
+            <p class="body--whisper">{{ person.jobTitle|t(locales) }}</p>
+        {% else %}
+
+            {% if person.worksFor|first %}
+                {% if person.worksFor|first.name or person.worksFor|first.alternateName %}
+                    <p class="body--whisper">
+                        {{ person.worksFor|first.alternateName ? person.worksFor|first.alternateName : person.worksFor|first.name }}
+                        {% if person.worksFor|first.alternateName %}
+                            ({{ person.worksFor|first.name }})
+                        {% endif %}
+                    </p>
+                {% endif %}
+                {% if person.worksFor|first.location %}
+                    <p class="body--whisper">
+                        {{ location.country(person.worksFor|first.location) }}
+                    </p>
+                {% endif %}
+            {% endif %}
+
+        {% endif %}
+        
+    </div>
+</div>

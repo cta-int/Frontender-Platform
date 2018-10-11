@@ -1,0 +1,74 @@
+{#
+This macro renders a "Show more" button. Clicking the button will result in
+loading more results under the current set. If there are no more results,
+the button will stay in place but will become disabled and show an alternate
+label.
+
+The macro accepts a config object:
+{'labels': {}, 'class': ''}
+#}
+
+{% macro extend(entries, total, model, config = {}) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set pages = entries|pagination(total, model) %}
+    {% set next = pages|slice(pages|length - 2, 1)|last %}
+
+    {% if config.model_name %}
+        {% if model.state().limit + model.state().skip < total %}
+            <div class="{{ ["body--align-center  |  leader  |  wing--right", class]|join(" | ") }}">
+                <a class="reset  |  button button--wide pagination-pager" href="{{ next.query }}" data-pagination-target="{{ config.target }}"{% if config.config %} data-pagination-config="{{ config.config|json_encode }}"{% endif %} data-pagination-model="{{ config.model_name }}" data-pagination-layout="{{ config.layout }}" data-pagination-states="{{ model.state().values()|json_encode }}">
+                    {{ labels.next|default('Show more')|t(locales) }}
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+
+{% endmacro %}
+
+
+{#
+This macro renders a full navigation set. The next set will replace the current
+set.
+
+The macro accepts a config object:
+{'labels': {}, 'class': ''}
+#}
+{% macro pages(entries, total, model) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {% if total > modal.state().skip + model.state().limit %}
+        <div class="body--align-center  |  leader  |  pagination  |  leader--small  |  trailer--small">
+            {% for page in entries|pagination(total, model) %}
+                <a href="{{ page.query }}" class="reset  |  button  |  {{ page.state }}">{{ page.title }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+
+
+{#
+This macro renders a 'previous' and 'next' buttons.
+
+The macro accepts a config object:
+{'labels': {}, 'class': ''}
+#}
+{% macro browse(entries, total, model) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set pages = entries|pagination(total, model) %}
+    {% set previous = pages|slice(1,1)|last %}
+    {% set next = pages|slice(pages|length - 2, pages|length - 2)|last %}
+
+    <div class="{{ ["stack", class]|join(" | ") }}">
+        <div class="stack__unit">
+            <a class="reset  |  button" href="{{ previous.query }}">
+                {{ labels.prev|default('Previous')|t(locales) }}
+            </a>
+        </div>
+        <div class="stack__unit stack__pin">
+            <a class="reset  |  button" href="{{ next.query }}">
+                {{ labels.next|default('Next')|t(locales) }}
+            </a>
+        </div>
+    </div>
+{% endmacro %}

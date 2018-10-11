@@ -1,0 +1,48 @@
+/*
+Cover
+
+Full-bleed image with a vertically centered layover.
+
+markup:
+<figure class="ie9-hero hero hero--slogan" data-fe-id="0759765696892ee8">
+    <picture class="not-crown hero__figure  |  image image--stretch">
+        <source media="(max-width: 767px) and (orientation: portrait)" srcset="https://res.cloudinary.com/cta/image/upload/w_1536,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1536w,https://res.cloudinary.com/cta/image/upload/w_1334,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1334w,https://res.cloudinary.com/cta/image/upload/w_1136,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1136w,https://res.cloudinary.com/cta/image/upload/w_960,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 960w,https://res.cloudinary.com/cta/image/upload/w_768,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 768w,https://res.cloudinary.com/cta/image/upload/w_667,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 667w,https://res.cloudinary.com/cta/image/upload/w_568,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 568w,https://res.cloudinary.com/cta/image/upload/w_480,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 480w" sizes="100vw">
+        <source media="(max-width: 767px) and (orientation: landscape)" srcset="https://res.cloudinary.com/cta/image/upload/w_1536,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1536w,https://res.cloudinary.com/cta/image/upload/w_1334,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1334w,https://res.cloudinary.com/cta/image/upload/w_1136,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1136w,https://res.cloudinary.com/cta/image/upload/w_960,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 960w,https://res.cloudinary.com/cta/image/upload/w_768,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 768w,https://res.cloudinary.com/cta/image/upload/w_667,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 667w,https://res.cloudinary.com/cta/image/upload/w_568,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 568w,https://res.cloudinary.com/cta/image/upload/w_480,ar_3:2,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 480w" sizes="100vw">
+        <source media="(min-width: 768px) and (max-width: 1024px)" srcset="https://res.cloudinary.com/cta/image/upload/w_2048,ar_2:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 2048w,https://res.cloudinary.com/cta/image/upload/w_1536,ar_2:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1536w,https://res.cloudinary.com/cta/image/upload/w_1024,ar_2:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1024w,https://res.cloudinary.com/cta/image/upload/w_768,ar_2:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 768w" sizes="100vw">
+        <source media="(min-height: 800px) and (max-height: 1280px) and (min-width: 800px) and (max-width: 1280px) and (orientation: portrait)" srcset="https://res.cloudinary.com/cta/image/upload/w_1600,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1600w,https://res.cloudinary.com/cta/image/upload/w_800,ar_2:3,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 800w" sizes="100vw">
+        <source media="(min-width: 1280px) and (max-width: 600px) and (orientation: landscape)" srcset="https://res.cloudinary.com/cta/image/upload/w_2560,ar_3:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 2560w,https://res.cloudinary.com/cta/image/upload/w_1280,ar_3:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1280w" sizes="100vw">
+        <source media="(min-aspect-ratio: 16/9) and (min-width: 1800px)" srcset="https://res.cloudinary.com/cta/image/upload/w_2560,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 2560w,https://res.cloudinary.com/cta/image/upload/w_1920,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1920w,https://res.cloudinary.com/cta/image/upload/w_1680,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1680w,https://res.cloudinary.com/cta/image/upload/w_1440,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1440w,https://res.cloudinary.com/cta/image/upload/w_1280,ar_16:5,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1280w" sizes="100vw">
+        <source media="(min-aspect-ratio: 1/1)" srcset="https://res.cloudinary.com/cta/image/upload/w_2560,ar_16:6,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 2560w,https://res.cloudinary.com/cta/image/upload/w_1920,ar_16:6,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1920w,https://res.cloudinary.com/cta/image/upload/w_1680,ar_16:6,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1680w,https://res.cloudinary.com/cta/image/upload/w_1440,ar_16:6,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1440w,https://res.cloudinary.com/cta/image/upload/w_1280,ar_16:6,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1280w" sizes="100vw">
+        <source media="(max-aspect-ratio: 1/1)" srcset="https://res.cloudinary.com/cta/image/upload/w_2560,ar_16:8,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 2560w,https://res.cloudinary.com/cta/image/upload/w_1920,ar_16:8,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1920w,https://res.cloudinary.com/cta/image/upload/w_1680,ar_16:8,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1680w,https://res.cloudinary.com/cta/image/upload/w_1440,ar_16:8,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1440w,https://res.cloudinary.com/cta/image/upload/w_1280,ar_16:8,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 1280w" sizes="100vw">
+        <img class="hero__figure  |  image image--stretch" src="https://res.cloudinary.com/cta/image/upload/w_480,ar_1:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg" srcset="https://res.cloudinary.com/cta/image/upload/w_960,ar_1:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 960w,https://res.cloudinary.com/cta/image/upload/w_480,ar_1:1,g_faces:center,f_auto,c_fill/k6pbarwzyazsjddsroeg 480w" sizes="100vw" alt="Leading image">
+    </picture>
+    <figcaption class="hero__headline">
+        <img src="/images/slogan.svg" alt="Seeding Innovation, Harvesting Prosperity">
+    </figcaption>
+</figure>
+
+Styleguide 4.9
+*/
+
+.cover {
+  position: relative;
+  background: no-repeat center;
+  background-size: cover;
+}
+
+@include breakpoint($lt-medium-handheld) {
+  .cover {
+    max-height: rhythm(160);
+  }
+}
+
+@include breakpoint($gt-medium-handheld) {
+  .cover.cover {
+    height: 100vh;
+    max-height: 100vh;
+    min-height: calc(100vh - #{rhythm(64)});
+    &.is-crowned {
+      min-height: 100vh;
+    }
+  }
+}

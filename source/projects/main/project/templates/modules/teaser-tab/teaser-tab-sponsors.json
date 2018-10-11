@@ -1,0 +1,49 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Project Sponsors",
+        "fr": "Project Sponsors"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "modules/teaser-tab/teaser-tab-sponsors.html.twig",
+    "template_config": {
+        "tab": {
+            "label": {
+                "en": "Tab settings",
+                "fr": "Tab settings"
+            },
+            "controls": {
+                "id": {
+                    "label": {
+                        "en": "Tab identifier",
+                        "fr": "Tab identifier"
+                    },
+                    "type": "text",
+                    "value": "sponsors"
+                },
+                "name": {
+                    "label": {
+                        "en": "Tab title",
+                        "fr": "Tab title"
+                    },
+                    "type": "text",
+                    "value": {
+                        "en": "Project Sponsors",
+                        "fr": "Project Sponsors"
+                    }
+                },
+                "icon": {
+                    "label": {
+                        "en": "Tab icon",
+                        "fr": "Tab icon"
+                    },
+                    "type": "text",
+                    "value": "icon--users"
+                }
+            }
+        }
+    }
+}

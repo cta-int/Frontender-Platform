@@ -1,0 +1,26 @@
+/*
+Newsletter signup
+
+markup:
+<form class="leader trailer gutters" method="post" action="">
+    <input type="hidden" name="idstamp" value="Ppma7o+2LxA/UkYd/IPXFAGOYgNad6m5vGqo2v42qFo=">
+    <input type="hidden" name="Field10" value="en">
+    <h2 class="title">Be sure you don't miss our latest updates.</h2>
+    <fieldset class="leader trailer">
+        <label class="fld-label title title--meta" for="firstname">Firstname</label>
+        <input class="fld" type="text" id="firstname" name="Field6">
+        <label class="fld-label title title--meta" for="lastname">Lastname</label>
+        <input class="fld" type="text" id="lastname" name="Field7">
+        <label class="fld-label title title--meta" for="email">E-mail address</label>
+        <input class="fld" type="text" name="Field1" id="email">
+    </fieldset>
+    <button class="button button--stretch">Subscribe</button>
+</form>
+
+sg-wrapper:
+<div style="width: 450px;">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.31
+*/

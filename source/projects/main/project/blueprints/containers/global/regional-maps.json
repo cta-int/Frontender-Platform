@@ -1,0 +1,419 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Regions map",
+        "fr": "Regions map"
+    },
+    "description": {
+        "en": "Colour coded map of CTA regions",
+        "fr": "Colour coded map of CTA regions"
+    },
+    "template": "containers/global/hero-map/hero-map.html.twig",
+    "template_config": {
+        "links": {
+            "label": {
+                "en": "Region links"
+            },
+            "controls": {
+                "region": {
+                    "value": [
+                        {
+                            "label": {
+                                "en": "Caribbean",
+                                "fr": "Caribbean"
+                            },
+                            "id": "216a5964-0897-4eeb-ac95-cf7f199f0602",
+                            "colour": "theme theme--gold"
+                        },
+                        {
+                            "label": {
+                                "en": "Western Africa",
+                                "fr": "Western Africa"
+                            },
+                            "id": "30597942-bb27-47d2-99d8-96dc76e0fcad",
+                            "colour": "theme theme--orange"
+                        },
+                        {
+                            "label": {
+                                "en": "Eastern Africa",
+                                "fr": "Eastern Africa"
+                            },
+                            "id": "52e3acc1-1b9e-41e9-8bf6-bfe487642562",
+                            "colour": "theme theme--burgundy"
+                        },
+                        {
+                            "label": {
+                                "en": "Central Africa",
+                                "fr": "Central Africa"
+                            },
+                            "id": "857c927c-2d73-4bc6-8039-3fab70489dd9",
+                            "colour": "theme theme--purple"
+                        },
+                        {
+                            "label": {
+                                "en": "Southern Africa",
+                                "fr": "Southern Africa"
+                            },
+                            "id": "a38ed776-ef17-4a56-abb3-f9320679a103",
+                            "colour": "theme theme--yellow"
+                        },
+                        {
+                            "label": {
+                                "en": "Pacific",
+                                "fr": "Pacific"
+                            },
+                            "id": "259ac34a-a476-43cb-a7db-849b061615a4",
+                            "colour": "theme theme--blue"
+                        }
+                    ],
+                    "label": {
+                        "en": "Region"
+                    },
+                    "type": "compound",
+                    "controls": {
+                        "label": {
+                            "label": {
+                                "en": "Label"
+                            },
+                            "control": "core/text"
+                        },
+                        "id": {
+                            "label": {
+                                "en": "Resource ID (optional)"
+                            },
+                            "control": "core/text"
+                        },
+                        "colour": {
+                            "control": "project/colour_theme"
+                        }
+                    },
+                    "repeatable": true,
+                    "control": "core/abstract"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Caribbean",
+                    "fr": "Caribbean"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "216a5964-0897-4eeb-ac95-cf7f199f0602",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "gold",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Western Africa",
+                    "fr": "Western Africa"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "30597942-bb27-47d2-99d8-96dc76e0fcad",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "orange",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Eastern Africa",
+                    "fr": "Eastern Africa"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "52e3acc1-1b9e-41e9-8bf6-bfe487642562",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "red",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Central Africa",
+                    "fr": "Central Africa"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "857c927c-2d73-4bc6-8039-3fab70489dd9",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "purple",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Southern Africa",
+                    "fr": "Southern Africa"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "a38ed776-ef17-4a56-abb3-f9320679a103",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "yellow",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Pacific",
+                    "fr": "Pacific"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "channels",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "259ac34a-a476-43cb-a7db-849b061615a4",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "1",
+                                "control": "project/model/limit"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "colour_theme": {
+                                "value": "blue",
+                                "control": "project/colour_theme"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,312 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "ICTUpdate Cross section"
+    },
+    "description": {
+        "en": "Featured articles with newsletter signup and sponsors"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+
+                        }
+                    },
+                    "containers": []
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/layout/layout.html.twig",
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": "Generic container to wrap content in layout instructions"
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "control": "project/layout/layout"
+                            },
+                            "show_outer_wing": {
+                                "value": 0,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "containers": [{
+                            "fe-id": null,
+                            "name": {
+                                "en": "Main"
+                            },
+                            "description": {
+                                "en": "Main"
+                            },
+                            "template": "modules/articles/cross-section/cross-section.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "ec334e9c-68e7-4260-b2c6-058697731ba2",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": 5,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "template": {
+                                            "value": "partials/article/post.html.twig",
+                                            "label": {
+                                                "en": "Template"
+                                            },
+                                            "options": [{
+                                                    "value": "partials/article/post.html.twig",
+                                                    "label": {
+                                                        "en": "Article post"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "partials/article/post-row.html.twig",
+                                                    "label": {
+                                                        "en": "Article row"
+                                                    }
+                                                }
+                                            ],
+                                            "control": "core/list"
+                                        },
+                                        "show_lead_image": {
+                                            "value": 2,
+                                            "control": "project/display/show_lead_image"
+                                        },
+                                        "show_stand_first": {
+                                            "value": 2,
+                                            "control": "project/display/show_stand_first"
+                                        },
+                                        "show_publication_date": {
+                                            "value": 1,
+                                            "control": "project/display/show_publication_date"
+                                        },
+                                        "show_author_name": {
+                                            "value": 1,
+                                            "control": "project/display/show_author_name"
+                                        },
+                                        "show_read_more": {
+                                            "value": 1,
+                                            "control": "project/display/show_read_more"
+                                        },
+                                        "show_topic": {
+                                            "value": 0,
+                                            "control": "project/display/show_topic"
+                                        },
+                                        "show_publication": {
+                                            "value": 1,
+                                            "control": "project/display/show_publication"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Aside"
+                            },
+                            "description": {
+                                "en": "Aside"
+                            },
+                            "template": "modules/review/review.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "1c870693-2942-4b0a-9103-ebf6809b79eb",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "review",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "1",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "divider": {
+                                            "value": "",
+                                            "control": "project/divider"
+                                        },
+                                        "container_tag": {
+                                            "value": "div",
+                                            "control": "project/container_tag"
+                                        },
+                                        "container_class": {
+                                            "value": "gutters",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

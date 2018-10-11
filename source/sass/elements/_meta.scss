@@ -1,0 +1,57 @@
+/*
+Meta
+
+.meta - Meta text, dates etc.
+.meta.meta--s - Smaller meta text.
+.meta.meta--lowercase - Meta text with unset text-transform
+.meta.meta--inverse - Inversed meta text
+.meta.meta--regular - Regular font-weight
+.meta.meta--bold  - Extra bold font-weight
+.meta.meta--dark - Darker text colour
+.meta.meta--theme - Theme text colour
+
+markup:
+<p class="{$modifiers}">Drone technology could help farmers around the world monitor their crops, fend off pests, improve land tenure, and more. But to realise its full potential, regulatory regimes are necessary, while keeping citizens’ safety and privacy rights secure.</p>
+
+Styleguide 3.21
+*/
+
+.meta {
+  @extend %meta-text !optional;
+  @include meta-11px();
+  font-weight: 400;
+  opacity: .76;
+  &--inverse {
+    color: $white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    .hero__headline & {
+      @include text-18px();
+    }
+  }
+  &--s {
+    @include meta-10px;
+    font-weight: 600;
+  }
+  &--lowercase {
+    text-transform: none;
+  }
+  &--regular {
+    font-weight: 300;
+  }
+  &--bold {
+    font-weight: 600;
+  }
+  &--dark {
+    opacity: 1;
+  }
+  &--theme {
+      @include theme-color();
+  }
+  @include breakpoint($gt-small-desktop) {
+    @include meta-12px();
+    &--s {
+      @include meta-11px;
+    }
+  }
+}

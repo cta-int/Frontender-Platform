@@ -1,0 +1,138 @@
+{
+    "model": {
+        "label": {
+            "en": "Issue settings"
+        },
+        "controls": {
+            "name": {
+                "value": "articles",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "4661ea79-6f24-4cf9-81eb-0cad58487186",
+                "control": "project/model/id"
+            },
+            "analysis": {
+                "value": 1,
+                "control": "project/model/analysis"
+            },
+            "includeRelated": {
+                "value": 1,
+                "control": "project/model/include_related"
+            }
+        }
+    },
+    "content": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "lead_article": {
+                "value": "4410a852-da64-4d11-a2a5-821c007622e9",
+                "label": {
+                    "en": "Lead article ID"
+                },
+                "control": "project/model/id"
+            },
+            "credit": {
+                "value": {
+                    "en": "Our partners for this issue:",
+                    "fr": "Our partners for this issue:"
+                },
+                "label": {
+                    "en": "Partner header"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "template": {
+                "value": "partials/article/post.html.twig",
+                "label": {
+                    "en": "Template"
+                },
+                "options": [
+                    {
+                        "value": "partials/article/post.html.twig",
+                        "label": {
+                            "en": "Article post"
+                        }
+                    },
+                    {
+                        "value": "partials/article/post-row.html.twig",
+                        "label": {
+                            "en": "Article row"
+                        }
+                    }
+                ],
+                "control": "core/list"
+            },
+            "show_lead_image": {
+                "value": 2,
+                "control": "project/display/show_lead_image"
+            },
+            "show_stand_first": {
+                "value": 2,
+                "control": "project/display/show_stand_first"
+            },
+            "show_publication_date": {
+                "value": 1,
+                "control": "project/display/show_publication_date"
+            },
+            "show_author_name": {
+                "value": 1,
+                "control": "project/display/show_author_name"
+            },
+            "show_read_more": {
+                "value": 1,
+                "control": "project/display/show_read_more"
+            },
+            "show_topic": {
+                "value": 0,
+                "control": "project/display/show_topic"
+            },
+            "show_publication": {
+                "value": 1,
+                "control": "project/display/show_publication"
+            },
+            "container_tag": {
+                "value": "section",
+                "control": "project/container_tag"
+            },
+            "wings": {
+                "value": "",
+                "control": "project/wings"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "divider": {
+                "value": "",
+                "control": "project/divider"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+
+        }
+    }
+}

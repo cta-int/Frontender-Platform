@@ -1,0 +1,35 @@
+/*
+Loading
+
+.loading - Loading spinner
+
+markup:
+<a class="reset  |  button button--wide  |  pagination-pager  |  {$modifiers}">
+    Show more
+</a>
+
+Styleguide 3.52
+*/
+
+.loading {
+    position: relative;
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        color: rgba(0, 0, 0, .7);
+        background: rgba(0, 0, 0, .7);
+        border-color: transparent;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        // animation icon 'spinner' is provided by loading.io
+        background: url("/assets/images/loaders/spinner.svg") no-repeat center;
+        display: block;
+    }
+}

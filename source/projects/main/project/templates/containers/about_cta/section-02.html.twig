@@ -1,0 +1,119 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <style>
+    .world-map {
+        position: relative;
+    }
+    .world-map .legenda-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    </style>
+    <div class="about-cta  |  trailer-inside--giant">
+        <div class="about-cta--container  |  layout--narrow  |  wings">
+            <div class="is-root">
+                <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">02</span></div>
+                <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">{{ {'en': 'Who we are', 'fr': 'Qui nous sommes'}|t(locales) }}</h2>
+                <div class="layout |  trailer-inside--hero">
+                    <div class="layout__cell  |  gutter--right">
+                        <div class="wing--right">
+                            <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                                <div class="gutter">
+                                    {{ {
+                                        'en': 'At the Technical Centre for Agricultural and Rural Cooperation (CTA), we are shaping the move to next-generation farming in African, Caribbean and Pacific countries by fostering innovation with technology and sharing actionable knowledge.',
+                                        'fr': 'Le Centre technique de coopération agricole et rurale (CTA) guide la transition vers l’agriculture de nouvelle génération dans les pays d’Afrique, des Caraïbes et du Pacifique en stimulant l’innovation avec la technologie et en diffusant des connaissances exploitables.'
+                                    }|t(locales) }}
+                                </div>
+                            </div>
+                            <div>
+                                <p class="paragraph  |  gutters  leader--hero trailer">
+                                    {{ {
+                                        'en': 'We believe that now, more than ever, this shift is essential to creating opportunities for the youth, transforming rural economies and achieving the UN’s Sustainable Development Goals.',
+                                        'fr': 'Aujourd’hui plus que jamais, cette transition est essentielle pour créer des opportunités pour les jeunes, transformer les économies rurales et atteindre les Objectifs de développement durable de l’ONU.'
+                                    }|t(locales) }}
+                                </p>
+                                <p class="paragraph  |  gutters">
+                                    {{ {
+                                        'en': 'CTA is a joint international institution of the African, Caribbean and Pacific (ACP) Group of States and the European Union (EU). CTA operates under the framework of the Cotonou Agreement and is funded by the EU.',
+                                        'fr': 'Le CTA est une institution internationale conjointe du Groupe des États d’Afrique, des Caraïbes et du Pacifique (ACP). Le centre opère dans le cadre de l’Accord de Cotonou et est financé par l’UE.'
+                                    }|t(locales) }}
+                                </p>
+                                <p class="paragraph  |  gutters  |  leader--hero">
+                                    {{ {
+                                        'en': 'CTA’s activities contribute directly toward achieving the UN’s Sustainable Development Goals (SDGs) with specific focus on:',
+                                        'fr': 'Les activités du CTA contribuent directement à la réalisation des Objectifs de développement durable (ODD) de l’ONU, en particulier les objectifs suivants :'
+                                    }|t(locales) }}
+                                </p>
+                                <div class="gutters">
+                                    <ul class="paragraph  |  gutters">
+                                        <li>{{ {
+                                            'en': 'Goal 1 No poverty: End poverty in all its forms everywhere.',
+                                            'fr': 'Objectif 1. Pas de pauvreté : Mettre un terme à la pauvreté sous toutes ses formes partout dans le monde.'
+                                        }|t(locales) }}</li>
+                                        <li>{{ {
+                                            'en': 'Goal 2 Zero hunger: End hunger, achieve food security and improved nutrition and promote sustainable agriculture.',
+                                            'fr': 'Objectif 2. Faim « zéro » : Éradiquer la faim, atteindre la sécurité alimentaire, améliorer la nutrition et promouvoir l’agriculture durable.'
+                                        }|t(locales) }}</li>
+                                        <li>{{ {
+                                            'en': 'Goal 5 Gender equality: Achieve gender equality and empower all women and girls.',
+                                            'fr': 'Objectif 5. Égalité entre les sexes : Atteindre l’égalité entre hommes et femmes et autonomiser les femmes et les filles.'
+                                        }|t(locales) }}</li>
+                                        <li>{{ {
+                                            'en': 'Goal 8 Decent work and economic growth: Promote inclusive and sustainable economic growth, employment and decent work for all.',
+                                            'fr': 'Objectif 8. Travail décent et croissance économique : Promouvoir la croissance économique inclusive et durable, l’emploi et le travail décent pour tous.'
+                                        }|t(locales) }}</li>
+                                        <li>{{ {
+                                            'en': 'Goal 13 Climate action: Take urgent action to combat climate change and its impacts.',
+                                            'fr': 'Objectif 13. Action pour le climat : Prendre des mesures d’urgence pour lutter contre le changement climatique et ses impacts.'
+                                        }|t(locales) }}</li>
+                                    </ul>
+                                </div>
+                                <p class="paragraph  |  gutters  |  leader--hero">
+                                    {{ {
+                                        'en': 'CTA’s headquarters are located in Wageningen, the Netherlands. An additional branch is located in Brussels, Belgium. CTA is primarily funded by the European Development Fund but receives additionally funding through a diverse set of international partners. CTA is active in 79 ACP countries.',
+                                        'fr': 'Le siège du CTA se trouve à Wageningen, aux Pays-Bas. Le centre possède également une antenne à Bruxelles, en Belgique. Le CTA est principalement financé par le Fonds européen de développement mais reçoit des financements additionnels de divers partenaires internationaux. Le CTA est actif dans 79 pays ACP.'
+                                    }|t(locales) }}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layout__cell layout__cell--aside  | gutters">
+                        <div class="goals-set">
+                            <div class="goal goal--filled">
+                                <h4 class="goal__title  |  title title--sub-section  |  trailer--small">{{ {'en': 'Mission', 'fr': 'Mission'}|t(locales) }}</h4>
+                                <p class="body--whisper">
+                                    {{ {
+                                        'en': 'To advance food security, resilience and inclusive economic growth in Africa, the Caribbean and the Pacific through innovations in sustainable agriculture. ',
+                                        'fr': 'La mission du CTA est de faire avancer la sécurité alimentaire, la résilience et la croissance économique inclusive en Afrique, dans les Caraïbes et dans le Pacifique par le biais d’innovations dans l’agriculture durable.'
+                                    }|t(locales) }}
+                                </p>
+                            </div>
+                            <div class="goal goal--outlined">
+                                <h4 class="goal__title  |  title title--sub-section  |  trailer--small">{{ {'en': 'Vision', 'fr': 'Vision'}|t(locales) }}</h4>
+                                <p class="body--whisper">
+                                    {{ {
+                                        'en': 'CTA’s vision: Smallholder agriculture as a vibrant, modern and sustainable business that creates value for farmers, entrepreneurs, youth and women, and produces affordable, nutritious and healthy food for all.',
+                                        'fr': 'La vision du CTA est de faire de l’agriculture de petite échelle une activité dynamique, moderne et durable qui crée de la valeur pour les producteurs, les entrepreneurs, les jeunes et les femmes, et qui produit une nourriture abordable, nutritive et saine pour tous.'
+                                    }|t(locales) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-map  |  leader-inside--hero  |  gutters">
+                    <img class="world-map__image" style="width:100%" src="/images/content/about-cta/world-map-about-cta.svg" alt="Projects are tailored to the particular needs of six regions">
+                    <div class="wings legenda-wrapper">
+                            {% include "partials/legend.html.twig" %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

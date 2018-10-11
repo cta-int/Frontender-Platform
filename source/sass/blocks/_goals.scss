@@ -1,0 +1,41 @@
+/*
+Goals
+
+.goal - General goal styling
+.goal.goal--filled - Filled goal background
+.goal.goal--outlined - Outlined goal
+
+markup:
+<div class="{$modifiers}">
+    <h4 class="goal__title  |  title title--sub-section  |  trailer--small">Mission</h4>
+    <p class="body--whisper">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+</div>
+
+sg-wrapper:
+<div class="theme theme--dark">
+    <div class="about-cta  |  leader-inside  |  trailer-inside  |  gutters">
+        <sg-wrapper-content/>
+    </div>
+</div>
+
+Styleguide 4.36
+*/
+
+.goal {
+  padding: rhythm(13);
+  width: 260px;
+  &__title {
+    color: $white;
+  }
+  &--filled {
+    background: rgba($black, .26);
+  }
+  &--outlined {
+    border-width: 2px;
+    border-style: solid;
+    @include theme-border();
+    .theme--dark & {
+      border-color: mix($white, $black, 76%);
+    }
+  }
+}

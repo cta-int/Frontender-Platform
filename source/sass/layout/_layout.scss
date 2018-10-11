@@ -1,0 +1,574 @@
+/*
+Layout
+
+Two- or three-column layout – |Aside|Main|Aside. Aside columns are optional and can be omitted for a two- or single-column layout.
+
+.layout - Full width accross viewports
+.layout.layout--reverse - Reverses container ordering on smallest viewports, is used for source ordering
+.layout.layout--even - Spreads columns evenly
+.layout.layout--split - A larger left and smaller right column
+.layout.layout--align-middle - Align content vertically centered
+.layout.layout--align-end - Align content to flex end (bottom or right depending on flex direction)
+.layout.layout--narrow - Narrows the content
+
+markup:
+<div class="{$modifiers}">
+  <div class="layout__cell layout__cell--aside">
+    Sidebar 1
+  </div>
+  <div class="layout__cell">
+    Main ({$modifiers})
+  </div>
+  <div class="layout__cell layout__cell--aside">
+    Sidebar 2
+  </div>
+</div>
+
+Styleguide 2.1
+*/
+/*
+ * 1. Allow containers to shrink and grow
+ */
+// scss-lint:disable NestingDepth
+
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+
+    .no-flexbox & {
+        display: block;
+        @extend .clear !optional;
+    }
+
+    &__cell {
+        flex: 1 1 100%;
+        max-width: 100%;
+
+        .no-flexbox & {
+            width: 100%;
+        }
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--wide,
+    &__stretch {
+        flex: 0 0 100%;
+
+        .no-flexbox & {
+            width: 100%;
+        }
+    }
+
+    &--even {
+        /* No styling until gt-medium-handheld */
+    }
+
+    &--split {
+        /* No styling until gt-medium-handheld */
+    }
+
+    &--align-middle {
+        align-items: center;
+    }
+
+    &--align-end {
+        align-items: flex-end;
+    }
+    @include breakpoint($gt-medium-handheld) {
+        &--even {
+            flex-wrap: nowrap;
+        }
+
+        &--even &__cell {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+
+            .no-flexbox & {
+                width: 50% !important;
+            }
+        }
+
+        &__cell {
+            .no-flexbox & {
+                float: left;
+            }
+        }
+
+        .no-flexbox & {
+            &--reverse > .layout__cell:first-child {
+                float: right;
+                width: percentage(13 / 18);
+            }
+
+            & > .layout__cell:first-child:not(:last-child) {
+                width: percentage(13 / 18);
+            }
+
+            & > .layout__cell--aside:first-child:not(:last-child) {
+                width: percentage(5 / 18);
+            }
+        }
+    }
+    @include breakpoint($gt-large-handheld) {
+        &--narrow {
+            margin-left: percentage(2 / 12);
+            margin-left: 2 / 12 * 100vw;
+            margin-right: percentage(2 / 12);
+            margin-right: 2 / 12 * 100vw;
+        }
+    }
+    @include breakpoint($gt-small-desktop) {
+        flex-wrap: nowrap;
+        &--even {
+            flex-wrap: wrap;
+        }
+
+        &--narrow {
+            margin-left: percentage(3 / 18);
+            margin-left: 3 / 18 * 100vw;
+            margin-right: percentage(3 / 18);
+            margin-right: 3 / 18 * 100vw;
+            &-s {
+                margin-left: percentage(2 / 18);
+                margin-left: 2 / 18 * 100vw;
+                margin-right: percentage(2 / 18);
+                margin-right: 2 / 18 * 100vw;
+            }
+        }
+
+        &__cell {}
+
+        .no-flexbox &__cell {
+            .layout {
+                &__cell:first-child:not(:last-child) {
+                    width: percentage(8 / 13);
+                }
+
+                &__cell--aside {
+                    width: percentage(5 / 13);
+                }
+            }
+        }
+        &--split {
+            .no-flexbox & {
+                display: table;
+                .layout__cell:first-child:not(:last-child) {
+                    width: percentage(9 / 18);
+                }
+                .layout__cell {
+                    display: table-cell;
+                    float: none;
+                    width: percentage(9 / 18);
+                }
+            }
+        }
+
+        &__cell--aside {
+            flex: 0 0 5 / 18 * 100vw;
+            max-width: 5 / 18 * 100vw;
+
+            .layout--narrow & {
+                flex-basis: 3 / 18 * 100vw;
+                max-width: 3 / 18 * 100vw;
+            }
+
+            .panel__body .layout & {
+                flex: 0 0 percentage(5 / 18);
+                max-width: percentage(5 / 18);
+            }
+
+            .no-flexbox & {
+                width: percentage(5 / 18);
+            }
+        }
+
+        &__cell--aside--l {
+            .layout--narrow & {
+                flex-basis: 3 / 18 * 100vw;
+            }
+        }
+
+        .no-flexbox & {
+            &--split > .layout__cell:first-child:not(:last-child) {
+                width: percentage(10 / 18);
+            }
+        }
+
+        &--split &__cell--aside {
+            flex-basis: 8 / 18 * 100vw;
+            max-width: 8 / 18 * 100vw;
+
+            .layout--narrow & {
+                flex-basis: 4 / 18 * 100vw;
+                max-width: 4 / 18 * 100vw;
+            }
+
+            .no-flexbox & {
+                width: percentage(8 / 18);
+            }
+        }
+
+        &__cell--aside + &__cell,
+        &__cell:first-child:last-child {
+            flex-basis: 8 / 18 * 100vw;
+            max-width: 8 / 18 * 100vw;
+
+            .no-flexbox & {
+                width: percentage(8 / 18);
+            }
+        }
+
+        &__cell:first-child:last-child {
+            margin-left: auto;
+            margin-right: auto;
+
+            .no-flexbox & {
+                position: relative;
+                left: percentage(5 / 18);
+            }
+        }
+
+        &__cell--aside + &__cell:last-child {
+            flex-basis: 13 / 18 * 100vw;
+            max-width: 13 / 18 * 100vw;
+
+            .no-flexbox & {
+                width: percentage(13 / 18);
+            }
+        }
+
+        &__cell &__cell--aside {
+            flex-basis: 5 / 18 * 100vw;
+            max-width: 5 / 18 * 100vw;
+            .panel__body & {
+                flex: 0 0 percentage(5 / 18);
+                max-width: percentage(5 / 18);
+            }
+            .no-flexbox & {
+                width: percentage(5 / 13);
+            }
+        }
+
+        &__cell &__cell--aside--l {
+            flex-basis: 5 / 18 * 100vw;
+        }
+
+        &__cell &__cell--aside,
+        &__cell--aside,
+        &__cell--aside + &__cell,
+        &__cell--aside + &__cell:last-child,
+        &__cell:first-child:last-child,
+        &__cell:first-child:last-child {
+            .no-flexbox & {
+                display: inline-block;
+                float: left;
+            }
+        }
+
+        &__cell--divider,
+        &--split &__cell--divider,
+        &--even &__cell--divider {
+            border-right: 1px solid;
+            border-color: mix($color-green, $white, 26%);
+
+            .theme--blue & {
+                border-color: mix($color-blue, $white, 26%);
+            }
+
+            .theme--lime & {
+                border-color: mix($color-lime, $white, 26%);
+            }
+
+            .theme--yellow & {
+                border-color: mix($color-yellow, $white, 26%);
+            }
+
+            .theme--gold & {
+                border-color: mix($color-gold, $white, 26%);
+            }
+
+            .theme--orange & {
+                border-color: mix($color-orange, $white, 26%);
+            }
+
+            .theme--salmon & {
+                border-color: mix($color-salmon, $white, 26%);
+            }
+
+            .theme--red & {
+                border-color: mix($color-red, $white, 26%);
+            }
+
+            .theme--burgundy & {
+                border-color: mix($color-burgundy, $white, 26%);
+            }
+
+            .theme--purple & {
+                border-color: mix($color-purple, $white, 26%);
+            }
+
+            &.well,
+            .well & {
+                border-color: mix($color-green, $white, 4%);
+
+                .theme--blue & {
+                    border-color: mix($color-blue, $white, 4%);
+                }
+
+                .theme--lime & {
+                    border-color: mix($color-lime, $white, 4%);
+                }
+
+                .theme--yellow & {
+                    border-color: mix($color-yellow, $white, 4%);
+                }
+
+                .theme--gold & {
+                    border-color: mix($color-gold, $white, 4%);
+                }
+
+                .theme--orange & {
+                    border-color: mix($color-orange, $white, 4%);
+                }
+
+                .theme--salmon & {
+                    border-color: mix($color-salmon, $white, 4%);
+                }
+
+                .theme--red & {
+                    border-color: mix($color-red, $white, 4%);
+                }
+
+                .theme--burgundy & {
+                    border-color: mix($color-burgundy, $white, 4%);
+                }
+
+                .theme--purple & {
+                    border-color: mix($color-purple, $white, 4%);
+                }
+            }
+        }
+    }
+    // // MOVE THIS CODE TO POST!!!
+    // @include breakpoint($lt-small-desktop) {
+    //   &--post > &__cell {
+    //     flex-basis: 100%;
+    //     max-width: percentage(18 / 18);
+    //   }
+    //   &--post &__cell {
+    //     .no-flexbox & {
+    //       width: 100%;
+    //     }
+    //   }
+    // }
+    @include breakpoint($gt-medium-desktop) {
+        &__cell--divider {
+            border: 0;
+            box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-green, .26)};
+
+            .theme--blue & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-blue, .26)};
+            }
+
+            .theme--lime & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-lime, .26)};
+            }
+
+            .theme--yellow & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-yellow, .26)};
+            }
+
+            .theme--gold & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-gold, .26)};
+            }
+
+            .theme--orange & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-orange, .26)};
+            }
+
+            .theme--salmon & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-salmon, .26)};
+            }
+
+            .theme--red & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-red, .26)};
+            }
+
+            .theme--burgundy & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-burgundy, .26)};
+            }
+
+            .theme--purple & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-purple, .26)};
+            }
+
+            &.well,
+            .well & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-green, $white, 26%), inset rhythm(-5) 0 0 0 mix($color-green, $white, 4%)};
+
+                .theme--blue & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-blue, .26)};
+                }
+
+                .theme--lime & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-lime, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-lime, .26)};
+                }
+
+                .theme--yellow & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-yellow, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-yellow, .26)};
+                }
+
+                .theme--gold & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-gold, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-gold, .26)};
+                }
+
+                .theme--orange & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-orange, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-orange, .26)};
+                }
+
+                .theme--salmon & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-salmon, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-salmon, .26)};
+                }
+
+                .theme--red & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-red, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-red, .26)};
+                }
+
+                .theme--burgundy & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-burgundy, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-burgundy, .26)};
+                }
+
+                .theme--purple & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-purple, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-purple, .26)};
+                }
+            }
+
+            .article-headline & {
+                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-green, inset rhythm(-5) 0 0 0 mix($color-green, $white, 60%)};
+
+                .theme--blue & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-blue, inset rhythm(-5) 0 0 0 mix($color-blue, $white, 60%)};
+                }
+
+                .theme--lime & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-lime, inset rhythm(-5) 0 0 0 mix($color-lime, $white, 60%)};
+                }
+
+                .theme--yellow & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-yellow, inset rhythm(-5) 0 0 0 mix($color-yellow, $white, 60%)};
+                }
+
+                .theme--gold & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-gold, inset rhythm(-5) 0 0 0 mix($color-gold, $white, 60%)};
+                }
+
+                .theme--orange & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-orange, inset rhythm(-5) 0 0 0 mix($color-orange, $white, 60%)};
+                }
+
+                .theme--salmon & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-salmon, inset rhythm(-5) 0 0 0 mix($color-salmon, $white, 60%)};
+                }
+
+                .theme--red & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-red, inset rhythm(-5) 0 0 0 mix($color-red, $white, 60%)};
+                }
+
+                .theme--burgundy & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-burgundy, inset rhythm(-5) 0 0 0 mix($color-burgundy, $white, 60%)};
+                }
+
+                .theme--purple & {
+                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-purple, inset rhythm(-5) 0 0 0 mix($color-purple, $white, 60%)};
+                }
+            }
+        }
+        &--split &__cell--divider,
+        &--even &__cell--divider {
+            border-width: 1px;
+            box-shadow: none;
+        }
+    }
+}
+// scss-lint:enable NestingDepth
+/*
+Layout example, two-column with left sidebar
+
+| Sidebar | Main |
+
+.layout - Full width accross viewports
+.layout.layout--reverse - Reverses container ordering on smallest viewports, is used for source ordering
+
+markup:
+<div class="{$modifiers}">
+  <div class="layout__cell layout__cell--aside">
+    Sidebar
+  </div>
+  <div class="layout__cell">
+    Main
+  </div>
+</div>
+
+Styleguide 2.1.1
+*/
+/*
+Layout example, two-column with right sidebar
+
+| Main | Sidebar |
+
+.layout - Full width accross viewports
+.layout.layout--reverse - Reverses container ordering on smallest viewports, is used for source ordering
+
+markup:
+<div class="{$modifiers}">
+  <div class="layout__cell">
+    Main
+  </div>
+  <div class="layout__cell layout__cell--aside">
+    Sidebar
+  </div>
+</div>
+
+Styleguide 2.1.2
+*/
+/*
+Layout example, narrow single-column
+
+| Main |
+
+.layout - Full width accross viewports (added well class to cell for visibility in this example)
+
+markup:
+<div class="{$modifiers}">
+  <div class="layout__cell well">
+    Main
+  </div>
+</div>
+
+Styleguide 2.1.3
+*/
+/*
+Example of a nested Layout
+
+Layouts can be nested for more complex layouts
+
+markup:
+<div class="layout layout--reverse">
+  <div class="layout__cell layout__cell--aside">
+    Sidebar
+  </div>
+  <div class="layout__cell layout__cell--main layout layout--reverse">
+    <div class="layout__cell layout__cell--main">
+      Main
+    </div>
+    <div class="layout__cell layout__cell--aside">
+      Sidebar
+    </div>
+  </div>
+</div>
+
+Styleguide 2.1.4
+*/

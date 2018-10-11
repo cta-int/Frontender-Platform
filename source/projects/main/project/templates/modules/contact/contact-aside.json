@@ -1,0 +1,32 @@
+{
+    "content": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "container_title": {
+                "value": {
+                    "en": "Do you want to send a paper copy?",
+                    "fr": "Voulez-vous envoyer une copie papier?"
+                },
+                "label": {
+                    "en": "Title",
+                    "fr": "Title"
+                },
+                "control": "core/text",
+            },
+            "container_body": {
+                "value": {
+                    "en": "",
+                    "fr": ""
+                },
+                "label": {
+                    "en": "Body",
+                    "fr": "Body"
+                },
+                "control": "core/textarea",
+            }
+        }
+    }
+}

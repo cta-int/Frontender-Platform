@@ -1,0 +1,62 @@
+/*
+404 Page
+
+markup:
+<sg-insert>5.1-1</sg-insert>
+<div class="divider divider--top">
+	<div class="layout  |  leader--giant">
+		<div class="layout__cell">
+			<div class="layout layout__even">
+				<div class="layout__cell  |  body--align-center">
+					<h1 class="title title--error">404</h1>
+					<p class="block-link block-link--theme">Page not found</p>
+				</div>
+				<div class="layout__cell  |  error  |  leader  |  gutters">
+					<h2 class="title title--section title--thin  |  trailer">We can't seem to find the page you are looking for.</h2>
+					<p class="trailer--small  |  error-message">You may have typed the address incorrectly or you may have used an outdated link.</p>
+					<p class="error-message">Please go back to the <a href="#">home page</a> or use the above navigation bar to choose a new direction.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span class="illustration illustration--fishing-boat"></span>
+	<div class="trailer--giant"></div>
+</div>
+
+Styleguide 5.23
+*/
+
+.error {
+	align-self: center;
+	&-message {
+		color: mix($color-body, $white, 76%);
+		-webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	}
+	&-illustrations {
+		&--wrapper {
+			@include breakpoint($gt-large-handheld) {
+				margin-top: rhythm(40);
+				margin-bottom: rhythm(60);
+			}
+		}
+		.water-illustration,
+		.illustration--fishing-boat {
+			color: mix($color-body, $white, 30%);
+			@include breakpoint($lt-large-handheld) {
+				display: none;
+			}
+		}
+		.illustration--fishing-boat {
+			margin-left: percentage(9 / 18);
+			@include breakpoint($gt-small-desktop) {
+				font-size: 15em;
+				bottom: -132px;
+			}
+		}
+		.water-illustration {
+			width: 100%;
+			background-color: mix($color-body, $white, 30%);
+		}
+	}
+}

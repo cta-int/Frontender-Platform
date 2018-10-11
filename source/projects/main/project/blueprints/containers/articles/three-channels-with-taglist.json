@@ -1,0 +1,799 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "Three columns of channel articles with tag-cloud"
+    },
+    "description": {
+        "en": "Container with three channel columns, each containing a list of articles"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "wing--right",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": "Topic highlights",
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [{
+                                        "value": "",
+                                        "label": {
+                                            "en": "No"
+                                        }
+                                    },
+                                    {
+                                        "value": "container-header--filter",
+                                        "label": {
+                                            "en": "Yes"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": 1,
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "section",
+                                "control": "project/container_tag"
+                            },
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            }
+                        }
+                    },
+                    "containers": []
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/layout/layout.html.twig",
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": "Generic container to wrap content in layout instructions"
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 1,
+                                "control": "project/layout/show_divider"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "control": "project/layout/layout"
+                            },
+                            "show_outer_wing": {
+                                "value": 0,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "containers": [
+
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Channel grid"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/global/channels/channels.html.twig",
+                            "template_config": {
+                                "content": {
+                                    "label": {
+                                        "en": "Content Setting"
+                                    },
+                                    "controls": {
+                                        "display_type": {
+                                            "value": "post",
+                                            "label": {
+                                                "en": "Display article as"
+                                            },
+                                            "options": [{
+                                                    "value": "post",
+                                                    "label": {
+                                                        "en": "Post"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "row",
+                                                    "label": {
+                                                        "en": "Row"
+                                                    }
+                                                }
+                                            ],
+                                            "control": "core/list"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_tag": {
+                                            "value": "div",
+                                            "control": "project/container_tag"
+                                        }
+                                    }
+                                },
+                                "containers": [{
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content",
+                                                    "fr": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "type": "text",
+                                                        "value": "Channel\\Articles",
+                                                        "control":"project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Channel id",
+                                                            "fr": "Channel id"
+                                                        },
+                                                        "type": "lookup",
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+                                                    },
+                                                    "limit": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Limit",
+                                                            "fr": "Limit"
+                                                        },
+                                                        "type": "text",
+                                                        "value": "1"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings",
+                                                    "fr": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [{
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content",
+                                                    "fr": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "type": "text",
+                                                        "value": "Channel\\Articles",
+                                                        "control":"project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Channel id",
+                                                            "fr": "Channel id"
+                                                        },
+                                                        "type": "lookup",
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+                                                    },
+                                                    "limit": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Limit",
+                                                            "fr": "Limit"
+                                                        },
+                                                        "type": "text",
+                                                        "value": "1"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings",
+                                                    "fr": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [{
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content",
+                                                    "fr": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "type": "text",
+                                                        "value": "Channel\\Articles",
+                                                        "control":"project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Channel id",
+                                                            "fr": "Channel id"
+                                                        },
+                                                        "type": "lookup",
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+                                                    },
+                                                    "limit": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Limit",
+                                                            "fr": "Limit"
+                                                        },
+                                                        "type": "text",
+                                                        "value": "1"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings",
+                                                    "fr": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [{
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "template": "modules/tag-cloud/tag-cloud.html.twig",
+                            "name": {
+                                "en": "Cloud tag",
+                                "fr": "Cloud tag"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings",
+                                        "fr": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "topics",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "container_title": {
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text",
+                                            "value": {
+                                                "en": "Topics",
+                                                "fr": "Topics"
+                                            }
+                                        }
+                                    }
+                                },
+                                "containers": [{
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Agrovoc tag 1"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Agrovoc",
+                                                    "fr": "Agrovoc"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "terms",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "label": {
+                                                            "en": "Agrovoc ID"
+                                                        },
+                                                        "value": "c_9001017",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Agrovoc tag 2"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Agrovoc",
+                                                    "fr": "Agrovoc"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "terms",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "label": {
+                                                            "en": "Agrovoc ID"
+                                                        },
+                                                        "value": "c_50227",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Agrovoc tag 3"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Agrovoc",
+                                                    "fr": "Agrovoc"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "terms",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "label": {
+                                                            "en": "Agrovoc ID"
+                                                        },
+                                                        "value": "c_7778",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Agrovoc tag 4"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Agrovoc",
+                                                    "fr": "Agrovoc"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "terms",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "label": {
+                                                            "en": "Agrovoc ID"
+                                                        },
+                                                        "value": "c_7644",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Agrovoc tag 5"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Agrovoc",
+                                                    "fr": "Agrovoc"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "terms",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "label": {
+                                                            "en": "Agrovoc ID"
+                                                        },
+                                                        "value": "c_6211",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,108 @@
+/*
+Post-tile
+
+.post-tile - Post info
+.post-tile.post-tile--s - Post info smaller
+
+markup:
+<div class="{$modifiers}">
+	<img class="image image--stretch" src="https://source.unsplash.com/random" />
+	<div class="post-tile__body">
+		<div class="title  |  trailer--small">
+			<a class="is-heir" href="javascript:void();">Growing cassava in Grenada: Bernadette's story</a>
+		</div>
+		<div class="media  |  location">
+		  <span class="location__marker  |  media__figure">
+		    <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span>
+		  </span>
+		  <div class="location__body  |  media__content">
+		    Addis Ababa, Ethiopia
+		  </div>
+		</div>
+	</div>
+	<div class="post-tile-triangle"></div>
+</div>
+
+Styleguide 4.8.6
+*/
+
+.post-tile {
+	position: relative;
+	&__body {
+		position: absolute;
+		left: -999em;
+		right: 999em;
+		//scss-lint:disable DuplicateProperty
+    background: transparent;
+    //scss-lint:enable DuplicateProperty
+	}
+	&-triangle {
+		position: absolute;
+		bottom: rhythm(3);
+		left: rhythm(3);
+		width: 0;
+		height: 0;
+		border-bottom: rhythm(7) solid rgba($white, .8);
+		border-right: rhythm(7) solid transparent;
+		&::before {
+			content: "+";
+			@include text-12px;
+			@include theme-color;
+			position: relative;
+			top: rhythm();
+			left: rhythm();
+		}
+	}
+	&:hover &__body {
+		left: rhythm(3);
+		right: rhythm(3);
+		right: calc((2 / 18 * 100vw) - #{rhythm(10)});
+		bottom: rhythm(3);
+		padding: rhythm(10);
+		background: $white;
+    background: rgba($white, .8);
+	}
+	&:hover &-triangle {
+		border-bottom-color: $color-theme;
+		.theme--blue & {
+	    border-bottom-color: $color-blue;
+	  }
+	  .theme--lime & {
+	    border-bottom-color: $color-lime;
+	  }
+	  .theme--yellow & {
+	    border-bottom-color: $color-yellow;
+	  }
+	  .theme--gold & {
+	    border-bottom-color: $color-gold;
+	  }
+	  .theme--orange & {
+	    border-bottom-color: $color-orange;
+	  }
+	  .theme--salmon & {
+	    border-bottom-color: $color-salmon;
+	  }
+	  .theme--red & {
+	    border-bottom-color: $color-red;
+	  }
+	  .theme--burgundy & {
+	    border-bottom-color: $color-burgundy;
+	  }
+	  .theme--purple & {
+	    border-bottom-color: $color-purple;
+	  }
+		&:before {
+			content: "-";
+			color: $white;
+		}
+	}
+	&--s:hover &__body {
+		right: rhythm(3);
+    padding: rhythm(6);
+	}
+	&--s &__body {
+		.title {
+        @include title-14px();
+    }
+	}
+}

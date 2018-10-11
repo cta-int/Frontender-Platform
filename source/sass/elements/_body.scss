@@ -1,0 +1,33 @@
+/*
+Body [REVIEW]
+
+.body--whisper - Smaller text
+.body--quiet - Slightly translucent
+.body--align-center - Align content using text-align: center
+
+markup:
+<p class="{$modifiers}">Drone technology could help farmers around the world monitor their crops, fend off pests, improve land tenure, and more. But to realise its full potential, regulatory regimes are necessary, while keeping citizens’ safety and privacy rights secure.</p>
+
+Styleguide 3.1
+*/
+
+.body {
+  &--whisper {
+    font-size: to-unit(13px);
+    line-height: to-unit(rhythm(6), 1, 13px);
+  }
+  &--quiet {
+      font-size: to-unit(12px);
+      line-height: to-unit(rhythm(6), 1, 12px);
+    opacity: .76;
+  }
+  &--align-center {
+      text-align: center;
+  }
+  @include breakpoint($gt-large-handheld) {
+    &--whisper {
+      font-size: to-unit(14px);
+      line-height: to-unit(rhythm(6), 1, 14px);
+    }
+  }
+}

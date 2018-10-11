@@ -1,0 +1,7 @@
+<figure class="is-inactive  |  tab-teaser__panel tab-teaser__panel--map" id="{{ tab.id ~ event._id }}" style="background-image: url(/images/maps/{{ region.id|default("western-africa") }}.png);">
+    <img class="is-narrative" src="/images/maps/{{ region.id|default("western-africa") }}.png" alt="Map of Western Africa" width="840" height="406">
+    <img class="globe  |  leader  |  trailer  |  gutters-outside  |  fx" src="/images/globes/{{ region.id|default("western-africa") }}.png" alt="Picture of the globe with Western Africa highlighted." width="214" height="214">
+    <figcaption class="is-narrative">
+        <p>{{ model.region_id|default("western-africa") }}</p>
+    </figcaption>
+</figure>

@@ -1,0 +1,89 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    {% for loopContainer in containers %}
+        {% include loopContainer.template with loopContainer %}
+    {% endfor %}
+{% endblock %}
+
+
+{% block title %}
+
+    {# Article #}
+    {% if model.headline|t %}
+
+        <title>{{ model.headline|t(locales) }}</title>
+
+    {# Event and Channel #}
+    {% elseif model.name|t %}
+
+        <title>{{ model.name|t(locales) }}</title>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block meta %}
+
+    <meta name="robots" content="{{ page_config.seo.controls.meta_robots.value|default('index,follow') }}">
+
+    {# Article #}
+    {% if model.about|t(locales) %}
+
+        {% if model.about|t(locales) is not empty %}
+            <meta name="description" content="{{ model.about|t(locales)|striptags|clearInlineStyles }}">
+        {% endif %}
+
+        {% if model.analysis.agrovoc.concepts|length %}
+            <meta name="keywords" content="{{ concept.concepts_to_string(model.analysis.agrovoc.concepts, locale)|trim }}">
+        {% endif %}
+
+    {% elseif model.description|t(locales) %}
+        {# Event #}
+        {% if model.description|t(locales) is not empty %}
+            <meta name="description" content="{{ model.description|t(locales)|striptags|clearInlineStyles }}">
+        {% endif %}
+
+        {% if model.analysis.agrovoc.concepts|length %}
+            <meta name="keywords" content="{{ concept.concepts_to_string(model.analysis.agrovoc.concepts, locale)|trim }}">
+        {% endif %}
+
+        {# Channel #}
+        {% if model.query.must|filterArray('type', 'concept')|length %}
+            <meta name="keywords" content="{{ concept.channel_concepts_to_string(model.query.must|filterArray('type', 'concept'), locale)|trim }}">
+        {% endif %}
+
+    {# Medium #}
+    {% elseif medium is defined %}
+
+    {% endif %}
+
+{% endblock %}
+
+{% block link %}
+
+    {# Article #}
+    {% if model.headline|t(locales)| %}
+        <link rel="canonical" href="{{ route({'page': 'article', 'id': model._id, 'slug': model.headline|t(locales)|slugify }) }}">
+    {# Event #}
+    {% elseif event is defined %}
+        <link rel="canonical" href="{{ route({'page': 'event', 'id': event._id, 'slug': event.name|t(locales)|slugify }) }}">
+    {# Channel #}
+    {% elseif channel is defined %}
+        <link rel="canonical" href="{{ route({'page': 'channel', 'id': channel._id, 'slug': channel.name|t(locales)|slugify }) }}">
+    {# Medium #}
+    {% elseif medium is defined %}
+
+    {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

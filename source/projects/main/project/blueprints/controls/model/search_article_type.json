@@ -1,0 +1,137 @@
+{
+    "value": "",
+    "label": {
+        "en": "Article type"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "All"
+            }
+        },
+        {
+            "value": "article.background",
+            "label": {
+                "en": "Background story"
+            }
+        },
+        {
+            "value": "article.blog",
+            "label": {
+                "en": "Blog post"
+            }
+        },
+        {
+            "value": "article.call_for_external_expert",
+            "label": {
+                "en": "Call for external expert"
+            }
+        },
+        {
+            "value": "article.call_for_tender",
+            "label": {
+                "en": "Call for tender"
+            }
+        },
+        {
+            "value": "article.call_for_proposal",
+            "label": {
+                "en": "Call for proposal"
+            }
+        },
+        {
+            "value": "article.communique",
+            "label": {
+                "en": "Communiqué"
+            }
+        },
+        {
+            "value": "article.corporate_news",
+            "label": {
+                "en": "News article"
+            }
+        },
+        {
+            "value": "article.data_report",
+            "label": {
+                "en": "Data report"
+            }
+        },
+        {
+            "value": "article.impact",
+            "label": {
+                "en": "Impact article"
+            }
+        },
+        {
+            "value": "article.internship",
+            "label": {
+                "en": "Internship vacancy announcement"
+            }
+        },
+        {
+            "value": "article.interview",
+            "label": {
+                "en": "Interview"
+            }
+        },
+        {
+            "value": "article.opinion",
+            "label": {
+                "en": "Opinion article"
+            }
+        },
+        {
+            "value": "article.partnership",
+            "label": {
+                "en": "Call for partnership"
+            }
+        },
+        {
+            "value": "article.review",
+            "label": {
+                "en": "Publication review"
+            }
+        },
+        {
+            "value": "article.syndicated",
+            "label": {
+                "en": "Syndicated articles"
+            }
+        },
+        {
+            "value": "article.technical_scientific",
+            "label": {
+                "en": "Technical articles"
+            }
+        },
+        {
+            "value": "article.vacancy",
+            "label": {
+                "en": "Vacancy announcement"
+            }
+        },
+        {
+            "value": "article.speech",
+            "label": {
+                "en": "Speech transcript"
+            }
+        },
+        {
+            "value": "article.tender_award_notice",
+            "label": {
+                "en": "Tender award notice"
+            }
+        },
+        {
+            "value": "article.tender_highlight",
+            "label": {
+                "en": "Tender highlight"
+            }
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+.toggle {
+	position: fixed;
+	display: flex;
+	z-index: 7;
+	right: -54px;
+	top: rhythm(10);
+	width: rhythm(18);
+	// background: $color-body;
+	text-align: center;
+	&.is-active {
+		right: calc(5 / 6 * 100vw - 54px);
+		@include breakpoint($gt-large-handheld) {
+			right: calc(6 / 18 * 100vw - 54px);
+		}
+		@include breakpoint($gt-medium-desktop) {
+			right: calc(3 / 18 * 100vw - 54px);
+		}
+	}
+	@include breakpoint($gt-large-handheld) {
+		top: rhythm(30);
+	}
+	&--menu {
+		background: $color-theme;
+		background-image: url('/assets/images/header/menu.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		height: rhythm(18);
+		line-height: rhythm(18);
+		font-size: rhythm(10);
+		cursor: pointer;
+		&:hover {
+			background: $white;
+			background-image: url('/assets/images/header/menu-active.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+	&-switch {
+		position: absolute;
+		right: 100%;
+		width: 54px;
+		flex: 0 0 100%;
+	}
+	&--language {
+		font-family: $open-sans-family;
+		font-weight: bold;
+		background: $color-body;
+		li {
+			border-top: 1px solid mix($color-shadow, $white, 26%);
+			padding: rhythm(5) 0;
+			&:hover,
+			&:focus {
+				background: mix($color-body, $white, 80%);
+				color: $white;
+			}
+			a {
+				padding: rhythm(5);
+			}
+		}
+		.is-active {
+			color: $white;
+		}
+	}
+}

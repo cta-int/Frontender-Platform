@@ -1,0 +1,46 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set resource_route = route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('article') }} {{ helper.class_attribute(config, 'project-preview  |  layout layout--align-end layout--even  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="project-preview__body  |  layout__cell layout__cell--aside">
+        <h2 class="project-preview__title  |  title"><a class="is-heir" href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">{{ model.name }}</a></h2>
+        <p class="project-preview__intro">{{ model.description|length > 300 ? model.description|striptags|slice(0, 300) ~ '...' : model.description|striptags }}</p>
+
+        <div class="leader">
+            <div class="media media--middle  |  location">
+                <span class="location__marker  |  media__figure">
+                    <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span>
+                </span>
+                <ul class="location__body  |  media__content  |  list--inline  |  reset">
+                    {% for country in model.analysis.geoname.geonames|slice(0, 8) %}
+                        <li>
+                            <a class="is-heir" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                                {{ country.label|t(locales) }}{% if not loop.last %},{% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if model.analysis.agrovoc.concepts | length > 0 %}
+                <ul class="reset  |  label-list  |  list--inline  |  leader--small">
+                    {% for label in model.analysis.agrovoc.concepts | slice(0, 3) %}
+                        <li>{{ concept.label(label, locale) }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="project-preview__visual  |  layout__cell">
+        <div class="project-preview__cover">
+            {% if model.mediaObject| lead %}
+                <a href="{{ resource_route }}">
+                    {{ image.post_hero(model.mediaObject|lead, 'project-preview__cover') }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</{{ config.container_tag|default('article') }}>

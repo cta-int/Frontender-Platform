@@ -1,0 +1,104 @@
+{% set has_content = false %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{#
+    CTA Requested to not show media section on the press page. As it may at some
+    point be re-introduced, I chose to hide it using a setting.
+#}
+{% set show_media_section = false %}
+{% for LoopContainer in containers %}
+    {% if LoopContainer.model.articles | length > 0 %}
+        {% set has_content = true %}
+    {% elseif LoopContainer.model.events | length > 0 %}
+        {% set has_content = true %}
+    {% endif %}
+{% endfor %}
+
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/articles/press/press.js.twig'|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: tab_config.selector|default('.panel-group')
+    }
+}) }}
+
+{% if has_content %}
+    {% import 'macros/template.html.twig' as helper %}
+    <{{ config.container_tag|default('div') }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        {% include 'containers/global/container-header/container-header.html.twig' with {config: header.articles, labels: header.articles} %}
+        {% set layout = [config.layout|default('layout')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+        <{{ 'div' }}{{ helper.class_attribute(config, layout)|raw }}>
+            <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+                <nav class="gutters" data-press-tabs>
+                    <ul class="is-gt-small-desktop  |  reset">
+                        {% for loopContainer in containers %}
+                            {% if loopContainer.model|length > 0 %}
+                                <li>
+                                    <a class="{{ ["title title--tab", loopContainer.config.tab_class, loopContainer.config.active ? "is-active"]|join(" | ") }}" href="#{{ loopContainer.labels.panel_title|t(locales)|slugify }}">{{ loopContainer.labels.panel_title|t(locales) }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+                {% if tweets|length > 0 %}
+                    <aside class="leader leader--hero trailer-inside--hero gutters">
+                        <h3 class="title title--section trailer">{{ header.title|t(locales) }}</h3>
+                        {% for tweet in tweets|slice(0, 4) %}
+                            <a href="https://twitter.com/{{ tweet.user.screen_name }}/status/{{ tweet.id_str }}" target="_blank" class="anchor--shy divider divider--bottom  |  trailer trailer-inside">
+                                <div class="trailer--small"><span class="icon icon--twitter  |  twitter-feed"></span></div>
+                                <div>
+                                    <p>{{ tweet.text|striptags|raw }}</p>
+                                    <p class="meta meta--lowercase">{{ tweet.created_at|elapsed }}</p>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </aside>
+                {% endif %}
+                {% include 'modules/newsletter-signup/newsletter-signup.html.twig' with {labels: {title: 'Subscribe to the CTA Newsletter'|t(locales)}} %}
+            </div>
+            <div class="{{ ['panel-group', 'layout__cell', 'wing--right', show_outer_wing ? 'wing--right']|join(' ') }}" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+                {% for loopContainer in containers %}
+                    {% if loopContainer.model | length > 0 %}
+                        <section class="{{ loopContainer.config.active == true ? "is-active " : "is-inactive " }}{{ ["panel", loopContainer.config.panel_class]|join(" | ") }}" id="{{ loopContainer.labels.panel_title|t(locales)|slugify }}">
+                            <h2 class="panel__title  |  title">
+                                <a class="panel__trigger  |  gutters" href="#{{ loopContainer.labels.panel_title|t(locales)|slugify }}">{{ loopContainer.labels.panel_title|t(locales) }}</a>
+                            </h2>
+                            <div class="panel__body">
+                                {% if loopContainer.links %}
+                                    {% for link in loopContainer.links %}
+                                        <a class="meta  |  gutters" href="{{ route({page: link.path.page }) }}">{{ link.label|t(locales) }}</a>
+                                    {% endfor %}
+                                {% endif %}
+                                {% include loopContainer.template with loopContainer %}
+                            </div>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </{{ 'div' }}>
+        {% if show_media_section %}
+            {% include 'containers/global/container-header/container-header.html.twig' with {config: header.media, labels: header.media} %}
+            <{{ 'div' }}{{ helper.class_attribute(config, layout)|raw }}>
+                <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+                    {% include 'modules/newsletter-signup/newsletter-signup.html.twig' with {config: {container_class: 'gutters'}} %}
+                </div>
+                <div class="{{ ['panel-group', 'layout__cell', 'wing--right', "trailer-inside", show_outer_wing ? 'wing--right']|join(' ') }}" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+                    {% for loopContainer in containers %}
+                        {% if loopContainer.model | length > 0 %}
+                            <section class="{{ LoopContainer.config.active == true ? "is-active " : "is-inactive " }}{{ ["panel", loopContainer.config.panel_class]|join(" | ") }}" id="media_{{ loopContainer.labels.panel_title|t(locales)|slugify }}">
+                                <div class="panel__body">
+                                    {% if loopContainer.links %}
+                                        {% for link in loopContainer.links %}
+                                            <a class="meta  |  gutters" href="{{ route({page: link.path.page }) }}">{{ link.label|t(locales) }}</a>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% include 'modules/articles/post-tiles/post-tiles--media.html.twig' with loopContainer %}
+                                </div>
+                            </section>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </{{ 'div' }}>
+        {% endif %}
+    </{{ config.container_tag|default('div') }}>
+{% endif %}

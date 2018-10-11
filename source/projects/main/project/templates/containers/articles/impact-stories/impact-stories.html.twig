@@ -1,0 +1,47 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('section') }}{{ helper.class_attribute(config, 'impact-stories  |  well')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <header class="trailer--hero  |  leader-inside  |  wings">
+        <h2 class="title title--container  |  gutters">{{ 'Impact stories'|t(locales) }}</h2>
+    </header>
+    <div class="layout layout--reverse trailer-inside--small">
+        <div class="layout__cell  |  wing--right">
+            <a class="post post--hero  |  layout layout--even  |  anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                <div class="post__media  |  layout__cell  |  gutters">
+                    {{ image.post_hero(model.link.mediaObject|lead) }}
+                </div>
+                <div class="post__content  |  layout__cell layout__cell--aside  |  stack stack--stacked">
+                    <div class="stack__unit  |  gutters">
+                      <blockquote class="quote  |  leader--small  |  trailer--normal">
+                        {{ content.quote|t(locales) }}
+                      </blockquote>
+                      <div class="meta">{{ content.quote_source|t(locales) }}</div>
+                    </div>
+                    <div class="stack__unit stack__pin  |  gutters">
+                        <div class="pin-box  |  leader-inside--small">
+                          <span>{{ date.article(model.datePublished) }}</span>
+                          <h3 class="title">{{ model.headline|t(locales) }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="short-list  |  gutters  |  trailer">
+                <ul class="reset  |  short-list">
+                    {% for container in containers %}
+                        <li class="short-list__item">
+                            <div class="trailer--tiny">{{ date.article(container.model.datePublished) }}</div>
+                            <a href="{{ route({'page': container.model.path_prefix ~ 'article', slug: container.model.headline|t(locales)|slugify, 'id': container.model._id}) }}">
+                                <h2 class="block-link">{{ container.model.headline }}</h2>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('section') }}>

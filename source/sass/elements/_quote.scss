@@ -1,0 +1,130 @@
+/*
+Quote
+
+Quote is styled slightly different in the context of a hero container
+
+.quote - Quote with quotation marks
+.quote--hero - Smaller font-size
+.quote__meta - Smallest font-size
+.quote.quote--light - Quote without quotation marks
+
+markup:
+<blockquote class="{$modifiers}">
+  Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit Sed Do Eiusmod
+</blockquote>
+
+Styleguide 3.30
+*/
+
+.quote {
+  font-size: to-unit(20px);
+  line-height: to-unit(rhythm(7), 1, 20px);
+  position: relative;
+  padding-top: rhythm(6);
+  &:before {
+    position: absolute;
+    top: -.175em;
+    display: block;
+    content: open-quote;
+    font-size: 2.75em;
+    line-height: 1;
+    @include theme-color();
+    html:lang(fr) & {
+      font-size: 1.75em;
+      left: rhythm(2) * -1;
+      top: -.5em;
+    }
+  }
+  &:after {
+    content: no-close-quote;
+  }
+  &--hero:before {
+    html:lang(fr) & {
+      font-size: 6em;
+      left: rhythm(9) * -1;
+    }
+  }
+  &__meta {
+    font-style: normal;
+    font-size: to-unit(10px, 1em, 20px);
+  }
+  &--light {
+    text-shadow: none;
+    .hero .quote-teaser & {
+      &,
+      & .quote__meta {
+        color: $color-body;
+      }
+    }
+    &:before {
+      content: "";
+    }
+  }
+  .hero & {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:before {
+      top: -.275em;
+      color: inherit;
+      opacity: .2;
+      margin-top: rhythm(4);
+      font-size: 10em;
+      font-weight: 600;
+      left: rhythm(-1);
+    }
+  }
+  &,
+  &__meta {
+    .hero &,
+    .theme--dark & {
+      color: $white;
+    }
+  }
+  .tab-teaser & {
+    color: $color-body;
+    &:before {
+      font-size: to-unit(50px);
+      font-weight: 400;
+      opacity: 1;
+      margin-top: rhythm();
+      @include theme-color();
+    }
+  }
+  &-teaser {
+      text-shadow: 0 0 rhythm(10) rgba($black, 1);
+  }
+  @include breakpoint($gt-large-handheld) {
+    &:before {
+      top: -.2em;
+    }
+    .hero & {
+      &:before {
+        top: -.275em;
+        left: rhythm(-6);
+      }
+      &__meta {
+        font-size: to-unit(12px, 1em, 28px);
+      }
+    }
+    .tab-teaser & {
+      font-size: to-unit(30px);
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    @include text-28px();
+    .hero & {
+      &:before {
+        left: rhythm(-6);
+      }
+    }
+    .tab-teaser & {
+      &:before {
+        left: 0;
+        top: rhythm(10) * -1;
+      }
+    }
+    &-teaser {
+        width: 6 / 18 * 100vw;
+    }
+  }
+}

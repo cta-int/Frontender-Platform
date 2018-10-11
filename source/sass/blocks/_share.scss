@@ -1,0 +1,232 @@
+/*
+Share
+
+.label.share - Share button
+.label.share.share--whisper - Subdued button
+.label.share.share--facebook - Facebook share button
+.label.share.share--twitter - Twitter share button
+.label.share.share--instagram - Instagram share button
+.label.share.share--print - Print share button
+.label.share.share--email - Email share button
+
+markup:
+<a class="{$modifiers}" href="javascript:void();" title="Share on Facebook"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></a>
+
+Styleguide 4.10
+*/
+
+.share {
+  width: rhythm(12);
+  height: rhythm(12);
+  padding: 0;
+  text-align: center;
+  line-height: rhythm(12);
+  text-decoration: none;
+
+  .icon,
+  [data-icon]:before {
+    font-size: rhythm(8);
+    text-align: center;
+    line-height: inherit;
+  }
+
+  // scss-lint:disable ImportantRule
+  &:hover,
+  &:visited {
+    color: $white !important;
+  }
+  &--whisper {
+    opacity: .50;
+  }
+  &--whisper:hover {
+    opacity: 1;
+  }
+  &--facebook:hover,
+  &--facebook-branded {
+    background-color: $color-facebook !important;
+  }
+  &--twitter:hover,
+  &--twitter-branded {
+    background: $color-twitter !important;
+  }
+  &--linkedin:hover,
+  &--linkedin-branded {
+    background: $color-linkedin !important;
+  }
+  &--instagram:hover,
+  &--instagram-branded {
+    background: $color-instagram !important;
+  }
+  &--vimeo:hover,
+  &--vimeo-branded {
+    background: $color-vimeo !important;
+  }
+  &--youtube:hover,
+  &--youtube-branded {
+    background: $color-youtube !important;
+  }
+  // scss-lint:enable ImportantRule
+  &--print:hover,
+  &--email:hover,
+  &--print-branded,
+  &--email-branded {
+    background: $color-body;
+  }
+}
+
+/*
+Share List
+
+.well.well--slim-fit - Share list as used below content
+
+markup:
+<ul class="{$modifiers} reset list--float">
+  <li class="divider  divider--left">
+    <a class="label share share--facebook" title="Share on Facebook" href="javascript:void();"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></a>
+  </li>
+  <li class="divider  divider--left">
+    <a class="label share share--twitter" title="Share on Twitter" href="javascript:void();"><span data-icon="twitter"><span><span class="is-narrative">Share on Twitter</span></a>
+  </li>
+  <li class="divider  divider--left">
+    <a class="label share share--print" title="Print" href="javascript:void();"><span data-icon="print"><span><span class="is-narrative">Print</span></a>
+  </li>
+  <li class="divider  divider--left">
+    <a class="label share share--email" title="Send link via E-mail" href="javascript:void();"><span data-icon="email"><span><span class="is-narrative">Send link via E-mail</span></a>
+  </li>
+</ul>
+
+Styleguide 4.10.1
+*/
+
+/*
+Share List colourful
+
+markup:
+<div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
+    <ul class="share-list reset list--float">
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--facebook share--facebook-branded" title="Share on Facebook" href="javascript:void()" target="_blank">
+                <span data-icon="facebook" class="icon icon--facebook"><span class="is-narrative">Share on Facebook</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--twitter share--twitter-branded" title="Share on Twitter" href="javascript:void()"
+              target="_blank">
+                <span data-icon="twitter" class="icon icon--twitter"><span class="is-narrative">Share on Twitter</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--print" title="Print" href="javascript:void()">
+                <span data-icon="print" class="icon icon--print"><span class="is-narrative">Print</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--email" title="Send link via E-mail" href="javascript:void()">
+                <span data-icon="email" class="icon icon--envelope"><span class="is-narrative">Send link via E-mail</span></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+Styleguide 4.10.2
+*/
+
+
+.share-list {
+  &__item {
+    // border: 1px solid $white;
+    // border-width: 0 1px 0 0;
+    &:first-child {
+      border-left: 0;
+    }
+  }
+}
+
+
+/*
+Share List, with a section or category label
+
+.share-list.well.well--slim-fit - Share list as used above content
+
+markup:
+<ul class="{$modifiers} reset list--float">
+  <li class="share-list__item">
+    <a class="label" title="View other posts in this section" href="http://localhost:3000/#/section/4.10;">Category</a>
+  </li>
+  <li class="share-list__item">
+    <a class="label share share--facebook" title="Share on Facebook" href="javascript:void();"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></a>
+  </li>
+  <li class="share-list__item">
+    <a class="label share share--twitter" title="Share on Twitter" href="javascript:void();"><span data-icon="twitter"><span><span class="is-narrative">Share on Twitter</span></a>
+  </li>
+  <li class="share-list__item">
+    <a class="label share share--print" title="Print" href="javascript:void();"><span data-icon="print"><span><span class="is-narrative">Print</span></a>
+  </li>
+  <li class="share-list__item">
+    <a class="label share share--email" title="Send link via E-mail" href="javascript:void();"><span data-icon="email"><span><span class="is-narrative">Send link via E-mail</span></a>
+  </li>
+</ul>
+
+Styleguide 4.10.3
+*/
+
+/*
+Share List, with a section or category
+
+.share-list.share-list--s - Share list as used above content
+
+markup:
+<ul class="share--list share-list--whisper share-list--s reset list--float">
+  <li class="share-list__item">
+      <a class="label" title="View other posts in this section" href="javascript:void();">Issue 82</a>
+  </li>
+  <li class="share-list__item">
+      <a class="label share share--facebook" title="Share on Facebook" href="http://facebook.com/dialog/feed?app_id=1761136020833792&amp;display=popup&amp;redirect_uri=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/&amp;link=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/" target="_blank" onclick="window.open('http://facebook.com/dialog/feed?app_id=1761136020833792&amp;display=popup&amp;redirect_uri=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/&amp;link=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/', '', 'width=715,height=450');return false;"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></span></span></a>
+  </li>
+  <li class="share-list__item">
+      <a class="label share share--twitter" title="Share on Twitter" href="https://twitter.com/intent/tweet?url=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/" target="_blank" onclick="window.open('https://twitter.com/intent/tweet?url=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/', '', 'width=715,height=450');return false;"><span data-icon="twitter"><span><span class="is-narrative">Share on Twitter</span></span></span></a>
+  </li>
+  <li class="share-list__item">
+      <a class="label share share--print" title="Print" href="javascript:window.print();"><span data-icon="print"><span><span class="is-narrative">Print</span></span></span></a>
+  </li>
+  <li class="share-list__item">
+      <a class="label share share--email" title="Send link via E-mail" href="mailto:?Subject=Drones on the horizon: new frontier in agricultural innovation&amp;body=http://ictupdate.cta.int.dev/2016/04/21/drones-on-the-horizon-new-frontier-in-agricultural-innovation/"><span data-icon="email"><span><span class="is-narrative">Send link via E-mail</span></span></span></a>
+  </li>
+</ul>
+
+Styleguide 4.10.4
+*/
+
+
+/*
+Share List colourful without well
+
+markup:
+<div class="gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
+    <ul class="share-list reset list--float">
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--facebook share--facebook-branded" title="Share on Facebook" href="javascript:void()" target="_blank">
+                <span data-icon="facebook" class="icon icon--facebook"><span class="is-narrative">Share on Facebook</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--twitter share--twitter-branded" title="Share on Twitter" href="javascript:void()"
+              target="_blank">
+                <span data-icon="twitter" class="icon icon--twitter"><span class="is-narrative">Share on Twitter</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--print" title="Print" href="javascript:void()">
+                <span data-icon="print" class="icon icon--print"><span class="is-narrative">Print</span></span>
+            </a>
+        </li>
+        <li class="share-list__item divider  divider--left">
+            <a class="label share share--email" title="Send link via E-mail" href="javascript:void()">
+                <span data-icon="email" class="icon icon--envelope"><span class="is-narrative">Send link via E-mail</span></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+Styleguide 4.10.5
+*/

@@ -1,0 +1,34 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition headline",
+        "fr": "Exposition headline"
+    },
+    "description": {
+        "en": "Exposition headline blueprint",
+        "fr": "Exposition headline blueprint"
+    },
+    "template": "containers/experience-capitalization/headline/headline.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Resource"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "articles",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "85cea59c-8446-4b4d-ad56-488292081b4e",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        }
+    }
+}

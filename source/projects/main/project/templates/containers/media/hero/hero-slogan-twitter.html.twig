@@ -1,0 +1,26 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+
+{% if config.section_link.page %}
+        <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero hero--slogan slogan--large'))|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <a href="{{ config.section_link.page }}">
+            {{ image.hero_twitter(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
+            <figcaption class="hero__headline">
+                {% for loopContainer in containers %}
+                    {% include loopContainer.template with loopContainer %}
+                {% endfor %}
+            </figcaption>
+        </a>
+        </{{ config.container_tag|default('figure') }}>
+
+{% else %}
+    <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero hero--slogan slogan--large'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        {{ image.hero_twitter(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
+        <figcaption class="hero__headline">
+            {% for loopContainer in containers %}
+                {% include loopContainer.template with loopCcontainer %}
+            {% endfor %}
+        </figcaption>
+    </{{ config.container_tag|default('figure') }}>
+{% endif %}

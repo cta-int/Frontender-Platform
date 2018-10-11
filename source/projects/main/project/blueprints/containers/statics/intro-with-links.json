@@ -1,0 +1,337 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Intro with links"
+    },
+    "description": {
+        "en": "Intro container with links"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [{
+                                        "value": "",
+                                        "label": {
+                                            "en": "No"
+                                        }
+                                    },
+                                    {
+                                        "value": "container-header--filter",
+                                        "label": {
+                                            "en": "Yes"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": 1,
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "layout--narrow",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+
+                        }
+                    },
+                    "containers": []
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/intro-with-list/intro-with-list.html.twig",
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": "Generic container to wrap content in layout instructions"
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "crown": {
+                                "value": "",
+                                "control": "project/crown"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 1,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "template": "modules/intro/intro.html.twig",
+                            "name": {
+                                "en": "Main"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "lead": {
+                                            "value": {
+                                                "en": "Agribusinesses that can effectively link farmers to national, regional and international markets will contribute to poverty alleviation, export-led growth, food import substitution, enhanced food security and job creation.",
+                                                "fr": "Agribusinesses that can effectively link farmers to national, regional and international markets will contribute to poverty alleviation, export-led growth, food import substitution, enhanced food security and job creation."
+                                            },
+                                            "label": {
+                                                "en": "Lead paragraph"
+                                            },
+                                            "control": "core/textarea"
+                                        },
+                                        "body": {
+                                            "value": [
+                                                {
+                                                    "en": "The additional investment in agriculture by private sector and public sector alike signals a renewed recognition that agriculture is a potent driver of economic growth and poverty reduction.",
+                                                    "fr": "The additional investment in agriculture by private sector and public sector alike signals a renewed recognition that agriculture is a potent driver of economic growth and poverty reduction."
+                                                },
+                                                {
+                                                    "en": "Building on the work done to enhance regional trade and develop value chains, CTA is well placed to support the development of small and medium-sized enterprises (SMEs).",
+                                                    "fr": "Building on the work done to enhance regional trade and develop value chains, CTA is well placed to support the development of small and medium-sized enterprises (SMEs)."
+                                                }
+                                            ],
+                                            "label": {
+                                                "en": "Body"
+                                            },
+                                            "control": "core/textarea",
+                                            "repeatable": true,
+                                            "minimal": 1
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "large_lead": {
+                                            "label": {
+                                                "en": "Display large lead"
+                                            },
+                                            "control": "core/boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "template": "modules/intro-links/intro-links.html.twig",
+                            "name": {
+                                "en": "Aside"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template_config": {
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en": "Title",
+                                                "fr": "Title"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "body": {
+                                            "value": {
+                                                "en": "Smarter agri-food systems: more productive, more integrated, less wasteful and more profitable, inclusive and sustainable.",
+                                                "fr": "Smarter agri-food systems: more productive, more integrated, less wasteful and more profitable, inclusive and sustainable."
+                                            },
+                                            "label": {
+                                                "en": "Body"
+                                            },
+                                            "control": "core/textarea"
+                                        },
+                                        "list_items": {
+                                            "value": [
+                                                {
+                                                    "label": {
+                                                        "en": "CTA"
+                                                    },
+                                                    "url": {
+                                                        "en": "https://cta.com"
+                                                    }
+                                                },
+                                                {
+                                                    "label": {
+                                                        "en": "Brickson"
+                                                    },
+                                                    "url": {
+                                                        "en": "https://brickson.nl"
+                                                    }
+                                                }
+                                            ],
+                                            "label": {
+                                                "en": "List item"
+                                            },
+                                            "control": "core/url",
+                                            "repeatable": true,
+                                            "minimal": 2
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

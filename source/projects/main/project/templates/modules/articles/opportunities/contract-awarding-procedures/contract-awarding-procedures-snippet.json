@@ -1,0 +1,21 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "articles",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "ab903292-b219-40a8-9712-fec319dcb8b8",
+                "control": "project/model/id"
+            },
+            "analysis": {
+                "value": "true",
+                "control": "project/model/analysis"
+            }
+        }
+    }
+}

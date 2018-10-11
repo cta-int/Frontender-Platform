@@ -1,0 +1,22 @@
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{["post-tile",container_class]|join('  |  ') }}">
+    <a class="is-heir" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">
+        {{ image.post_hero(article.link.mediaObject|lead) }}
+    </a>
+	<div class="post-tile__body">
+		<div class="title  |  trailer--small">
+			<a class="is-heir" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">{{ article.headline }}</a>
+		</div>
+		<div class="media  |  location">
+		  <span class="location__marker  |  media__figure">
+		    <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span>
+		  </span>
+		  <div class="location__body  |  media__content">
+		    Addis Ababa, Ethiopia
+		  </div>
+		</div>
+	</div>
+	<div class="post-tile-triangle"></div>
+</div>

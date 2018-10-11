@@ -1,0 +1,45 @@
+/*
+Text
+
+Styleguide 1.6.2
+*/
+
+@mixin text-10px() {
+  font-size: to-unit(10px);
+  line-height: to-unit(rhythm(5), 1, 10px);
+}
+
+@mixin text-12px() {
+  font-size: to-unit(12px);
+  line-height: to-unit(rhythm(5), 1, 12px);
+}
+
+@mixin text-14px() {
+  font-size: to-unit(14px);
+  line-height: to-unit(rhythm(7), 1, 14px);
+}
+
+@mixin text-16px() {
+  font-size: to-unit(16px);
+  line-height: to-unit(rhythm(8), 1, 16px);
+}
+
+@mixin text-18px() {
+  font-size: to-unit(18px);
+  line-height: to-unit(rhythm(8), 1, 18px);
+}
+
+@mixin text-20px() {
+  font-size: to-unit(20px);
+  line-height: to-unit(rhythm(10), 1, 20px);
+}
+
+@mixin text-28px() {
+  font-size: to-unit(28px);
+  line-height: to-unit(rhythm(11), 1, 28px);
+}
+
+@mixin text-30px() {
+  font-size: to-unit(30px);
+  line-height: to-unit(rhythm(12), 1, 30px);
+}

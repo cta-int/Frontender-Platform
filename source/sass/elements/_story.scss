@@ -1,0 +1,166 @@
+/*
+Story
+
+This element relies on the picture element for png fallback and requires a picture polyfill for older browsers.
+
+fish-market - Fish market on pavement
+fishing-shore - Fisherman fishing from shore
+fishing-boat - Fisherman fishing from boat
+globe-plane - Half globe with a flying plane
+printing-press-publisher - Printing press with publisher character
+speakers - Speakers at an event
+conversation - Informal conversation
+pavement - Pavement, can be used as spacer image
+water - Water, can be used as spacer image
+
+markup:
+<picture class="story story--{$modifiers}">
+  <source type="image/svg+xml" srcset="/images/stories/{$modifiers}.svg">
+  <img  src="/images/stories/{$modifiers}.png" alt="">
+</picture>
+
+sg-wrapper:
+<div class="well well--full well--slim-fit">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 3.45
+*/
+
+@mixin offset-story($offset) {
+    position: relative;
+    top: $offset;
+    margin-top: $offset * -1;
+}
+.story {
+    & & {
+        display: inline-block;
+    }
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 100%;
+    margin-bottom: -1px; /* Hack until images are cleaned up*/
+    &:first-child {
+        display: none;
+        @include breakpoint($gt-medium-handheld) {
+            display: inline-block;
+        }
+    }
+    &:nth-child(even) {
+        display: none;
+        @include breakpoint($gt-medium-desktop) {
+            display: inline-block;
+        }
+    }
+    &-line {
+        font-size: 0;
+        white-space: nowrap;
+        text-align: center;
+        &-wrapper {
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        &--horizon {
+            border-bottom: 1px solid $white;
+        }
+        .is-gt-medium-handheld {
+          @include breakpoint($gt-medium-handheld) {
+            display: inline;
+            display: initial;
+          }
+        }
+        .is-gt-small-desktop {
+          @include breakpoint($gt-small-desktop) {
+            display: inline;
+            display: initial;
+          }
+        }
+    }
+    &--horizon {
+        position: relative;
+        bottom: -1px;
+    }
+    &--pavement {
+        @include offset-story(26px);
+    }
+    &--water {
+        @include offset-story(55px);
+    }
+    &--land {}
+    &--soil {}
+    &--bg {
+        .well > & {
+            background-color: inherit;
+        }
+    }
+}
+
+
+
+/*
+Story line-up example
+
+Individual stories may be hidden on smaller browsers using one of the `.is-gt-###` classes (see: elements/state).
+
+Note: the story line needs to be wrapped inside a `.story-line-wrapper` class so exess stories are not causing a scrollbar.
+
+markup:
+<div class="story-line  |  well well--full well--slim-fit">
+    <picture class="is-gt-small-desktop story">
+      <source type="image/svg+xml" srcset="/images/stories/globe-plane.svg">
+      <img src="/images/stories/globe-plane.png" alt="" width="">
+    </picture>
+    <picture class="is-gt-small-desktop story story--pavement">
+      <source type="image/svg+xml" srcset="/images/stories/fish-market.svg">
+      <img src="/images/stories/fish-market.png" alt="" width="">
+    </picture>
+    <picture class="is-gt-small-desktop story story--pavement">
+      <source type="image/svg+xml" srcset="/images/stories/pavement.svg">
+      <img src="/images/stories/pavement.png" alt="">
+    </picture>
+    <picture class="is-gt-medium-handheld story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/fishing-shore.svg">
+      <img src="/images/stories/fishing-shore.png" alt="">
+    </picture>
+    <picture class="is-gt-small-desktop story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="is-gt-medium-handheld story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/fishing-boat.svg">
+      <img src="/images/stories/fishing-boat.png" alt="">
+    </picture>
+    <picture class="story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="is-gt-small-desktop story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="is-gt-medium-handheld story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+    <picture class="is-gt-medium-handheld story story--water">
+      <source type="image/svg+xml" srcset="/images/stories/water.svg">
+      <img src="/images/stories/water.png" alt="">
+    </picture>
+</div>
+
+sg-wrapper:
+<div class="story-line-wrapper" style="background: #3d3d3d; height: 300px">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 3.45.2
+*/

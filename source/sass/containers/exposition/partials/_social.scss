@@ -1,0 +1,21 @@
+.social {
+	background: rgba(0,0,0,.26);
+	&-icons {
+		text-align: center;
+		padding: rhythm(5);
+		li {
+			display: inline-block;
+			padding: 0 rhythm(1);
+		}
+	}
+	&-icon {
+		font-size: to-unit(rhythm(12));
+		&,
+		&:visited {
+			color: $color-body;
+		}
+		&:hover {
+			color: $white;
+		}
+	}
+}

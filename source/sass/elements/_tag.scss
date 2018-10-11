@@ -1,0 +1,96 @@
+/*
+Tag
+
+.tag - Tag
+.tag:hover - Tag with hover state
+
+markup:
+<a class="{$modifiers}" href="javascript:void();">UAV</a>
+
+Styleguide 3.14
+*/
+
+.tag {
+  @extend %meta-text;
+  display: inline-block;
+  background: mix($color-body, $white, 26%);
+  padding: rhythm(2);
+  font-size: to-unit(9px);
+  line-height: to-unit(rhythm(2), 1, 9px);
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  &,
+  .theme--blue &,
+  .theme--lime &,
+  .theme--yellow &,
+  .theme--gold &,
+  .theme--orange &,
+  .theme--salmon &,
+  .theme--red &,
+  .theme--burgundy &,
+  .theme--purple & {
+    color: inherit;
+  }
+
+  &:hover {
+    background-color: $color-theme;
+    color: $white;
+    .theme--blue & {
+      background-color: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+  }
+}
+
+/*
+Tag List
+
+.tag-list - Tag List
+
+markup:
+<ul class="{$modifiers} reset list--inline">
+  <li><a class="tag" href="javascript:void();">GIS</a></li>
+  <li><a class="tag" href="javascript:void();">GPS</a></li>
+  <li><a class="tag" href="javascript:void();">Hardware</a></li>
+  <li><a class="tag" href="javascript:void();">Internet</a></li>
+  <li><a class="tag" href="javascript:void();">Measuring</a></li>
+  <li><a class="tag" href="javascript:void();">Monitoring</a></li>
+  <li><a class="tag" href="javascript:void();">Radio</a></li>
+  <li><a class="tag" href="javascript:void();">Software</a></li>
+  <li><a class="tag" href="javascript:void();">Telephony</a></li>
+  <li><a class="tag" href="javascript:void();">TV & Video</a></li>
+</ul>
+
+Styleguide 3.14.1
+*/
+
+// .tag-list {
+//   .tag {
+//     float: left;
+//     margin: 0 rhythm() rhythm() 0;
+//   }
+// }

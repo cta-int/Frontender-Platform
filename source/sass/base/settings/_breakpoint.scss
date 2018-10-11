@@ -1,0 +1,46 @@
+/*
+Breakpoint settings
+
+$lt-small-handheld - Breakpoint for (**smaller than**) smaller handheld devices (<=319px).
+$lt-medium-handheld - Breakpoint for (**smaller than**) medium sized handheld devices (<=519px).
+$lt-large-handheld - Breakpoint for (**smaller than**) larger handheld devices and smaller desktop devices (<=767px).
+$lt-small-desktop - Breakpoint for (**smaller than**) medium sized handheld and small desktop devices (<=1023px).
+$lt-medium-desktop - Breakpoint for (**smaller than**) Breakpoint for large (desktop) devices (<=1259px).
+$lt-large-desktop - Breakpoint for (**smaller than**) Breakpoint for large (desktop) devices (<=1439px).
+<hr>
+$gt-small-handheld - Breakpoint for (**larger than**) smaller handheld devices (>=320px).
+$gt-medium-handheld - Breakpoint for (**larger than**) medium sized handheld devices (>=520px).
+$gt-large-handheld - Breakpoint for (**larger than**) larger handheld devices and smaller desktop devices (>=768px).
+$gt-small-desktop - Breakpoint for (**larger than**) medium sized handheld and small desktop devices (>=1024px).
+$gt-medium-desktop - Breakpoint for (**larger than**) Breakpoint for large (desktop) devices (>=1260px).
+$gt-large-desktop - Breakpoint for (**larger than**) Breakpoint for large (desktop) devices (>=1440px).
+<hr>
+$portrait - Breakpoint for portrait oriented viewports.
+$landscape - Breakpoint for landscape oriented viewports.
+
+markup:
+{$modifiers}
+
+Styleguide 1.3.3
+*/
+
+$lt-small-handheld: "(max-width: #{to-unit(319px, $unit, $default-font-size)})";
+$gt-small-handheld: "(min-width: #{to-unit(320px, $unit, $default-font-size)})";
+
+$lt-medium-handheld: "(max-width: #{to-unit(519px, $unit, $default-font-size)})";
+$gt-medium-handheld: "(min-width: #{to-unit(520px, $unit, $default-font-size)})";
+
+$lt-large-handheld: "(max-width: #{to-unit(767px, $unit, $default-font-size)})";
+$gt-large-handheld: "(min-width: #{to-unit(768px, $unit, $default-font-size)})";
+
+$lt-small-desktop: "(max-width: #{to-unit(1023px, $unit, $default-font-size)})";
+$gt-small-desktop: "(min-width: #{to-unit(1024px, $unit, $default-font-size)})";
+
+$lt-medium-desktop: "(max-width: #{to-unit(1439px, $unit, $default-font-size)})";
+$gt-medium-desktop: "(min-width: #{to-unit(1440px, $unit, $default-font-size)})";
+
+$lt-large-desktop: "(max-width: #{to-unit(1599px, $unit, $default-font-size)})";
+$gt-large-desktop: "(min-width: #{to-unit(1600px, $unit, $default-font-size)})";
+
+$portrait: "(orientation: portrait)";
+$landscape: "(orientation: landscape)";

@@ -1,0 +1,91 @@
+{#
+    1. Load issue article (type review, id)
+    2. Pop 1 article by configured article id, this will be the lead article loaded in a hero-topic
+        2.1. Use the issue's subtitle as the label
+    3. Use the remaining articles as the cross-section body
+    4. Use the associated organizations as the collabaration partners in the sidebar
+    5. Extract the issue number from one of the review article's labels (not most elegant approach but no other way to get to it)
+#}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% set issue_nr = null %}
+{% set lead_article = null %}
+{% set featured_articles = [] %}
+
+{% for _article in model.similar.articles %}
+    {% if _article._id is same as(content.lead_article) %}
+        {% set lead_article = _article %}
+    {% else %}
+        {% set featured_articles = featured_articles|merge([_article]) %}
+    {% endif %}
+{% endfor %}
+
+{% for label in model.link.label|filterArray('type', 'issue') %}
+    {% set issue_nr = label.name|issueNumber %}
+{% endfor %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+    {% if lead_article %}
+        {% include 'containers/articles/hero/hero-topic.html.twig' with {model: lead_article, labels: {label: 'Issue'|t(locales) ~ ' ' ~ issue_nr}} %}
+    {% endif %}
+
+    <div class="layout leader--hero">
+        <div class="layout__cell layout__cell--aside layout__cell--divider wings">
+            {% if model.link.organization.partnerOrganization|length %}
+                <footer class="gutters">
+                    <h2 class="meta trailer-inside--small">{{ content.credit|t(locales)|default({en:'Our partners for this issue:',fr: 'Our partners for this issue:'}|t(locales)) }}</h2>
+                    <ul class="reset">
+                        {% for organization in model.link.organization.partnerOrganization %}
+                            <li class="trailer--tiny">
+                                {% if organization.avatar %}
+                                    <img src="{{ organization.avatar|t(locales) }}" alt="{{ organization.name|t(locales) }}"/>
+                                {% else %}
+                                    {{ organization.name|t(locales) }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </footer>
+            {% endif %}
+
+            <aside class="gutters">
+                <div class="issue-label issue-label--l media media--middle anchor--reset leader">
+                    <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
+                    <div class="issue-label__caption">
+                        <p>
+                            <strong>{{'Issue'|t(locales)}} {{ issue_nr }}</strong>
+                            <span>{{ model.datePublished|date("F Y"|t(locales)) }}</span>
+                        </p>
+                    </div>
+                </div>
+                <figure>
+                    <figcaption class="title title--lead title--section leader--small anchor--reset">{{ model.headline|t(locales) }}</figcaption>
+                    {{ image.cover(model.link.mediaObject|lead, 0, "") }}
+                </figure>
+            </aside>
+
+        </div>
+
+        <div class="layout__cell layout__cell--main wing--right">
+            {% include 'modules/articles/cross-section/cross-section.html.twig' with {model: {
+                articles: featured_articles|slice(0,5)
+            }} %}
+            {% if featured_articles|slice(0,5)|length %}
+                <section class="leader--hero">
+                    <h2 class="title gutters-outside">{{ 'Also in this issue'|t(locales) }}</h2>
+                    <div class="grid grid--rows">
+                    {% for featured_article in featured_articles|slice(5) %}
+                        <article class="grid__cell  |  leader-small  |  gutters">
+                            {% include 'partials/article/post-row.html.twig' with {model: featured_article} %}
+                        </article>
+                    {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+        </div>
+    </div>
+
+</{{ config.container_tag|default('div') }}>

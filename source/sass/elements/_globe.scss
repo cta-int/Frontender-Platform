@@ -1,0 +1,27 @@
+/*
+Globe
+
+.globe - Globe
+
+markup:
+<img class="{$modifiers}  |  leader  |  trailer  |  gutters-outside" src="/images/globes/western-africa.png" alt="Picture of the globe with Western Africa highlighted." width="214" height="214"/>
+
+Styleguide 3.32
+*/
+
+.globe {
+  display: block;
+  background: #A0DDEC;
+  border: 2px solid $white;
+  width: rhythm(33);
+  height: rhythm(33);
+  box-shadow: 2px 2px 2px 0 rgba($color-body, .26);
+  &-regions__image {
+    width: rhythm(33);
+    height: rhythm(33);
+  }
+  @include breakpoint($gt-medium-handheld) {
+    width: rhythm(42);
+    height: rhythm(42);
+  }
+}

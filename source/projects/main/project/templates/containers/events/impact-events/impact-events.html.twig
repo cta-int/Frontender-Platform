@@ -1,0 +1,8 @@
+{% import "macros/template.html.twig" as helper %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout layout--even')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% for loopContainer in containers %}
+        <div class="layout__cell">
+            {% include loopContainer.template with loopContainer %}
+        </div>
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>

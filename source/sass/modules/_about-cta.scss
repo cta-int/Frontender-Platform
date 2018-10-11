@@ -1,0 +1,444 @@
+/*
+About us sections
+
+Styleguide 5.15
+*/
+
+/*
+About us section 1
+
+markup:
+<div class="about-cta">
+    <div class="about-cta--container  |  layout--narrow  |  wings">
+        <div class="is-root">
+            <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">01</span></div>
+            <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">Message from the director</h2>
+            <div class="layout layout--even">
+                <div class="layout__cell  |  gutters">
+                    <div class="title title--tile">
+                        Agriculture is key to meeting many of the 2030 Sustainable Development Goals. It is critical not only to ensure food and nutrition security for African, Caribbean and Pacific (ACP) countries, but also to create jobs for millions of young people joining the labour market each year and to contribute to economic growth and prosperity.
+                    </div>
+                </div>
+                <div class="layout__cell  |  gutters">
+                    <div class="paragraph--lead">
+                        To achieve this effectively, agriculture must be treated as a business and smallhoder producers must be placed at the centre to earn a greater share of the agricultural value chain
+                    </div>
+                    <h3 class="title title--sub-section  |  leader leader-inside--small  |  trailer--normal">ACP partners and networks</h3>
+                    <p class="trailer">
+                        They can produce enough food to feed not only themselves, but also burgeoning urban populations and reverse the rising trend of food imports into the ACP countries. To this end, smallholders must be able to apply innovations to increase their productivity, reduce post-harvest losses and become more resilient to climate change. They must also have access to lucrative markets. CTA assists smallholders to become better organised in order to profit from domestic, regional and international markets; by promoting access to key business development services, such as finance and inputs; by leveraging ICTs at various stages of the value chain; and by building resilience through climate-smart farming practices. While smallholder producers are CTA's ultimate 'clients', it is the Centre's partner organisations and networks in the ACP that serve smallholders directly. Therefore, we are intensifying our partnerships and articulating how to convert global challenges into opportunities for smallholders.
+                    </p>
+                    <h3 class="title title--sub-section  |  leader leader-inside--small  |  trailer--normal">Key areas</h3>
+                    <p class="trailer">
+                        Agribusiness development, ICT for agriculture, youth and women entrepreneurship, climate-smart agriculture and knowledge management – these are the key areas where we are working with partners to transform agriculture for the benefit of ACP smallholder producers and other value chain actors. I would like to thank the ACP Group and the European Union for their commitment and continued support for the work of CTA. I look forward to working with our key stakeholders to ensure that CTA continues to work for the benefit of rural communities, especially women and youth across the ACP.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<section class="theme--dark">
+  <sg-wrapper-content/>
+</section>
+
+Styleguide 5.15.1
+*/
+
+.about-cta {
+  @include theme-opaque-background(100%);
+  @include theme-color();
+  color: $white;
+  &--container {
+    position: relative;
+    .title {
+      &.title--about-cta,
+      &.piped-text-section {
+        color: inherit;
+      }
+    }
+    @include breakpoint($gt-small-handheld) {
+        .layout--even {
+            flex-wrap: wrap;
+        }
+    }
+  }
+  &__lead {
+    margin-top: 0;
+  }
+  &__section-id {
+    position: absolute;
+    top: $gutter-width / 2;
+    right: 100%;
+    display: table;
+    width: rhythm(30);
+    height: rhythm(30);
+    border: 3px solid $white;
+    color: $white;
+    font-size: 4em;
+    letter-spacing: -0.06em;
+    text-align: center;
+    @include breakpoint($gt-small-desktop) {
+        height: rhythm(45);
+        width: rhythm(45);
+        font-size: 6em;
+    }
+    @include breakpoint($gt-medium-desktop) {
+        height: rhythm(50);
+        width: rhythm(50);
+        font-size: 7.5em;
+    }
+  }
+  .section-id__number {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+  &__core-values {
+    position: relative;
+    .goal {
+      position: absolute;
+      background: $color-burgundy;
+      color: $white;
+      bottom: 80px;
+      right: 0;
+      width: 350px;
+    }
+    .no-flexbox & {
+      img {
+        width: 100%;
+      }
+    }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      img[src$=".svg"] {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/*
+About us section 2
+
+markup:
+<div class="about-cta">
+    <div class="about-cta--container  |  layout--narrow  |  wings">
+        <div class="is-root">
+            <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">02</span></div>
+            <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">What we do</h2>
+            <div class="title title--tile  |  leader  |  trailer  |  gutters">
+                CTA has a new way of doing business. The organisation is introducing six new flagship projects to increase agricultural productivity, contribute to more-efficient and inclusive agricultural value chains and markets, and promote climate-smart agriculture.
+            </div>
+            <p class="gutters  |  leader  |  trailer">
+                The flagship projects have been developed to complement the Centre’s three strategic priorities: policies, value chains and knowledge management, in addition to youth and women's empowerment. They are integral elements in the regional business plans that
+                have been developed in close consultation with CTA's partners and beneficiaries, a process involving external reviews, rapid scans and scoping and impact studies. The projects will improve coordination among programmes, allowing CTA to
+                involve key stakeholders in the development of agricultural value chains, such as those that improve nutritional outcomes. This focus on business development is crucial, giving smallholder farmers the opportunity to escape poverty by becoming
+                the foundation of improved, inclusive markets.
+            </p>
+            <div class="layout  layout--split  |  leader  |  trailer">
+                <div class="layout__cell  |  gutters">
+                    <p class="gutter">
+                        CTA is increasingly focusing its attention on links with the private sector, especially small and medium-sized businesses and their associations that are related to agriculture. This sector is a powerful yet underutilised partner in agricultural and rural
+                        development. Climate-smart agriculture continues to be a cornerstone of CTA’s programmes; the Centre has played a significant role in putting agriculture on the climate-change agenda. A continuing focus is on supporting participatory
+                        development of policies, strategies and value chains that include a wide range of stakeholders, particularly farmers’ organisations, youth and women’s groups, and research and education institutions.
+                    </p>
+                </div>
+                <div class="layout__cell layout__cell--aside  |  gutters">
+                    <div class="addendum">
+                        <h3 class="addendum__title  |  title title--sub-section  |  trailer--normal">Our programmes</h3>
+                        <p class="trailer--small">CTA has organised its activities under two operational programmes:</p>
+                        <ul class="reset">
+                            <li class="trailer--small"><a class="anchor" href="javascript:void(0);">Policies, Markets, and Information &amp; Communication Technologies (PMI)</a></li>
+                            <li class="trailer--small"><a class="anchor" href="javascript:void(0);">Knowledge Management and Communication (KMC)</a></li>
+                        </ul>
+                        <p>The PMI and KMC programmes are supported by a unit devoted to promoting organisational <a class="anchor" href="javascript:void(0);">earning and effective monitoring, evaluation and impact assessment (LME)</a>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="world-map  |  leader-inside--hero  |  trailer-inside  |  gutters">
+                <img class="world-map__image" style="width:100%" src="/images/content/about-cta/world-map-about-cta.svg" alt="Projects are tailored to the particular needs of six regions">
+            </div>
+            <div class="layout layout--split layout--align-end  |  trailer-inside--hero">
+                <div class="layout__cell--aside  |  gutters">
+                    <div class="legenda">
+                        <ul class="legenda__list  |  reset">
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--gold"></span>Caribbean</li>
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--orange"></span>Western Africa</li>
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--red"></span>Eastern Africa</li>
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--purple"></span>Central Africa</li>
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--yellow"></span>Southern Africa</li>
+                            <li class="legenda__item  |  title title--sub-section  |  trailer--small"><span class="legenda__item--identifier legenda__item--blue"></span>Pacific</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="layout__cell  |  gutters  |  trailer--small">
+                    <p>
+                        Feedback, including results of external reviews and impact studies, has played a central role in guiding CTA as it sets out on its new pathway. The Centre is confident that adopting this approach will help to ensure that its work is even more closely
+                        aligned to the needs of its beneficiaries and partners.
+                    </p>
+                </div>
+            </div>
+            <p class="paragraph paragraph--lead-xl  |  gutters  |  trailer-inside--hero">
+                The new projects are tailored to the particular needs of six regions: West Africa, Central Africa, Eastern Africa, Southern Africa, the Caribbean and the Pacific.
+            </p>
+            <div class="globe-regions  |  grid  |  grid--musketeers">
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-western-africa.svg" alt="Western Africa">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">Western Africa</div>
+                    <p>
+                        Enhance intraregional grain value chains, allowing farmers’ organisations as well as private entrepreneurs to actively pursue opportunities in the ECOWAS regional grain trade.
+                    </p>
+                </div>
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-central-africa.svg" alt="Central Africa">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">Central Africa</div>
+                    <p>
+                        Food and nutrition security will be increased with better information and knowledge management, strengthened market institutions and more-effective multistakeholder platforms focusing on roots and tubers, particularly cassava.
+                    </p>
+                </div>
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-eastern-africa.svg" alt="Eastern Africa">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">Eastern Africa</div>
+                    <p>
+                        Help livestock keepers, including pastoralists, to become more resilient as they gain the knowledge and skills they need to earn more from their animals.
+                    </p>
+                </div>
+            </div>
+            <div class="globe-regions  |  grid  |  grid--musketeers">
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-southern-africa.svg" alt="Southern Africa">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">
+                        Southern Africa
+                    </div>
+                    <p>
+                        Empower farmers to use climate-smart agri-food solutions for their cereals and livestock, increase their livelihoods and move out of poverty.
+                    </p>
+                </div>
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-caribbean.svg" alt="Caribbean">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">Caribbean</div>
+                    <p>
+                        Small-scale producers, women and young entrepreneurs will have better access to intra-regional and international markets, key business development services, such as finance, and increased profits.
+                    </p>
+                </div>
+                <div class="grid__cell  | gutters  |  trailer--giant">
+                    <img class="globe-regions__image" src="/images/content/about-cta/globe-pacific.svg" alt="Pacific">
+                    <div class="globe-regions__title  |  title title--sub-section  |  trailer--normal  |  leader--small">Pacific</div>
+                    <p>
+                        Improve the long-term financial and physical health of poor rural and urban dwellers, especially women and young children, by developing the local food crops and fisheries markets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<div class="theme--dark">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.15.2
+*/
+
+.world-map {
+  margin-left: auto;
+  margin-right: auto;
+  @include breakpoint($gt-large-handheld) {
+    margin-left: -90px;
+    margin-right: -90px;
+  }
+}
+
+/*
+About us section 3
+
+markup:
+<div class="about-cta  |  trailer-inside--giant">
+    <div class="about-cta--container  |  layout--narrow  |  wings">
+        <div class="is-root">
+            <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">03</span></div>
+            <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">Our strategy</h2>
+            <div class="layout |  trailer-inside--hero">
+                <div class="layout__cell  |  gutter--right">
+                    <div class="wing--right">
+                        <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                            <div class="gutter">
+                                Sowing innovation, harvesting prosperity. CTA’s Strategic Plan 2016–2020.
+                            </div>
+                        </div>
+                        <div class="paragraph  |  gutters">
+                            <p class="gutter">
+                                The world does not stand still, and neither does CTA. CTA's Strategic Plan 2016-2020 is a way-station on a road of continuous change that has seen CTA become a results-based organisation closely aligned with the priorities of the ACP countries it serves.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="paragraph  |  gutters">
+                        The strategy has been developed with a close eye on the Sustainable Development Goals, many of which it addresses directly. Zero hunger, food security, nutrition and sustainable agriculture (Goal 2), poverty (Goal 1) and gender (Goal 5) are at the heart
+                        of CTA's activities, which will also create employment, particularly for young people and women (Goal 8), resulting in reduced inequality (Goal 10). With our partners, CTA will help to reduce food waste (Goal 12), build greater
+                        climate resilience (Goal 13) and promote sustainable fisheries (Goal 14).
+                    </p>
+                    <p class="paragraph  |  gutters">
+                        Ultimately, CTA through its emphasis on partnership (Goal 17), will contribute to greater sustainability (Goal 15).
+                    </p>
+                </div>
+                <div class="layout__cell layout__cell--aside  | gutters">
+                    <div class="goals-set">
+                        <div class="goal goal--filled">
+                            <h4 class="goal__title  |  title title--sub-section  |  trailer--small">Mission</h4>
+                            <p class="body--whisper">
+                                To advance food security, resilience and inclusive economic growth in Africa, the Caribbean and the Pacific through innovations in sustainable agriculture.
+                            </p>
+                        </div>
+                        <div class="goal goal--outlined">
+                            <h4 class="goal__title  |  title title--sub-section  |  trailer--small">Vision</h4>
+                            <p class="body--whisper">
+                                Smallholder agriculture as a vibrant, modern and sustainable business that creates value for farmers, entrepreneurs, youth and women, and produces affordable, nutritious and healthy food for all.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layout layout--align-middle  |  trailer-inside--hero">
+                <div class="layout__cell  |  gutters">
+                    <div class="about-cta__chapter-title  |  title title--section  |  leader  |  trailer--small">
+                        Three strategic goals
+                    </div>
+                    <p class="gutter">
+                        CTA has set three interrelated strategic goals to contribute to greater food and nutrition security and achieve the greatest impact for its work:
+                    </p>
+                </div>
+                <div class="layout__cell layout__cell--aside  |  gutters">
+                    <div class="addendum">
+                        <h3 class="addendum__title  |  title title--sub-section  |  trailer--normal">Downloads</h3>
+                        <ul class="reset">
+                            <li class="trailer--small"><a class="meta" href="javascript:void(0);"><strong>CTA's Strategic Plan 2016-2020</strong></a><br>Synthesis version, 622 KB</li>
+                            <li class="trailer--small"><a class="meta" href="javascript:void(0);"><strong>CTA's Partnership Strategy</strong></a><br>700KB
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="strategic-goals  |  gutters-outside">
+                <div class="grid grid--musketeers">
+                    <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                        <div class="title title--sub-section">
+                            <span class="strategic-goals__number">01</span>
+                            <div class="strategic-goals__title">Profitable smallholder value chains</div>
+                        </div>
+                        <span class="strategic-goals__illustration illustration illustration--fish-market-supplier"></span>
+                    </div>
+                    <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                        <div class="title title--sub-section">
+                            <span class="strategic-goals__number">02</span>
+                            <div class="strategic-goals__title">Conducive agricultural policies</div>
+                        </div>
+                        <span class="strategic-goals__illustration illustration illustration--factory"></span>
+                    </div>
+                    <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                        <div class="title title--sub-section">
+                            <span class="strategic-goals__number">03</span>
+                            <div class="strategic-goals__title">Enhanced capacity for knowledge management</div>
+                        </div>
+                        <span class="strategic-goals__illustration illustration illustration--farmer-presentation"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="layout  layout--split  |  leader-inside--hero  |  trailer-inside--giant">
+                <div class="layout__cell layout__cell--aside  |  gutters">
+                    &nbsp;
+                </div>
+                <div class="layout__cell  |  gutters">
+                    <p>
+                        Smallholders need profitable value chains; the development of profitable value chains requires supportive agricultural policies; and both are boosted by improved knowledge management.
+                    </p>
+                </div>
+            </div>
+            <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                Regional focus for impact
+            </div>
+            <p class="paragraph paragraph--lead  |  gutters  trailer">
+                Key to implementing this Strategy are the regional business plans CTA and its partners formulated on the basis of each of the six ACP regions' agricultural-sector priorities and making best use of the Centre's comparative advantages.
+            </p>
+            <div class="layout  |  trailer--hero">
+                <div class="layout__cell">
+                    <p class="gutters">
+                        The flagship projects help to improve coordination and team work among various programmes, allowing CTA to fully leverage the power of key stakeholders, including the private sector, and catalyse complementary actions along agricultural value chains,
+                        such as those that improve nutritional outcomes. This focus on business development is crucial, giving smallholder farmers the opportunity to escape poverty by becoming the foundation of improved, inclusive value chains.
+                    </p>
+                </div>
+                <div class="layout__cell layout__cell--aside  |  gutters">
+                    <div class="title title--sub-section  |  trailer--small">Key themes</div>
+                    <h3 class="body--whisper  |  trailer--small">
+                        <a class="-anchor -anchor--shy" href="/en/agribusiness">Agribusiness development</a>
+                    </h3>
+                    <h3 class="body--whisper  |  trailer--small">
+                        <a class="-anchor -anchor--shy" href="/en/icts-for-agriculture">ICTs for agriculture</a>
+                    </h3>
+                    <h3 class="body--whisper  |  trailer--small">
+                        <a class="-anchor -anchor--shy" href="/en/channel/-sid0a48927f8-6c97-4016-a620-eeaa6e630435">Youth and women entrepreneurship</a>
+                    </h3>
+                    <h3 class="body--whisper  |  trailer--small">
+                        <a class="-anchor -anchor--shy" href="/en/climate-resilient-agriculture">Climate resilient agriculture</a>
+                    </h3>
+                </div>
+            </div>
+            <div class="piped-text-section  |  title title--container  |  leader-inside  |  trailer-inside">
+                <span class="pipe pipe--top"></span> Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis
+                in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                Sed posuere consectetur est at lobortis.
+                <span class="pipe pipe--bottom"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<section class="theme--dark">
+  <sg-wrapper-content/>
+</section>
+
+Styleguide 5.15.3
+*/
+
+.goals-set {
+  .goal {
+    &:first-child {
+      margin-top: $gutter-width / 2;
+      margin-left: percentage(3 / 12);
+      margin-bottom: rhythm(-11);
+      @include breakpoint($gt-small-desktop) {
+        margin-top: 0;
+        margin-left: percentage(-3 / 12);
+      }
+    }
+  }
+}
+
+.piped-text-section {
+  position: relative;
+  text-align: center;
+}
+.pipe {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  &:before {
+    background: $white;
+    display: inline-block;
+    content: "";
+    height: 3px;
+    width: 50%;
+  }
+  &--top {
+    top: 0;
+    &:before {
+      vertical-align: top;
+    }
+  }
+  &--bottom {
+    bottom: 0;
+    &:before {
+      vertical-align: bottom;
+    }
+  }
+}

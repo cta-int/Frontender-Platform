@@ -1,0 +1,18 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+		<h2 class="title title--section  |  gutters  |  trailer--hero">{{ config.title|t(locales) }}</h2>
+
+		{% for tweet in tweets %}
+			<div class="media  |  divider divider--bottom  |  trailer trailer-inside">
+				<div class="media__figure  |  gutters"><span class="icon icon--l icon--twitter  |  twitter-feed"></span></div>
+				<div class="media__body  |  gutters">
+					<p>{{ tweet.text|raw }}</p>
+					<p class="meta meta--lowercase">{{ tweet.created_at|elapsed }}</p>
+				</div>
+			</div>
+		{% endfor %}
+
+		<a class="block-link block-link--theme  |  gutters" href="https://twitter.com/CTAflash" target="_blank">{{ 'Follow us on twitter'|t(locales) }}</a>
+</{{ config.container_tag|default('div') }}>

@@ -1,0 +1,13 @@
+{% set hasContent = false %}
+{% for loopContainer in containers %}
+    {% if loopContainer.model.articles | length > 0 %}
+        {% set hasContent = true %}
+    {% elseif loopContainer.model.events | length > 0 %}
+        {% set hasContent = true %}
+    {% endif %}
+{% endfor %}
+
+{% if hasContent %}
+    {% include 'containers/global/container-header/container-header.html.twig' with {config:{container_class:"wings"}} %}
+    {% include 'containers/global/panels/panels.html.twig' %}
+{% endif %}

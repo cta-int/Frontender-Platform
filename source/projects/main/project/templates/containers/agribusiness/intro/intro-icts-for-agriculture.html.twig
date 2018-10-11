@@ -1,0 +1,21 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ ["layout", container_class]|join("  |  ") }}">
+    <div class="layout__cell  layout__cell--main  |  gutters">
+        <div class="gutter">
+            <p class="lead  |  trailer  |  gutter">{{ lead|t(locales) }}</p>
+            <p class="trailer  |  gutter">{{ body|t(locales)|raw }}</p>
+        </div>
+    </div>
+    <aside class="layout__cell layout__cell--aside layout__cell--aside--l  |  gutters">
+        <h2 class="title  |  trailer--tiny">{{ 'key focus areas'|t(locales) }}</h2>
+        <p class="body--whisper  |  trailer trailer--small">{{ 'The rapid technological changes in the areas of the internet, mobile and data applications, create an enormous opportunity for growth in the agricultural sector.'|t(locales) }}</p>
+        <ul class="reset  | list  list--theme">
+            <li>{{ 'Effective use of big and open data'|t(locales) }}</li>
+            <li>{{ 'Development of strategies for effective use of technologies in agriculturen'|t(locales) }}</li>
+            <li>{{ 'Apps for agriculture'|t(locales) }}</li>
+            <li>{{ 'UAVs and sensor based technology'|t(locales) }}</li>
+            <li>{{ '3D Mapping'|t(locales) }}</li>
+        </ul>
+    </aside>
+</div>

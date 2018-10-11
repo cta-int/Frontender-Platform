@@ -1,0 +1,23 @@
+{
+    "value": "",
+    "label": {
+        "en": "Crown"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "No"
+            }
+        },
+        {
+            "value": "is-crowned",
+            "label": {
+                "en": "Yes"
+            }
+        }
+    ]
+}

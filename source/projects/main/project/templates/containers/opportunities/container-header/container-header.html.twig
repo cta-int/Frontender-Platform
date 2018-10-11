@@ -1,0 +1,20 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<header class="{{ ["container-header  |  wings", container_class]|join(" | ") }}">
+    <h1 class="container-header__title  |  title title--container  |  gutters">
+        {{ container_title|t(locales) }}
+    </h1>
+    <div class="container-header__filter  |  gutters">
+        <div class="filter__container">
+            <div class="filter" id="event-sort-by4">
+              <button class="filter__trigger  |  title" data-toggle="#event-sort-by4">{{ 'Sort by'|t(locales) }}</button>
+              <ul class="filter__options  |  reset  |  fx">
+                  <li><a class="filter__item  |  fx" href="?sortProperty=datePublished&sortDirection=asc">{{ 'Date (newer-older)'|t(locales) }}</a></li>
+                  <li><a class="filter__item  filter__item--selected  |  fx" href="?sortProperty=datePublished&sortDirection=desc">{{ 'Date (older-newer)'|t(locales) }}</a></li>
+                  <li><a class="filter__item  |  fx" href="?sortProperty=headline&sortDirection=desc">{{ 'Alphabetical order (A-Z)'|t(locales) }}</a></li>
+                  <li><a class="filter__item  |  fx" href="?sortProperty=headline&sortDirection=asc">{{ 'Alphabetical order (Z-A)'|t(locales) }}</a></li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</header>

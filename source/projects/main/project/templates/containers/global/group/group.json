@@ -1,0 +1,50 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "section",
+                "control": "project/container_tag"
+            },
+            "wings": {
+                "value": "",
+                "control": "project/wings"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "divider": {
+                "value": "",
+                "control": "project/divider"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "crown": {
+                "value": "",
+                "control": "project/crown"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "containers": []
+}

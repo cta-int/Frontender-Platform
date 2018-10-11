@@ -1,0 +1,141 @@
+/*
+Project menu
+
+Project menu - Open preview in fullscreen
+
+markup:
+<div class="project-menu  |  fx is-active">
+    <div class="stack">
+        <div class="project-menu--toggle  |  stack__unit stack__pin" data-toggle=".project-menu">
+            <span class="icon icon--chevron-left"></span>
+        </div>
+        <div class="project-menu__body  |  stack__unit  |  leader-inside  |  trailer-inside--normal  |  gutters">
+            <h2 class="title  |  trailer--normal  |  gutters">Our projects</h2>
+            <div class="media  |  gutters  |  trailer--small">
+                <div class="media__figure">
+                    <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--blue"></span>
+                </div>
+                <div class="media__body">
+                    <a class="block-link  |  is-heir  |  gutter--right" href="#tile-112949e5-80eb-4738-aacd-3d636fa307e1">Promoting Nutritious Food Systems in the Pacific Islands</a>
+                </div>
+            </div>
+            <div class="media  |  gutters  |  trailer--small">
+                <div class="media__figure">
+                    <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--yellow"></span>
+                </div>
+                <div class="media__body">
+                    <a class="block-link  |  is-heir  |  gutter--right" href="#tile-ae9374a7-f48f-4707-8efa-4426769e8a56">Promoting Climate-Resilient Agrifood Solutions in Southern Africa</a>
+                </div>
+            </div>
+            <div class="media  |  gutters  |  trailer--small">
+                <div class="media__figure">
+                    <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--"></span>
+                </div>
+                <div class="media__body">
+                    <a class="block-link  |  is-heir  |  gutter--right" href="#tile-"></a>
+                </div>
+            </div>
+            <div class="media  |  gutters  |  trailer--small">
+                <div class="media__figure">
+                    <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--"></span>
+                </div>
+                <div class="media__body">
+                    <a class="block-link  |  is-heir  |  gutter--right" href="#tile-"></a>
+                </div>
+            </div>
+            <div class="media  |  gutters  |  trailer--small">
+                <div class="media__figure">
+                    <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--"></span>
+                </div>
+                <div class="media__body">
+                    <a class="block-link  |  is-heir  |  gutter--right" href="#tile-"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 5.19
+*/
+
+.project-menu {
+	position: fixed;
+	top: 50%;
+	right: 5 / 6 * -100vw;
+	z-index: 11; /* Contextual search illustration have a z-index of 10. */
+	transform: translateY(-50%);
+	@include breakpoint($gt-large-handheld) {
+		right: 6 / 18 * -100vw;
+	}
+	@include breakpoint($gt-medium-desktop) {
+		right: 4 / 18 * -100vw;
+	}
+	&.is-active {
+		right: 0;
+	}
+	&--toggle {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $white;
+		background: $color-theme;
+		width: rhythm(10);
+		font-size: to-unit(24px);
+		cursor: pointer;
+		.no-flexbox & {
+			text-align: center;
+			vertical-align: middle;
+		}
+		.theme--blue & {
+      background: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+		.icon--chevron-left {
+			.is-active & {
+				&:before {
+					content: $icon-chevron-right;
+				}
+			}
+		}
+		@include breakpoint($gt-large-handheld) {
+			width: rhythm(15);
+		}
+	}
+	&__body {
+		background: $white;
+		width: 5 / 6 * 100vw;
+		@include breakpoint($gt-large-handheld) {
+			width: 6 / 18 * 100vw;
+		}
+		@include breakpoint($gt-small-desktop) {
+			background: rgba($white, 0.8);
+		}
+		@include breakpoint($gt-medium-desktop) {
+			width: 4 / 18 * 100vw;
+		}
+	}
+}

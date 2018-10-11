@@ -1,0 +1,43 @@
+{% import "macros/location.html.twig" as location %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="panel  |  wing--right" id="attendees">
+    <h2 class="title">
+        <a class="panel__trigger  |  gutters  |  is-heir" href="#attendees">{{ 'Attendees'|t(locales) }}</a>
+    </h2>
+    <div class="panel__body">
+        <div class="trellis trellis--l">
+            {% for character, group in model.attendees | formatAlphabet('givenName') %}
+                <div class="trellis__cell  |  trailer--hero  |  gutters">
+                    <div class="trailer">
+                        <div class="letter">{{ character }}</div>
+                    </div>
+                    <ul class="reset">
+                        {% for person in group %}
+                            <li class="trailer--large">
+                                <p class="heading heading--alternate heading--sub">
+                                    {{ person.name }}
+                                </p>
+                                {% if person.worksFor|first %}
+                                    {% if person.worksFor|first.name or person.worksFor|first.alternateName %}
+                                        <p class="body--whisper">
+                                            {{ person.worksFor|first.alternateName ? person.worksFor|first.alternateName|t(locales) : person.worksFor|first.name|t(locales) }}
+                                            {% if person.worksFor|first.alternateName %}
+                                                ({{ person.worksFor|first.name|t(locales) }})
+                                            {% endif %}
+                                        </p>
+                                    {% endif %}
+                                    {% if person.worksFor|first.location %}
+                                        <p class="body--whisper">
+                                            {{ location.country(person.worksFor|first.location) }}
+                                        </p>
+                                    {% endif %}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

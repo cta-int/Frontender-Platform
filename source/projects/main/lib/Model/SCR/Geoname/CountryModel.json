@@ -1,0 +1,13 @@
+{
+  "label": {
+    "en": "Find content: channel",
+    "fr": "Find content: channel"
+  },
+  "map": {
+    "id": "countryCode",
+    "title": "countryName"
+  },
+  "display_options": {
+  },
+  "display_attributes": []
+}

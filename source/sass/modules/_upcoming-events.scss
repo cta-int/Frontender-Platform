@@ -1,0 +1,49 @@
+/*
+Upcoming events
+
+A cross section is a collection of featured aticles, with a side bar containing a short-list of articles over configurable period.
+
+markup:
+<section>
+  <h1 class="title title--headline  |  leader--hero  |  trailer--hero  |  wings">
+    <span class="gutters">Upcoming events</span>
+  </h1>
+  <div class="layout">
+    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+      <div class="gutters  |  trailer--hero">
+        <sg-insert>3.20</sg-insert>
+      </div>
+      <div class="gutters">
+        <form class="trailer" action="https://cta.us5.list-manage.com/subscribe/post" method="post">
+          <input type="hidden" name="u" value="3dc86afdfe91e13b55050810d">
+          <input type="hidden" name="id" value="f855876cb7">
+          <input type="hidden" name="MERGE3" value="English">
+          <h4 class="title title--section">Don't miss our next event. Subscribe now!</h4>
+          <fieldset class="leader trailer">
+              <label class="fld-label title title--meta" for="name">Full name</label>
+              <input class="fld" name="MERGE1" type="text" id="name">
+              <label class="fld-label title title--meta" for="email">E-mail address</label>
+              <input class="fld" name="MERGE0" type="text" id="email">
+              <label class="fld-label title title--meta" for="country">Country</label>
+              <input class="fld" name="MERGE2" type="text" id="country">
+          </fieldset>
+          <button class="button button--stretch">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="layout__cell  |  gutters  |  wing--right">
+      <div id="upcoming-events">
+        <sg-insert>4.15</sg-insert>
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer">
+        <sg-insert>4.15</sg-insert>
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer">
+        <sg-insert>4.15</sg-insert>
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer">
+        <sg-insert>4.15</sg-insert>
+      </div>
+    </div>
+  </div>
+</section>
+
+Styleguide 5.8
+*/

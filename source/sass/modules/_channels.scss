@@ -1,0 +1,355 @@
+/*
+Channels
+
+Styleguide 5.5
+*/
+
+
+
+
+/*
+Channels, with articles
+
+markup:
+<section class="grid grid--teletubbies">
+    <section class="grid__cell  |  gutters  |  trailer trailer-inside">
+        <h2 class="title     trailer teleport  |  media  |  title">
+            <a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">Women in agriculture</a>
+            <a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">
+                <span class="is-narrative">
+                    View all in Women in agriculture
+                </span>
+            </a>
+        </h2>
+        <div class="post">
+            <div class="post__media">
+                <a class="anchor anchor--shy" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                    <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz" srcset="http://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 500w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 320w,http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 240w,http://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 160w" sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw" width="160" height="240" alt="">
+                </a>
+            </div>
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-25T00:00:00+00:00">25 January 2018</time>
+                <span class="meta">in <a href="/en/spore">Spore</a></span>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                        Policy Support Gap for "Climate-Smart" Agriculture
+                    </a>
+                </h3>
+                <p class="post__author  |  author">by Busani Bafana</p>
+                <p class="is-gt-small-desktop  |  post__intro">Conditioned that ploughing is the sure way to produce crops, Zimbabwean farmer Handrixious Zvomarima surprised himself by trying a different method. He planted cowpea seeds directly without tilling the land. It worked. The new method tripled Zvomarima's cowpea yield when many farmers did not harvest a crop following the El Nino-induced drought which affected more than 40 million people in Southern Africa.</p>
+                <a class="read-more" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">Read More</a>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-24T18:26:19+00:00">24 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/climate-change-and-conflict-in-chad-using-p3dm-to-secure-peace-sid073658965-487b-4a81-99ff-a86b349e26ef">
+                        Climate Change and Conflict in Chad - Using P3DM to secure peace
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-21T06:03:37+00:00">21 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/uganda-s-rural-women-find-beans-to-beat-climate-sid03b3eccf2-7787-4e08-aa9f-ee8354e0f9d0">
+                        Uganda's rural women find beans to beat climate
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-18T09:12:44+00:00">18 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/project-manager-geopuu-sid075ccd95a-6b04-4c62-9ecb-81487435bebc">
+                        Project Manager, geoPuu
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <section class="grid__cell  |  gutters  |  trailer trailer-inside">
+        <h2 class="title     trailer teleport  |  media  |  title">
+            <a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">Women in agriculture</a>
+            <a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">
+                <span class="is-narrative">
+                    View all in Women in agriculture
+                </span>
+            </a>
+        </h2>
+        <div class="post">
+            <div class="post__media">
+                <a class="anchor anchor--shy" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                    <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz" srcset="http://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 500w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 320w,http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 240w,http://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 160w" sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw" width="160" height="240" alt="">
+                </a>
+            </div>
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-25T00:00:00+00:00">25 January 2018</time>
+                <span class="meta">in <a href="/en/spore">Spore</a></span>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                        Policy Support Gap for "Climate-Smart" Agriculture
+                    </a>
+                </h3>
+                <p class="post__author  |  author">by Busani Bafana</p>
+                <p class="is-gt-small-desktop  |  post__intro">Conditioned that ploughing is the sure way to produce crops, Zimbabwean farmer Handrixious Zvomarima surprised himself by trying a different method. He planted cowpea seeds directly without tilling the land. It worked. The new method tripled Zvomarima's cowpea yield when many farmers did not harvest a crop following the El Nino-induced drought which affected more than 40 million people in Southern Africa.</p>
+                <a class="read-more" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">Read More</a>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-24T18:26:19+00:00">24 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/climate-change-and-conflict-in-chad-using-p3dm-to-secure-peace-sid073658965-487b-4a81-99ff-a86b349e26ef">
+                        Climate Change and Conflict in Chad - Using P3DM to secure peace
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-21T06:03:37+00:00">21 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/uganda-s-rural-women-find-beans-to-beat-climate-sid03b3eccf2-7787-4e08-aa9f-ee8354e0f9d0">
+                        Uganda's rural women find beans to beat climate
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-18T09:12:44+00:00">18 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/project-manager-geopuu-sid075ccd95a-6b04-4c62-9ecb-81487435bebc">
+                        Project Manager, geoPuu
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <section class="grid__cell  |  gutters  |  trailer trailer-inside">
+        <h2 class="title     trailer teleport  |  media  |  title">
+            <a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">Women in agriculture</a>
+            <a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">
+                <span class="is-narrative">
+                    View all in Women in agriculture
+                </span>
+            </a>
+        </h2>
+        <div class="post">
+            <div class="post__media">
+                <a class="anchor anchor--shy" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                    <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz" srcset="http://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 500w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 320w,http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 240w,http://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 160w" sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw" width="160" height="240" alt="">
+                </a>
+            </div>
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-25T00:00:00+00:00">25 January 2018</time>
+                <span class="meta">in <a href="/en/spore">Spore</a></span>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                        Policy Support Gap for "Climate-Smart" Agriculture
+                    </a>
+                </h3>
+                <p class="post__author  |  author">by Busani Bafana</p>
+                <p class="is-gt-small-desktop  |  post__intro">Conditioned that ploughing is the sure way to produce crops, Zimbabwean farmer Handrixious Zvomarima surprised himself by trying a different method. He planted cowpea seeds directly without tilling the land. It worked. The new method tripled Zvomarima's cowpea yield when many farmers did not harvest a crop following the El Nino-induced drought which affected more than 40 million people in Southern Africa.</p>
+                <a class="read-more" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">Read More</a>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-24T18:26:19+00:00">24 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/climate-change-and-conflict-in-chad-using-p3dm-to-secure-peace-sid073658965-487b-4a81-99ff-a86b349e26ef">
+                        Climate Change and Conflict in Chad - Using P3DM to secure peace
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-21T06:03:37+00:00">21 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/uganda-s-rural-women-find-beans-to-beat-climate-sid03b3eccf2-7787-4e08-aa9f-ee8354e0f9d0">
+                        Uganda's rural women find beans to beat climate
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-18T09:12:44+00:00">18 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/project-manager-geopuu-sid075ccd95a-6b04-4c62-9ecb-81487435bebc">
+                        Project Manager, geoPuu
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <section class="grid__cell  |  gutters  |  trailer trailer-inside">
+        <h2 class="title     trailer teleport  |  media  |  title">
+            <a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">Women in agriculture</a>
+            <a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="/en/channel/women-in-agriculture-sid0c10e4148-971b-4f92-9ced-0af64ceaa268">
+                <span class="is-narrative">
+                    View all in Women in agriculture
+                </span>
+            </a>
+        </h2>
+        <div class="post">
+            <div class="post__media">
+                <a class="anchor anchor--shy" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                    <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz" srcset="http://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 500w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 320w,http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 240w,http://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/vo9tyysicxip70qztttz 160w" sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw" width="160" height="240" alt="">
+                </a>
+            </div>
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-25T00:00:00+00:00">25 January 2018</time>
+                <span class="meta">in <a href="/en/spore">Spore</a></span>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">
+                        Policy Support Gap for "Climate-Smart" Agriculture
+                    </a>
+                </h3>
+                <p class="post__author  |  author">by Busani Bafana</p>
+                <p class="is-gt-small-desktop  |  post__intro">Conditioned that ploughing is the sure way to produce crops, Zimbabwean farmer Handrixious Zvomarima surprised himself by trying a different method. He planted cowpea seeds directly without tilling the land. It worked. The new method tripled Zvomarima's cowpea yield when many farmers did not harvest a crop following the El Nino-induced drought which affected more than 40 million people in Southern Africa.</p>
+                <a class="read-more" href="/en/spore/article/policy-support-gap-for-climate-smart-agriculture-sid09297d9e8-8220-4ddf-94d6-3a2b4f6b4280">Read More</a>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-24T18:26:19+00:00">24 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/climate-change-and-conflict-in-chad-using-p3dm-to-secure-peace-sid073658965-487b-4a81-99ff-a86b349e26ef">
+                        Climate Change and Conflict in Chad - Using P3DM to secure peace
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-21T06:03:37+00:00">21 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/uganda-s-rural-women-find-beans-to-beat-climate-sid03b3eccf2-7787-4e08-aa9f-ee8354e0f9d0">
+                        Uganda's rural women find beans to beat climate
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small">
+        <div class="post">
+            <div class="post__content  |  leader-inside">
+                <time class="meta" datetime="2018-01-18T09:12:44+00:00">18 January 2018</time>
+                <h3 class="title  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="/en/article/project-manager-geopuu-sid075ccd95a-6b04-4c62-9ecb-81487435bebc">
+                        Project Manager, geoPuu
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </section>
+</section>
+
+Styleguide 5.5.1
+*/
+
+
+
+
+
+/*
+Channels, with events
+
+markup:
+<div class="wing--right ">
+    <h2 class="title title--section  |  trailer">Upcoming events</h2>
+    <ul class="reset  |  trailer">
+        <li class="  |  leader--normal  |  trailer--normal">
+            <a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="/en/event/-sid0c829bb0b-38e9-4880-b56e-0e7359e04237">
+                <div class="stack__unit stack__pin">
+                    <div class="gutter-outside">
+                        <span class="date">
+                            <span class="date__head">Feb</span>
+                            <span class="date__body"> 4</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="stack__unit">
+                    <h2 class="title title">Capitalization of Experiences for Greater Impact in Rural Development - Senegal</h2>
+                    <time class="meta" datetime="2018-02-04T00:00:00+00:00"> 4 Feb 2018</time>
+                    <time class="meta" datetime="2018-02-09T23:59:59+00:00"> –  9 Feb 2018</time>
+                    <div class="body--whisper">Dakar, Senegal</div>
+                </div>
+            </a>
+        </li>
+        <li class="  |  leader--normal  |  trailer--normal">
+            <a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="/en/event/-sid02972c8f9-dad6-49be-8db8-bb45ec32e692">
+                <div class="stack__unit stack__pin">
+                    <div class="gutter-outside">
+                        <span class="date">
+                            <span class="date__head">Feb</span>
+                            <span class="date__body"> 5</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="stack__unit">
+                    <h2 class="title title">Capitalization of Experiences for Greater Impact in Rural Development - Pacific region</h2>
+                    <time class="meta" datetime="2018-02-05T00:00:00+12:00"> 5 Feb 2018</time>
+                    <time class="meta" datetime="2018-02-09T23:59:59+12:00"> –  9 Feb 2018</time>
+                    <div class="body--whisper">Suva, FJ</div>
+                </div>
+            </a>
+        </li>
+        <li class="  |  leader--normal  |  trailer--normal">
+            <a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="/en/event/-sid0550865a5-129d-4602-8954-017dd2fc10f1">
+                <div class="stack__unit stack__pin">
+                    <div class="gutter-outside">
+                        <span class="date">
+                            <span class="date__head">Feb</span>
+                            <span class="date__body">19</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="stack__unit">
+                    <h2 class="title title">Agribusiness enterprise development in Uganda</h2>
+                    <time class="meta" datetime="2018-02-19T00:00:00+03:00">19 Feb 2018</time>
+                    <time class="meta" datetime="2018-02-23T23:59:59+03:00"> – 23 Feb 2018</time>
+                    <div class="body--whisper">Ishaka, Uganda</div>
+                </div>
+            </a>
+        </li>
+        <li class="  |  leader--normal  |  trailer--normal">
+            <a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="/en/event/-sid0d4cf11eb-e98c-4f8d-862f-c996f6026cda">
+                <div class="stack__unit stack__pin">
+                    <div class="gutter-outside">
+                        <span class="date">
+                            <span class="date__head">Feb</span>
+                            <span class="date__body">26</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="stack__unit">
+                    <h2 class="title title">Cooperative Leadership Training</h2>
+                    <time class="meta" datetime="2018-02-26T00:00:00+02:00">26 Feb 2018</time>
+                    <time class="meta" datetime="2018-03-02T23:59:59+02:00"> –  2 Mar 2018</time>
+                    <div class="body--whisper">Kigali, Rwanda</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+Styleguide 5.5.2
+*/

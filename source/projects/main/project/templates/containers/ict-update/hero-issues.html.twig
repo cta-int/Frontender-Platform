@@ -1,0 +1,13 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="article-headline" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+	<div class="post-header__title layout layout--reverse">
+      <div class="layout__cell">
+          <div class="gutters  |  leader  |  trailer">
+            <h1 class="post-header__headline title title--headline">{{ container_title|t(locales) }}</h1>
+          </div>
+      </div>
+  </div>
+</section>

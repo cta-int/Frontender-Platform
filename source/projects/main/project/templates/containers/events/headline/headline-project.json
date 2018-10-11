@@ -1,0 +1,59 @@
+{
+        "fe-id": null,
+        "name": {
+            "en": "Event headline"
+        },
+        "description": {
+            "en": "Event headline"
+        },
+        "template": "containers/events/headline/headline.html.twig",
+        "template_config": {
+            "model": {
+                "label": {
+                    "en": "Resource"
+                },
+                "controls": {
+                    "name": {
+                        "hidden": "0",
+                        "access": "all",
+                        "value": "events",
+                        "label": {
+                            "en": "Hidden"
+                        },
+                        "type": "text"
+                    },
+                    "id": {
+                        "value": "{id}",
+                        "label": {
+                            "en": "Resource ID"
+                        },
+                        "hidden": "0",
+                        "access": "all",
+                        "type": "text"
+                    },
+                    "includeRelated": {
+                        "hidden": "0",
+                        "access": "all",
+                        "value": "true",
+                        "label": {
+                            "en": "Include related content"
+                        },
+                        "type": "list",
+                        "options": [{
+                                "value": 0,
+                                "label": {
+                                    "en": "No"
+                                }
+                            },
+                            {
+                                "value": 1,
+                                "label": {
+                                    "en": "Yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }

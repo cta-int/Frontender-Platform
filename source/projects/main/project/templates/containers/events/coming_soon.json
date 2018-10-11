@@ -1,0 +1,172 @@
+{
+    "name": {
+        "en": "Coming soon"
+    },
+    "containers": [
+        {
+            "template": "containers/global/group/group.html.twig",
+            "template_config": {
+                "model": {
+                    "Dave": "The top_level in a template config are the panels. In most cases, a container will have 1 (Model), 2 (Labels) or 3 (Container Config) panels which' labels are not editable (for sake of simplicity)"
+                },
+                "labels": {},
+                "config": {
+                    "container_tag": {
+                        "hidden": 1,
+                        "label": {
+                            "en": "Container tag"
+                        },
+                        "type": "list",
+                        "value": "section",
+                        "options": {
+                            "section": {
+                                "en": "section"
+                            },
+                            "div": {
+                                "en": "div"
+                            }
+                        }
+                    }
+                },
+                "containers": [
+                    {
+                        "template": "containers/global/container-header/container-header.html.twig",
+                        "template_config": {
+                            "model": {},
+                            "labels": {
+                                "container_title": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Container title"
+                                    },
+                                    "type": "text",
+                                    "value": {
+                                        "en": "Upcoming events"
+                                    }
+                                }
+                            },
+                            "config": {
+                                "container_class": {
+                                    "hidden": 1,
+                                    "label": {
+                                        "en": "Container class"
+                                    },
+                                    "type": "text",
+                                    "value": "leader--hero  |  trailer--hero  |  wings"
+                                },
+                                "show_filter": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Filter"
+                                    },
+                                    "type": "list",
+                                    "value": "1",
+                                    "options": {
+                                        "1": {
+                                            "en": "Show"
+                                        },
+                                        "0": {
+                                            "en": "Hide"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "template": "containers/events/detailed-list-with-calendar/detailed-list-with-calendar.html.twig",
+                        "template_config": {
+                            "model": {
+                                "name": {
+                                    "hidden": 1,
+                                    "label": {
+                                        "en": "Model"
+                                    },
+                                    "type": "list",
+                                    "value": "Channel\\Events",
+                                    "options": {
+                                        "Channel\\Events": {
+                                            "en": "Channel events"
+                                        }
+                                    }
+                                },
+                                "Dave": "Do we wrap these below inside a params object, or do we keep all in the same format:",
+                                "id": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Channel ID"
+                                    },
+                                    "type": "channel_ids",
+                                    "value": "",
+                                },
+                                "upcoming": {
+                                    "hidden": 0,
+                                    "label": "Show upcoming events",
+                                    "type": "list",
+                                    "value": "true",
+                                    "options": {
+                                        "true": {
+                                            "en": "Yes"
+                                        },
+                                        "false": {
+                                            "en": "No"
+                                        }
+                                    }
+                                },
+                                "limit": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Limit"
+                                    },
+                                    "type": "number",
+                                    "value": 4
+                                },
+                                "skip": {
+                                    "hidden": 1,
+                                    "label": {
+                                        "en": "Skip"
+                                    },
+                                    "type": "number",
+                                    "value": "{ query.skip }",
+                                }
+                            },
+                            "labels": {
+                                "prev": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Previous"
+                                    },
+                                    "type": "text",
+                                    "value": {
+                                        "en": "Previous events"
+                                    }
+                                },
+                                "next": {
+                                    "hidden": 0,
+                                    "label": {
+                                        "en": "Next"
+                                    },
+                                    "type": "text",
+                                    "value": {
+                                        "en": "Next events"
+                                    }
+                                }
+                            },
+                            "containers": [
+                                {
+                                    "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                                    "template_config": {
+                                        "model": {},
+                                        "labels": {},
+                                        "config": {}
+                                    }
+                                }
+                            ]
+
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

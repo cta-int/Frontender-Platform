@@ -1,0 +1,24 @@
+/*
+Credit
+
+.credit - Credit
+
+markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+Styleguide 3.43
+*/
+
+.credit {
+    font-size: to-unit(12px);
+    line-height: to-unit(rhythm(4), 1, 12px);
+    padding-bottom: rhythm(1);
+    opacity: .84;
+    .caption + & {
+        padding-top: rhythm(2);
+    }
+    .well & {
+        padding-left: rhythm(3);
+        padding-right: rhythm(3);
+    }
+}

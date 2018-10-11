@@ -1,0 +1,22 @@
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="tile  |  well well--neutral well--slim-fit  |  leader--small">
+    <div class="tile__head">
+        <a class="tile__head  |  anchor anchor--shy" href="{{ file.metadata.url }}">
+            {{ image.post_hero(file) }}
+        </a>
+    </div>
+    <div class="tile__body  |  gutters  |  leader--small  |  trailer--small">
+        <h2 class="title title--filter">
+            <a class="is-heir" href="{{ file.metadata.url }}">{{ file.description|default(file.type)|t(locales) }}</a>
+        </h2>
+        {% if file.credit|length > 0 %}
+            <p class="meta meta--lowercase |  leader--small">© {{ file.credit }}</p>
+        {% endif %}
+    </div>
+    <div class="tile__footer  |  divider divider--top divider--inverse">
+        <p class="download-size  |  gutters">{{ file.metadata.url|getFileSize }}</p>
+        <a download="{{ file.description|default(file.type)|t(locales) }}" href="{{ file.metadata.url }}"><span class="label  |  share  |  icon icon--download"></span></a>
+    </div>
+</div>

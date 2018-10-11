@@ -1,0 +1,117 @@
+/*
+Tail
+
+markup:
+<div class="tail">
+    <ul class="tail__body  |  reset  |  short-list  |  fx">
+        <li class="short-list__item">
+            <div class="post">
+                <div class="post__content  |  leader-inside">
+                    <time class="meta" datetime="2017-10-20T04:16:28+00:00">20 October 2017</time>
+                    <h3 class="title  |  anchor--reset">
+                        <a class="anchor anchor--shy  |  is-heir" href="">
+                            Agritourism - a driver for rural incomes in Pacific island states
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </li>
+        <li class="short-list__item">
+            <div class="post">
+                <div class="post__content  |  leader-inside">
+                    <time class="meta" datetime="2017-10-19T04:32:03+00:00">19 October 2017</time>
+                    <h3 class="title  |  anchor--reset">
+                        <a class="anchor anchor--shy  |  is-heir" href="">
+                            A dynamic future for young agripreneurs
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </li>
+        <li class="short-list__item">
+            <div class="post">
+                <div class="post__content  |  leader-inside">
+                    <time class="meta" datetime="2017-10-18T04:46:46+00:00">18 October 2017</time>
+                    <h3 class="title  |  anchor--reset">
+                        <a class="anchor anchor--shy  |  is-heir" href="">
+                            A shared journey of learning at the Pacific Week of Agriculture
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+Styleguide 4.22
+*/
+
+.tail {
+  border-bottom: 1px solid;
+  @include theme-border(26%);
+  padding-bottom: rhythm(6);
+  margin-top: rhythm(6);
+  margin-bottom: rhythm(12);
+  &__body {
+    min-height: 0;
+    // max-height: 0;
+    height: 0;
+    overflow: hidden;
+    .is-active & {
+      height: auto;
+      // max-height: auto;
+      min-height: 100px;
+    }
+  }
+  &__lengthen,
+  &__shorten {
+    @include theme-color();
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    &:before,
+    &:after {
+      @extend .icon !optional;
+    }
+    &:before {
+      padding-right: gutter();
+    }
+    &:after {
+      padding-left: gutter();
+    }
+  }
+  &__lengthen {
+    &:before,
+    &:after {
+      @extend .icon !optional;
+      content: $icon-chevron-down;
+    }
+  }
+  &__shorten {
+    display: none;
+    &:before,
+    &:after {
+      @extend .icon !optional;
+      content: $icon-chevron-up;
+    }
+  }
+  &.is-active  &__lengthen {
+    display: none;
+  }
+  &.is-active  &__shorten {
+    display: inline-block;
+  }
+  @include breakpoint($gt-small-desktop) {
+    border: 0;
+    padding-bottom: 0;
+    &__body {
+      height: auto;
+    }
+    &__lengthen,
+    &__shorten,
+    &.is-active  &__lengthen,
+    &.is-active  &__shorten {
+      display: none;
+    }
+  }
+}

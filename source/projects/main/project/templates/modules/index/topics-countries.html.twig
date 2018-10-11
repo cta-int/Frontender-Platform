@@ -1,0 +1,33 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="trellis trellis--l trellis__topic">
+    {% for character, group in model | sortArray('countryName') | filterAlphabet('countryName', query.topic_filter) | formatAlphabet('countryName') %}
+        <div class="trellis__cell  |  trailer--hero  |  gutters">
+            <div class="trailer">
+                <div class="letter">{{ character }}</div>
+            </div>
+            <ul class="reset">
+                {% if query.topic_filter %}
+                    {% for country in group %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                                {{ country.countryName|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    {% for country in group|slice(0, config.show_max) %}
+                        <li class="trailer--large">
+                            <a class="anchor--shy" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                                {{ country.countryName|t(locales) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            {% if config.show_max and group|length > config.show_max and not query.topic_filter %}
+                <a href="?topic_filter={{ character | lower }}">[…]</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

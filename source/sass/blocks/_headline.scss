@@ -1,0 +1,105 @@
+/*
+Headline (Post hero)
+
+Main callout
+
+.headline - Headline callout
+
+markup:
+<div class="{$modifiers} wings">
+  <div>
+    <p class="gutters meta trailer--tiny">April 2016</p>
+    <h1 class="title title--headline anchor gutters">Scientific animation without borders</h1>
+    <p class="posting__intro gutters leader--small">Small intro regarding post</p>
+    <p class="gutters read-more">Read more...</p>
+  </div>
+  <em class="headline__tax"><span class="label">Issue 82</span></em>
+</div>
+
+sg-wrapper:
+<div style="padding-top: 36px;">
+<sg-wrapper-content/>
+</div>
+
+Styleguide 4.7
+*/
+
+/*
+ * 1. Fallback
+ * 2. Set root for tag positioning
+ * 3. Hack to force to full width on Chrome
+ * 4. Allow more horizontal space for longer headlines
+ */
+
+.headline {
+  position: relative; /* 2 */
+  width: 1%; /* 3 */
+  min-width: 100%; /* 3 */
+  padding-top: rhythm(14);
+  padding-bottom: rhythm(5);
+  // scss-lint:disable DuplicateProperty
+  background: $white; /* 1 */
+  background: rgba($white, .8);
+  // scss-lint:enable DuplicateProperty
+  // color: initial;
+  // scss-lint:disable ImportantRule
+  &,
+  &>* {
+    padding-right: 0 !important; /* 4 */
+  }
+  // scss-lint:enable ImportantRule
+  &__cover {
+    background: rgba($white, .8);
+  }
+  &__tax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    background: $color-theme;
+    .theme--blue & {
+      background: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+  }
+  // &--tagged {
+  // }
+  .posting__anchor {
+    margin-bottom: 0;
+    margin-top: rhythm(6);
+  }
+  &:hover .posting__anchor {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@include breakpoint($gt-large-desktop) {
+  .headline__tax {
+      width: 100%;
+  }
+}

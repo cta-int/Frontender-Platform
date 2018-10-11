@@ -1,0 +1,140 @@
+{
+    "labels": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "lead": {
+                "label": {
+                    "en": "Lead title"
+                },
+                "value": {
+                    "en": "Make a real difference in this world",
+                    "fr": "Make a real difference in this world"
+                },
+                "control": "core/text"
+            },
+            "body": {
+                "label": {
+                    "en": "Body text"
+                },
+                "value": {
+                    "en": "Our mission, vision and core values are at the heart of our organisation and they inspire and guide our people. Everyday.",
+                    "fr": "Our mission, vision and core values are at the heart of our organisation and they inspire and guide our people. Everyday."
+                },
+                "control": "core/textarea"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "aside",
+                "control": "project/container_tag"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            }
+        }
+    },
+    "stories": {
+        "label": {
+            "en": "Stories",
+            "fr": "Stories"
+        },
+        "controls": {
+            "stories": {
+                "label": {
+                    "en": "Story"
+                },
+                "value": [
+                    {
+                        "caption": {
+                            "en": "People from different ACP and European countries",
+                            "fr": "People from different ACP and European countries"
+                        },
+                        "icon": "farmer-crop"
+                    },
+                    {
+                        "caption": {
+                            "en": "Different languages spoken in our offices",
+                            "fr": "Different languages spoken in our offices"
+                        },
+                        "icon": "trees"
+                    },
+                    {
+                        "caption": {
+                            "en": "Events attended in the last two years",
+                            "fr": "Events attended in the last two years"
+                        },
+                        "icon": "rural-school"
+                    }
+                ],
+                "type": "compound",
+                "controls": {
+                    "caption": {
+                        "label": {
+                            "en": "Caption"
+                        },
+                        "control": "core/text"
+                    },
+                    "icon": {
+                        "label": {
+                            "en": "Story"
+                        },
+                        "control": "core/list",
+                        "options": [
+                            {
+                                "value": "farmer-crop",
+                                "label": {
+                                    "en": "Farmer crop"
+                                }
+                            },
+                            {
+                                "value": "trees",
+                                "label": {
+                                    "en": "Trees"
+                                }
+                            },
+                            {
+                                "value": "rural-school",
+                                "label": {
+                                    "en": "Rural school"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "control": "core/abstract",
+                "repeatable": true,
+                "minimal": 3,
+                "maximum": 3
+            }
+        }
+    }
+}

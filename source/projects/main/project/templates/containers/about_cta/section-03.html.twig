@@ -1,0 +1,224 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="about-cta  |  trailer-inside--giant">
+        <div class="about-cta--container  |  layout--narrow  |  wings">
+            <div class="is-root">
+                <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">03</span></div>
+                <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">{{ {'en': 'What we do', 'fr': 'Ce que nous faisons'}|t(locales) }}</h2>
+                <div class="layout |  trailer-inside--hero">
+                    <div class="layout__cell--main  |  gutter--right">
+                        <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                            <div class="gutter">
+                                {{ {
+                                    'en': 'CTA targets three areas of intervention',
+                                    'fr': 'Le CTA centre son action sur trois domaines d’intervention:'
+                                }|t(locales) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout__cell">&nbsp;</div>
+                </div>
+                <div class="strategic-goals  |  gutters-outside  |  trailer--giant">
+                    <div class="grid grid--musketeers">
+                        <a class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters  |  anchor--shy" href="{{ route({'page': 'youth'}) }}">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">{{ {'en': 'Youth', 'fr': 'La jeunesse'}|t(locales) }}</span>
+                                <div class="strategic-goals__title  leader-inside--small  trailer-inside--small">{{ {
+                                    'en': 'CTA promotes youth entrepreneurship, job creation and enterprise development through access to business development services and ICT solutions',
+                                    'fr': 'Le CTA encourage l’entrepreneuriat, la création d’emplois et le développement des entreprises chez les jeunes, en accordant une attention particulière aux femmes et aux jeunes filles.'
+                                }|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--fish-market-supplier"></span>
+                        </a>
+                        <a class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters  |  anchor--shy" href="{{ route({'page': 'digitalisation'}) }}">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">{{ {'en': 'Digitalisation', 'fr': 'Digitalisation'}|t(locales) }}</span>
+                                <div class="strategic-goals__title  leader-inside--small  trailer-inside--small">{{ {
+                                    'en': 'CTA Strives to increase the productivity and profitability of value chains through innovations in information and communications technology.',
+                                    'fr': 'Le CTA cherche à accroître la productivité et la profitabilité des chaînes de valeur au-travers d’innovations dans les technologies de l’information et de la communication.'
+                                }|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--factory"></span>
+                        </a>
+                        <a class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters  |  anchor--shy" href="{{ route({'page': 'climate'}) }}">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">{{ {'en': 'Climate', 'fr': 'Climat'}|t(locales) }}</span>
+                                <div class="strategic-goals__title  leader-inside--small  trailer-inside--small">{{ {
+                                    'en': 'CTA Works to strengthen smallholder farmers’ resilience to climate change by promoting climate-smart agricultural practices.',
+                                    'fr': 'Le CTA œuvre au renforcement de la résilience des petits producteurs face au changement climatique en promouvant les pratiques agricoles intelligentes face au climat.'
+                                }|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--farmer-presentation"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                    {{ {
+                        'en': 'Our strategy',
+                        'fr': 'Notre stratégie'
+                    }|t(locales) }}
+                </div>
+                <p class="paragraph paragraph--lead  |  gutters  trailer">
+                    {{ {
+                        'en': 'CTA implements the following strategy in its three areas of intervention:',
+                        'fr': 'Le CTA suit la stratégie suivante dans ses trois domaines d’intervention:'
+                    }|t(locales) }}
+                </p>
+                <section class="ddivider ddivider--top  divider--bottom  leader-inside trailer-inside  gutters-outside theme theme--blue">
+                    <h2 class="title title--sub-section meta--theme">{{ {
+                        'en': 'Youth',
+                        'fr': 'Jeunesse'
+                    }|t(locales) }}</h2>
+                    <p class="paragraph paragraph--lead">{{ {
+                        'en': 'Promote youth entrepreneurship and employment through access to business development services and Information and communication technologies (ICT) solutions. We do this by targeting young entrepreneurs and the institutions that support them to leverage access to finance and markets; showcase best practices and innovative business models; and create pathways to the creation of job opportunities in established agribusinesses. Examples of CTA’s initiatives and work in this area include:',
+                        'fr': 'Trouver des jeunes entrepreneurs et fournir des services de formation, de mentorat et d’incubation, ainsi que des ressources pour soutenir l’agro-industrie et les PME agricoles. Cette stratégie comprend la lutte contre les barrières sexistes qui entravent la progression des femmes et des jeunes filles. Les initiatives et le travail du CTA dans ce domaine consistent par exemple à :'
+                    }|t(locales) }}</p>
+                    <div class="">
+                        <ul class="paragraph  reset  | list  list--theme leader  layout layout--even">
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Supporting small and medium-sized agribusinesses during their start-up phase;',
+                                'fr': 'Soutenir les PME agricoles dans leur phase de lancement ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Developing different types of small and medium-sized businesses at different phases of value chains;',
+                                'fr': 'Développer différents types de PME à différents stades des chaînes de valeur ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Developing information and communication technology;',
+                                'fr': 'Développer des technologies de l’information et de la communication ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Holding Agrihack initiatives and competitions;',
+                                'fr': 'Organiser des initiatives et des concours Agrihack ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Showcasing promising businesses;',
+                                'fr': 'Mettre en valeur des entreprises prometteuses ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Training and mentorship;',
+                                'fr': 'Fournir des services de formation et de mentorat ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Sharing of best practices;',
+                                'fr': 'Assurer un partage de bonnes pratiques ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Improving access to technology, best practices, market and modern inputs such as seeds, fertilizers and machinery;',
+                                'fr': 'Améliorer l’accès aux technologies, aux bonnes pratiques, aux marchés et aux intrants modernes – semences, engrais, machines ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Improving access to financial services such as credit, insurances and mobile payments;',
+                                'fr': 'Améliorer l’accès aux services financiers tels que les crédits, les assurances et les paiements mobiles ;'
+                            }|t(locales) }}</li>
+
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Building partnerships for a demand pull from the market place to drive youth entrepreneurship and enterprise development.',
+                                'fr': 'Mettre sur pied des partenariats pour stimuler la demande du marché afin d’encourager l’entrepreneuriat et le développement des entreprises chez les jeunes.'
+                            }|t(locales) }}</li>
+                        </ul>
+                    <div>
+                </section>
+                <section class="ddivider ddivider--bottom  leader-inside trailer-inside  gutters-outside theme theme--red">
+                    <h2 class="title title--sub-section meta--theme">{{ {
+                        'en': 'Digitalisation',
+                        'fr': 'Digitalisation'
+                    }|t(locales) }}</h2>
+                    <p class="paragraph paragraph--lead">{{ {
+                        'en': 'We focus on increasing profitability and productivity by leveraging digital solutions and strengthening business innovations. As part of this drive we will promote precision agriculture solutions, including data gathering by satellites and drones, weather information and soil sensors as well as other data driven farming practices. CTA also supports access to new services for farmers in the areas of finance and insurance. Examples of CTA’s initiatives and work in this area include:',
+                        'fr': 'Donner accès au marché aux producteurs et promouvoir l’adoption d’innovations, de technologies et de données nouvelles par les producteurs et les PME agricoles. Les initiatives et le travail du CTA dans ce domaine consistent par exemple à :'
+                    }|t(locales) }}</p>
+                    <div class="">
+                        <ul class="paragraph  reset  | list  list--theme leader list--columns  layout layout--even">
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Moving toward precision agriculture for smallholder farming;',
+                                'fr': 'Encourager l’évolution vers l’agriculture de précision pour les petits producteurs ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Using satellite data for precision farming in several countries;',
+                                'fr': 'Utiliser des données satellite pour l’agriculture de précision dans plusieurs pays ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Catalysing the use of drones in several countries for inclusion in research, market and business development, and policy reform;',
+                                'fr': 'Exploiter l’usage de drones dans plusieurs pays au service de la recherche, du marché et du développement des entreprises, ainsi que pour réformer les politiques ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Supporting the development of data management systems to support smallholder farmers and spearhead major policy changes;',
+                                'fr': 'Encourager le développement de systèmes de gestion des données pour soutenir les petits producteurs et initier des changements de politiques majeurs ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Building market linkages, supporting market intelligence systems, leveraging e-commerce platforms and strengthening business engagements at all stages of the value chain.',
+                                'fr': 'Établir des liens commerciaux, soutenir des systèmes d’information sur les marchés, utiliser des plateformes de commerce en ligne et renforcer les engagements commerciaux tout au long de la chaîne de valeur ;'
+                            }|t(locales) }}</li>
+                        </ul>
+                    <div>
+                </section>
+                <section class="ddivider ddivider--bottom  leader-inside trailer-inside  gutters-outside theme theme--yellow">
+                    <h2 class="title title--sub-section meta--theme">{{ {
+                        'en': 'Climate',
+                        'fr': 'Climat'
+                    }|t(locales) }}</h2>
+                    <p class="paragraph paragraph--lead">{{ {
+                        'en': 'The promise of climate smart agriculture (CSA) will only be realised with innovative market-led delivery mechanisms. Support for innovations such as the use of stress-tolerant seeds, weather insurance and new climate finance models capitalises on existing market mechanisms and new ICT solutions. In parallel CTA continues to build an evidence base showing the benefits of adopting CSA at the farm level in ACP countries. Examples of CTA’s initiatives and work in this area include:',
+                        'fr': 'Promouvoir l’adoption par les producteurs de pratiques intelligentes face au climat et générer une connaissance des chaînes de valeur résilientes face au climat. Les initiatives et le travail du CTA dans ce domaine consistent par exemple à :'
+                    }|t(locales) }}</p>
+                    <div class="">
+                        <ul class="paragraph  reset  | list  list--theme leader  layout layout--even">
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Focusing on successful solutions and tools and develop innovative tools based on previous successes;',
+                                'fr': 'Sélectionner les solutions et les outils efficaces et développer des outils innovants basés sur les succès antérieurs ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Scaling up climate-smart solutions;',
+                                'fr': 'Intensifier le déploiement de solutions intelligentes face au climat ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Including the private sector in carrying out activities;',
+                                'fr': 'Associer le secteur privé aux initiatives mises en place ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Building on existing strategic partnerships;',
+                                'fr': 'S’appuyer sur les partenariats stratégiques existants ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Promoting the use of stress-tolerant seeds;',
+                                'fr': 'Promouvoir l’utilisation de semences résistantes au stress ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Promoting the purchase of weather insurance and through exploring new climate finance models;',
+                                'fr': 'Promouvoir la contraction d’assurances climatiques et l’étude de nouveaux modèles de financement lié au climat ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Adapting climate-related knowledge, technology and practices to local conditions;',
+                                'fr': 'Adapter les connaissances, les technologies et les pratiques liées au climat aux conditions locales ;'
+                            }|t(locales) }}</li>
+                            <li class="layout__cell gutters">{{ {
+                                'en': 'Promoting joint learning for farmers, researchers and rural advisers.',
+                                'fr': 'Promouvoir l’apprentissage conjoint pour les producteurs, les chercheurs et les conseillers ruraux.'
+                            }|t(locales) }}</li>
+                        </ul>
+                    <div>
+                </section>
+                <section class="leader-inside  |  trailer-inside  |  gutters-outside">
+                    <div class="addendum">
+                        <h2 class="addendum__title  |  title title--sub-section  |  trailer--normal">{{ {
+                            'en': 'Downloads',
+                            'fr': 'Downloads'
+                        }|t(locales) }}</h2>
+                        <ul class="reset">
+                            <li class="trailer--small"><a class="meta" href="https://s3-eu-west-1.amazonaws.com/cta-scr-media/fffc1fbd-e897-4ba2-a34b-811e597c2506.pdf"><strong>{{ 'CTA\'s Strategic Plan 2016-2020'|t(locales) }}</strong></a><br/>PDF file, 607 KB</li>
+                            <li class="trailer--small"><a class="meta" href="https://s3-eu-west-1.amazonaws.com/cta-scr-media/e96dd307-f720-401c-94db-b0640d4b8206.pdf"><strong>{{ 'Summary CTA strategic plan 2016-2020'|t(locales) }}</strong></a><br/>PDF file, 348 KB</li>
+                            <li class="trailer--small"><a class="meta" href="https://s3-eu-west-1.amazonaws.com/cta-scr-media/cc3e3808-d118-49b6-b629-a32a0c1e2bf0.pdf"><strong>{{ 'CTA partnership strategy'|t(locales) }}</strong></a><br/>PDF file, 1140 KB</li>
+                            <li class="trailer--small"><a class="meta" href="https://s3-eu-west-1.amazonaws.com/cta-scr-media/07246c5c-6bc6-4424-a6a9-1db18a1778ec.pdf"><strong>{{ 'CTA Youth strategy'|t(locales) }}</strong></a><br/>PDF file, 444 KB</li>
+                            <li class="trailer--small"><a class="meta" href="https://s3-eu-west-1.amazonaws.com/cta-scr-media/50e15c1e-cb4c-4b51-a601-c989b692fbb4.pdf"><strong>{{ 'CTA Gender strategy'|t(locales) }}</strong></a><br/>PDF file, 500 KB</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

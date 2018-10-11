@@ -1,0 +1,21 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="{{ ["layout", container_class]|join("  |  ") }}">
+    <div class="layout__cell  layout__cell--main  |  gutters">
+        <div class="gutter">
+            <p class="lead  |  trailer  |  gutter">{{ lead|t(locales) }}</p>
+            <p class="trailer  |  gutter">{{ body|t(locales)|raw }}</p>
+        </div>
+    </div>
+    <aside class="layout__cell layout__cell--aside layout__cell--aside--l  |  gutters">
+        <h2 class="title  |  trailer--tiny">{{ 'key focus areas'|t(locales) }}</h2>
+        <p class="body--whisper  |  trailer trailer--small">{{ 'Population, climate change, energy and sustainability are probably the most important challenges to food and nutrition security.'|t(locales) }}</p>
+        <ul class="reset  | list  list--theme">
+            <li>{{ 'Access to climate-smart solutions'|t(locales) }}</li>
+            <li>{{ 'Climate change policy and practice'|t(locales) }}</li>
+            <li>{{ 'Index-based weather insurance'|t(locales) }}</li>
+            <li>{{ 'Drought resilient seeds and crops'|t(locales) }}</li>
+            <li>{{ 'Adoption of climate-smart solutions'|t(locales) }}</li>
+        </ul>
+    </aside>
+</div>

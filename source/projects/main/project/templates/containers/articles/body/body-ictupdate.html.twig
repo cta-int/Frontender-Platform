@@ -1,0 +1,143 @@
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/location.html.twig" as location %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="layout layout--reverse">
+    <div class="layout__cell layout__cell--main">
+        <div class="layout">
+            <div class="layout__cell layout__cell--main  |  trailer--hero">
+
+                <div class="social__share  |  trailer  |  gutters">
+                    {{ share.bar_ictupdate_article(article, false, _context) }}
+                </div>
+
+                <div class="post-anchor  |  clear">
+                    {% if model.about %}
+                        <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                    {% endif %}
+
+                    {# render the content blocks - if the first block is a list,
+                    we treat it as the article takeaways #}
+                    {% for i, contentBlock in model.contentBlocks %}
+                        {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                            <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                            </div>
+                        {% else %}
+                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if model.analysis.agrovoc.concepts %}
+                    <div class="gutters  |  trailer  |  leader">
+                        <ul class="reset  |  tag-list  |  list--inline">
+                            {% for label in model.analysis.agrovoc.concepts|slice(0, 20) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer">
+                    {{ share.bar_article(model) }}
+                </div>
+
+                <aside class="gutters-outside  |  divider divider--top  |  leader--hero leader-inside--small">
+                    <h2 class="title title--sub-section  |  leader--small  |  trailer--small">{{ 'disclaimer'|t(locales) }}</h2>
+                    <p class="body--quiet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend. Donec nec dolor erat, condimentum sagittis sem. Praesent porttitor porttitor risus, dapibus rutrum ipsum gravida et. Integer lectus nisi, facilisis sit amet eleifend nec, pharetra ut augue.</p>
+                </aside>
+
+                {% if model.bibliographicalReferences|t(locales)|length > 0 or model.footnotes|length > 0 %}
+                    <div class="media  |  leader--hero">
+
+
+                        {% if model.bibliographicalReferences|length > 0 %}
+                            <section class="media__body  |  gutters">
+                                <h2 class="title title--sub-section">{{ 'bibliographical references'|t(locales) }}</h2>
+                                {% for reference in model.bibliographicalReferences %}
+                                    <div class="leader  |  trailer">
+                                        <p class="meta meta--lowercase">{{ reference.name }}</p>
+                                        <a href="{{ reference.url }}" class="body--quiet" target="_blank">{{ 'view_reference'|t(locales) }}</a>
+                                    </div>
+                                {% endfor %}
+                            </section>
+                        {% endif %}
+                        {% if model.footnotes|length > 0 %}
+                            <section class="media__body  |  gutters">
+                                <h2 class="title title--sub-section  |  trailer">{{ 'footnotes'|t(locales) }}</h2>
+
+                                {{ model.footnotes.content|raw }}
+                            </section>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+                {% if model.issue|length > 0 %}
+                	<div class="gutters">
+                        <a class="anchor anchor--reset anchor--shy  |  is-heir" href="{{ route({page: 'ictupdate/issue', id: model.issue._id}) }}">
+                            <div class="issue-label  |  media  |  leader--small  |  trailer--small">
+                                <div class="issue-label__nr" data-issue-nr="{{ model.issue.number }}"></div>
+                                <div class="issue-label__caption">
+                                    <p>
+                                        <strong>{{ 'Current issue'|t(locales) }}</strong>
+                                        <span>{{ model.issue.datePublished|tdate('%e %B %Y') }}</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h3 class="title title--lead title--section  |  trailer--small">{{ model.issue.headline|t(locales) }}</h3>
+                            {% if model.issue.link.mediaObject|lead %}
+                                <img class="issue__cover" alt="{{ model.issue.headline|t(locales) }}" src="{{ model.issue.link.mediaObject|lead.metadata.url }}">
+                            {% endif %}
+
+                            <p class="body--whisper  |  leader--small  |  trailer--small">{{ model.issue.about|t(locales) }}</p>
+                            <span class="button button--stretch">{{ 'View issue'|t(locales) }}</span>
+
+                        </a>
+                        {% if(model.issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0) %}
+                            <div class="body--align-center">
+                                <a class="meta" href="{{ model.issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+
+        {% if model.articleType == "review" %}
+            {# Add image with type of product here #}
+        {% endif %}
+
+        {% if model.link.person.author|filterArray('description', null)|length > 0 %}
+            <aside class="trailer--hero">
+                {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the authors'|t(locales) }}</h2>
+                {% else %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the author'|t(locales) }}</h2>
+                {% endif %}
+
+                {% for auth in model.link.person.author|filterArray('familyName', null) %}
+                    <div class="media  |  leader--normal  |  trailer--normal">
+                        <div class="media__figure  |  gutters">
+                            {{ image.person(auth, 50) }}
+                        </div>
+                        <div class="media__body  |  gutter--right  |  body--whisper">
+                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            {% if auth.description %}
+                                <p class="">{{ auth.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </aside>
+        {% endif %}
+
+    </div>
+</div>

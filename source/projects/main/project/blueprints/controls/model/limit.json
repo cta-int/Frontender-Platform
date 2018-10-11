@@ -1,0 +1,9 @@
+{
+    "value": "",
+    "label": {
+        "en": "Limit"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "number"
+}

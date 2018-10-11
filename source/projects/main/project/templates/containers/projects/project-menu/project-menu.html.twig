@@ -1,0 +1,25 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="project-menu  |  fx" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="stack">
+        <div class="project-menu--toggle  |  stack__unit stack__pin" data-toggle=".project-menu">
+            <span class="icon icon--chevron-left"></span>
+        </div>
+        <div class="project-menu__body  |  stack__unit  |  leader-inside  |  trailer-inside--normal  |  gutters">
+            <h2 class="title  |  trailer--normal  |  gutters">{{ labels.title|t(locales) }}</h2>
+            {% for container in _context.containers|slice(1, 6) %}
+                <div class="media  |  gutters  |  trailer--small">
+                    <div class="media__figure">
+                        <span class="legenda__item--identifier legenda__item--identifier-l legenda__item--{{ container.data.containers|first.data.model.theme }}"></span>
+                    </div>
+                    <div class="media__body">
+                        <a class="block-link  |  is-heir  |  gutter--right"
+                           href="#tile-{{ container.data.containers|first.data.containers|first.data.tab_id }}{{ container.data.containers|first.data.model._id }}">{{ container.data.containers|first.data.model.name|t(locales) }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+{% extends 'partials/base.html.twig' %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% block body %}
+    {% for loopContainer in containers %}
+        {% include loopContainer.template with loopContainer %}
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+    <title>{{ page_config.seo.controls.title.value|t(locales) }}</title>
+{% endblock %}
+
+{% block meta %}
+    <meta name="robots" content="{{ page_config.seo.controls.meta_robots.value|default('index,follow') }}">
+
+    {% if page_config.seo.controls.meta_description.value|t(locales) is not empty %}
+        <meta name="description" content="{{ page_config.seo.controls.meta_description.value|t(locales) }}">
+    {% endif %}
+    {% if page_config.seo.controls.meta_keywords.value|t(locales) is not empty %}
+        <meta name="keywords" content="{{ page_config.seo.controls.meta_keywords.value|t(locales) }}">
+    {% endif %}
+{% endblock %}
+
+{% block link %}
+    <link rel="canonical" href="{{ route({page: page}) }}">
+{% endblock %}
+
+{{% block scripts %}
+    <script type="text/javascript">
+        jQuery(function($) {
+            function isScrolledIntoView(elem) {
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+
+                return ((elemTop <= docViewBottom));
+            }
+
+            $(window).scroll(function () {
+                $('.exposition').each(function () {
+                    if (isScrolledIntoView(this) === true && !$(this).hasClass('exposition-visible')) {
+                        $(this).addClass('exposition-visible')
+                    }
+                });
+                $('.theme-slider').each(function () {
+                    if (isScrolledIntoView(this) === true && !$(this).hasClass('is-visible')) {
+                        $(this).addClass('is-visible')
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+  <link href="{{ hashedPath('/assets/css/exposition.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}

@@ -1,0 +1,28 @@
+/*
+Miscellaneous
+
+Styleguide 1.6.99
+*/
+
+@mixin hide() {
+  position: absolute;
+  left: -999em;
+  top: -999em; /* IE pushed the text to the bottom of the page without this */
+  // text-indent: 100%;
+  // white-space: nowrap;
+  // overflow: hidden;
+}
+
+@mixin show() {
+  position: static;
+  // text-indent: auto;
+  // white-space: initial;
+  // overflow: auto;
+}
+
+@mixin theme-count($count) {
+  $number: $count;
+  .theme-slider:nth-child(#{$count}) .section:after {
+    content: "#{$number}";
+  }
+}

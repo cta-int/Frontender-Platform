@@ -1,0 +1,26 @@
+{
+    "model": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "Channel\\Articles",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                "control": "project/model/id"
+            },
+            "limit": {
+                "value": "4",
+                "control": "project/model/limit"
+            },
+            "articleType": {
+                "value": "vacancy",
+                "control": "project/model/article_type"
+            }
+        }
+    }
+}

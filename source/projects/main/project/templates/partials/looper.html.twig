@@ -1,0 +1,7 @@
+{# @todo: make block class configurable #}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="looper-group  |  gutters">
+    <a class="looper looper--active  |  anchor--reset anchor--shy  |  title" href="?month={{ 'now'|tdate('%m') }}">{{ 'Previous month'|t(locales) }}</a>
+    <a class="looper looper--inactive  |  anchor--reset anchor--shy  |  title" href="?month={{ 'now'|tdate('%m') }}">{{ 'now'|tdate('%B') }}</a>
+</div>

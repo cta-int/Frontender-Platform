@@ -1,0 +1,77 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="{{ [container_class]|join("  |  ") }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="well  |  is-root  |  trailer">
+        <div class="layout  |  trailer--hero">
+            <div class="layout__cell  |  layout__cell--aside  |  wings  |  trailer">
+                {% include containers[0].template with containers[0].data %}
+            </div>
+            <div class="layout__cell layout__cell--main  |  wing--right  |  trailer--hero trailer-inside">
+                <h3 class="title title--lead trailer  |  gutters">{{ container_title|t(locales) }}</h3>
+                <div class="ctx-form__item  |  ctx-item__search  |  leader--small">
+                    <div class="fld  |  gutters-outside">
+                        <label for="ctx-item__search" class="fld-label">{{ 'Search'|t(locales) }}</label>
+                        <select id="ctx-item__search" class="placeholder-visible">
+                            <option value="">{{ 'Type keywords'|t(locales) }}</option>
+                            <option value="1">Event 1</option>
+                            <option value="2">Event 2</option>
+                            <option value="3">Event 3</option>
+                            <option value="4">Post 1</option>
+                            <option value="5">Post 2</option>
+                            <option value="6">Post 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="grid__cell  |  ctx-form__item  |  ctx-item__topic  |  leader--small">
+                        <div class="fld  |  gutters-outside">
+                            <label for="ctx-item__topic" class="fld-label">{{ 'Type'|t(locales) }}</label>
+                            <select id="ctx-item__topic" name="articleType" class="placeholder-visible">
+                                <option value="">{{ 'All types'|t(locales) }}</option>
+                                <option value="vacancy">Vacancy announcements</option>
+                                <option value="internship">Internships</option>
+                                <option value="call_for_proposal">Calls for proposals</option>
+                                <option value="call_for_tender">Calls for tenders</option>
+                                <option value="call_for_external_expert">Calls for external experts</option>
+                                <option value="partnership">Partnership opportunities</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid__cell  |  ctx-form__item  |  ctx-item__date  |  leader--small">
+                        <div class="fld  |  gutters-outside">
+                            <label for="ctx-item__date" class="fld-label">{{ 'Date'|t(locales) }}</label>
+                            <select id="ctx-item__date" class="placeholder-visible">
+                                <option value="">{{ 'All'|t(locales) }}</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid__cell  |  ctx-form__item  |  ctx-item__location  |  leader--small">
+                        <div class="fld  |  gutters-outside">
+                            <label for="ctx-item__location" class="fld-label">{{ 'Location'|t(locales) }}</label>
+                            <select id="ctx-item__location" name="location" class="placeholder-visible">
+                                <option value="">{{ 'All'|t(locales) }}</option>
+                                <option value="51.6840,5.3290">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid__cell  |  ctx-form__item  |  ctx-item__submit |  leader--small  |  gutters">
+                        <button class="button button--wide">{{ 'Search'|t(locales) }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search__illustrations-set">
+            <span class="search__illustration illustration illustration--fish-barn"></span>
+            <span class="search__illustration illustration illustration--fishing-shore"></span>
+            <span class="search__illustration illustration illustration--fishing-boat"></span>
+            <span class="water-illustration"></span>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+{
+    "main_menu": {
+        "label": {
+            "en": "Main navigation"
+        },
+        "controls": {
+            "links": {
+                "value": [
+                    {
+                        "label": {
+                            "en": "Agribusiness",
+                            "fr": "Agribusiness"
+                        },
+                        "page": "agribusiness",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "ICTs for agriculture",
+                            "fr": "TICs pour l' agriculture"
+                        },
+                        "page": "icts-for-agriculture",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Climate resilient agriculture",
+                            "fr": "L'agriculture résiliente climatique"
+                        },
+                        "page": "climate-resilient-agriculture",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Events",
+                            "fr": "Événements"
+                        },
+                        "page": "events",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Projects",
+                            "fr": "Projets"
+                        },
+                        "page": "projects",
+                        "id": ""
+                    }
+                ],
+                "label": {
+                    "en": "Links"
+                },
+                "control": "core/route",
+                "repeatable": true
+            }
+        }
+    },
+    "browse_menu": {
+        "label": {
+            "en": "Browse navigation"
+        },
+        "controls": {
+            "links": {
+                "value": [
+                    {
+                        "label": {
+                            "en": "Regions",
+                            "fr": "Régions"
+                        },
+                        "page": "regions",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Topics",
+                            "fr": "Sujets"
+                        },
+                        "page": "topics",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Blog",
+                            "fr": "Blog"
+                        },
+                        "page": "blog",
+                        "id": ""
+                    }
+                ],
+                "label": {
+                    "en": "Links"
+                },
+                "control": "core/route",
+                "repeatable": true
+            }
+        }
+    }
+}

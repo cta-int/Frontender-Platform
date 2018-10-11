@@ -1,0 +1,209 @@
+/*
+ICT Update – Issue Label
+
+**@TODO - Breakpoints**
+
+The issue publication number
+
+.issue-label - Issue tag
+.issue-label.issue-label--s - Smaller issue tag
+.issue-label.issue-label--l - Larger Issue tag
+.issue-label.issue-label--offset-left - Float to left
+.issue-label.issue-label--offset-right - Float to right
+.issue-label.issue-label--offset-top - Float on top
+
+markup:
+<div class="{$modifiers} media">
+  <div class="issue-label__nr" data-issue-nr="80"></div>
+  <div class="issue-label__caption">
+    <p>
+      <strong>More than Mobile</strong><br/>
+      <span>Issue 80 August 2015</span>
+    </p>
+  </div>
+</div>
+
+Styleguide 3.50.1
+*/
+
+/*
+ * 1. IE Fallback
+ */
+
+// scss-lint:disable NestingDepth DuplicateProperty
+
+.issue-label {
+  @extend %meta-text;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: line-height(12px, 1);
+  &__nr:before {
+    content: attr(data-issue-nr);
+    display: inline-block;
+    width: rhythm(12);
+    height: rhythm(12);
+    background: $color-theme;
+    font-size: 1.6em;
+    line-height: rhythm(12);
+    text-align: center;
+    color: $white;
+    font-weight: bold;
+    .theme--blue & {
+      background-color: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+    .post-header & {
+      background-color: $white;
+      color: $color-theme;
+      .theme--blue & {
+        color: $color-blue;
+      }
+      .theme--lime & {
+        color: $color-lime;
+      }
+      .theme--yellow & {
+        color: $color-yellow;
+      }
+      .theme--gold & {
+        color: $color-gold;
+      }
+      .theme--orange & {
+        color: $color-orange;
+      }
+      .theme--salmon & {
+        color: $color-salmon;
+      }
+      .theme--red & {
+        color: $color-red;
+      }
+      .theme--burgundy & {
+        color: $color-burgundy;
+      }
+      .theme--purple & {
+        color: $color-purple;
+      }
+    }
+  }
+  &__caption {
+    // white-space: nowrap;
+    display: flex;
+    align-items: center;
+    * {
+      flex: 0 1 auto;
+      width: 100%; /* 1 */
+    }
+    &--s {
+      margin-bottom: 7px; /* why is this vertical margin not in line with the rhythm? */
+      font-weight: 400;
+      text-transform: none;
+    }
+    .post-header & {
+      color: $white;
+    }
+  }
+  &__nr,
+  &__caption {
+    display: inline-block;
+    display: flex;
+  }
+  &__nr + &__caption,
+  &__caption + &__nr {
+    padding-left: 1em;
+  }
+  &--offset-top &__caption,
+  &--s {
+    font-size: 11px;
+    line-height: line-height(11px, 1);
+  }
+  &--s &__nr:before {
+    font-size: 1.2em;
+    width: rhythm(10);
+    height: rhythm(10);
+    line-height: rhythm(10);
+  }
+  &--l {
+    font-size: 14px;
+    line-height: line-height(14px, 1);
+    .issue-label__nr:before {
+      top: -1 * rhythm(26);
+    }
+  }
+  &--l &__nr:before {
+    width: rhythm(16);
+    height: rhythm(16);
+    line-height: rhythm(16);
+  }
+  &--offset-left,
+  &--offset-right,
+  &--offset-top {
+    position: relative;
+  }
+  &--offset-left &__nr:before,
+  &--offset-right &__nr:before {
+    position: absolute;
+  }
+  &--offset-left &__nr:before {
+    right: 100%;
+  }
+  &--offset-right &__nr:before {
+    left: 100%;
+  }
+  &--offset-top &__nr:before {
+    position: absolute;
+    bottom: 100%;
+  }
+  &--offset-top &--s {
+    margin-top: rhythm(10);
+  }
+  &--offset-right > &__nr + &__caption,
+  &--offset-right > &__caption + &__nr,
+  &--offset-top > &__nr + &__caption,
+  &--offset-top > &__caption + &__nr {
+    padding-left: 0;
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .issue-label {
+  }
+  .issue-label {
+    &--l &__nr:before {
+      position: initial;
+      margin-right: rhythm(2);
+    }
+  }
+}
+
+@include breakpoint($lt-large-handheld) {
+  .issue-label {
+    &--l {
+      .issue-label__nr:before {
+        top: 1 * rhythm(9);
+      }
+    }
+  }
+}
+// scss-lint:enable NestingDepth DuplicateProperty

@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "Textarea"
+    },
+    "type": "textarea",
+    "control": "core/abstract"
+}

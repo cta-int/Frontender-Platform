@@ -1,0 +1,58 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<script type="text/javascript" src="{{ hashedPath('/assets/javascript/picker.js') }}"></script>
+<script type="text/javascript" src="{{ hashedPath('/assets/javascript/picker.date.js') }}'"></script>
+<script type="text/javascript">
+    jQuery(function($) {
+        var $picker = $('.picker__total'),
+            $original = $('.picker__default'),
+            $mobile_pos = $('.container-header__filter').first();
+
+        $('.picker-trigger').click(function(model) {
+            model.preventDefault();
+
+            $('.picker__holder').toggleClass('is-active');
+        });
+
+        $('.picker__container').pickadate({
+            weekdaysShort: ['{{ 'day_sunday_short'|t(locales) }}', '{{ 'day_monday_short'|t(locales) }}', '{{ 'day_tuesday_short'|t(locales) }}', '{{ 'day_wednesday_short'|t(locales) }}', '{{ 'day_thursday_short'|t(locales) }}', '{{ 'day_friday_short'|t(locales) }}', '{{ 'day_saturday_short'|t(locales) }}'],
+            monthsFull: ['{{ 'January'|t(locales) }}','{{ 'February'|t(locales) }}','{{ 'March'|t(locales) }}','{{ 'April'|t(locales) }}','{{ 'May'|t(locales) }}','{{ 'June'|t(locales) }}','{{ 'July'|t(locales) }}','{{ 'August'|t(locales) }}','{{ 'September'|t(locales) }}','{{ 'October'|t(locales) }}','{{ 'November'|t(locales) }}','{{ 'December'|t(locales) }}'],
+            today: false,
+            clear: false,
+            close: false,
+            onSet: function(item) {
+                if(item['select']) {
+                    Actionable.prototype.ajax({
+                        method: 'ajax',
+                        url: '/{{ locale }}/partial?layout=containers/events/upcoming/events-list.html.twig&model=events',
+                        states: {
+                            limit: 7,
+                            start: (new Date(item['select'])).toUTCString()
+                        },
+                        target: '#upcoming-events'
+                    });
+                }
+            },
+            onRender: function() {
+                $(window).resize({
+                    breakpoint: '(min-width: 56.83333em)',
+                    onMiss: function() {
+                        $picker.detach().prependTo($mobile_pos);
+                    },
+                    onHit: function() {
+                        $original.after($picker.detach());
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+{# Some changes made by Jasper #}
+<div class="picker__default"></div>
+<div class="picker__total">
+    <button class="picker-trigger reset  is-lt-small-desktop" data-icon="home"></button>
+    <div class="picker__container">
+        {# placeholder for the picker #}
+    </div>
+</div>

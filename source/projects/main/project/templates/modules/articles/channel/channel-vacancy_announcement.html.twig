@@ -1,0 +1,13 @@
+{# Create an ad-hoc config for the teleport link #}
+{% set teleport_config = {
+    container_tag: "h2",
+    trailer: "trailer",
+    container_class: "title"
+} %}
+{% if config.show_teleport %}
+    {% include("modules/teleport/teleport.html.twig") with {config: teleport_config} %}
+{% endif %}
+
+{% for article in model %}
+    {% include "partials/article/vacancy_announcement-channel-article.html.twig" with {model: article} %}
+{% endfor %}

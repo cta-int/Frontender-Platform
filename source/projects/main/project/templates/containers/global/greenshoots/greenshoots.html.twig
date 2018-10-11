@@ -1,0 +1,39 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["well well--darker", "leader-inside", "trailer-inside", config.container_class]|join("  |  ") }} {{ config.colour_theme }}">
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside  |  wing--left">
+            <div class="gutters">
+                <h3 class="title  |  trailer--small">
+                    {{ labels.container_title|t(locales) }}
+                </h3>
+                <p class="trailer">
+                    {{ labels.title|t(locales) }}
+                </p>
+                <div class="title--filter  |  trailer-inside">
+                    {{ labels.subtitle|t(locales) }}
+                </div>
+            </div>
+        </div>
+        {% if containers|length > 0 %}
+            <div class="layout__cell  |  is-center  |  wing--right">
+                <div class="grid grid--posts  |  grid-decoration  |  gutters">
+                    {% for container in containers %}
+                        <figure class="stat  |  grid__cell">
+                            <p class="stat__figure  |  trailer">{{ container.template_config.labels.number|t(locales) }}</p>
+                            <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+                                {{ container.template_config.labels.text|t(locales) }}
+                            </figcaption>
+                        </figure>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="layout__cell">
+                &nbsp;
+            </div>
+        {% endif %}
+    </div>
+</div>

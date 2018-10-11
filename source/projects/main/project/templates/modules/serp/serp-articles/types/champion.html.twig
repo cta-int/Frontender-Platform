@@ -1,0 +1,49 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+
+{% set resource_route = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article class="media">
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters">
+                <a class="anchor--reset anchor--shy  |  stack" href="{{ resource_route }}">
+                    <h2 class="title title--tile">
+                        {{ article.headline|highlightText(query.q, 'highlight')|t(locales)|raw }}
+                    </h2>
+                </a>
+                <div class="body--whisper  |  leader--small">
+                    {{ article.about|truncate(250)|highlightText(query.q, 'highlight')|raw }}
+                </div>
+                <div class="leader">
+                    {% if article.analysis.agrovoc.concepts|length > 0 %}
+                        <ul class="reset label-list clear list--inline">
+                            {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="media__figure  media__aside  |  wings">
+                <div class="gutters">
+                    <p>
+                        <time class="meta" datetime="{{ article.datePublished }}">{{ article.datePublished|tdate('%e %B %Y') }}</time>
+                        {% if article.articleType %}
+                            <span class="meta">{{ 'in'|t(locales) }} {% include 'partials/article/content_type_category.html.twig' %}</span>
+                        {% endif %}
+                    </p>
+                    {% if article.link.person.author|length > 0 %}
+                        <p class="meta meta--lowercase">{{ author.long(article.link.person.author) }}</p>
+                    {% endif %}
+                    <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% if not loop.last %}
+    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+{% endif %}

@@ -1,0 +1,14 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} class="layout layout--narrow{% if class %} {{ class }}{% endif %}">
+	<div class="layout__cell  |  wings  |  body--align-center">
+		{% if labels.title|t(locales) is not empty %}
+			<h2 class="title title--section  |  gutters">{{ labels.title|t(locales) }}</h2>
+		{% endif %}
+		{% if labels.body|t(locales) is not empty %}
+			<p class="gutters">{{ labels.body|t(locales) }}</p>
+		{% endif %}
+	</div>
+</{{ config.container_tag|default('div') }}>

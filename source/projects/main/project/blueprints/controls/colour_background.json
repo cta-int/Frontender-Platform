@@ -1,0 +1,26 @@
+{
+    "hidden": "",
+    "access": "all",
+    "label": {
+        "en": "Background colour",
+        "fr": "Background colour"
+    },
+    "type": "list",
+    "value": "none",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "None",
+                "fr": "None"
+            }
+        },
+        {
+            "value": "theme theme--dark",
+            "label": {
+                "en": "Dark",
+                "fr": "Dark"
+            }
+        }
+    ]
+}

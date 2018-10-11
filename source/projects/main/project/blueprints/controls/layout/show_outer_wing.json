@@ -1,0 +1,23 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Display right wing"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "No"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Yes"
+            }
+        }
+    ]
+}

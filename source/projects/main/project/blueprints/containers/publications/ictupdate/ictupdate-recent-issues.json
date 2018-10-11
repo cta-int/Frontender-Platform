@@ -1,0 +1,281 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Recent issues"
+    },
+    "description": {
+        "en": "Overview of previously published issues"
+    },
+    "template": "containers/ict-update/recent-issues/recent-issues.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "Article\\Search",
+                    "control": "project/model/name"
+                },
+                "label": {
+                    "value": ["bab132fd-314e-4874-8f91-780ece3eab7b"],
+                    "control": "core/json"
+                },
+                "type": {
+                    "value": "article.issue",
+                    "control": "project/model/article_type"
+                },
+                "limit": {
+                    "value": "8",
+                    "control": "project/model/limit"
+                }
+            }
+        },
+        "containers": [{
+            "fe-id": null,
+            "template": "modules/tag-cloud/tag-cloud.html.twig",
+            "name": {
+                "en": "Cloud tag",
+                "fr": "Cloud tag"
+            },
+            "description": {
+                "en": "",
+                "fr": ""
+            },
+            "template_config": {
+                "config": {
+                    "label": {
+                        "en": "Settings",
+                        "fr": "Settings"
+                    },
+                    "controls": {
+                        "container_class": {
+                            "value": "topics",
+                            "control": "project/container_class"
+                        }
+                    }
+                },
+                "labels": {
+                    "label": {
+                        "en": "Labels"
+                    },
+                    "controls": {
+                        "container_title": {
+                            "label": {
+                                "en": "Title"
+                            },
+                            "control": "core/text",
+                            "value": {
+                                "en": "Topics",
+                                "fr": "Topics"
+                            }
+                        }
+                    }
+                },
+                "containers": [{
+                        "fe-id": null,
+                        "name": {
+                            "en": "Agrovoc tag 1"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template_config": {
+                            "model": {
+                                "label": {
+                                    "en": "Agrovoc",
+                                    "fr": "Agrovoc"
+                                },
+                                "controls": {
+                                    "adapter": {
+                                        "value": "SCR",
+                                        "control": "project/adapter"
+                                    },
+                                    "name": {
+                                        "value": "terms",
+                                        "control": "project/model/name"
+                                    },
+                                    "id": {
+                                        "label": {
+                                            "en": "Agrovoc ID"
+                                        },
+                                        "value": "c_9001017",
+                                        "control": "project/model/id",
+                                        "type":"lookup"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Agrovoc tag 2"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template_config": {
+                            "model": {
+                                "label": {
+                                    "en": "Agrovoc",
+                                    "fr": "Agrovoc"
+                                },
+                                "controls": {
+                                    "adapter": {
+                                        "value": "SCR",
+                                        "control": "project/adapter"
+                                    },
+                                    "name": {
+                                        "value": "terms",
+                                        "control": "project/model/name"
+                                    },
+                                    "id": {
+                                        "label": {
+                                            "en": "Agrovoc ID"
+                                        },
+                                        "value": "c_50227",
+                                        "control": "project/model/id",
+                                        "type":"lookup"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Agrovoc tag 3"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template_config": {
+                            "model": {
+                                "label": {
+                                    "en": "Agrovoc",
+                                    "fr": "Agrovoc"
+                                },
+                                "controls": {
+                                    "adapter": {
+                                        "value": "SCR",
+                                        "control": "project/adapter"
+                                    },
+                                    "name": {
+                                        "value": "terms",
+                                        "control": "project/model/name"
+                                    },
+                                    "id": {
+                                        "label": {
+                                            "en": "Agrovoc ID"
+                                        },
+                                        "value": "c_7778",
+                                        "control": "project/model/id",
+                                        "type":"lookup"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Agrovoc tag 4"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template_config": {
+                            "model": {
+                                "label": {
+                                    "en": "Agrovoc",
+                                    "fr": "Agrovoc"
+                                },
+                                "controls": {
+                                    "adapter": {
+                                        "value": "SCR",
+                                        "control": "project/adapter"
+                                    },
+                                    "name": {
+                                        "value": "terms",
+                                        "control": "project/model/name"
+                                    },
+                                    "id": {
+                                        "label": {
+                                            "en": "Agrovoc ID"
+                                        },
+                                        "value": "c_7644",
+                                        "control": "project/model/id",
+                                        "type":"lookup"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "fe-id": null,
+                        "name": {
+                            "en": "Agrovoc tag 5"
+                        },
+                        "description": {
+                            "en": ""
+                        },
+                        "template_config": {
+                            "model": {
+                                "label": {
+                                    "en": "Agrovoc",
+                                    "fr": "Agrovoc"
+                                },
+                                "controls": {
+                                    "adapter": {
+                                        "value": "SCR",
+                                        "control": "project/adapter"
+                                    },
+                                    "name": {
+                                        "value": "terms",
+                                        "control": "project/model/name"
+                                    },
+                                    "id": {
+                                        "label": {
+                                            "en": "Agrovoc ID"
+                                        },
+                                        "value": "c_6211",
+                                        "control": "project/model/id",
+                                        "type":"lookup"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }]
+    }
+}

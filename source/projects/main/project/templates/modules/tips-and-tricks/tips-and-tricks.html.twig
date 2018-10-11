@@ -1,0 +1,9 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<h2 class="title title--section  |  gutters  |  trailer--hero">{{ container_title|t(locales) }}</h2>
+{% for article in articles %}
+    {% include "partials/article/nested-media-aside.html.twig" %}
+    {% if not loop.last %}
+        <hr class="reset  |  divider divider--bottom  |  gutters-hero-outside  |  trailer"/>
+    {% endif %}
+{% endfor %}

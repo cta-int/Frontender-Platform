@@ -1,0 +1,10 @@
+<div class="{{["testimonial",container_class]|join('  |  ') }}">
+    <div class="testimonial__tile  |  gutters">
+        {% include "modules/articles/tile/tile-wide.html.twig" %}
+    </div>
+    <div class="testimonial__quote  |  gutters">
+        {% if article.contentBlocks|filterArray('type', 'blockquote')|first %}
+            <blockquote class="quote">{{ article.contentBlocks|filterArray('type', 'blockquote')|first.content|striptags('<strong><em><u><a><sub><sup>')|raw }}</blockquote>
+        {% endif %}
+    </div>
+</div>

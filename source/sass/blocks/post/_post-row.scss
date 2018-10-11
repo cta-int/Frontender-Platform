@@ -1,0 +1,72 @@
+/*
+Posting - Row
+
+markup:
+<div class="post post--issue post--row trailer">
+    <div class="post__image gutter">
+        <img class="image image--stretch" width="899" height="506" alt="Decision support systems for family farmers" src="https://source.unsplash.com/random/300x200">
+    </div><!--
+    --><div class="post__content media">
+        <div class="media__stretcher">
+            <h3 class="title">Decision support systems for family farmers</h3>
+            <p class="post__intro">
+                How would you describe the role of ‘decision support systems’ in the context of their use for family farming?
+            </p>
+            <a class="post__anchor" href="javascript:void();">Read more</a>
+        </div><!--
+        --><div class="media__stretcher">
+            <div class="issue-label issue-label--s media">
+                <div class="issue-label__caption">
+                    <span>September 2014</span>
+                </div>
+                <div class="issue-label__nr" data-issue-nr="78"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.8.3
+*/
+
+/*
+ * 1. IE Fallback
+ */
+
+.post {
+  // color: $color-body;
+  &--row {
+    display: flex;
+    .no-flexbox & {
+      @include clearfix;
+      display: block;
+      width: 100%;
+    }
+  }
+  &--row &__image,
+  &--row &__content {
+    .no-flexbox & {
+      float: left; /* 1. */
+    }
+  }
+  &--row &__image {
+    // flex: 1 0 auto;
+    flex-basis: percentage(2 / 8);
+    .no-flexbox & {
+      width: percentage(2 / 8); /* Fallback when there is no image uploaded */
+    }
+  }
+  &--row &__content {
+    flex-basis: percentage(6 / 8);
+    .no-flexbox & {
+      width: percentage(6 / 8); /* Fallback when there is no image uploaded */
+    }
+  }
+  &--row {
+    .title {
+      padding-bottom: rhythm(1.5);
+      // + p {
+      //   margin-top: rhythm(1.5);
+      // }
+    }
+  }
+}

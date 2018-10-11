@@ -1,0 +1,39 @@
+{
+    "crown": {
+        "value": "",
+        "control": "project/crown"
+    },
+    "leader": {
+        "value": "",
+        "control": "project/leader"
+    },
+    "leader_inside": {
+        "value": "",
+        "control": "project/leader_inside"
+    },
+    "trailer": {
+        "value": "",
+        "control": "project/trailer"
+    },
+    "trailer_inside": {
+        "value": "",
+        "control": "project/trailer_inside"
+    },
+    "divider": {
+        "value": "",
+        "control": "project/divider"
+    },
+    "container_tag": {
+        "value": "article",
+        "control": "project/container_tag"
+    },
+    "container_class": {
+        "value": "",
+        "control": "project/container_class"
+    },
+    "colour_theme": {
+        "value": "theme theme--green",
+        "control": "project/colour_theme"
+    }
+
+}

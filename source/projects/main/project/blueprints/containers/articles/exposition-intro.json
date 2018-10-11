@@ -1,0 +1,164 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition hero container",
+        "fr": "Exposition hero container"
+    },
+    "description": {
+        "en": "Exposition introduction",
+        "fr": "Exposition introduction"
+    },
+    "template": "containers/experience-capitalization/intro/intro.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Background image"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "label": {
+                        "en": "Resource Model",
+                        "fr": "Resource Model"
+                    },
+                    "control": "project/model/name",
+                    "value": "media"
+                },
+                "id": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Resource ID",
+                        "fr": "Resource ID"
+                    },
+                    "type": "lookup",
+                    "value": "34b8b49c-8ed9-4973-b9a2-7028eaf332c0"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels",
+                "fr": "Labels"
+            },
+            "controls": {
+                "container_title": {
+                    "value": {
+                        "en": "Shaping the future",
+                        "fr": "Shaping the future"
+                    },
+                    "label": {
+                        "en": "Headline"
+                    },
+                    "control": "core/text"
+                },
+                "container_subtitle":  {
+                    "value": {
+                        "en": "Experience Capitalization",
+                        "fr": "Experience Capitalization"
+                    },
+                    "label": {
+                        "en": "Subtitle",
+                        "fr": "Subtitle"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Config",
+                "fr": "Config"
+            },
+            "controls": {
+                "show_exposition_menu": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Display exposition menu",
+                        "fr": "Display exposition menu"
+                    },
+                    "type": "list",
+                    "value": "1",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": {
+                                "en": "Show menu",
+                                "fr": "Show menu"
+                            }
+                        },
+                        {
+                            "value": "0",
+                            "label": {
+                                "en": "Hide menu",
+                                "fr": "Hide menu"
+                            }
+                        }
+                    ]
+                },
+                "show_social": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Display social media inside menu",
+                        "fr": "Display social media inside exposition menu"
+                    },
+                    "type": "list",
+                    "value": "1",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": {
+                                "en": "Show social media",
+                                "fr": "Show social media"
+                            }
+                        },
+                        {
+                            "value": "0",
+                            "label": {
+                                "en": "Hide social media",
+                                "fr": "Hide social media"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "social": {
+            "label": {
+                "en": "Social media",
+                "fr": "Social media"
+            },
+            "controls": {
+                "twitter": {
+                    "label": {
+                        "en": "Twitter handle",
+                        "fr": "Twitter handle"
+                    },
+                    "control": "core/text",
+                    "value": "ctaflash"
+                },
+                "facebook": {
+                    "label": {
+                        "en": "Facebook handle",
+                        "fr": "Facebook handle"
+                    },
+                    "control": "core/text",
+                    "value": "CTApage"
+                },
+                "linkedin": {
+                    "label": {
+                        "en": "LinkedIn handle",
+                        "fr": "LinkedIn handle"
+                    },
+                    "control": "core/text",
+                    "value": "company/technical-centre-for-agricultural-and-rural-cooperation-acp-eu-cta-"
+                }
+            }
+        }
+    }
+}

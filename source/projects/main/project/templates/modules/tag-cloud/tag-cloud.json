@@ -1,0 +1,194 @@
+{
+    "fe-id": null,
+    "template": "modules/tag-cloud/tag-cloud.html.twig",
+    "name": {
+        "en": "Cloud tag",
+        "fr": "Cloud tag"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "value": "topics",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "container_title": {
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text",
+                    "value": {
+                        "en": "Topics",
+                        "fr": "Topics"
+                    }
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Agrovoc tag 1"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Agrovoc",
+                            "fr": "Agrovoc"
+                        },
+                        "controls": {
+                            "name": {
+                                "value": "terms",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Agrovoc ID"
+                                },
+                                "value": "c_9001017",
+                                "control": "project/model/id"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Agrovoc tag 2"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Agrovoc",
+                            "fr": "Agrovoc"
+                        },
+                        "controls": {
+                            "name": {
+                                "value": "terms",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Agrovoc ID"
+                                },
+                                "value": "c_50227",
+                                "control": "project/model/id"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Agrovoc tag 3"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Agrovoc",
+                            "fr": "Agrovoc"
+                        },
+                        "controls": {
+                            "name": {
+                                "value": "terms",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Agrovoc ID"
+                                },
+                                "value": "c_7778",
+                                "control": "project/model/id"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Agrovoc tag 4"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Agrovoc",
+                            "fr": "Agrovoc"
+                        },
+                        "controls": {
+                            "name": {
+                                "value": "terms",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Agrovoc ID"
+                                },
+                                "value": "c_7644",
+                                "control": "project/model/id"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Agrovoc tag 5"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Agrovoc",
+                            "fr": "Agrovoc"
+                        },
+                        "controls": {
+                            "name": {
+                                "value": "terms",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "label": {
+                                    "en": "Agrovoc ID"
+                                },
+                                "value": "c_6211",
+                                "control": "project/model/id"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

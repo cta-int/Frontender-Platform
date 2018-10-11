@@ -1,0 +1,88 @@
+/*
+Trellis
+
+.trellis - Flex layout with 6 containers
+.trellis.trellis--l - Flex layout with 3 containers
+
+markup:
+<div class="{$modifiers}">
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+	<div class="trellis__cell  |  gutters">
+		<img src="https://source.unsplash.com/random" />
+	</div>
+</div>
+
+Styleguide 2.14
+*/
+
+.trellis {
+	display: flex;
+  flex-wrap: wrap;
+	&__cell,
+	&--l &__cell {
+		flex: 0 1 percentage(2/6);
+    max-width: percentage(2/6);
+    .no-flexbox & {
+      float: left;
+      width: percentage(2/6);
+    }
+	}
+	&__topic &__cell {
+		flex: 0 1 percentage(1/2);
+    max-width: percentage(1/2);
+    .no-flexbox & {
+      float: left;
+      width: percentage(1/2);
+    }
+	}
+	@include breakpoint($gt-large-handheld) {
+		&__cell {
+			flex: 0 1 percentage(2/12);
+	    max-width: percentage(2/12);
+	    .no-flexbox & {
+	      width: percentage(2/12);
+	    }
+		}
+		&--l &__cell {
+			trellis__cell {
+				flex: 0 1 percentage(4/12);
+		    max-width: percentage(4/12);
+		    .no-flexbox & {
+		      width: percentage(4/12);
+		    }
+			}
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		&--l &__cell {
+			flex: 0 1 percentage(3/12);
+	    max-width: percentage(3/12);
+	    .no-flexbox & {
+	      width: percentage(3/12);
+	    }
+		}
+	}
+}

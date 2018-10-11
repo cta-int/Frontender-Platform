@@ -1,0 +1,165 @@
+/*
+Button
+
+.button - Default button
+.button.button--wide - Wider button
+.button.button--stretch - Stretched default button
+.button.button--shy - Borderless button
+.button.button--inverse - Inversed button
+.button.is-current - Active/current button
+.button.is-disabled - Disabled button
+
+markup:
+<button class="{$modifiers}">Button</button>
+
+Styleguide 3.5
+*/
+
+// scss-lint:disable NestingDepth
+.button {
+  @extend %meta-text;
+  display: inline-block;
+  padding: rhythm(3) rhythm(5);
+  background: $white;
+  border: $border-width solid $color-body;
+  text-decoration: none;
+  color: $color-body;
+  font-size: to-unit(12px);
+  font-weight: 600;
+  line-height: 1em;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
+    background: $color-theme;
+    // border-color: $color-theme;
+    @include theme-border();
+    .theme--blue & {
+      background-color: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+  }
+  &--wide {
+    padding: rhythm(3) rhythm(15);
+  }
+  &--stretch {
+    width: 100%;
+    text-align: center;
+  }
+  &--shy {
+    border: 0;
+    &:hover {
+      color: $white;
+    }
+    &:visited {
+      color: $color-theme;
+      .theme--blue & {
+        color: $color-blue;
+      }
+      .theme--lime & {
+        color: $color-lime;
+      }
+      .theme--yellow & {
+        color: $color-yellow;
+      }
+      .theme--gold & {
+        color: $color-gold;
+      }
+      .theme--orange & {
+        color: $color-orange;
+      }
+      .theme--salmon & {
+        color: $color-salmon;
+      }
+      .theme--red & {
+        color: $color-red;
+      }
+      .theme--burgundy & {
+        color: $color-burgundy;
+      }
+      .theme--purple & {
+        color: $color-purple;
+      }
+    }
+  }
+  &--inverse {
+    background: transparent;
+    border-color: $white;
+    &,
+    &:visited {
+        color: $white;
+    }
+  }
+  &.is-disabled {
+    color: mix($color-body, $white, 26%);
+    border-color: mix($color-body, $white, 26%);
+    &:hover,
+    &:active {
+      cursor: not-allowed;
+      background: transparent;
+    }
+  }
+  &.is-current {
+    @include theme-border();
+    color: $white;
+    background-color: $color-theme;
+    .theme--blue & {
+      background-color: $color-blue;
+    }
+    .theme--lime & {
+      background-color: $color-lime;
+    }
+    .theme--yellow & {
+      background-color: $color-yellow;
+    }
+    .theme--gold & {
+      background-color: $color-gold;
+    }
+    .theme--orange & {
+      background-color: $color-orange;
+    }
+    .theme--salmon & {
+      background-color: $color-salmon;
+    }
+    .theme--red & {
+      background-color: $color-red;
+    }
+    .theme--burgundy & {
+      background-color: $color-burgundy;
+    }
+    .theme--purple & {
+      background-color: $color-purple;
+    }
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .button {
+    // padding: rhythm(3.5) rhythm(10);
+  }
+}
+
+// scss-lint:enable NestingDepth

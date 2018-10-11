@@ -1,0 +1,14 @@
+{
+  "map": {
+    "id": "_id",
+    "title": "headline",
+    "thumbnail": "link.media.image"
+  },
+  "controls": {
+  },
+  "display_attributes": ["title", "thumbnail", "published_at", "modified_at"],
+  "display_options": {
+    "thumbnail": true,
+    "description": false
+  }
+}

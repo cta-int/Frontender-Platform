@@ -1,0 +1,822 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Opportunities"
+    },
+    "description": {
+        "en": "Tabbed panels with short list of opportunities"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Opportunities",
+                                    "fr": "Opportunités"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "wings",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Panels"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/panels/panels.html.twig",
+                "containers": [
+                    {
+                        "fe-id": null,
+                        "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                        "name": {
+                            "en": "Newsletters",
+                            "fr": "Newsletters"
+                        },
+                        "description": {
+                            "en": "Newsletters",
+                            "fr": "Newsletters"
+                        },
+                        "template_config": {
+                            "config": {
+                                "label": {
+                                    "en": "Settings",
+                                    "fr": "Settings"
+                                },
+                                "controls": {
+                                    "container_class": {
+                                        "value": "leader--giant trailer-inside--giant topics",
+                                        "control": "project/container_class"
+                                    }
+                                }
+                            },
+                            "labels": {
+                                "label": {
+                                    "en": "Labels",
+                                    "fr": "Labels"
+                                },
+                                "controls": {
+                                    "title": {
+                                        "value": {
+                                            "en": "Don’t miss the opportunity to work with CTA. Subscribe now!",
+                                            "fr": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+                                        }
+                                    },
+                                    "button": {
+                                        "value": {
+                                            "en": "Subscribe",
+                                            "fr": "Souscrire"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "project/layout/show_outer_wing"
+                            },
+                            "show_empty_panels": {
+                                "value": true,
+                                "control": "core/boolean"
+                            }
+                        }
+                    },
+                    "tab_config": {
+                        "label": {
+                            "en": "Tab settings"
+                        },
+                        "controls": {
+                            "selector": {
+                                "value": ".panel-group",
+                                "control": "core/text"
+                            },
+                            "children": {
+                                "value": ".panel",
+                                "control": "core/text"
+                            },
+                            "attribute": {
+                                "value": "href",
+                                "control": "core/text"
+                            },
+                            "allow_multiple": {
+                                "value": 0,
+                                "control": "core/boolean"
+                            },
+                            "open_first": {
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "scroll_to": {
+                                "value": 1,
+                                "control": "core/boolean"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Vacancies"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "vacancy",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Vacancies",
+                                                "fr": "Postes vacants"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all vacancies",
+                                                    "fr": "Afficher tous les postes vacants"
+                                                },
+                                                "page": "working-with-cta/vacancies",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Internships"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "internship",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Internships",
+                                                "fr": "Stage"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all internships",
+                                                    "fr": "Afficher tous les stages"
+                                                },
+                                                "page": "working-with-cta/internships",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Calls for external experts"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                          "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "call_for_external_expert",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Calls for external experts",
+                                                "fr": "Appel à des experts externes"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all calls for external experts",
+                                                    "fr": "Afficher tous les appels pour des experts externes"
+                                                },
+                                                "page": "working-with-cta/calls-for-external-experts",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Calls for tenders"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "call_for_tender",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Calls for tenders",
+                                                "fr": "Appels d'offre"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all calls for tenders",
+                                                    "fr": "Afficher tous les appels d'offres"
+                                                },
+                                                "page": "working-with-cta/calls-for-tenders",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Calls for proposals"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "call_for_proposal",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Calls for proposals",
+                                                "fr": "Appel à proposition"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all calls for proposals",
+                                                    "fr": "Appels à propositions"
+                                                },
+                                                "page": "working-with-cta/calls-for-proposals",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Partnerships"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "articleType": {
+                                            "value": "partnership",
+                                            "control": "project/model/article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Panel settings"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Partnerships",
+                                                "fr": "Partenariat"
+                                            },
+                                            "label": {
+                                                "en": "Tab label"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "Show all partnership opportunities",
+                                                    "fr": "Afficher toutes les opportunités de partenariat"
+                                                },
+                                                "page": "working-with-cta/partnerships",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "controls": {
+                                        "show_link": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "active": {
+                                            "value": 0,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

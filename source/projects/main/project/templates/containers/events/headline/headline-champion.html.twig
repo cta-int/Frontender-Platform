@@ -1,0 +1,73 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if model.mediaObject|lead %}
+    <header>
+        <figure class="hero hero--event-teaser">
+            {{ image.hero(model.mediaObject|lead, is_crowned, "hero__figure  |  image image--stretch") }}
+
+            <figcaption class="hero__headline">
+                <div class="event-teaser  |  teaser  |  stack">
+                    <div class="event-teaser__date  |  stack__unit stack__pin">
+                        {% if model.startDate %}
+                            {{ date.tile(model.startDate, model.timezone) }}
+                        {% endif %}
+                    </div>
+                    <div class="stack__unit  |  stack stack--stacked">
+                        <div class="stack__unit">
+                            <h1 class="title  |  gutters gutter-hero--left">
+                                {{ model.name }}
+                            </h1>
+                            <p class="gutters gutter-hero--left">
+                                {% if model.startDate and model.endDate %}
+                                    {{ date.event_long(model.startDate, model.endDate, model.timezone) }}
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="pin-box  |  stack__unit  |  stack  |  leader">
+                            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
+                                {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                            </div>
+                            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
+                                {% if model.analysis.agrovoc.concepts | length > 0 %}
+                                    <ul class="reset  |  label-list  |  list--inline">
+                                        {% for label in model.analysis.agrovoc.concepts | slice(0, 5) %}
+                                            <li>{{ concept.label(label, locale) }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        {% if model.mediaObject.mediaObject|lead.credit %}
+            <div class="meta meta--whisper  |  wings  |  leader-inside--small"><span class="gutters">{{ model.mediaObject|lead.credit|t(locales) }}</span></div>
+        {% endif %}
+    </header>
+{% else %}
+    <header class="article-headline  |  layout">
+        <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="gutters  |  leader  |  trailer">
+                {% if model.startDate %}
+                    {{ date.tile(model.startDate, model.timezone) }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="wing--right">
+            <h1 class="article-headline__title  |  title title--headline  |  leader">
+                {{ model.name }}
+            </h1>
+            <p class="article-headline__byline  |  trailer">
+                {% if model.startDate and model.endDate %}
+                    {{ date.event_long(model.startDate, model.endDate, model.timezone) }}
+                {% endif %}
+            </p>
+        </div>
+    </header>
+{% endif %}

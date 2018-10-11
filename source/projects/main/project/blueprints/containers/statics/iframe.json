@@ -1,0 +1,84 @@
+{
+    "fe-id": null,
+    "template": "containers/global/iframe/iframe.html.twig",
+    "name": {
+        "en": "IFrame"
+    },
+    "description": {
+        "en": "IFrame to embed external content"
+    },
+    "template_config": {
+        "content": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "container_title": {
+                    "value": {
+                        "en": "Title",
+                        "fr": "Tître"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "embed_url": {
+                    "value": "https://brickson.nl/",
+                    "label": {
+                        "en": "Embed url"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "embed_class": {
+                    "value": "embed",
+                    "label": {
+                        "en": "IFrame height"
+                    },
+                    "options": [
+                        {
+                            "value": "embed",
+                            "label": {
+                                "en": "Default"
+                            }
+                        },
+                        {
+                            "value": "embed embed--hero",
+                            "label": {
+                                "en": "Hero"
+                            }
+                        }
+                    ],
+                    "control": "core/list"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                }
+            }
+        }
+    }
+}

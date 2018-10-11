@@ -1,0 +1,70 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Aside"
+    },
+    "description": {
+        "en": "Aside"
+    },
+    "template": "modules/issue/issue.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "container_class": {
+                    "value": "gutters",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Channel\\Articles",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "1c870693-2942-4b0a-9103-ebf6809b79eb",
+                    "control": "project/model/id"
+                },
+                "articleType": {
+                    "value": "review",
+                    "control": "project/model/article_type"
+                },
+                "limit": {
+                    "value": "1",
+                    "control": "project/model/limit"
+                }
+            }
+        }
+    }
+}

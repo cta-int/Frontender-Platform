@@ -1,0 +1,38 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<img class="maintenance maintenance-image  |  is-root" src="{{ labels.image|t(locales) }}" alt="">
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'maintenance')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+	<div class="maintenance-overlay"></div>
+	<div class="maintenance--container">
+		<div class="is-root">
+			<a href="/"><figure class="brand--cta"><figcaption class="is-narrative">CTA logo</figcaption></figure></a>
+			<div class="wings  |  leader-inside--hero  |  trailer-inside">
+				<div class="body--align-center  |  gutters">
+					<h1 class="title title--section  |  trailer  |  leader">{{ labels.title|t(locales) }}</h1>
+					<p class="leader-inside">{{ labels.body|t(locales) }}</p>
+				</div>
+				<fieldset class="leader trailer  |  gutters">
+	        <label class="fld-label title title--meta" for="{{ labels.field_label1|t(locales) }}">{{ labels.field_label1|t(locales) }}</label>
+	        <input class="fld" type="text" id="{{ labels.field_label1|t(locales) }}" name="{{ labels.field_label1|t(locales) }}">
+	        <label class="fld-label title title--meta" for="{{ labels.field_label2|t(locales) }}">{{ labels.field_label2|t(locales) }}</label>
+	        <input class="fld" type="text" id="{{ labels.field_label2|t(locales) }}" name="{{ labels.field_label2|t(locales) }}">
+	        <label class="fld-label title title--meta" for="{{ labels.field_label3|t(locales) }}">{{ labels.field_label3|t(locales) }}</label>
+	        <input class="fld" type="text" id="{{ labels.field_label3|t(locales) }}" name="{{ labels.field_label3|t(locales) }}">
+		    </fieldset>
+		    <div class="gutters">
+		    	<button class="button button--inverse button--stretch">{{ labels.button_label|t(locales) }}</button>
+		    </div>
+		    <div class="body--align-center">
+		    	<p class="maintenance--footer  |  title  |  leader  |  trailer--small">{{ "Follow us on"|t(locales) }}</p>
+		    	<div class="trailer">
+						<a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTApage" target="_blank"><span class="icon icon--facebook"></span></a>
+						<a class="anchor--shy  |  is-heir" href="https://twitter.com/ctaflash" target="_blank"><span class="icon icon--twitter"></span></a>
+					</div>
+		    </div>
+			</div>
+		</div>
+		<p class="maintenance--disclaimer  |  body--align-center">{{ labels.disclaimer|t(locales) }}</p>
+	</div>
+</{{ config.container_tag|default('div') }}>

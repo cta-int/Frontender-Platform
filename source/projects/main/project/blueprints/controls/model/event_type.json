@@ -1,0 +1,89 @@
+{
+    "value": "",
+    "label": {
+        "en": "Event type"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "All"
+            }
+        },
+        {
+            "value": "event.Briefing",
+            "label": {
+                "en": "Briefing"
+            }
+        },
+        {
+            "value": "event.Conference",
+            "label": {
+                "en": "Conference"
+            }
+        },
+        {
+            "value": "event.Field visit",
+            "label": {
+                "en": "Field visit"
+            }
+        },
+        {
+            "value": "event.Forum",
+            "label": {
+                "en": "Forum"
+            }
+        },
+        {
+            "value": "event.Hackathon",
+            "label": {
+                "en": "Hackathon"
+            }
+        },
+        {
+            "value": "event.Meeting",
+            "label": {
+                "en": "Meeting"
+            }
+        },
+        {
+            "value": "event.Other",
+            "label": {
+                "en": "Other"
+            }
+        },
+        {
+            "value": "event.Project",
+            "label": {
+                "en": "Project"
+            }
+        },
+        {
+            "value": "event.Training",
+            "label": {
+                "en": "Training"
+            }
+        },
+        {
+            "value": "event.Seminar",
+            "label": {
+                "en": "Seminar"
+            }
+        },
+        {
+            "value": "event.Training (online)",
+            "label": {
+                "en": "Training (online)"
+            }
+        },
+        {
+            "value": "event.Workshop",
+            "label": {
+                "en": "Workshop"
+            }
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Join CTA banner",
+        "fr": "Join CTA banner"
+    },
+    "description": {
+        "en": "Join CTA banner",
+        "fr": "Join CTA banner"
+    },
+    "template": "containers/global/join-cta/join-cta.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "trailer--normal",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "colour_theme": {
+                    "value": "",
+                    "control": "project/colour_theme"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "content": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Sowing innovation, harvesting prosperity",
+                        "fr": ""
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "body": {
+                    "value": {
+                        "en": "Proin ut vehicula sapien, vitae efficitur risus. In sodales massa ut ante semper cursus. Integer eget tortor dapibus, elementum purus vitae, accumsan dui. Curabitur euismod ac ipsum tempor feugiat non et massa. Duis non sapien at libero imperdiet elementum id eu quam.",
+                        "fr": ""
+                    },
+                    "label": {
+                        "en": "Body text"
+                    },
+                    "control": "core/textarea"
+                },
+                "label": {
+                    "value": {
+                        "en": "Join us in making our vision a reality",
+                        "fr": ""
+                    },
+                    "label": {
+                        "en": "Button label"
+                    },
+                    "control": "core/text"
+                },
+                "slug": {
+                    "value": {
+                        "en": "",
+                        "fr": ""
+                    },
+                    "label": {
+                      "en": "Slug"
+                    },
+                    "control": "core/text"
+                },
+                "show_icons": {
+                    "value": "true",
+                    "label": {
+                        "en": "Show illustrations"
+                    },
+                    "control": "core/list",
+                    "options": [{
+                            "value": "true",
+                            "label": {
+                                "en": "Yes"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "label": {
+                                "en": "No"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

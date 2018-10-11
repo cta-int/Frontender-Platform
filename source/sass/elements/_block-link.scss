@@ -1,0 +1,67 @@
+/*
+Block link
+
+.block-link - Block link
+.block-link.block-link--icon - Block link with preceding icon
+.block-link.block-link--inverse - Block link with inversed colours
+.block-link.block-link--theme - Block link with theme colour
+
+markup:
+<a class="{$modifiers}" href="javascript:void()">Visit the website</a>
+
+Styleguide 3.28
+*/
+
+
+.block-link {
+  @extend %meta-text;
+  @include title-12px;
+  display: inline-block;
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-body;
+  &:hover {
+    color: $black;
+  }
+  &--icon {
+    position: relative;
+    padding-left: gutter(1 / 2);
+    &:before {
+      content: $icon-chevron-right;
+      @extend .icon !optional;
+      @include theme-color();
+      position: absolute;
+      top: .3em;
+      left: -.3em;
+      font-size: .9em;
+    }
+  }
+  &--theme {
+    @include theme-color();
+  }
+  &--inverse,
+  &--inverse:visited {
+    .theme--blue &,
+    .theme--lime &,
+    .theme--yellow &,
+    .theme--gold &,
+    .theme--orange &,
+    .theme--salmon &,
+    .theme--red &,
+    .theme--burgundy &,
+    .theme--purple & {
+      color: $white;
+    }
+    color: $white;
+  }
+  &--inverse:hover {
+    color: $color-body;
+  }
+  @include breakpoint($gt-small-desktop) {
+    @include title-14px;
+  }
+  &.is-active {
+    @include theme-color();
+  }
+}

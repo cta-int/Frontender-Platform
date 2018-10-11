@@ -1,0 +1,80 @@
+/*
+Outline
+
+Note: Outline is only visible on mobile viewport
+
+.outline - Adds border system around 4 blocks on mobile viewport
+.outline.outline--inverse - Inverted colors
+.outline.outline--aside -  Adds additional borders to the side on desktop viewport
+
+markup:
+<div class="{$modifiers}  |  grid grid--posts">
+	<div class="grid__cell  |  outline__border">
+		<div class="outline__side  |  trailer trailer-inside | leader leader-inside">
+			Block 1
+		</div>
+	</div>
+	<div class="grid__cell  |  outline__border">
+		<div class="outline__side  |  trailer trailer-inside | leader leader-inside">
+			Block 2
+		</div>
+	</div>
+	<div class="grid__cell  |  outline__border">
+		<div class="outline__side  |  trailer trailer-inside | leader leader-inside">
+			Block 3
+		</div>
+	</div>
+	<div class="grid__cell  |  outline__border">
+		<div class="outline__side  |  trailer trailer-inside | leader leader-inside">
+			Block 4
+		</div>
+	</div>
+</div>
+
+Styleguide 3.35
+*/
+
+.outline  {
+	@include breakpoint($lt-large-handheld) {
+		&__border {
+			padding: rhythm(5) 0;
+			&:nth-last-child(-n+2) {
+				border-top: 1px solid mix($color-body, $white, 26%);
+				border-top: 1px solid rgba($color-theme, .26);
+			}
+			&:nth-child(odd) {
+				.outline__side {
+					border-right: 1px solid mix($color-body, $white, 26%);
+					border-right: 1px solid rgba($color-theme, .26);
+				}
+			}
+		}
+		.outline__border:nth-child(odd) .outline__border,
+		.outline__border:nth-last-child(-n+2),
+		.outline__side:nth-child(odd) {
+			@include theme-border(26%);
+		}
+		&--inverse {
+			.outline__border:nth-last-child(-n+2),
+			.outline__border:nth-child(odd) .outline__side,
+			.outline__border:nth-child(odd) .outline__border,
+			.outline__side:nth-child(odd) {
+				border-color: rgba($white, .8);
+			}
+		}
+	}
+	@include breakpoint($gt-large-handheld) {
+		&--aside {
+			.outline__border {
+					.outline__side {
+						border-right: 1px solid rgba($white, .8);
+					}
+				&:last-child {
+					.outline__side {
+						border-right: 0;
+					}
+				}
+			}
+		}
+	}
+}

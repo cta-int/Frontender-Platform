@@ -1,0 +1,5 @@
+{% if slogan.brand %}
+    {% include 'partials/slogan/' ~ slogan.brand %}
+{% elseif slogan.image %}
+    {% include 'partials/slogan/' ~ slogan.image %}
+{% endif %}

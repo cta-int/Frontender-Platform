@@ -1,0 +1,22 @@
+jQuery(function($) {
+    $('[data-search-attributes]').find('select,input').each(function() {
+        var $this = $(this),
+            name = $this.attr('name'),
+            tag = $this.prop("tagName").toLowerCase();
+
+        if(name && ['select', 'input'].indexOf(tag) > -1) {
+            // Bind on the change event.
+            $(tag + '[name=' + name + ']').on('change', function(event) {
+                var value = $(this).val();
+
+                // Sync across the page.
+                $('[name=' + name + ']').each(function() {
+                    $(this).val(value);
+
+                    // DON'T TRIGGER A CHANGE HERE.
+                    // this will cause an infinite loop.
+                })
+            });
+        }
+    });
+});

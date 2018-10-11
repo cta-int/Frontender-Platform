@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "JSON"
+    },
+    "type": "json",
+    "control": "core/abstract"
+}

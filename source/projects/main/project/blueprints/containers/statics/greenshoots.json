@@ -1,0 +1,234 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Greenshoots",
+        "fr": "Greenshoots"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "containers/global/greenshoots/greenshoots.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en": "Labels",
+                "fr": "Labels"
+            },
+            "controls": {
+                "container_title": {
+                    "label": {
+                        "en": "Container Title",
+                        "fr": "Container Title"
+                    },
+                    "value": {
+                        "en": "Green shoots for the future",
+                        "fr": "Des pousses vertes pour le futur"
+                    },
+                    "control": "core/text"
+                },
+                "title": {
+                    "label": {
+                        "en": "Title",
+                        "fr": "Title"
+                    },
+                    "value": {
+                        "en": "Agribusiness is key to tackling poverty in Africa, the Caribbean and the Pacific (ACP)",
+                        "fr": "Agribusiness is key to tackling poverty in Africa, the Caribbean and the Pacific (ACP)"
+                    },
+                    "control": "core/text"
+                },
+                "subtitle": {
+                    "label": {
+                        "en": "Sub title",
+                        "fr": "Sub title"
+                    },
+                    "value": {
+                        "en": "Source: CTA Infographic 'The Business of Growing', 29 February 2016",
+                        "fr": "Source: CTA Infographic 'The Business of Growing', 29 February 2016"
+                    },
+                    "control": "core/text"
+                }
+
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "colour_theme": {
+                    "value": "green",
+                    "control": "project/colour_theme"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Greenshoot 1",
+                    "fr": "Greenshoot 1"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels",
+                            "fr": "Labels"
+                        },
+                        "controls": {
+                            "number": {
+                                "label": {
+                                    "en": "Figure",
+                                    "fr": "Figure"
+                                },
+                                "value": "260%",
+                                "control": "core/text"
+                            },
+                            "text": {
+                                "label": {
+                                    "en": "Caption",
+                                    "fr": "Caption"
+                                },
+                                "value": {
+                                    "en": "260% required increase in crop production by 2050 to feed Africa’s projected population growth.",
+                                    "fr": "260% required increase in crop production by 2050 to feed Africa’s projected population growth."
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Greenshoot 2",
+                    "fr": "Greenshoot 2"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels",
+                            "fr": "Labels"
+                        },
+                        "controls": {
+                            "number": {
+                                "label": {
+                                    "en": "Figure",
+                                    "fr": "Figure"
+                                },
+                                "value": "40%",
+                                "control": "core/text"
+                            },
+                            "text": {
+                                "label": {
+                                    "en": "Caption",
+                                    "fr": "Caption"
+                                },
+                                "value": {
+                                    "en": "Post-harvest losses in ACP countries amount up to 40% of harvests.",
+                                    "fr": "Post-harvest losses in ACP countries amount up to 40% of harvests."
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Greenshoot 3",
+                    "fr": "Greenshoot 3"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels",
+                            "fr": "Labels"
+                        },
+                        "controls": {
+                            "number": {
+                                "label": {
+                                    "en": "Figure",
+                                    "fr": "Figure"
+                                },
+                                "value": "1%",
+                                "control": "core/text"
+                            },
+                            "text": {
+                                "label": {
+                                    "en": "Caption",
+                                    "fr": "Caption"
+                                },
+                                "value": {
+                                    "en": "A 1% growth in agriculture pulls 0.41% of the population out of poverty, according to the International Monetary Fund (IMF)",
+                                    "fr": "A 1% growth in agriculture pulls 0.41% of the population out of poverty, according to the International Monetary Fund (IMF)"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Greenshoot 4",
+                    "fr": "Greenshoot 4"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels",
+                            "fr": "Labels"
+                        },
+                        "controls": {
+                            "number": {
+                                "label": {
+                                    "en": "Figure",
+                                    "fr": "Figure"
+                                },
+                                "value": "78%",
+                                "control": "core/text"
+                            },
+                            "text": {
+                                "label": {
+                                    "en": "Caption",
+                                    "fr": "Caption"
+                                },
+                                "value": {
+                                    "en": "Only 20% of trade in SSA is intra-regional, compared with 78% in the EU and 60% in Asia.",
+                                    "fr": "Only 20% of trade in SSA is intra-regional, compared with 78% in the EU and 60% in Asia."
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,99 @@
+/*
+Posting Issue - Issue Row
+
+ICT Update has a slightly different markup than a regular row posting to accommodate the posting top border.
+
+markup:
+<article class="grid__cell  |  leader-small  |  gutters">
+    <div class="media  |  post">
+        <div class="media__body  |  gutter">
+            <span class="meta">
+                in <a href="/en/ictupdate">ICTUpdate</a>
+            </span>
+            <h3 class="title  |  anchor--reset">
+    		    <a class="anchor anchor--shy  |  is-heir" href="/en/ictupdate/issue-85/article/meet-the-apps4ag-database-sid080bc222e-80b1-4293-bd9d-75b2ea6c8615">Meet the Apps4Ag database</a>
+  	    </h3>
+            <p class="post__intro">The Apps4Ag database is developed by CTA and is an online collection of over 500 applications, which provides new ways to find and discover worldwide ICT innovations for agriculture. How can you make the most of this database on www.apps4ag.org?</p>
+            <a class="read-more" href="/en/ictupdate/issue-85/article/meet-the-apps4ag-database-sid080bc222e-80b1-4293-bd9d-75b2ea6c8615">Read More</a>
+        </div>
+        <div class="media__figure  |  trailer--tiny">
+            <a class="anchor anchor--shy" href="/en/article/meet-the-apps4ag-database-sid080bc222e-80b1-4293-bd9d-75b2ea6c8615">
+                <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/u2fo3006emubr5atfa9u" srcset="http://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/u2fo3006emubr5atfa9u 500w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/u2fo3006emubr5atfa9u 320w,http://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/u2fo3006emubr5atfa9u 240w,http://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/u2fo3006emubr5atfa9u 160w" sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw" width="160" height="240" alt="">
+            </a>
+        </div>
+    </div>
+</article>
+
+Styleguide 4.50.2
+*/
+
+// scss-lint:disable NestingDepth
+.posting {
+  &__image,
+  &__content {
+    .posting--row.posting--issue & {
+      // margin-top: rhythm(10);
+      padding-top: rhythm();
+      border-top: 1px solid $color-theme;
+      .theme--blue & {
+        border-color: $color-blue;
+      }
+      .theme--lime & {
+        border-color: $color-lime;
+      }
+      .theme--yellow & {
+        border-color: $color-yellow;
+      }
+      .theme--gold & {
+        border-color: $color-gold;
+      }
+      .theme--orange & {
+        border-color: $color-orange;
+      }
+      .theme--salmon & {
+        border-color: $color-salmon;
+      }
+      .theme--red & {
+        border-color: $color-red;
+      }
+      .theme--burgundy & {
+        border-color: $color-burgundy;
+      }
+      .theme--purple & {
+        border-color: $color-purple;
+      }
+      .issue-label {
+        float: right;
+        position: relative;
+        top: rhythm(-1);
+        &,
+        &:after {
+          margin-left: rhythm(5);
+        }
+      }
+    }
+    // &.gutters {
+    //   padding-right: gutter(1);
+    //   padding-left: 0;
+    // }
+  }
+  &.posting--row.posting--issue {
+    .issue-label {
+      position: relative;
+      top: rhythm(-1);
+      white-space: nowrap;
+    }
+  }
+  .media__stretcher + .media__stretcher {
+    display: none;
+  }
+}
+
+@include breakpoint($gt-medium-desktop) {
+  .posting {
+    .media__stretcher + .media__stretcher {
+      display: block;
+    }
+  }
+}
+// scss-lint:enable NestingDepth

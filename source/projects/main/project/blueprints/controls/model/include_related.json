@@ -1,0 +1,7 @@
+{
+    "value": "true",
+    "label": {
+        "en": "Include related content"
+    },
+    "control": "core/boolean"
+}

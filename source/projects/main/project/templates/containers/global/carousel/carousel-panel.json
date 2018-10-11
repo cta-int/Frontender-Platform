@@ -1,0 +1,115 @@
+{
+	"model": {
+		"label": {
+			"en": "Background image"
+		},
+		"controls": {
+			"name": {
+				"label": {
+					"en": "Resource Model",
+					"fr": "Resource Model"
+				},
+				"type": "text",
+				"value": "media"
+			},
+			"id": {
+				"hidden": "0",
+				"access": "all",
+				"label": {
+					"en": "Resource ID",
+					"fr": "Resource ID"
+				},
+				"type": "text",
+				"value": "34b8b49c-8ed9-4973-b9a2-7028eaf332c0"
+			}
+		}
+	},
+	"links": {
+		"label": {
+			"en": "Links"
+		},
+		"controls": {
+			"section_link": {
+				"type": "text",
+				"value": {
+					"label": {
+						"en": "Read more",
+						"fr": "Read more"
+					},
+					"slug": {
+						"en": "agribusiness",
+						"fr": "agribusiness"
+					},
+					"path": {
+						"route": "list",
+						"page": "agribusiness"
+					}
+				}
+			},
+			"article_link": {
+				"type": "text",
+				"value": {
+					"label": {
+						"en": "",
+						"fr": ""
+					},
+					"slug": {
+						"en": "",
+						"fr": ""
+					},
+					"path": {
+						"route": "details",
+						"page": "article",
+						"id": "f6eeeae9-8053-4aca-975d-6df85a795343"
+					}
+				}
+			}
+		}
+	},
+	"labels": {
+		"label": {
+			"en": "Content",
+			"fr": "Content"
+		},
+		"controls": {
+			"title": {
+				"hidden": "0",
+				"access": "all",
+				"label": {
+					"en": "Headline",
+					"fr": "Headline"
+				},
+				"type": "text",
+				"value": {
+					"en": "Agribusiness",
+					"fr": "Agribusiness"
+				}
+			},
+			"body": {
+				"hidden": "0",
+				"access": "all",
+				"label": {
+					"en": "Body",
+					"fr": "Body"
+				},
+				"type": "text",
+				"value": {
+					"en": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people.",
+					"fr": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people."
+				}
+			}
+		}
+	},
+	"config": {
+		"label": {
+			"en": "Settings",
+			"fr": "Settings"
+		},
+		"controls": {
+			"colour_theme": {
+				"value": "theme theme--gold",
+				"blueprint": "project/controls/colour_theme"
+			}
+		}
+	}
+}

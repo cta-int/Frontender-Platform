@@ -1,0 +1,134 @@
+/*
+Triptych - Featured events
+
+markup:
+<section class="is-clear">
+<div class="triptych" style="background-image: url(http://images.unsplash.com/photo-1428542244207-0aaec316e609?dpr=1&fit=crop&w=1000&h=762&q=80)">
+  <sg-insert>4.11-1</sg-insert>
+</div>
+<div class="triptych" style="background-image: url(http://images.unsplash.com/photo-1428542244207-0aaec316e609?dpr=1&fit=crop&w=1000&h=762&q=80)">
+  <sg-insert>4.11-1</sg-insert>
+</div>
+<div class="triptych" style="background-image: url(http://images.unsplash.com/photo-1428542244207-0aaec316e609?dpr=1&fit=crop&w=1000&h=762&q=80)">
+  <sg-insert>4.11-1</sg-insert>
+</div>
+</section>
+
+Styleguide 5.6
+*/
+
+
+
+/*
+ * 1. Align top of date with title
+ */
+.triptych {
+  position: relative;
+  height: rhythm(130);
+  background: no-repeat center;
+  background-size: cover;
+  .teaser {
+    position: absolute;
+    left: 0;
+    right: gutter();
+    bottom: rhythm(10);
+    margin-top: rhythm(66);
+    //scss-lint:disable DuplicateProperty
+    background: $white;
+    background: rgba($white, .8);
+    //scss-lint:enable DuplicateProperty
+  }
+  &__date {
+    background: $color-theme;
+    padding-top: rhythm(2); /* 1 */
+  }
+  .title {
+    @include title-16px();
+    padding-top: rhythm(3);
+    margin-bottom: rhythm(2);
+  }
+  .pin-box__cell {
+    .no-flexbox & {
+      display: inline-block;
+      width: percentage(1 / 2);
+      float: left;
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    float: left;
+    width: percentage(6 / 12);
+    height: rhythm(120);
+    .teaser {
+      min-height: rhythm(55);
+      &:first-child {
+        min-height: 0;
+      }
+    }
+    &:first-child {
+      width: percentage(12 / 12);
+      .title {
+        @include title-18px();
+        padding-top: rhythm(6);
+      }
+    }
+    &:first-child &.teaser {
+      width: percentage(9 / 12);
+      bottom: rhythm(32);
+    }
+    .date {
+      padding-top: rhythm(3); /* 1 */
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    width: percentage(8 / 18);
+    height: rhythm(120);
+    .teaser {
+      min-height: 0;
+      width: percentage(7 / 8);
+    }
+    .title {
+      @include title-18px();
+      padding-top: rhythm(6);
+    }
+    &:first-child {
+      width: percentage(10 / 18);
+      height: rhythm(254);
+      height: rhythm(240);
+      .title {
+        @include title-24px();
+      }
+    }
+    &:first-child &.teaser {
+      width: percentage(8 / 10);
+    }
+    .pin-box__cell {
+      padding-top: rhythm(5);
+      padding-bottom: rhythm(5);
+    }
+    &:first-child .pin-box__cell {
+      padding-top: rhythm(10);
+      padding-bottom: rhythm(10);
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    .teaser {
+      margin: 0;
+      width: percentage(6 / 8);
+    }
+    .meta {
+      @include meta-12px();
+    }
+    .location {
+      @include regular-location();
+    }
+    .title {
+      @include title-24px();
+      padding-top: rhythm(6);
+    }
+    &:first-child {
+      .title {
+        @include title-30px();
+      }
+    }
+  }
+}

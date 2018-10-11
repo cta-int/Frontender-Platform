@@ -1,0 +1,11 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if content.container_title|t(locales) %}
+        <h2 class="container-header__title  |  title title--container  |  gutters  |  trailer">
+            {{ content.container_title|t(locales) }}
+        </h2>
+    {% endif %}
+    <iframe class="{{ config.embed_class }} gutters-outside" src="{{ content.embed_url }}"></iframe>
+</{{ config.container_tag|default('div') }}>

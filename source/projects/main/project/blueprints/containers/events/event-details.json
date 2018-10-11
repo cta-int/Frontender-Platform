@@ -1,0 +1,155 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Single event details"
+    },
+    "description": {
+        "en": "Single event headline and body"
+    },
+    "template": "containers/global/group/group.html.twig",
+    
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "article",
+                    "control": "core/hidden"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Event headline"
+                },
+                "description": {
+                    "en": "Event headline"
+                },
+                "template": "containers/events/headline/headline.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Resource"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "{id}",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "includeRelated": {
+                                "value": "true",
+                                "control": "project/model/include_related"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Event body"
+                },
+                "description": {
+                    "en": "Event body"
+                },
+                "template": "containers/events/body/body.html.twig",
+                "template_config": {
+                    "tab_config": {
+                        "label": {
+                            "en": "Tab settings"
+                        },
+                        "controls": {
+                            "selector": {
+                                "label": {
+                                  "en": "Selector"
+                                },
+                                "value": ".panel-group",
+                                "control": "core/text"
+                            },
+                            "children": {
+                                "label": {
+                                  "en": "Children"
+                                },
+                                "value": ".panel",
+                                "control": "core/text"
+                            },
+                            "attribute": {
+                                "label": {
+                                  "en": "Attribute"
+                                },
+                                "value": "href",
+                                "control": "core/text"
+                            },
+                            "allow_multiple": {
+                                "label": {
+                                  "en": "Allow multiple"
+                                },
+                                "value": 0,
+                                "control": "core/boolean"
+                            },
+                            "open_first": {
+                                "label": {
+                                  "en": "Open first"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "scroll_to": {
+                                "label": {
+                                  "en": "Scroll to"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Resource"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "{id}",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "includeRelated": {
+                                "value": "true",
+                                "control": "project/model/include_related"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

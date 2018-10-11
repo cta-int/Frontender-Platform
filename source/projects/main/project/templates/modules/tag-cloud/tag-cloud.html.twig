@@ -1,0 +1,16 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div{{ helper.class_attribute(config, 'topics')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    {% if labels.container_title %}
+        <h3 class="title title--lead trailer  |  gutters">{{ labels.container_title|t(locales) }}</h3>
+    {% endif %}
+    <ul class="label-list reset list--inline  |  gutters">
+        {% for loopContainer in containers %}
+            <li>
+                {{ concept.label(loopContainer.term, locale) }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

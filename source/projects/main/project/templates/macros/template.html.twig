@@ -1,0 +1,34 @@
+{# Process any class variables from the config and return a single class string #}
+{% macro class_string(config) %}
+    {{ [
+        config.crown ? config.crown,
+        config.body_class ? config.body_class,
+        config.container_class ? config.container_class,
+        config.divider ? config.divider,
+        config.wings ? config.wings,
+        config.leader ? config.leader,
+        config.leader_inside ? config.leader_inside,
+        config.trailer ? config.trailer,
+        config.trailer_inside ? config.trailer_inside,
+        config.colour_theme ? config.colour_theme,
+        config.colour_background ? config.colour_background
+    ]|join(' ')|trim }}
+{% endmacro %}
+
+{# Process any class variables from the config and return class attribute #}
+{% macro class_attribute(config, class) %}
+    {% import _self as helper %}
+    {% set class = [helper.class_string(config)|trim, class|trim]|join(' ')|trim %}
+    {% if class %} class="{{ class }}"{% endif %}
+{% endmacro %}
+
+{# Alias for class_string, for backward compatibility #}
+{% macro class(config) %}
+    {% import _self as helper %}
+    {{ helper.class_string(config) }}
+{% endmacro %}
+
+{# Build container id attribute #}
+{% macro container_id_attribute(value, namespace) %}
+    {% if value %} data-{{namespace}}="{{ value|raw }}"{% endif %}
+{% endmacro %}

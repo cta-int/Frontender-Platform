@@ -1,0 +1,39 @@
+// Copyright (C) 2016 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+// @import "../piecss/utilities";
+@import "../../node_modules/piecss/sass/piecss/utilities";
+@import "utilities";
+
+@import "../../node_modules/piecss/sass/piecss/settings";
+@import "base/settings";
+
+/* 1. */
+@import "base";
+
+html body {
+  color: $color-body;
+}
+
+/* 2. */
+@import "elements";
+
+/* 3. */
+@import "layout";
+
+/* 4. */
+@import "blocks";
+
+/* 5. */
+@import "modules";
+
+/* 8. */
+@import "trumps";
+
+.tmp-publication {
+	@include breakpoint($gt-small-desktop) {
+		padding-right: gutter(1);
+		.media__content .media__figure {
+			width: 20%;
+		}
+	}
+}

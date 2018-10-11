@@ -1,0 +1,47 @@
+{
+    "value": "",
+    "label": {
+        "en": "Top margin"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": "",
+            "label": {
+                "en": "None"
+            }
+        },
+        {
+            "value": "leader--tiny",
+            "label": {
+                "en": "Tiny"
+            }
+        },
+        {
+            "value": "leader--small",
+            "label": {
+                "en": "Small"
+            }
+        },
+        {
+            "value": "leader",
+            "label": {
+                "en": "Default"
+            }
+        },
+        {
+            "value": "leader--hero",
+            "label": {
+                "en": "Hero"
+            }
+        },
+        {
+            "value": "leader--giant",
+            "label": {
+                "en": "Giant"
+            }
+        }
+    ]
+}

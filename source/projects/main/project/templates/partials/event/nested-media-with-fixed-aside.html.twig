@@ -1,0 +1,44 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article class="{{['media  |  trailer',class]|join('  |  ')}}">
+    <div class="media__figure  |  gutters gutter-mobile--right">
+        {{ date.tile(model.startDate) }}
+    </div>
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters  |  trailer">
+                <a class="anchor--reset anchor--shy  |  stack" href="{{ route({page: 'event', slug: model.name|t(locales)|slugify , id: model._id}) }}">
+                    <h2 class="title title--tile">{{ model.name }}</h2>
+                </a>
+                <div class="leader--small">
+                    {{ date.event_long(model.startDate, model.endDate) }}
+                </div>
+                <div class="body--whisper  |  leader--small">
+                    {% if highlight %}
+                        {{ model.description|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
+                    {% else %}
+                        {{ model.description|truncate(length|default(400))|raw }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="media__figure  media__aside  |  wings  |  trailer">
+                <div class="gutters">
+                    {% if model.location %}
+                        {% include "partials/location.html.twig" with {"location": model.location} %}
+                    {% endif %}
+                    <div class="leader">
+                        <ul class="reset label-list reset list--inline">
+                            {% if model.analysis.agrovoc.concepts | length > 1 %}
+                                {% for label in model.analysis.agrovoc.concepts | slice(0, 3) %}
+                                    <li>{{ concept.label(label, locale) }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

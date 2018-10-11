@@ -1,0 +1,7 @@
+{
+    "value": "true",
+    "label": {
+        "en": "Add analysis data"
+    },
+    "control": "core/boolean"
+}

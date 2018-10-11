@@ -1,0 +1,125 @@
+/*
+Contact form
+
+markup:
+<div class="layout layout--reverse">
+    <div class="layout__cell layout__cell--main  |  wing--right">
+        <div class="wing--right  |  trailer">
+            <h2 class="title title--section  |  gutters">How can we help?</h2>
+            <p class="gutters  |  title--apropos  |  trailer">We are here to answer any questions you may have about our organisation. Reach out to us and we'll respond as soon as we can.</p>
+            <form class="contact-form">
+                <div class="layout layout--even">
+                    <div class="layout__cell  |  gutters">
+                        <label class="fld-label  |  leader">Name<span class="contact--required">*</span></label>
+                        <input class="fld">
+                        <label class="fld-label  |  leader">E-mail address<span class="contact--required">*</span></label>
+                        <input class="fld">
+                    </div>
+                    <div class="layout__cell  |  gutters">
+                        <label class="fld-label  |  leader">Surname<span class="contact--required">*</span></label>
+                        <input class="fld">
+                        <label class="fld-label  |  leader">Phone</label>
+                        <input class="fld">
+                    </div>
+                </div>
+                <div class="gutters">
+                    <label class="fld-label  |  leader">Subject<span class="contact--required">*</span></label>
+                    <input placeholder="General enquiries" class="fld">
+                    <label class="fld-label  |  leader">Your message<span class="contact--required">*</span></label>
+                    <textarea class="fld" rows="4"></textarea>
+                </div>
+                <div class="layout layout--even  |  leader">
+                    <div class="layout__cell  |  gutters  |  trailer">
+                        <label><input class="fld-checkbox" name="Field10" type="checkbox" value="Yes, I would like to receive the CTA newsletter on a regular basis"><span class="fld-radio  |  title--apropos">Yes, I would like to receive the CTA newsletter on a regular basis.</span></label>
+                        <label><input class="fld-checkbox" name="Field10" type="checkbox" value="I'm interested in other CTA publications."><span class="fld-radio  |  title--apropos">I'm interested in other CTA publications.</span></label>
+                    </div>
+                    <div class="layout__cell  |  gutters  |  caption--right">
+                        <button class="button button--wide">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside |  wings">
+        <div class="gutters">
+            <h2 class="title title--apropos  |  trailer--small">Do you want to send a paper copy?</h2>
+            <div class="title--apropos">
+                <address class="leader--small">
+              			CTA<br>
+              			PO Box 380<br>
+              			6700 AJ Wageningen<br>
+              			The Netherlands<br>
+            		</address>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 3.53
+*/
+
+.contact {
+	&__address {
+		background: $color-theme;
+		color: $white;
+		.meta {
+			opacity: 1;
+			text-transform: capitalize;
+		}
+		& + & {
+			margin-bottom: 0;
+		}
+	}
+	&-form {
+		.leader {
+			margin-top: rhythm(15);
+		}
+		.fld {
+			font-size: to-unit(12px);
+			&:hover,
+			&:active,
+			&:focus {
+				background: none;
+			}
+		}
+	}
+	&--required {
+		color: $color-theme;
+		padding-left: rhythm();
+	}
+	@include breakpoint($lt-small-desktop) {
+		&--column {
+			width: 100%;
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		padding-left: 2 / 18 * 100vw;
+		padding-right: 1 / 18 * 100vw;
+		&--column {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+		}
+		&__address {
+			width: 3 / 18 * 100vw;
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		&__address {
+			width: 3 / 18 * 100vw;
+			padding-left: rhythm(5);
+			padding-right: rhythm(5);
+		}
+	}
+	.layout--even {
+		flex-wrap: wrap;
+		.no-flexbox & {
+			display: inline-block;
+			.layout__cell {
+				display: inline-block;
+				float: left;
+			}
+		}
+	}
+}

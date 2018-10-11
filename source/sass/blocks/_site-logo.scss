@@ -1,0 +1,26 @@
+/*
+Site logo
+
+A stand alone site logo
+
+markup:
+<div class="site-logo wings">
+  <a class="site-logo__brand--cta gutters" href="javascript:void();">
+    <figure class="brand--cta"><figcaption class="is-narrative">CTA Homepage</figcaption></figure>
+  </a>
+</div>
+
+Styleguide 4.32
+*/
+
+.site-logo {
+  display: flex;
+  &__brand--cta {
+    position: relative;
+    margin-left: gutter() + 3px; /* Make sure leaf does not fall off the page */
+    z-index: 1;
+    .no-flexbox & {
+      float: left;
+    }
+  }
+}

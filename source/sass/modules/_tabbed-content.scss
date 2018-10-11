@@ -1,0 +1,368 @@
+/*
+Tabbed content event overview
+
+markup:
+<div class="layout  |  leader--hero  |  trailer--hero">
+	 <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+			<nav class="tabbed__navigation  |  is-gt-small-desktop  |  gutters  |  trailer">
+				 <ul class="reset">
+						<li>
+							 <a class="block-link  |  title" href="#overview">Event Overview</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#speakers">Speakers</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#attendees">Attendees</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#organisers">Organisers</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#sponsors">Sponsors</a>
+						</li>
+				 </ul>
+			</nav>
+			<div class="gutters">
+				<a class="button button--wide  |  gutters" href="javascript:void();">Register now</a>
+			</div>
+	 </div>
+	 <div class="panel-group  |  layout__cell layout__cell--aside">
+		 <section class="is-active  |  panel  |  layout  |  event-body" id="overview">
+			 <div class="layout__cell  |  gutters">
+				 <div class="social__share  |  trailer">
+					 <ul class="share-list share-list--whisper reset list--float">
+						<li class="divider  divider--left">
+							 <a class="label share share--whisper share--facebook" title="Share on Facebook" href="javascript:void();"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--whisper share--twitter" title="Share on Twitter" href="javascript:void();"><span data-icon="twitter"><span><span class="is-narrative">Share on Twitter</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--whisper share--print" title="Print" href="javascript:void();"><span data-icon="print"><span><span class="is-narrative">Print</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--whisper share--email" title="Send link via E-mail" href="javascript:void();"><span data-icon="email"><span><span class="is-narrative">Send link via E-mail</span></span></span></a>
+						</li>
+					</ul>
+				</div>
+				<h2 class="panel__trigger  |  title  |  trailer">Event Overview</h2>
+				<p class="paragraph--lead"><span>From 5 to 7 October 2016, His Excellency, Mr. Hailemariam Desalegn, the Prime Minister of Ethiopia is hosting the first International Agro-Industry Investment Forum in Addis Ababa. The event is co-organized by the Government of Ethiopia and UNIDO. The high-level investment forum will feature participants from the public and private sector, including representatives of the Ethiopian Government, international investors, international financial institutions, domestic enterprises, international organizations and industry associations.</span><br></p>
+				<h2 class="panel__trigger  |  title  |  trailer">Investment Promotion Roadshows</h2>
+				<p><span>Government of Ethiopia officials are conducting roadshows to select countries in Asia, Europe and the Middle East in preparation for the first International Agro-Industry Investment Forum. Co-organized by UNIDO, the roadshows aim to promote specific investment opportunities in Ethiopia’s agro-industries and allied sectors, including the Integrated Agro-Industrial Parks initiative, a key component of UNIDO's PCP for Ethiopia.<br><br>
+The roadshows are tailored to each country and feature workshops, roundtables or bilateral meetings depending on country-specific needs.</span><br></p>
+				<div class="trailer--normal  |  leader">
+					<ul class="reset  |  tag-list  |  list--inline">
+						 <li>
+								<a class="tag" href="http://aims.fao.org/aos/agrovoc/c_7848">Trade</a>
+						 </li>
+						 <li>
+								<a class="tag" href="http://aims.fao.org/aos/agrovoc/c_870">Belgium</a>
+						 </li>
+						 <li>
+								<a class="tag" href="http://aims.fao.org/aos/agrovoc/c_49916">European Commission</a>
+						 </li>
+					 </ul>
+				 </div>
+				 <div class="social__share  |  trailer">
+				 <ul class="share-list reset list--float">
+						<li class="divider  divider--left">
+							 <a class="label share share--facebook" title="Share on Facebook" href="javascript:void();"><span data-icon="facebook"><span><span class="is-narrative">Share on Facebook</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--twitter" title="Share on Twitter" href="javascript:void();"><span data-icon="twitter"><span><span class="is-narrative">Share on Twitter</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--print" title="Print" href="javascript:void();"><span data-icon="print"><span><span class="is-narrative">Print</span></span></span></a>
+						</li>
+						<li class="divider  divider--left">
+							 <a class="label share share--email" title="Send link via E-mail" href="javascript:void();"><span data-icon="email"><span><span class="is-narrative">Send link via E-mail</span></span></span></a>
+						</li>
+				 </ul>
+			 </div>
+		 </div>
+		 <div class="layout__cell--aside  |  wings">
+				<aside>
+					<sg-insert>4.20</sg-insert>
+					<div class="organisers  |  leader">
+						<h3 class="title trailer--normal">Organisers</h3>
+						<div class="grid grid--organisers">
+							<div class="grid__cell  |  gutters  |  trailer">
+								<div class="sponsor__image" style="background-image: url(http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png);background-repeat: no-repeat;
+								background-size: contain;background-position: center center">
+								</div>
+							</div>
+							<div class="grid__cell  grid--organisers  |  gutters  |  trailer">
+								<div class="sponsor__image" style="background-image: url(http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png);background-repeat: no-repeat;
+								background-size: contain;background-position: center center">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="trailer--hero">
+						<h3 class="title trailer--normal">External links</h3>
+						<ul class="reset">
+							<li class="trailer--normal"><a href="javascript:void();">Alliance for a Green Revolution in Africa (AGRA)</a></li>
+							<li class="trailer--normal"><a href="javascript:void();">Economic Community of West African States (ECOWAS)</a></li>
+							<li class="trailer--normal"><a href="javascript:void();">Alliance for a Green Revolution in Africa (AGRA)</a></li>
+						</ul>
+					</div>
+					<div class="trailer--hero">
+						<h3 class="title trailer--normal">Related projects</h3>
+						<ul class="reset">
+							<li class="trailer--normal"><a href="javascript:void();">MUISS Project</a></li>
+							<li class="trailer--normal"><a href="javascript:void();">Promoting the grain trade in West Africa</a></li>
+						</ul>
+					</div>
+				</aside>
+		 </div>
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="speakers">
+				 <h2 class="panel__trigger  |  title">Speakers</h2>
+				 Speakers
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="attendees">
+				 <h2 class="panel__trigger  |  title">Attendees</h2>
+				 Attendees
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="organisers">
+				 <h2 class="panel__trigger  |  title">Organisers</h2>
+				 Organisers
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="sponsors">
+				 <h2 class="panel__trigger  |  title">Sponsors</h2>
+				 Sponsors
+			</section>
+	 </div>
+</div>
+
+Styleguide 5.11
+*/
+
+.tabbed__navigation {
+	.block-link {
+		display: block;
+		padding: rhythm(2) 0;
+	}
+}
+
+.event-body {
+	p {
+		margin-bottom: rhythm(8);
+	}
+}
+
+/*
+Tabbed content speakers
+
+markup:
+<div class="layout  |  leader--hero  |  trailer--hero">
+	<div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+		<nav class="tabbed__navigation  |  is-gt-small-desktop  |  gutters  |  trailer">
+			<ul class="reset">
+				<li>
+					<a class="block-link  |  title" href="#overview">Event Overview</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#speakers">Speakers</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#attendees">Attendees</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#organisers">Organisers</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#sponsors">Sponsors</a>
+				</li>
+			</ul>
+		</nav>
+	<div class="gutters">
+		<a class="button button--wide  |  gutters" href="javascript:void();">Register now</a>
+	</div>
+	</div>
+	<div class="panel-group  |  layout__cell layout__cell--main">
+		<section class="is-active  |  panel  |  event-body" id="overview">
+			<sg-insert>4.25</sg-insert>
+			<sg-insert>4.25.1</sg-insert>
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="speakers">
+			<h2 class="panel__trigger  |  title">Speakers</h2>
+			Speakers
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="attendees">
+			<h2 class="panel__trigger  |  title">Attendees</h2>
+			Attendees
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="organisers">
+			<h2 class="panel__trigger  |  title">Organisers</h2>
+			Organisers
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="sponsors">
+			<h2 class="panel__trigger  |  title">Sponsors</h2>
+			Sponsors
+		</section>
+	</div>
+</div>
+
+Styleguide 5.11.1
+*/
+
+/*
+Tabbed content attendees
+
+markup:
+<div class="layout  |  leader--hero  |  trailer--hero">
+	 <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+			<nav class="tabbed__navigation  |  is-gt-small-desktop  |  gutters  |  trailer">
+				 <ul class="reset">
+						<li>
+							 <a class="block-link  |  title" href="#overview">Event Overview</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#speakers">Speakers</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#attendees">Attendees</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#organisers">Organisers</a>
+						</li>
+						<li>
+							 <a class="block-link  |  title" href="#sponsors">Sponsors</a>
+						</li>
+				 </ul>
+			</nav>
+			<div class="gutters">
+				<a class="button button--wide  |  gutters" href="javascript:void();">Register now</a>
+			</div>
+	 </div>
+	 <div class="panel-group  |  layout__cell layout__cell--main">
+		 <section class="is-active  |  panel" id="overview">
+			 	<sg-insert>4.24</sg-insert>
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="speakers">
+				 <h2 class="panel__trigger  |  title">Speakers</h2>
+				 Speakers
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="attendees">
+				 <h2 class="panel__trigger  |  title">Attendees</h2>
+				 Attendees
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="organisers">
+				 <h2 class="panel__trigger  |  title">Organisers</h2>
+				 Organisers
+			</section>
+			<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="sponsors">
+				 <h2 class="panel__trigger  |  title">Sponsors</h2>
+				 Sponsors
+			</section>
+	 </div>
+</div>
+
+Styleguide 5.11.2
+*/
+
+/*
+Tabbed content sponsors
+
+markup:
+<div class="layout  |  leader--hero  |  trailer--hero">
+	<div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+		<nav class="tabbed__navigation  |  is-gt-small-desktop  |  gutters  |  trailer">
+			<ul class="reset">
+				<li>
+					<a class="block-link  |  title" href="#overview">Event Overview</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#speakers">Speakers</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#attendees">Attendees</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#organisers">Organisers</a>
+				</li>
+				<li>
+					<a class="block-link  |  title" href="#sponsors">Sponsors</a>
+				</li>
+			</ul>
+		</nav>
+	<div class="gutters">
+		<a class="button button--wide  |  gutters" href="javascript:void();">Register now</a>
+	</div>
+	</div>
+	<div class="panel-group  |  layout__cell layout__cell--main">
+		<section class="is-active  |  panel  |  event-body" id="overview">
+			<div>
+				<h1 class="title  |  trailer  |  gutters">Sponsors</h1>
+				<div class="trellis  |  wing--right">
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+					<div class="trellis__cell  |  gutters  |  trailer">
+						<a href="javascript:void();">
+							<img class="image" src="http://www.loveknowsnobounds.org/wp-content/uploads/2014/04/May-2012-LKNB-Logo-1-e1396396316281.png" alt="" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="speakers">
+			<h2 class="panel__trigger  |  title">Speakers</h2>
+			Speakers
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="attendees">
+			<h2 class="panel__trigger  |  title">Attendees</h2>
+			Attendees
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="organisers">
+			<h2 class="panel__trigger  |  title">Organisers</h2>
+			Organisers
+		</section>
+		<section class="is-inactive  |  panel  |  wings--right  |  event-body" id="sponsors">
+			<h2 class="panel__trigger  |  title">Sponsors</h2>
+			Sponsors
+		</section>
+	</div>
+</div>
+
+Styleguide 5.11.3
+*/

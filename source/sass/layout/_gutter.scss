@@ -1,0 +1,71 @@
+/*
+Gutter
+
+.gutter - Full gutter-width to right side on all viewports
+.gutters - Half gutter-width to either side
+.gutter--left - Half gutter-width to left side
+.gutter--right - Half gutter-width to right side
+.gutter-outside - Full gutter-width to right side
+.gutters-outside - Half gutter-width to either side
+.gutter-outside--left - Half gutter-width to left side
+.gutter-outside--right - Half gutter-width to right side
+.gutters-hero - Full gutter-width to either side on larger
+.gutter-hero--left - Full gutter-width to left side
+.gutter-hero--right - Full gutter-width to right side
+
+
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.2
+*/
+
+.gutter {
+  padding-right: gutter(1);
+  &-outside {
+    margin-right: gutter(1);
+  }
+  &s,
+  &--left {
+    padding-left: gutter();
+  }
+  &s,
+  &--right {
+    padding-right: gutter();
+  }
+  &s-outside,
+  &-outside--left {
+    margin-left: gutter();
+  }
+  &s-outside,
+  &-outside--right {
+    margin-right: gutter();
+  }
+  @include breakpoint($lt-large-handheld) {
+    &-mobile--right {
+      padding-right: 0;
+    }
+    &-mobile--left {
+      padding-left: 0;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &s-hero,
+    &-hero--left {
+      padding-left: gutter(1);
+    }
+    &s-hero,
+    &-hero--right {
+      padding-right: gutter(1);
+    }
+    &s-hero-outside,
+    &-hero-outside--left {
+      margin-left: gutter(1);
+    }
+    &s-hero-outside,
+    &-hero-outside--right {
+      margin-right: gutter(1);
+    }
+  }
+}

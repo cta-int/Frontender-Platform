@@ -1,0 +1,43 @@
+{
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Advanced search",
+                    "fr": "Advanced search"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "buton": {
+                "value": {
+                    "en": "Search",
+                    "fr": "Search"
+                },
+                "label": {
+                    "en": "Placeholder"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_class": {
+                "value": "leader leader-inside  | trailer-inside--hero",
+                "control": "core/hidden"
+            }
+        }
+    },
+    "containers": [
+        "Load filter partials here"
+    ]
+}

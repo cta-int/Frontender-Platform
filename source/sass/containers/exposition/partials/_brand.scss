@@ -1,0 +1,20 @@
+.brand--cta {
+  @include cta-logo(rhythm(26), 3px);
+  position: fixed;
+  @include breakpoint($gt-small-desktop) {
+    @include cta-logo(rhythm(52));
+  }
+  @include breakpoint($lt-medium-desktop) {
+    margin-left: $gutter-width / 2;
+  }
+}
+
+.brand--extension {
+  height: rhythm(26);
+  position: relative;
+  top: rhythm(8);
+  @include breakpoint($gt-small-desktop) {
+    height: rhythm(52);
+    top: rhythm(16);
+  }
+}

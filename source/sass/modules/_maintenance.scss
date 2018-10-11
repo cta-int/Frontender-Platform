@@ -1,0 +1,112 @@
+/*
+Maintenance page
+
+markup:
+<div class="maintenance  |  is-root">
+	<div class="maintenance-overlay"></div>
+	<div class="maintenance--container">
+		<div class="is-root">
+			<figure class="brand--cta"><figcaption class="is-narrative">CTA Homepage</figcaption></figure>
+			<div class="wings  |  leader-inside--hero  |  trailer-inside">
+				<div class="body--align-center  |  gutters">
+					<h1 class="title title--section  |  trailer  |  leader">Our website is temporary offline.</h1>
+					<p class="leader-inside">We are working to make this world a better place. Get notified about our latest projects and activites by subscribing below.</p>
+				</div>
+				<fieldset class="leader trailer  |  gutters">
+	        <label class="fld-label title title--meta" for="firstname">firstname</label>
+	        <input class="fld" type="text" id="firstname" name="Field6">
+	        <label class="fld-label title title--meta" for="lastname">lastname</label>
+	        <input class="fld" type="text" id="lastname" name="Field7">
+	        <label class="fld-label title title--meta" for="email">e-mail address</label>
+	        <input class="fld" type="text" name="Field1" id="email">
+		    </fieldset>
+		    <div class="gutters">
+		    	<button class="button button--inverse button--stretch">Subscribe</button>
+		    </div>
+		    <div class="body--align-center">
+		    	<p class="site-footer__title  |  title">Follow us on</p>
+		    	<div class="trailer">
+						<a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTApage" target="_blank"><span class="icon icon--facebook"></span></a>
+						<a class="anchor--shy  |  is-heir" href="https://twitter.com/ctaflash" target="_blank"><span class="icon icon--twitter"></span></a>
+						<a class="anchor--shy  |  is-heir" href="javascript:void()"><span class="icon icon--rss"></span></a>
+					</div>
+		    </div>
+			</div>
+		</div>
+		<p class="maintenance--disclaimer  |  body--align-center">CTA is a joint institution operating under the framework of the Cotonou Agreement between the ACP Group of States (Africa, the Caribbean and the Pacific) and the EU Member States (European Union). CTA is funded by the European Union.</p>
+	</div>
+</div>
+
+Styleguide 5.24
+*/
+
+.maintenance {
+	width: 100%;
+	color: mix($white, $color-body, 84%);
+	font-family: $font-family--meta;
+	overflow: hidden; /* IE 11 */
+	&-overlay {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: $color-body;
+		opacity: .5
+	}
+	&-image {
+		height: 100%;
+		width: 100%;
+		color: mix($white, $color-body, 84%);
+		font-family: $font-family--meta;
+    overflow: hidden;
+	}
+	&--container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		width: 5 / 6 * 100vw;
+		margin: 0 auto;
+		@include breakpoint($gt-small-desktop) {
+			width: 8 /  12 * 100vw;
+		}
+		@include breakpoint($gt-medium-desktop) {
+			width: 6 / 18 * 100vw;
+		}
+		.is-root {
+			background: $color-body;
+		}
+	}
+	&--disclaimer {
+		font-size: to-unit(12px);
+		color: mix($white, $color-body, 85%);
+		margin-top: rhythm(5);
+		padding-left: percentage(1 / 9);
+		padding-right: percentage(1 / 9);
+	}
+	&--footer {
+		color: rgba(255,255,255,0.80);
+	}
+	.icon {
+		font-size: to-unit(21px);
+		padding: 0 rhythm(2);
+	}
+	.brand--cta {
+		position: absolute;
+		top: rhythm(14) * -1;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-left: 0;
+		margin-right: 0;
+		@include breakpoint($gt-small-desktop) {
+			top: rhythm(27) * -1;
+		}
+	}
+	.fld {
+		border-color: $white;
+		&:focus {
+			color: $color-body;
+		}
+	}
+}

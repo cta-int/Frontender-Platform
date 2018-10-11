@@ -1,0 +1,180 @@
+{
+    "fe-id": null,
+    "template": "containers/articles/impact-stories/impact-stories.html.twig",
+    "name": {
+        "en": "Impact stories"
+    },
+    "description": {
+        "en": "Impact stories - A quote and a short list of articles"
+    },
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "articles",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "6630063a-5f24-4ae4-b1d3-df78a1959a3e",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        },
+        "content": {
+            "label": {
+                "en": "Quote"
+            },
+            "controls": {
+                "quote": {
+                    "label": {
+                        "en": "Quote"
+                    },
+                    "value": {
+                      "en": "Agribusiness offers valuable opportunities to small island states as a path for improved livelihoods, job creation and economic growth, in particular for women.",
+                      "fr": "Agribusiness offers valuable opportunities to small island states as a path for improved livelihoods, job creation and economic growth, in particular for women."
+                    },
+                    "control": "core/textarea"
+                },
+                "quote_source": {
+                    "label": {
+                        "en": "Quote source"
+                    },
+                    "value": {
+                      "en": "Mereia Volavola, CEO PIPSO",
+                      "fr": "Mereia Volavola, CEO PIPSO"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "template": "partials/article/post.html.twig",
+                "name": {
+                    "en": "Article snippet"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "bf5097f2-2796-49c9-a51e-68a03773ebdf",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "partials/article/post.html.twig",
+                "name": {
+                    "en": "Article snippet"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "bf5097f2-2796-49c9-a51e-68a03773ebdf",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "partials/article/post.html.twig",
+                "name": {
+                    "en": "Article snippet"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "articles",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "bf5097f2-2796-49c9-a51e-68a03773ebdf",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Featured events",
+        "fr": "Featured events"
+    },
+    "description": {
+        "en": "Triptych of three featured events",
+        "fr": "Triptych of three featured events"
+    },
+    "template": "containers/global/triptych/triptych.html.twig",
+    "template_config": {
+        "container_class": "",
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "First panel",
+                    "fr": "First panel"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/triptych-panel-event/triptych-panel-event.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Channel content type",
+                                    "fr": "Channel content type"
+                                },
+                                "type": "text",
+                                "value": "events",
+                                "control":"project/model/name"
+                            },
+                            "id": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Event id",
+                                    "fr": "Event id"
+                                },
+                                "type": "lookup",
+                                "value": "fb195dd5-cf79-4ae7-867c-cc03498c5660"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Second panel",
+                    "fr": "Second panel"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/triptych-panel-event/triptych-panel-event.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Channel content type",
+                                    "fr": "Channel content type"
+                                },
+                                "type": "text",
+                                "value": "events",
+                                "control":"project/model/name"
+                            },
+                            "id": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Event id",
+                                    "fr": "Event id"
+                                },
+                                "type": "lookup",
+                                "value": "fb195dd5-cf79-4ae7-867c-cc03498c5660"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Third panel",
+                    "fr": "Third panel"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/triptych-panel-event/triptych-panel-event.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Channel content type",
+                                    "fr": "Channel content type"
+                                },
+                                "type": "text",
+                                "value": "events",
+                                "control":"project/model/name"
+                            },
+                            "id": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Event id",
+                                    "fr": "Event id"
+                                },
+                                "type": "lookup",
+                                "value": "fb195dd5-cf79-4ae7-867c-cc03498c5660"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,16 @@
+/*
+Debug
+
+Styleguide 2.12
+*/
+
+// $debug-grid-selector: "html";
+
+@import "../../node_modules/piecss/sass/piecss/behavior/debug/mixins";
+@import "../../node_modules/piecss/sass/piecss/behavior/debug/settings";
+@import "../../node_modules/piecss/sass/piecss/behavior/debug/behavior";
+
+
+.debug-grid::before, .debug-layout::before, .section-markup-wrapper::before {
+  position: fixed;
+}

@@ -1,0 +1,92 @@
+/*
+Wing
+
+A single-column whitespace (left, right, or both).
+Wings may only be applied to the sidebar. Don't apply the wings to the layout
+parent container, as this will distort the layout.
+
+
+.wings - Left and right column padding
+.wing--left - Left column padding
+.wing--right - Right column padding
+
+markup:
+<div class="{$modifiers}">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra
+  pellentesque ligula ut feugiat. Nullam elit libero, rutrum eu odio sed, tempus
+  iaculis lectus. Phasellus felis ex, malesuada vitae libero ac, auctor finibus
+  sapien. Sed odio enim, molestie eu pretium sit amet, commodo ut enim. Praesent
+  eget mi eget enim hendrerit interdum. Ut sit amet orci libero. Vestibulum et
+  leo pretium, semper nisl non, aliquam arcu. Pellentesque malesuada eros a elit
+  imperdiet, sed tempor enim malesuada. Praesent accumsan malesuada eros, in
+  sodales tortor sagittis at. Duis sollicitudin, est sed lobortis semper, felis
+  est hendrerit massa, a tincidunt nulla risus in lectus. Praesent eleifend
+  vestibulum nunc sed mollis. Ut dapibus nisi turpis, id lobortis justo
+  scelerisque vitae. Morbi vel augue in ipsum dignissim aliquet. Vestibulum
+  justo est, venenatis ut massa eu, dignissim vulputate lorem. Morbi porta est
+  quis erat vulputate tristique.
+</div>
+
+Styleguide 2.3
+*/
+
+.wing {
+
+  &s,
+  &--left {
+  }
+
+  &s,
+  &--right {
+  }
+
+  @include breakpoint($gt-medium-desktop) {
+    &s,
+    &--left {
+      padding-left: 1439 / 18 * 1px;
+      padding-left: 1 / 18 * 100vw;
+    }
+    &s,
+    &--right {
+      padding-right: 1439 / 18 * 1px;
+      padding-right: 1 / 18 * 100vw;
+    }
+  }
+  @include breakpoint($gt-large-desktop) {
+    &s,
+    &--left {
+      padding-left: 1599 / 18 * 1px;
+      padding-left: 1 / 18 * 100vw;
+    }
+    &s,
+    &--right {
+      padding-right: 1599 / 18 * 1px;
+      padding-right: 1 / 18 * 100vw;
+    }
+  }
+}
+
+/*
+Wings in a layout setup
+
+Wings may only be applied to the sidebar. Don't apply the wings to the layout parent container, as this will distort the layout.
+
+.wings - Left and right column padding
+.wing--left - Left column padding
+.wing--right - Right column padding
+
+markup:
+<div class="layout">
+  <div class="layout__cell layout__cell--aside {$modifiers}">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra pellentesque ligula ut feugiat. Nullam elit libero, rutrum eu odio sed, tempus iaculis lectus. Phasellus felis ex, malesuada vitae libero ac, auctor finibus sapien. Sed odio enim, molestie eu pretium sit amet, commodo ut enim. Praesent eget mi eget enim hendrerit interdum. Ut sit amet orci libero. Vestibulum et leo pretium, semper nisl non, aliquam arcu. Pellentesque malesuada eros a elit imperdiet, sed tempor enim malesuada. Praesent accumsan malesuada eros, in sodales tortor sagittis at. Duis sollicitudin, est sed lobortis semper, felis est hendrerit massa, a tincidunt nulla risus in lectus. Praesent eleifend vestibulum nunc sed mollis. Ut dapibus nisi turpis, id lobortis justo scelerisque vitae. Morbi vel augue in ipsum dignissim aliquet. Vestibulum justo est, venenatis ut massa eu, dignissim vulputate lorem. Morbi porta est quis erat vulputate tristique.
+  </div>
+  <div class="layout__cell">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra pellentesque ligula ut feugiat. Nullam elit libero, rutrum eu odio sed, tempus iaculis lectus. Phasellus felis ex, malesuada vitae libero ac, auctor finibus sapien. Sed odio enim, molestie eu pretium sit amet, commodo ut enim. Praesent eget mi eget enim hendrerit interdum. Ut sit amet orci libero. Vestibulum et leo pretium, semper nisl non, aliquam arcu. Pellentesque malesuada eros a elit imperdiet, sed tempor enim malesuada. Praesent accumsan malesuada eros, in sodales tortor sagittis at. Duis sollicitudin, est sed lobortis semper, felis est hendrerit massa, a tincidunt nulla risus in lectus. Praesent eleifend vestibulum nunc sed mollis. Ut dapibus nisi turpis, id lobortis justo scelerisque vitae. Morbi vel augue in ipsum dignissim aliquet. Vestibulum justo est, venenatis ut massa eu, dignissim vulputate lorem. Morbi porta est quis erat vulputate tristique.
+  </div>
+  <div class="layout__cell layout__cell--aside {$modifiers}">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pharetra pellentesque ligula ut feugiat. Nullam elit libero, rutrum eu odio sed, tempus iaculis lectus. Phasellus felis ex, malesuada vitae libero ac, auctor finibus sapien. Sed odio enim, molestie eu pretium sit amet, commodo ut enim. Praesent eget mi eget enim hendrerit interdum. Ut sit amet orci libero. Vestibulum et leo pretium, semper nisl non, aliquam arcu. Pellentesque malesuada eros a elit imperdiet, sed tempor enim malesuada. Praesent accumsan malesuada eros, in sodales tortor sagittis at. Duis sollicitudin, est sed lobortis semper, felis est hendrerit massa, a tincidunt nulla risus in lectus. Praesent eleifend vestibulum nunc sed mollis. Ut dapibus nisi turpis, id lobortis justo scelerisque vitae. Morbi vel augue in ipsum dignissim aliquet. Vestibulum justo est, venenatis ut massa eu, dignissim vulputate lorem. Morbi porta est quis erat vulputate tristique.
+  </div>
+</div>
+
+Styleguide 2.3.1
+*/

@@ -1,0 +1,35 @@
+{% set has_speakers = false %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: '.panel-group'
+    }
+}) }}
+
+<section>
+    <header class="divider divider--top  |  wings  |  leader-inside--hero  |  trailer-inside--hero  |  container-header container-header--slim-fit">
+        <h2 class="container-header__title  |  title title--container  |  gutters">
+            {{ {'en': 'CTA staff', 'fr': "Nos collaborateurs"}|t(locales) }}
+        </h2>
+    </header>
+    <div class="layout layout--reversed  |  leader--hero">
+        <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer-inside--hero">
+            <nav class="gutters">
+                <ul class="is-gt-small-desktop  |  reset">
+                    <li>
+                        <a class="title title--tab" href="#staff">{{ {'en': 'CTA staff', 'fr': "Nos collaborateurs"}|t(locales) }}</a>
+                    </li>
+                    <li>
+                        <a class="title title--tab" href="#board">{{ {'en': 'Executive Board members', 'fr': "Membres du Conseil d'administration"}|t(locales) }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="panel-group  |  layout__cell  |  trailer-inside--hero" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+            {% include "containers/staff/panels/staff.html.twig" %}
+            {% include "containers/staff/panels/board.html.twig" %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,191 @@
+/*
+Project preview
+
+Three column layout with an inset in the outer-most right column.
+
+markup:
+<article class="project-preview | layout layout--align-end | is-root">
+    <div class="project-preview__body  |  layout__cell layout__cell--aside">
+        <h1 class="project-preview__title  |  title">Lorem Ipsum Dolor Sit Amet</h1>
+        <p class="project-preview__intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p class="meta  |  anchor  |  leader--small">
+            <a href="javascript:void()">Read more</a>
+        </p>
+    </div>
+    <div class="project-preview__visual  |  layout__cell layout__cell--main">
+        <div class="project-preview__cover">
+            <img class="image image--stretch" src="http://res.cloudinary.com/cta/image/upload/w_750,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o" srcset="http://res.cloudinary.com/cta/image/upload/w_1480,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 1500w,http://res.cloudinary.com/cta/image/upload/w_1280,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 1280w,http://res.cloudinary.com/cta/image/upload/w_740,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 750w,http://res.cloudinary.com/cta/image/upload/w_640,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 640w,http://res.cloudinary.com/cta/image/upload/w_480,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 480w,http://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/xft8rdr1mvnsj1tvkp8o 320w"
+                sizes="(min-width: 1024px) 44%, (min-width: 768px) 66%, 100vw" width="480" height="320" alt="">
+        </div>
+        <div class="project-preview__inset  |  divider divider--bottom  |  trailer-inside--small">
+            <div class="media media--end">
+                <div class="media__figure">
+                    <img class="globe  |  leader  |  trailer  |  gutters-outside  |  fx" src="/images/globes/western-africa.png" alt="Picture of the globe with Western Africa highlighted." width="214" height="214">
+                </div>
+                <div class="media__body">
+                    <div class="media  |  location">
+                        <span class="location__marker  |  media__figure">
+                            <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">location:</span></span>
+                        </span>
+                        <div class="location__body  |  media__content">
+                            Wageningen, Netherlands
+                        </div>
+                    </div>
+                    <ul class="reset  |  label-list  |  list--inline  |  leader--small">
+                        <li>
+                            <a class="label label--s" href="http://aims.fao.org/aos/agrovoc/c_7848">Trade</a>
+                        </li>
+                        <li>
+                            <a class="label label--s" href="http://aims.fao.org/aos/agrovoc/c_870">Belgium</a>
+                        </li>
+                        <li>
+                            <a class="label label--s" href="http://aims.fao.org/aos/agrovoc/c_49916">European Commission</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="project-preview__aside  |  layout__cell layout__cell--aside  |  wing--right">
+        <h2 class="title  |  trailer--small">Project updates</h2>
+        <ul class="reset">
+            <li>
+                <a class="block-link block-link--icon  |  is-heir" href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a>
+            </li>
+            <li>
+                <a class="block-link block-link--icon  |  is-heir" href="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</a>
+            </li>
+            <li>
+                <a class="block-link block-link--icon  |  is-heir" href="">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</a>
+            </li>
+        </ul>
+    </aside>
+</article>
+
+Styleguide 5.17
+*/
+
+.project-preview {
+    &__body,
+    &__visual,
+    &__aside {
+        padding-left: gutter();
+        padding-right: gutter();
+    }
+    &__visual {
+        margin-top: rhythm(7);
+    }
+    &__inset {
+        position: relative;
+        top: rhythm(-10);
+        margin-bottom: rhythm(-5);
+        padding-left: gutter();
+    }
+    &__title {
+        margin-bottom: rhythm(2);
+    }
+    &__intro {
+        line-height: rhythm(7);
+    }
+    .globe {
+        width: rhythm(39);
+        height: rhythm(39);
+        margin-right: gutter();
+    }
+    @include breakpoint($gt-small-desktop) {
+        &__body,
+        &__aside {
+            flex: 0 0 (5 / 18 * 100vw);
+            max-width: 5 / 18 * 100vw;
+        }
+        &__intro {
+            @include text-14px();
+        }
+        &__visual {
+            margin-top: 0;
+        }
+        &__title {
+            margin-bottom: rhythm(2);
+        }
+        &__cover {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__aside {
+            margin-left: rhythm(-5);
+            .no-flexbox & {
+                position: absolute;
+                bottom: 0;
+            }
+        }
+        &__inset {
+            position: absolute;
+            top: rhythm(3);
+            right: gutter();
+            width: percentage(11/36);
+            padding-left: 0;
+        }
+        &__aside {
+            .title {
+                @include title-14px();
+            }
+        }
+        .globe {
+            width: rhythm(26);
+            height: rhythm(26);
+        }
+        .block-link {
+            @include meta-12px();
+        }
+    }
+    @include breakpoint('(min-width: 75em)') {
+        &__intro {
+            font-size: 1em;
+        }
+        &__aside {
+            margin-left: 0;
+            .title {
+                @include title-16px();
+            }
+        }
+        &__title {
+            @include title-18px();
+            margin-bottom: rhythm(6);
+        }
+        &__inset {
+            top: rhythm(6);
+            width: percentage(21/72); /* 5 1/4 columns */
+        }
+        .globe {
+            width: rhythm(41);
+            height: rhythm(41);
+            margin-right: gutter(1);
+        }
+        .block-link {
+            @include meta-14px();
+        }
+    }
+
+    @include breakpoint($gt-medium-desktop) {
+        width: percentage(16 / 18);
+        width: 16 / 18 * 100vw;
+        margin-left: auto;
+        margin-right: auto;
+        &__body,
+        &__aside {
+            flex: 0 0 (4 / 18 * 100vw);
+            max-width: 4 / 18 * 100vw;
+        }
+        &__inset {
+            // left: percentage(10/16);
+            // left: 10;
+        }
+        &__title {
+            @include title-26px();
+        }
+        .globe {
+            width: rhythm(49);
+            height: rhythm(49);
+        }
+    }
+}

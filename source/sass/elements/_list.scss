@@ -1,0 +1,125 @@
+/*
+List
+
+.list--inline - Display set to inline.
+.list--float - List items are floated next to eachother
+.list--take-aways - List with take-aways
+.list--theme - List with leaf icons
+.list--footnotes - List of footnotes
+
+markup:
+<ul class="{$modifiers}">
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ul>
+
+Styleguide 3.7
+*/
+.list {
+    &--inline {
+        li {
+            display: inline;
+        }
+    }
+
+    &--float {
+        @include clearfix;
+
+        li {
+            float: left;
+        }
+    }
+
+    &--take-aways {
+        padding-left: gutter();
+    }
+
+    &--take-aways,
+    &--theme {
+        list-style-type: none;
+
+        li {
+            position: relative;
+            padding-left: 2em;
+            margin-top: rhythm(4);
+            margin-bottom: rhythm(4);
+
+            &:before {
+                position: absolute;
+                top: 0.2em;
+                left: 0;
+                @extend .icon !optional;
+                content: $icon-leaf;
+                display: inline;
+                // padding-right: 1em;
+                color: $color-dark-green;
+            }
+
+            .theme--blue &:before {
+              color: mix($color-blue, $color-body, 100%);
+            }
+            .theme--lime &:before {
+              color: mix($color-lime, $color-body, 100%);
+            }
+            .theme--yellow &:before {
+              color: mix($color-yellow, $color-body, 100%);
+            }
+            .theme--gold &:before {
+              color: mix($color-gold, $color-body, 100%);
+            }
+            .theme--orange &:before {
+              color: mix($color-orange, $color-body, 100%);
+            }
+            .theme--salmon &:before {
+              color: mix($color-salmon, $color-body, 100%);
+            }
+            .theme--red &:before {
+              color: mix($color-red, $color-body, 100%);
+            }
+            .theme--burgundy &:before {
+              color: mix($color-burgundy, $color-body, 100%);
+            }
+            .theme--purple &:before {
+              color: mix($color-purple, $color-body, 100%);
+            }
+        }
+    }
+
+    &--footnotes {
+        padding-left: gutter();
+
+        li {
+            margin-top: rhythm(4);
+            margin-bottom: rhythm(4);
+            padding-left: 1em;
+            color: $color-theme;
+
+            span {
+                color: $color-body;
+            }
+        }
+    }
+}
+/*
+Wrapped list
+
+This list will be wrapped to use a leader or trailer. This won't work on the list itself cause of it's reset.
+
+.list--inline - Display set to inline.
+.list--float - List items are floated next to eachother
+
+markup:
+<ul class="{$modifiers}">
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ul>
+
+sg-wrapper:
+<div class="leader">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 3.7.1
+*/

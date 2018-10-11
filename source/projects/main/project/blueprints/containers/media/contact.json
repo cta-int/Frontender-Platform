@@ -1,0 +1,338 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Contact hero"
+    },
+    "description": {
+        "en": "Contact hero"
+    },
+    "template": "modules/contact/contact.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "media",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                    "control": "project/model/id",
+                    "type":"lookup"
+                }
+            }
+        },
+        "location_1": {
+            "label": {
+                "en": "Location 1",
+                "fr": "Location 1"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Head office",
+                        "fr": "Head office"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "street": {
+                    "value": {
+                        "en": "Agro Business Park 2",
+                        "fr": "Agro Business Park 2"
+                    },
+                    "label": {
+                        "en": "Street name"
+                    },
+                    "control": "core/text"
+                },
+                "postal": {
+                    "value": {
+                        "en": "6708 PW Wageningen",
+                        "fr": "6708 PW Wageningen"
+                    },
+                    "label": {
+                        "en": "Postal code"
+                    },
+                    "control": "core/text"
+                },
+                "country": {
+                    "value": {
+                        "en": "The Netherlands",
+                        "fr": "The Netherlands"
+                    },
+                    "label": {
+                        "en": "Country"
+                    },
+                    "control": "core/text"
+                },
+                "phone": {
+                    "value": {
+                        "en": "+31 (0)317 467100",
+                        "fr": "+31 (0)317 467100"
+                    },
+                    "label": {
+                        "en": "Phone number"
+                    },
+                    "control": "core/text"
+                },
+                "fax": {
+                    "value": {
+                        "en": "+31 (0)317 460067",
+                        "fr": "+31 (0)317 460067"
+                    },
+                    "label": {
+                        "en": "Fax number"
+                    },
+                    "control": "core/text"
+                },
+                "slug": {
+                    "value": {
+                        "label": {
+                            "en": "Get directions"
+                        },
+                        "page": "https://maps.google.com/",
+                        "id": ""
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "location_2": {
+            "label": {
+                "en": "Location 2",
+                "fr": "Location 2"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Brussels office",
+                        "fr": "Brussels office"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "street": {
+                    "value": {
+                        "en": "39 Rue Montoyer",
+                        "fr": "39 Rue Montoyer"
+                    },
+                    "label": {
+                        "en": "Street name"
+                    },
+                    "control": "core/text"
+                },
+                "postal": {
+                    "value": {
+                        "en": "1000 Brussels",
+                        "fr": "1000 Brussels"
+                    },
+                    "label": {
+                        "en": "Postal code"
+                    },
+                    "control": "core/text"
+                },
+                "country": {
+                    "value": {
+                        "en": "Belgium",
+                        "fr": "Belgium"
+                    },
+                    "label": {
+                        "en": "Country"
+                    },
+                    "control": "core/text"
+                },
+                "phone": {
+                    "value": {
+                        "en": "+32 (0) 2 5137436",
+                        "fr": "+32 (0) 2 5137436"
+                    },
+                    "label": {
+                        "en": "Phone number"
+                    },
+                    "control": "core/text"
+                },
+                "fax": {
+                    "value": {
+                        "en": "+32 (0) 2 5113868",
+                        "fr": "+32 (0) 2 5113868"
+                    },
+                    "label": {
+                        "en": "Fax number"
+                    },
+                    "control": "core/text"
+                },
+                "slug": {
+                    "value": {
+                        "label": {
+                            "en": "Get directions"
+                        },
+                        "page": "https://maps.google.com/",
+                        "id": ""
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "block_1": {
+            "label": {
+                "en": "Block 1",
+                "fr": "Block 1"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "General enquiries",
+                        "fr": "General enquiries"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "body": {
+                    "value": {
+                        "en": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet.",
+                        "fr": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet."
+                    },
+                    "label": {
+                        "en": "Body text"
+                    },
+                    "control": "core/textarea"
+                },
+                "slug": {
+                    "value": {
+                        "label": {
+                            "en": "E-mail address"
+                        },
+                        "page": "info@cta.int",
+                        "id": ""
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "block_2": {
+            "label": {
+                "en": "Block 2",
+                "fr": "Block 2"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "MEDIA AND PRESS",
+                        "fr": "MEDIA AND PRESS"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "body": {
+                    "value": {
+                        "en": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet.",
+                        "fr": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet."
+                    },
+                    "label": {
+                        "en": "Body text"
+                    },
+                    "control": "core/textarea"
+                },
+                "slug": {
+                    "value": {
+                        "label": {
+                            "en": "stéphane.gambier@cta.int"
+                        },
+                        "page": "stéphane.gambier@cta.int",
+                        "id": ""
+                    },
+                    "control": "core/route"
+                }
+            }
+        },
+        "block_3": {
+            "label": {
+                "en": "Block 3",
+                "fr": "Block 3"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en": "Partnerships",
+                        "fr": "Partnerships"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "body": {
+                    "value": {
+                        "en": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet.",
+                        "fr": "Nam elit arcu, tristique non vestibu, iaculis quis leo. Duis consequat dolor nec sem sagittis aliquet."
+                    },
+                    "label": {
+                        "en": "Body text"
+                    },
+                    "control": "core/textarea"
+                },
+                "slug": {
+                    "value": {
+                        "label": {
+                            "en": "deborah.kleinbussink@cta.int"
+                        },
+                        "page": "deborah.kleinbussink@cta.int",
+                        "id": ""
+                    },
+                    "control": "core/route"
+                }
+            }
+        }
+    }
+}

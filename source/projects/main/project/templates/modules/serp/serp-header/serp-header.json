@@ -1,0 +1,29 @@
+{
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Your search",
+                    "fr": "Your search"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "placeholder": {
+                "value": {
+                    "en": "Type a keyword",
+                    "fr": "Type a keyword"
+                },
+                "label": {
+                    "en": "Placeholder"
+                },
+                "control": "core/text"
+            }
+        }
+    }
+}

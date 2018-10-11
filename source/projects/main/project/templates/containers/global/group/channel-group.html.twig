@@ -1,0 +1,11 @@
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% for loopContainer in containers %}
+        {% set tempContainer = loopContainer|merge({
+            model: model.articles
+        }) %}
+
+        {% include loopContainer.template with tempContainer %}
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>

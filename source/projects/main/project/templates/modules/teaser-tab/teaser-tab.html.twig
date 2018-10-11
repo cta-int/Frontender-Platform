@@ -1,0 +1,54 @@
+{% import "macros/image.html.twig" as image %}
+{% set is_crowned = 'is-crowned' in config.container_class %}
+{% set resource_route = route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: tab_config.selector|default('.tab-teaser'),
+        children: 'a',
+        attribute: 'href',
+        allowMultiple: false,
+        openFirst: true
+    }
+}) }}
+
+
+
+<div class="{{ ["hero hero--tab-teaser", config.container_class]|join("  |  ") }}" id="tile-{{ model._id }}">
+    <div class="ie9-hero">
+        {{ image.hero(model.mediaObject|lead, is_crowned, "hero__figure  |  image image--stretch") }}
+    </div>
+    <div class="hero__headline">
+        <div class="tab-teaser  |  teaser" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.tab-teaser__panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(0) }}}">
+            <ul class="tab-teaser__tabs  |  reset">
+                {% for loopContainer in containers %}
+                    <li title="{{ loopContainer.tab.name|t(locales) }}">
+                        <a data-prevent-scroll class="{{ loop.first ? "is-current" : "" }} icon-tab  |  icon {{ loopContainer.tab.icon }}" href="#{{ loopContainer.tab.id ~ event._id }}" data-prevent-scroll="data-prevent-scroll">
+                            <span class="is-narrative">{{ loopContainer.tab.name|t(locales) }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-teaser__panels">
+                {% for loopContainer in containers %}
+                    {% include loopContainer.template with loopContainer %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline timeline--overlay  |  timeline--{{ yearPassedPercentage() }}  |  stack">
+        <div class="stack__unit stack__pin  |  is-gt-small-desktop  |  meta">
+            <div class="timeline__label  |  gutters">{{ 'project_timeline'|t(locales) }}</div>
+        </div>
+        {% for year in model.startDate|default('now')|date('Y')..model.endDate|default('2020-01-01')|date('Y') %}
+            <div class="stack__unit  |  meta">
+                <div class="timeline__item  |  {{ year|yearStatus('is-complete', 'is-active') }}  |  gutters">
+                    <span class="timeline__date">{{ year }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

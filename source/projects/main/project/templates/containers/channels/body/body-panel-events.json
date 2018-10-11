@@ -1,0 +1,80 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Conferences"
+    },
+    "description": {
+        "en": ""
+    },
+    "template": "containers/channels/body/body-panel-events.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Channel\\Events",
+                    "control": "core/hidden"
+                },
+                "id": {
+                    "value": "{ id }",
+                    "control": "core/hidden"
+                },
+                "eventType": {
+                    "value": "Conference",
+                    "control": "core/hidden"
+                },
+                "limit": {
+                    "value": 3,
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "labels": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "panel_title": {
+                    "value": {
+                        "en": "Conferences",
+                        "fr": "Conferences"
+                    },
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "active": {
+                    "value": 1,
+                    "label": {
+                        "en": "Open tab"
+                    },
+                    "control": "project/show"
+                },
+                "tab_class": {
+                    "value": "",
+                    "label": {
+                        "en": "Tab class"
+                    },
+                    "control": "project/container_class"
+                },
+                "panel_class": {
+                    "value": "",
+                    "label": {
+                        "en": "Panel class"
+                    },
+                    "control": "project/container_class"
+                }
+            }
+        }
+    }
+}

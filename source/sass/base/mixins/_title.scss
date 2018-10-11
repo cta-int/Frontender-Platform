@@ -1,0 +1,85 @@
+/*
+Title
+
+Mixins for title font-size and line-height. Do not use these for anything but
+title sizes, as the line-heights are too dense for long-lenght body texts.
+
+title-12px - 12px/15px
+title-14px - 14px/15px
+title-16px - 16px/18px
+title-18px - 18px/18px
+title-20px - 20px/21px
+title-24px - 24px/24px
+title-24px - 26px/27px
+title-30px - 30px/30px
+title-48px - 48px/48px
+
+Styleguide 1.6.1
+*/
+
+@mixin title-12px() {
+  /* small title*/
+  font-size: to-unit(12px);
+  line-height: to-unit(rhythm(6), 1, 12px);
+}
+
+// @mixin title-13px() {
+//   /* small title*/
+//   font-size: to-unit(13px);
+//   line-height: to-unit(rhythm(5), 1, 14px);
+// }
+
+@mixin title-14px() {
+  /* small title*/
+  font-size: to-unit(14px);
+  line-height: to-unit(rhythm(6), 1, 14px);
+}
+
+@mixin title-16px() {
+  /* regular title*/
+  font-size: to-unit(16px);
+  line-height: to-unit(rhythm(7), 1, 16px);
+}
+
+@mixin title-18px() {
+  /* medium title*/
+  font-size: to-unit(18px);
+  line-height: to-unit(rhythm(8), 1, 18px);
+}
+
+@mixin title-20px() {
+  /* medium title*/
+  font-size: to-unit(20px);
+  line-height: to-unit(rhythm(9), 1, 20px);
+}
+
+@mixin title-24px() {
+  /* large title*/
+  font-size: to-unit(24px);
+  line-height: to-unit(rhythm(9), 1, 24px);
+}
+
+@mixin title-26px() {
+  /* large title*/
+  font-size: to-unit(26px);
+  line-height: to-unit(rhythm(9), 1, 26px);
+}
+
+@mixin title-30px() {
+  /* hero title*/
+  font-size: to-unit(30px);
+  line-height: to-unit(rhythm(11), 1, 30px);
+}
+
+@mixin title-40px() {
+  /* hero title*/
+  font-size: to-unit(40px);
+  line-height: to-unit(rhythm(16), 1, 40px);
+}
+
+@mixin title-48px() {
+  /* giant title*/
+  font-size: to-unit(48px);
+  line-height: to-unit(rhythm(17), 1, 48px);
+
+}

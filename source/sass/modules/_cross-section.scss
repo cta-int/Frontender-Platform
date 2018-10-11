@@ -1,0 +1,48 @@
+/*
+Cross Section
+
+A cross section is a collection of featured aticles, with a side bar containing a short-list of articles over configurable period.
+
+markup:
+<section class="cross-section  |  divider divider--top">
+  <h1 class="title title--headline  |  wings  trailer--hero"><span class="gutters">Resources</span></h1>
+  <div class="layout">
+    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings">
+      <div class="trailer  |  gutters">
+        <sg-insert>4.14</sg-insert>
+      </div>
+      <div class="gutters">
+        <sg-insert>4.13.1</sg-insert>
+      </div>
+    </div>
+    <div class="layout__cell">
+      <sg-insert>4.8.2</sg-insert>
+      <div class="grid grid--posts  |  leader--hero  |  wing--right">
+        <div class="grid__cell  |  gutters">
+          <sg-insert>4.8.1</sg-insert>
+        </div>
+        <div class="grid__cell  |  gutters">
+          <sg-insert>4.8.1</sg-insert>
+        </div>
+        <div class="grid__cell  |  gutters">
+          <sg-insert>4.8.1</sg-insert>
+        </div>
+        <div class="grid__cell  |  gutters">
+          <sg-insert>4.8.1</sg-insert>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+Styleguide 5.7
+*/
+
+/*
+ * 1. lengthen divider below content, in case an adjacent container touches this one
+ */
+.cross-section {
+  .layout__cell {
+    padding-bottom: rhythm(6); /* 1 */
+  }
+}

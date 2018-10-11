@@ -1,0 +1,24 @@
+.footer {
+  position: relative;
+  background: $color-body;
+	font-size: to-unit(12px);
+	text-align: center;
+	@include breakpoint($gt-large-handheld) {
+		padding-left: 5 / 18 * 100vw;
+		padding-right: 5 / 18 * 100vw;
+	}
+	&--txt {
+		color: rgba(255, 255, 255, .6);
+	}
+  &,
+  &--link,
+  &--link:visited,
+  &--link:active {
+    color: $white;
+  }
+	&--link {
+		@include meta;
+		font-size: 0.9em;
+		font-weight: bold;
+	}
+}

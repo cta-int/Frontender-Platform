@@ -1,0 +1,10 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="gutters">
+	<h2 class="title title--apropos  |  trailer--small">{{ content.container_title|t(locales) }}</h2>
+	<div class="title--apropos">
+		{% if content.container_body|t(locales) %}
+		<p>{{ content.container_body|t(locales) }}</p>
+		{% endif %}
+	</div>
+</div>

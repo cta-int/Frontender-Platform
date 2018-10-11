@@ -1,0 +1,3 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<img class="{{ slogan.backdrop ? 'slogan slogan--backdrop' : 'slogan'}}" src="{{ {en: '/assets/images/slogans/agriculture-key.svg', fr: "/assets/images/slogans/agriculture-fr.svg"}|t(locales) }}" alt="{{ slogan.alt|t(locales) }}">

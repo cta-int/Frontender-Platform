@@ -1,0 +1,185 @@
+/*
+Base styles
+
+Smart reset, based on @necolas's normalize but updated to use the system's real values.
+
+Styleguide 1.4
+*/
+
+@import "../../node_modules/piecss/sass/piecss/behavior/base/collection";
+
+/*
+ * 1. Apply a natural box layout model to all elements
+ * 2. Remove margins from all elements
+ */
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+}
+
+/*
+ * 1. Remove default margin.
+ * 2. Set height to accommodate hero module
+ * 4. Removes scroll lock on iOS Safari
+ */
+$base-collection: add-properties(
+  $base-collection,
+  "html, body",
+  (
+    margin: 0, /* 1 */
+    height: 100%, /* 2 */
+    min-height: 100%, /* 2 */
+    max-width: 100%, /* 3 */
+    // -webkit-overflow-scrolling: touch /* 4 */
+  )
+);
+
+$base-collection: remove-properties($base-collection, "html", ("font-family", "font-weight"));
+$base-collection: add-properties(
+  $base-collection,
+  "html",
+  (
+    font-family: $font-family,
+    font-weight: 300,
+    background: $color-background, /* 1 */
+    color: $color-body /* 5 */
+  )
+);
+
+
+
+/*
+ * 2. Set default anchor colour.
+ */
+
+$base-collection: add-properties(
+  $base-collection,
+  "a",
+  (
+    text-decoration: none,
+    color: $color-anchor /* 2 */
+  )
+);
+
+/*
+ * Reset the headers – their visual appearance is decoupled from their semantic meaning
+ */
+
+$base-collection: remove-properties($base-collection, "h1", ("font-size", "line-height", "margin"));
+$base-collection: add-properties(
+  $base-collection,
+  "h1",
+  (
+    font-size: inherit,
+    line-height: inherit
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  "h1, h3, h4, h5, h6",
+  (
+    font-weight: 300
+  )
+);
+
+/*
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+$base-collection: remove-properties($base-collection, "small", ("font-size"));
+$base-collection: add-properties(
+  $base-collection,
+  "small",
+  (
+    font-size: to-unit(10px)
+  )
+);
+
+/*
+ * Margin is already reset in $reset-margin
+ */
+
+$base-collection: remove-properties($base-collection, "figure", ("margin"));
+
+/*
+ * 1. Correct color not being inherited.
+ */
+
+$base-collection: remove-properties($base-collection, "button, input, optgroup, select, textarea", ("margin"));
+$base-collection: add-properties(
+  $base-collection,
+  "button, input, optgroup, select, textarea",
+  (
+    color: inherit /* 1 */
+  )
+);
+
+$base-collection: remove-selector($base-collection, "fieldset");
+$base-collection: add-properties(
+  $base-collection,
+  "fieldset",
+  (
+    border: 0,
+    margin: 0,
+    padding: 0
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  "label",
+  (
+    display: inline-block
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  "label, input, select, textarea",
+  (
+    width: 100%
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  '[type="checkbox"], [type="radio"]',
+  (
+    width: initial
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  'img',
+  (
+    max-width: 100%
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  'button',
+  (
+    padding: 0,
+    background: none,
+    border: 0,
+    cursor: pointer
+  )
+);
+
+$base-collection: add-properties(
+  $base-collection,
+  'iframe',
+  (
+    width: 100%
+  )
+);
+
+@import "../../node_modules/piecss/sass/piecss/behavior/base/base";

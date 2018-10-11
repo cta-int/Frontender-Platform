@@ -1,0 +1,10 @@
+<aside class="trailer--hero  |  gutters">
+    <h2 class="title title--apropos"><a href="{{ route({'page': 'general-conditions-for-cta-contracts', 'id': model._id}) }}">{{ model.headline }}</a></h2>
+    <p class="body--whisper  |  divider divider--bottom  |  leader-inside--small  |  trailer-inside--normal">{{ model.editorialComment }}</p>
+
+    {% if model.link.mediaObject|findType('file')|length > 0 %}
+        <div class="trailer--small">
+            {% include "partials/download.html.twig" with {file: model.link.mediaObject|findType('file')|first} %}
+        </div>
+    {% endif %}
+</aside>

@@ -1,0 +1,75 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Recent issues"
+    },
+    "description": {
+        "en": "Overview of previously published issues"
+    },
+    "template": "containers/ict-update/recent-issues/recent-issues.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "colour_theme": {
+                    "value": "",
+                    "control": "project/colour_theme"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Channel\\Articles",
+                    "control": "project/model/name"
+                },
+                "id": {
+                    "value": "1c870693-2942-4b0a-9103-ebf6809b79eb",
+                    "control": "project/model/id"
+                },
+                "articleType": {
+                    "value": "review",
+                    "control": "project/model/article_type"
+                },
+                "limit": {
+                    "value": "8",
+                    "control": "project/model/limit"
+                }
+            }
+        },
+        "containers": []
+    }
+}

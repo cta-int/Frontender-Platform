@@ -1,0 +1,139 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section {{ helper.class_attribute(config, class)|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="about-cta  |  trailer-inside--giant">
+        <div class="about-cta--container  |  layout--narrow  |  wings">
+            <div class="is-root">
+                <div class="is-silent  |  about-cta__section-id  |  meta  |  gutters-outside"><span class="section-id__number">03</span></div>
+                <h2 class="title title--sub-section  title--about-cta  |  trailer |  leader-inside--hero  |  gutters">{{ 'Our strategy'|t(locales) }}</h2>
+                <div class="layout |  trailer-inside--hero">
+                    <div class="layout__cell  |  gutter--right">
+                        <div class="wing--right">
+                            <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                                <div class="gutter">
+                                    {{ 'Sowing innovation, harvesting prosperity. CTA’s Strategic Plan 2016–2020.'|t }}
+                                </div>
+                            </div>
+                            <div class="paragraph  |  gutters">
+                                <p class="gutter">
+                                    {{ 'The world does not stand still, and neither does CTA. CTA\'s Strategic Plan 2016-2020 is a way-station on a road of continuous change that has seen CTA become a results-based organisation closely aligned with the priorities of the ACP countries it serves.'|t(locales) }}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="paragraph  |  gutters">
+                            {{ 'The strategy has been developed with a close eye on the Sustainable Development Goals, many of which it addresses directly. Zero hunger, food security, nutrition and sustainable agriculture (Goal 2), poverty (Goal 1)  and gender (Goal 5) are at the heart of CTA\'s activities, which will also create employment, particularly for young people and women (Goal 8), resulting in reduced inequality (Goal 10). With our partners, CTA will help to reduce food waste (Goal 12), build greater climate resilience (Goal 13)  and promote sustainable fisheries (Goal 14).'|t }}
+                        </p>
+                        <p class="paragraph  |  gutters">
+                            {{ 'Ultimately, CTA through its emphasis on partnership (Goal 17), will contribute to greater sustainability (Goal 15).'|t(locales) }}
+                        </p>
+                    </div>
+                    <div class="layout__cell layout__cell--aside  | gutters">
+                        <div class="goals-set">
+                            <div class="goal goal--filled">
+                                <h4 class="goal__title  |  title title--sub-section  |  trailer--small">{{ 'Mission'|t(locales) }}</h4>
+                                <p class="body--whisper">
+                                    {{ 'To advance food security, resilience and inclusive economic growth in Africa,  the Caribbean and the Pacific through innovations in sustainable agriculture.'|t }}
+                                </p>
+                            </div>
+                            <div class="goal goal--outlined">
+                                <h4 class="goal__title  |  title title--sub-section  |  trailer--small">{{ 'Vision'|t(locales) }}</h4>
+                                <p class="body--whisper">
+                                    {{ 'Smallholder agriculture as  a vibrant, modern and sustainable business that creates value for farmers, entrepreneurs, youth and women, and produces affordable, nutritious and healthy food for all.'|t }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout layout--align-middle  |  trailer-inside--hero">
+                    <div class="layout__cell  |  gutters">
+                        <div class="about-cta__chapter-title  |  title title--section  |  leader  |  trailer--small">
+                            {{ 'Three strategic goals'|t(locales) }}
+                        </div>
+                        <p class="gutter">
+                            {{ 'CTA has set three interrelated strategic goals to contribute to greater food and nutrition security and achieve the greatest impact for its work'|t(locales) }}:
+                        </p>
+                    </div>
+                    <div class="layout__cell layout__cell--aside  |  gutters">
+                        <div class="addendum">
+                            <h3 class="addendum__title  |  title title--sub-section  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h3>
+                            <ul class="reset">
+                                <li class="trailer--small"><a class="meta" href="javascript:void(0);"><strong>{{ 'CTA\'s Strategic Plan 2016-2020'|t(locales) }}</strong></a><br/>Synthesis version, 622 KB</li>
+                                <li class="trailer--small"><a class="meta" href="javascript:void(0);"><strong>{{ 'CTA\'s Partnership Strategy '|t }}</strong></a><br/>700KB</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="strategic-goals  |  gutters-outside">
+                    <div class="grid grid--musketeers">
+                        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">01</span>
+                                <div class="strategic-goals__title">{{ 'Profitable smallholder value chains'|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--fish-market-supplier"></span>
+                        </div>
+                        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">02</span>
+                                <div class="strategic-goals__title">{{ 'Conducive agricultural policies'|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--factory"></span>
+                        </div>
+                        <div class="grid__cell  |  strategic-goals__item  |  divider divider--left  |  gutters">
+                            <div class="title title--sub-section">
+                                <span class="strategic-goals__number">03</span>
+                                <div class="strategic-goals__title">{{ 'Enhanced capacity for knowledge management'|t(locales) }}</div>
+                            </div>
+                            <span class="strategic-goals__illustration illustration illustration--farmer-presentation"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout  layout--split  |  leader-inside--hero  |  trailer-inside--giant">
+                    <div class="layout__cell layout__cell--aside  |  gutters">
+                        &nbsp;
+                    </div>
+                    <div class="layout__cell  |  gutters">
+                        <p>
+                            {{ 'Smallholders need profitable value chains; the development of profitable value chains requires supportive agricultural policies; and both are boosted by improved knowledge management.'|t(locales) }}
+                        </p>
+                    </div>
+                </div>
+                <div class="title title--tile  |  trailer-inside--large  |  gutters">
+                    {{ 'Regional focus for impact'|t(locales) }}
+                </div>
+                <p class="paragraph paragraph--lead  |  gutters  trailer">
+                    {{ 'Key to implementing this Strategy are the regional business plans CTA and its partners formulated on the basis of each of the six ACP regions\' agricultural-sector priorities and making best use of the Centre\'s comparative advantages.'|t(locales) }}
+                </p>
+                <div class="layout  |  trailer--hero">
+                    <div class="layout__cell">
+                        <p class="gutters">
+                            {{ 'The flagship projects help to improve coordination and team work among various programmes, allowing CTA to fully leverage the power of key stakeholders, including the private sector, and catalyse complementary actions along agricultural value chains, such as those that improve nutritional outcomes. This focus on business development is crucial, giving smallholder farmers the opportunity to escape poverty by becoming the foundation of improved, inclusive value chains.'|t(locales) }}
+                        </p>
+                    </div>
+                    <div class="layout__cell layout__cell--aside  |  gutters">
+                        <div class="title title--sub-section  |  trailer--small">{{ 'Key themes'|t(locales) }}</div>
+                        <h3 class="body--whisper  |  trailer--small">
+                            <a class="-anchor -anchor--shy" href="{{ route({'page': 'agribusiness'}) }}">{{ 'Agribusiness development'|t(locales) }}</a>
+                        </h3>
+                        <h3 class="body--whisper  |  trailer--small">
+                            <a class="-anchor -anchor--shy" href="{{ route({'page': 'icts-for-agriculture'}) }}">{{ 'ICTs for agriculture'|t(locales) }}</a>
+                        </h3>
+                        <h3 class="body--whisper  |  trailer--small">
+                            <a class="-anchor -anchor--shy" href="{{ route({'page': 'channel', 'id': 'a48927f8-6c97-4016-a620-eeaa6e630435'}) }}">{{ 'Youth and women entrepreneurship'|t(locales) }}</a>
+                        </h3>
+                        <h3 class="body--whisper  |  trailer--small">
+                            <a class="-anchor -anchor--shy" href="{{ route({'page': 'climate-resilient-agriculture'}) }}">{{ 'Climate resilient agriculture'|t(locales) }}</a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="piped-text-section  |  title title--container  |  leader-inside  |  trailer-inside">
+                    <span class="pipe pipe--top"></span>
+                        {{ 'Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Sed posuere consectetur est at lobortis.'|t(locales) }}
+                    <span class="pipe pipe--bottom"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

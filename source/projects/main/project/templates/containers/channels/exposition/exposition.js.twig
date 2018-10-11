@@ -1,0 +1,167 @@
+jQuery(function($) {
+    $.fn.scroller = function(config) {
+        config = $.extend({
+            button: '.timeline__button',
+            target: '.timeline'
+        }, config);
+
+        $(this).each(function() {
+            var $this = $(this),
+                interval = false,
+                isDragging = false,
+                location = null;
+
+            $this.find(config.target).on('mousedown', function(event) {
+                location = event.clientX;
+                isDragging = true;
+            }).on('mousemove', function(event) {
+                if(isDragging) {
+                    event.preventDefault();
+
+                    var position = position = $(this).scrollLeft();
+
+                    $(this).scrollLeft(position - (event.clientX - location));
+                    location = event.clientX;
+                }
+            }).on('mouseup', function() {
+                isDragging = false;
+            });
+
+            $this.on('mousedown touchstart', config.button, function(event) {
+                event.preventDefault();
+                var $button = $(this);
+
+                if(interval === false) {
+                    interval = setInterval(function() {
+                        var $timeline = $this.find(config.target),
+                            width = $timeline.get(0).scrollWidth,
+                            position = $timeline.scrollLeft(),
+                            step = 15;
+
+                        if($button.data('direction') === 'left') {
+                            if(position <= 0) {
+                                // Do nothing.
+                            } else if(position < step) {
+                                $timeline.animate({scrollLeft: 0}, 50, 'linear');
+                            } else {
+                                $timeline.animate({scrollLeft: position - step}, 50, 'linear');
+                            }
+                        } else {
+                            if(position >= width) {
+                                // Do nothing.
+                            } else if(position + step >= width) {
+                                $timeline.animate({scrollLeft: width}, 50, 'linear');
+                            } else {
+                                $timeline.animate({scrollLeft: position + step}, 50, 'linear');
+                            }
+                        }
+                    }, 75);
+                }
+
+                $(this).on('mouseup touchend', function(event) {
+                    event.preventDefault();
+
+                    clearInterval(interval);
+                    interval = false;
+                });
+            });
+        });
+    }
+
+    $('.menu').find('.menu__item').find('a').on('click', function(event) {
+        event.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 1000);
+    });
+
+    $('.timeline-wrapper').scroller();
+    $('.article-group--wrapper').scroller({
+        button: '.article-switch',
+        target: '.article-group'
+    });
+    function isScrolledIntoView(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemTop <= docViewBottom));
+    }
+
+    $(window).scroll(function () {
+        $('.exposition').each(function () {
+            if (isScrolledIntoView(this) === true && !$(this).hasClass('exposition-visible')) {
+                $(this).addClass('exposition-visible')
+            }
+        });
+        $('.theme-slider').each(function () {
+            if (isScrolledIntoView(this) === true && !$(this).hasClass('is-visible')) {
+                $(this).addClass('is-visible')
+            }
+        });
+    });
+
+    $(window).trigger('scroll');
+
+    /**
+     * Custom javascript to correct the numbers.
+     * By default they show only 1, this script will make them numbered.
+     */
+    var expositions = $('.exposition').toArray();
+    for(var index in expositions) {
+        if(expositions.hasOwnProperty(index)) {
+            $(expositions[index]).find('.section-number').text(parseInt(index) + 1);
+        }
+    }
+    var menu = $('.menu__item-ec').toArray();
+    for(var index in menu) {
+        if(menu.hasOwnProperty(index)) {
+            $(menu[index]).find('.menu__label').text(parseInt(index) + 1);
+        }
+    }
+
+    $('[data-modal]').on('click', function(event) {
+        event.preventDefault();
+
+        var $this = $(this),
+            $target = $('#' + $this.data('modal')),
+            $element = $target.detach();
+
+        $('body').addClass('post-active').prepend($element);
+        $('.modal.is-active').removeClass('is-active');
+        $target.addClass('is-active');
+    });
+
+    $(document).on('click', 'body.post-active', function(event) {
+        if(event.target.tagName === 'A' || (event.target.tagName === 'SPAN' && event.target.parentNode.tagName === 'A') ||  (event.target.tagName === 'EM' && event.target.parentNode.tagName === 'A')) {
+            // Do what we must
+            return true;
+        }
+
+        event.preventDefault();
+
+        var $target = $(event.target);
+
+        if($target.hasClass('post') && $target.hasClass('fx')) {
+            $('.modal.is-active').removeClass('is-active');
+            $('body').removeClass('post-active');
+        }
+    });
+
+    $('.post-close').on('click', function(event) {
+        event.preventDefault();
+
+        $('.modal.is-active').removeClass('is-active');
+        $('body').removeClass('post-active');
+    });
+
+    $('[data-pagination]').on('click', function(event) {
+        event.preventDefault();
+
+
+        $('[data-modal=' + $(this).data('pagination') + ']').trigger('click');
+    })
+});

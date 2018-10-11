@@ -1,0 +1,29 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    }
+}

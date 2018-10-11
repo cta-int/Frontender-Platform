@@ -1,0 +1,72 @@
+/*
+Anchor
+
+.anchor - Anchor
+.anchor:visited - Visited link
+.anchor:hover - Hovered link
+.anchor:active - Active link
+.anchor.anchor--shy - Hides anchor properties
+.is-heir - Inherits typographic and colour of parent
+
+markup:
+<a class="{$modifiers}" href="javascript:void();">I am text with a link</a>
+
+Styleguide 3.4
+*/
+
+a,
+.anchor {
+  @extend %fx !optional;
+  // text-decoration: underline;
+  // cursor: pointer !important;
+  &,
+  &:active,
+  &:visited {
+    @include theme-color();
+  }
+  &:visited .is-heir {
+    color: inherit;
+  }
+  &:hover,
+  .theme--blue &,
+  .theme--lime &,
+  .theme--yellow &,
+  .theme--gold &,
+  .theme--orange &,
+  .theme--salmon &,
+  .theme--red &,
+  .theme--burgundy &,
+  .theme--purple &,
+  &.is-heir,
+  &:hover .is-heir {
+    &,
+    &--shy,
+    &:hover {
+      color: $color-body;
+    }
+  }
+  &--shy {
+      &,
+      &:visited {
+          color: inherit;
+      }
+  }
+}
+
+.post-anchor {
+  a,
+  .anchor {
+    &:visited,
+    .theme--blue &:visited,
+    .theme--lime &:visited,
+    .theme--yellow &:visited,
+    .theme--gold &:visited,
+    .theme--orange &:visited,
+    .theme--salmon &:visited,
+    .theme--red &:visited,
+    .theme--burgundy &:visited,
+    .theme--purple &:visited {
+      @include theme-color($shade: 50%);
+    }
+  }
+}

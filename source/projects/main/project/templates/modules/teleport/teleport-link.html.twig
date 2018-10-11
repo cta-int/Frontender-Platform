@@ -1,0 +1,17 @@
+{#
+    This partial expects an object with a link object
+#}
+{% import "macros/template.html.twig" as helper %}
+{% set href = route({page: link.page }) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'teleport  |  media  |  title')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+	<a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="{{ href }}">
+		{{ link.label|t(locales) }}
+	</a>
+	<a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="{{ href }}">
+		<span class="is-narrative">
+			{{ "View all in"|t(locales) }} {{ link.label|t(locales) }}
+		</span>
+	</a>
+</{{ config.container_tag|default('div') }}>

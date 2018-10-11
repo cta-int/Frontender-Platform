@@ -1,0 +1,24 @@
+{% import "macros/date.html.twig" as date %}
+
+{% include("modules/teleport/teleport.html.twig")  %}
+
+<ul class="reset  |  short-list">
+  {% for event in events %}
+  <li class="short-list__item">
+    <a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="{{ route({'page': 'event', 'id': event._id}) }}">
+      <div class="stack__unit stack__pin">
+          <div class="gutter-outside">
+            {{ date.tile(event.startDate) }}
+          </div>
+      </div>
+      <div class="stack__unit">
+        <h2 class="title title">{{ event.name }}</h2>
+        <div class="leader--tiny">{{ date.event_short(event.startDate, event.endDate) }}</div>
+        {% if event.location.address.addressLocality %}
+          <div class="body--whisper  |  leader--tiny">{{ event.location.address.addressLocality }}, {{ event.location.address.addressRegion }}, {{ event.location.address.addressCountry }}</div>
+        {% endif %}
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

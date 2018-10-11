@@ -1,0 +1,50 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings",
+            "fr": "Settings"
+        },
+        "controls": {
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "model": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "channels",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                "control": "project/model/id",
+                "lookup": {
+                    "model": "Channels",
+                    "multiple": false
+                }
+            }
+        }
+    }
+}

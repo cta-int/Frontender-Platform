@@ -1,0 +1,85 @@
+/*
+Language Switch
+
+The website's primary navigation. This navigation bar is contextual to the website.
+
+markup:
+<ul class="menu language-switch">
+  <li class="language is-active"><a class="menu__item" href="javascript:void();">EN</a></li>
+  <li class="language"><a class="menu__item" href="javascript:void();">FR</a></li>
+</ul>
+
+sg-wrapper:
+<nav class="network-navigation">
+  <sg-wrapper-content/>
+</nav>
+
+Styleguide 4.5
+*/
+
+.language {
+  left: -9999em;
+  text-align: center;
+  &,
+  &-switch {
+    position: absolute;
+    // width: auto;
+    background: inherit;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  &-switch {
+    top: 0;
+    right: 0;
+  }
+  &-switch:hover &,
+  &.is-active {
+    display: block;
+    position: static;
+  }
+  &.is-active {
+    position: static;
+  }
+  .menu__item {
+    padding: rhythm(2) rhythm(5);
+  }
+  &.is-active:hover {
+    .menu__item {
+      outline: $border-width solid;
+      outline-offset: -1 * $border-width;
+      color: $white;
+      border-color: $white;
+    }
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .language {
+    &,
+    &-switch {
+      position: static;
+    }
+    &-switch {
+      .no-flexbox & {
+        position: absolute;
+      }
+    }
+    &-switch:hover &,
+    &.is-active {
+      display: inline-block;
+    }
+    .menu__item {
+      padding: rhythm(3.5) rhythm(5);
+    }
+    &-switch:hover &.is-active,
+    &.is-active {
+      .menu__item {
+        outline: $border-width solid;
+        outline-offset: -6px;
+      }
+    }
+    &:last-child.is-active {
+      margin-right: gutter();
+    }
+  }
+}

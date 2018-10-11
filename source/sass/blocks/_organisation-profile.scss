@@ -1,0 +1,69 @@
+/*
+Organisation profile
+
+.organisation-profile - Organisation profile block
+
+markup:
+<article class="{$modifiers}  |  wing--right">
+    <div class="organisation-profile__brand  |  gutters">
+        <img class="image" src="https://res.cloudinary.com/cta/image/upload/v1505810135/piphibjnncz7czpevpiz.png" alt="">
+    </div>
+    <div class="organisation-profile__name  |  gutters">
+        <h3 class="title  |  leader  |  trailer--small">UNDP</h3>
+        <p>UNDP works in some 170 countries and territories, helping to achieve the eradication of poverty, and the reduction of inequalities and exclusion. We help countries to develop policies, leadership skills, partnering abilities, institutional
+            capabilities and build resilience in order to sustain development results. Inclusive growth, better services, environmental sustainability, good governance, and security are fundamental to development progress. We offer our
+            expertise in development thinking and practice, and our decades of experience at country level, to support countries to meet their development aspirations and to bring the voices of the world’s peoples into deliberations. In
+            2016, UNDP is continuing its work to support the 2030 Agenda for Sustainable Development and the 17 new Sustainable Development Goals (SDGs), or Global Goals, as they help shape global sustainable development for the next 15
+            years.
+        </p>
+    </div>
+</article>
+
+Styleguide 4.26
+*/
+.organisation-profile {
+  display: flex;
+  flex-wrap: wrap;
+  &__brand {
+    flex: 0 0 percentage(2/6);
+    max-width: percentage(2/6);
+  }
+  &__name {
+    flex: 0 0 percentage(4/6);
+    max-width: percentage(4/6);
+    .title {
+      @include title-14px();
+    }
+  }
+  &__brand,
+  &__name {
+    align-self: center;
+  }
+  @include breakpoint($gt-medium-handheld) {
+    &__brand {
+      text-align: center;
+      img {
+        display: inline-block;
+        max-height: rhythm(30);
+      }
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    &__brand {
+      flex: 0 0 percentage(3/12);
+      max-width: percentage(3/12);
+      img {
+        max-height: rhythm(42);
+      }
+    }
+    &__name {
+      flex: 0 0 percentage(8/12);
+      max-width: percentage(8/12);
+    }
+    &__name {
+      .title {
+        @include title-26px();
+      }
+    }
+  }
+}

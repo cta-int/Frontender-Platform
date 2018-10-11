@@ -1,0 +1,97 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "Channel\\Articles",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "ec334e9c-68e7-4260-b2c6-058697731ba2",
+                "control": "project/model/id"
+            },
+            "skip": {
+                "value": 5,
+                "control": "core/hidden"
+            },
+            "limit": {
+                "value": 6,
+                "control": "core/hidden"
+            },
+            "articleType": {
+                "value": "blog",
+                "control": "project/model/article_type"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Older posts",
+                    "fr": "Older posts"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_class": {
+                "value": "gutters",
+                "control": "core/hidden"
+            },
+            "shorten_to": {
+                "value": 3,
+                "control": "core/hidden"
+            },
+            "show_link_to_all_articles": {
+                "value": 0,
+                "control": "project/show"
+            },
+            "template": {
+                "value": "partials/article/post.html.twig",
+                "control": "core/hidden"
+            },
+            "show_lead_image": {
+                "value": 0,
+                "control": "core/hidden"
+            },
+            "show_stand_first": {
+                "value": 0,
+                "control": "project/display/show_stand_first"
+            },
+            "show_publication_date": {
+                "value": 0,
+                "control": "project/display/show_publication_date"
+            },
+            "show_author_name": {
+                "value": 0,
+                "control": "project/display/show_author_name"
+            },
+            "show_read_more": {
+                "value": 0,
+                "control": "project/display/show_read_more"
+            },
+            "show_topic": {
+                "value": 0,
+                "control": "project/display/show_topic"
+            },
+            "show_publication": {
+                "value": 0,
+                "control": "project/display/show_publication"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('footer') }} {{ helper.class_attribute(config, 'footer  |  gutters')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+		<p class="footer--txt">{{ labels.title|t(locales) }}</p>
+    <hr class="separator  |  leader  |  trailer">
+    <p>Disclaimer: <span class="footer--txt">{{ labels.disclaimer|t(locales) }}</span></p>
+    <a class="footer--link  |  anchor--reset" href="{{ links.link.page }}" target="_blank">{{ links.link.label|t(locales) }}</a>
+</{{ config.container_tag|default('footer') }}

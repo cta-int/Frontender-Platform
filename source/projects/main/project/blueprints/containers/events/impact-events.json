@@ -1,0 +1,149 @@
+{
+    "fe-id": null,
+    "template": "containers/events/impact-events/impact-events.html.twig",
+    "name": {
+        "en": "Upcoming events with description"
+    },
+    "description": {
+        "en": "Single event channel with description"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Container class",
+                        "fr": "Container class"
+                    },
+                    "type": "text",
+                    "value": ""
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Impact lead"
+                },
+                "description": {
+                    "en": "Impact lead"
+                },
+                "template": "containers/events/impact-events/impact-lead.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "EDD 2018",
+                                    "fr": "EDD 2018"
+                                }
+                            },
+                            "description": {
+                                "label": {
+                                    "en": "Description"
+                                },
+                                "control": "core/textarea",
+                                "value": {
+                                    "en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                                    "fr": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                }
+                            },
+                            "read_more": {
+                                "value": {
+                                    "label": {
+                                        "en": "Read more...",
+                                        "fr": "Lire la suite..."
+                                    },
+                                    "page": "/",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Read more button"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Upcoming events"
+                },
+                "description": {
+                    "en": "Upcoming"
+                },
+                "template": "modules/events/upcoming/upcoming-events.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "Upcoming events",
+                                    "fr": "Upcoming events"
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "8ee09e5e-db66-483f-a4ba-b1193e35a079",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": 4,
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "wings",
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

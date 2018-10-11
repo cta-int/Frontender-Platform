@@ -1,0 +1,289 @@
+/*
+Tab teaser
+
+markup:
+<div class="tab-teaser  |  teaser">
+  <ul class="tab-teaser__tabs  |  reset">
+    <li>
+      <a class="icon-tab  |  icon icon--eye" href="#panel1">
+        <span class="is-narrative">Project description</span>
+      </a>
+    </li>
+    <li>
+      <a class="icon-tab  |  icon icon--map" href="#panel2">
+        <span class="is-narrative">Map</span>
+      </a>
+    </li>
+    <li>
+      <a class="is-current  |  icon-tab  |  icon icon--heart" href="#panel3">
+        <span class="is-narrative">Impact</span>
+      </a>
+    </li>
+    <li>
+      <a class="icon-tab  |  icon icon--hand" href="#panel4">
+        <span class="is-narrative">Donate</span>
+      </a>
+    </li>
+    <li>
+      <a class="icon-tab  |  icon icon--users" href="#panel5">
+        <span class="is-narrative">Sponsors</span>
+      </a>
+    </li>
+  </ul>
+  <div class="tab-teaser__panels">
+    <sg-insert>4.27.1-1</sg-insert>
+    <sg-insert>4.27.2-2</sg-insert>
+    <sg-insert>4.27.3-2</sg-insert>
+    <sg-insert>4.27.4-2</sg-insert>
+    <sg-insert>4.27.5-2</sg-insert>
+  </div>
+</div>
+
+sg-wrapper:
+<div class="">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.27
+*/
+
+/*
+ * 1. Limit to four lines (line-height is 15px)
+ */
+.tab-teaser {
+  position: relative;
+  display: block;
+  margin-top: rhythm(14);
+  &__tabs {
+    margin-left: gutter();
+    position: absolute;
+    bottom: 100%;
+    @include clearfix();
+    li {
+      float: left;
+      margin-right: 2px;
+    }
+  }
+  &__panel {
+    height: rhythm(103);
+    overflow-y: scroll;
+    &.is-inactive {
+      display: none;
+    }
+    .no-flexbox & {
+      overflow-x: hidden;
+    }
+  }
+  // Description tab
+  &__panel--info &__title {
+    @include title-18px;
+    @include theme-color;
+  }
+  &__panel--info &__about {
+    max-height: rhythm(4 * 5); /* 1 */
+  }
+  // Impact Stories tab
+  &--stats {
+
+  }
+  // Map tab
+  &__panel--map {
+    background: no-repeat 0;
+    background-size: cover;
+    overflow: hidden;
+    .no-flexbox & {
+      overflow: hidden;
+    }
+  }
+  // Donation tab
+  &--impact-donate {
+
+  }
+  // Sponsors tab
+  &--logos {
+      &.is-active {
+            background: $white;
+      }
+
+  }
+  @include breakpoint($gt-large-handheld) {
+    margin-top: 0;
+    width: percentage(10 / 12);
+    width: 10 / 12 * 100vw;
+    &__tabs {
+      margin-left: 0;
+      position: absolute;
+      top: rhythm(6);
+      left: 100%;
+      li {
+        display: block;
+        margin-bottom: 2px;
+      }
+    }
+    &__panel {
+      height: rhythm(135);
+    }
+    // &__panel--map {
+    //   background-size: auto;
+    // }
+  }
+  @include breakpoint($gt-small-desktop) {
+      width: percentage(9 / 18);
+      width: 9 / 18 * 100vw;
+    &__panel-wing {
+        padding-left: percentage(1 / 9);
+        padding-left: 1 / 18 * 100vw;
+    }
+    &__panel--info &__title {
+      @include title-30px;
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &__panel--info &__title {
+      @include title-40px;
+    }
+  }
+  @include breakpoint($gt-large-desktop) {
+
+  }
+}
+
+/*
+Description
+
+.tab-teaser__panel.tab-teaser__panel--info - Active panel
+.tab-teaser__panel.tab-teaser__panel--info.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}  |  stack stack--stacked" id="panel1">
+  <div class="tab-teaser__panel-wing  |  stack__unit  |  leader-inside">
+    <div class="gutters  |  meta">Lorem ipsum</div>
+    <h2 class="tab-teaser__title  |  title  |  gutters  |  leader--tiny  |  trailer--tiny" href="javascript:void()">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</h2>
+    <p class="tab-teaser__about |  body--whisper  |  gutters">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu</p>
+    <a class="read-more  |  gutters" href="javascript:void()">Read more</a>
+  </div>
+  <div class="stack__unit stack__pin">
+    <ul class="reset  |  tab-teaser__panel-wing  |  leader">
+      <li class="gutters  |  leader--tiny  |  trailer--tiny">
+        <a class="block-link block-link--icon" href="javascript:void()">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</a>
+      </li>
+      <li class="gutters  |  leader--tiny  |  trailer--tiny">
+        <a class="block-link block-link--icon" href="javascript:void()">Lorem Ipsum Dolor Sit Amet</a>
+      </li>
+    </ul>
+    <div class="pin-box  |  stack  |  leader  |  tab-teaser__panel-wing">
+      <div class="pin-box__cell  |  stack__unit stack__pin  |  leader-inside  |  trailer-inside  | gutters">
+        <div class="media  |  location">
+          <span class="icon icon--theme icon--map-marker"></span>
+          <div class="location__body  |  media__content">
+            <span class="is-narrative">Region:</span> Africa
+          </div>
+        </div>
+      </div>
+      <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  | gutters">
+        <ul class="label-list reset list--inline">
+          <li><a class="label label--s" href="javascript:void();">GIS</a></li>
+          <li><a class="label label--s" href="javascript:void();">GPS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+Styleguide 4.27.1
+*/
+
+
+
+/*
+Map
+
+.tab-teaser__panel.tab-teaser__panel--map - Active panel
+.tab-teaser__panel.tab-teaser__panel--map.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}" id="panel2" style="background-image: url(/images/maps/western-africa.png);">
+  <img class="is-narrative" src="/images/maps/western-africa.png" alt="Map of Western Africa" width="840" height="406"/>
+  <img class="globe leader trailer gutters-outside" src="/images/globes/western-africa.png" alt="Picture of the globe with Western Africa highlighted." width="214" height="214"/>
+  <figcaption class="is-narrative">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </figcaption>
+</figure>
+
+Styleguide 4.27.2
+*/
+
+/*
+Stats
+
+.tab-teaser__panel.tab-teaser__panel--stats - Active panel
+.tab-teaser__panel.tab-teaser__panel--stats.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}  |  stack stack--stacked" id="panel3">
+  <div class="tab-teaser__panel-wing  |  leader-inside  |  stack__unit">
+    <div class="stack__unit  |  gutters">
+      <sg-insert>3.30</sg-insert>
+      <p class="meta meta--s  |  leader--tiny leader-inside--tiny  |  trailer--tiny trailer-inside--tiny">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p class="location">30 March 2017</p>
+    </div>
+  </div>
+  <div class="stack__unit stack__pin">
+    <div class="tab-teaser__panel-wing  |  stack__unit  stack__pin  |  pin-box  |  stack  |  leader">
+      <div class="pin-box__cell  |  stack__unit  | gutters">
+        <sg-insert>3.33-1</sg-insert>
+      </div>
+      <div class="pin-box__cell  |  stack__unit  | gutters">
+        <sg-insert>3.33-2</sg-insert>
+      </div>
+    </div>
+  </div>
+</section>
+
+Styleguide 4.27.3
+*/
+
+/*
+Donate
+
+.tab-teaser__panel.tab-teaser__panel--donate - Active panel
+.tab-teaser__panel.tab-teaser__panel--donate.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}" id="panel4">
+</section>
+
+Styleguide 4.27.4
+*/
+
+/*
+Impact
+
+.tab-teaser__panel - Active panel
+.tab-teaser__panel.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}" id="panel5">
+  <div class="gutters">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+  </div>
+</section>
+
+Styleguide 4.27.5
+*/
+
+/*
+Sponsors
+
+.tab-teaser__panel.tab-teaser__panel--sponsors - Active panel
+.tab-teaser__panel.tab-teaser__panel--sponsors.is-inactive - Inactive panel
+
+markup:
+<section class="{$modifiers}" id="panel6">
+  <div class="gutters">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+  </div>
+</section>
+
+Styleguide 4.27.6
+*/

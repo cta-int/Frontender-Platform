@@ -1,0 +1,109 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Project tile",
+        "fr": "Project tile"
+    },
+    "description": {
+        "en": "",
+        "fr": ""
+    },
+    "template": "modules/teaser-tab/teaser-tab.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "label": {
+                        "en": "Container class",
+                        "fr": "Container class"
+                    },
+                    "type": "text",
+                    "value": "hero"
+                }
+            }
+        },
+        "region": {
+            "label": {
+                "en": "Region",
+                "fr": "Region"
+            },
+            "controls": {
+                "name": {
+                    "label": {
+                        "en": "Region name",
+                        "fr": "Region name"
+                    },
+                    "type": "text",
+                    "value": "Pacific"
+                },
+                "id": {
+                    "label": {
+                        "en": "Tab identifier",
+                        "fr": "Tab identifier"
+                    },
+                    "type": "text",
+                    "value": "pacific"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content",
+                "fr": "Content"
+            },
+            "controls": {
+                "name": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "API",
+                        "fr": "API"
+                    },
+                    "type": "text",
+                    "value": "events"
+                },
+                "id": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Resource ID",
+                        "fr": "Resource ID"
+                    },
+                    "type": "text",
+                    "value": "112949e5-80eb-4738-aacd-3d636fa307e1"
+                },
+                "includeRelated": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Include related content",
+                        "fr": "Include related content"
+                    },
+                    "type": "list",
+                    "options": [
+                        {
+                            "value": "true",
+                            "label": {
+                                "en": "Yes",
+                                "fr": "Yes"
+                            }
+                        },
+                        {
+                            "value": "false",
+                            "label": {
+                                "en": "No",
+                                "fr": "No"
+                            }
+                        }
+                    ],
+                    "value": "true"
+                }
+            }
+        },
+        "containers": []
+    }
+}

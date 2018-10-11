@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 884 644">
+  <g fill="none" fill-rule="evenodd">
+    <text fill="#FFF" font-family="OpenSans-Semibold, Open Sans" font-size="20" font-weight="400">
+      <tspan x="270" y="285">OUR CORE VALUES</tspan>
+    </text>
+    <path stroke="#FFF" stroke-opacity=".2" d="M230.668 7.695L95 630.255l634-399.122z"/>
+    <text fill="#FFF" fill-opacity=".94" font-family="OpenSans-Semibold, Open Sans" font-size="14" font-weight="300">
+      <tspan x="760" y="230">COMMITMENT</tspan> <tspan x="760" y="244">TO DEVELOPMENT</tspan>
+    </text>
+    <text fill="#FFF" fill-opacity=".94" font-family="OpenSans-Semibold, Open Sans" font-size="14" font-weight="300">
+      <tspan x="115.194" y="643">TRANSPARENCY</tspan>
+    </text>
+    <text fill="#FFF" fill-opacity=".94" font-family="OpenSans-Semibold, Open Sans" font-size="14" font-weight="300">
+      <tspan x="0" y="20">EMPOWERING COMMUNITIES</tspan> <tspan x="0" y="34">AND GROUPS</tspan>
+    </text>
+    <circle cx="232" cy="9" r="9" fill="#BA222A"/>
+    <circle cx="729" cy="231" r="9" fill="#FFF" fill-opacity=".2"/>
+    <circle cx="95" cy="631" r="9" fill="#FFF" fill-opacity=".2"/>
+  </g>
+</svg>

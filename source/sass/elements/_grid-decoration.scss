@@ -1,0 +1,124 @@
+/*
+Grid decoration
+
+Grid decoration adds lines between adjacent elements. Grid decoration is to be
+used with a `.grid.grid--posts`. It has integrated padding, so no added gutters or
+leaders are required between elements.
+
+This currently only supports 2 and 4 items per row, with breakpoints following
+the `.grid.grid--posts` rules.
+
+markup:
+<div class="grid grid--posts  |  grid-decoration  |  gutters">
+  <div class="grid__cell">
+    <p>Grid cell 1</p>
+  </div>
+  <div class="grid__cell">
+    <p>Grid cell 2</p>
+  </div>
+  <div class="grid__cell">
+    <p>Grid cell 3</p>
+  </div>
+  <div class="grid__cell">
+    <p>Grid cell 4</p>
+  </div>
+</div>
+
+
+Styleguide 3.40
+*/
+
+/*
+ *    This supports 2 and 4 items per row, but can be adjusted for other setups too.
+ *
+ * 1. Set initial padding. This wil also serve as a fallback for older browsers.
+ * 2. We're setting all borders inside the nth-child selector, when an older
+ *    browser doesnt support it, no element gets lines
+ * 3. We want vertical lines to not cross horizontal lines, wo we are using a top
+ *    and bottom offset equal to the required vertical padding
+ * 4. Due to the removed left and right padding on the most outer elements in
+ *    each row, we need to recalculate their width so that all elements appear equal
+ *    in width. This is only necessary when there are more than 2 items per row.
+ * 5. Related to 4. the full container width must also be increased by a full
+ *    gutter width.
+ */
+.grid-decoration {
+  .grid__cell {
+    position: relative;
+    padding: gutter(); /* 1 */
+    &:nth-child(n) {
+      &,
+      &:before {
+        border-style: solid;
+        @include theme-border(26%);
+        .well & {
+            border-color: rgba($white,.8);
+        }
+      }
+    }
+    &:nth-child(n) {
+      border-width: 1px 0 0; /* 2 */
+      &:before /* 3 */ {
+        display: block;
+        width: 0;
+        position: absolute;
+        left: 0;
+        top: gutter();
+        bottom: gutter();
+        content: "";
+        border-width: 0 0 0 1px;
+      }
+    }
+    &:nth-child(-n + 2) {
+      border-top: 0;
+      padding-top: 0;
+      &:before {
+        top: 0;
+      }
+    }
+    &:nth-child(2n) {
+      padding-right: 0;
+    }
+    &:nth-child(2n + 1) {
+      padding-left: 0;
+      &:before {
+        border-width: 0;
+      }
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    .grid__cell {
+      &:nth-child(-n + 4) {
+        border-top: 0;
+        padding-top: 0;
+        &:before {
+          top: 0;
+        }
+      }
+      &:nth-child(n) {
+        padding-left: gutter();
+        padding-right: gutter();
+        &:before {
+          border-width: 0 0 0 1px;
+        }
+      }
+      &:nth-child(4n) {
+        padding-right: 0;
+      }
+      &:nth-child(4n+1) {
+        padding-left: 0;
+        flex-basis: calc(25% - #{gutter()}); /* 4 */
+        &:before {
+          border-width: 0;
+        }
+      }
+      &:nth-child(4n) {
+        padding-right: 0;
+        flex-basis: calc(25% - #{gutter()}); /* 4 */
+      }
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    margin-right: gutter(-1); /* 5 */
+  }
+}

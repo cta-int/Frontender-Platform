@@ -1,0 +1,100 @@
+{
+    "model": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "media",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "a760426c-c6b2-4b30-aa6d-9ace0da5d92e",
+                "control": "project/model/id"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "container_title": {
+                "value": {
+                    "en": "Title",
+                    "fr": "Titre"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "container_subtitle": {
+                "value": {
+                    "en": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                    "fr": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+                },
+                "label": {
+                    "en": "SubtTitle"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "show_image_info": {
+                "value": 1,
+                "label": {
+                    "en": "Display media credits"
+                },
+                "control": "core/boolean"
+            },
+            "container_tag": {
+                "value": "header",
+                "control": "project/container_tag"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "divider": {
+                "value": 1,
+                "control": "core/boolean"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "crown": {
+                "value": "",
+                "control": "project/crown"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "containers": [
+        {
+            "template": "modules/global/greenshoot/greenshoot.html.twig"
+        }
+    ]
+}

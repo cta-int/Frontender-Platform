@@ -1,0 +1,55 @@
+{# set resource_route = route({page: article.articleType|replace({'_': '-'}), slug: article.headline|t(locales)|slugify, id: article.issue._id}) #}
+{% set resource_route = route({page: model.articleType|replace({'_': '-'}), id: model._id, slug: model.headline|t(locales)|slugify}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+<div class="media">
+    <div class="media__figure  |  gutters gutter-mobile--right">
+        <span class="stamp stamp--{{ model.procurementStatus }}">
+            <span class="stamp__body">{{ model.procurementStatus|t(locales) }}</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters  |  trailer">
+                <h1 class="title title--section"><a class="is-heir  anchor--shy" href="{{ resource_route }}">{{ model.headline }}</a></h1>
+
+                {% if model.datePublished %}
+                    <p class="meta  |  leader--small  |  trailer--small">
+                        <strong>{{ 'published on'|t(locales) }}:</strong><br/>
+                        {{ model.datePublished|tdate('%e %B %Y') }}
+                    </p>
+                {% endif %}
+
+                <p>{{ model.about }}</p>
+
+                <a class="read-more  |  leader--small" href="{{ resource_route }}">{{ 'Read more'|t(locales) }}</a>
+            </div>
+            <div class="media__figure  media__aside  |  wings  |  trailer">
+                <dl class="meta  |  trailer--normal trailer-inside--tiny  |  gutters">
+                    {% if model.procurementStartDate and not model.articleType in ['vacancy'] %}
+                        <dt><strong>{{ labels.procurementStartDate|default('indicative starting date')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ model.procurementStartDate|tdate('%e %B %Y') }} {{ model.procurementStartDisplay|t(locales) }}
+                        </dd>
+                    {% endif %}
+                    {% if model.procurementStartDate %}
+                        <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ model.procurementEndDate|tdate('%e %B %Y') }} {{ model.procurementEndDisplay|t(locales) }}
+                        </dd>
+                    {% endif %}
+                    {% if model.procurementType %}
+                        <dt><strong>{{ labels.procurementType|default('type of contract')|t(locales) }}:</strong></dt>
+                        <dd class="trailer--small">{{ model.procurementType|t(locales) }}</dd>
+                    {% endif %}
+                </dl>
+
+                {% if model.link.organization.sourceOrganization|length > 0 %}
+                    <div class="gutters">
+                        {% include "partials/location.html.twig" with {"location": {name: model.link.organization.sourceOrganization|first.location.address.addressLocality ~ ', ' ~ model.link.organization.sourceOrganization|first.location.address.addressCountry}} %}
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>

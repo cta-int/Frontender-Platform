@@ -1,0 +1,46 @@
+{
+  "source": "source",
+  "projects": {
+    "styleguide": "build/styleguide",
+    "main": "build/main"
+  },
+  "init": {},
+  "assets": {
+    "main": "build/main/www/assets"
+  },
+  "sass": {
+    "main": "build/main/www/assets/css"
+  },
+  "plugins": {
+    "minify": {
+      "files": ["**/*.css"],
+      "config": null
+    },
+    "autopref": {
+      "files": "**/*.css",
+      "config": {"browsers": ["last 2 versions", "Firefox <= 20", "ie 8", "ie 9", "android >=4", ">1%"]}
+    },
+    "imagemin": {
+      "files": ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.svg"],
+      "config": null
+    },
+    "htmlmin": {
+      "files": "**/*.html"
+    },
+    "concat": {
+      "files": "/assets/**/*.js",
+      "config": "javascript/custom.js"
+    },
+    "uglify": {
+      "files": "javascript/*.js",
+      "config": "javascript/custom.min.js"
+    },
+    "docblock": {
+      "files": ["**/*.html", "**/*.css"]
+    },
+    "scsslint": {
+      "files": "**/*.scss",
+      "config": ".scss-lint.yml"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+
+.post {
+  position: relative;
+  width: 100%;
+  .grid--posts & {
+    margin-bottom: rhythm(18);
+  }
+  &__title {
+    margin: rhythm(1) 0 rhythm(2);
+  }
+  &__intro {
+    font-size: to-unit(14px);
+    line-height: to-unit(18px, 1, 14px);
+    margin: rhythm(3) 0;
+  }
+  &:hover &__anchor {
+    visibility: visible;
+    opacity: 1;
+  }
+  .pin-box {
+    margin-top: rhythm(12);
+    .title {
+      @include title-12px();
+      margin-top: 0;
+      margin-bottom: rhythm(2);
+    }
+  }
+  &__content {
+    padding-top: rhythm(1);
+  }
+  &--hero {
+    .grid--posts & {
+      margin-bottom: rhythm(12);
+    }
+    .pin-box {
+      margin-top: rhythm(8);
+    }
+  }
+  .title {
+    // @include title-14px();
+    margin-top: rhythm();
+    margin-bottom: rhythm(2);
+  }
+  &--hero &__content {
+    padding-top: rhythm(2);
+  }
+  &--hero &__media {
+    margin-bottom: rhythm(4);
+  }
+  // &--hero &__intro {
+  //   @include text-12px();
+  // }
+  &--hero .title {
+    margin-bottom: rhythm(4);
+  }
+  @include breakpoint($gt-large-handheld) {
+    &,
+    &--hero  {
+      .grid--posts & {
+        margin-bottom: rhythm(0);
+      }
+    }
+    &--hero &__intro {
+      @include text-12px();
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    &__media {
+      margin-bottom: rhythm(2);
+    }
+    &--hero &__content {
+      padding-top: 0;
+    }
+    &--hero &__media {
+      margin-bottom: 0;
+    }
+    &--hero &__intro {
+      padding-top: rhythm(4);
+      @include text-16px();
+    }
+    &--hero .title {
+      @include title-26px();
+      margin-top: rhythm(4);
+      margin-bottom: rhythm(2);
+    }
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .no-flexbox {
+    .post__media.layout__cell {
+      max-width: percentage(8 / 13);
+      display: inline-block;
+      float: left;
+    }
+  }
+}
+
+
+/*
+Post
+
+markup:
+<div class="post">
+  <div class="post__media">
+    <a class="anchor anchor--shy" href="javascript:void();">
+      <img class="image image--stretch" width="767" height="512" alt="" src="https://images.unsplash.com/photo-1477240381028-271008c7415c?&fit=crop&w=767&h=512">
+    </a>
+  </div>
+  <div class="post__content  |  leader-inside">
+    <time class="meta" datetime="">19 October 2016</time>
+    <h3 class="title  |  anchor--reset">
+      <a class="anchor anchor--shy" href="javascript:void();">
+        Sri Lanka's drone pioneers
+      </a>
+    </h3>
+    <p class="post__author  |  author">
+      by <a href="javascript:void();">Clayton Wilson</a>
+    </p>
+    <p class="is-gt-small-desktop  |  post__intro">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+    <div class="pin-box  | leader-inside--small">
+      <div class="title">CTA-ECOWAS Regional Conference on grain trade in West Africa</div>
+      <div class="location">16 October 2016, Ghana, West Africa</div>
+    </div>
+  </div>
+</div>
+
+Styleguide 4.8.1
+*/
+
+
+/*
+Post - Hero
+
+markup:
+<div class="post post--hero  |  layout">
+  <div class="post__media  |  layout__cell  |  gutters">
+    <a class="anchor anchor--shy" href="javascript:void();">
+      <img class="image image--stretch" width="811" height="512" alt="" src="https://images.unsplash.com/photo-1477240381028-271008c7415c?&fit=crop&w=811&h=512">
+    </a>
+  </div>
+  <div class="post__content  |  layout__cell layout__cell--aside  |  stack stack--stacked  |  wing--right">
+    <div class="stack__unit  |  gutters">
+      <time class="meta" datetime="">19 October 2016</time>
+      <h3 class="title title--tile anchor--reset">
+        <a class="anchor anchor--shy" href="javascript:void();">
+          Sri Lanka's drone pioneers
+        </a>
+      </h3>
+      <div class="media media--middle  |  bleed">
+        <div class="media__image  |  gutters">
+          <img class="image image--stretch" width="30" height="30" alt="Sri Lanka's drone pioneers" src="https://images.unsplash.com/photo-1444146644393-241099c1593d?&fit=crop&w=30&h=30">
+        </div>
+        <div class="media__content  |  body--whisper">
+          by <a href="javascript:void();">Clayton Wilson</a>
+        </div>
+      </div>
+      <p class="post__intro">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+    </div>
+    <div class="stack__unit stack__pin  |  gutters">
+      <div class="pin-box  |  leader-inside--small">
+        <div class="title">CTA-ECOWAS Regional Conference on grain trade in West Africa</div>
+        <div class="location">16 October 2016, Ghana, West Africa</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+Styleguide 4.8.2
+*/

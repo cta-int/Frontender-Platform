@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show standfirst"
+    },
+    "control": "project/show_on_items"
+}

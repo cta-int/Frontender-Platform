@@ -1,0 +1,23 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "About CTA Section 3"
+    },
+    "description": {
+        "en": "About CTA Section 3"
+    },
+    "template": "containers/about_cta/section-three.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "value": "theme theme--dark",
+                    "control": "project/container_class"
+                }
+            }
+        }
+    }
+}

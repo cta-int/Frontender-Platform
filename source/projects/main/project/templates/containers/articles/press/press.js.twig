@@ -1,0 +1,8 @@
+jQuery(function($) {
+    $('[data-press-tabs]').find('li').find('a').on('click', function() {
+        var target = $('#media_' + $(this).attr('href').replace('#', ''));
+
+        target.siblings().removeClass('is-active').addClass('is-inactive');
+        target.removeClass('is-inactive').addClass('is-active');
+    });
+});

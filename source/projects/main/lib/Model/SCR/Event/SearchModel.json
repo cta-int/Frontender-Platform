@@ -1,0 +1,34 @@
+{
+  "label": {
+    "en": "Find content: event",
+    "fr": "Find content: event"
+  },
+  "map": {
+    "id": "_id",
+    "title": "name",
+    "thumbnail": "image"
+  },
+  "display_options": {
+    "thumbnail": {
+      "en": "Show image",
+      "fr": "Show image"
+    },
+    "description": {
+      "en": "Show description",
+      "fr": "Show description"
+    }
+  },
+  "display_attributes": ["description", "thumbnail", "datePublished"],
+  "controls": {
+    "type": {
+      "control": "project/model/event_type"
+    },
+    "q": {
+      "label": {
+        "en": "Text",
+        "fr": "Text"
+      },
+      "control": "core/text"
+    }
+  }
+}

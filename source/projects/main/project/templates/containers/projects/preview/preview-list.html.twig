@@ -1,0 +1,12 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/image.html.twig" as image %}
+
+{% if model.events|length %}
+    {#
+        Allow the header container to be embedded in the results, when result
+        is empty the header will not be shown
+    #}
+    {% for event in model.events %}
+        {% include "containers/projects/preview/preview.html.twig" with {model: event}  %}
+    {% endfor %}
+{% endif %}

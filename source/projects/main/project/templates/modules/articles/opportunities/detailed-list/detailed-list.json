@@ -1,0 +1,88 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "Channel\\Articles",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                "control": "project/model/id"
+            },
+            "limit": {
+                "value": "4",
+                "control": "project/model/limit"
+            },
+            "articleType": {
+                "value": "vacancy",
+                "control": "project/model/article_type"
+            }
+        }
+    },
+    "labels": {
+        "label": {
+            "en": "Panel settings"
+        },
+        "controls": {
+            "panel_title": {
+                "value": {
+                    "en": "Vacancies",
+                    "fr": "Postes vacants"
+                },
+                "label": {
+                    "en": "Tab label"
+                },
+                "control": "core/text"
+            },
+            "link": {
+                "value": {
+                    "label": {
+                        "en": "Show all vacancies",
+                        "fr": "Afficher tous les postes vacants"
+                    },
+                    "page": "vacancies",
+                    "id": ""
+                },
+                "label": {
+                    "en": "Link"
+                },
+                "control": "core/route"
+            }
+        }
+    },
+    "config": {
+        "controls": {
+            "show_link": {
+                "value": 1,
+                "label": {
+                    "en": "Show link (will replace pagination)"
+                },
+                "control": "project/show"
+            },
+            "active": {
+                "value": 1,
+                "label": {
+                    "en": "Open tab"
+                },
+                "control": "project/show"
+            },
+            "tab_class": {
+                "value": "",
+                "label": {
+                    "en": "Tab class"
+                },
+                "control": "project/container_class"
+            },
+            "panel_class": {
+                "value": "",
+                "label": {
+                    "en": "Panel class"
+                },
+                "control": "project/container_class"
+            }
+        }
+    }
+}

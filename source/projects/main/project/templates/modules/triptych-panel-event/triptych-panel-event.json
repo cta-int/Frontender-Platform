@@ -1,0 +1,18 @@
+{
+    "model": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "events",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "fb195dd5-cf79-4ae7-867c-cc03498c5660",
+                "control": "project/model/id"
+            }
+        }
+    }
+}

@@ -1,0 +1,318 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "SERP"
+    },
+    "description": {
+        "en": "Site search results page"
+    },
+    "template": "containers/global/layout/layout.html.twig",
+    "template_config": {
+        "model": {
+            "label": {
+                "en": "Search settings"
+            },
+            "controls": {
+                "adapter": {
+                    "value": "SCR",
+                    "control": "project/adapter"
+                },
+                "name": {
+                    "value": "search",
+                    "control": "project/model/name"
+                },
+                "types": {
+                    "value": "article,event",
+                    "control": "core/hidden"
+                },
+
+                "limit": {
+                    "value": "5",
+                    "control": "project/model/limit"
+                },
+
+                "q": {
+                    "value": "{ query.q }",
+                    "control": "core/hidden"
+                },
+
+                "time": {
+                    "value": "{ query.time }",
+                    "control": "core/hidden"
+                },
+
+                "concepts": {
+                    "value": "{ query.concepts }",
+                    "control": "core/hidden"
+                },
+
+                "location": {
+                    "value": "{ query.location }",
+                    "control": "core/hidden"
+                },
+                "type": {
+                    "value": "{ query.type }",
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "leader-inside",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "divider divider--top",
+                    "control": "project/divider"
+                },
+                "show_divider": {
+                    "value": 1,
+                    "control": "core/hidden"
+                },
+                "show_secondary_first": {
+                    "value": 0,
+                    "control": "core/hidden"
+                },
+                "show_outer_wing": {
+                    "value": 1,
+                    "control": "core/hidden"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Results"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "config": {},
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Keyword"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/serp/serp-header/serp-header.html.twig",
+                            "template_config": {
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en": "Your search",
+                                                "fr": "Your search"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "placeholder": {
+                                            "value": {
+                                                "en": "Type a keyword",
+                                                "fr": "Type a keyword"
+                                            },
+                                            "label": {
+                                                "en": "Placeholder"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Articles"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/serp/serp-articles/serp-articles.html.twig"
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Events"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "modules/serp/serp-events/serp-events.html.twig"
+                        }
+                    ]
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Filters"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/serp/serp-filter/serp-filter.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "value": {
+                                    "en": "Advanced search",
+                                    "fr": "Advanced search"
+                                },
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text"
+                            },
+                            "button": {
+                                "value": {
+                                    "en": "Search",
+                                    "fr": "Search"
+                                },
+                                "label": {
+                                    "en": "Button label"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "leader leader-inside  | trailer-inside--hero",
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Country"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/country.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Countries"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Geoname\\Country",
+                                            "control": "project/model/name"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Time frame"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/period.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Content type"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "partials/search-fields/content-type.html.twig",
+                            "template_config": {
+                                "labels": {},
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

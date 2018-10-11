@@ -1,0 +1,45 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<header class="{{ [container_class]|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    {% if medium %}
+        {{ image.hero(medium, is_crowned, "article-header__image  |  image image--stretch") }}
+    {% endif %}
+    <div class="article-headline  |  layout layout--reverse">
+        <div class="layout  layout--align-middle  |  layout__cell layout__cell--main">
+            <div class="layout__cell layout__cell--main  |  gutters">
+                <div class="leader-inside  |  trailer">
+                    <h1 class="title title--headline">{{ content.title|t(locales) }}</h1>
+                    {% if content.subtitle|t(locales) %}
+                        <p class="article-headline__byline  |  meta  |  leader-inside">{{ content.subtitle|t(locales) }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="layout__cell layout__cell--aside  | wings">
+            {% if model.link.mediaObject|lead %}
+                {% if contentBlock.about %}
+                    <p class="caption  |  gutters">{{ contentBlock.about|t(locales) }}</p>
+                {% endif %}
+                {% if contentBlock.person|length > 0 %}
+                    <p class="credit  |  gutters">&copy;{{ contentBlock.person|first.name }}</p>
+                {% endif %}
+            {% else %}
+            <span class="is-silent">&nbsp;</span>
+            {% endif %}
+            </div>
+        </div>
+        <div class="is-gt-small-desktop  |  layout__cell layout__cell--aside{{ show_divider ? ' layout__cell--divider'}}  |  gutters  |  stack stack--stacked">
+            {% if containers %}
+            <div class="stack__unit stack__pin">
+                {% include containers|first.template with containers|first.data %}
+            </div>
+            {% else %}
+                &nbsp;
+            {% endif %}
+        </div>
+    </div>
+</header>

@@ -1,0 +1,17 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if location %}
+<div class="media media--middle  |  {% if not dark %}location{% endif %}">
+    <span class="location__marker  |  media__figure">
+        <span class="icon {% if dark %}icon--dark{% else %}icon--theme{% endif %} icon--drop icon--map-marker"><span class="is-narrative">{{ 'Location'|t(locales) }}:</span></span>
+    </span>
+    <div class="location__body  |  media__content">
+        {% if location.uri and location._id %}
+            {# This is a legitimate location object#}
+            <a class="is-heir" href="/{{ locale }}/search?location={{ location._id }}">{{ location.label|t(locales) }}</a>
+        {% else %}
+            {{ location.name|t(locales) }}
+        {% endif %}
+    </div>
+</div>
+{% endif %}

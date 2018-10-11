@@ -1,0 +1,57 @@
+/*
+Location
+
+markup:
+<div class="media  |  location">
+  <span class="icon icon--theme icon--map-marker"></span>
+  <div class="location__body  |  media__content">
+    <span class="is-narrative">Location:</span></span> Wageningen, Gelderland, The Netherlands</span>
+  </div>
+</div>
+
+Styleguide 3.19
+*/
+
+.location {
+  @include small-location();
+  color: mix($color-body, $white, 76%);
+  &__marker {
+    margin-right: .5em;
+    margin-left: rhythm(-1);
+  }
+  &__body {
+
+  }
+  .icon {
+    @include theme-color();
+  }
+  @include breakpoint($gt-small-desktop) {
+    @include regular-location();
+  }
+}
+
+/*
+Location map asset
+
+markup:
+<div class="media  |  location  |  location__map-asset">
+  <span class="icon icon--theme icon--map-marker"></span>
+  <div class="location__body  |  media__content">
+    <span class="is-narrative">Location:</span></span> Wageningen, Gelderland, The Netherlands</span>
+  </div>
+</div>
+
+Styleguide 3.19.1
+*/
+
+.location {
+  &.map__asset {
+    position: relative;
+    padding-left: 2em;
+    .icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

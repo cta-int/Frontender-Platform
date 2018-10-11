@@ -1,0 +1,40 @@
+{
+    "labels": {
+        "label": {
+            "en": "Labels"
+        },
+        "controls": {
+            "quote": {
+                "value": {
+                    "en": "The world does not stand still, and neither does CTA. We seek individuals and organisations aspiring to empower agricultural and rural communities in ACP countries.",
+                    "fr": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                },
+                "label": {
+                    "en": "Quote"
+                },
+                "control": "core/textarea"
+            },
+            "cite": {
+                "value": {
+                    "en": "Pascal Deleu, Human resources officer",
+                    "fr": "Pascal Deleu, Human resources officer"
+                },
+                "label": {
+                    "en": "Source"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "show_narrow_layout": {
+                "value": 0,
+                "control": "project/layout/show_narrow"
+            }
+        }
+    }
+}

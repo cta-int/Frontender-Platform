@@ -1,0 +1,59 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'layout layout--split  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell  |  contact--hero" style="background: url(http://res.cloudinary.com/cta/image/upload/h_900,w_1200,g_faces:center,f_auto,c_fill/{{ model.metadata.id }}.png) top center; background-size: cover;"></div>
+    <div class="layout__cell  |  well--neutral">
+        <div class="contact  |  leader--hero  |  trailer--hero">
+            <h2 class="title title--section  |  trailer  |  gutters">{{ container_title|t(locales) }}</h2>
+            <div class="layout layout--even">
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">{{ block_1.title|t(locales) }}</h2>
+                    <p class="trailer--small  |   title--apropos">{{ block_1.body|t(locales) }}</p>
+                    <a class="title--apropos" href="mailto:{{ block_1.slug.page|t(locales) }}">{{ block_1.slug.label|t(locales) }}</a>
+                </div>
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">{{ block_2.title|t(locales) }}</h2>
+                    <p class="trailer--small  |   title--apropos">{{ block_2.body|t(locales) }}</p>
+                    <a class="title--apropos" href="mailto:{{ block_2.slug.page|t(locales) }}">{{ block_2.slug.label|t(locales) }}</a>
+                </div>
+                <div class="layout__cell  |  trailer--hero  |  gutters">
+                    <h2 class="title title--apropos  |  trailer--small">{{ block_3.title|t(locales) }}</h2>
+                    <p class="trailer--small  |   title--apropos">{{ block_3.body|t(locales) }}</p>
+                    <a class="title--apropos" href="mailto:{{ block_3.slug.page|t(locales) }}">{{ block_3.slug.label|t(locales) }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact--column">
+        <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
+            <div class="gutters">
+                <h2 class="title  |  trailer--normal">{{ location_1.title|t(locales) }}</h2>
+                <p class="meta">{{ location_1.street|t(locales) }}</p>
+                <p class="meta">{{ location_1.postal|t(locales) }}</p>
+                <p class="meta  |  trailer--small">{{ location_1.country|t(locales) }}</p>
+                <p class="meta">Tel: {{ location_1.phone|t(locales) }}</p>
+                <p class="meta">Fax: {{ location_1.fax|t(locales) }}</p>
+                <a
+                    class="block-link block-link--inverse  |  leader--normal"
+                    href="{{ location_1.slug.page|t(locales) }}"
+                    target="_blank">{{ location_1.slug.label|t(locales) }}</a>
+            </div>
+        </div>
+        <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
+            <div class="gutters">
+                <h2 class="title  |  trailer--normal">{{ location_2.title|t(locales) }}</h2>
+                <p class="meta">{{ location_2.street|t(locales) }}</p>
+                <p class="meta">{{ location_2.postal|t(locales) }}</p>
+                <p class="meta  |  trailer--small">{{ location_2.country|t(locales) }}</p>
+                <p class="meta">Tel: {{ location_2.phone|t(locales) }}</p>
+                <p class="meta">Fax: {{ location_2.fax|t(locales) }}</p>
+                <a
+                    class="block-link block-link--inverse  |  leader--normal"
+                    href="{{ location_2.slug.page|t(locales) }}"
+                    target="_blank">{{ location_2.slug.label|t(locales) }}</a>
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

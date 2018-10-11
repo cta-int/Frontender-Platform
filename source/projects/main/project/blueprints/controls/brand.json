@@ -1,0 +1,21 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Brand"
+    },
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "Hide"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Show"
+            }
+        }
+    ],
+    "control": "core/list"
+}

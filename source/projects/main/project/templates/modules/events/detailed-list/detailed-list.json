@@ -1,0 +1,16 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "id": {
+                "value": {
+                    "en": "upcoming-events",
+                    "fr": "upcoming-events"
+                },
+                "type": "core/hidden"
+            }
+        }
+    }
+}

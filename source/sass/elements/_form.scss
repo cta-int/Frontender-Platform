@@ -1,0 +1,178 @@
+/*
+Form fields
+
+Styleguide 3.6
+*/
+
+/*
+Text Input
+
+.fld - Bas field selector
+.fld:hover - Hover state
+.fld:focus - Focus state
+.fld:empty - Empty state
+
+markup:
+<input class="fld" type="text"/>
+<input class="fld" type="text"/>
+<input class="fld" type="text"/>
+
+Styleguide 3.6.1
+*/
+
+// scss-lint:disable MergeableSelector
+.fld {
+  border: 0;
+  border-bottom: 1px dashed;
+  background: transparent;
+  margin: 0;
+  padding: 0 rhythm();
+  &:focus {
+    // scss-lint:disable DuplicateProperty
+    box-shadow: none;
+    outline: 1px solid mix($white, $color-theme, 80%);
+    background: mix($white, $color-theme, 80%);
+    .well & {
+      outline-color: $white;
+      outline-color: rgba($white, 20%);
+      background: $white;
+      background: rgba($white, 20%);
+    }
+    // scss-lint:enable DuplicateProperty
+  }
+  &:focus {
+    .theme--blue & {
+      outline: 1px solid mix($white, $color-blue, 80%);
+      background: mix($white, $color-blue, 80%);
+    }
+    .theme--lime & {
+      outline: 1px solid mix($white, $color-lime, 80%);
+      background: mix($white, $color-lime, 80%);
+    }
+    .theme--yellow & {
+      outline: 1px solid mix($white, $color-yellow, 80%);
+      background: mix($white, $color-yellow, 80%);
+    }
+    .theme--gold & {
+      outline: 1px solid mix($white, $color-gold, 80%);
+      background: mix($white, $color-gold, 80%);
+    }
+    .theme--orange & {
+      outline: 1px solid mix($white, $color-orange, 80%);
+      background: mix($white, $color-orange, 80%);
+    }
+    .theme--salmon & {
+      outline: 1px solid mix($white, $color-salmon, 80%);
+      background: mix($white, $color-salmon, 80%);
+    }
+    .theme--red & {
+      outline: 1px solid mix($white, $color-red, 80%);
+      background: mix($white, $color-red, 80%);
+    }
+    .theme--burgundy & {
+      outline: 1px solid mix($white, $color-burgundy, 80%);
+      background: mix($white, $color-burgundy, 80%);
+    }
+    .theme--purple & {
+      outline: 1px solid mix($white, $color-purple, 80%);
+      background: mix($white, $color-purple, 80%);
+    }
+  }
+  &--l {
+    .selectize-control input {
+      font-size: to-unit(39px);
+      text-transform: uppercase;
+      font-weight: bold;
+      &::placeholder {
+        color: mix($color-body, $white, 26%);
+      }
+    }
+  }
+  &--label {
+    color: mix($color-body, $white, 26%);
+    font-weight: normal;
+  }
+  .ctx-item__search & {
+    padding-left: 0;
+  }
+}
+
+/*
+Textarea Input
+
+Styleguide 3.6.2
+*/
+
+/*
+Select Input
+
+Styleguide 3.6.3
+*/
+
+/*
+Checkboxes
+
+Styleguide 3.6.4
+*/
+
+.fld-checkbox {
+  margin-right: rhythm(3);
+}
+
+/*
+Radio buttons
+
+Styleguide 3.6.5
+*/
+
+.fld-radio,
+.fld-checkbox {
+  width: rhythm(7); /* IE11 fallback */
+}
+
+/*
+Field label
+
+Field labels are assign the title classes.
+
+.fld-label.title - Field label
+
+markup:
+<label class="fld-label title">Full name</label>
+
+Styleguide 3.6.6
+*/
+
+.fld-label {
+  @extend %meta-text !optional;
+  @include title-12px();
+  font-weight: 600;
+  margin: rhythm(5) 0 0;
+}
+// scss-lint:enable MergeableSelector
+
+/*
+Placeholder
+
+Placeholder default browser opacity reset.
+
+.placeholder-visible - Opacity reset
+
+markup:
+<input class="fld {$modifiers}" placeholder="This is a styled placeholder">
+
+Styleguide 3.6.7
+*/
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: mix($color-body, $white, 76%);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: mix($color-body, $white, 76%);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: mix($color-body, $white, 76%);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: mix($color-body, $white, 76%);
+}

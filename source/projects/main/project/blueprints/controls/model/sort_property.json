@@ -1,0 +1,24 @@
+{
+    "value": "",
+    "control": "core/list",
+    "options": [
+        {
+            "value": "{ query.sortProperty }",
+            "label": {
+                "en": "As defined by filter"
+            }
+        },
+        {
+            "value": "name",
+            "label": {
+                "en": "Name"
+            }
+        },
+        {
+            "value": "startDateUTC",
+            "label": {
+                "en": "Date"
+            }
+        }
+    ]
+}

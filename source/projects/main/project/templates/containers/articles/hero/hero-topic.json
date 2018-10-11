@@ -1,0 +1,70 @@
+{
+    "labels": {
+        "label": {
+            "en": "Content overrides"
+        },
+        "controls": {
+            "label": {
+                "value": {
+                    "en": "",
+                    "fr": ""
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "section",
+                "control": "project/container_tag"
+            },
+            "crown": {
+                "value": "",
+                "control": "project/crown"
+            },
+            "wings": {
+                "value": "",
+                "control": "project/wings"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "divider": {
+                "value": "",
+                "control": "project/divider"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "articles",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "400573fb-90e5-4482-8d2b-1e65ecc4b7a7",
+                "control": "project/model/id"
+            }
+        }
+    }
+}

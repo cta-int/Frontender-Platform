@@ -1,0 +1,51 @@
+/*
+Article Header
+
+.article-header - Article hero
+.article-header.is-crowned - Pulled up under menu
+
+markup:
+<header class="{$modifiers}">
+  <img
+  class="article-header__image  |  image image--stretch"
+  sizes="(max-width: 500w) 500w, 1024w,1480w"
+  srcset="https://images.unsplash.com/photo-1464684979825-ad6f2811cef2?q=80&crop=entropy&w=630&h=480&fit=crop 320w,
+          https://images.unsplash.com/photo-1464684979825-ad6f2811cef2?q=80&crop=entropy&w=1920&h=600&fit=crop 1480w"
+  alt="…">
+  <sg-insert>5.3.2</sg-insert>
+</header>
+
+Styleguide 5.3.1
+*/
+
+/*
+ * 1. Pull up (under navigation)
+ */
+
+.article-header {
+  @include theme-opaque-background(100%);
+  margin-bottom: rhythm(10);
+  &.is-crowned {
+    overflow-x: hidden;
+  }
+  &.is-crowned &__image {
+    width: 130%;
+  }
+  &,
+  .issue-label__caption,
+  .meta {
+    color: $white;
+  }
+  &__image {
+    .no-flexbox & {
+      // max-height: rhythm(200);
+    }
+  }
+}
+
+@include breakpoint($gt-small-desktop) {
+  .article-header {
+    &.is-crowned {
+    }
+  }
+}

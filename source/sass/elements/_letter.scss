@@ -1,0 +1,26 @@
+/*
+Letter
+
+.letter - Letter
+
+markup:
+<div class="{$modifiers}">A</div>
+
+Styleguide 3.41
+*/
+
+.letter {
+  @extend %meta-text;
+  @include theme-opaque-background(100%);
+  @include text-20px;
+  padding: rhythm(2) rhythm();
+  width: rhythm(11);
+  height: rhythm(11);
+  color: $white;
+  font-weight: bold;
+  @include breakpoint($gt-small-desktop) {
+  	padding: rhythm(4) rhythm(2);
+  	width: rhythm(14);
+    height: rhythm(14);
+  }
+}

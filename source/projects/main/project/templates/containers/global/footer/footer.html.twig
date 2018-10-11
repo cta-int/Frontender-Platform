@@ -1,0 +1,70 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'site-footer layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+	<div class="layout__cell layout__cell--aside  |  site-footer__meta  |   wings">
+		<div class="trailer--normal">
+			<img class="gutters" src="/images/logos/europe-logo.png" alt="European Union"/>
+			<img class="gutters" src="/images/logos/acp-logo.png" alt="ACP"/>
+		</div>
+		<p class="gutters  |  meta meta--s meta--lowercase">{{ content.body|t(locales) }}</p>
+		<div class="gutters  |  leader  |  txt-meta  |  layout__cell layout__cell--aside">
+			{% for link in content.links %}
+				{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'anchor--shy  is-heir  |  meta meta--s  |  gutter--right'}} %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="layout__cell layout__cell--main  |  layout layout--footer">
+		<div class="layout__cell layout__cell--main  |  site-footer__links">
+			<div class="grid grid--musketeers">
+				{% if first_column.links|length %}
+				<div class="grid__cell  |  gutters">
+					<h2 class="title  |  site-footer__title">{{ first_column.title|t(locales) }}</h2>
+					<ul class="reset">
+						{% for link in first_column.links %}
+							<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+								{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'is-heir'}} %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+				{% if second_column.links|length %}
+					<div class="grid__cell  |  gutters">
+						<h2 class="title  |  site-footer__title">{{ second_column.title|t(locales) }}</h2>
+						<ul class="reset">
+							{% for link in second_column.links|slice(0,3) %}
+								<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+									{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'is-heir'}} %}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="grid__cell  |  gutters">
+						<h2 class="title  |  site-footer__title">&nbsp;</h2>
+						<ul class="reset">
+							{% for link in second_column.links|slice(3) %}
+								<li class="title site-footer__link  |  leader--tiny  |  trailer-inside--tiny">
+									{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'is-heir'}} %}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+		<div class="layout__cell layout__cell--aside  |  site-footer__social">
+			<div>
+				<h2 class="title  |  site-footer__title  |  gutters">{{ 'Follow us'|t(locales) }}</h2>
+			</div>
+			<div class="trailer  |  site-footer__share  |  gutters">
+				<a class="anchor--shy  is-heir" href="https://www.facebook.com/CTApage" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="https://twitter.com/ctaflash" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="https://www.linkedin.com/company/technical-centre-for-agricultural-and-rural-cooperation-acp-eu-cta-" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="https://www.instagram.com/ctaflash/" target="_blank"><span class="icon icon--instagram  |  gutter--right"></span></a>
+				<a class="anchor--shy  is-heir" href="https://www.youtube.com/user/ctaspace/videos" target="_blank"><span class="icon icon--youtube  |  gutter--right"></span></a>
+			</div>
+		</div>
+	</div>
+</{{ config.container_tag|default('div') }}>

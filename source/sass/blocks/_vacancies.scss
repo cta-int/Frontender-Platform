@@ -1,0 +1,74 @@
+/*
+Vacancies
+
+markup:
+<div class="media">
+    <div class="media__figure  |  gutters gutter-mobile--right">
+        <span class="stamp stamp--open">
+            <span class="stamp__body">open</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters  |  trailer">
+                <h1 class="title title--section"><a class="is-heir  anchor--shy" href="">Project Manager, geoPuu</a></h1>
+                <p class="meta  |  leader--small  |  trailer--small"><strong>Published on:</strong><br> 18 January 2018</p>
+                <p>CTA seeks to recruit a Project Manager for the geoPuu project. The Project Manager will be based in Ghana and coordinate the project on behalf of CTA by working with consortium partners and other third-party service providers.</p>
+                <a class="read-more  |  leader--small" href="">Read More</a>
+            </div>
+            <div class="media__figure  media__aside  |  wings  |  trailer">
+                <dl class="meta  |  trailer--normal trailer-inside--tiny  |  gutters">
+                    <dt><strong>Closing date for application:</strong></dt>
+                    <dd class="trailer--small">15 February 2018</dd>
+                    <dt><strong>Type of contract:</strong></dt>
+                    <dd class="trailer--small">International staff, short term contract (1 year, renewable until end of the project), full time (40 hours/week)</dd>
+                </dl>
+                <div class="gutters">
+                    <div class="media media--middle  |  location">
+                        <span class="location__marker  |  media__figure">
+                            <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span>
+                        </span>
+                        <div class="location__body  |  media__content">Wageningen, Netherlands</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.33
+*/
+
+/* Outdated styling? */
+// .vacancies {
+// 	&__status {
+// 		@extend .date;
+// 		@include breakpoint($lt-large-handheld) {
+// 			width: rhythm(23);
+// 		}
+// 	}
+// 	&-container {
+// 		flex: 0 auto;
+// 	}
+// 	&__body {
+// 		display: block;
+// 		padding: rhythm(3) 0 rhythm(7) rhythm(2);
+// 		height: rhythm(21);
+// 		font-size: 12px;
+// 		.vacancies--closing & {
+// 			background-color: mix($color-green, $white, 54%);
+// 		}
+// 		.vacancies--closed & {
+// 			background-color: mix($color-red, $white, 80%);
+// 		}
+// 	}
+// 	&__aside {
+// 		padding-left: rhythm(33);
+// 		@include breakpoint($gt-large-handheld) {
+// 			padding-left: rhythm(31);
+// 		}
+// 	}
+// 	&__date {
+// 		font-weight: 600;
+// 	}
+// }

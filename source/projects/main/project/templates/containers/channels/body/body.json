@@ -1,0 +1,17 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "section",
+                "control": "core/hidden"
+            },
+            "leader": {
+                "value": "leader--hero",
+                "control": "core/hidden"
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+/*
+Clear
+
+Clearfix reloaded (http://cssmojo.com/the-very-latest-clearfix-reloaded/)
+
+Styleguide 2.11
+*/
+
+.clear {
+  @include clearfix();
+}

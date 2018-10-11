@@ -1,0 +1,29 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Projects menu"
+    },
+    "description": {
+        "en": "Contextual menu for the projects page"
+    },
+    "template": "containers/projects/project-menu/project-menu.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en": "Labels"
+            },
+            "controls": {
+                "title": {
+                    "label": {
+                        "en": "Title"
+                    },
+                    "control": "core/text",
+                    "value": {
+                        "en": "Our projects",
+                        "fr": "Our projects"
+                    }
+                }
+            }
+        }
+    }
+}

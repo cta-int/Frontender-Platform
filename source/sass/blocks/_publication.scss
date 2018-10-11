@@ -1,0 +1,93 @@
+/*
+Publication
+
+markup:
+<article class="media  |  publication--wrapper  |  trailer">
+	<div class="media__figure  |  gutters">
+		<div class="publication">
+			<img class="publication--image" src="https://publications.cta.int/media/publications/images/l/1889_Cover_scan_yGcSfhg.png" alt="Africa agriculture status report 2017: Youth and agriculture in Sub-Saharan Africa" />
+		</div>
+	</div>
+	<div class="media__content">
+		<div class="media media--unfold">
+			<div class="media__body  |  gutters  |  leader--small">
+				<h2 class="title  |  trailer--small">Africa agriculture status report 2017: Youth and agriculture in Sub-Saharan Africa</h2>
+				<p>Each year, 10 million young Africans enter the continent’s workforce, more than ever before. Although this highlights the great challenge of youth unemployment, it could also be a great opportunity – to encourage youth to be the engine behind the growth of Africa’s agriculture-based economies.</p>
+			</div>
+			<div class="media__figure  |  gutters  |  leader--small">
+				<div class="trailer--small  |  rating rating--60">
+					<span class="rating__stars--inactive">★★★★★</span>
+					<span class="rating__stars--active">★★★★★</span>
+				</div>
+				<div class="trailer--small">
+					<p class="title title--sub-section">review:</p>
+					<p class="meta meta--lowercase">Be the first to review</p>
+				</div>
+				<p class="title title--sub-section">Published:</p>
+				<p class="meta meta--lowercase">2016</p>
+			</div>
+		</div>
+	</div>
+</article>
+
+Styleguide 4.40
+*/
+
+.publication {
+	position: relative;
+	background: rgba(0, 0, 0, .1);
+	@include breakpoint($lt-large-handheld) {
+		margin-bottom: rhythm(5);
+	}
+	&--image {
+		position: absolute;
+		top: rhythm(2) * -1;
+		right: rhythm(2) * -1;
+	}
+	&--wrapper {
+		padding-bottom: rhythm(10);
+		//scss-lint:disable DuplicateProperty
+		border-bottom: 1px solid rgba($color-theme, .26);
+		.theme--blue & {
+	    border-color: rgba($color-blue, .26);
+	  }
+	  .theme--lime & {
+	    border-color: rgba($color-lime, .26);
+	  }
+	  .theme--yellow & {
+	    border-color: rgba($color-yellow, .26);
+	  }
+	  .theme--gold & {
+	    border-color: rgba($color-gold, .26);
+	  }
+	  .theme--orange & {
+	    border-color: rgba($color-orange, .26);
+	  }
+	  .theme--salmon & {
+	    border-color: rgba($color-salmon, .26);
+	  }
+	  .theme--red & {
+	    border-color: rgba($color-red, .26);
+	  }
+	  .theme--burgundy & {
+	    border-color: rgba($color-burgundy, .26);
+	  }
+	  .theme--purple & {
+	    border-color: rgba($color-purple, .26);
+	  }
+	  //scss-lint:enable DuplicateProperty
+	  &:last-of-type {
+	  	border-bottom: 0;
+	  }
+	  .media {
+	  	@include breakpoint($lt-large-handheld) {
+	  		flex-direction: column;
+	  	}
+	  }
+	}
+	&,
+	&--image {
+		height: rhythm(50);
+		width: rhythm(40);
+	}
+}

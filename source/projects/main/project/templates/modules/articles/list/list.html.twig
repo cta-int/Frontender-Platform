@@ -1,0 +1,43 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if container_title %}
+  <h2 class="title title--section  |  trailer  |  gutters">{{ container_title|t(locales) }}</h2>
+{% endif %}
+
+<div class="panel__body">
+	{% for article in model %}
+		<article class="layout">
+			<div class="layout__cell  |  media">
+				<div class="media__figure  |  gutters">
+					<a class="anchor anchor--shy" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">
+		  			{{ image.post(article.link.mediaObject|lead) }}
+		  		</a>
+	  		</div>
+	  		<div class="media__body  |  gutters  |  trailer">
+	          <a class="anchor--reset anchor--shy  |  is-heir" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">
+	              <h2 class="title">
+	                  {{ article.headline|t(locales) }}
+	              </h2>
+	          </a>
+	          <div class="body--whisper  |  leader--small">
+	              {{ article.about|truncate(250)|raw }}
+	          </div>
+	      </div>
+			</div>
+			<div class="layout__cell  layout__cell--aside  |  gutters">
+        <div class="wing--left  |  trailer">
+          <time class="meta" datetime="{{ article.datePublished }}">{{ article.datePublished|tdate('%e %B %Y') }}</time>
+          {% if article.articleType %}
+              <p class="meta">{{ 'in'|t(locales) }} {% include 'partials/article/content_type_category.html.twig' with {model: article} %}</p>
+          {% endif %}
+        </div>
+	    </div>
+		</article>
+		{% if not loop.last %}
+	    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+		{% endif %}
+	{% endfor %}
+</div>

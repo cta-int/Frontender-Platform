@@ -1,0 +1,113 @@
+/*
+State
+
+.is-narrative - Hidden label, but is used as narrative for visually impaired users
+.is-heir - Passes on parent's color and background properties
+.is-crowned - When assigned to an element directly following the `masthead`, it pulls that item up so the masthead sits on top (like a crown).
+.is-rooted - Adds position relative.
+.is-clear - Clearfix
+.is-center - Flex align self center
+.is-gt-small-handheld - Hidden on small handheld
+.is-gt-medium-handheld - Hidden on medium handheld and smaller
+.is-gt-large-handheld - Hidden on large handheld and smaller
+.is-gt-small-desktop - Hidden on small desktop and smaller
+.is-lt-small-desktop - Only visible on mobile viewports
+.is-gt-medium-desktop - Hidden on medium desktop and smaller
+.is-gt-large-desktop - Hidden on large desktop and smaller
+
+markup:
+<p class="{$modifiers}">{$modifiers}</p>
+
+Styleguide 3.99
+*/
+
+.is-narrative {
+  @include hide();
+}
+.is-silent {
+    speak: none;
+}
+
+.is-heir.is-heir.is-heir {
+  color: inherit;
+  background: inherit;
+  text-decoration: inherit;
+}
+
+.is-crowned {
+    .masthead + & {
+        margin-top: rhythm(-26);
+        @include breakpoint($gt-small-desktop) {
+            margin-top: rhythm(-52);
+        }
+    }
+}
+
+.is-rooted,
+.is-root {
+  position: relative;
+}
+
+.is-inactive {
+  // display: none !important;
+}
+
+.is-clear {
+  overflow: auto;
+}
+
+.is-center {
+  align-self: center;
+}
+
+.is-gt-small-handheld,
+.is-gt-medium-handheld,
+.is-gt-large-handheld,
+.is-gt-small-desktop,
+.is-lt-small-desktop,
+.is-gt-medium-desktop,
+.is-gt-large-desktop {
+  display: none;
+}
+.is-gt-small-handheld {
+  @include breakpoint($gt-small-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-medium-handheld {
+  @include breakpoint($gt-medium-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-large-handheld {
+  @include breakpoint($gt-large-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-lt-small-desktop {
+  @include breakpoint($lt-small-desktop) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-small-desktop {
+  @include breakpoint($gt-small-desktop) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-medium-desktop {
+  @include breakpoint($gt-medium-desktop) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-large-desktop {
+  @include breakpoint($gt-large-desktop) {
+    display: block;
+    display: inherit;
+  }
+}

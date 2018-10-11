@@ -1,0 +1,91 @@
+{
+    "model": {
+        "label": {
+            "en": "Image",
+            "fr": "Image"
+        },
+        "controls": {
+            "name": {
+                "value": "media",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                "control": "project/model/id"
+            }
+        }
+    },
+    "content": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Title",
+                    "fr": "Titre"
+                },
+                "label": {
+                    "en": "Headline"
+                },
+                "control": "core/text"
+            },
+            "subtitle": {
+                "value": {
+                    "en": "Subtitle or tagline",
+                    "fr": "Sous titre"
+                },
+                "label": {
+                    "en": "Subtitle"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "figure",
+                "control": "project/container_tag"
+            },
+            "crown": {
+                "value": "",
+                "control": "project/crown"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "show_divider": {
+                "value": 1,
+                "label": {
+                    "en": "Show divider"
+                },
+                "control": "project/show"
+            },
+            "show_image_info": {
+                "value": 1,
+                "label": {
+                    "en": "Show image credits"
+                },
+                "control": "project/show"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "containers": []
+}

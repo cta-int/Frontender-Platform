@@ -1,0 +1,10 @@
+{
+    "value": "",
+    "control": "core/abstract",
+    "label": {
+        "en": "List"
+    },
+    "type": "list",
+    "options": [],
+    "control": "core/abstract"
+}

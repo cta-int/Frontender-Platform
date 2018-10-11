@@ -1,0 +1,101 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set articles = ArticlesSearches|sortArray('headline', 'asc') %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="article-headline">
+	<div class="post-header__title layout layout--reverse">
+      <div class="layout__cell">
+          <div class="gutters  |  leader  |  trailer">
+            <h1 class="post-header__headline title title--headline">{{ labels.title|t(locales) }}</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<{{ config.container_tag|default('section') }} {{ helper.class_attribute(config, 'layout leader--hero')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--aside layout__cell--divider wings">
+        {% if article|first.link.organization.partnerOrganization|length %}
+            <footer class="gutters">
+                <h2 class="meta trailer-inside--small">{{ content.credit|t(locales)|default({en:'Our partners for this issue:',fr: 'Our partners for this issue:'}|t(locales)) }}</h2>
+                <ul class="reset">
+                    {% for organization in article|first.link.organization.partnerOrganization %}
+                        <li class="trailer--tiny">
+                            {% if organization.avatar %}
+                                <img src="{{ organization.avatar|t(locales) }}" alt="{{ organization.name|t(locales) }}"/>
+                            {% else %}
+                                {{ organization.name|t(locales) }}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </footer>
+        {% endif %}
+
+        <aside class="gutters  |  trailer">
+            {% for issue in articles|slice(0, 1) %}
+
+                {% set issue_nr = null %}
+                {% for label in issue.link.label|filterArray('type', 'issue') %}
+                    {% set issue_nr = label.name|issueNumber %}
+                {% endfor %}
+
+                <div class="issue-label issue-label--l media media--middle anchor--reset leader">
+                    <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
+                    <div class="issue-label__caption">
+                        <p>
+                            <strong>{{'Issue'|t(locales)}} {{ issue_nr }}</strong>
+                            <span>{{ article|first.datePublished|date("F Y"|t(locales)) }}</span>
+                        </p>
+                    </div>
+                </div>
+                <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                    <figure>
+                        <figcaption class="title title--lead title--section leader--small anchor--reset">{{ issue.headline|t(locales) }}</figcaption>
+                        <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
+                        {{ image.cover(issue.link.mediaObject|lead, 0, "") }}
+                    </figure>
+                </a>
+            {% endfor %}
+        </aside>
+
+    </div>
+    <div class="layout__cell layout__cell--main wing--right">
+        {% if articles | length > 0 %}
+            <div class="grid__cell">
+                <ul class="reset trellis trellis--l">
+                    {% for issue in articles %}
+
+                        {% set issue_nr = null %}
+                        {% for label in issue.link.label|filterArray('type', 'issue') %}
+                            {% set issue_nr = label.name|issueNumber %}
+                        {% endfor %}
+
+                        <li class="trellis__cell trailer gutters">
+                            <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                <figure>
+                                    <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
+                                    <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
+                                        <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
+                                        <span class="issue-label__caption">
+                                            {{ 'Issue'|t(locales) }}
+                                            {{ issue_nr }}
+                                            {{ issue.datePublished|tdate('%B %Y') }}
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': 'ictupdate/issue', 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
+                            {% if issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0 %}
+                                <div class="body--align-center">
+                                    <a class="meta" href="{{ issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>
+                                </div>
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</{{ config.container_tag|default('section') }}>

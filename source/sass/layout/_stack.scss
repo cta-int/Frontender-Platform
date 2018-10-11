@@ -1,0 +1,58 @@
+/*
+Stack
+
+markup:
+<div class="stack">
+  <div class="stack__unit">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend.  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend. Donec nec
+  </div>
+  <div class="stack__unit stack stack--stacked">
+      <div class="stack__unit">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </div>
+      <div class="stack__unit stack__pin">
+        Sec
+      </div>
+  </div>
+</div>
+
+Styleguide 2.10
+*/
+
+/*
+ *
+ * 1. IE 10-11 requires a flex-basis value
+ *
+ */
+
+.stack {
+  display: flex;
+  flex-direction: row;
+  .no-flexbox & {
+    display: table;
+  }
+  &__unit {
+    flex: 1 1 auto;
+    .no-flexbox & {
+      display: table-cell;
+      vertical-align: top;
+    }
+  }
+  &__pin {
+    flex: 0 0 auto; /* 1 */
+    align-content: flex-end;
+  }
+  &--stacked,
+  &--stacked > &__unit {
+    width: 100%;
+  }
+  &--stacked {
+    flex-direction: column;
+  }
+  &--stacked > &__unit {
+    // flex: 1 0 auto; /* 1 */
+    .no-flexbox & {
+      display: table-row;
+    }
+  }
+}

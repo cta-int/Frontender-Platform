@@ -1,0 +1,20 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="stat  |  wings  |  leader--small" {% if content.story|t(locales) %}data-background="{{ content.story }}"{% endif %}>
+    {% if content.title|t(locales) %}
+        <h3 class="title title--apropos title--thin  |  body--align-center  |  trailer-inside--tiny  |  leader-inside--small">{{ content.title|t(locales) }}</h3>
+    {% endif %}
+    <p class="stat__figure is-silent">{{ content.figure|t(locales) }}</p>
+    <h2 class="stat__caption  |  meta meta--s  |  leader--small  |  gutters">
+        <span class="is-narrative">{{ content.figure|t(locales) }}</span>
+        {{ content.caption|t(locales) }}
+    </h2>
+    {% if content.story|t(locales) %}
+    <figure class="is-silent  |  story-line  |  gutters  |  leader">
+        <picture class="story story--{{ content.story|t(locales) }}">
+          <source type="image/svg+xml" srcset="/assets/images/stories/{{ content.story|t(locales) }}.svg">
+          <img src="/assets/images/stories/{{ content.story|t(locales) }}.png" alt="">
+        </picture>
+    </figure>
+    {% endif %}
+</div>

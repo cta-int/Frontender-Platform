@@ -1,0 +1,21 @@
+/*
+Typography
+
+If `$use-brand-type: true` type is set in Merriwheather and Futura.
+If `$use-brand-type: false` type is set in Times and Open Sans.
+
+Styleguide 1.3.2
+*/
+
+$use-brand-type: false;
+
+$font-family: Georgia, "Times New Roman", Times, serif;
+$font-variant: normal;
+$font-style: normal;
+$font-weight: 300;
+$font-size: 18px;
+
+$font-family--meta: "Open Sans", sans-serif;
+$font-weight--meta: 600;
+
+$default-line-height: line-height($font-size, 1.3); /* 21px */

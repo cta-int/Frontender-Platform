@@ -1,0 +1,59 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings",
+            "fr": "Settings"
+        },
+        "controls": {
+            "template": {
+                "value": "partials/article/post.html.twig",
+                "label": {
+                    "en": "Template"
+                },
+                "options": [
+                    {
+                        "value": "partials/article/post.html.twig",
+                        "label": {
+                            "en": "Article post"
+                        }
+                    },
+                    {
+                        "value": "partials/article/post-row.html.twig",
+                        "label": {
+                            "en": "Article row"
+                        }
+                    }
+                ],
+                "control": "core/list"
+            },
+            "show_lead_image": {
+                "value": 2,
+                "control": "project/display/show_lead_image"
+            },
+            "show_stand_first": {
+                "value": 2,
+                "control": "project/display/show_stand_first"
+            },
+            "show_publication_date": {
+                "value": 1,
+                "control": "project/display/show_publication_date"
+            },
+            "show_author_name": {
+                "value": 1,
+                "control": "project/display/show_author_name"
+            },
+            "show_read_more": {
+                "value": 2,
+                "control": "project/display/show_read_more"
+            },
+            "show_topic": {
+                "value": 1,
+                "control": "project/display/show_topic"
+            },
+            "show_publication": {
+                "value": 1,
+                "control": "project/display/show_publication"
+            }
+        }
+    }
+}

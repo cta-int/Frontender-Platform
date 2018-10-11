@@ -1,0 +1,66 @@
+{
+    "labels": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "lead": {
+                "label": {
+                    "en": "Lead title"
+                },
+                "value": {
+                    "en": "CTA In numbers",
+                    "fr": "CTA In numbers"
+                },
+                "control": "core/text"
+            },
+            "body": {
+                "label": {
+                    "en": "Body text",
+                    "fr": "Body text"
+                },
+                "value": {
+                    "en": "Our world in numbers - CTA facts and figures at a glance",
+                    "fr": "Our world in numbers - CTA facts and figures at a glance"
+                },
+                "control": "core/textarea"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "container_tag": {
+                "value": "section",
+                "control": "project/container_tag"
+            },
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "trailer-inside--small",
+                "control": "project/trailer_inside"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            }
+        }
+    },
+    "containers": []
+}

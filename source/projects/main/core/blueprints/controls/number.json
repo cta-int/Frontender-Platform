@@ -1,0 +1,8 @@
+{
+    "value": "",
+    "label": {
+        "en": "Number"
+    },
+    "type": "number",
+    "control": "core/abstract"
+}

@@ -1,0 +1,22 @@
+{% import "macros/pagination.html.twig" as pagination %}
+
+{% if config.show_first_hr|default(false) %}
+    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+{% endif %}
+
+{% for article in article %}
+    {% include "modules/serp/serp-articles/types/" ~ article.articleType|default('champion') ~ ".html.twig" with {article: article} %}
+{% endfor %}
+
+<div class="leader--hero  |  trailer--hero trailer-inside" data-pagination-parent>
+    {{ pagination.extend(article, article_total, article_model, {
+        model_name: 'Article\\Search',
+        target: "[data-serp-articles]",
+        layout: "modules/serp/serp-articles/serp-articles-list-with-load-more.html.twig",
+        config: {
+            config: {
+                show_first_hr: 'true'
+            }
+        }
+    }) }}
+</div>

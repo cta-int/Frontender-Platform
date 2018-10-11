@@ -1,0 +1,116 @@
+/*
+Leader
+
+Styleguide 2.4
+*/
+
+/*
+Leader
+
+Adds a margin to the top
+
+.leader - Single default line-heigt top-margin (7 rhythms)
+.leader--mobile - 12 rhythms top-margin, mobile view only
+.leader--tiny - 1 rhythm top-margin
+.leader--small - 3 rhythms top-margin
+.leader--hero - 20 rhythms top-margin
+.leader--giant - 40 rhythms top-margin
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.4.1
+*/
+
+.leader {
+  &--tiny {
+    margin-top: rhythm(1);
+  }
+  &--small {
+    margin-top: rhythm(3);
+  }
+  &--normal {
+    margin-top: rhythm(5);
+  }
+  &,
+  &--hero,
+  &--giant {
+    margin-top: rhythm(6);
+  }
+  &--ie {
+    .no-flexbox & {
+      margin-top: rhythm(5);
+    }
+    &-l {
+      .no-flexbox & {
+        margin-top: rhythm(10);
+      }
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    margin-top: rhythm(10);
+    &--hero {
+      margin-top: rhythm(20);
+    }
+    &--giant {
+      margin-top: rhythm(40);
+    }
+    &--ie {
+      .no-flexbox & {
+        margin-top: rhythm(10);
+      }
+      &-l {
+        .no-flexbox & {
+          margin-top: rhythm(20);
+        }
+      }
+    }
+  }
+  @include breakpoint($lt-small-desktop) {
+    &--mobile {
+      margin-top: rhythm(12);
+    }
+  }
+}
+
+/*
+Leader inside
+
+Adds padding to the top
+
+.leader-inside - Single default line-heigt top-margin (7 rhythms)
+.leader-inside--tiny - 1 rhythm top-margin
+.leader-inside--small - 3 rhythms top-margin
+.leader-inside--hero - 20 rhythms top-margin
+.leader-inside--giant - 40 rhythms top-margin
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.4.2
+*/
+.leader-inside {
+  &--tiny {
+    padding-top: rhythm(1);
+  }
+  &--small {
+    padding-top: rhythm(3);
+  }
+  &--normal {
+    padding-top: rhythm(5);
+  }
+  &,
+  &--hero,
+  &--giant {
+    padding-top: rhythm(6);
+  }
+  @include breakpoint($gt-small-desktop) {
+    padding-top: rhythm(10);
+    &--hero {
+      padding-top: rhythm(20);
+    }
+    &--giant {
+      padding-top: rhythm(40);
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+    "content": {
+        "label": {
+            "en": "Content",
+            "fr": "Content"
+        },
+        "controls": {
+            "container_title": {
+                "value": {
+                    "en": "How can we help?",
+                    "fr": "Comment pouvons nous aider?"
+                },
+                "label": {
+                    "en": "Title",
+                    "fr": "Title"
+                },
+                "control": "core/text",
+            },
+            "container_body": {
+                "value": {
+                    "en": "We are here to answer any questions you may have about our organisation. Reach out to us and we'll respond as soon as we can.",
+                    "fr": "Nous sommes là pour répondre à toutes vos questions sur notre organisation. Apprenez-nous à nous et nous répondrons dès que nous pourrons."
+                },
+                "label": {
+                    "en": "Body",
+                    "fr": "Body"
+                },
+                "control": "core/textarea",
+            }
+        }
+    }
+}

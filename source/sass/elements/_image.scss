@@ -1,0 +1,61 @@
+/*
+Image
+
+.image - image
+.image--stretch - Stretched image
+
+markup:
+<figure data-copyright="&copy; Copyright">
+	<img class="{$modifiers}" src="https://images.unsplash.com/photo-1475570978644-983eef8b4f72?dpr=1&auto=format&crop=entropy&fit=crop&w=400&h=300&q=80&cs=tinysrgb" alt="Placeholder image"/>
+</figure>
+
+Styleguide 3.15
+*/
+
+.image {
+  display: block;
+  &--stretch {
+    min-width: 100%;
+    height: auto;
+    .slideshow & {
+        min-width: auto;
+    }
+  }
+}
+
+.layout__cell--aside {
+  .details-image {
+    width: 100%;
+  }
+}
+
+[data-copyright] {
+  position: relative;
+  img {
+    display: block;
+  }
+  &:after {
+    @extend %meta-text;
+    content: attr(data-copyright);
+    position: absolute;
+    left: -999em;
+    bottom: 0;
+    display: block;
+    padding: rhythm(2);
+    background: rgba($black, .54);
+    color: $white;
+    font-size: 10px;
+    line-height: 1;
+  }
+}
+
+@include breakpoint($gt-medium-handheld) {
+  [data-copyright] {
+    &:after {
+      left: 0;
+    }
+  }
+  .gutters[data-copyright]:after {
+    left: 15px;
+  }
+}

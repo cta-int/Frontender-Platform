@@ -1,0 +1,25 @@
+/*
+Embed
+
+Styling for embedded content like iframes
+
+.embed - Default base styling
+.embed.embed--hero - Large, like a hero image
+
+markup:
+<iframe class="{$modifiers}" src="https://www.google.com/maps/d/u/0/embed?mid=1qCSTiNTKLC4YtF1xlFzT5Dgze3M&hl=en&ll=0.3015388705819431%2C-31.092130699999984&z=3"></iframe>
+
+
+Styleguide 3.51
+*/
+
+.embed {
+    display: block;
+    padding: 0;
+    height: rhythm(100);
+    border: 0;
+    @include theme-opaque-background(26%);
+    &--hero {
+        height: rhythm(200);
+    }
+}

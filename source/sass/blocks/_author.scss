@@ -1,0 +1,23 @@
+/*
+Author
+
+markup:
+<aside class="author gutters">
+  <h3 class="media media--middle trailer--tiny">
+    <span class="media__image">
+      <img class="image" alt="Julia Bello-Bravo" height="48" width="48" src="/images/content/authors/Julia_Bello-Bravo.jpg">
+    </span>
+    <span class="gutters media__content media__stretcher title title--meta">About the authors</span>
+  </h3>
+  <p class="body--whisper"><a href="javascript:void();">Julia Bello-Bravo</a> and <a href="javascript:void();">Barry Robert Pittendrigh</a> are co-director and director, respectively, of Scientific Animations Without Borders at the University of Illinois at Urbana-Champaign, United States.</p>
+</aside>
+
+Styleguide 4.6
+*/
+
+.author {
+  @include small-location();
+  @include breakpoint($gt-small-desktop) {
+    @include regular-location();
+  }
+}

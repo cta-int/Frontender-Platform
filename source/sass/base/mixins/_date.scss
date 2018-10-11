@@ -1,0 +1,32 @@
+/*
+Date
+
+Styleguide 1.6.4
+*/
+
+@mixin small-date() {
+  width: rhythm(11);
+  height: auto;
+  &__head {
+    padding: rhythm(1);
+    letter-spacing: .042em;
+    font-size: to-unit(10px);
+  }
+  &__body {
+    padding: 0 0 rhythm(1) rhythm(1);
+    font-size: to-unit(18px);
+  }
+}
+
+@mixin large-date() {
+  width: rhythm(21);
+  &__head {
+    padding: rhythm(2);
+    letter-spacing: .058em;
+    font-size: to-unit(14px);
+  }
+  &__body {
+    padding: 0 0 rhythm(2) rhythm(2);
+    font-size: to-unit(36px);
+  }
+}

@@ -1,0 +1,88 @@
+/*
+Event row
+
+markup:
+<article class="media  |  trailer">
+    <div class="media__figure  |  gutters gutter-mobile--right">
+        <span class="date">
+            <span class="date__head">Feb</span>
+            <span class="date__body"> 4</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters  |  trailer">
+                <a class="anchor--reset anchor--shy  |  stack" href="">
+                    <h2 class="title title--tile">Capitalization of Experiences for Greater Impact in Rural Development - Senegal</h2>
+                </a>
+                <div class="leader--small">
+                    <time class="meta" datetime="2018-02-04T00:00:00+00:00">Sunday, 4 February 2018</time>
+                    <time class="meta" datetime="2018-02-09T23:59:59+00:00"> – Friday, 9 February 2018</time>
+                </div>
+                <div class="body--whisper  |  leader--small">
+                    The “Capitalization of Experiences for Greater Impact in Rural Development” project aims to facilitate the adoption of an experience capitalization process in rural development initiatives, where it can help improve the analysis, documentation, sharing,
+                    and the adoption and use of lessons and good practices – as an approach for continuous learning, improvement and scaling up. Representatives…
+                </div>
+            </div>
+            <div class="media__figure  media__aside  |  wings  |  trailer">
+                <div class="gutters">
+                    <div class="media media--middle  |  location">
+                        <span class="location__marker  |  media__figure"><span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span></span>
+                        <div class="location__body  |  media__content">Dakar, Senegal</div>
+                    </div>
+                    <div class="leader">
+                        <ul class="reset label-list reset list--inline">
+                            <li> <a class="label label--s" href="">Documentation</a>
+                            </li>
+                            <li> <a class="label label--s" href="">Rural development</a>
+                            </li>
+                            <li> <a class="label label--s" href="">organization</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+Styleguide 4.15
+*/
+
+.article {
+  padding-top: rhythm(4);
+  padding-bottom: rhythm(4);
+  &:first-child {
+    padding-top: 0;
+  }
+  @include breakpoint($lt-large-handheld) {
+    position: relative;
+    padding-left: rhythm(20);
+    .location {
+      margin-top: rhythm(6);
+      // display: inline-block;
+    }
+  }
+  .date-container {
+    flex: 0 0 auto;
+    @include breakpoint($lt-large-handheld) {
+      position: absolute;
+      // top: 0;
+      left: rhythm(5);
+    }
+  }
+  .label-list {
+    display: inline-block;
+  }
+  @include breakpoint($gt-small-desktop) {
+    padding-top: rhythm(10);
+    padding-bottom: rhythm(10);
+  }
+  // HACK!!!
+  @include breakpoint($lt-large-handheld) {
+    .layout__cell--aside .gutters,
+    .layout__cell:first-child {
+      padding-left: 0;
+    }
+  }
+}

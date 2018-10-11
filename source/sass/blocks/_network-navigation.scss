@@ -1,0 +1,57 @@
+/*
+Network Navigation
+
+A navigation bar that holds CTA-wide navigation. The Networks Navigation bar is the smame accross all websites.
+
+Add .is-active class to current page
+
+markup:
+<nav class="network-navigation media wings">
+  <sg-insert>4.1.1-1</sg-insert>
+  <sg-insert>4.5-1</sg-insert>
+</nav>
+
+Styleguide 4.2
+*/
+
+.network-navigation {
+  position: relative;
+  color: rgba($white, .8);
+  background-color: mix($color-black, $white, 76%);
+  letter-spacing: .1em;
+  a,
+  button {
+    font-weight: 300;
+    font-size: to-unit(12px);
+    &,
+    .theme--blue &,
+    .theme--lime &,
+    .theme--yellow &,
+    .theme--gold &,
+    .theme--orange & ,
+    .theme--salmon &,
+    .theme--red &,
+    .theme--burgundy &,
+    .theme--purple & {
+      color: rgba($white, .8);
+    }
+  }
+  .menu__item.is-active,
+  .menu__item.is-current {
+    color: $white;
+  }
+  .menu__item.is-active:hover,
+  .menu__item.is-active:active,
+  .menu__item.is-current:hover,
+  .menu__item.is-current:active,
+  a:hover,
+  a:active {
+    color: $white;
+  }
+  @include breakpoint($gt-small-desktop) {
+      &,
+      &>div {
+          height: rhythm(13);
+      }
+  }
+}

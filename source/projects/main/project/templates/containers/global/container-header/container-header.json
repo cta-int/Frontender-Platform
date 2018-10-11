@@ -1,0 +1,117 @@
+{
+    "labels": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "container_title": {
+                "value": {
+                    "en": "Title",
+                    "fr": "Tître"
+                },
+                "label": {
+                    "en": "Container title"
+                },
+                "control": "core/text"
+            },
+            "link": {
+                "value": {
+                    "label": {
+                        "en": "",
+                        "fr": ""
+                    },
+                    "page": "",
+                    "id": ""
+                },
+                "label": {
+                    "en": "Link"
+                },
+                "control": "core/route"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "wings": {
+                "value": "wings",
+                "control": "project/wings"
+            },
+            "show_margins": {
+                "value": "",
+                "control": "project/layout/show_margins"
+            },
+            "show_smaller_title": {
+                "value": 0,
+                "label": {
+                    "en": "Show small title"
+                },
+                "control": "core/boolean"
+            },
+            "show_tools": {
+                "value": "",
+                "label": {
+                    "en": "Show filters"
+                },
+                "control": "core/list",
+                "options": [
+                    {
+                        "value": "",
+                        "label": {
+                            "en": "None"
+                        }
+                    },
+                    {
+                        "value": "events",
+                        "label": {
+                            "en": "Events"
+                        }
+                    },
+                    {
+                        "value": "articles",
+                        "label": {
+                            "en": "Articles"
+                        }
+                    }
+                ]
+            },
+            "show_link": {
+                "value": "",
+                "label": {
+                    "en": "Show link"
+                },
+                "control": "core/list",
+                "options": [
+                    {
+                        "value": "",
+                        "label": {
+                            "en": "None"
+                        }
+                    },
+                    {
+                        "value": "events",
+                        "label": {
+                            "en": "All events"
+                        }
+                    },
+                    {
+                        "value": "articles",
+                        "label": {
+                            "en": "All articles"
+                        }
+                    }
+                ]
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            },
+            "container_tag": {
+                "value": "header",
+                "control": "project/container_tag"
+            }
+        }
+    }
+}

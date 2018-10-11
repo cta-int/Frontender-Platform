@@ -1,0 +1,231 @@
+.post {
+	// position: fixed;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	padding: 0 $gutter-width;
+	.post-active & {
+		position: fixed;
+	}
+	&-body {
+		// .anchor {
+		// 	@extend .anchor;
+		// }
+		.end-paragraph {
+			font-size: to-unit(14px);
+		}
+		hr {
+			border: 0px solid $color-theme;
+			border-top: 1px solid $color-theme;
+			.theme--gold & {
+				border-color: $color-gold;
+			}
+			.theme--blue & {
+				border-color: $color-blue;
+			}
+			.theme--yellow & {
+				border-color: $color-yellow;
+			}
+			.theme--purple & {
+				border-color: $color-purple;
+			}
+			.theme--orange & {
+				border-color: $color-orange;
+			}
+			.theme--burgundy & {
+				border-color: $color-burgundy;
+			}
+		}
+		h2, h3, h4, h5, h6 {
+			font-family: $font-family--meta;
+			font-size: to-unit(18px);
+			font-weight: 600;
+		}
+		ol {
+			padding-left: 0;
+		}
+		ol {
+			counter-reset: item;
+			li {
+				display: block;
+				text-indent: rhythm(8) * -1;
+    		padding-left: rhythm(8);
+				&:before {
+					content: counter(item) ". ";
+          counter-increment: item;
+          padding-right: rhythm(2);
+          color: $color-theme;
+          .theme--gold & {
+						color: $color-gold;
+					}
+					.theme--blue & {
+						color: $color-blue;
+					}
+					.theme--yellow & {
+						color: $color-yellow;
+					}
+					.theme--purple & {
+						color: $color-purple;
+					}
+					.theme--orange & {
+						color: $color-orange;
+					}
+					.theme--burgundy & {
+						color: $color-burgundy;
+					}
+				}
+			}
+		}
+	}
+	&-list {
+		list-style: none;
+		padding-left: 0;
+		li {
+	    text-indent: rhythm(7) * -1;
+    	padding-left: rhythm(7);
+			&:before {
+				content: "• ";
+				padding-right: rhythm(3);
+  			color: $color-theme;
+  			.theme--gold & {
+					color: $color-gold;
+				}
+				.theme--blue & {
+					color: $color-blue;
+				}
+				.theme--yellow & {
+					color: $color-yellow;
+				}
+				.theme--purple & {
+					color: $color-purple;
+				}
+				.theme--orange & {
+					color: $color-orange;
+				}
+				.theme--burgundy & {
+					color: $color-burgundy;
+				}
+			}
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		padding: 0 2 / 18 * 100vw;
+	}
+	@include breakpoint($gt-medium-desktop) {
+		padding: 0 4 / 18 * 100vw;
+	}
+	&-hero {
+		position: relative;
+		line-height: 0;
+		img {
+			// height: rhythm(70);
+			width: 100%;
+			// @include breakpoint($gt-medium-handheld) {
+			// 	height: rhythm(100);
+			// }
+			// @include breakpoint($gt-large-handheld) {
+			// 	height: rhythm(150);
+			// }
+			// @include breakpoint($gt-small-desktop) {
+			// 	height: rhythm(200);
+			// }
+		}
+	}
+	&-close {
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 11;
+		height: $gutter-width;
+		width: $gutter-width;
+		font-size: to-unit(rhythm(8));
+		background: $color-body;
+		color: $color-theme;
+		@include breakpoint($gt-small-desktop) {
+			height: rhythm(21);
+			width: rhythm(21);
+			font-size: to-unit(rhythm(10));
+		}
+		.theme--gold & {
+			color: $color-gold;
+		}
+		.theme--blue & {
+			color: $color-blue;
+		}
+		.theme--yellow & {
+			color: $color-yellow;
+		}
+		.theme--purple & {
+			color: $color-purple;
+		}
+		.theme--orange & {
+			color: $color-orange;
+		}
+		.theme--burgundy & {
+			color: $color-burgundy;
+		}
+	}
+}
+
+.post-header__title,
+.post-footer {
+	background: $color-theme;
+	color: $white;
+	.theme--gold & {
+		background: $color-gold;
+	}
+	.theme--blue & {
+		background: $color-blue;
+	}
+	.theme--yellow & {
+		background: $color-yellow;
+	}
+	.theme--purple & {
+		background: $color-purple;
+	}
+	.theme--orange & {
+		background: $color-orange;
+	}
+	.theme--burgundy & {
+		background: $color-burgundy;
+	}
+}
+
+.post-footer {
+	position: relative;
+	bottom: rhythm(15) * -1;
+	z-index: 2;
+	opacity: 1;
+	.credit__cell {
+		&:first-of-type {
+			border-right: 1px solid rgba(255, 255, 255, .6);
+		}
+		&:last-of-type {
+			text-align: right;
+		}
+	}
+	.article-title {
+		color: $white;
+		font-family: "Open Sans",sans-serif;
+    	text-transform: uppercase;
+	}
+	.category {
+		color: rgba(0, 0, 0, .4);
+	}
+}
+
+.post-active {
+	overflow: hidden;
+	.post {
+		overflow-y: scroll;
+		height: 100%;
+	}
+	#modal {
+		position: fixed;
+		z-index: 5;
+		top: 0;
+		height: 100vh;
+		width: 100vw;
+		background: rgba(0,0,0,0.7);
+	}
+}

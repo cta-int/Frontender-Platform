@@ -1,0 +1,34 @@
+/*
+Masthead
+
+.masthead - Site header, includes navigation and search
+
+markup:
+<header class="{$modifiers}">
+  <sg-insert>4.2-1</sg-insert>
+  <sg-insert>4.3-2</sg-insert>
+</header>
+
+Styleguide 5.1
+*/
+
+.masthead {
+  position: relative;
+  max-width: 100%;
+  z-index: 1;
+}
+
+
+/*
+Masthead – ICT Update
+
+.masthead - Site header, includes navigation and search
+
+markup:
+<header class="masthead">
+  <sg-insert>4.2-1</sg-insert>
+  <sg-insert>4.3.2-2</sg-insert>
+</header>
+
+Styleguide 5.1.1
+*/

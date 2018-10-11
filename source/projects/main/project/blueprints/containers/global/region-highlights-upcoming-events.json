@@ -1,0 +1,355 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Region highlights and upcoming events"
+    },
+    "description": {
+        "en": "Region highlights and upcoming events"
+    },
+    "template": "containers/global/layout/layout.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "layout": {
+                    "value": "layout layout--split",
+                    "control": "core/hidden"
+                },
+                "show_divider": {
+                    "value": 1,
+                    "control": "core/hidden"
+                },
+                "show_wings": {
+                    "value": 2,
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Article list"
+                },
+                "description": {
+                    "en": "Article list"
+                },
+                "template": "modules/articles/region-highlights/region-highlights.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "Region highlights",
+                                    "fr": "Region highlights"
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "search",
+                                "control": "project/model/name"
+                            },
+                            "types": {
+                                "value": "article",
+                                "control": "core/hidden"
+                            },
+                            "limit": {
+                                "value": "4",
+                                "control": "project/model/limit"
+                            },
+                            "time": {
+                                "value": "{ query.time }",
+                                "control": "core/hidden"
+                            },
+                            "location": {
+                                "value": "6255146",
+                                "control": "core/hidden"
+                            },
+                            "type": {
+                                "value": "article.impact",
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "List of articles from Africa"
+                            },
+                            "description": {
+                                "en": "List of articles from Africa"
+                            },
+                            "template": "modules/articles/list/list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "search",
+                                            "control": "project/model/name"
+                                        },
+                                        "types": {
+                                            "value": "article",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "time": {
+                                            "value": "{ query.time }",
+                                            "control": "core/hidden"
+                                        },
+                                        "location": {
+                                            "value": "6255146",
+                                            "control": "core/hidden"
+                                        },
+                                        "type": {
+                                            "value": "article.impact",
+                                            "control": "project/model/search_article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Config"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "label": {
+                                                "en": "Region title"
+                                            },
+                                            "control": "core/text",
+                                            "value": {
+                                                "en": "Africa",
+                                                "fr": "Africa"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "List of articles from the Caribbean"
+                            },
+                            "description": {
+                                "en": "List of articles from the Carribean"
+                            },
+                            "template": "modules/articles/list/list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "search",
+                                            "control": "project/model/name"
+                                        },
+                                        "types": {
+                                            "value": "article",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "time": {
+                                            "value": "{ query.time }",
+                                            "control": "core/hidden"
+                                        },
+                                        "location": {
+                                            "value": "7729891",
+                                            "control": "core/hidden"
+                                        },
+                                        "type": {
+                                            "value": "article.impact",
+                                            "control": "project/model/search_article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Config"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "label": {
+                                                "en": "Region title"
+                                            },
+                                            "control": "core/text",
+                                            "value": {
+                                                "en": "Caribbean",
+                                                "fr": "Caribbean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "List of articles from the Pacific"
+                            },
+                            "description": {
+                                "en": "List of articles from the Pacific"
+                            },
+                            "template": "modules/articles/list/list.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "search",
+                                            "control": "project/model/name"
+                                        },
+                                        "types": {
+                                            "value": "article",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": "4",
+                                            "control": "project/model/limit"
+                                        },
+                                        "time": {
+                                            "value": "{ query.time }",
+                                            "control": "core/hidden"
+                                        },
+                                        "location": {
+                                            "value": "2363254",
+                                            "control": "core/hidden"
+                                        },
+                                        "type": {
+                                            "value": "article.impact",
+                                            "control": "project/model/search_article_type"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Config"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "label": {
+                                                "en": "Region title"
+                                            },
+                                            "control": "core/text",
+                                            "value": {
+                                                "en": "Pacific",
+                                                "fr": "Pacific"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Upcoming events"
+                },
+                "description": {
+                    "en": "Upcoming"
+                },
+                "template": "modules/events/upcoming/upcoming-events.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Labels"
+                        },
+                        "controls": {
+                            "title": {
+                                "label": {
+                                    "en": "Title"
+                                },
+                                "control": "core/text",
+                                "value": {
+                                    "en": "Upcoming events",
+                                    "fr": "Upcoming events"
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "8ee09e5e-db66-483f-a4ba-b1193e35a079",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": 4,
+                                "control": "core/hidden"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "value": "wing--right",
+                                "control": "project/container_class"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

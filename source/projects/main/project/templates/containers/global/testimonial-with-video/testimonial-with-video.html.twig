@@ -1,0 +1,88 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        jQuery(function($) {
+            $('.slideshow').slick({
+                centerMode: true,
+                arrows: true,
+                prevArrow: $('.carousel-previous'),
+                nextArrow: $('.carousel-next'),
+                centerPadding: 'auto',
+                slidesToShow: 1,
+                draggable: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        centerMode: true,
+                        arrows: false,
+                        centerPadding: 'auto',
+                        slidesToShow: 1,
+                        draggable: true
+                    }
+                }]
+            });
+        });
+    </script>
+{% endblock %}
+
+{% set layout = [config.layout|default('layout')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if config.show_secondary_first %}
+        <div class="layout__cell layout__cell--aside{{ config.show_divider ? ' layout__cell--divider'}}{{ not config.show_narrow ? ' wings' }}">
+            {% if content.video.url|t(locales)|length > 1 %}
+                <iframe class="gutters iframe-video" src="{{ content.video.url|t(locales) ~ content.video.query_path|t(locales) }}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            {% else %}
+                <div class="slideshow__container is-root">
+                    <div class="slideshow">
+                        {% for medium in model %}
+                            {{ image.carousel(medium, "") }}
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-switch carousel-previous" data-direction="left">
+                        <span class="icon icon--chevron-left"></span>
+                    </button>
+                    <button class="carousel-switch carousel-next" data-direction="right">
+                        <span class="icon icon--chevron-right"></span>
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="layout__cell layout__cell--main {{ config.show_outer_wing|default(1) ? config.show_secondary_first ? (config.show_narrow ? 'wing--left' : 'wing--right') : (config.show_narrow ? 'wing--right' : 'wing--left')}}">
+        <blockquote class="leader gutters">
+            <p class="quote">{{ content.quote|t(locales) }}</p>
+            <footer class="trailer">
+                <p class="meta  |  leader  |  trailer">{{ content.source|t(locales) }}</p>
+                {% if content.link %}
+                    <a class="title" href="{{ content.link.page|t(locales) }}" target="_blank">{{ content.link.label|t(locales) }}</a>
+                {% endif %}
+            </footer>
+        </blockquote>
+    </div>
+    {% if not config.show_secondary_first %}
+        <div class="layout__cell layout__cell--aside{{ config.show_divider ? ' layout__cell--divider'}} |  {{ not config.show_narrow ? 'wings' }}">
+            {% if content.video.url|t(locales)|length > 1 %}
+                <iframe class="gutters iframe-video" src="{{ content.video.url|t(locales) ~ content.video.query_path|t(locales) }}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            {% else %}
+                <div class="slideshow__container is-root">
+                    <div class="slideshow">
+                        {% for medium in model %}
+                            {{ image.carousel(medium, "") }}
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-switch carousel-previous" data-direction="left">
+                        <span class="icon icon--chevron-left"></span>
+                    </button>
+                    <button class="carousel-switch carousel-next" data-direction="right">
+                        <span class="icon icon--chevron-right"></span>
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</{{ config.container_tag|default('div') }}>

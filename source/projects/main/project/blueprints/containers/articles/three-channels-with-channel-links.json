@@ -1,0 +1,716 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "Three columns of channel articles with a list of more channels"
+    },
+    "description": {
+        "en": "Container with three channel columns, each containing a list of articles"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "Events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "Articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "All events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "All articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/layout/layout.html.twig",
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": "Generic container to wrap content in layout instructions"
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "vertical_alignment": {
+                                "value": "",
+                                "label": {
+                                    "en": "Vertical alignment"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "Align top"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-end",
+                                        "label": {
+                                            "en": "Align bottom"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-middle",
+                                        "label": {
+                                            "en": "Align middle"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Channel grid"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/global/channels/channels.html.twig",
+                            "template_config": {
+                                "content": {
+                                    "label": {
+                                        "en": "Content Setting"
+                                    },
+                                    "controls": {
+                                        "display_type": {
+                                            "value": "post",
+                                            "label": {
+                                                "en": "Display article as"
+                                            },
+                                            "options": [
+                                                {
+                                                    "value": "post",
+                                                    "label": {
+                                                        "en": "Post"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "row",
+                                                    "label": {
+                                                        "en": "Row"
+                                                    }
+                                                }
+                                            ],
+                                            "control": "core/list"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_tag": {
+                                            "value": "section",
+                                            "control": "project/container_tag"
+                                        },
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "containers": [
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "Channel\\Articles",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    },
+                                                    "limit": {
+                                                        "value": "4",
+                                                        "control": "project/model/limit"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "Channel\\Articles",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    },
+                                                    "limit": {
+                                                        "value": "4",
+                                                        "control": "project/model/limit"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Article channel"
+                                        },
+                                        "description": {
+                                            "en": "Article channel"
+                                        },
+                                        "template": "modules/articles/channel/channel.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "value": "Channel\\Articles",
+                                                        "control": "project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                                        "control": "project/model/id",
+                                                        "type":"lookup"
+                                                    },
+                                                    "limit": {
+                                                        "value": "4",
+                                                        "control": "project/model/limit"
+                                                    }
+                                                }
+                                            },
+                                            "config": {
+                                                "label": {
+                                                    "en": "Settings"
+                                                },
+                                                "controls": {
+                                                    "template": {
+                                                        "value": "partials/article/post.html.twig",
+                                                        "label": {
+                                                            "en": "Template"
+                                                        },
+                                                        "options": [
+                                                            {
+                                                                "value": "partials/article/post.html.twig",
+                                                                "label": {
+                                                                    "en": "Article post"
+                                                                }
+                                                            },
+                                                            {
+                                                                "value": "partials/article/post-row.html.twig",
+                                                                "label": {
+                                                                    "en": "Article row"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "control": "core/list"
+                                                    },
+                                                    "show_teleport": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_teleport"
+                                                    },
+                                                    "show_lead_image": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_lead_image"
+                                                    },
+                                                    "show_stand_first": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_stand_first"
+                                                    },
+                                                    "show_publication_date": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_publication_date"
+                                                    },
+                                                    "show_author_name": {
+                                                        "value": 1,
+                                                        "control": "project/display/show_author_name"
+                                                    },
+                                                    "show_read_more": {
+                                                        "value": 2,
+                                                        "control": "project/display/show_read_more"
+                                                    },
+                                                    "show_topic": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_topic"
+                                                    },
+                                                    "show_publications": {
+                                                        "value": 0,
+                                                        "control": "project/display/show_publication"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "template": "containers/global/group/group.html.twig",
+                            "name": {
+                                "en": "Links"
+                            },
+                            "description": {
+                                "en": "Channel links"
+                            },
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_tag": {
+                                            "value": "section",
+                                            "control": "project/container_tag"
+                                        },
+                                        "container_class": {
+                                            "value": "gutters",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "containers": [
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Link"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template": "modules/teleport/teleport.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content",
+                                                    "fr": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "type": "text",
+                                                        "value": "channels",
+                                                        "control":"project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Resource ID",
+                                                            "fr": "Resource ID"
+                                                        },
+                                                        "type": "lookup",
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "fe-id": null,
+                                        "name": {
+                                            "en": "Link"
+                                        },
+                                        "description": {
+                                            "en": ""
+                                        },
+                                        "template": "modules/teleport/teleport.html.twig",
+                                        "template_config": {
+                                            "model": {
+                                                "label": {
+                                                    "en": "Content",
+                                                    "fr": "Content"
+                                                },
+                                                "controls": {
+                                                    "adapter": {
+                                                        "value": "SCR",
+                                                        "control": "project/adapter"
+                                                    },
+                                                    "name": {
+                                                        "type": "text",
+                                                        "value": "channels",
+                                                        "control":"project/model/name"
+                                                    },
+                                                    "id": {
+                                                        "hidden": "0",
+                                                        "access": "all",
+                                                        "label": {
+                                                            "en": "Resource ID",
+                                                            "fr": "Resource ID"
+                                                        },
+                                                        "type": "lookup",
+                                                        "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

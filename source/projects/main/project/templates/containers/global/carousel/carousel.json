@@ -1,0 +1,42 @@
+{
+	"config": {
+		"label": {
+			"en": "Settings"
+		},
+		"controls": {
+			"leader": {
+				"value": "",
+				"control": "project/leader_inside"
+			},
+			"leader_inside": {
+				"value": "",
+				"control": "project/leader_inside"
+			},
+			"trailer": {
+				"value": "",
+				"control": "project/trailer_inside"
+			},
+			"trailer_inside": {
+				"value": "",
+				"control": "project/trailer_inside"
+			},
+			"divider": {
+				"value": "",
+				"control": "project/divider"
+			},
+			"container_tag": {
+				"value": "div",
+				"control": "project/container_tag"
+			},
+			"container_class": {
+				"value": "",
+				"control": "project/container_class"
+			},
+			"colour_theme": {
+				"value": "",
+				"control": "project/colour_theme"
+			}
+		}
+	},
+	"containers": []
+}

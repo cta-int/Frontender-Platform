@@ -1,0 +1,17 @@
+.director {
+	float: left;
+	width: 100%;
+	padding-right: rhythm(10);
+	@include breakpoint($gt-medium-handheld) {
+		width: 4 / 12 * 100vw;
+	}
+	@include breakpoint($gt-medium-desktop) {
+		width: 3 / 18 * 100vw;
+	}
+	.quote {
+		padding-top: 0;
+		&::before {
+			left: -999em;
+		}
+	}
+}

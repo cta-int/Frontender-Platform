@@ -1,0 +1,5 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<a href="{{ route({'page': 'search?type=article.' ~ model.articleType}) }}">
+    {{ ('content_type_category_' ~ model.articleType)|t(locales) }}
+</a>

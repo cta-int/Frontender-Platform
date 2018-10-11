@@ -1,0 +1,10 @@
+{
+  "type": "list",
+  "options": {
+    "key": "countries",
+    "resource": "api/model/countries",
+    "map": {
+      "title": "geoname"
+    }
+  }
+}

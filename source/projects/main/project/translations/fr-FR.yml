@@ -1,0 +1,295 @@
+# Network Navigation
+home: Accueil
+about cta: À propos CTA
+contact: Contact
+press: Presse
+working with cta: Travailler avec cta
+
+# Main Navigation
+publications: Publications
+tools: Outils
+events: Événements
+blog: Blog
+news: Nouvelles
+knowledge and innovation: Connaissance et innovation
+value chain: Chaîne de valeur
+
+# Search Menu
+search cta: Recherche CTA
+projects: Projets
+topics: Sujets
+regions: Régions
+more: Plus
+advanced search: Recherche Avancée
+your search: Votre recherche
+
+# Upcoming Events
+upcoming events: Évènements à venir
+
+# Calendar translations
+january: Janvier
+february: Février
+march: Mars
+april: Avril
+may: Mai
+june: Juim
+july: Juillet
+august: Août
+september: Septembre
+october: Octobre
+november: Novembre
+december: Décembre
+
+day_sunday_short: D
+day_monday_short: L
+day_tuesday_short: M
+day_wednesday_short: M
+day_thursday_short: J
+day_friday_short: V
+day_saturday_short: D
+
+previous year: Année précédente
+
+# Subscribe
+don't miss our next event: Ne manquez pas notre prochain événement
+subscribe now: Abonnez-vous maintenant
+full name: Nom complet
+e-mail address: adresse e-mail
+country: Pays
+subscribe: Souscrire
+subscribe to the cta newsletter: Abonnez-vous à la newsletter CTA
+firstname: Prénom
+lastname: Nom
+language: La langue
+english: Anglais
+french: Français
+
+# Contact form
+first name: Prénom
+last name: Nom
+phone: Numéro de téléphone
+subject: Le sujet
+your message: Votre message
+general enquiries: Renseignement généraux
+submit: Soumettre
+i'm interested in other cta publications: Je suis intéressé par les autres publications du CTA
+yes, i would like to receive the cta newsletter on a regular basis: Oui, je souhaite recevoir la newsletter du CTA
+yes, i would like to receive the spore newsletter on a regular basis: Oui, je souhaite recevoir la newsletter de Spore
+we are here to answer any questions you may have about our organisation. reach out to us and we'll respond as soon as we can: Nous sommes là pour répondre à toutes vos questions sur notre organisation. Apprenez-nous à nous et nous répondrons dès que nous pourrons
+get directions: Afficher sur la carte
+
+# Filters
+sort by: Trier par
+date (newer-older): Date (plus récente-ancienne)
+date (older-newer): Date (plus ancien plus récent)
+alphabetical order (a-z): Ordre alphabétique (A-Z)
+alphabetical order (z-a): Ordre alphabétique (Z-A)
+type: Sorte
+all types: Tous les types
+type a keyword: Tapez un mot-clé
+topic: Sujet
+
+filter by: Filtrer par
+relevance: Pertinence
+upcoming: Prochain
+passed: Passé
+
+filter_by_alphabet: Filtrer par alphabet
+filter_by_region: Filtrer par région
+
+view all events: Voir tous les événements
+
+show more: Montre plus
+
+# Pagination
+first: Premier
+previous: précédent
+next: prochain
+last: Dernier
+
+# Channels
+agricultural policies: Politiques agricoles
+investment funds: Fonds d'investissement
+agricultural practices: Pratiques agricoles
+impact assessment: évaluation de l'impact
+view all in: Voir tout dans
+view all: Voir tout
+
+event related articles: Articles liés à l'événement
+
+# Looper
+previous month: Le mois précédent
+
+# Contextual Search
+find events: Trouver des événements
+find opportunities: Trouver des opportunités
+search: Chercher
+type keywords: Type de mots-clés
+all topics: Tous les sujets
+date: Date
+all: Tous
+location: Emplacement
+last hour: Dernière heure
+last 24 hours: Dernières 24 heures
+last week: la semaine dernière
+last month: le mois dernier
+last year: l'année dernière
+
+# Event translations
+related media: Médias associés
+event overview: Aperçu de l'événement
+speakers: Speakers
+attendees: Participants
+organisers: Les organisateurs
+sponsors: Sponsors
+register now: Inscrire maintenant
+external links: Liens externes
+related projects: Projets liés
+keynotes: Notes clés
+visit official website: Visitez le site officiel
+
+# Project translations
+project: Projet
+read more: Lire la suite
+project timeline: Chronologie du projet
+choose or type the amount: Choisissez ou tapez le montant
+spread the word: Diffusez le mot
+donate now: Faire un don maintenant
+share on facebook: Partager sur Facebook
+share on twitter: Partager sur Twitter
+send link via e-mail: Envoyer le lien par e-mail
+project_timeline: Calendrier du projet
+format: Format
+project updates: Mises à jour du projet
+project publications: Publications de projet
+our projects: nos projets
+see all projects: Voir tous les projets
+funders: Bailleurs de fonds
+implementing organisations: Organisations d'exécution
+countries: Des pays
+total funding available: Total disponible
+
+implementing organisation: Organisation de mise en œuvre
+other key stakeholders: Autres intervenants clés
+downloads: Téléchargements
+
+# Impact stories
+impact stories: Histoires d'impact
+further reading: Autres lectures
+by: par
+see more: En savoir plus
+see less: Voir moins
+
+# Blog translations
+view blog: Voir le blog
+latest posts: Dernieres postes
+view channel: Afficher le canal
+filters: Filtres
+topic channels: Canaux du sujet
+topic channel: Canal du sujet
+
+# Procurement types
+vacancy: Poste vacant
+vacancy_announcement: Vacane de poste
+internships: Stage
+vacancies: Postes vacants
+vacancy announcements: Annonces de vacance
+partnership opportunities: Opportunités de partenariat
+calls for external experts: Appels à des experts externes
+calls for tenders: Appels d'offres
+calls for proposals: Appels à propositions
+partnerships: Partenariat
+call_for_tender: Appels d'offre
+call_for_tenders: Appels d'offre
+call_for_proposals: Appel à proposition
+call_for_external_experts: Appel à des experts externes
+published on: Publié le
+indicative starting date: Date de début indicative
+type of contract: Type de contrat
+awards notice: Avis de récompenses
+procurement: Approvisionnement
+planned: Prévu
+cancelled: Annulé
+closed: Fermé
+procurements: Procédures
+
+# Regions
+caribbean africa: Caraïbes
+caribbean: Caraïbes
+eastern africa: Afrique de l'Est
+southern africa: Afrique du sud
+western africa: Afrique de l'Ouest
+central africa: Afrique centrale
+pacific: Pacifique
+all regions: Toutes les régions
+the netherlands: Pays-Bas
+belgium: la Belgique
+
+# Unclassified translations
+regions_information: Renforcer les communautés agricoles et rurales en Afrique, dans les Caraïbes et dans le Pacifique
+regions_search: Rechercher un pays / région
+key focus areas: Principaux domaines d'intérêt
+view all the publications: Voir toutes les publications
+review: réviser
+be the first to review: Soyez le premier à laisser un avis
+published: Publié
+there are no matching opportunities at this time: Il n'y a pas d'opportunités correspondantes pour le moment.
+and: et
+closing date for application: Date de clôture de la demande
+updated on: Mis à jour le
+follow us on twitter: Suivez-nous sur Twitter
+
+# Issues
+issue: numéro
+view issue: Visualiser numéro
+all issues: Archive
+current issue: Dernier numéro
+download in pdf format: Télécharger pdf
+
+# Article
+updated_on: Mis à jour le
+bibliographical references: Références bibliographiques
+footnotes: Notes de bas de page
+view_reference: Voir la référence
+disclaimer: Avertissement
+about the author: A propos de l'auteur
+articles: articles
+
+# Article types
+all article types: Tous les types d'articles
+article type: Type d'article
+corporate news: Nouvelles d'entreprise
+communiqué: Communiqué
+opinion: Opinion
+interviews: Entrevues
+reviews: Avis
+data report: Rapport de données
+syndicate articles: Articles du syndicat
+scientific articles: Articles scientifiques
+blog posts: Publications du blog
+impact story: Histoire d'impact
+opinion article: Article d'opinion
+interview: Entretien
+review article: Article de révision
+technical / scientific article: Article technique / scientifique
+internship: Stage
+call for tender: Appels d'offre
+call for tenders: Appels d'offre
+call for proposals: Appel à proposition
+call for proposal: Appel à proposition
+call for external experts: Appel à des experts externes
+call for external expert: Appel à des experts externes
+partnership: Partenariat
+tender award notice: Avis d'attribution d'appel d'offres
+tender highlight: Point culminant
+
+# Footer
+follow us: Suivez nous
+
+disclaimer_text: Ce document est produit avec le soutien financier de l’Union Européenne. Le contenu de ce document relève de la seule responsabilité du CTA et ne peut, en aucun cas, être considéré comme reflétant les positions de l’Union Européenne.
+
+
+# Error page
+error_intro: We can't seem to find what you are looking for.
+error_description: You may have typed the address incorrectly or you may have used an outdated link.
+error_escape: Please go back to the <a href="/">home page</a> or use the above navigation bar to choose a new direction.

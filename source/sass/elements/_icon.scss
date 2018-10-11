@@ -1,0 +1,363 @@
+/*
+Icon
+
+Element with a `data-icon` attribute.
+
+more - Thin arrow pointing right icon `more`
+facebook - Print icon `facebook`
+twitter - Print icon `twitter`
+chevron-down - Chevron pointing down icon
+chevron-left - Chevron pointing left icon
+chevron-right - Chevron pointing right icon
+chevron-up - Chevron pointing up icon
+chevron-small-down - Small chevron pointing down icon
+chevron-small-left - Small chevron pointing left icon
+chevron-small-right - Small chevron pointing right icon
+chevron-small-up - Small chevron pointing up icon
+controller-play - Play icon `play`
+download - Download icon `download`
+eye - Download icon `eye`
+globe - Download icon `world` or `regions`
+hand - Download icon `hand`, `donations`, `donate`
+heart - Heart icon `real facts`, `love`
+home - Home icon `print`
+image - Image icon `photo`, `gallery`
+leaf - Leaf icon `cta home`, `leaf`
+link - Link icon `link`
+linkedin - LinkedIn icon `linkedin`
+location - Location icon `location`
+email - Envelope icon `mail`
+map - Map icon `map`
+print - Print icon `print`
+rss - RSS icon `rss`
+users - Users icon `users`
+
+markup:
+<span data-icon="{$modifiers}"></span>
+
+Styleguide 3.8
+*/
+
+$icomoon-font-path: "../fonts" !default;
+
+$icon-youtube-play: "\f16a";
+$icon-instagram: "\e900";
+$icon-linkedin: "\f0e1";
+$icon-vimeo: "\e901";
+$icon-thin-arrow: "\39";
+$icon-archive: "\e906";
+$icon-cross: "\e94e";
+$icon-plus: "\e9b0";
+$icon-facebook: "\ea55";
+$icon-twitter: "\ea8b";
+$icon-chevron-down: "\e926";
+$icon-chevron-left: "\e927";
+$icon-chevron-right: "\e928";
+$icon-chevron-up: "\e92e";
+$icon-controller-play: "\e941";
+$icon-download: "\e959";
+$icon-eye: "\e964";
+$icon-globe: "\e974";
+$icon-hand: "\e978";
+$icon-heart: "\ea14";
+$icon-home: "\e97a";
+$icon-image: "\e97d";
+$icon-leaf: "\e987";
+$icon-link: "\e98e";
+$icon-map-marker: "\e990";
+$icon-envelope: "\e996";
+$icon-map: "\e998";
+$icon-print: "\e9b4";
+$icon-rss: "\ea2b";
+$icon-users: "\ea46";
+
+
+
+@font-face {
+  font-family: 'cta-icons';
+  src:  url('#{$icomoon-font-path}/cta-icons.eot?pif7o8');
+  src:  url('#{$icomoon-font-path}/cta-icons.eot?pif7o8#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/cta-icons.ttf?pif7o8') format('truetype'),
+    url('#{$icomoon-font-path}/cta-icons.woff?pif7o8') format('woff'),
+    url('#{$icomoon-font-path}/cta-icons.svg?pif7o8#cta-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+// scss-lint:disable ImportantRule VendorPrefix DuplicateProperty
+.icon,
+[data-icon]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cta-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* data-attribute ================ */
+  content: attr(data-icon);
+}
+
+// scss-lint:enable ImportantRule VendorPrefix DuplicateProperty
+
+.icon {
+  &--l {
+    @include breakpoint($gt-large-handheld) {
+      font-size: 2em;
+    }
+  }
+  &--drop {
+    position: relative;
+    top: 0.05em;
+    font-size: 1.3em;
+  }
+  &--project {
+    top: rhythm() * -1;
+  }
+  &--theme {
+    color: $color-theme;
+  }
+  &--dark {
+    color: mix($color-theme, $color-body, 60%);
+    .theme--blue & {
+      color: mix($color-blue, $color-body, 60%);
+    }
+    .theme--lime & {
+      color: mix($color-lime, $color-body, 60%);
+    }
+    .theme--yellow & {
+      color: mix($color-yellow, $color-body, 60%);
+    }
+    .theme--gold & {
+      color: mix($color-gold, $color-body, 60%);
+    }
+    .theme--orange & {
+      color: mix($color-orange, $color-body, 60%);
+    }
+    .theme--salmon & {
+      color: mix($color-salmon, $color-body, 60%);
+    }
+    .theme--red & {
+      color: mix($color-red, $color-body, 60%);
+    }
+    .theme--burgundy & {
+      color: mix($color-burgundy, $color-body, 60%);
+    }
+    .theme--purple & {
+      color: mix($color-purple, $color-body, 60%);
+    }
+  }
+  &--thin-arrow {
+    &:before {
+      content: $icon-thin-arrow;
+    }
+  }
+}
+.icon--thin-arrow {
+  &:before {
+    content: $icon-thin-arrow;
+  }
+}
+.icon--archive {
+  &:before {
+    content: $icon-archive;
+  }
+}
+.icon--cross {
+  &:before {
+    content: $icon-cross;
+  }
+}
+.icon--plus {
+  &:before {
+    content: $icon-plus;
+  }
+}
+.icon--facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon--twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+.icon--chevron-down {
+  &:before {
+    content: $icon-chevron-down;
+  }
+}
+.icon--chevron-left {
+  &:before {
+    content: $icon-chevron-left;
+  }
+}
+.icon--chevron-right {
+  &:before {
+    content: $icon-chevron-right;
+  }
+}
+.icon--chevron-up {
+  &:before {
+    content: $icon-chevron-up;
+  }
+}
+.icon--controller-play {
+  &:before {
+    content: $icon-controller-play;
+  }
+}
+.icon--download {
+  &:before {
+    content: $icon-download;
+  }
+}
+.icon--eye {
+  &:before {
+    content: $icon-eye;
+  }
+}
+.icon--globe {
+  &:before {
+    content: $icon-globe;
+  }
+}
+.icon--hand {
+  &:before {
+    content: $icon-hand;
+  }
+}
+.icon--heart {
+  &:before {
+    content: $icon-heart;
+  }
+}
+.icon--home {
+  &:before {
+    content: $icon-home;
+  }
+}
+.icon--image {
+  &:before {
+    content: $icon-image;
+  }
+}
+.icon--leaf {
+  &:before {
+    content: $icon-leaf;
+  }
+}
+.icon--link {
+  &:before {
+    content: $icon-link;
+  }
+}
+.icon--linkedin {
+  &:before {
+    content: $icon-linkedin;
+  }
+}
+.icon--location,
+.icon--map-marker {
+  &:before {
+    content: $icon-map-marker;
+  }
+}
+.icon--envelope {
+  &:before {
+    content: $icon-envelope;
+  }
+}
+.icon--map {
+  &:before {
+    content: $icon-map;
+  }
+}
+.icon--print {
+  &:before {
+    content: $icon-print;
+  }
+}
+.icon--rss {
+  &:before {
+    content: $icon-rss;
+  }
+}
+.icon--users {
+  &:before {
+    content: $icon-users;
+  }
+}
+.icon--instagram {
+    &:before {
+        content: $icon-instagram;
+    }
+}
+.icon--vimeo {
+    &:before {
+        content: $icon-vimeo;
+    }
+}
+
+.icon--youtube {
+    &:before {
+        content: $icon-youtube-play;
+    }
+}
+
+
+/*
+Icon with icon class
+
+Element with class `icon` and a `data-icon` attribute.
+
+thin-arrow - Thin arrow pointing right `more`
+facebook - Print `facebook`
+twitter - Print `twitter`
+linkedin - Print `linkedin`
+chevron-down - Chevron pointing down
+chevron-left - Chevron pointing left
+chevron-right - Chevron pointing right
+chevron-up - Chevron pointing up
+chevron-small-down - Small chevron pointing down
+chevron-small-left - Small chevron pointing left
+chevron-small-right - Small chevron pointing right
+chevron-small-up - Small chevron pointing up
+controller-play - Play `play`
+download - Download `download`
+eye - Download `eye`
+globe - Download `world` or `regions`
+hand - Download `hand`, `donations`, `donate`
+heart - Heart `real facts`, `love`
+home - Home `print`
+image - Image `photo`, `gallery`
+leaf - Leaf `cta home`, `leaf`
+link - Link `link`
+location - Location `location`
+envelope - Envelope `mail`
+map - Map `map`
+print - Print `print`
+rss - RSS `rss`
+users - Users `users`
+
+markup:
+<span class="icon icon--{$modifiers}"></span>
+
+Styleguide 3.8.1
+*/

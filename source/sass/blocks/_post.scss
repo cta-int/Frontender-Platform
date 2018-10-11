@@ -1,0 +1,23 @@
+/*
+Post
+
+@todo - extract post__anchor into a new element: `read-more`
+
+Styleguide 4.8
+*/
+
+
+@import "post/post";
+@import "post/post-hero";
+@import "post/post-tile";
+@import "post/post-row";
+@import "post/post-info";
+
+@include breakpoint($lt-small-desktop) {
+    .post:not(:first-of-type) {
+        display: none;
+    }
+    .post + .divider {
+        display: none;
+    }
+}

@@ -1,0 +1,93 @@
+/*
+Event teaser
+
+.event-teaser - Teaser block for events
+
+markup:
+<div class="{$modifiers}  |  teaser  |  stack">
+    <div class="event-teaser__date  |  stack__unit stack__pin">
+        <span class="date">
+            <span class="date__head">Oct</span>
+            <span class="date__body">16</span>
+        </span>
+    </div>
+    <div class="stack__unit  |  stack stack--stacked">
+        <div class="stack__unit">
+            <h2 class="anchor  |  title  |  gutters gutter-hero--left">
+                <a href="javascript:void(0);">Pacific Week of Agriculture 2017</a>
+            </h2>
+            <p class="gutters gutter-hero--left">
+                <time class="meta" datetime="2017-10-16T00:00:00+11:00">Monday, 16 October 2017</time>
+                <time class="meta" datetime="2017-10-20T23:59:59+11:00"> – Friday, 20 October 2017</time>
+            </p>
+        </div>
+        <div class="pin-box  |  stack__unit  |  stack  |  leader">
+            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
+                <div class="media media--middle  |  location">
+                    <span class="location__marker  |  media__figure">
+                        <span class="icon icon--theme icon--drop icon--map-marker"><span class="is-narrative">Location:</span></span>
+                    </span>
+                    <div class="location__body  |  media__content">Port Vila, Vanuatu</div>
+                </div>
+            </div>
+            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
+                <ul class="reset  |  label-list  |  list--inline">
+                    <li><a class="label label--s" href="/en/search?concepts[]=c_8692">agrotourism</a></li>
+                    <li><a class="label label--s" href="/en/search?concepts[]=c_5487">Pacific Islands</a></li>
+                    <li><a class="label label--s" href="/en/search?concepts[]=c_37887">entrepreneurship</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.11
+*/
+
+/*
+ * 1. Align top of date with title
+ */
+.event-teaser {
+  &__date {
+    @include theme-opaque-background(100%);
+    padding-top: rhythm(2); /* 1 */
+  }
+  .title {
+    @include title-16px();
+    padding-top: rhythm(3);
+    margin-bottom: rhythm(2);
+  }
+  @include breakpoint($gt-large-handheld) {
+    min-height: rhythm(55);
+    // width: percentage(10 / 12);
+    // width: calc(#{percentage(10 / 12)} - #{gutter()});
+    .title {
+      @include title-24px();
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    // width: percentage(10 / 18);
+    // width: calc(#{percentage(10 / 18)} - #{gutter()});
+    .date {
+      padding-top: rhythm(8); /* 1 */
+    }
+    .title {
+      @include title-24px();
+      padding-top: rhythm(11); /* 1 */
+      margin-bottom: rhythm(6);
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    // width: percentage(8 / 18);
+    // width: calc(#{percentage(8 / 18)} - #{gutter()});
+    .meta {
+      @include meta-12px();
+    }
+    .location {
+      @include regular-location();
+    }
+    // .pin-box {
+    //   margin-top: rhythm(20);
+    // }
+  }
+}

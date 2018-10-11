@@ -1,0 +1,31 @@
+<div class="article-group--row article-group--row--l">
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article} {
+      model: model[0],
+      tile_class: "article article--l",
+      prev: model[3],
+      next: model[1]
+  } %}
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article} {
+      model: model[1],
+      tile_class: "article article--l",
+      prev: model[0],
+      next: model[2]
+  } %}
+
+</div>
+
+
+<div class="article-group--row article-group--row--l">
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article} {
+      model: model[2],
+      tile_class: "article article--l",
+      prev: model[1],
+      next: model[3]
+  } %}
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article} {
+      model: model[3],
+      tile_class: "article article--l",
+      prev: model[2],
+      next: model[0]
+  } %}
+</div>

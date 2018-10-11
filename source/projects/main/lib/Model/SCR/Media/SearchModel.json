@@ -1,0 +1,32 @@
+{
+  "label": {
+    "en": "Find content: media",
+    "fr": "Find content: media"
+  },
+  "map": {
+    "id": "_id",
+    "title": "name",
+    "description": "about",
+    "thumbnail": "metadata.thumbnailUrl"
+  },
+  "display_options": {
+    "thumbnail": {
+      "en": "Show image",
+      "fr": "Show image"
+    },
+    "description": {
+      "en": "Show description",
+      "fr": "Show description"
+    }
+  },
+  "display_attributes": ["description", "thumbnail", "datePublished"],
+  "controls": {
+    "q": {
+      "label": {
+        "en": "Text",
+        "fr": "Text"
+      },
+      "control": "core/text"
+    }
+  }
+}

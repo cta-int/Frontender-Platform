@@ -1,0 +1,39 @@
+{% macro map(location, target, property = 'location') %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {% if attribute(location, property).latitude and attribute(location, property).longitude %}
+        <script type="text/javascript">
+            jQuery(function($) {
+                $('{{ target }}').gmaps({
+                    zoom: 6,
+                    location: {
+                        latitude: {{ attribute(location, property).latitude }},
+                        longitude: {{ attribute(location, property).longitude }}
+                    },
+                    marker: {
+                        icon: '/assets/images/icons/gmaps_pin.png'
+                    }
+                });
+            });
+        </script>
+    {% endif %}
+{% endmacro %}
+
+{% macro place_country(location) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {% if location.address.addressLocality %}
+        <span>{{ location.address.addressLocality|t(locales) }}</span>,
+    {% endif %}
+    {% if location.address.addressCountry %}
+        <span>{{ location.address.addressCountry|t(locales) }}</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro country(location) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+    {% if location.address.addressCountry %}
+        <span>{{ location.address.addressCountry|t(locales) }}</span>
+    {% endif %}
+{% endmacro %}

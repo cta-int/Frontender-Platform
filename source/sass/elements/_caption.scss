@@ -1,0 +1,32 @@
+/*
+Caption
+
+.caption - Caption
+.caption.caption--layout - Self aligned center
+.caption.caption--right - Text aligned right
+
+markup:
+<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+Styleguide 3.42
+*/
+
+.caption {
+    @include meta-14px();
+    font-family: $font-family--meta;
+    opacity: .84;
+    word-break: break-word;
+    .well & {
+        padding-left: rhythm(3);
+        padding-right: rhythm(3);
+        font-weight: 400;
+    }
+    &--layout {
+    	align-self: center;
+    }
+    &--right {
+        @include breakpoint($gt-large-handheld) {
+            text-align: right;
+        }
+    }
+}

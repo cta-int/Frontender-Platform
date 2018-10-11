@@ -1,0 +1,46 @@
+{
+    "content": {
+        "label": {
+            "en": "Greenshoot"
+        },
+        "controls": {
+            "title": {
+                "value": {
+                    "en": "Title",
+                    "fr": "Title"
+                },
+                "label": {
+                    "en": "Title"
+                },
+                "control": "core/text"
+            },
+            "figure": {
+                "value": {
+                    "en": "60",
+                    "fr": "60"
+                },
+                "label": {
+                    "en": "Figure"
+                },
+                "control": "core/text"
+            },
+            "caption": {
+                "value": {
+                    "en": "different nationalities from ACP and EU countries",
+                    "fr": "different nationalities from ACP and EU countries"
+                },
+                "label": {
+                    "en": "Caption"
+                },
+                "control": "core/textarea"
+            },
+            "story": {
+                "value": "globe-plane",
+                "label": {
+                    "en": "Story"
+                },
+                "control": "project/story"
+            }
+        }
+    }
+}

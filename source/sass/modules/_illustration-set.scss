@@ -1,0 +1,22 @@
+/*
+Illustration set
+
+markup:
+<div class="search__illustrations-set">
+    <span class="search__illustration illustration illustration--fish-barn"></span>
+    <span class="search__illustration illustration illustration--fishing-shore"></span>
+    <span class="search__illustration illustration illustration--fishing-boat"></span>
+    <span class="water-illustration"></span>
+</div>
+
+sg-wrapper:
+<div class="trailer-inside--hero leader-inside--hero  |  well well--darkest  |  is-illustrated  |  is-root">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 5.16
+*/
+
+.illustration {
+  display: inline-block;
+}

@@ -1,0 +1,101 @@
+/*
+Pin box
+
+.pin-box - Default
+.pin-box.pin-box--hero - More whitespace
+
+markup:
+<div class="{$modifiers}  |  stack  |  leader">
+  <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  | gutters">
+    <sg-insert>3.19</sg-insert>
+  </div>
+  <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  | gutters">
+    <sg-insert>3.9.1-1</sg-insert>
+  </div>
+</div>
+
+Styleguide 4.12
+*/
+
+.pin-box {
+  //scss-lint:disable DuplicateProperty
+  border: 1px solid mix($color-body, $white, 26%);
+  border: 1px solid rgba($color-theme, .26);
+  .well & {
+    border-color: $white !important;
+    border-color: rgba($white, .4) !important;
+  }
+  .well--neutral & {
+    border-color: $white !important;
+  }
+  .theme--blue & {
+    border-color: rgba($color-blue, .26);
+  }
+  .theme--lime & {
+    border-color: rgba($color-lime, .26);
+  }
+  .theme--yellow & {
+    border-color: rgba($color-yellow, .26);
+  }
+  .theme--gold & {
+    border-color: rgba($color-gold, .26);
+  }
+  .theme--orange & {
+    border-color: rgba($color-orange, .26);
+  }
+  .theme--salmon & {
+    border-color: rgba($color-salmon, .26);
+  }
+  .theme--red & {
+    border-color: rgba($color-red, .26);
+  }
+  .theme--burgundy & {
+    border-color: rgba($color-burgundy, .26);
+  }
+  .theme--purple & {
+    border-color: rgba($color-purple, .26);
+  }
+
+  //scss-lint:enable DuplicateProperty
+  border-width: 1px 0 0;
+  &__cell {
+    padding-top: rhythm(4);
+    padding-bottom: rhythm(4);
+    border: inherit;
+    border-width: 0 0 0 1px;
+    .no-flexbox & {
+      border-width: 1px 0 0 1px;
+    }
+    &:first-child {
+      border-width: 0;
+      flex: 0 1 100%;
+      .no-flexbox & {
+        border-width: 1px 0 0 0;
+      }
+    }
+  }
+  &--hero &__cell {
+    padding-top: gutter(1);
+  }
+  @include breakpoint($gt-large-handheld) {
+    margin-top: rhythm(6);
+  }
+  @include breakpoint($gt-small-desktop) {
+    margin-top: rhythm(10);
+    &__cell {
+      padding-top: gutter();
+      padding-bottom: gutter();
+    }
+  }
+  @include breakpoint($gt-medium-desktop) {
+    &__cell {
+      padding-top: gutter(1);
+      padding-bottom: gutter(1);
+    }
+  }
+  &.stack {
+    .no-flexbox & {
+      width: 100%;
+    }
+  }
+}

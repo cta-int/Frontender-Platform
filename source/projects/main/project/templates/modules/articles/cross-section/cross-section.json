@@ -1,0 +1,77 @@
+{
+    "model": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "name": {
+                "value": "Channel\\Articles",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "ec334e9c-68e7-4260-b2c6-058697731ba2",
+                "control": "project/model/id"
+            },
+            "limit": {
+                "value": 5,
+                "control": "core/hidden"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "template": {
+                "value": "partials/article/post.html.twig",
+                "label": {
+                    "en": "Template"
+                },
+                "options": [
+                    {
+                        "value": "partials/article/post.html.twig",
+                        "label": {
+                            "en": "Article post"
+                        }
+                    },
+                    {
+                        "value": "partials/article/post-row.html.twig",
+                        "label": {
+                            "en": "Article row"
+                        }
+                    }
+                ],
+                "control": "core/list"
+            },
+            "show_lead_image": {
+                "value": 2,
+                "control": "project/display/show_lead_image"
+            },
+            "show_stand_first": {
+                "value": 2,
+                "control": "project/display/show_stand_first"
+            },
+            "show_publication_date": {
+                "value": 1,
+                "control": "project/display/show_publication_date"
+            },
+            "show_author_name": {
+                "value": 1,
+                "control": "project/display/show_author_name"
+            },
+            "show_read_more": {
+                "value": 1,
+                "control": "project/display/show_read_more"
+            },
+            "show_topic": {
+                "value": 0,
+                "control": "project/display/show_topic"
+            },
+            "show_publication": {
+                "value": 1,
+                "control": "project/display/show_publication"
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article>
+    <header>
+        <p class="meta  |  gutters">{{ model.alternativeHeadline|t(locales) }}</p>
+        <h1 class="title title--section  |  gutters  |  leader--tiny  |  trailer--hero">{{ model.headline|t(locales) }}</h1>
+    </header>
+
+    {% if model.about %}
+        <p class="gutters">{{ model.about|t(locales)|striptags('<strong><em><u><a><sub><sup>')|raw }}
+    {% endif %}
+
+    {# render the content blocks - if the first block is a list,
+    we treat it as the article takeaways #}
+    {% for i, contentBlock in model.contentBlocks %}
+        {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+            <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+            </div>
+        {% else %}
+            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+        {% endif %}
+    {% endfor %}
+
+    <p class="gutters  |  meta  |  leader--hero  |  trailer--normal">{{ 'Last modified'|t(locales) }}: {{ model.dateModified|tdate('%A, %e %B %Y') }}</p>
+
+    {% if model.link.mediaObject|findType('file')|length > 0 %}
+        <aside class="leader-inside  |  divider divider--top  |  gutters-outside">
+            <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h2>
+
+            {% for file in model.link.mediaObject|findType('file') %}
+                {% include 'partials/download.html.twig' with {file: file} %}
+            {% endfor %}
+        </aside>
+    {% endif %}
+</article>

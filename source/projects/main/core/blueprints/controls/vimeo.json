@@ -1,0 +1,31 @@
+{
+    "value": {
+        "url": {
+            "en": "https://vimeo.com/91156049",
+            "fr": "https://vimeo.com/91156049"
+        },
+        "query_path": {
+            "en": "?color=ffffff&byline=0",
+            "fr": "?color=ffffff&byline=0"
+        }
+    },
+    "label": {
+        "en": "Video"
+    },
+    "type": "compound",
+    "controls": {
+        "url": {
+            "label": {
+                "en": "URL"
+            },
+            "control": "core/text"
+        },
+        "query_path": {
+            "label": {
+                "en": "URL query path"
+            },
+            "control": "core/text"
+        }
+    },
+    "control": "core/abstract"
+}

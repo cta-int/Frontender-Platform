@@ -1,0 +1,170 @@
+/*
+ * 1. Color is based on the theme the article is in
+ */
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg) translate(-1px) rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg) translate(-1px) rotate(-360deg);
+	}
+}
+
+.article {
+	position: relative;
+	height: rhythm(117);
+	width: 5 / 6 * 100vw;
+	margin-bottom: rhythm(10);
+	margin-right: $gutter-width / 2;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	@include breakpoint($gt-medium-handheld) {
+		width: 3 / 6 * 100vw;
+	}
+	@include breakpoint($gt-large-handheld) {
+		width: 5 / 12 * 100vw;
+	}
+ 	@include breakpoint($gt-small-desktop) {
+		width: 100%;
+		height: rhythm(84);
+	}
+	@include breakpoint($gt-medium-desktop) {
+		height: rhythm(117);
+	}
+	&--l {
+		@include breakpoint($gt-small-desktop) {
+			height: rhythm(117);
+		}
+		@include breakpoint($gt-medium-desktop) {
+			height: rhythm(166);
+		}
+	}
+	&:hover {
+		.article-caption,
+		.article__triangle:before {
+			color: $color-theme; /* 1. */
+			.theme--green & {
+				color: $color-green;
+			}
+			.theme--blue & {
+				color: $color-blue;
+			}
+			.theme--lime & {
+				color: $color-lime;
+			}
+			.theme--yellow & {
+				color: $color-yellow;
+			}
+			.theme--gold & {
+				color: $color-gold;
+			}
+			.theme--orange & {
+				color: #E36729;
+			}
+			.theme--salmon & {
+				color: $color-salmon
+			}
+			.theme--red & {
+				color: $color-red;
+			}
+			.theme--burgundy & {
+				color: $color-burgundy;
+			}
+			.theme--purple & {
+				color: $color-purple;
+			}
+		}
+		.article__triangle {
+			border-bottom-color: $white;
+		}
+	}
+	&-image {
+		display: block;
+		background: center center;
+		background-size: cover;
+		height: 100%;
+	}
+	&-caption {
+		position: absolute;
+		left: rhythm(2);
+		right: 0;
+		bottom: 0;
+		padding: rhythm(4) rhythm(9) rhythm(6) rhythm(6);
+		background: rgba(0, 0, 0, .76);
+		font-size: to-unit(18px);
+		line-height: to-unit(18px);
+	}
+	&-caption,
+	&__triangle {
+		color: $white;
+	}
+	&__triangle {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		width: 0;
+		height: 0;
+		border-bottom: rhythm(11) solid $color-theme; /* 1. */
+		border-left: rhythm(11) solid transparent;
+		.theme--green & {
+			border-bottom-color: $color-green;
+		}
+		.theme--blue & {
+			border-bottom-color: $color-blue;
+		}
+		.theme--lime & {
+			border-bottom-color: $color-lime;
+		}
+		.theme--salmon & {
+			border-bottom-color: $color-salmon;
+		}
+		.theme--yellow & {
+			border-bottom-color: $color-yellow;
+		}
+		.theme--gold & {
+			border-bottom-color: $color-gold;
+		}
+		.theme--orange & {
+			border-bottom-color: $color-orange;
+		}
+		.theme--red & {
+			border-bottom-color: $color-red;
+		}
+		.theme--burgundy & {
+			border-bottom-color: $color-burgundy;
+		}
+		.theme--purple & {
+			border-bottom-color: $color-purple;
+		}
+		&::before {
+			content: $icon-plus;
+			position: relative;
+			font-family: cta-report;
+			color: $white;
+			top: 11px;
+			right: 17px;
+		}
+	}
+}
+
+/*
+ * Set background-image using inline styles
+ * Include theme class in parent
+ */
+
+/*
+<div class="article">
+    <a class="article-image" href="javascipt:;" style="background-image: url('https://source.unsplash.com/random');" >
+        <div class="article-caption article-title">Mitigating the consequences of aflatoxin in Africa</div>
+        <div class="article__triangle"></div>
+    </a>
+</div>
+<div class="article article--l">
+    <a class="article-image" href="javascipt:;">
+        <div class="article-caption article-title">Mitigating the consequences of aflatoxin in Africa</div>
+        <div class="article__triangle"></div>
+    </a>
+</div>
+*/

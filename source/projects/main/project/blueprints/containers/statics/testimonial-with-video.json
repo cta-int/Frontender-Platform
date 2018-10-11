@@ -1,0 +1,239 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Video and testimonial"
+    },
+    "description": {
+        "en": "Video and testimonial"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "trailer-inside--hero",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "divider divider--top",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "layout--narrow leader-inside--hero  |  trailer",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Body"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/testimonial-with-video/testimonial-with-video.html.twig",
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "media",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "967af8af-892d-42c6-9d93-454c2813b925",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            }
+                        }
+                    },
+                    "content": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "Watch the video",
+                                        "fr": "Regardez le vidéo"
+                                    },
+                                    "page": {
+                                        "en": "https://vimeo.com/91156049",
+                                        "fr": "https://vimeo.com/91156049"
+                                    },
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Panel link"
+                                },
+                                "control": "core/route"
+                            },
+                            "quote": {
+                            	"label": {
+                            		"en-GB": "Testimonial quote"
+                            	},
+                            	"control": "core/textarea",
+                            	"value": {
+                            		"en-GB": "I gained a lot in terms of self-confidence. I learnt so many tools that make my work more effective. In future I will be able to do more for the young people than I am doing now.",
+                            		"fr-FR": "I gained a lot in terms of self-confidence. I learnt so many tools that make my work more effective. In future I will be able to do more for the young people than I am doing now."
+                            	}
+                            },
+                            "source": {
+                            	"label": {
+                            		"en-GB": "Description"
+                            	},
+                            	"control": "core/text",
+                            	"value": {
+                            		"en-GB": "Yagoub Husna, CTA Data Assistant",
+                            		"fr-FR": "Yagoub Husna, CTA Data Assistant"
+                            	}
+                            },
+                            "video": {
+                                "value": {
+                                    "url": {
+                                        "en": "https://player.vimeo.com/video/91156049",
+                                        "fr": "https://player.vimeo.com/video/91156049"
+                                    },
+                                    "query_path": {
+                                        "en": "?color=ffffff%26byline=0",
+                                        "fr": "?color=ffffff%26byline=0"
+                                    }
+                                },
+                                "control": "project/vimeo"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout layout--even",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "core/hidden"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "core/hidden"
+                            },
+                            "show_narrow": {
+                                "value": 1,
+                                "control": "core/hidden"
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "core/hidden"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

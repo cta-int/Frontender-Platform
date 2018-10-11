@@ -1,0 +1,119 @@
+{
+    "mobile": {
+        "label": {
+            "en": "Mobile Settings"
+        },
+        "controls": {
+            "menu_label": {
+                "value": {
+                    "en": "Menu",
+                    "fr": "Menu"
+                },
+                "label": {
+                    "en": "Menu label (mobile only)"
+                },
+                "control": "core/text"
+            },
+            "show_menu_label": {
+                "value": 0,
+                "label": {
+                    "en": "Show menu label (mobile only)"
+                },
+                "control": "project/show"
+            },
+            "menu_icon": {
+                "value": "leaf",
+                "label": {
+                    "en": "Menu icon (mobile only)"
+                },
+                "control": "core/list",
+                "options": [
+                    {
+                        "label": {
+                            "en": "Leaf"
+                        },
+                        "value": "leaf"
+                    },
+                    {
+                        "label": {
+                            "en": "Home"
+                        },
+                        "value": "home"
+                    }
+                ]
+            }
+        }
+    },
+    "links": {
+        "label": {
+            "en": "Network navigation"
+        },
+        "controls": {
+            "links": {
+                "value": [
+                    {
+                        "label": {
+                            "en": "About CTA",
+                            "fr": "À propos CTA"
+                        },
+                        "page": "about-cta",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Contact",
+                            "fr": "Contact"
+                        },
+                        "page": "contact",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Working with CTA",
+                            "fr": "Travailler avec CTA"
+                        },
+                        "page": "working-with-cta",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Publications",
+                            "fr": "Publications"
+                        },
+                        "page": "https://publications.cta.int/",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Spore",
+                            "fr": "Spore"
+                        },
+                        "page": "http://spore.cta.int/",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "ICT Update",
+                            "fr": "ICT Update"
+                        },
+                        "page": "ictupdate",
+                        "id": ""
+                    },
+                    {
+                        "label": {
+                            "en": "Press",
+                            "fr": "Presse"
+                        },
+                        "page": "press",
+                        "id": ""
+                    }
+                ],
+                "label": {
+                    "en": "Links"
+                },
+                "control": "core/route",
+                "repeatable": true
+            }
+        }
+    }
+}

@@ -1,0 +1,280 @@
+{
+	"model": {
+		"label": {
+			"en": "Content",
+			"fr": "Content"
+		},
+		"controls": {
+			"name": {
+				"value": "twitter",
+				"control": "project/model/name",
+				"options": [{
+					"label": {
+						"en": "Twitter",
+						"fr": "Twitter"
+					},
+					"value": "twitter"
+				}]
+			},
+			"username": {
+				"label": {
+					"en": "Twitter handle",
+					"fr": "Twitter handle"
+				},
+				"value": "CTAFlash",
+				"control": "core/text"
+			},
+			"hashtag": {
+				"label": {
+					"en": "Hashtag",
+					"fr": "Hashtag"
+				},
+				"value": "",
+				"control": "core/text"
+			},
+			"limit": {
+				"label": {
+					"en": "Limit",
+					"fr": "Limit"
+				},
+				"value": 20,
+				"control": "core/number"
+			}
+		}
+	},
+	"content": {
+		"label": {
+			"en": "Static content"
+		},
+		"controls": {
+			"body": {
+				"value": {
+					"en": "CTA is a joint institution operating under the framework of the Cotonou Agreement between the ACP Group of States (Africa, the Caribbean and the Pacific) and the EU Member States (European Union). CTA is funded by the European Union.",
+					"fr": "CTA fonctionne dans le cadre de l'Accord de Cotonou et est financé par l'UE."
+				},
+				"label": {
+					"en": "Footer body"
+				},
+				"control": "core/textarea"
+			},
+			"links": {
+				"value": [
+					{
+						"label": {
+							"en": "Disclaimer",
+							"fr": "Avertissement"
+						},
+						"page": "disclaimer",
+						"id": ""
+					},
+					{
+						"label": {
+							"en": "Copyrights",
+							"fr": "Droits d’auteur"
+						},
+						"page": "copyrights",
+						"id": ""
+					},
+					{
+						"label": {
+							"en": "Privacy statement",
+							"fr": "Déclaration de confidentailité"
+						},
+						"page": "privacy-statement",
+						"id": ""
+					}
+				],
+				"label": {
+					"en": "Links"
+				},
+				"control": "core/route",
+				"repeatable": true
+			}
+		}
+	},
+	"first_column": {
+		"label": {
+			"en": "Column 1"
+		},
+		"controls": {
+			"title": {
+				"value": {
+					"en": "About CTA",
+					"fr": "À propos CTA"
+				},
+				"label": {
+					"en": "Title"
+				},
+				"control": "core/text"
+			},
+			"links": {
+				"value": [
+					{
+                        "label": {
+                            "en": "About CTA",
+                            "fr": "À propos CTA"
+                        },
+                        "page": "about-cta",
+                        "id": ""
+                    }
+				],
+				"label": {
+					"en": "Links"
+				},
+				"control": "core/route",
+				"repeatable": true
+			}
+		}
+	},
+	"second_column": {
+		"label": {
+			"en": "Column 2"
+		},
+		"controls": {
+			"title": {
+				"value": {
+					"en": "Regions",
+					"fr": "Régions"
+				},
+				"label": {
+					"en": "Title"
+				},
+				"control": "core/text"
+			},
+			"links": {
+				"value": [
+					{
+						"label": {
+							"en": "Caribbean",
+							"fr": "Caraïbes"
+						},
+						"page": "channel",
+						"id": "216a5964-0897-4eeb-ac95-cf7f199f0602"
+					},
+					{
+						"label": {
+							"en": "Central Africa",
+							"fr": "Afrique centrale"
+						},
+						"page": "channel",
+						"id": "857c927c-2d73-4bc6-8039-3fab70489dd9"
+					},
+					{
+						"label": {
+							"en": "Eastern Africa",
+							"fr": "Afrique du l'est"
+						},
+						"page": "channel",
+						"id": "52e3acc1-1b9e-41e9-8bf6-bfe487642562"
+					},
+					{
+						"label": {
+							"en": "Western Africa",
+							"fr": "Afrique de l'ouest"
+						},
+						"page": "channel",
+						"id": "30597942-bb27-47d2-99d8-96dc76e0fcad"
+					},
+					{
+						"label": {
+							"en": "Southern Africa",
+							"fr": "Afrique du sud"
+						},
+						"page": "channel",
+						"id": "a38ed776-ef17-4a56-abb3-f9320679a103"
+					},
+					{
+						"label": {
+							"en": "Pacific",
+							"fr": "Pacifque"
+						},
+						"page": "channel",
+						"id": "259ac34a-a476-43cb-a7db-849b061615a4"
+					}
+				],
+				"label": {
+					"en": "Links"
+				},
+				"control": "core/route",
+				"repeatable": true
+			}
+		}
+	},
+	"third_column": {
+		"label": {
+			"en": "Column 3"
+		},
+		"controls": {
+			"title": {
+				"value": {
+					"en": "Focus Areas",
+					"fr": "Domaines d'intérêt"
+				},
+				"label": {
+					"en": "Title"
+				},
+				"control": "core/text"
+			},
+			"links": {
+				"value": [
+					{
+						"label": {
+							"en": "Agribusiness",
+							"fr": "Agribusiness"
+						},
+						"page": "agribusiness",
+						"id": ""
+					},
+					{
+						"label": {
+							"en": "ICTs for agriculture",
+							"fr": "TICs pour l' agriculture"
+						},
+						"page": "icts-for-agriculture",
+						"id": ""
+					},
+					{
+						"label": {
+							"en": "Climate resilient agriculture",
+							"fr": "L'agriculture résiliente climatique"
+						},
+						"page": "climate-resilient-agriculture",
+						"id": ""
+					}
+				],
+				"label": {
+					"en": "Links"
+				},
+				"control": "core/route",
+				"repeatable": true
+			}
+		}
+	},
+	"config": {
+		"label": {
+			"en": "Settings"
+		},
+		"controls": {
+			"container_tag": {
+				"value": "div",
+				"control": "project/container_tag"
+			},
+			"leader": {
+				"value": "",
+				"control": "project/leader"
+			},
+			"trailer": {
+				"value": "",
+				"control": "project/trailer"
+			},
+			"colour_theme": {
+				"value": "",
+				"control": "project/colour_theme"
+			},
+			"container_class": {
+				"value": "",
+				"control": "project/container_class"
+			}
+		}
+	}
+}

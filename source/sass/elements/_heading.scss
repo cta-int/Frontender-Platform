@@ -1,0 +1,35 @@
+/*
+Heading
+
+Subheading in body copy
+
+.heading - Heading
+.heading.heading--sub - Subheading
+.heading.heading--alternate - Heading with normal font-weight
+
+markup:
+<h1 class="{$modifiers}">Drone technology could help farmers around the world monitor their crops.</h1>
+
+Styleguide 3.2
+*/
+
+.heading {
+    margin-top: rhythm(6);
+    font-family: $font-family--meta;
+    font-weight: 600;
+    font-size: to-unit(18px);
+    line-height: to-unit(rhythm(8), 1, 18px);
+    &--sub {
+        font-size: to-unit(15px);
+        line-height: to-unit(rhythm(7), 1, 15px);
+    }
+    &--alternate {
+        font-weight: 400;
+    }
+    @include breakpoint($gt-small-desktop) {
+        margin-top: rhythm(16);
+        &--sub {
+            margin-top: rhythm(10);
+        }
+    }
+}

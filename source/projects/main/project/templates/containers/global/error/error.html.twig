@@ -1,0 +1,27 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout">
+        <div class="layout__cell">
+            <div class="layout layout--even">
+                <div class="layout__cell  |  body--align-center  |  trailer">
+                    <h1 class="title title--error">{{ labels.error_code|t(locales) }}</h1>
+                    <p class="block-link block-link--theme">{{ labels.error_message|t(locales) }}</p>
+                </div>
+                <div class="layout__cell  |  error  |  gutters">
+                    <h2 class="title title--section  |  trailer">{{ labels.error_intro|t(locales) }}</h2>
+                    <p class="trailer--small  |  error-message">{{ labels.error_description|t(locales)|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if labels.show_icons == 'true' %}
+        <div class="is-root  |  error-illustrations--wrapper">
+            <div class="search__illustrations-set  |  error-illustrations">
+                <span class="search__illustration illustration illustration--fishing-boat"></span>
+                <span class="water-illustration"></span>
+            </div>
+        </div>
+    {% endif %}
+</{{ config.container_tag|default('div') }}>

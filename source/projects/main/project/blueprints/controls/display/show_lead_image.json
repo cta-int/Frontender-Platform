@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show lead image"
+    },
+    "control": "project/show_on_items"
+}

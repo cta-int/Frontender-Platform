@@ -1,0 +1,67 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition figures"
+    },
+    "description": {
+        "en": "Exposition figures"
+    },
+    "template": "containers/experience-capitalization/key-figures/key-figures.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en": "Labels",
+                "fr": "Labels"
+            },
+            "controls": {
+                "title": {
+                    "label": {
+                        "en": "Title",
+                        "fr": "Title"
+                    },
+                    "value": {
+                        "en": "Key figures for 2016",
+                        "fr": "Key figures for 2016"
+                    },
+                    "control": "core/text"
+                }
+
+            }
+        },
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "leader-inside--giant",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                },
+                "colour_theme": {
+                    "value": "yellow",
+                    "control": "project/colour_theme"
+                }
+            }
+        }
+    }
+}

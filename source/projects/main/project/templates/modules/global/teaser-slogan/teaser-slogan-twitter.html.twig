@@ -1,0 +1,15 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if slogan.brand %}
+    {% include 'partials/slogan/' ~ slogan.brand %}
+{% elseif slogan.image %}
+    {% include 'partials/slogan/' ~ slogan.image %}
+
+    {% if slogan.hashtag %}
+        <div>
+            {% for hashtag in slogan.hashtag %}
+                <a class="slogan--twitter" href="https://twitter.com/hashtag/{{ hashtag|t(locales) }}" target="_blank">#{{ hashtag|t(locales) }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}

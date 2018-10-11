@@ -1,0 +1,28 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<article class="inset" {% if query.fromFrontender %} style="margin-top: 0; height: auto; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="gutters">
+        <div class="standout  |  gutters  |  wings  |  leader-inside--hero">
+            <div class="gutters">
+                <h2 class="category  |  trailer" id="section0">{{ model.headline|t(locales) }}</h2>
+                <div class="director">
+                    <img src="{{ model.link.mediaObject|lead.metadata.previewUrl }}" alt="{{ model.link.mediaObject|lead.metadata.title|t(locales) }}">
+                    {% if model.link.mediaObject|first.description %}
+                        <p class="quote  |  gutters  |  leader  |  trailer">{{ model.link.mediaObject|first.description|t(locales) }}</p>
+                    {% endif %}
+                </div>
+                {% for contentBlock in model.contentBlocks %}
+                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                {% endfor %}
+                {% if model.link.person.author|first.name %}
+                    <p class="signature">- {{ model.link.person.author|first.name|t(locales) }}{% if model.link.person.author|first.jobTitle %}, {{ model.link.person.author|first.jobTitle|t(locales) }}{% endif %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,45 @@
+{
+    "value": "",
+    "label": {
+        "en": "API Resource"
+    },
+    "control": "core/list",
+    "options": [
+        {
+            "value": "articles",
+            "label": {
+                "en": "Articles"
+            }
+        },
+        {
+            "value": "events",
+            "label": {
+                "en": "Events"
+            }
+        },
+        {
+            "value": "channels",
+            "label": {
+                "en": "Channels"
+            }
+        },
+        {
+            "value": "media",
+            "label": {
+                "en": "Media"
+            }
+        },
+        {
+            "value": "Channel\\Articles",
+            "label": {
+                "en": "Channel articles"
+            }
+        },
+        {
+            "value": "Channel\\Events",
+            "label": {
+                "en": "Channel events"
+            }
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+/*
+Addendum
+
+.addendum - Addendum
+
+markup:
+<div class="{$modifiers}">
+    <h3 class="addendum__title  |  title title--sub-section  |  trailer--normal">Our programmes</h3>
+    <p class="trailer--small">CTA has organised its activities under two operational programmes:</p>
+    <ul class="reset">
+        <li class="trailer--small"><a class="anchor" href="javascript:void(0);">Policies, Markets, and Information &amp; Communication Technologies (PMI)</a></li>
+        <li class="trailer--small"><a class="anchor" href="javascript:void(0);">Knowledge Management and Communication (KMC)</a></li>
+    </ul>
+    <p>The PMI and KMC programmes are supported  by a unit devoted to promoting organisational <a class="anchor" href="javascript:void(0);">earning and effective monitoring, evaluation and impact assessment (LME)</a>.</p>
+</div>
+
+sg-wrapper:
+<div class="theme theme--dark">
+    <div class="about-cta  |  leader-inside  |  trailer-inside  |  gutters">
+        <sg-wrapper-content/>
+    </div>
+</div>
+
+Styleguide 4.34
+*/
+
+.addendum {
+  padding-left: rhythm(10);
+  font-size: to-unit(14px);
+  border-width: 0 0 0 7px;
+  border-style: solid;
+  @include theme-border();
+  &__title {
+    font-size: to-unit(14px);
+    color: $white;
+  }
+  .anchor {
+    color: $color-theme;
+  }
+}

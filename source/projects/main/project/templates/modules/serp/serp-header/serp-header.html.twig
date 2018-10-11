@@ -1,0 +1,18 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="leader-inside--hero">
+    <h1 class="title  |  gutters">{{ labels.title|t(locales)|default('Your search'|t(locales)) }}</h1>
+    <form class="ctx-item__search  |  gutters" method="get" action="">
+        <input type="hidden" name="location" value="{{ query.location }}">
+        <input type="hidden" name="time" value="{{ query.time }}">
+        <input type="hidden" name="type" value="{{ query.type }}">
+
+        {% for concept in query.concepts %}
+            <input type="hidden" name="concepts[]" value="{{ concept }}">
+        {% endfor %}
+
+        <div class="fld fld--l  |  leader">
+            <input class="extended-search" id="ctx-item__search" placeholder="{{ labels.placeholder|t(locales) }}" name="q" value="{{ query.q }}" class="placeholder-visible"/>
+        </div>
+    </form>
+</div>

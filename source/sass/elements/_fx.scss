@@ -1,0 +1,17 @@
+/*
+Effects
+
+.fx - Transition all properties
+
+Styleguide 3.98
+*/
+
+%fx {
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+}
+
+.fx {
+  @extend %fx;
+}

@@ -1,0 +1,144 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "leader": {
+                "value": "",
+                "control": "project/leader"
+            },
+            "leader_inside": {
+                "value": "",
+                "control": "project/leader_inside"
+            },
+            "trailer": {
+                "value": "",
+                "control": "project/trailer"
+            },
+            "trailer_inside": {
+                "value": "",
+                "control": "project/trailer_inside"
+            },
+            "divider": {
+                "value": "",
+                "control": "project/divider"
+            },
+            "container_tag": {
+                "value": "article",
+                "control": "project/container_tag"
+            },
+            "container_class": {
+                "value": "",
+                "control": "project/container_class"
+            },
+            "colour_theme": {
+                "value": "",
+                "control": "project/colour_theme"
+            },
+            "layout": {
+                "value": "layout",
+                "label": {
+                    "en": "Layout"
+                },
+                "control": "project/layout/layout"
+            },
+            "show_divider": {
+                "value": 0,
+                "control": "project/layout/show_divider"
+            },
+            "show_narrow": {
+                "value": 1,
+                "control": "project/layout/show_narrow"
+            },
+            "show_outer_wing": {
+                "value": 1,
+                "control": "project/layout/show_outer_wing"
+            },
+            "show_empty_panels": {
+                "value": true,
+                "control": "core/boolean"
+            }
+        }
+    },
+    "tab_config": {
+        "label": {
+            "en": "Tab settings"
+        },
+        "controls": {
+            "selector": {
+                "value": ".panel-group",
+                "control": "core/text"
+            },
+            "children": {
+                "value": ".panel",
+                "control": "core/text"
+            },
+            "attribute": {
+                "value": "href",
+                "control": "core/text"
+            },
+            "allow_multiple": {
+                "value": 0,
+                "control": "core/boolean"
+            },
+            "open_first": {
+                "value": 1,
+                "control": "core/boolean"
+            },
+            "scroll_to": {
+                "value": 1,
+                "control": "core/boolean"
+            }
+        }
+    },
+    "containers": [
+        {
+            "template_config": {
+                "model": {},
+                "labels": {
+                    "label": {
+                        "en": "Labels"
+                    },
+                    "controls": {
+                        "panel_title": {
+                            "value": {
+                                "en": "Impact Stories",
+                                "fr": "Article d'impact"
+                            },
+                            "label": {
+                                "en": "Title"
+                            },
+                            "control": "core/text"
+                        }
+                    }
+                },
+                "config": {
+                    "controls": {
+                        "active": {
+                            "value": 1,
+                            "label": {
+                                "en": "Open tab"
+                            },
+                            "control": "project/show"
+                        },
+                        "tab_class": {
+                            "value": "",
+                            "label": {
+                                "en": "Tab class"
+                            },
+                            "control": "project/container_class"
+                        },
+                        "panel_class": {
+                            "value": "",
+                            "label": {
+                                "en": "Panel class"
+                            },
+                            "control": "project/container_class"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Exposition credits",
+        "fr": "Exposition credits"
+    },
+    "description": {
+        "en": "Colophon for Exposition",
+        "fr": "Colophon for Exposition"
+    },
+    "template": "containers/experience-capitalization/credits/credits.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "credit_image": {
+                    "label": {
+                        "en": "Medium ID",
+                        "fr": "Medium ID"
+                    },
+                    "type": "text",
+                    "value": "qytec3abmjuedugomwnd"
+                },
+                "credit_copyright": {
+                    "label": {
+                        "en": "Copyright",
+                        "fr": "Copyright"
+                    },
+                    "type": "text",
+                    "value": {
+                        "en": "CTA",
+                        "fr": "CTA"
+                    }
+                },
+                "credit_title": {
+                    "label": {
+                        "en": "Title",
+                        "fr": "Title"
+                    },
+                    "type": "text",
+                    "value": {
+                        "en": "Colophon",
+                        "fr": "Colophon"
+                    }
+                }
+            }
+        }
+    }
+}

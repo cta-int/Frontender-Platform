@@ -1,0 +1,52 @@
+/*
+Testimonial
+
+Image and quote.
+
+markup:
+<article class="layout layout--even">
+    <div class="layout__cell layout__cell--main  |  wing--right">
+        <blockquote class="leader  |  gutters">
+            <p class="quote">I gained a lot in terms of self-confidence. I learnt so many tools that make my work more effective. In future I will be able to do more for the young people than I am doing now.</p>
+            <footer>
+                <p class="meta  |  leader  |  trailer">Yagoub Husna, CTA Data assistant</p>
+                <a class="title" href="https://player.vimeo.com/video/91156049">Watch the interview</a>
+            </footer>
+        </blockquote>
+    </div>
+    <div class="layout__cell layout__cell--aside">
+        <iframe class="gutters  |  iframe-video" src="https://player.vimeo.com/video/91156049?color=ffffff%26byline=0" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+    </div>
+</article>
+
+Styleguide 4.39
+*/
+
+.testimonial {
+    &__quote {
+        margin-top: rhythm(10);
+        margin-bottom: rhythm(10);
+    }
+    @include breakpoint($gt-large-handheld) {
+        display: flex;
+        &__quote {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        &--align-center {
+            align-items: center;
+        }
+        &__tile,
+        &__quote {
+            .no-flexbox & {
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        &__tile {
+            flex: 0 0 50%;
+            width: 50%;
+            margin-bottom: gutter();
+        }
+    }
+}

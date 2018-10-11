@@ -1,0 +1,89 @@
+/*
+Trailer
+
+Styleguide 2.5
+*/
+
+/*
+Trailer
+
+Adds a bottom margin
+
+.trailer - Ten rhythms bottom-margin
+.trailer--tiny - Single rhythm bottom-margin
+.trailer--small - Triple rhythms bottom-margin
+.trailer--normal - Four rhythms bottom-margin
+.trailer--hero - Six rhythms bottom-margin
+.trailer--giant - Fourthy rhythm bottom-margin
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.5.1
+*/
+.trailer {
+  &--tiny {
+    margin-bottom: rhythm(1);
+  }
+  &--small {
+    margin-bottom: rhythm(3);
+  }
+  &--normal {
+    margin-bottom: rhythm(5);
+  }
+  &,
+  &--hero,
+  &--giant {
+    margin-bottom: rhythm(6);
+  }
+  @include breakpoint($gt-small-desktop) {
+    margin-bottom: rhythm(10);
+    &--hero {
+      margin-bottom: rhythm(20);
+    }
+    &--giant {
+      margin-bottom: rhythm(40);
+    }
+  }
+}
+
+/*
+Trailer inside
+
+Adds bottom padding
+
+.trailer-inside - Single rhythm top-margin
+.trailer-inside--tiny - Half rhythm top-margin
+.trailer-inside--hero - Double rhythm top-margin
+.trailer-inside--giant - Triple rhythm top-margin
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+
+Styleguide 2.5.2
+*/
+.trailer-inside {
+  &--tiny {
+    padding-bottom: rhythm(1);
+  }
+  &--small {
+    padding-bottom: rhythm(3);
+  }
+  &--normal {
+    padding-bottom: rhythm(5);
+  }
+  &,
+  &--hero,
+  &--giant {
+    padding-bottom: rhythm(6);
+  }
+  @include breakpoint($gt-small-desktop) {
+    padding-bottom: rhythm(10);
+    &--hero {
+      padding-bottom: rhythm(20);
+    }
+    &--giant {
+      padding-bottom: rhythm(40);
+    }
+  }
+}

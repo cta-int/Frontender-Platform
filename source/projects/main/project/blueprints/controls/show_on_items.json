@@ -1,0 +1,29 @@
+{
+    "value": 0,
+    "label": {
+        "en": "Show"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "list",
+    "options": [
+        {
+            "value": 0,
+            "label": {
+                "en": "Hide"
+            }
+        },
+        {
+            "value": 2,
+            "label": {
+                "en": "Show only on first item"
+            }
+        },
+        {
+            "value": 1,
+            "label": {
+                "en": "Show on all items"
+            }
+        }
+    ]
+}

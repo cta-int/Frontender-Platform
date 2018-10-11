@@ -1,0 +1,4 @@
+troposphere==2.0.0
+awacs==0.7.0
+cfn-encrypt==0.0.13
+cfn-datadog==0.0.11

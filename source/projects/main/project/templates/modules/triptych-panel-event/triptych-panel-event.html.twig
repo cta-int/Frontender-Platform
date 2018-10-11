@@ -1,0 +1,3 @@
+<div class="triptych" {% if model.mediaObject|lead %}style="background-image: url('{{ model.mediaObject|lead.metadata.previewUrl }}')"{% endif %}>
+    {% include "modules/teaser-event/teaser-event.html.twig" %}
+</div>

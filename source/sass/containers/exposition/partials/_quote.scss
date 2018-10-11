@@ -1,0 +1,15 @@
+.quote {
+  color: mix($color-body, $white, 60%);
+  border-left: 10px solid $color-theme;
+  font-size: to-unit(18px);
+  line-height: 1.4em;
+  @include breakpoint($gt-medium-desktop) {
+  	font-size: to-unit(20px);
+  }
+}
+
+.quote,
+.signature,
+.job-title {
+  font-style: italic;
+}

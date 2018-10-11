@@ -1,0 +1,21 @@
+{
+    "value": "",
+    "label": {
+        "en": "Include whitespace"
+    },
+    "type": "list",
+    "options": [
+        {
+            "value": "container-header--slim-fit",
+            "label": {
+                "en": "No"
+            }
+        },
+        {
+            "value": "",
+            "label": {
+                "en": "Yes"
+            }
+        }
+    ]
+}

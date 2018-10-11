@@ -1,0 +1,85 @@
+/*
+Statistic
+
+.stat - Statistic
+.stat.stat--s - Small statistic
+
+markup:
+<figure class="{$modifiers}">
+  <p class="stat__figure">+57%</p>
+  <figcaption>
+    <h2 class="stat__caption  |  meta meta--s  |  leader--small  |  trailer--small">
+        <span class="is-narrative">+57% </span>of people in WESTERN Africa is employed in agriculture
+    </h2>
+    <p class="stat__title body--quiet">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </figcaption>
+</figure>
+
+Styleguide 3.33
+*/
+
+.stat {
+  display: block;
+  // margin-right: auto;
+  // margin-left: auto;
+  text-align: center;
+  &__figure,
+  &__caption {
+    font-family: $font-family--meta;
+    font-weight: 600;
+  }
+  .article-headline &__caption {
+    font-weight: 400;
+  }
+  &__caption,
+  &__figure,
+  &__title {
+      color: inherit;
+  }
+  &__figure {
+    @include title-30px()
+  }
+  &--s {
+
+  }
+  &--s &__figure {
+    font-size: 16px;
+    line-height: 1;
+  }
+  &--s &__caption {
+  }
+  &--padded {
+    padding-top: rhythm(3);
+    padding-bottom: rhythm(3);
+  }
+  &__subtitle {
+    @include breakpoint($gt-large-handheld) {
+      width: percentage(3/4);
+      margin: 0 auto;
+    }
+    @include breakpoint($gt-medium-desktop) {
+      width: percentage(1/2);
+    }
+  }
+  @include breakpoint($gt-large-handheld) {
+    // & {
+    //   max-width: 230px;
+    // }
+    & &__figure {
+      font-size: 60px;
+      line-height: 1;
+    }
+    .article-headline &__figure {
+      font-size: 48px;
+    }
+    &--s &__figure {
+      font-size: 30px;
+    }
+    &--padded {
+      padding-top: rhythm(5);
+      padding-bottom: rhythm(5);
+    }
+  }
+}

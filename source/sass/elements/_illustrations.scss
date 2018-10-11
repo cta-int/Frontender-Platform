@@ -1,0 +1,117 @@
+/*
+Illustrations
+
+Element with a `data-illustration` attribute.
+
+fish-market - Fish market
+fishing-boat - Fishing man from out a boat
+fishing-shore - Fishing man from the shore
+fish-market-supplier - Fish market with a boat supplier
+factory - Fish factory
+farmer-presentation - Presentation by a farmer under a tree
+
+markup:
+<span data-illustration="{$modifiers}"></span>
+
+Styleguide 3.25
+*/
+
+// scss-lint:disable ImportantRule VendorPrefix DuplicateProperty
+
+$illustration-font-path: "../fonts/cta-illustrations/fonts" !default;
+
+$illustration-fishing-boat: "\e901";
+$illustration-fishing-shore: "\e902";
+$illustration-fish-market-supplier: "\e900";
+$illustration-factory: "\e918";
+$illustration-farmer-presentation: "\e92f";
+$illustration-fish-market: "\e932";
+
+@font-face {
+  font-family: 'cta-illustrations';
+  src:  url('#{$illustration-font-path}/cta-illustrations.eot?qfngui');
+  src:  url('#{$illustration-font-path}/cta-illustrations.eot?qfngui#iefix') format('embedded-opentype'),
+  url('#{$illustration-font-path}/cta-illustrations.ttf?qfngui') format('truetype'),
+  url('#{$illustration-font-path}/cta-illustrations.woff?qfngui') format('woff'),
+  url('#{$illustration-font-path}/cta-illustrations.svg?qfngui#cta-illustrations') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.illustration,
+[data-illustration]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cta-illustrations' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+  /* Icon ================ */
+  content: attr(data-illustration);
+}
+
+.illustration--fishing-boat {
+  &:before {
+    content: $illustration-fishing-boat;
+  }
+}
+.illustration--fishing-shore {
+  &:before {
+    content: $illustration-fishing-shore;
+  }
+}
+.illustration--fish-market-supplier {
+  &:before {
+    content: $illustration-fish-market-supplier;
+  }
+}
+.illustration--factory {
+  &:before {
+    content: $illustration-factory;
+  }
+}
+.illustration--farmer-presentation {
+  &:before {
+    content: $illustration-farmer-presentation;
+  }
+}
+.illustration--fish-market,
+.illustration--fish-barn {
+  &:before {
+    content: $illustration-fish-market;
+  }
+}
+
+// scss-lint:enable ImportantRule VendorPrefix DuplicateProperty
+
+/*
+Icon with icon class
+
+Element with class `illustration` and a `data-illustration` attribute.
+
+fish-market - Fish market
+fishing-boat - Fishing man from out a boat
+fishing-shore - Fishing man from the shore
+fish-market-supplier - Fish market with a boat supplier
+factory - Fish factory
+farmer-presentation - Presentation by a farmer under a tree
+
+markup:
+<span class="illustration illustration--{$modifiers}"></span>
+
+Styleguide 3.25.1
+*/

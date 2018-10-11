@@ -1,0 +1,83 @@
+/*
+Divider
+
+1px border to one side of a container
+
+.divider - Border to all sides
+.divider.divider--top - Border top
+.divider.divider--right - Border right
+.divider.divider--bottom - Border bottom
+.divider.divider--left - Border left
+.divider.divider--inverse - White border
+
+markup:
+<div class="{$modifiers}">
+  I have borders!
+</div>
+
+Styleguide 3.18
+*/
+
+.divider {
+  // scss-lint:disable DuplicateProperty
+  border: 0 solid mix($color-body, $white, 26%);
+  border: 0 solid rgba($color-theme, .26);
+  // scss-lint:enable DuplicateProperty
+  &--top {
+    border-top-width: 1px;
+  }
+  &--right {
+    border-right-width: 1px;
+  }
+  &--bottom {
+    border-bottom-width: 1px;
+  }
+  &--left {
+    border-left-width: 1px;
+  }
+  .theme--blue & {
+    border-color: rgba($color-blue, .26);
+  }
+  .theme--lime & {
+    border-color: rgba($color-lime, .26);
+  }
+  .theme--yellow & {
+    border-color: rgba($color-yellow, .26);
+  }
+  .theme--gold & {
+    border-color: rgba($color-gold, .26);
+  }
+  .theme--orange & {
+    border-color: rgba($color-orange, .26);
+  }
+  .theme--salmon & {
+    border-color: rgba($color-salmon, .26);
+  }
+  .theme--red & {
+    border-color: rgba($color-red, .26);
+  }
+  .theme--burgundy & {
+    border-color: rgba($color-burgundy, .26);
+  }
+  .theme--purple & {
+    border-color: rgba($color-purple, .26);
+  }
+  &--inverse {
+    &,
+    .theme--blue &,
+    .theme--lime &,
+    .theme--yellow &,
+    .theme--gold &,
+    .theme--orange &,
+    .theme--salmon &,
+    .theme--red &,
+    .theme--burgundy &,
+    .theme--purple & {
+      border-color: $white;
+      border-color: rgba($white, .4);
+      .well--neutral & {
+        border-color: $white;
+      }
+    }
+  }
+}

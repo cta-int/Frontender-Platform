@@ -1,0 +1,14 @@
+{% import "macros/template.html.twig" as helper %}
+{% set read_more = route({ 'page': labels.read_more.page }) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="wings">
+    <h2 class="title title--section  |  trailer--hero  |  gutters">{{ labels.title|t(locales) }}</h2>
+    <p class="lead  |  gutters">{{ labels.description|t(locales) }}</p>
+
+    {% if labels.read_more.page %}
+        <div class="leader--small  |  gutters">
+            <a class="read-more" href="{{ read_more }}">{{labels.read_more.label|t(locales)}}</a>
+        </div>
+    {% endif %}
+</div>

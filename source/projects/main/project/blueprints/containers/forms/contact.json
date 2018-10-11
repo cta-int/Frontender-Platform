@@ -1,0 +1,113 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Contact form",
+        "fr": "Contact form"
+    },
+    "description": {
+        "en": "Contact form",
+        "fr": "Contact form"
+    },
+    "template": "containers/global/layout/layout.html.twig",
+    "template_config": {
+        "container_class": "layout",
+        "container_tag": "div",
+        "containers": [{
+                "fe-id": null,
+                "name": {
+                    "en": "Contact form",
+                    "fr": "Contact form"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/contact/contact-form.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Title",
+                                    "fr": "Title"
+                                },
+                                "type": "text",
+                                "value": {
+                                    "en": "How can we help?",
+                                    "fr": "Comment pouvons nous aider?"
+                                }
+                            },
+                            "container_body": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Body",
+                                    "fr": "Body"
+                                },
+                                "type": "text",
+                                "value": {
+                                    "en": "We are here to answer any questions you may have about our organisation. Reach out to us and we'll respond as soon as we can.",
+                                    "fr": "Nous sommes là pour répondre à toutes vos questions sur notre organisation. Apprenez-nous à nous et nous répondrons dès que nous pourrons."
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Aside with address",
+                    "fr": "Aside with address"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template": "modules/contact/contact-aside.html.twig",
+                "template_config": {
+                    "content": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Title",
+                                    "fr": "Title"
+                                },
+                                "type": "text",
+                                "value": {
+                                    "en": "Do you want to send a paper copy?",
+                                    "fr": "Voulez-vous envoyer une copie papier?"
+                                }
+                            },
+                            "container_body": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Body",
+                                    "fr": "Body"
+                                },
+                                "type": "text",
+                                "value": {
+                                    "en": "",
+                                    "fr": ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

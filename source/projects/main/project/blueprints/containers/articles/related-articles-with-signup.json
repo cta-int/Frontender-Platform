@@ -1,0 +1,220 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "Related articles"
+    },
+    "description": {
+        "en": "Related articles with newsletter signup"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings",
+                "fr": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "hidden": "0",
+                    "access": "all",
+                    "label": {
+                        "en": "Container class",
+                        "fr": "Container class"
+                    },
+                    "type": "text",
+                    "value": "leader--tiny  |  trailer--giant"
+                }
+            }
+        },
+        "containers": [{
+                "fe-id": null,
+                "template": "containers/global/container-header/container-header.html.twig",
+                "name": {
+                    "en": "Container header",
+                    "fr": "Container header"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings",
+                            "fr": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Container class",
+                                    "fr": "Container class"
+                                },
+                                "type": "text",
+                                "value": "wings"
+                            },
+                            "container_title": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Updates from this region",
+                                    "fr": "Mises à jour du %s"
+                                },
+                                "type": "text",
+                                "value": ""
+                            },
+                            "show_filter": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Show filter",
+                                    "fr": "Show filter"
+                                },
+                                "type": "text",
+                                "value": "0"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/layout/layout.html.twig",
+                "name": {
+                    "en": "Layout",
+                    "fr": "Layout"
+                },
+                "description": {
+                    "en": "",
+                    "fr": ""
+                },
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings",
+                            "fr": "Settings"
+                        },
+                        "controls": {
+                            "container_class": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Container class",
+                                    "fr": "Container class"
+                                },
+                                "type": "text",
+                                "value": ""
+                            },
+                            "container_tag": {
+                                "hidden": "0",
+                                "access": "all",
+                                "label": {
+                                    "en": "Container tag",
+                                    "fr": "Container tag"
+                                },
+                                "type": "text",
+                                "value": ""
+                            }
+                        }
+                    },
+                    "containers": [{
+                            "fe-id": null,
+                            "template": "containers/articles/grid/grid-article-articles.html.twig",
+                            "name": {
+                                "en": "Grid",
+                                "fr": "Grid"
+                            },
+                            "description": {
+                                "en": "Related articles",
+                                "fr": "Related articles"
+                            },
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "show_lead_image": {
+                                            "value": 1,
+                                            "control": "project/display/show_lead_image"
+                                        },
+                                        "show_stand_first": {
+                                            "value": 1,
+                                            "control": "project/display/show_stand_first"
+                                        },
+                                        "show_read_more": {
+                                            "value": 1,
+                                            "control": "project/display/show_read_more"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                            "name": {
+                                "en": "Newsletter signup",
+                                "fr": "Newsletter signup"
+                            },
+                            "description": {
+                                "en": "",
+                                "fr": ""
+                            },
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings",
+                                        "fr": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "hidden": "0",
+                                            "access": "all",
+                                            "label": {
+                                                "en": "Container class",
+                                                "fr": "Container class"
+                                            },
+                                            "type": "text",
+                                            "value": ""
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "label": {
+                                                "en": "Newsletter title",
+                                                "fr": "Newsletter title"
+                                            },
+                                            "value": {
+                                                "en": "Be sure you don't miss our latest updates.",
+                                                "fr": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "button": {
+                                            "label": {
+                                                "en": "Button text",
+                                                "fr": "Button text"
+                                            },
+                                            "value": {
+                                                "en": "Subscribe",
+                                                "fr": "Souscrire"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

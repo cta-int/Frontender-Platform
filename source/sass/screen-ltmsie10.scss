@@ -1,0 +1,34 @@
+// Copyright (C) 2016 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+@import "../../node_modules/piecss/sass/piecss/utilities";
+@import "utilities";
+
+@import "../../node_modules/piecss/sass/piecss/settings";
+
+/* 1.2 Fonts */
+@import "base/fonts";
+/* 1.3 Settings */
+@import "base/settings";
+/* 1.1 Settings */
+@import "base/colour";
+
+.site-navigation {
+  &__brand,
+  &__nav,
+  &__menu {
+    .no-flexbox & {
+      float: left;
+    }
+  }
+  &__browse {
+    .no-flexbox & {
+      float: right;
+    }
+  }
+}
+
+.issue {
+  &__number,
+  &__caption {
+    display: inline-block;
+  }
+}

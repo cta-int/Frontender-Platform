@@ -1,0 +1,35 @@
+{
+  "label": {
+    "en": "Find content: article",
+    "fr": "Find content: article"
+  },
+  "map": {
+    "id": "_id",
+    "title": "headline",
+    "description": "about",
+    "thumbnail": "lead_image.metadata.thumbnailUrl"
+  },
+  "display_options": {
+    "thumbnail": {
+      "en": "Show image",
+      "fr": "Show image"
+    },
+    "description": {
+      "en": "Show description",
+      "fr": "Show description"
+    }
+  },
+  "display_attributes": ["description", "thumbnail", "datePublished"],
+  "controls": {
+    "type": {
+      "control": "project/model/article_type"
+    },
+    "q": {
+      "label": {
+        "en": "Article search",
+        "fr": "Article search"
+      },
+      "control": "core/text"
+    }
+  }
+}

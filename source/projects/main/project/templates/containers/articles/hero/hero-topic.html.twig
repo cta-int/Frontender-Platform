@@ -1,0 +1,20 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set resource_link = route({'page': 'article', 'id': model._id, 'slug': model.headline|t(locales)|slugify }) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, 'hero hero--topic-teaser ie9-hero')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {{ image.hero(model.link.mediaObject|lead, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
+    <figcaption class="hero__headline hero__headline--left">
+        <div class="headline__cover  |  leader leader-inside  |  trailer trailer-inside  |  wings">
+        	<h1 class="gutters">
+		      	<a class="title title--headline" href="{{ resource_link }}">{{ model.headline|t(locales) }}</a>
+	      	</h1>
+		      <p class="leader  |  trailer  |  gutters">{{ model.about|t(locales) }}</p>
+		      {% if show_read_more|default(1) %}
+		       <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|t(locales) }}</a>
+	        {% endif %}
+		    </div>
+		    <em class="headline__tax  |  wings"><span class="label  |  gutters">{{ (labels.label|t(locales) is not empty) ? labels.label|t(locales) : model.articleType|t(locales) }}</span></em>
+    </figcaption>
+</{{ config.container_tag|default('figure') }}>

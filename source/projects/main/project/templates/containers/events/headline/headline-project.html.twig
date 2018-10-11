@@ -1,0 +1,41 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<header class="trailer--hero">
+    {% if model.mediaObject|lead %}
+        <div class="ie9-hero">
+            {{ image.hero(model.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
+        </div>
+    {% endif %}
+    <div class="article-headline  |  layout layout--align-middle  |  wings">
+        <div class="layout__cell  |  gutters">
+            {% if not model.alternativeHeadline %}
+                <div class="leader  |  trailer">
+            {% endif %}
+            <h1 class="article-headline__title  |  title title--headline">
+                {{ model.name }}
+            </h1>
+            {% if not model.alternativeHeadline %}
+                </div>
+            {% endif %}
+            {% if model.alternativeHeadline %}
+                <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--aside  |  gutters  |  wings  |  caption--right">
+            {% if model.mediaObject|lead %}
+                {% if model.mediaObject|lead.about %}
+                    <p class="caption  |  gutters">{{ model.mediaObject|lead.about }}</p>
+                {% endif %}
+                {% if model.mediaObject|lead.credit %}
+                    <p class="credit  |  gutters">{{ model.mediaObject|lead.credit }}</p>
+                {% endif %}
+            {% else %}
+                <span class="is-silent">&nbsp;</span>
+            {% endif %}
+        </div>
+    </div>
+</header>

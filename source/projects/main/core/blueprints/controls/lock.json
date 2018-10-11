@@ -1,0 +1,23 @@
+{
+  "value": "",
+  "label": {
+    "en": "Locked"
+  },
+  "control": "core/list",
+  "options": [
+    {
+      "label": {
+        "en": "Yes",
+        "fr": "Yes"
+      },
+      "value": true
+    },
+    {
+      "label": {
+        "en": "No",
+        "fr": "No"
+      },
+      "value": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{#
+    This partial expects a channel object to be present, either in it's caller
+    or as a variable passed to it using 'with'
+#}
+{% import "macros/template.html.twig" as helper %}
+{% set href = route({page: 'channel', id: model._id, slug: model.name|t(locales)|slugify}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'teleport  |  media  |  title')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+	<a class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir" href="{{ href }}">
+		{{ model.name|t(locales) }}
+	</a>
+	<a class="teleport__trigger  |  media__image  |  icon icon--thin-arrow" href="{{ href }}">
+		<span class="is-narrative">
+			{{ "View all in"|t(locales) }} {{ model.name|t(locales) }}
+		</span>
+	</a>
+</{{ config.container_tag|default('div') }}>
+  

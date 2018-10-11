@@ -1,0 +1,34 @@
+{
+    "labels": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "field_label": {
+                "value": {
+                    "en": "Event type",
+                    "fr": "Event type"
+                },
+                "label": {
+                    "en": "Label"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "selected": {
+                "value": "",
+                "control": "project/model/event_type"
+            },
+            "container_class": {
+                "value": "ctx-form__item grid__cell gutters",
+                "control": "core/hidden"
+            }
+        }
+    }
+}

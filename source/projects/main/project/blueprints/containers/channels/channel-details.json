@@ -1,0 +1,1797 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Single channel details"
+    },
+    "description": {
+        "en": "Single channel output – tabbed overview of all content for a single channel"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "main",
+                    "control": "project/container_tag"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Page title"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/channels/headline/headline.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "container_tag": {
+                                "value": "header",
+                                "control": "core/hidden"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Article panels"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/channels/body/body.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "leader": {
+                                "value": "",
+                                "control": "project/leader"
+                            },
+                            "leader_inside": {
+                                "value": "",
+                                "control": "project/leader_inside"
+                            },
+                            "trailer": {
+                                "value": "",
+                                "control": "project/trailer"
+                            },
+                            "trailer_inside": {
+                                "value": "",
+                                "control": "project/trailer_inside"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "colour_theme": {
+                                "value": "",
+                                "control": "project/colour_theme"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "tab_config": {
+                        "label": {
+                            "en": "Tab settings"
+                        },
+                        "controls": {
+                            "selector": {
+                                "label": {
+                                    "en": "Panel group class",
+                                    "fr": "Panel group class"
+                                },
+                                "value": ".panel-group",
+                                "control": "core/text"
+                            },
+                            "children": {
+                                "label": {
+                                    "en": "Panel class",
+                                    "fr": "Panel class"
+                                },
+                                "value": ".panel",
+                                "control": "core/text"
+                            },
+                            "attribute": {
+                                "label": {
+                                    "en": "Attribute",
+                                    "fr": "Attribute"
+                                },
+                                "value": "href",
+                                "control": "core/text"
+                            },
+                            "allow_multiple": {
+                                "label": {
+                                    "en": "Allow multiple tabs"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "open_first": {
+                                "label": {
+                                    "en": "Open the first tab"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "scroll_to": {
+                                "label": {
+                                    "en": "Scroll to tab"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Articles",
+                                    "fr": "Articles"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Impact stories"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "impact",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Impact Stories",
+                                                "fr": "Article d'impact"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Blog"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "blog",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Blog",
+                                                "fr": "Blog"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "News"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "corporate_news",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "News",
+                                                "fr": "Nouvelles de l'entreprise"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Communiqué"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "communique",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Communiqué",
+                                                "fr": "Communiqué"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Opinion"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "opinion",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Opinion",
+                                                "fr": "Article d'opinion"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Interviews"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "interview",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Interviews",
+                                                "fr": "Entretien"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Reviews"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "review",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Reviews",
+                                                "fr": "Article de revue"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Data reports"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "data_report",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Data reports",
+                                                "fr": "Rapport de données"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Syndicate articles"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "syndicated",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Syndicate articles",
+                                                "fr": "Article syndiqué"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Scientific articles"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-articles.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Articles",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "project/model/id",
+                                            "type":"lookup"
+                                        },
+                                        "articleType": {
+                                            "value": "technical_scientific",
+                                            "control": "project/model/article_type"
+                                        },
+                                        "limit": {
+                                            "value": "5",
+                                            "control": "project/model/limit"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Scientific articles",
+                                                "fr": "Article scientifique"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Event panels"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/channels/body/body.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "leader": {
+                                "value": "",
+                                "control": "project/leader"
+                            },
+                            "leader_inside": {
+                                "value": "",
+                                "control": "project/leader_inside"
+                            },
+                            "trailer": {
+                                "value": "",
+                                "control": "project/trailer"
+                            },
+                            "trailer_inside": {
+                                "value": "",
+                                "control": "project/trailer_inside"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "colour_theme": {
+                                "value": "",
+                                "control": "project/colour_theme"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "show_outer_wing": {
+                                "value": 1,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "tab_config": {
+                        "label": {
+                            "en": "Tab settings"
+                        },
+                        "controls": {
+                            "selector": {
+                                "label": {
+                                    "en": "Panel group class",
+                                    "fr": "Panel group class"
+                                },
+                                "value": ".panel-group",
+                                "control": "core/text"
+                            },
+                            "children": {
+                                "label": {
+                                    "en": "Panel class",
+                                    "fr": "Panel class"
+                                },
+                                "value": ".panel",
+                                "control": "core/text"
+                            },
+                            "attribute": {
+                                "label": {
+                                    "en": "Attribute",
+                                    "fr": "Attribute"
+                                },
+                                "value": "href",
+                                "control": "core/text"
+                            },
+                            "allow_multiple": {
+                                "label": {
+                                    "en": "Allow multiple tabs"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "open_first": {
+                                "label": {
+                                    "en": "Open the first tab"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            },
+                            "scroll_to": {
+                                "label": {
+                                    "en": "Scroll to tab"
+                                },
+                                "value": 1,
+                                "control": "core/boolean"
+                            }
+                        }
+                    },
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Events",
+                                    "fr": "Events"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Conferences"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-events.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Conference",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 3,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Conferences",
+                                                "fr": "Conferences"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Seminars"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-events.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Seminar",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 3,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Seminars",
+                                                "fr": "Seminars"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Trainings"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-events.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Training",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 3,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Trainings",
+                                                "fr": "Trainings"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Workshops"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-events.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                           "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Workshop",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 3,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Workshops",
+                                                "fr": "Workshops"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Meetings"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/channels/body/body-panel-events.html.twig",
+                            "template_config": {
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Meeting",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 3,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "panel_title": {
+                                            "value": {
+                                                "en": "Meetings",
+                                                "fr": "Meetings"
+                                            },
+                                            "label": {
+                                                "en": "Title"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "active": {
+                                            "value": 1,
+                                            "label": {
+                                                "en": "Open tab"
+                                            },
+                                            "control": "project/show"
+                                        },
+                                        "tab_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Tab class"
+                                            },
+                                            "control": "project/container_class"
+                                        },
+                                        "panel_class": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Panel class"
+                                            },
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Project"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "containers/global/group/group.html.twig",
+                "template_config": {
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Container header"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/global/container-header/container-header.html.twig",
+                            "template_config": {
+                                "labels": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "container_title": {
+                                            "value": {
+                                                "en": "Projects",
+                                                "fr": "Projects"
+                                            },
+                                            "label": {
+                                                "en": "Container title"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "link": {
+                                            "value": {
+                                                "label": {
+                                                    "en": "",
+                                                    "fr": ""
+                                                },
+                                                "page": "",
+                                                "id": ""
+                                            },
+                                            "label": {
+                                                "en": "Link"
+                                            },
+                                            "control": "core/route"
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "wings": {
+                                            "value": "wings",
+                                            "control": "project/wings"
+                                        },
+                                        "show_margins": {
+                                            "value": "",
+                                            "control": "project/layout/show_margins"
+                                        },
+                                        "show_smaller_title": {
+                                            "value": 0,
+                                            "label": {
+                                                "en": "Show small title"
+                                            },
+                                            "control": "core/boolean"
+                                        },
+                                        "show_tools": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Show filters"
+                                            },
+                                            "control": "core/list",
+                                            "options": [
+                                                {
+                                                    "value": "",
+                                                    "label": {
+                                                        "en": "None"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "events",
+                                                    "label": {
+                                                        "en": "Events"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "articles",
+                                                    "label": {
+                                                        "en": "Articles"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "show_link": {
+                                            "value": "",
+                                            "label": {
+                                                "en": "Show link"
+                                            },
+                                            "control": "core/list",
+                                            "options": [
+                                                {
+                                                    "value": "",
+                                                    "label": {
+                                                        "en": "None"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "events",
+                                                    "label": {
+                                                        "en": "All events"
+                                                    }
+                                                },
+                                                {
+                                                    "value": "articles",
+                                                    "label": {
+                                                        "en": "All articles"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "project/container_class"
+                                        },
+                                        "container_tag": {
+                                            "value": "header",
+                                            "control": "project/container_tag"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Project tiles"
+                            },
+                            "description": {
+                                "en": ""
+                            },
+                            "template": "containers/projects/preview/preview-list.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "divider divider--bottom  |  trailer-inside--hero trailer--hero",
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "label": {
+                                        "en": "Content"
+                                    },
+                                    "controls": {
+                                        "adapter": {
+                                            "value": "SCR",
+                                            "control": "project/adapter"
+                                        },
+                                        "name": {
+                                            "value": "Channel\\Events",
+                                            "control": "project/model/name"
+                                        },
+                                        "id": {
+                                            "value": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e",
+                                            "control": "core/hidden",
+                                            "type":"lookup"
+                                        },
+                                        "eventType": {
+                                            "value": "Project",
+                                            "control": "core/hidden"
+                                        },
+                                        "limit": {
+                                            "value": 2,
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

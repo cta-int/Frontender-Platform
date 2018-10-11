@@ -1,0 +1,52 @@
+{
+    "config": {
+        "label": {
+            "en": "Settings"
+        },
+        "controls": {
+            "effective_date": {
+                "value": "2013-01-01",
+                "label": {
+                    "en": "Date"
+                },
+                "control": "core/text"
+            }
+        }
+    },
+    "model": {
+        "label": {
+            "en": "Article"
+        },
+        "controls": {
+            "name": {
+                "value": "articles",
+                "control": "project/model/name"
+            },
+            "id": {
+                "value": "ab903292-b219-40a8-9712-fec319dcb8b8",
+                "label": {
+                    "en": "Select article"
+                },
+                "options": [
+                    {
+                        "label": {
+                            "en": "Awarding procedures"
+                        },
+                        "value": "ab903292-b219-40a8-9712-fec319dcb8b8"
+                    },
+                    {
+                        "label": {
+                            "en": "Contract conditions"
+                        },
+                        "value": "04e71f7f-8554-48ad-944c-6610a2101da7"
+                    }
+                ],
+                "control": "core/list"
+            },
+            "analysis": {
+                "value": "true",
+                "control": "project/model/analysis"
+            }
+        }
+    }
+}

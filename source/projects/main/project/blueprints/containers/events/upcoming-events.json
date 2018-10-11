@@ -1,0 +1,383 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Upcoming events"
+    },
+    "description": {
+        "en": "Upcoming events with newsletter signup"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Header"
+                },
+                "description": {
+                    "en": "Header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "Title",
+                                    "fr": "Tître"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "show_tools": {
+                                "value": "events",
+                                "label": {
+                                    "en": "Show filters"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "Events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "Articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_link": {
+                                "value": "",
+                                "label": {
+                                    "en": "Show link"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "None"
+                                        }
+                                    },
+                                    {
+                                        "value": "events",
+                                        "label": {
+                                            "en": "All events"
+                                        }
+                                    },
+                                    {
+                                        "value": "articles",
+                                        "label": {
+                                            "en": "All articles"
+                                        }
+                                    }
+                                ]
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "template": "containers/global/layout/layout.html.twig",
+                "name": {
+                    "en": "Layout"
+                },
+                "description": {
+                    "en": "Generic container to wrap content in layout instructions"
+                },
+                "template_config": {
+                    "model": {
+                        "label": {
+                            "en": "Content",
+                            "fr": "Content"
+                        },
+                        "controls": {
+                            "adapter": {
+                                "value": "SCR",
+                                "control": "project/adapter"
+                            },
+                            "name": {
+                                "value": "Channel\\Events",
+                                "control": "project/model/name"
+                            },
+                            "id": {
+                                "value": "8ee09e5e-db66-483f-a4ba-b1193e35a079",
+                                "control": "project/model/id",
+                                "type":"lookup"
+                            },
+                            "limit": {
+                                "value": "4",
+                                "control": "project/model/limit"
+                            },
+                            "skip": {
+                                "value": "{ query.skip }",
+                                "control": "project/model/skip"
+                            },
+                            "upcoming": {
+                                "value": "{ query.upcoming }",
+                                "control": "project/model/upcoming"
+                            },
+                            "sortProperty": {
+                                "value": "{ query.sortProperty }",
+                                "control": "project/model/sort_property"
+                            },
+                            "sortDirection": {
+                                "value": "{ query.sortDirection }",
+                                "control": "project/model/sort_direction"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "crown": {
+                                "value": "",
+                                "control": "project/crown"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "layout": {
+                                "value": "layout",
+                                "label": {
+                                    "en": "Layout"
+                                },
+                                "control": "project/layout/layout"
+                            },
+                            "show_secondary_first": {
+                                "value": 0,
+                                "control": "project/layout/show_secondary_first"
+                            },
+                            "show_divider": {
+                                "value": 0,
+                                "control": "project/layout/show_divider"
+                            },
+                            "show_narrow": {
+                                "value": 0,
+                                "control": "project/layout/show_narrow"
+                            },
+                            "vertical_alignment": {
+                                "value": "",
+                                "label": {
+                                    "en": "Vertical alignment"
+                                },
+                                "control": "core/list",
+                                "options": [
+                                    {
+                                        "value": "",
+                                        "label": {
+                                            "en": "Align top"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-end",
+                                        "label": {
+                                            "en": "Align bottom"
+                                        }
+                                    },
+                                    {
+                                        "value": "layout--align-middle",
+                                        "label": {
+                                            "en": "Align middle"
+                                        }
+                                    }
+                                ]
+                            },
+                            "show_outer_wing": {
+                                "value": 0,
+                                "control": "project/layout/show_outer_wing"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Event list"
+                            },
+                            "description": {
+                                "en": "Event list"
+                            },
+                            "template": "modules/events/detailed-list/detailed-list.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "id": {
+                                            "value": {
+                                                "en": "upcoming-events",
+                                                "fr": "upcoming-events"
+                                            },
+                                            "control": "core/hidden"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Newsletter signup"
+                            },
+                            "description": {
+                                "en": "Newsletter signup"
+                            },
+                            "template": "modules/newsletter-signup/newsletter-signup.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "container_class": {
+                                            "value": "leader trailer",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en": "Be sure you don't miss our latest updates.",
+                                                "fr": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "button": {
+                                            "value": {
+                                                "en": "Subscribe",
+                                                "fr": "Souscrire"
+                                            },
+                                            "control": "core/text"
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,105 @@
+.standout {
+	position: relative;
+	top: rhythm(10) * -1;
+	background: $white;
+	z-index: 3;
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		left: 1 / 6 * 100vw;
+		right: 1 / 6 * 100vw;
+		background: $color-theme;
+		height: rhythm(2);
+		.theme--green & {
+			background: $color-green;
+		}
+		.theme--blue & {
+			background: $color-blue
+		}
+		.theme--lime & {
+			background: $color-lime;
+		}
+		.theme--yellow & {
+			background: $color-yellow;
+		}
+		.theme--gold & {
+			background: $color-gold;
+		}
+		.theme--orange & {
+			background: $color-orange;
+		}
+		.theme--salmon & {
+			background: $color-salmon;
+		}
+		.theme--red & {
+			background: $color-red;
+		}
+		.theme--burgundy & {
+			background: $color-burgundy;
+		}
+		.theme--purple & {
+			background: $color-purple;
+		}
+	}
+	&:before {
+		top: rhythm(2) * -1;
+	}
+	&:after {
+		bottom: rhythm(2) * -1;
+	}
+	@include breakpoint($gt-small-desktop) {
+		top: -80px; /* 50px + 30px added by leader */
+		width: 14 / 18 * 100vw;
+		margin: 0 auto;
+		&:before,
+		&:after {
+			height: rhythm(3);
+			left: 1 / 18 * 100vw;
+			right: 1 / 18 * 100vw;
+		}
+		&:before {
+			top: rhythm(3) * -1;
+		}
+		&:after {
+			bottom: rhythm(3) * -1;
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		width: 10 / 18 * 100vw;
+	}
+	&-content {
+		max-height: 75vh;
+		overflow-y: scroll;
+		@include breakpoint($lt-medium-desktop) {
+			padding-left: $gutter-width / 2;
+			padding-right: $gutter-width / 2;
+		}
+		@include breakpoint($gt-small-desktop) {
+			padding-left: 1 / 18 * 100vw;
+			padding-right: 1 / 18 * 100vw;
+		}
+	}
+	&--post {
+		top: rhythm(20);
+		.post-hero {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+	.paragraph,
+	.heading,
+	figure {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	figure {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: $gutter-width;
+		padding-bottom: $gutter-width;
+	}
+	.video__frame {
+		padding-bottom: 56.25%;
+	}
+}

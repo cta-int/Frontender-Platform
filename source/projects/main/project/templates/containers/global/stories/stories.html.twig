@@ -1,0 +1,36 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('aside') }}{{ helper.class_attribute(config, 'well well--full well--slim-fit  body--inverse')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout layout--narrow">
+        <h1 class="title title--section  |  gutters  |  leader trailer--small">{{ labels.lead|t(locales) }}</h1>
+    </div>
+    <div class="layout layout--narrow  |  trailer">
+        <p class="gutters">{{ labels.body|t(locales) }}</p>
+    </div>
+    <div class="layout--narrow">
+        <div class="grid grid--posts  |  grid-decoration  |  gutters  |  leader-inside--small  |  trailer-inside--small">
+            {% for container in containers %}
+                <figure class="stat  |  grid__cell">
+                    {% if container.template_config.content.title|t(locales) %}
+                        <h3 class="title title--apropos title--thin  |  body--align-center  |  trailer-inside--tiny  |  leader-inside--small">{{ container.template_config.content.title|t(locales) }}</h3>
+                    {% endif %}
+                    <p class="stat__figure  |  trailer">{{ container.template_config.content.figure|t(locales)|lower }}</p>
+                    <figcaption class="stat__caption  |  meta meta--s  |  gutters"><span class="is-narrative">{{ container.template_config.content.figure|t(locales) }} </span>{{ container.template_config.content.caption|t(locales) }}</figcaption>
+                </figure>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="is-silent  |  story-line--horizon">
+        <div class="layout--narrow">
+            <div class="story-line  |  grid grid--teletubbies grid--align-end  |  leader--small">
+                {% for container in containers %}
+                    <picture class="story story--{{ container.template_config.content.story|t(locales)|lower }}  |  grid__cell  |  gutters">
+                        <source type="image/svg+xml" srcset="/images/stories/{{ container.template_config.content.story|lower }}.svg">
+                        <img src="/images/stories/{{ container.template_config.content.story|lower }}.png" alt="{{ container.template_config.content.figure|t(locales) }} {{ container.template_config.content.caption|t(locales) }}">
+                    </picture>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('aside') }}>

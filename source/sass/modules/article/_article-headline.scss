@@ -1,0 +1,45 @@
+/*
+Article Headline
+
+markup:
+<div class="article-headline  |  layout layout--reverse">
+    <div class="layout  layout--align-middle  |  layout__cell layout__cell--main">
+        <div class="layout__cell layout__cell--main  |  gutters">
+            <div class="leader  |  trailer">
+                <h1 class="article-headline__title  |  title title--headline">
+                    Addressing finance challenges for ICT4Ag start-ups
+                </h1>
+            </div>
+            <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">ICT4Ag Outlook Expert Meeting, 9-11 October 2017, Rhenen, Netherlands</strong></p>
+        </div>
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  ">
+            <p class="caption  |  gutters  |  trailer">ICT4Ag Outlook Expert Meeting</p>
+            <p class="credit  |  gutters  |  trailer">© CTA</p>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--aside  |  gutters">
+    </div>
+</div>
+
+Styleguide 5.3.2
+*/
+.article-headline {
+  @include theme-opaque-background(100%);
+  color: $white;
+  &__title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  &__about,
+  &__author {
+    font-size: to-unit(12px, 1em, 15px);
+  }
+  &__author {
+    @extend %meta-text;
+    margin-top: rhythm(6);
+    margin-bottom: rhythm(6);
+  }
+  &__byline {
+      display: block;
+  }
+}

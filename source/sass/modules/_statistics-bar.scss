@@ -1,0 +1,55 @@
+/*
+Statistics bar
+
+markup:
+<div class="well well--darker  |  leader-inside  |  trailer-inside">
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside  |  wing--left">
+            <div class="gutters">
+                <h3 class="title  |  trailer--small">
+                    Green shoots for the future
+                </h3>
+                <p class="trailer">
+                </p>
+                <div class="title--filter  |  trailer-inside">
+                </div>
+            </div>
+        </div>
+        <div class="layout__cell  |  is-center  |  wing--right">
+            <div class="grid grid--posts  |  grid-decoration  |  gutters">
+                <figure class="stat  |  grid__cell">
+                    <p class="stat__figure  |  trailer">260%</p>
+                    <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+                        260% required increase in crop production by 2050 to feed Africa’s projected population growth.
+                    </figcaption>
+                </figure>
+                <figure class="stat  |  grid__cell">
+                    <p class="stat__figure  |  trailer">40%</p>
+                    <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+                        Post-harvest losses in ACP countries amount up to 40% of harvests.
+                    </figcaption>
+                </figure>
+                <figure class="stat  |  grid__cell">
+                    <p class="stat__figure  |  trailer">1%</p>
+                    <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+                        A 1% growth in agriculture pulls 0.41% of the population out of poverty, according to the International Monetary Fund (IMF)
+                    </figcaption>
+                </figure>
+                <figure class="stat  |  grid__cell">
+                    <p class="stat__figure  |  trailer">78%</p>
+                    <figcaption class="stat__caption  |  meta meta--s  |  gutters">
+                        Only 20% of trade in SSA is intra-regional, compared with 78% in the EU and 60% in Asia.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+
+sg-wrapper:
+<div class="theme--salmon">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 5.12
+*/

@@ -1,0 +1,79 @@
+/*
+Mini-map
+
+markup:
+<div class="mini-map  |  well well--neutral">
+  <div class="mini-map__map">
+    <div style="height: 224px; background-color: #333;"></div>
+  </div>
+  <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+    <sg-insert>3.19.1</sg-insert>
+  </div>
+  <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+    <div class="media  |  location">
+      <span class="icon icon--theme icon--link"></span>
+      <div class="location__body  |  media__content">
+        <a class="is-heir" href="javascript:void();">Visit the website</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+Styleguide 4.20
+*/
+
+.mini-map {
+  &__map {
+    padding: rhythm(3);
+    .tab-teaser__panel--map {
+      overflow: hidden;
+      height: 250px;
+    }
+  }
+}
+
+/*
+Mini-map statistics
+
+markup:
+<div class="mini-map-statistics  |  well well--neutral">
+  <div class="mini-map__map">
+    <div style="height: 224px; background-color: #333;"></div>
+  </div>
+  <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+    <span class="icon  icon--download"></span>
+    <div class="map-statistic">
+      <div class="title title--tile">2,546,133</div>
+      <div class="meta">Euros</div>
+    </div>
+  </div>
+  <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+  </div>
+</div>
+
+sg-wrapper:
+<div style="width:400px;">
+  <sg-wrapper-content/>
+</div>
+
+Styleguide 4.20.1
+*/
+
+.mini-map-statistics {
+  .mini-map__asset {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+  }
+  .icon {
+    font-size: to-unit(24px);
+    float: left;
+    color: mix($color-body, $white, 26%);
+  }
+  .map-statistic {
+    float: right;
+    > div {
+      display: inline;
+    }
+  }
+}

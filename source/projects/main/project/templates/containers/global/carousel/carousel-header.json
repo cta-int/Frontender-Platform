@@ -1,0 +1,58 @@
+{
+	"labels": {
+		"label": {
+			"en": "Labels"
+		},
+		"controls": {
+			"title": {
+				"control": "core/text",
+				"value": {
+					"en": "CTA’s key areas of focus",
+					"fr": "CTA’s key areas of focus"
+				}
+			},
+			"body": {
+				"control": "core/text",
+				"value": {
+					"en": "In these key areas, we link consumers to producers in order to create benefits for everybody involved in the value chain.",
+					"fr": "In these key areas, we link consumers to producers in order to create benefits for everybody involved in the value chain."
+				}
+			}
+		}
+	},
+	"config": {
+		"label": {
+			"en": "Settings"
+		},
+		"controls": {
+			"leader": {
+				"value": "",
+				"control": "project/leader_inside"
+			},
+			"leader_inside": {
+				"value": "leader-inside",
+				"control": "project/leader_inside"
+			},
+			"trailer": {
+				"value": "",
+				"control": "project/trailer_inside"
+			},
+			"trailer_inside": {
+				"value": "trailer-inside",
+				"control": "project/trailer_inside"
+			},
+			"divider": {
+				"value": "",
+				"control": "project/divider"
+			},
+			"container_tag": {
+				"value": "header",
+				"control": "project/container_tag"
+			},
+			"container_class": {
+				"value": "",
+				"control": "project/container_class"
+			}
+		}
+	}
+}

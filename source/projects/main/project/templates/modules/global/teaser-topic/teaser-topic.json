@@ -1,0 +1,38 @@
+{
+    "labels": {
+        "label": {
+            "en": "Content"
+        },
+        "controls": {
+            "label": {
+                "value": {
+                    "en": "Agribusiness",
+                    "fr": "Agribusiness"
+                },
+                "label": {
+                    "en": "Label"
+                },
+                "control": "core/text"
+            },
+            "title": {
+                "value": {
+                    "en": "Agribusiness",
+                    "fr": "Agribusiness"
+                },
+                "label": {
+                    "en": "Headline"
+                },
+                "control": "core/text"
+            },
+            "body": {
+                "value": {
+                    "en": "Taking an agribusiness approach to agricultural development can do much to provide income generating opportunities for rural communities, as well as helping to increase food security, reduce food imports and create jobs, especially for young people."
+                },
+                "label": {
+                    "en": "Body"
+                },
+                "control": "core/textarea"
+            }
+        }
+    }
+}

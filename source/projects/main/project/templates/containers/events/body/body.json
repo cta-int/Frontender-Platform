@@ -1,0 +1,21 @@
+{
+    "model": {
+        "label": {
+            "en": "Resource"
+        },
+        "controls": {
+            "name": {
+                "value": "events",
+                "control": "core/hidden"
+            },
+            "id": {
+                "value": "{id}",
+                "control": "project/model/id"
+            },
+            "includeRelated": {
+                "value": "true",
+                "control": "project/model/include_related"
+            }
+        }
+    }
+}

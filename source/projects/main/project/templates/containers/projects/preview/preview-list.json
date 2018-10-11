@@ -1,0 +1,46 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Project tiles"
+    },
+    "description": {
+        "en": ""
+    },
+    "template": "containers/projects/preview/preview-list.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_class": {
+                    "value": "divider divider--bottom  |  trailer-inside--hero trailer--hero",
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en": "Content"
+            },
+            "controls": {
+                "name": {
+                    "value": "Channel\\Events",
+                    "control": "core/hidden"
+                },
+                "id": {
+                    "value": "{ id }",
+                    "control": "core/hidden"
+                },
+                "eventType": {
+                    "value": "Project",
+                    "control": "core/hidden"
+                },
+                "limit": {
+                    "value": 2,
+                    "control": "core/hidden"
+                }
+            }
+        }
+    }
+}

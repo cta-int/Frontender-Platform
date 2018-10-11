@@ -1,0 +1,8 @@
+{% set model = model is defined ? model : model %}
+{% set articles_total = model is defined ? articles_total : articles_total %}
+
+{% for article in model %}
+    <li class="leader trailer">
+        {% include "partials/article/opportunity/short-list-award-item.html.twig" with {model: article} %}
+    </li>
+{% endfor %}

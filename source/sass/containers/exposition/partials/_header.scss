@@ -1,0 +1,89 @@
+.header {
+	position: relative;
+	@include breakpoint($lt-medium-desktop) {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.header-cover {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-size: cover;
+		@include breakpoint($gt-small-handheld) {
+			margin-right: -50%;
+		}
+		@include breakpoint($gt-medium-handheld) {
+			margin-right: 0;
+		}
+		@include breakpoint($lt-medium-desktop) {
+			background-position: right;
+		}
+		@include breakpoint($gt-small-desktop) {
+			background-size: cover;
+		}
+	}
+	&-overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(-180deg, rgba($black, 0) 0%, rgba($black, .6) 67%);
+	}
+	&__sponsor {
+		position: fixed;
+		bottom: rhythm(7);
+		left: $gutter-width / 2;
+		max-width: rhythm(50);
+		@include breakpoint($gt-small-desktop) {
+			left: 1 / 18 * 100vw;
+			max-width: 100%;
+		}
+	}
+	&__title {
+		position: fixed;
+		top: 62%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		text-align: center;
+		width: 14 / 18 * 100vw;
+		@include breakpoint($gt-small-desktop) {
+			width: 100%;
+			padding-left: 2 / 18 * 100vw;
+			padding-right: 2 / 18 * 100vw;
+			margin-left: $gutter-width / 2;
+		}
+		@include breakpoint($gt-medium-desktop) {
+			width: 100%;
+			padding-left: 4 / 18 * 100vw;
+			padding-right: 4 / 18 * 100vw;
+		}
+		@include breakpoint($lt-large-handheld) {
+			width: 100%;
+		}
+	}
+}
+
+.sections {
+	height: 100vh;
+	position: relative;
+}
+
+.inset {
+	position: relative;
+	z-index: 3;
+	margin: 100vh 0 0 0;
+	height: auto;
+	margin-bottom: -30px;
+	background: $color-body;
+	@include breakpoint($gt-small-desktop) {
+		padding-left: 2 / 18 * 100vw;
+		padding-right: 2 / 18 * 100vw;
+	}
+	@include breakpoint($gt-medium-desktop) {
+		padding-left: 4 / 18 * 100vw;
+		padding-right: 4 / 18 * 100vw;
+	}
+}

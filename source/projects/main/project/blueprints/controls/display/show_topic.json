@@ -1,0 +1,6 @@
+{
+    "label": {
+        "en": "Show topic"
+    },
+    "control": "project/show_on_items"
+}

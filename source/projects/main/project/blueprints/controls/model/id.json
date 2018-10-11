@@ -1,0 +1,9 @@
+{
+    "value": "",
+    "label": {
+        "en": "Resource ID"
+    },
+    "hidden": "0",
+    "access": "all",
+    "type": "text"
+}

@@ -1,0 +1,71 @@
+/*
+Modules
+
+Styleguide 5.0
+*/
+
+/* 5.1 Masthead */
+@import "modules/masthead";
+/* 5.2 Site-footer */
+@import "modules/site-footer";
+/* 5.3 Post */
+@import "modules/article";
+/* 5.3.1 Hero */
+@import "modules/article/article-header";
+/* 5.3.2 Header */
+@import "modules/article/article-headline";
+/* 5.3.4 List */
+@import "modules/article/article-list";
+/* 5.3.5 Body */
+@import "modules/article/article-body";
+
+/* 5.5 Channels */
+@import "modules/channels";
+/* 5.6 triptych */
+@import "modules/triptych";
+/* 5.7 Cross-section */
+@import "modules/cross-section";
+/* 5.8 Upcoming events */
+@import "modules/upcoming-events";
+/* 5.9 Related Articles */
+@import "modules/related-articles";
+/* 5.10 Contextual search */
+@import "modules/contextual-search";
+/* 5.11 Tabbed content */
+@import "modules/tabbed-content";
+/* 5.12 Statistics bar*/
+@import "modules/statistics-bar";
+
+/* 5.14 Impact Stories */
+@import "modules/impact-stories";
+/* 5.15 About us */
+@import "modules/about-cta";
+/* 5.17 Project preview */
+@import "modules/project-preview";
+/* 5.18 Leaflet */
+@import "modules/leaflet";
+/* 5.19 Project menu */
+@import "modules/project-menu";
+/* 5.20 Carousel */
+@import "modules/carousel";
+/* 5.21 Project header */
+@import "modules/project-header";
+/* 5.22 Project body */
+@import "modules/project-body";
+/* 5.23 Error */
+@import "modules/error";
+/* 5.24 Maintenance */
+@import "modules/maintenance";
+
+/* 5.50 ICT Update */
+@import "modules/ict-update";
+/* 5.50.1 Featured posts */
+@import "modules/ict-update/ict-update.featured";
+/* 5.50.3 Post */
+@import "modules/ict-update/ict-update.post";
+/* 5.50.3.1 Header */
+@import "modules/ict-update/ict-update.post/ict-update.post.header";
+/* 5.50.3.2 Body */
+@import "modules/ict-update/ict-update.post/ict-update.post.body";
+/* 5.50.4 Issues overview */
+@import "modules/ict-update/ict-update.issues";

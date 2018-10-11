@@ -1,0 +1,47 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }} class="carousel layout" {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+	<div class="carousel--wrapper">
+		<div class="carousel--row">
+			{% for loopContainer in containers %}
+				{% include loopContainer.template with loopContainer %}
+			{% endfor %}
+		</div>
+		<button class="carousel-switch carousel-previous  |  is-gt-large-handheld" data-direction="left">
+			<span class="icon icon--chevron-left"></span>
+		</button>
+		<button class="carousel-switch carousel-next  |  is-gt-large-handheld" data-direction="right">
+			<span class="icon icon--chevron-right"></span>
+		</button>
+	</div>
+</{{ config.container_tag|default('div') }}>
+
+{% block scripts %}
+	<script type="text/javascript">
+		jQuery(function($) {
+            $('.carousel--row').slick({
+                centerMode: true,
+                arrows: true,
+                prevArrow: $('.carousel-previous'),
+                nextArrow: $('.carousel-next'),
+                centerPadding: 'auto',
+                slidesToShow: 1,
+                variableWidth: true,
+                draggable: true,
+                responsive: [{
+                	breakpoint: 1024,
+						      settings: {
+						      	centerMode: true,
+						        arrows: false,
+						        centerPadding: 'auto',
+		                slidesToShow: 1,
+		                variableWidth: true,
+		                draggable: true
+						      }
+                }]
+            });
+		});
+	</script>
+{% endblock %}

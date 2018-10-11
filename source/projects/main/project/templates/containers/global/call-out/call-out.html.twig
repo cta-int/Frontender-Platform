@@ -1,0 +1,33 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('aside') }}{{ helper.class_attribute(config, 'well well--full  |  body--align-center')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout--narrow  |  wings">
+        <h2 class="title title--container  |  leader--normal  |  trailer--normal  |  wings">{{ labels.lead|t(locales) }}</h2>
+        <p class="wings">{{ labels.body|t(locales) }}</p>
+    </div>
+    <div class="story-line-wrapper">
+        <div class="is-silent  |  leader--normal  |  story-line story-line--horizon">
+            <div class="layout--narrow">
+                <div class="story-line  |  leader--small">
+                    {% for story in stories.stories %}
+                    {{ loop.index }}
+                        <picture class="story story--horizon{{ loop.index is same as(1) ? ' is-gt-medium-handheld' }}{{ loop.index is same as(2) ? ' wings' }}{{ loop.index is same as(3) ? ' is-gt-small-desktop' }}">
+                            <source type="image/svg+xml" srcset="/images/stories/{{ story.icon }}.svg">
+                            <img src="/images/stories/{{ story.icon }}.png" alt="">
+                        </picture>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="is-silent  |  layout--narrow  |  wings  |  leader--small">
+            <div class="grid grid--musketeers">
+                {% for story in stories.stories %}
+                    <div class="grid__cell  |  gutters{{ loop.index is same as(1) ? ' is-gt-medium-handheld' }}{{ loop.index is same as(3) ? ' is-gt-small-desktop' }}">
+                        <span class="title title--apropos">{{ story.caption|t(locales) }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('aside') }}>

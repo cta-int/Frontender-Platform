@@ -1,0 +1,322 @@
+{
+    "fe-id": null,
+    "name": {
+        "en": "Masthead"
+    },
+    "description": {
+        "en": "CTA's main masthead"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "header",
+                    "control": "core/hidden"
+                },
+                "container_class": {
+                    "value": "masthead",
+                    "control": "core/hidden"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Network navigation"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/network-navigation/network-navigation.html.twig",
+                "template_config": {
+                    "mobile": {
+                        "label": {
+                            "en": "Mobile Settings"
+                        },
+                        "controls": {
+                            "menu_label": {
+                                "value": {
+                                    "en": "Menu",
+                                    "fr": "Menu"
+                                },
+                                "label": {
+                                    "en": "Menu label (mobile only)"
+                                },
+                                "control": "core/text"
+                            },
+                            "show_menu_label": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show menu label (mobile only)"
+                                },
+                                "control": "project/show"
+                            },
+                            "menu_icon": {
+                                "value": "leaf",
+                                "label": {
+                                    "en": "Menu icon (mobile only)"
+                                },
+                                "control": "core/list",
+                                "options": [{
+                                        "label": {
+                                            "en": "Leaf"
+                                        },
+                                        "value": "leaf"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Home"
+                                        },
+                                        "value": "home"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "links": {
+                        "label": {
+                            "en": "Network navigation"
+                        },
+                        "controls": {
+                            "links": {
+                                "value": [
+                                    {
+                                        "label": {
+                                            "en": "About CTA",
+                                            "fr": "À propos du CTA"
+                                        },
+                                        "page": "about-cta",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Spore",
+                                            "fr": "Spore"
+                                        },
+                                        "page": "http://spore.cta.int/",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "ICT Update",
+                                            "fr": "ICT Update"
+                                        },
+                                        "page": "ictupdate",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Publications",
+                                            "fr": "Publications"
+                                        },
+                                        "page": "https://publications.cta.int/",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Jobs",
+                                            "fr": "Jobs"
+                                        },
+                                        "page": "working-with-cta",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Press",
+                                            "fr": "Presse"
+                                        },
+                                        "page": "press",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Contact",
+                                            "fr": "Contact"
+                                        },
+                                        "page": "contact",
+                                        "id": ""
+                                    }
+                                ],
+                                "label": {
+                                    "en": "Links"
+                                },
+                                "control": "core/route",
+                                "repeatable": true
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Main navigation"
+                },
+                "description": {
+                    "en": ""
+                },
+                "template": "modules/main-navigation/main-navigation.html.twig",
+                "template_config": {
+                    "main_menu": {
+                        "label": {
+                            "en": "Main navigation"
+                        },
+                        "controls": {
+                            "brand": {
+                                "label": {
+                                    "en": "Brand"
+                                },
+                                "value": "cta.html.twig",
+                                "options": [{
+                                        "label": {
+                                            "en": "CTA"
+                                        },
+                                        "value": "cta.html.twig"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "CTA Publishing"
+                                        },
+                                        "value": "cta-publishing.html.twig"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "ICT Update"
+                                        },
+                                        "value": "ictupdate.html.twig"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Spore Magazine"
+                                        },
+                                        "value": "spore.html.twig"
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Apps4Ag"
+                                        },
+                                        "value": "apps4ag.html.twig"
+                                    }
+                                ],
+                                "control": "project/brand"
+                            },
+                            "links": {
+                                "value": [
+                                    {
+                                        "label": {
+                                            "en": "Youth",
+                                            "fr": "Jeunesse"
+                                        },
+                                        "page": "youth",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Digitalisation",
+                                            "fr": "Digitalisation"
+                                        },
+                                        "page": "digitalisation",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Climate",
+                                            "fr": "Climat"
+                                        },
+                                        "page": "climate",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Events",
+                                            "fr": "Événements"
+                                        },
+                                        "page": "events",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Projects",
+                                            "fr": "Projets"
+                                        },
+                                        "page": "projects",
+                                        "id": ""
+                                    }
+                                ],
+                                "label": {
+                                    "en": "Links"
+                                },
+                                "control": "core/route",
+                                "repeatable": true
+                            }
+                        }
+                    },
+                    "browse_menu": {
+                        "label": {
+                            "en": "Browse navigation"
+                        },
+                        "controls": {
+                            "links": {
+                                "value": [
+                                    {
+                                        "label": {
+                                            "en": "Regions",
+                                            "fr": "Régions"
+                                        },
+                                        "page": "regions",
+                                        "id": ""
+                                    },
+                                    {
+                                        "label": {
+                                            "en": "Topics",
+                                            "fr": "Thèmes"
+                                        },
+                                        "page": "topics",
+                                        "id": ""
+                                    }
+                                ],
+                                "label": {
+                                    "en": "Links"
+                                },
+                                "control": "core/route",
+                                "repeatable": true
+                            }
+                        }
+                    },
+                    "settings": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "show_menu": {
+                                "value": "",
+                                "label": {
+                                    "en": "Hide menu (Only use this when the hero is crowned)"
+                                },
+                                "control": "core/list",
+                                "options": [{
+                                        "value": "No",
+                                        "label": {
+                                            "en": "No"
+                                        }
+                                    },
+                                    {
+                                        "value": "site-navigation--network",
+                                        "label": {
+                                            "en": "Yes"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,159 @@
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/location.html.twig" as location %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<section class="panel  |  layout" id="overview">
+    {# MAIN COLUMN:START #}
+    <div class="layout__cell  |  post-anchor">
+        <div class="social__share  |  trailer  |  gutters">
+            {{ share.bar_event(model, true) }}
+        </div>
+        <h2 class="title">
+            <a class="panel__trigger  |  gutters  |  is-heir" href="#overview">{{ 'Event overview'|t(locales) }}</a>
+        </h2>
+        <div class="panel__body">
+            <div class="post-body  |  paragraph--lead  |  gutters">
+                {{ model.description | appendBlankTarget | clearEmptyTags | clearInlineStyles | raw }}
+            </div>
+
+            {% for contentBlock in model.contentBlocks %}
+                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+            {% endfor %}
+
+            {% if model.analysis.agrovoc.concepts | length > 1 %}
+                <ul class="reset  |  tag-list  |  list--inline  |  leader  |  trailer--small  |  gutters">
+                    {% for label in model.analysis.agrovoc.concepts | slice(0, 3) %}
+                        <li>{{ concept.tag(label, locale) }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer">
+                {{ share.bar_article(model) }}
+            </div>
+        </div>
+    </div>
+    {# MAIN COLUMN:END #}
+    {# SECONDARY COLUMN:START #}
+    <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+        <div class="panel__body">
+                <div class="mini-map  |  well--neutral  |  gutters-outside">
+                    {% if model.location %}
+                        <div class="mini-map__map">
+                            <div id="map" style="height: 250px;"></div>
+                            {{ location.map(model.location, "#map", 'geo') }}
+                        </div>
+                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                            {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                        </div>
+                    {% endif %}
+                    {% if model.url %}
+                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                            <div class="media  |  location">
+                                <a class="location__marker  |  anchor--reset anchor--shy  |  media__figure" href="{{ model.url }}">
+                                    <span class="icon icon--theme icon--drop icon--link">
+                                    </span>
+                                </a>
+                                <div class="location__body  |  media__content">
+                                    <a class="is-heir" href="{{ model.url }}" target="_blank">{{ 'Event website'|t(locales) }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+
+            <aside class="gutters">
+                {% if model.organizer|filterArray('avatar')|length > 0 %}
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Organisers'|t(locales) }}</h3>
+                    <div class="leader-inside--small  |  trailer--small">
+
+                        {% for organisation in model.organizer|filterArray('avatar') %}
+                            <div class="media  |  trailer--small">
+                                <div class="media__figure">
+                                    {% if (organisation.avatar) %}
+                                        <a href="#organisers" target="_blank">
+                                        <img class="image" height="50" width="50" src="{{ organisation.avatar }}" alt=""/>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                {% if (organisation.avatar) %}
+                                    <div class="is-center  |  media__body  |  gutters">{{ organisation.name }}</div>
+                                {% else %}
+                                    <div class="media__body">
+                                        <a href="#organisers" target="_blank">
+                                            <span class="is-lt-small-desktop">
+                                                {{ organisation.name }}
+                                            </span>
+                                            <span class="is-gt-small-desktop">
+                                                {{ organisation.alternateName ? organisation.alternateName : organisation.name }}
+                                            </span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if model.externalLink|length > 0 %}
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'External links'|t(locales) }}</h3>
+                    <ul class="reset">
+                    {% for link in model.externalLink %}
+                        <li class="leader--small  |  leader--small">
+                            <a href="{{ link.url }}" target="_blank">
+                                {{ link.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {# Related articles #}
+                {% if model.related.articles|length > 0 %}
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|t(locales) }}</h3>
+                    <ul class="reset">
+                        {% for model in model.related.articles %}
+                            <li class="leader--small  |  leader--small">
+                                <a href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                                    {{ model.headline|t(locales) }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {# Related events #}
+                {% if model.related.events|length > 0 %}
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|t(locales) }}</h3>
+                    <ul class="reset">
+                        {# Show everything except the projects. #}
+                        {% for model in model.related.events|filterArray('type', 'Project', true) %}
+                            <li class="leader--small  |  leader--small">
+                                <a href="{{ route({page: 'event', 'id': model._id}) }}">
+                                    {{ model.name|t(locales) }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if model.similar.events|filterArray('type', 'Project')|length > 0 %}
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|t(locales) }}</h3>
+                    <ul class="reset">
+                        {% for model in model.similar.events|filterArray('type', 'Project') %}
+                            <li class="leader--normal  |  trailer--normal">
+                                <a href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">
+                                    {{ model.name|t(locales) }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+            </aside>
+
+        </div>
+    </div>
+    {# SECONDARY COLUMN:END #}
+</section>

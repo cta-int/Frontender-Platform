@@ -1,0 +1,100 @@
+/*
+Panel
+
+Used for tabbed content. Can be used in combination with block-links.
+
+markup:
+<div class="panel-group">
+  <section class="is-inactive  |  panel" id="panel1">
+    <h2 class="title">
+      <a class="panel__trigger  |  gutters" href="#panel1">Panel 1</a>
+    </h2>
+    <div class="panel__body  |  gutters">
+      Panel 1
+    </div>
+  </section>
+  <section class="is-inactive  |  panel" id="panel2">
+    <h2 class="title">
+      <a class="panel__trigger  |  gutters" href="#panel2">Panel 2</a>
+    </h2>
+    <div class="panel__body  |  gutters">
+      Panel 2
+    </div>
+  </section>
+  <section class="is-active  |  panel" id="panel3">
+    <h2 class="title">
+      <a class="panel__trigger  |  gutters" href="#panel3">Panel 3</a>
+    </h2>
+    <div class="panel__body  |  gutters">
+      Panel 3
+    </div>
+  </section>
+  <section class="is-inactive  |  panel" id="panel4">
+    <h2 class="title">
+      <a class="panel__trigger  |  gutters" href="#panel4">Panel 4</a>
+    </h2>
+    <div class="panel__body  |  gutters">
+      Panel 4
+    </div>
+  </section>
+</div>
+
+Styleguide 4.19
+*/
+
+.panel {
+  padding-top: rhythm(6);
+  padding-bottom: rhythm(6);
+  border: 1px solid $color-green;
+  border-width: 1px 0 0;
+  @include theme-border(26%);
+  &:first-child.is-active {
+    padding-top: 0;
+    border-top: 0;
+  }
+  &:last-child {
+    border-width: 1px 0;
+  }
+  &.is-active+.panel.is-active {
+      margin-top: rhythm(15);
+  }
+  &__trigger {
+    @include title-18px();
+    display: block;
+    color: inherit;
+    margin-bottom: rhythm(5);
+  }
+  &.is-inactive &__body {
+    display: none;
+  }
+  &.is-inactive &__trigger {
+    margin-bottom: rhythm(0);
+    &:after {
+      float: right;
+      @extend .icon !optional;
+      content: $icon-chevron-down;
+      @include theme-color();
+    }
+  }
+  @include breakpoint($gt-small-desktop) {
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    &.is-active+.panel.is-active {
+        margin-top: rhythm(35);
+    }
+    &__trigger {
+        margin-bottom: rhythm(10);
+        @include title-20px();
+    }
+    &__title {
+        font-family: $font-family;
+        font-weight: 300;
+        @include title-20px();
+        text-transform: none;
+    }
+    &.is-inactive &__trigger {
+      display: none;
+    }
+  }
+}
