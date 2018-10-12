@@ -9,7 +9,7 @@
         "ListenerPriority": "2",
         "NetworkStack": "UAT-network",
         "ServicePath": "/*",
-        "ServiceHost": "frontender",
+        "ServiceHost": "frontender-uat-v2.cta.int",
         "ScrHostname": "http://UAT-ecs-stateless-eu-central-1.cta.int/",
         "AutoscalingMax": "2",
         "AutoscalingMin": "2",
