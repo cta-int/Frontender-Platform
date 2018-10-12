@@ -62,7 +62,7 @@ phases:
 
 artifacts:
   files:
-    - 'scr-platform-service.template'
+    - 'scr-platform-service-v2.template'
     - 'UAT-config.json'
     - 'PROD-config.json'
     - 'imageconfig.json'
