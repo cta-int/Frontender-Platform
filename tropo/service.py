@@ -115,14 +115,14 @@ autoscaling_max = t.add_parameter(Parameter(
     "AutoscalingMax",
     Type="Number",
     Description="Maximum number of tasks to autoscale",
-    Default=2
+    Default=3
 ))
 
 autoscaling_min = t.add_parameter(Parameter(
     "AutoscalingMin",
     Type="Number",
     Description="Minimum number of tasks to autoscale",
-    Default=2
+    Default=3
 ))
 
 health_check_path = t.add_parameter(Parameter(
@@ -635,12 +635,6 @@ service = t.add_resource(ecs.Service(
         MaximumPercent="100",
         MinimumHealthyPercent="50"
     ),
-    PlacementConstraints=[
-        ecs.PlacementConstraint(
-            Type="memberOf",
-            Expression=Join("", ["attribute:ecs.availability-zone in [", Select(2, GetAZs()), "]"])
-        ),
-    ],
 ))
 
 """
