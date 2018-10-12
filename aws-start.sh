@@ -13,5 +13,5 @@ if [[ -f /var/www/cache/project/sites/cta.int.local.json ]] ; then
     mv /var/www/cache/project/sites/cta.int.local.json /var/www/cache/project/sites/${HTTP_HOSTNAME}.json
     sed -i "s/cta\.int\.local/${HTTP_HOSTNAME}/g" /var/www/cache/project/sites/${HTTP_HOSTNAME}.json
 fi
-aws s3 sync s3://cta-pages /var/www/project/pages
+
 exec /usr/local/bin/apache2-foreground
