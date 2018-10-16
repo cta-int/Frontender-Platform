@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
-      - aws s3 sync s3://brixon-code/frontender.platform-core /tmp/frontender.platform-core
+      - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
       - ls /tmp/php-lib-scr
       - ls /tmp/frontender.platform-core
       - pip install --upgrade pip
