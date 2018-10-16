@@ -1,35 +1,143 @@
 {
-  "label": {
-    "en": "Find content: article",
-    "fr": "Find content: article"
-  },
-  "map": {
-    "id": "_id",
-    "title": "headline",
-    "description": "about",
-    "thumbnail": "lead_image.metadata.thumbnailUrl"
-  },
-  "display_options": {
-    "thumbnail": {
-      "en": "Show image",
-      "fr": "Show image"
+    "label": {
+        "en": "Find content: article",
+        "fr": "Find content: article"
     },
-    "description": {
-      "en": "Show description",
-      "fr": "Show description"
-    }
-  },
-  "display_attributes": ["description", "thumbnail", "datePublished"],
-  "controls": {
-    "type": {
-      "control": "project/model/article_type"
+    "map": {
+        "id": "_id",
+        "title": "headline",
+        "description": "about",
+        "thumbnail": "lead_image.metadata.thumbnailUrl"
     },
-    "q": {
-      "label": {
-        "en": "Article search",
-        "fr": "Article search"
-      },
-      "control": "core/text"
+    "filters": {
+        "type": {
+            "label": {
+                "en-GB": "Event Type"
+            },
+            "icon": "funnel",
+            "visualType": "icon",
+            "options": [
+                {
+                    "label": {
+                        "en-GB": "Blog"
+                    },
+                    "value": "article.blog"
+                },
+                {
+                    "label": {
+                        "en-GB": "Corporate news"
+                    },
+                    "value": "article.corporate_news"
+                },
+                {
+                    "label": {
+                        "en-GB": "Impact stories"
+                    },
+                    "value": "article.impact"
+                },
+                {
+                    "label": {
+                        "en-GB": "Background"
+                    },
+                    "value": "article.background"
+                },
+                {
+                    "label": {
+                        "en-GB": "Opinion"
+                    },
+                    "value": "article.opinion"
+                },
+                {
+                    "label": {
+                        "en-GB": "Interview"
+                    },
+                    "value": "article.interview"
+                },
+                {
+                    "label": {
+                        "en-GB": "Syndicated"
+                    },
+                    "value": "article.syndicated"
+                },
+                {
+                    "label": {
+                        "en-GB": "Review"
+                    },
+                    "value": "article.review"
+                },
+                {
+                    "label": {
+                        "en-GB": "Technical scientific"
+                    },
+                    "value": "article.technical_scientific"
+                },
+                {
+                    "label": {
+                        "en-GB": "Data report"
+                    },
+                    "value": "article.data_report"
+                },
+                {
+                    "label": {
+                        "en-GB": "Communique"
+                    },
+                    "value": "article.communique"
+                },
+                {
+                    "label": {
+                        "en-GB": "Vacancy"
+                    },
+                    "value": "article.vacancy"
+                },
+                {
+                    "label": {
+                        "en-GB": "Internship"
+                    },
+                    "value": "article.internship"
+                },
+                {
+                    "label": {
+                        "en-GB": "Call for external expert"
+                    },
+                    "value": "article.call_for_external_expert"
+                },
+                {
+                    "label": {
+                        "en-GB": "Call for tender"
+                    },
+                    "value": "article.call_for_tender"
+                },
+                {
+                    "label": {
+                        "en-GB": "Call for proposal"
+                    },
+                    "value": "article.call_for_proposal"
+                },
+                {
+                    "label": {
+                        "en-GB": "Partnership"
+                    },
+                    "value": "article.partnership"
+                },
+                {
+                    "label": {
+                        "en-GB": "Tender award notice"
+                    },
+                    "value": "article.tender_award_notice"
+                },
+                {
+                    "label": {
+                        "en-GB": "Tender highlight"
+                    },
+                    "value": "article.tender_highlight"
+                },
+                {
+                    "label": {
+                        "en-GB": "Speech"
+                    },
+                    "value": "article.speech"
+                }
+            ]
+        }
     }
-  }
 }

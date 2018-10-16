@@ -23,9 +23,9 @@ class AbstractModel extends ScrModel
             ->insert('skip', 0);
     }
 
-    public function getName() : string
+    public function getModelName() : string
     {
-        $name = parent::getName();
+        $name = parent::getModelName();
 
         return 'Channel' . ucfirst($name);
     }

@@ -11,7 +11,7 @@ trait Searchable
         $this->getState()
             ->insert('q')
             ->insert('language', $container->language->get())
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('must', [])
             ->insert('mustNot', [])
             ->insert('should', [])
@@ -31,11 +31,6 @@ trait Searchable
 
         if (isset($values['location']) && !empty($values['location'])) {
             $values['must'][] = $this->addTerm('geo', 'http://sws.geonames.org/' . $values['location'] . '/');
-        }
-
-        if (isset($values['time']) && !empty($values['time'])) {
-            $values['from'] = date('c', strtotime($values['time'], strtotime('now')));
-            $values['to'] = date('c', strtotime('now'));
         }
 
         if (isset($values['type']) && !empty($values['type'])) {

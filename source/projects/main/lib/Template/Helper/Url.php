@@ -38,7 +38,7 @@ class Url extends Helper\Url
             'channels' => 'name'
         ];
 
-        $slug_key = $slugs[$data->current()->getName()];
+        $slug_key = $slugs[$data->current()->getModelName()];
         $translator = new Translate($this->container);
         $escaping = new Escaping();
 		// Check if we have an item in pimple.

@@ -39,8 +39,8 @@ class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
         return $channel[0];
     }
 
-    public function getName() : string
+    public function getModelName() : string
     {
-        return 'Channel' . ucfirst(parent::getName());
+        return 'Channel' . ucfirst(parent::getModelName());
     }
 }

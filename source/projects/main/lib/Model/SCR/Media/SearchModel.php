@@ -16,9 +16,9 @@ class SearchModel extends ScrModel
 {
     use Searchable;
 
-    public function getName() : string
+    public function getModelName() : string
     {
-        $name = parent::getName();
+        $name = parent::getModelName();
         return 'Media' . ucfirst($name);
     }
 }

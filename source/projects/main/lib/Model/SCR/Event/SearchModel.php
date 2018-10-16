@@ -15,13 +15,38 @@ use Slim\Container;
 
 class SearchModel extends ScrModel
 {
-    use Searchable;
+    use Searchable {
+        __construct as parentConstruct;
+        setState as parentSetState;
+    }
     use Imagable;
 
-
-    public function getName() : string
+    public function __construct(Container $contianer)
     {
-        $name = parent::getName();
+        $this->parentConstruct($contianer);
+
+        $this->getState()
+            ->insert('upcoming');
+    }
+
+    public function setState(array $values)
+    {
+        if (isset($values['upcoming'])) {
+            if ($values['upcoming'] === 'true') {
+                $values['from'] = date('c');
+                $values['to'] = date('c', strtotime('+5 year'));
+            } else {
+                $values['from'] = date('c', strtotime('-5 year'));
+                $values['to'] = date('c');
+            }
+        }
+
+        return $this->parentSetState($values);
+    }
+
+    public function getModelName() : string
+    {
+        $name = parent::getModelName();
         return 'Events' . ucfirst($name);
     }
 
@@ -30,6 +55,11 @@ class SearchModel extends ScrModel
         if (strpos($this->getState()->type, 'event.') === 0 || !$this->getState()->type) {
             $container = $this->container;
             $state = $this->getState()->getValues();
+            $response = parent::fetch(true);
+
+            if ($raw) {
+                return $response;
+            }
 
             return array_map(function ($item) use ($container, $state) {
                 $event = new EventsModel($container);
@@ -37,7 +67,7 @@ class SearchModel extends ScrModel
                 $event->setData($item);
 
                 return $event;
-            }, parent::fetch(true));
+            }, $response['items']);
         }
 
         return false;

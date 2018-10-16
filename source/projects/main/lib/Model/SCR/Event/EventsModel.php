@@ -25,9 +25,9 @@ class EventsModel extends ScrModel
             ->insert('skip');
     }
 
-    public function getName() : string
+    public function getModelName() : string
     {
-        $name = parent::getName();
+        $name = parent::getModelName();
 
         return 'Event' . ucfirst($name);
     }

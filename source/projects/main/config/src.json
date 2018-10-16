@@ -208,6 +208,14 @@
                 "distance": {
                     "location": "json",
                     "type": "integer"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
                 }
             }
         },

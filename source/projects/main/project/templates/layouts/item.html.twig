@@ -56,10 +56,6 @@
         {% if model.query.must|filterArray('type', 'concept')|length %}
             <meta name="keywords" content="{{ concept.channel_concepts_to_string(model.query.must|filterArray('type', 'concept'), locale)|trim }}">
         {% endif %}
-
-    {# Medium #}
-    {% elseif medium is defined %}
-
     {% endif %}
 
 {% endblock %}
@@ -67,17 +63,12 @@
 {% block link %}
 
     {# Article #}
-    {% if model.headline|t(locales)| %}
-        <link rel="canonical" href="{{ route({'page': 'article', 'id': model._id, 'slug': model.headline|t(locales)|slugify }) }}">
-    {# Event #}
-    {% elseif event is defined %}
-        <link rel="canonical" href="{{ route({'page': 'event', 'id': event._id, 'slug': event.name|t(locales)|slugify }) }}">
-    {# Channel #}
-    {% elseif channel is defined %}
-        <link rel="canonical" href="{{ route({'page': 'channel', 'id': channel._id, 'slug': channel.name|t(locales)|slugify }) }}">
-    {# Medium #}
-    {% elseif medium is defined %}
+    {% if model.headline|t(locales) %}
+        <link rel="canonical" href="{{ route({page: 'article', id: model._id, slug: model.headline|t(locales)|slugify }) }}">
+    {% elseif model.name|t(locales) %}
+        {{dump(model.modelName)}}
 
+        <link rel="canonical" href="{{ route({page: 'event', id: model._id, slug: model.name|t(locales)|slugify }) }}">
     {% endif %}
 
 {% endblock %}

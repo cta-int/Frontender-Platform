@@ -42,7 +42,7 @@ abstract class AbstractModel implements \ArrayAccess
      *
      * @return string
      */
-    public function getName() : string
+    public function getModelName() : string
     {
         if (!$this->name) {
             $path = explode('\\', get_called_class());

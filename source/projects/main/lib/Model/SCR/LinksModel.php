@@ -28,7 +28,7 @@ class LinksModel extends ScrModel
     {
         $state = $this->getState();
 
-        $name = $state->isUnique() ? Inflector::singularize($this->getName()) : Inflector::pluralize($this->getName());
+        $name = $state->isUnique() ? Inflector::singularize($this->getModelName()) : Inflector::pluralize($this->getModelName());
 
         $method = 'get' . ucfirst($name);
 

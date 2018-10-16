@@ -122,7 +122,7 @@ class ArticlesModel extends ScrModel
                 return $label['_id'];
             }, $labels),
             'limit' => 1,
-            'language' => $this->getState()->language,
+            'language' => $this->container->language->get(),
             'recursive' => false
         ])->fetch();
         $review = $review['ArticlesSearches'];

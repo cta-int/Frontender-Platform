@@ -78,7 +78,6 @@ class ScrModel extends AbstractModel
         $state['limit'] = 1;
         $model->setState($state);
         $result = $model->fetch(true);
-        $total = 0;
 
         if (isset($result['total'])) {
             return $result['total'];
@@ -101,7 +100,7 @@ class ScrModel extends AbstractModel
             $state->limit = 100;
         }
 
-        $name = $state->isUnique() ? Inflector::singularize($this->getName()) : Inflector::pluralize($this->getName());
+        $name = $state->isUnique() ? Inflector::singularize($this->getModelName()) : Inflector::pluralize($this->getModelName());
 
         $method = 'get' . ucfirst($name);
         $stateValues = $state->getValues();
@@ -116,6 +115,10 @@ class ScrModel extends AbstractModel
 
         $response = call_user_func_array([$this->adapter, $method], [$stateValues]);
         $items = isset($response['items']) ? $response['items'] : [$response->toArray()];
+
+        if ($raw) {
+            return $response;
+        }
 
         if (count($ids) > 0) {
             $items = array_values($this->_filterItems($items, $ids));
