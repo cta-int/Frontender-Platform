@@ -14,7 +14,7 @@ phases:
 #      - apt-get update && apt-get install -y ruby2.0-dev ruby2.0=2.0.0.484-1ubuntu2.9  curl  git build-essential curl  nodejs language-pack-en-base software-properties-common python-software-properties
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-cli php7.2-curl libpcre3
+      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
       - curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
       - gem2.0 install scss_lint -v 0.56.0
      # - /usr/local/bin/composer global require "naderman/composer-aws:~0.2"
