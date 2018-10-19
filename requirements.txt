@@ -2,3 +2,5 @@ troposphere==2.0.0
 awacs==0.7.0
 cfn-encrypt==0.0.13
 cfn-datadog==0.0.11
+botocore==1.12.27
+awscli==1.16.37
