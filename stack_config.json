@@ -3,7 +3,7 @@
         "ContainerName": "scr-platform",
         "ContainerPort": "80",
         "Ecr": "597442228408.dkr.ecr.eu-central-1.amazonaws.com",
-        "EcsStack": "UAT-ecs-stateless",
+        "EcsStack": "UAT-ecs-stateful",
         "EncryptLambdaStack": "cfn-encrypt",
         "Family": "scr-platform",
         "ListenerPriority": "2",

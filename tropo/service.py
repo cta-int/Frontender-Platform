@@ -529,7 +529,7 @@ listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
            Ref("AWS::NoValue")
            )
     ],
-    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80")),
     Priority=Ref(listener_priority)
 ))
 
