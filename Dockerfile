@@ -1,6 +1,6 @@
 FROM php:7.1-apache
 ADD aws-start.sh /aws-start.sh
-RUN apt-get update && apt-get -y install libpcre3-dev python-pip && pip install awscli --upgrade && apt-get clean
+RUN apt-get update && apt-get -y install libpcre3-dev python-pip libssl-dev && pip install awscli --upgrade && apt-get clean
 RUN pecl install mongodb
 RUN pecl install oauth
 RUN chmod +x /aws-start.sh
