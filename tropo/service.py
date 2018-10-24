@@ -505,23 +505,6 @@ task_definition = t.add_resource(ecs.TaskDefinition(
 ))
 
 """
-We need new listeners
-"""
-
-# app_lb_listener = t.add_resource(elasticloadbalancingv2.Listener(
-#     "AppLbListener1",
-#     Port=Ref(container_port),
-#     Protocol="HTTP",
-#     #    LoadBalancerArn=Ref(app_lb),
-#     LoadBalancerArn=ImportValue(Sub("${EcsStack}-AppLb")),
-#     DefaultActions=[elasticloadbalancingv2.Action(
-#         Type="forward",
-#         TargetGroupArn=Ref(target_group)
-#     )]
-# ))
-
-
-"""
 Add the TargetGroup to a Listener on the ALB
  - path-pattern is given as a Parameter to this stack
 """
@@ -546,7 +529,6 @@ listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
            Ref("AWS::NoValue")
            )
     ],
-    # ListenerArn=Ref(app_lb_listener),
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80")),
     Priority=Ref(listener_priority)
 ))
@@ -572,7 +554,6 @@ listener_rule2 = t.add_resource(elasticloadbalancingv2.ListenerRule(
            Ref("AWS::NoValue")
            )
     ],
-    # ListenerArn=Ref(app_lb_listener),
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
     Priority=Ref(listener_priority)
 ))
