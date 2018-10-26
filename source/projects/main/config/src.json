@@ -392,6 +392,57 @@
                 }
             }
         },
+        "getMediaSearch": {
+            "httpMethod": "POST",
+            "uri": "/media/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
         "getArticles": {
             "httpMethod": "GET",
             "uri": "/articles",
