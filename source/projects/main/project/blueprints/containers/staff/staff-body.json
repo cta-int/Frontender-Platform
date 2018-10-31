@@ -1,0 +1,337 @@
+{
+    "fe-id": null,
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en": "Staff and Board members overview"
+    },
+    "description": {
+        "en": "Staff and Board members overview"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "containers": [
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Container header"
+                },
+                "description": {
+                    "en": "Container-header"
+                },
+                "template": "containers/global/container-header/container-header.html.twig",
+                "template_config": {
+                    "labels": {
+                        "label": {
+                            "en": "Content"
+                        },
+                        "controls": {
+                            "container_title": {
+                                "value": {
+                                    "en": "CTA Staff",
+                                    "fr": "Nos collaborateurs"
+                                },
+                                "label": {
+                                    "en": "Container title"
+                                },
+                                "control": "core/text"
+                            },
+                            "link": {
+                                "value": {
+                                    "label": {
+                                        "en": "",
+                                        "fr": ""
+                                    },
+                                    "page": "",
+                                    "id": ""
+                                },
+                                "label": {
+                                    "en": "Link"
+                                },
+                                "control": "core/route"
+                            }
+                        }
+                    },
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "wings": {
+                                "value": "wings",
+                                "control": "project/wings"
+                            },
+                            "show_margins": {
+                                "value": "",
+                                "control": "project/layout/show_margins"
+                            },
+                            "show_smaller_title": {
+                                "value": 0,
+                                "label": {
+                                    "en": "Show small title"
+                                },
+                                "control": "core/boolean"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            },
+                            "container_tag": {
+                                "value": "header",
+                                "control": "project/container_tag"
+                            }
+                        }
+                    },
+                    "containers": []
+                }
+            },
+            {
+                "fe-id": null,
+                "name": {
+                    "en": "Staff and Board members"
+                },
+                "description": {
+                    "en": "Staff and Board members"
+                },
+                "template": "containers/staff/staff-body.html.twig",
+                "template_config": {
+                    "config": {
+                        "label": {
+                            "en": "Settings"
+                        },
+                        "controls": {
+                            "leader": {
+                                "value": "",
+                                "control": "project/leader"
+                            },
+                            "leader_inside": {
+                                "value": "",
+                                "control": "project/leader_inside"
+                            },
+                            "trailer": {
+                                "value": "",
+                                "control": "project/trailer"
+                            },
+                            "trailer_inside": {
+                                "value": "",
+                                "control": "project/trailer_inside"
+                            },
+                            "divider": {
+                                "value": "",
+                                "control": "project/divider"
+                            },
+                            "container_tag": {
+                                "value": "article",
+                                "control": "project/container_tag"
+                            },
+                            "container_class": {
+                                "value": "",
+                                "control": "project/container_class"
+                            }
+                        }
+                    },
+                    "containers": [
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en": "Board"
+                            },
+                            "description": {
+                                "en": "Board container"
+                            },
+                            "template": "containers/staff/panels/board.html.twig",
+                            "template_config": {
+                                "config": {
+                                    "label": {
+                                        "en": "Settings"
+                                    },
+                                    "controls": {
+                                        "leader": {
+                                            "value": "",
+                                            "control": "project/leader"
+                                        },
+                                        "leader_inside": {
+                                            "value": "",
+                                            "control": "project/leader_inside"
+                                        },
+                                        "trailer": {
+                                            "value": "",
+                                            "control": "project/trailer"
+                                        },
+                                        "trailer_inside": {
+                                            "value": "",
+                                            "control": "project/trailer_inside"
+                                        },
+                                        "divider": {
+                                            "value": "",
+                                            "control": "project/divider"
+                                        },
+                                        "container_tag": {
+                                            "value": "article",
+                                            "control": "project/container_tag"
+                                        },
+                                        "container_class": {
+                                            "value": "",
+                                            "control": "project/container_class"
+                                        }
+                                    }
+                                },
+                                "labels": {
+                                    "label": {
+                                        "en": "Labels",
+                                        "fr": "Labels"
+                                    },
+                                    "controls": {}
+                                }
+                            }
+                        },
+                        {
+                            "fe-id": null,
+                            "name": {
+                                "en-GB": "Staff members"
+                            },
+                            "description": {
+                                "en-GB": "Staff members container"
+                            },
+                            "template": "containers/staff/panels/staff.html.twig",
+                            "template_config": {
+                                "labels": {
+                                    "label": {
+                                        "en-GB": "Labels",
+                                        "fr-FR": "Labels"
+                                    },
+                                    "controls": {
+                                        "title": {
+                                            "value": {
+                                                "en-GB": "CTA Staff",
+                                                "fr-FR": "Nos collaborateurs"
+                                            },
+                                            "label": {
+                                                "en-GB": "Container title"
+                                            },
+                                            "control": "core/text"
+                                        },
+                                        "layout": {
+                                            "value": 0,
+                                            "label": {
+                                                "en-GB": "Columns"
+                                            },
+                                            "control": "core/list",
+                                            "options": [
+                                                {
+                                                    "value": 0,
+                                                    "label": {
+                                                        "en-GB": "Double column"
+                                                    }
+                                                },
+                                                {
+                                                    "value": 1,
+                                                    "label": {
+                                                        "en-GB": "Single column"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "staff": {
+                                	"label": {
+                                		"en-GB": "Staff members"
+                                	},
+                                	"controls": {
+                                		"information": {
+                                			"value": [
+                                                {
+                                                    "name": {
+                                                        "value": {
+                                                            "en-GB": "Firstname Lastname",
+                                                            "fr-FR": "Firstname Lastname"
+                                                        },
+                                                        "label": {
+                                                            "en-GB": "Staff member name"
+                                                        }
+                                                    },
+                                                    "job_title": {
+                                                        "value": {
+                                                            "en-GB": "Director",
+                                                            "fr-FR": "Directeur"
+                                                        },
+                                                        "label": {
+                                                            "en-GB": "Job title"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": {
+                                                        "value": {
+                                                            "en-GB": "Firstname2 Lastname2",
+                                                            "fr-FR": "Firstname 2Lastname2"
+                                                        },
+                                                        "label": {
+                                                            "en-GB": "Staff member name"
+                                                        }
+                                                    },
+                                                    "job_title": {
+                                                        "value": {
+                                                            "en-GB": "Direct2or",
+                                                            "fr-FR": "Direct2eur"
+                                                        },
+                                                        "label": {
+                                                            "en-GB": "Job title"
+                                                        }
+                                                    }
+                                                }
+                                			],
+                                			"label": {
+                                				"en-GB": "Staff"
+                                			},
+                                			"control": "core/person",
+                                			"repeatable": true
+                                		}
+                                	}
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

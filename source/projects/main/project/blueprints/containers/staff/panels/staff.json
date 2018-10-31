@@ -1,0 +1,109 @@
+{
+    "fe-id": null,
+    "name": {
+        "en-GB": "Staff members"
+    },
+    "description": {
+        "en-GB": "Staff members container"
+    },
+    "template": "containers/staff/panels/staff.html.twig",
+    "template_config": {
+        "labels": {
+            "label": {
+                "en-GB": "Labels",
+                "fr-FR": "Labels"
+            },
+            "controls": {
+                "title": {
+                    "value": {
+                        "en-GB": "CTA Staff",
+                        "fr-FR": "Nos collaborateurs"
+                    },
+                    "label": {
+                        "en-GB": "Container title"
+                    },
+                    "control": "core/text"
+                },
+                "layout": {
+                    "value": 0,
+                    "label": {
+                        "en-GB": "Columns"
+                    },
+                    "control": "core/list",
+                    "options": [
+                        {
+                            "value": 0,
+                            "label": {
+                                "en-GB": "Double column"
+                            }
+                        },
+                        {
+                            "value": 1,
+                            "label": {
+                                "en-GB": "Single column"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "staff": {
+        	"label": {
+        		"en-GB": "Staff members"
+        	},
+        	"controls": {
+        		"information": {
+        			"value": [
+                        {
+                            "name": {
+                                "value": {
+                                    "en-GB": "Firstname Lastname",
+                                    "fr-FR": "Firstname Lastname"
+                                },
+                                "label": {
+                                    "en-GB": "Staff member name"
+                                }
+                            },
+                            "job_title": {
+                                "value": {
+                                    "en-GB": "Director",
+                                    "fr-FR": "Directeur"
+                                },
+                                "label": {
+                                    "en-GB": "Job title"
+                                }
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": {
+                                    "en-GB": "Firstname2 Lastname2",
+                                    "fr-FR": "Firstname 2Lastname2"
+                                },
+                                "label": {
+                                    "en-GB": "Staff member name"
+                                },
+                                "control": "core/text"
+                            },
+                            "job_title": {
+                                "value": {
+                                    "en-GB": "Direct2or",
+                                    "fr-FR": "Direct2eur"
+                                },
+                                "label": {
+                                    "en-GB": "Job title"
+                                },
+                                "control": "core/text"
+                            }
+                        }
+        			],
+        			"label": {
+        				"en-GB": "Staff"
+        			},
+        			"control": "core/person",
+        			"repeatable": true
+        		}
+        	}
+        }
+    }
+}

@@ -142,6 +142,41 @@
                 }
             }
         },
+        "getEventArticle": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}/related/articles",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "bookmarked": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "explain": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
         "getEventEvent": {
             "httpMethod": "GET",
             "uri": "/events/{id}/related/events",

@@ -9,11 +9,6 @@
 }) }}
 
 <section>
-    <header class="divider divider--top  |  wings  |  leader-inside--hero  |  trailer-inside--hero  |  container-header container-header--slim-fit">
-        <h2 class="container-header__title  |  title title--container  |  gutters">
-            {{ {'en': 'CTA staff', 'fr': "Nos collaborateurs"}|t(locales) }}
-        </h2>
-    </header>
     <div class="layout layout--reversed  |  leader--hero">
         <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer-inside--hero">
             <nav class="gutters">
@@ -28,7 +23,18 @@
             </nav>
         </div>
         <div class="panel-group  |  layout__cell  |  trailer-inside--hero" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
-            {% include "containers/staff/panels/staff.html.twig" %}
+            <section class="panel  |  wings" id="staff">
+                <h2 class="title  |  gutters">
+                    <a class="panel__trigger  |  is-heir" href="#staff">{{ labels.title|t }}</a>
+                </h2>
+                <div class="panel__body">
+                    {% for loopContainer in containers %}
+                        {% include loopContainer.template with loopContainer %}
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Implement configurable board members -->
             {% include "containers/staff/panels/board.html.twig" %}
         </div>
     </div>
