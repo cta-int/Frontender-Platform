@@ -28,6 +28,15 @@ class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
             ->insert('includeRelated', false);
     }
 
+    public function setState(array $values)
+    {
+        if (isset($values['articleType'])) {
+            $values['articleType'] = str_replace('article.', '', $values['articleType']);
+        }
+
+        return parent::setState($values);
+    }
+
     public function getPropertyChannel()
     {
         $channelModel = new ChannelsModel($this->container);
