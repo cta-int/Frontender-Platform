@@ -16,6 +16,23 @@ class SearchModel extends ArticlesModel
 {
     use Searchable;
 
+    public function __construct(\Slim\Container $container)
+    {
+        parent::__construct($container);
+
+        $this->getState()
+            ->insert('articleType');
+    }
+
+    public function setState(array $values)
+    {
+        if (isset($values['articleType'])) {
+            $values['articleType'] = str_replace('article.', '', $values['articleType']);
+        }
+
+        return parent::setState($values);
+    }
+
     public function fetch($raw = false)
     {
         if (strpos($this->getState()->type, 'article.') === 0 || !$this->getState()->type) {

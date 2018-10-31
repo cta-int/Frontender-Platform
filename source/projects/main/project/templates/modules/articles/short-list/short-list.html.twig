@@ -11,7 +11,7 @@
 <{{ config.container_tag|default('div') }} class="{{ ['gutters', config.container_class]|join('  |  ') }}">
     {% if config.shorten_to %}
         <ul class="reset | short-list">
-            {% for article in model.articles|slice(5, 11) %}
+            {% for article in model|slice(5, 11) %}
                 <li class="short-list__item">
                     {% include config.template|default('partials/article/post.html.twig') with {model: article} %}
                 </li>
