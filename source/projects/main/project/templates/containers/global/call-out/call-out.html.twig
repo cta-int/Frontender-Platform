@@ -11,7 +11,6 @@
             <div class="layout--narrow">
                 <div class="story-line  |  leader--small">
                     {% for story in stories.stories %}
-                    {{ loop.index }}
                         <picture class="story story--horizon{{ loop.index is same as(1) ? ' is-gt-medium-handheld' }}{{ loop.index is same as(2) ? ' wings' }}{{ loop.index is same as(3) ? ' is-gt-small-desktop' }}">
                             <source type="image/svg+xml" srcset="/images/stories/{{ story.icon }}.svg">
                             <img src="/images/stories/{{ story.icon }}.png" alt="">
