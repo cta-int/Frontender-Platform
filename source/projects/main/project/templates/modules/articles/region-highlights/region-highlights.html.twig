@@ -19,7 +19,7 @@
 
 <div class="panel-group" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
     {% for loopContainer in containers %}
-        <section class="panel" id="{{ container.labels.title|t(locales) }}">
+        <section class="panel" id="{{ loopContainer.labels.title|t(locales) }}">
             {% include loopContainer.template with {model: loopContainer.model|first.article} %}
         </section>
     {% endfor %}
