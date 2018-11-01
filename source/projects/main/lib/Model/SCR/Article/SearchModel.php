@@ -14,11 +14,14 @@ use Prototype\Model\SCR\ArticlesModel;
 
 class SearchModel extends ArticlesModel
 {
-    use Searchable;
+    use Searchable {
+        __construct as public traitConstruct;
+        setState as public traitSetState;
+    }
 
     public function __construct(\Slim\Container $container)
     {
-        parent::__construct($container);
+        $this->traitConstruct($container);
 
         $this->getState()
             ->insert('articleType');
@@ -27,10 +30,11 @@ class SearchModel extends ArticlesModel
     public function setState(array $values)
     {
         if (isset($values['articleType'])) {
-            $values['articleType'] = str_replace('article.', '', $values['articleType']);
+            $values['type'] = $values['articleType'];
+            unset($values['articleType']);
         }
 
-        return parent::setState($values);
+        $this->traitSetState($values);
     }
 
     public function fetch($raw = false)
