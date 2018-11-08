@@ -14,7 +14,7 @@
         </div>
         <article class="tile__body  |  gutters  |  leader  |  trailer">
             <div class="trailer--small icon icon--theme icon--leaf"></div>
-            <h2 class="title">
+            <h2 class="heading">
                 <a class="is-heir" href="{#{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) }#}">{{ article.headline|t(locales) }}</a>
             </h2>
             <p class="post__intro">{{ article.about|t(locales) }}</p>

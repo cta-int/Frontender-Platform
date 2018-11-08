@@ -20,7 +20,7 @@
                 {% if show_publication_label|default(0) %}
             	    [show_publication_label]
                 {% endif %}
-                <h2 class="title">
+                <h2 class="heading">
                     <a class="anchor" href="{{ route({'page': 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
                         {{ model.headline }}
                     </a>

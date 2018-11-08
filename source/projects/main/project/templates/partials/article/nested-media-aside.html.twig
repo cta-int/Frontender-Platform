@@ -11,7 +11,7 @@
     {% if show_publication_date|default(1) %}
 	    {{ date.article(model.datePublished) }}
     {% endif %}
-    <h2 class="title">
+    <h2 class="heading">
       <a class="anchor" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
         {{ model.headline }}
       </a>

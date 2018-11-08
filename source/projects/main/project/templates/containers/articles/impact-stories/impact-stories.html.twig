@@ -35,8 +35,8 @@
                     {% for container in containers %}
                         <li class="short-list__item">
                             <div class="trailer--tiny">{{ date.article(container.model.datePublished) }}</div>
-                            <a href="{{ route({'page': container.model.path_prefix ~ 'article', slug: container.model.headline|t(locales)|slugify, 'id': container.model._id}) }}">
-                                <h2 class="block-link">{{ container.model.headline }}</h2>
+                            <a class="anchor--shy" href="{{ route({'page': container.model.path_prefix ~ 'article', slug: container.model.headline|t(locales)|slugify, 'id': container.model._id}) }}">
+                                <h2 class="heading">{{ container.model.headline }}</h2>
                             </a>
                         </li>
                     {% endfor %}
