@@ -1,6 +1,6 @@
+{% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-
-<div class="wing--right {{ [container_class]|join('  |  ') }}">
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if labels.title %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
     {% endif %}
@@ -26,4 +26,4 @@
         <!-- End for event in related events -->
         {% endfor %}
     </ul>
-</div>
+    </{{ config.container_tag|default('div') }}>
