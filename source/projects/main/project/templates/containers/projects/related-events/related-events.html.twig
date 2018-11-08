@@ -1,0 +1,29 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="wing--right {{ [container_class]|join('  |  ') }}">
+    {% if labels.title %}
+        <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
+
+    <ul class="list list--inline  |  leader  |  trailer">
+            <li>
+            <a class="tab  |  meta is-current" href="#All-events">All events</a>
+        </li>
+            <li>
+            <a class="tab  |  meta" href="#Past-events">Past events</a>
+        </li>
+            <li>
+            <a class="tab  |  meta" href="#Upcoming-events">Upcoming events</a>
+        </li>
+    </ul>
+
+    <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
+        {% for event in model.events %}
+        <!-- For event in related events -->
+            <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
+            </li>
+        <!-- End for event in related events -->
+        {% endfor %}
+    </ul>
+</div>
