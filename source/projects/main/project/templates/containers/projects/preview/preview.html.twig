@@ -7,7 +7,7 @@
 
 <{{ config.container_tag|default('article') }} {{ helper.class_attribute(config, 'project-preview  |  layout layout--align-end layout--even  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="project-preview__body  |  layout__cell layout__cell--aside">
-        <h2 class="project-preview__title  |  title"><a class="is-heir" href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">{{ model.name }}</a></h2>
+        <h2 class="project-preview__title  |  heading"><a class="is-heir" href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">{{ model.name }}</a></h2>
         <p class="project-preview__intro">{{ model.description|length > 300 ? model.description|striptags|slice(0, 300) ~ '...' : model.description|striptags }}</p>
 
         <div class="leader">

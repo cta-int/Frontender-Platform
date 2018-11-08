@@ -12,7 +12,7 @@
           </div>
       </div>
       <div class="stack__unit">
-        <h2 class="title title">{{ event.name }}</h2>
+        <h2 class="heading">{{ event.name }}</h2>
         <div class="leader--tiny">{{ date.event_short(event.startDate, event.endDate) }}</div>
         {% if event.location.address.addressLocality %}
           <div class="body--whisper  |  leader--tiny">{{ event.location.address.addressLocality }}, {{ event.location.address.addressRegion }}, {{ event.location.address.addressCountry }}</div>

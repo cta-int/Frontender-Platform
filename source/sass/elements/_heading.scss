@@ -19,6 +19,7 @@ Styleguide 3.2
     font-weight: $font-weight--meta;
     font-size: to-unit(16px);
     line-height: to-unit(rhythm(8), 1, 18px);
+    &,
     a &,
     & a {
         text-decoration: none;
