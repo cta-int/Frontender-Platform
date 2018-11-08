@@ -69,7 +69,6 @@ Styleguide 3.3
     }
   }
   &--hero,
-  &--tile,
   &--event {
     @include title-18px();
   }
@@ -82,7 +81,6 @@ Styleguide 3.3
   }
   @include breakpoint($gt-medium-handheld) {
     &--hero,
-    &--tile,
     &--event {
       @include title-24px();
     }
