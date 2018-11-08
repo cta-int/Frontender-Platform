@@ -116,7 +116,7 @@ class ArticlesModel extends ScrModel
     {
         // We only come here if we have labels.
         $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-        $review = $searchModel->setState([
+        $searchModel->setState([
             'type' => 'article.issue',
             'label' => array_map(function ($label) {
                 return $label['_id'];
@@ -124,7 +124,8 @@ class ArticlesModel extends ScrModel
             'limit' => 1,
             'language' => $this->container->language->get(),
             'recursive' => false
-        ])->fetch();
+        ]);
+        $review = $searchModel->fetch();
         $review = $review['ArticlesSearches'];
 
 		// Do a count just in case.
