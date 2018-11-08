@@ -7,6 +7,7 @@ from troposphere import (
 from cfn_encrypt import Encrypt, EncryptionContext, SecureParameter
 import cfn_datadog
 from awacs.s3 import ARN as S3_ARN
+
 t = NCTemplate()
 
 t.add_description("scr-platform service")
@@ -85,6 +86,13 @@ listener_priority = t.add_parameter(Parameter(
     Description="Listener Rule Priority, must be unique across listeners",
     Type="Number",
     Default="10"
+))
+
+listener_priority2 = t.add_parameter(Parameter(
+    "ListenerPriority2",
+    Description="Listener Rule Priority, must be unique across listeners",
+    Type="Number",
+    Default="20"
 ))
 
 network_stack = t.add_parameter(Parameter(
@@ -253,11 +261,11 @@ task_role = t.add_resource(iam.Role(
                             )
                         ]
                     ),
-                    
+
                     Statement(
                         Effect=Allow,
                         Action=[
-                            Action("s3","*")
+                            Action("s3", "*")
                         ],
                         Resource=[
                             S3_ARN("cta-pages"),
@@ -558,14 +566,34 @@ listener_rule2 = t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=Ref(listener_priority)
 ))
 
+If(service_host_condition, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "ListenerRule3",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=[Join("", ["www.", Ref(service_host)])]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=Ref(listener_priority2)
+    )
+))
+
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
 sg_alb_public_ingress_rules443 = {}
-for az in ["A","B","C"]:
+for az in ["A", "B", "C"]:
     sg_alb_public_ingress_rules80[az] = t.add_resource(
         ec2.SecurityGroupIngress(
-            "CtaPlatformIngressRule"+az,
-            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic"+az)), "32"]),
+            "CtaPlatformIngressRule" + az,
+            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
             IpProtocol="6",
             FromPort=80,
             ToPort=80,
@@ -574,8 +602,8 @@ for az in ["A","B","C"]:
     )
     sg_alb_public_ingress_rules443[az] = t.add_resource(
         ec2.SecurityGroupIngress(
-            "CtaPlatformIngressRuleSsl"+az,
-            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic"+az)), "32"]),
+            "CtaPlatformIngressRuleSsl" + az,
+            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
             IpProtocol="6",
             FromPort=443,
             ToPort=443,
