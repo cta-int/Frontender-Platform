@@ -3,10 +3,9 @@ Title [REVIEW]
 
 Titles are different from headings. They are used in title and headline blocks and story lists. If you want to style an article heading, use the heading class.
 
-.title - This smaller headline is used in story lists
-.title.title--lead - Larger headline
-.title.title--tile - In between --lead and --headline
-.title.title--headline - This smaller headline is used in story lists
+.title - This smaller title is used in story lists
+.title.title--lead - Larger title
+.title.title--tile - In between --lead and --title
 .title.title--section - Extra margin top and bottom
 .title.title--sub-section - About us small title
 .title.title--apropos -  Apropos title
@@ -71,7 +70,6 @@ Styleguide 3.3
   }
   &--hero,
   &--tile,
-  &--headline,
   &--event {
     @include title-18px();
   }
@@ -85,7 +83,6 @@ Styleguide 3.3
   @include breakpoint($gt-medium-handheld) {
     &--hero,
     &--tile,
-    &--headline,
     &--event {
       @include title-24px();
     }
@@ -105,16 +102,10 @@ Styleguide 3.3
     &--lead {
       @include title-18px();
     }
-    &--headline {
-      @include title-30px();
-    }
   }
   @include breakpoint($gt-medium-desktop) {
     &--filter {
       @include meta-12px();
-    }
-    &--headline {
-      @include title-48px();
     }
   }
   @include breakpoint($gt-large-desktop) {

@@ -14,11 +14,18 @@ Styleguide 3.2
 */
 
 .heading {
-    margin-top: rhythm(6);
+    // margin-top: rhythm(6);
     font-family: $font-family--meta;
-    font-weight: 600;
+    font-weight: $font-weight--meta;
     font-size: to-unit(18px);
     line-height: to-unit(rhythm(8), 1, 18px);
+    a &,
+    & a {
+        text-decoration: none;
+    }
+    &--hero {
+        @include title-18px();
+    }
     &--sub {
         font-size: to-unit(15px);
         line-height: to-unit(rhythm(7), 1, 15px);
@@ -26,10 +33,23 @@ Styleguide 3.2
     &--alternate {
         font-weight: 400;
     }
+    // &--snug {
+    //     margin-top: 0;
+    // }
+    @include breakpoint($gt-medium-handheld) {
+        &--hero {
+          @include title-24px();
+        }
+    }
     @include breakpoint($gt-small-desktop) {
-        margin-top: rhythm(16);
+        // margin-top: rhythm(16);
         &--sub {
             margin-top: rhythm(10);
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        &--hero {
+          @include title-48px();
         }
     }
 }
