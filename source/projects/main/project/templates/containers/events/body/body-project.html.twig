@@ -70,15 +70,15 @@
                 <div class="wings">
                     <h2 class="title title--section  |  gutters">{{ {'en': 'Read more', 'fr': 'En savoir plus'}|t }}</h2>
                     {% for article in model.similar.articles|slice(0,1) %}
-                        <div class="layout layout--even  |  leader">
-                            <div class="layout__cell  |  gutters">
+                        <div class="wing--right  |  grid  |  leader">
+                            <div class="grid__cell  |  gutters">
                                 <div class="post__media">
                                     <a class="anchor anchor--shy" href="{{ route({page: article.path_prefix ~ 'article', slug: article.headline|t|slugify, id: article._id}) }}">
                                         {{ image.post(article.link.mediaObject|lead) }}
                                     </a>
                                 </div>
                             </div>
-                            <div class="layout__cell  |  gutters">
+                            <div class="grid__cell  |  gutters">
                                 {{ date.article(article.datePublished) }}
                                 <h3 class="title  |  anchor--reset">
                                     <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: article.path_prefix ~ 'article', slug: article.headline|t|slugify, id: article._id}) }}">
@@ -88,8 +88,8 @@
                             </div>
                         </div>
                     {% endfor %}
-                    <ul class="reset  |  grid grid--stories">
-                        {% for article in event.similar.articles|slice(1,4) %}
+                    <ul class="reset  |  grid  |  wing--right">
+                        {% for article in model.similar.articles|slice(1,4) %}
                             <li class="grid__cell  |  leader  |  gutters">
                                 {% include "partials/article/post.html.twig" with {'show_lead_image': 0, 'show_stand_first': 0, 'show_read_more': 0} %}
                             </li>
@@ -102,7 +102,7 @@
         <div class="grid__cell  |  gutters  |  leader leader-inside  |  trailer  |  divider divider--top">
             <h2 class="title title--section">{{ {'en': 'Featured publication', 'fr': 'Featured publication'}|t(locales) }}</h2>
 
-            <!-- Temporary publication -->
+            <!-- Temporary publication. Select publication using Frontender lookup -->
             <article class="media  |  publication--wrapper  |  trailer  |  leader">
                 <div class="media__figure">
                     <div class="publication">
@@ -125,7 +125,7 @@
                     PDF 120MB
                 </div>
             </a>
-            <!-- END:: Temporary publication -->
+            <!-- END:: Temporary publication. Select publication using Frontender lookup -->
         </div>
 
         {% if model.link.mediaObject | findType('file') | length > 0 %}
@@ -146,18 +146,26 @@
                 <h4 class="title  |  meta  |  trailer--normal">{{ 'Funding partners'|t(locales) }}</h4>
                 {% for sponsor in model.sponsor %}
                     <div class="trailer--small">
-                        <div class="is-center  |  block-link">
-                            <a href="{{ sponsor.website }}" target="_blank">{{ sponsor.name|t(locales) }}</a>
+                        <div class="is-center">
+                            {% if sponsor.website|length > 0 %}
+                                <a class="block-link block-link--theme" href="{{ sponsor.website }}" target="_blank">{{ sponsor.name|t(locales) }}</a>
+                            {% else %}
+                                <p class="block-link">{{ sponsor.name|t(locales) }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
             {% endif %}
             {% if model.organizer | length > 0 %}
-                <h4 class="title  |  meta  |  trailer--normal">{{ 'Implementing partners'|t(locales) }}</h4>
+                <h4 class="title  |  meta  |  trailer--normal  |  leader">{{ 'Implementing partners'|t(locales) }}</h4>
                 {% for organizer in model.organizer %}
                     <div class="trailer--small">
-                        <div class="is-center  |  block-link">
-                            <a href="{{ organizer.website }}" target="_blank">{{ organizer.name|t(locales) }}</a>
+                        <div class="is-center">
+                            {% if sponsor.website|length > 0 %}
+                                <a class="block-link block-link--theme" href="{{ organizer.website }}" target="_blank">{{ organizer.name|t(locales) }}</a>
+                            {% else %}
+                                <p class="block-link">{{ organizer.name|t(locales) }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
