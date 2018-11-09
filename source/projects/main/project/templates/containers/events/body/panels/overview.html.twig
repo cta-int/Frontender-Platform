@@ -130,7 +130,7 @@
                         {# Show everything except the projects. #}
                         {% for model in model.related.events|filterArray('type', 'Project', true) %}
                             <li class="leader--small  |  leader--small">
-                                <a href="{{ route({page: 'event', 'id': model._id}) }}">
+                                <a href="{{ route({page: model.path, 'id': model._id}) }}">
                                     {{ model.name|t(locales) }}
                                 </a>
                             </li>
