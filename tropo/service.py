@@ -563,7 +563,7 @@ listener_rule2 = t.add_resource(elasticloadbalancingv2.ListenerRule(
            )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-    Priority=Ref(listener_priority)
+    Priority=Ref(listener_priority2)
 ))
 
 If(service_host_condition, t.add_resource(
