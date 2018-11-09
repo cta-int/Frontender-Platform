@@ -584,7 +584,7 @@ If(service_host_condition, t.add_resource(
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
         Priority=Ref(listener_priority2)
     )
-))
+), Ref("AWS::NoValue"))
 
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
