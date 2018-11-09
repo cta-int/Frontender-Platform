@@ -115,7 +115,7 @@
                     <ul class="reset">
                         {% for model in model.related.articles %}
                             <li class="leader--small  |  leader--small">
-                                <a href="{{ route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                                <a href="{{ route({page: model.path, slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
                                     {{ model.headline|t(locales) }}
                                 </a>
                             </li>

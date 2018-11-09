@@ -5,7 +5,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-{% set article_link = route({page: model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, id: model._id}) %}
+{% set article_link = route({page: model.path, slug: model.headline|t(locales)|slugify, id: model._id}) %}
 
 <div class="post">
     {% if config.show_lead_image %}
