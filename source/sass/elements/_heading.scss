@@ -18,7 +18,7 @@ Styleguide 3.2
     font-family: $font-family--meta;
     font-weight: $font-weight--meta;
     font-size: to-unit(16px);
-    line-height: to-unit(rhythm(8), 1, 18px);
+    line-height: 1.225;
     &,
     a &,
     & a {
