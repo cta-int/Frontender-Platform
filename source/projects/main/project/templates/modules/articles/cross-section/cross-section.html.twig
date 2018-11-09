@@ -1,9 +1,14 @@
-{% include "partials/article/post-hero.html.twig" with {model: model|first} %}
+{% import "macros/template.html.twig" as helper %}
 
-<{{ config.container_tag|default('div') }} class="{{ ['grid grid--posts  |  leader--hero  |  wing--right', container_class]|join('  |  ') }}">
-    {% for article in model|slice(1, 4) %}
-        <div class="grid__cell  |  gutters">
-            {% include "partials/article/post.html.twig" with {model: article} %}
-        </div>
-    {% endfor %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+    {% include "partials/article/post-hero.html.twig" with {model: model|first} %}
+    <div class="grid grid--posts  |  leader--hero  |  wing--right">
+        {% for article in model|slice(1, 4) %}
+            <div class="grid__cell  |  gutters">
+                {% include "partials/article/post.html.twig" with {model: article} %}
+            </div>
+        {% endfor %}
+    </div>
+
 </{{ config.container_tag|default('div') }}>

@@ -4,41 +4,46 @@
 {% set container_id = "tail-" ~ random() %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
 {# include "modules/looper/looper.html.twig" #}
-{% if labels.title|t(locales)|default('')|length %}
-    <h2 class="title title--section gutters trailer">{{ labels.title|t(locales) }}</h2>
-{% endif %}
-<{{ config.container_tag|default('div') }} class="{{ ['gutters', config.container_class]|join('  |  ') }}">
-    {% if config.shorten_to %}
-        <ul class="reset | short-list">
-            {% for article in model|slice(5, 11) %}
-                <li class="short-list__item">
-                    {% include config.template|default('partials/article/post.html.twig') with {model: article} %}
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="tail" id="{{ container_id }}">
-            <ul class="tail__body  |  reset  |  short-list  |  fx">
-                {% for article in model | slice(5, config.shorten_to) %}
+    {% if labels.title|t(locales)|default('')|length %}
+        <h2 class="title title--section gutters trailer">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
+    <div class="gutters">
+        {% if config.shorten_to %}
+            <ul class="reset | short-list">
+                {% for article in model|slice(5, 11) %}
                     <li class="short-list__item">
-                        {% include config.template|default('partials/article/post.html.twig') with {mode: article} %}
+                        {% include config.template|default('partials/article/post.html.twig') with {model: article} %}
                     </li>
                 {% endfor %}
             </ul>
-            <a href="#{{ container_id }}" data-toggle="#{{ container_id }}" data-prevent-scroll>
-                <span class="tail__lengthen  |  meta">{{ 'See more'|t(locales) }}</span>
-            </a>
-            <a href="#{{ container_id }}" data-toggle="#{{ container_id }}" data-prevent-scroll>
-                <span class="tail__shorten  |  meta">{{ 'See less'|t(locales) }}</span>
-            </a>
-        </div>
-    {% else %}
-        <ul class="reset  |  short-list">
-            {% for article in model|slice(5) %}
-                <li class="short-list__item">
-                    {% include config.template|default('partials/article/post.html.twig') with {model: article} %}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+            <div class="tail" id="{{ container_id }}">
+                <ul class="tail__body  |  reset  |  short-list  |  fx">
+                    {% for article in model | slice(5, config.shorten_to) %}
+                        <li class="short-list__item">
+                            {% include config.template|default('partials/article/post.html.twig') with {mode: article} %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="#{{ container_id }}" data-toggle="#{{ container_id }}" data-prevent-scroll>
+                    <span class="tail__lengthen  |  meta">{{ 'See more'|t(locales) }}</span>
+                </a>
+                <a href="#{{ container_id }}" data-toggle="#{{ container_id }}" data-prevent-scroll>
+                    <span class="tail__shorten  |  meta">{{ 'See less'|t(locales) }}</span>
+                </a>
+            </div>
+        {% else %}
+            <ul class="reset  |  short-list">
+                {% for article in model|slice(5) %}
+                    <li class="short-list__item">
+                        {% include config.template|default('partials/article/post.html.twig') with {model: article} %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </{{ config.container_tag|default('div') }}>
