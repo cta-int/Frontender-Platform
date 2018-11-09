@@ -126,6 +126,15 @@ class EventsModel extends ScrModel
         ];
     }
 
+    public function getPropertyPath() : string
+    {
+        if ($this['type'] === 'Project') {
+            return 'project';
+        }
+
+        return parent::getPropertyPath();
+    }
+
     public function getPropertyTheme()
     {
         if ($this['type'] === 'Project') {

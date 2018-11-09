@@ -120,9 +120,7 @@ class ArticlesModel extends ScrModel
         $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
         $searchModel->setState([
             'type' => 'article.issue',
-            'label' => array_map(function ($label) {
-                return $label['_id'];
-            }, $this['link']['label']),
+            'label' => array_column($this['link']['label'], '_id'),
             'limit' => 1,
             'language' => $this->container->language->get(),
             'recursive' => false
@@ -135,34 +133,6 @@ class ArticlesModel extends ScrModel
         }
 
         return array_shift($review);
-    }
-
-    public function getPropertyPath_prefix()
-    {
-        $routes = $this->getRoutes();
-        if (!count($routes)) {
-            return false;
-        }
-
-        if (array_key_exists('link', $article) && count($article['link']['label'])) {
-            $links = [];
-
-            foreach ($article['link']['label'] as $link) {
-                $links[$link['_id']] = $link;
-            }
-
-            $intersect = array_intersect_key($routes, $links);
-            if (!count($intersect)) {
-                return $article;
-            }
-
-            $route = array_shift($intersect);
-
-			// Get the first intersection.
-            return $route['path'] . '/';
-        }
-
-        return false;
     }
 
     private function getPropertyRoutes()
