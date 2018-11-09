@@ -67,35 +67,33 @@
     <div class="layout__cell layout__cell--aside  |  wings">
         {% if model.similar.articles|length > 0 %}
             <div class="grid__cell  |  gutters  |  trailer  |  leader">
-                <div class="wings">
-                    <h2 class="title title--section  |  gutters">{{ {'en': 'Read more', 'fr': 'En savoir plus'}|t }}</h2>
-                    {% for article in model.similar.articles|slice(0,1) %}
-                        <div class="wing--right  |  grid  |  leader">
-                            <div class="grid__cell  |  gutters">
-                                <div class="post__media">
-                                    <a class="anchor anchor--shy" href="{{ route({'page': article.path, 'slug': article.headline|t|slugify, id: article._id}) }}">
-                                        {{ image.post(article.link.mediaObject|lead) }}
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="grid__cell  |  gutters">
-                                {{ date.article(article.datePublished) }}
-                                <h3 class="title  |  anchor--reset">
-                                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t|slugify, id: article._id}) }}">
-                                        {{ article.headline }}
-                                    </a>
-                                </h3>
+                <h2 class="title title--section">{{ {'en': 'Read more', 'fr': 'En savoir plus'}|t(locales) }}</h2>
+                {% for article in model.similar.articles|slice(0,1) %}
+                    <div class="wing--right  |  grid  |  leader">
+                        <div class="grid__cell">
+                            <div class="post__media">
+                                <a class="anchor anchor--shy" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                    {{ image.post(article.link.mediaObject|lead) }}
+                                </a>
                             </div>
                         </div>
+                        <div class="grid__cell">
+                            {{ date.article(article.datePublished) }}
+                            <h3 class="heading  |  anchor--reset">
+                                <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                    {{ article.headline }}
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                {% endfor %}
+                <ul class="reset  |  grid  |  wing--right">
+                    {% for article in model.similar.articles|slice(1,4) %}
+                        <li class="grid__cell  |  leader">
+                            {% include "partials/article/post.html.twig" with {'show_lead_image': 0, 'show_stand_first': 0, 'show_read_more': 0, 'show_publication': 0, model: article} %}
+                        </li>
                     {% endfor %}
-                    <ul class="reset  |  grid  |  wing--right">
-                        {% for article in model.similar.articles|slice(1,4) %}
-                            <li class="grid__cell  |  leader  |  gutters">
-                                {% include "partials/article/post.html.twig" with {'show_lead_image': 0, 'show_stand_first': 0, 'show_read_more': 0} %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                </ul>
             </div>
         {% endif %}
 
