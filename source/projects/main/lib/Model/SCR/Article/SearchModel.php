@@ -39,25 +39,21 @@ class SearchModel extends ArticlesModel
 
     public function fetch($raw = false)
     {
-        if (strpos($this->getState()->type, 'article.') === 0 || !$this->getState()->type) {
-            $container = $this->container;
-            $state = $this->getState()->getValues();
-            $response = parent::fetch(true);
+        $container = $this->container;
+        $state = $this->getState()->getValues();
+        $response = parent::fetch(true);
 
-            if ($raw) {
-                return $response;
-            }
-
-            return array_map(function ($item) use ($container, $state) {
-                $article = new ArticlesModel($container);
-                $article->setState($state);
-                $article->setData($item);
-
-                return $article;
-            }, $response['items']);
+        if ($raw) {
+            return $response;
         }
 
-        return false;
+        return array_map(function ($item) use ($container, $state) {
+            $article = new ArticlesModel($container);
+            $article->setState($state);
+            $article->setData($item);
+
+            return $article;
+        }, $response['items']);
     }
 
     public function getModelName() : string
