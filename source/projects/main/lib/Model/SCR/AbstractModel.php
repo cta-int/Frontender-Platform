@@ -13,6 +13,7 @@ use Prototype\Model\State\State;
 use Frontender\Core\Object\ObjectArray;
 use Prototype\Model\Traits\Translatable;
 use Pimple\Container;
+use Doctrine\Common\Inflector\Inflector;
 
 abstract class AbstractModel implements \ArrayAccess
 {
@@ -136,8 +137,9 @@ abstract class AbstractModel implements \ArrayAccess
         }
     }
 
-    public function getPropertyPath()
+    public function getPropertyPath() : string
     {
-        // Default
+        // By default we will return the simple model name itself.
+        return Inflector::singularize($this->getModelName());
     }
 }
