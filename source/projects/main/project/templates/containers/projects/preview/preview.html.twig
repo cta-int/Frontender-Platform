@@ -1,7 +1,7 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
-{% set resource_route = route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) %}
+{% set resource_route = route({page: model.path, slug: model.name|t(locales)|slugify, id: model._id}) %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
