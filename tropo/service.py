@@ -541,34 +541,9 @@ listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=Ref(listener_priority)
 ))
 
-listener_rule2 = t.add_resource(elasticloadbalancingv2.ListenerRule(
-    "ListenerRule2",
-    Actions=[
-        elasticloadbalancingv2.Action(
-            TargetGroupArn=Ref(target_group),
-            Type="forward"
-        )
-    ],
-    Conditions=[
-        elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path)]
-        ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Ref(service_host)]
-           ),
-           Ref("AWS::NoValue")
-           )
-    ],
-    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-    Priority=Ref(listener_priority2)
-))
-
 If(service_host_condition, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "ListenerRule3",
+        "ListenerRule2",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
