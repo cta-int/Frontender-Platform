@@ -91,3 +91,17 @@ Styleguide 4.40
 		width: rhythm(40);
 	}
 }
+
+.publication-download {
+	display: inline-flex;
+	border: 1px solid rgba($black, .26);
+	&__item {
+		@extend %meta-text;
+		padding: rhythm(3) rhythm(5);
+		font-weight: 400;
+	}
+	.publication-download__item + .publication-download__item {
+		border-left: 1px solid rgba($black, .26);
+		color: #BDBDBD;
+	}
+}

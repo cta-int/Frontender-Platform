@@ -66,8 +66,6 @@
     {% if model.headline|t(locales) %}
         <link rel="canonical" href="{{ route({page: 'article', id: model._id, slug: model.headline|t(locales)|slugify }) }}">
     {% elseif model.name|t(locales) %}
-        {{dump(model.modelName)}}
-
         <link rel="canonical" href="{{ route({page: 'event', id: model._id, slug: model.name|t(locales)|slugify }) }}">
     {% endif %}
 

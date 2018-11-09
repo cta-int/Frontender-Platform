@@ -142,6 +142,41 @@
                 }
             }
         },
+        "getEventArticle": {
+            "httpMethod": "GET",
+            "uri": "/events/{id}/related/articles",
+            "responseModel": "json",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                },
+                "bookmarked": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "explain": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "false"
+                },
+                "language": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "en"
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
         "getEventEvent": {
             "httpMethod": "GET",
             "uri": "/events/{id}/related/events",
@@ -342,6 +377,57 @@
             }
         },
         "getMediaSearches": {
+            "httpMethod": "POST",
+            "uri": "/media/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getMediaSearch": {
             "httpMethod": "POST",
             "uri": "/media/search",
             "responseModel": "json",

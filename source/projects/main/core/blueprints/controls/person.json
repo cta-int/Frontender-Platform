@@ -1,0 +1,31 @@
+{
+    "value": {
+        "name": {
+            "en": "Firstname lastname",
+            "fr": "Firstname lastname"
+        },
+        "job_title": {
+            "en": "Job Title",
+            "fr": "Job Title"
+        }
+    },
+    "label": {
+        "en": "Staff"
+    },
+    "type": "compound",
+    "controls": {
+        "name": {
+            "label": {
+                "en": "Name"
+            },
+            "control": "core/text"
+        },
+        "job_title": {
+            "label": {
+                "en": "Job title"
+            },
+            "control": "core/text"
+        }
+    },
+    "control": "core/abstract"
+}
