@@ -9,6 +9,7 @@
 namespace Prototype\Model\SCR\Event;
 
 use Prototype\Model\SCR\ScrModel;
+use Prototype\Model\SCR\EventsModel;
 use Prototype\Model\Traits\Imagable;
 use Prototype\Model\Traits\Searchable;
 use Slim\Container;
