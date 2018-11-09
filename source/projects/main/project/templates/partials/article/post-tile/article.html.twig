@@ -9,13 +9,13 @@
         <div class="tile__head media media--middle">
             <p class="meta  |  gutters media__body media__stretcher">cta.int</p>
             {% for label in article.analysis.agrovoc.concepts|slice(0, 1) %}
-                <a class="tile__label  |  label  |  media__figure" href="{#{ route({'page': 'search'}) ~ '?concepts[]=' }#}{{ label._id }}">{{ label.label|t(locales) }}</a>
+                <a class="tile__label  |  label  |  media__figure" href="{{ route({page: 'search'}) ~ '?concepts[]=' }}{{ label._id }}">{{ label.label|t(locales) }}</a>
             {% endfor %}
         </div>
         <article class="tile__body  |  gutters  |  leader  |  trailer">
             <div class="trailer--small icon icon--theme icon--leaf"></div>
             <h2 class="heading">
-                <a class="is-heir" href="{#{ route({page: model.path, slug: model.headline|t(locales)|slugify, id: model._id}) }#}">{{ article.headline|t(locales) }}</a>
+                {{ article.headline|t(locales) }}
             </h2>
             <p class="post__intro">{{ article.about|t(locales) }}</p>
         </article>
