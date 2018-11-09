@@ -85,7 +85,7 @@
                                     </figcaption>
                                 </figure>
                             </a>
-                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': 'ictupdate/issue', 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
+                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': issue.path, 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
                             {% if issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0 %}
                                 <div class="body--align-center">
                                     <a class="meta" href="{{ issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>

@@ -9,7 +9,7 @@
             <ul class="reset">
                 {% if query.topic_filter %}
                     {% for modelItem in group %}
-                        {% set link = route({'page': model.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
+                        {% set link = route({'page': modelItem.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
                         <li class="trailer--large">
                             <a class="anchor--shy" href="{{ link }}">
                                 {{ modelItem.name|t(locales) }}
@@ -18,7 +18,7 @@
                     {% endfor %}
                 {% else %}
                     {% for modelItem in group|slice(0, config.show_max) %}
-                        {% set link = route({'page': model.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
+                        {% set link = route({'page': modelItem.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
                         <li class="trailer--large">
                             <a class="anchor--shy" href="{{ link }}">
                                 {{ modelItem.name|t(locales) }}
