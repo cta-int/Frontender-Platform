@@ -4,7 +4,7 @@
     <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
 {% endif %}
 
-{% for article in article %}
+{% for article in model.article %}
     {% include "modules/serp/serp-articles/types/" ~ article.articleType|default('champion') ~ ".html.twig" with {article: article} %}
 {% endfor %}
 

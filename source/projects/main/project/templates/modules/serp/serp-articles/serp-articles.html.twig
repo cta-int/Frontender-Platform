@@ -3,13 +3,13 @@
 {% if 'article' in query.type or not query.type %}
     <section class="trailer--giant">
         <h2 class="title title--section  |  fld--label  |  leader  |  trailer  |  gutters">
-            {% if article_total == 1 %}
-                {{ article_total }} {{ 'Result in articles'|t(locales) }}
+            {% if model.articleTotal == 1 %}
+                {{ model.articleTotal }} {{ 'Result in articles'|t(locales) }}
             {% else %}
-                {{ article_total }} {{ 'Results in articles'|t(locales) }}
+                {{ model.articleTotal }} {{ 'Results in articles'|t(locales) }}
             {% endif %}
         </h2>
-        {% if article_total > 0 %}
+        {% if model.articleTotal > 0 %}
             <div data-serp-articles>
                 {% include 'modules/serp/serp-articles/serp-articles-list-with-load-more.html.twig' %}
             </div>
