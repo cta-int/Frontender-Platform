@@ -135,4 +135,9 @@ abstract class AbstractModel implements \ArrayAccess
             unset($this->data[$offset]);
         }
     }
+
+    public function getPropertyPath()
+    {
+        // Default
+    }
 }

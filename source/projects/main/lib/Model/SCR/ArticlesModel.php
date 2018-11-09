@@ -267,4 +267,9 @@ class ArticlesModel extends ScrModel
 
         return [];
     }
+
+    public function getPropertyPath()
+    {
+
+    }
 }
