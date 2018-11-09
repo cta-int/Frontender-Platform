@@ -115,7 +115,7 @@
                     <ul class="reset">
                         {% for model in model.related.articles %}
                             <li class="leader--small  |  leader--small">
-                                <a href="{{ route({page: model.path, slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                                <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                                     {{ model.headline|t(locales) }}
                                 </a>
                             </li>
@@ -130,7 +130,7 @@
                         {# Show everything except the projects. #}
                         {% for model in model.related.events|filterArray('type', 'Project', true) %}
                             <li class="leader--small  |  leader--small">
-                                <a href="{{ route({page: model.path, 'id': model._id}) }}">
+                                <a href="{{ route({'page': model.path, 'id': model._id}) }}">
                                     {{ model.name|t(locales) }}
                                 </a>
                             </li>
@@ -143,7 +143,7 @@
                     <ul class="reset">
                         {% for model in model.similar.events|filterArray('type', 'Project') %}
                             <li class="leader--normal  |  trailer--normal">
-                                <a href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">
+                                <a href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">
                                     {{ model.name|t(locales) }}
                                 </a>
                             </li>

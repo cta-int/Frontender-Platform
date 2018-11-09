@@ -44,7 +44,7 @@
                         {% for label in model.issue.link.label|filterArray('type', 'issue') %}
                             {% set issue_nr = label.name|issueNumber %}
                         {% endfor %}
-                        <a class="anchor--shy anchor--reset" href="{{ route({'page': 'ictupdate/article', 'slug': model.issue.headline|t(locales)|slugify, 'id': model.issue._id}) }}">
+                        <a class="anchor--shy anchor--reset" href="{{ route({'page': model.path, 'slug': model.issue.headline|t(locales)|slugify, 'id': model.issue._id}) }}">
                             <figure class="issue issue--s  |  trailer">
                                 <img class="issue__cover" alt="{{ model.issue.headline|t(locales) }}" src="{{ model.issue.link.mediaObject|lead.metadata.url }}">
                                 <figcaption class="issue-label issue-label--offset-top issue-label--s media leader-inside--tiny">

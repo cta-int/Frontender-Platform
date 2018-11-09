@@ -19,7 +19,7 @@
                 <footer class="gutters  |  trailer--hero">
                     {# todo link to view with all similar article.articleTypes #}
                     {% if model.datePublished %}
-                        <p class="meta" itemprop="datePublished">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|t(locales) }} <a href="{{ route({'page':model.path_prefix ~ 'article', 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|t(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                        <p class="meta" itemprop="datePublished">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|t(locales) }} <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|t(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
                     {% endif %}
                     {% if model.link.person.author %}
                         <div class="media__content  |  body--whisper  |  leader--tiny">

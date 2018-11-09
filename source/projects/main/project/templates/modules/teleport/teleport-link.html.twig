@@ -2,7 +2,7 @@
     This partial expects an object with a link object
 #}
 {% import "macros/template.html.twig" as helper %}
-{% set href = route({page: link.page }) %}
+{% set href = route({'page': link.page }) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'teleport  |  media  |  title')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

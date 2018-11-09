@@ -2,7 +2,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <div class="{{ tile_class }}  |  shade">
-    <a class="article-image" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('{{ model.link.mediaObject|first.metadata.previewUrl }}');" data-modal="modal-{{ model._id }}">
+    <a class="article-image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('{{ model.link.mediaObject|first.metadata.previewUrl }}');" data-modal="modal-{{ model._id }}">
         <div class="article-caption article-title">{{ model.headline }}</div>
         <div class="article__triangle"></div>
     </a>
@@ -38,11 +38,11 @@
             {% if prev and next %}
                 <div class="wings">
                     <div class="post-footer  |  credit">
-                        <a class="credit__cell  |  leader-inside  |  trailer-inside  |  gutters  |  anchor--reset" data-pagination="modal-{{ prev._id }}" href="{{ route({'page': prev.path_prefix ~ 'article', slug: prev.headline|t(locales)|slugify, 'id': prev._id}) }}">
+                        <a class="credit__cell  |  leader-inside  |  trailer-inside  |  gutters  |  anchor--reset" data-pagination="modal-{{ prev._id }}" href="{{ route({'page': prev.path, 'slug': prev.headline|t(locales)|slugify, 'id': prev._id}) }}">
                             <p class="category category--s  |  article-title">Previous article</p>
                             <p class="article-title  |  anchor--reset">{{ prev.headline }}</p>
                         </a>
-                        <a class="credit__cell  |  leader-inside  |  trailer-inside  |  gutters  |  anchor--reset" data-pagination="modal-{{ next._id }}" href="{{ route({'page': next.path_prefix ~ 'article', slug: next.headline|t(locales)|slugify, 'id': next._id}) }}">
+                        <a class="credit__cell  |  leader-inside  |  trailer-inside  |  gutters  |  anchor--reset" data-pagination="modal-{{ next._id }}" href="{{ route({'page': next.path, 'slug': next.headline|t(locales)|slugify, 'id': next._id}) }}">
                             <p class="category category--s  |  article-title">Next article</p>
                             <p class="article-title">{{ next.headline }}</p>
                         </a>

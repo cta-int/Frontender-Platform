@@ -1,5 +1,5 @@
 {% import "macros/date.html.twig" as date %}
-<a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="{{ route({'page': 'event', 'id': event._id}) }}">
+<a class="anchor--reset anchor--shy  |  is-heir  |  stack" href="{{ route({'page': event.path, 'id': event._id}) }}">
     <div class="stack__unit stack__pin">
         <div class="gutter-outside">
             {{ date.tile(event.startDate) }}

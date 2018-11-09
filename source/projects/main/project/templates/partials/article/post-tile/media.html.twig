@@ -8,14 +8,14 @@
 <div class="grid__cell  |  gutters  |  trailer">
     <div class="tile  |  well well--neutral well--slim-fit {{ ["", container_class]|join("  |  ") }}">
         <div>
-            <a class="tile__head  |  anchor anchor--shy" href="{{ route({page: model.path, slug: model.headline|t(locales)|slugify, id: model._id}) }}">
+            <a class="tile__head  |  anchor anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) }}">
                 {{ image.post_hero(model.link.mediaObject|lead) }}
             </a>
         </div>
         <article class="tile__body  |  gutters  |  leader  |  trailer">
             <div class="trailer--small icon icon--theme icon--leaf"></div>
             <h2 class="heading">
-                <a class="is-heir" href="{{ route({page: model.path, slug: model.headline|t(locales)|slugify, id: model._id}) }}">{{ model.headline|t(locales) }}</a>
+                <a class="is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) }}">{{ model.headline|t(locales) }}</a>
             </h2>
             <p class="meta  |  leader--small">cta.int</p>
         </article>

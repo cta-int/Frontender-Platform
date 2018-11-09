@@ -73,7 +73,7 @@
                         <div class="wing--right  |  grid  |  leader">
                             <div class="grid__cell  |  gutters">
                                 <div class="post__media">
-                                    <a class="anchor anchor--shy" href="{{ route({page: article.path_prefix ~ 'article', slug: article.headline|t|slugify, id: article._id}) }}">
+                                    <a class="anchor anchor--shy" href="{{ route({'page': article.path_prefix ~ 'article', 'slug': article.headline|t|slugify, id: article._id}) }}">
                                         {{ image.post(article.link.mediaObject|lead) }}
                                     </a>
                                 </div>
@@ -81,7 +81,7 @@
                             <div class="grid__cell  |  gutters">
                                 {{ date.article(article.datePublished) }}
                                 <h3 class="title  |  anchor--reset">
-                                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: article.path_prefix ~ 'article', slug: article.headline|t|slugify, id: article._id}) }}">
+                                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path_prefix ~ 'article', 'slug': article.headline|t|slugify, id: article._id}) }}">
                                         {{ article.headline }}
                                     </a>
                                 </h3>

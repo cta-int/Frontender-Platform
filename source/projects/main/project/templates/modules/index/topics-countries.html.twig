@@ -10,7 +10,7 @@
                 {% if query.topic_filter %}
                     {% for country in group %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                            <a class="anchor--shy" href="{{ route({'page': 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
                                 {{ country.countryName|t(locales) }}
                             </a>
                         </li>
@@ -18,7 +18,7 @@
                 {% else %}
                     {% for country in group|slice(0, config.show_max) %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                            <a class="anchor--shy" href="{{ route({'page': 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
                                 {{ country.countryName|t(locales) }}
                             </a>
                         </li>

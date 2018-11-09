@@ -10,7 +10,7 @@
         <li class="leader trailer">
             {{ date.article(article.datePublished) }}
             <h3 class="title  |  anchor--reset">
-                <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t(locales)|slugify, id: article._id}) }}">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
                     {{ article.headline }}
                 </a>
             </h3>

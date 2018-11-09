@@ -1,13 +1,13 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
-{% set resource_route = route({page: model.path, slug: model.name|t(locales)|slugify, id: model._id}) %}
+{% set resource_route = route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <{{ config.container_tag|default('article') }} {{ helper.class_attribute(config, 'project-preview  |  layout layout--align-end layout--even  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="project-preview__body  |  layout__cell layout__cell--aside">
-        <h2 class="project-preview__title  |  heading"><a class="is-heir" href="{{ route({'page': 'project', 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">{{ model.name }}</a></h2>
+        <h2 class="project-preview__title  |  heading"><a class="is-heir" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify, 'id': model._id}) }}">{{ model.name }}</a></h2>
         <p class="project-preview__intro">{{ model.description|length > 300 ? model.description|striptags|slice(0, 300) ~ '...' : model.description|striptags }}</p>
 
         <div class="leader">
@@ -18,7 +18,7 @@
                 <ul class="location__body  |  media__content  |  list--inline  |  reset">
                     {% for country in model.analysis.geoname.geonames|slice(0, 8) %}
                         <li>
-                            <a class="is-heir" href="{{ route({page: 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
+                            <a class="is-heir" href="{{ route({'page': 'search'}) }}?{{ country.countryName|t(locales)|slugify }}&location={{ country.geonameId }}">
                                 {{ country.label|t(locales) }}{% if not loop.last %},{% endif %}
                             </a>
                         </li>

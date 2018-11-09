@@ -1,5 +1,5 @@
 <aside class="trailer--hero  |  gutters">
-    <h2 class="title title--apropos"><a href="{{ route({'page': 'procurement-and-contract-awarding-procedures', 'id': model._id}) }}">{{ model.headline }}</a></h2>
+    <h2 class="title title--apropos"><a href="{{ route({'page': model.path, 'id': model._id}) }}">{{ model.headline }}</a></h2>
     <p class="body--whisper  |  divider divider--bottom  |  leader-inside--small  |  trailer-inside--normal">{{ model.editorialComment }}</p>
 
     {% if model.link.mediaObject|findType('file')|length > 0 %}

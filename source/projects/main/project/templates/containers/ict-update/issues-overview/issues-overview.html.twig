@@ -49,7 +49,7 @@
                         </p>
                     </div>
                 </div>
-                <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
                     <figure>
                         <figcaption class="title title--lead title--section leader--small anchor--reset">{{ issue.headline|t(locales) }}</figcaption>
                         <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
@@ -72,7 +72,7 @@
                         {% endfor %}
 
                         <li class="trellis__cell trailer gutters">
-                            <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
                                 <figure>
                                     <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
                                     <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">

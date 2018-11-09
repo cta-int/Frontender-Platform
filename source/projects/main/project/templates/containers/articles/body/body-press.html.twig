@@ -71,7 +71,7 @@
                 <ul class="leader trellis">
                     {% for model in model.similar.articles|filterArray('articleType', 'press') %}
                         <li class="trellis__cell gutters">
-                            <a href="{{ route({'page': 'article', 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                                 {{ model.headline|t(locales) }}
                             </a>
                         </li>
