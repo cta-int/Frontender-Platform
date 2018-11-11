@@ -5,13 +5,13 @@
 {% if 'event' in query.type or not query.type %}
     <section class="trailer--giant">
         <h2 class="title title--section  |  fld--label  |  leader  |  trailer  |  gutters">
-            {% if event_total == 1 %}
-                {{ event_total }} {{ 'Result in projects and events'|t(locales) }}
+            {% if model.eventTotal == 1 %}
+                {{ model.eventTotal }} {{ 'Result in projects and events'|t(locales) }}
             {% else %}
-                {{ event_total }} {{ 'Results in projects and events'|t(locales) }}
+                {{ model.eventTotal }} {{ 'Results in projects and events'|t(locales) }}
             {% endif %}
         </h2>
-        {% if event_total > 0 %}
+        {% if model.eventTotal > 0 %}
             <div data-serp-events>
                 {% include 'modules/serp/serp-events/serp-events-list-with-load-more.html.twig'%}
             </div>

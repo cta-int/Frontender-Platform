@@ -10,6 +10,7 @@ namespace Prototype\Model\SCR;
 
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
+use Prototype\Model\SCR\Channel\AbstractModel;
 
 class SearchModel extends ScrModel
 {
@@ -37,28 +38,76 @@ class SearchModel extends ScrModel
             ->insert('skip');  // Can be an object
     }
 
-    public function fetch($raw = false)
+    public function getPropertyArticle()
     {
-		// I have to loop through all the things, and make a state, however the state will be inserted
         $state = $this->getState();
-        $query = $this->container->request->getQueryParams();
-        $search_types = explode(',', $state->types);
-        $result = [];
+        $types = explode(',', $state->types);
 
-        if (count($search_types)) {
-            foreach ($search_types as $type) {
-                $model = '\Prototype\Model\SCR\\' . ucfirst($type) . '\SearchModel';
-                $model = new $model($this->container);
-                $initial = $query[$type] ?? [];
+        if (in_array('article', $types)) {
+            $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+            $initial = $query[$type] ?? [];
 
-                $model->setState(array_merge($this->getState()->getValues(), $initial));
-                $response = $model->fetch();
-                if ($response) {
-                    $result[$type] = $response;
-                }
-            }
+            $model->setState(array_merge($this->getState()->getValues(), $initial));
+            return $model->fetch();
         }
 
-        return [$result];
+        return [];
+    }
+
+    public function getPropertyArticleTotal()
+    {
+        $state = $this->getState();
+        $types = explode(',', $state->types);
+
+        if (in_array('article', $types)) {
+            $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+            $initial = $query[$type] ?? [];
+
+            $model->setState(array_merge($this->getState()->getValues(), $initial));
+            $response = $model->fetch(true);
+
+            return $response['total'];
+        }
+
+        return 0;
+    }
+
+    public function getPropertyEvent()
+    {
+        $state = $this->getState();
+        $types = explode(',', $state->types);
+
+        if (in_array('event', $types)) {
+            $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+            $initial = $query[$type] ?? [];
+
+            $model->setState(array_merge($this->getState()->getValues(), $initial));
+            return $model->fetch();
+        }
+
+        return [];
+    }
+
+    public function getPropertyEventTotal()
+    {
+        $state = $this->getState();
+        $types = explode(',', $state->types);
+
+        if (in_array('event', $types)) {
+            $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+            $initial = $query[$type] ?? [];
+
+            $model->setState(array_merge($this->getState()->getValues(), $initial));
+            $reponse = $model->fetch(true);
+
+            return $response['total'];
+        }
+
+        return 0;
+    }
+
+    public function fetch($raw = false)
+    {
+        return [$this];
     }
 }
