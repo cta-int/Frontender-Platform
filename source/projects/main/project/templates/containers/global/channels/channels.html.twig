@@ -3,7 +3,7 @@
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, ['grid', containers|length is divisible by(3) ? 'grid--musketeers' : 'grid--teletubbies']|join(' ')|trim)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% for loopContainer in containers %}
         {% if loopContainer.model|length %}
-            <section class="grid__cell  |  gutters  |  trailer trailer-inside  |  {{ (containers|length is divisible by(3) and containers|length > 3) or (containers|length is not divisible by(3) and containers|length > 4) ? 'trailer' }}">
+            <section class="grid__cell  |  gutters {{ (containers|length is divisible by(3) and containers|length > 3) or (containers|length is not divisible by(3) and containers|length > 4) ? ' |  trailer' }}">
                 {% include loopContainer.template with loopContainer %}
             </section>
         {% endif %}
