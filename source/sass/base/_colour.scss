@@ -143,19 +143,19 @@ $brand-colours: (
     burgundy: $color-burgundy,
     purple: $color-purple
 );
-$theme-colours: (
-    spore-: $color-spore-red,
-    spore-teal: $color-spore-teal,
+$theme-colours: ();
+$spore-colours: (
     spore-blue: $color-spore-blue,
-    spore-light-blue: $color-spore-light-blue,
-    spore-dark-blue: $color-spore-dark-blue,
-    spore-grey-blue: $color-spore-grey-blue,
-    spore-lime: $color-spore-lime,
-    spore-olive-green: $color-spore-olive-green,
-    spore-forest-green: $color-spore-forest-green,
-    spore-oker: $color-spore-oker,
     spore-brown: $color-spore-brown,
+    spore-dark-blue: $color-spore-dark-blue,
+    spore-forest-green: $color-spore-forest-green,
+    spore-grey-blue: $color-spore-grey-blue,
+    spore-light-blue: $color-spore-light-blue,
+    spore-lime: $color-spore-lime,
+    spore-oker: $color-spore-oker,
+    spore-olive-green: $color-spore-olive-green,
+    spore-red: $color-spore-red,
     spore-taupe: $color-spore-taupe,
+    spore-teal: $color-spore-teal
 );
-$spore-colours: ();
 $colours: ();
