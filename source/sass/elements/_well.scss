@@ -28,7 +28,7 @@ Styleguide 3.13
   &--darker {
     padding-top: rhythm(10);
     padding-bottom: rhythm(10);
-    @include theme-transparent-background-inline(54%);
+    @include theme-transparent-background(54%);
   }
   &--darkest {
     @include theme-transparent-background(76%);
