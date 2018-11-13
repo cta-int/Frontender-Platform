@@ -307,6 +307,10 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyTheme()
     {
+        if (!isset($this->container['label-colors'])) {
+            $this->container['label-colors'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        }
+
         $labels = array_filter($this['link']['label'], function ($label) {
             return $label['type'] == 'theme';
         });
@@ -314,7 +318,7 @@ class ArticlesModel extends ScrModel
 
         if (count($labels)) {
             $color = array_shift($labels);
-            $color = $color['color'];
+            $color = isset($this->container['label-colors']['theme']['color'][$color['_id']]) ? $this->container['label-colors']['theme']['color'][$color['_id']] : '';
         }
 
         return [
