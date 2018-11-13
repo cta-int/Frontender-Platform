@@ -9,26 +9,26 @@ theme
 Styleguide 1.6.6
 */
 
-@mixin theme-color($transparency: 100%) {
-  color: $color-green;
+// @mixin theme-color($transparency: 100%) {
+//   color: $color-green;
 
-  @each $color_name, $color_value in $brand-colours {
-    .theme--#{$color_name} & {
-      color: $color_value;
-    }
-  }
+//   @each $color_name, $color_value in $brand-colours {
+//     .theme--#{$color_name} & {
+//       color: $color_value;
+//     }
+//   }
 
-  @each $color_name, $color_value in $spore-colours {
-    .theme--#{$color_name} & {
-      color: $color_value;
-    }
-  }
+//   @each $color_name, $color_value in $spore-colours {
+//     .theme--#{$color_name} & {
+//       color: $color_value;
+//     }
+//   }
 
-  .theme--dark & {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
+//   .theme--dark & {
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
+// }
 
 @mixin theme-color($shade: 100%) {
   color: mix($color-green, $color-body, $shade);
@@ -101,6 +101,22 @@ Styleguide 1.6.6
     .theme--#{$color_name} & {
       background-color: $color_value;
       background-color: transparentize($color_value, $transparency);
+    }
+  }
+}
+
+@mixin theme-background() {
+  background-color: $color-green;
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
+    }
+  }
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
     }
   }
 }
