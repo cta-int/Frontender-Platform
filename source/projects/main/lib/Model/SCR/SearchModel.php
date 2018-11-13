@@ -98,7 +98,7 @@ class SearchModel extends ScrModel
             $initial = $query[$type] ?? [];
 
             $model->setState(array_merge($this->getState()->getValues(), $initial));
-            $reponse = $model->fetch(true);
+            $response = $model->fetch(true);
 
             return $response['total'];
         }
