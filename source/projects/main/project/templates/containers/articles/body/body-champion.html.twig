@@ -8,10 +8,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <div class="layout layout--reverse" {{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
-    <pre>
-        {{ dump(model.theme.color) }}
-    </pre>
-
     <div class="layout__cell layout__cell--main">
         <div class="layout">
             <div class="layout__cell layout__cell--main  |  trailer--hero">
