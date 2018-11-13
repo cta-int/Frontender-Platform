@@ -139,7 +139,13 @@ abstract class AbstractModel implements \ArrayAccess
 
     public function getPropertyPath() : string
     {
+        $name = Inflector::singularize($this->getModelName());
+        $parts = preg_split('/(?=[A-Z])/', $name);
+
+        // Split on capitals.
+        // And return the last.
+
         // By default we will return the simple model name itself.
-        return Inflector::singularize($this->getModelName());
+        return strtolower(end($parts));
     }
 }
