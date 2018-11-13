@@ -304,4 +304,21 @@ class ArticlesModel extends ScrModel
 
         return implode('/', [$prefix, parent::getPropertyPath()]);
     }
+
+    public function getPropertyTheme()
+    {
+        $labels = array_filter($this['link']['label'], function ($label) {
+            return $label['type'] == 'theme';
+        });
+        $color = '';
+
+        if (count($labels)) {
+            $color = array_shift($labels);
+            $color = $color['color'];
+        }
+
+        return [
+            'color' => $color
+        ];
+    }
 }
