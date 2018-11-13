@@ -170,6 +170,15 @@
             {% endif %}
         </div>
 
+        {% if embed.content|length > 0 %}
+            <div class="grid__cell  |  gutters  |  trailer  |  leader leader-inside  |  divider divider--top">
+                <h3 class="title title--section  |  trailer--normal">{{ embed.container_title|t(locales) }}</h3>
+                <div>
+                    {{ embed.content|raw }}
+                </div>
+            </div>
+        {% endif %}
+
         {% if model.analysis.geoname.geonames | length > 0 %}
             <div class="grid__cell  |  gutters  |  trailer  |  leader leader-inside  |  divider divider--top">
                 <h3 class="title title--section  |  trailer--normal">{{ 'Country focus'|t(locales) }}</h3>
