@@ -7,5 +7,13 @@
         "id": "_id",
         "title": "name"
     },
-    "filters": {}
+    "filters": {},
+    "theme": {
+        "color": {
+            "c9a6bd20-e5e9-47f3-a8b8-afedfe76d657": "theme theme--youth",
+            "34055746-c1e2-4c56-98cb-aad7ca4a56ee": "theme theme--digitalisation",
+            "797ada64-96b8-4112-90a2-4f5b8a936da6": "theme theme--climate",
+            "ffe0247e-0898-4e86-9ad9-5e6db75fae7e": "theme theme--climate"
+        }
+    }
 }
