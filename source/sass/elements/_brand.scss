@@ -13,20 +13,27 @@ markup:
 
 Styleguide 3.17
 */
-
-.brand--cta {
-  @include cta-logo(rhythm(26), 3px);
-  @include breakpoint($gt-small-desktop) {
-    @include cta-logo(rhythm(52));
+.brand {
+  display: block;
+  max-height: 100%;
+  &--cta {
+    @include cta-logo(rhythm(26), 3px);
+    @include breakpoint($gt-small-desktop) {
+      @include cta-logo(rhythm(52));
+    }
+  }
+  
+  &--extension {
+    height: rhythm(26);
+    position: relative;
+    top: rhythm(8);
+    @include breakpoint($gt-small-desktop) {
+      height: rhythm(52);
+      top: rhythm(16);
+    }
+  }
+  &--spore {
+    @include theme-transparent-background(100%);
   }
 }
 
-.brand--extension {
-  height: rhythm(26);
-  position: relative;
-  top: rhythm(8);
-  @include breakpoint($gt-small-desktop) {
-    height: rhythm(52);
-    top: rhythm(16);
-  }
-}
