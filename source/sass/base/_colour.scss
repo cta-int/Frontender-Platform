@@ -43,6 +43,7 @@ markup:
 Styleguide 1.1.2
 */
 
+/* Brand */
 $color-blue: #56c0dd;
 $color-lime: #c1d435;
 $color-yellow: #facf21;
@@ -53,6 +54,7 @@ $color-red: #ec2d10;
 $color-burgundy: #ba222a;
 $color-purple: #9b3381;
 
+/* Spore */
 $color-spore-red: #f54c23;
 $color-spore-teal: #077fc1;
 $color-spore-blue: #3f68b1;
@@ -66,6 +68,12 @@ $color-spore-oker: #db9623;
 $color-spore-brown: #774b04;
 $color-spore-taupe: #7b6d65;
 
+/* Theme */
+$color-youth: #d57800;
+$color-digitalisation: #9a3324;
+$color-climate: #693c5e;
+$color-gender: #046a38;
+$color-nutrition: #487a7b;
 
 
 
@@ -143,7 +151,13 @@ $brand-colours: (
     burgundy: $color-burgundy,
     purple: $color-purple
 );
-$theme-colours: ();
+$theme-colours: (
+    youth: $color-youth,
+    digitalisation: $color-digitalisation,
+    climate: $color-climate,
+    gender: $color-gender,
+    nutrition: $color-nutrition
+);
 $spore-colours: (
     spore-blue: $color-spore-blue,
     spore-brown: $color-spore-brown,
@@ -158,4 +172,4 @@ $spore-colours: (
     spore-taupe: $color-spore-taupe,
     spore-teal: $color-spore-teal
 );
-$colours: ();
+$colours: map-merge(map-merge($brand-colours, $theme-colours), $spore-colours);
