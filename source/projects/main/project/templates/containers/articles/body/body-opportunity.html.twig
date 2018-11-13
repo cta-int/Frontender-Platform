@@ -69,7 +69,7 @@
                     <section class="trailer trailer-inside--small  |  gutters">
                         <h2 class="title title--apropos  |  trailer--small">{{ 'Awards notice'|t(locales) }}</h2>
                         {% for item in model.related.articles|filterArray('articleType', 'tender_award_notice') %}
-                            <p class="anchor  |  body--whisper"><a href="{{ route({'page': 'article', 'id': item._id}) }}">{{ item.headline|t(locales) }}</a></p>
+                            <p class="anchor  |  body--whisper"><a href="{{ route({'page': item.path, 'id': item._id}) }}">{{ item.headline|t(locales) }}</a></p>
                         {% endfor %}
                     </section>
                 {% endif %}
@@ -80,7 +80,7 @@
 
                         {% for item in model.related.articles|filterArray('articleType', 'tender_highlight') %}
                             <p class="anchor  |  body--whisper  |  trailer--small">
-                                <a href="{{ route({'page': item.path_prefix ~ 'article', 'id': item._id}) }}">{{ item.headline|t(locales) }}</a>
+                                <a href="{{ route({'page': item.path, 'id': item._id}) }}">{{ item.headline|t(locales) }}</a>
                             </p>
                         {% endfor %}
                     </section>

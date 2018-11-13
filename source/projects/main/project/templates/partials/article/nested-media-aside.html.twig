@@ -11,8 +11,8 @@
     {% if show_publication_date|default(1) %}
 	    {{ date.article(model.datePublished) }}
     {% endif %}
-    <h2 class="title">
-      <a class="anchor" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+    <h2 class="heading">
+      <a class="anchor" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
         {{ model.headline }}
       </a>
     </h2>
@@ -20,7 +20,7 @@
   </div>
   {% if model.image %}
 		<div class="media__figure  |  gutters gutters-hero">
-	      <a class="anchor anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+	      <a class="anchor anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
 	  			{{ image.post(model.link.mediaObject|lead) }}
 	  		</a>
 		</div>

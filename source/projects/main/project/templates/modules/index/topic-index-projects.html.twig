@@ -10,7 +10,7 @@
                 {% if query.topic_filter %}
                     {% for model in group %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) }}">
+                            <a class="anchor--shy" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) }}">
                                 {{ model.name|t(locales) }}
                             </a>
                         </li>
@@ -18,7 +18,7 @@
                 {% else %}
                     {% for model in group|slice(0, config.show_max) %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ route({page: 'project', slug: model.name|t(locales)|slugify, id: model._id}) }}">
+                            <a class="anchor--shy" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) }}">
                                 {{ model.name|t(locales) }}
                             </a>
                         </li>

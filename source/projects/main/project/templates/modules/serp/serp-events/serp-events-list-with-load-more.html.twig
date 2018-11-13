@@ -4,7 +4,7 @@
     <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
 {% endif %}
 
-{% for event in event %}
+{% for event in model.event %}
     {% include 'partials/event/nested-media-with-fixed-aside.html.twig' with {highlight: true} %}
 
     {% if not loop.last %}

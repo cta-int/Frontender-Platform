@@ -9,6 +9,13 @@ use Frontender\Core\Template\Helper\Router;
 
 class Url extends Helper\Url
 {
+    public $translations = [
+        'en' => 'en-GB',
+        'fr' => 'fr-FR',
+        'pt' => 'pt-PT',
+        'es' => 'es-ES'
+    ];
+
     public function translateUrl($locale)
     {
         $route = $this->container['page']->getRequest()->getAttribute('route');
@@ -17,12 +24,14 @@ class Url extends Helper\Url
         $page = $this->container['page']->getData();
         $params = $route->getArguments() ?? [];
         $params['locale'] = $locale;
+        $pageJson = $this->container['page']->getRequest()->getAttribute('json');
+        $translateLocale = $this->translations[$locale] ?? $locale;
 
         if (isset($params['id']) && $params['id'] && isset($page['model'])) {
             // $params['id'] .= !empty($query) ? '?' . $query : '';
             $params['slug'] = $this->getTranslatedSlug($page['model'], $locale);
         } else {
-            $params['page'] = $params['page'] ?? '';
+            $params['page'] = $pageJson['definition']['route'][$translateLocale] ?? $params['page'] ?? '';
             // $params['page'] .= !empty($query) ? '?' . $query : '';
         }
 

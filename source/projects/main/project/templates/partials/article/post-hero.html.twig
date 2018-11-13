@@ -7,7 +7,7 @@
 <div class="post post--hero  |  layout">
     {% if show_lead_image|default(1) %}
         <div class="post__media  |  layout__cell  |  gutters">
-            <a class="anchor anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <a class="anchor anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                 {{ image.post_hero(model.link.mediaObject|lead) }}
             </a>
         </div>
@@ -29,8 +29,8 @@
                 <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
             {% endif %}
 
-            <h3 class="title title--tile anchor--reset">
-                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <h3 class="heading heading--focus anchor--reset">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                     {{ model.headline }}
                 </a>
             </h3>
@@ -51,7 +51,7 @@
             {% endif %}
 
             {% if show_read_more|default(1) %}
-    	       <a class="read-more" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|t(locales) }}</a>
+    	       <a class="read-more" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|t(locales) }}</a>
             {% endif %}
 
         </div>

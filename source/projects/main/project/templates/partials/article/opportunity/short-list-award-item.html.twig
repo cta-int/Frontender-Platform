@@ -9,7 +9,7 @@
     <div class="media__content">
         <p class="meta">{{ model.datePublished|tdate('%e %B %Y') }}</p>
         <h2 class="title  |  leader--tiny  |  trailer--tiny">
-            <a class="is-heir  anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline }}</a>
+            <a class="is-heir  anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline }}</a>
         </h2>
         <div class="media  |  location">
             <div class="location__body  |  media__content">

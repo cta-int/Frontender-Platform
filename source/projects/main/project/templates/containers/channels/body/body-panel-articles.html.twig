@@ -1,11 +1,12 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/label.html.twig" as label %}
+{% import "macros/author.html.twig" as author %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 {% if model.articles|length > 0 %}
     <div class="post post--hero  |  layout layout--even">
         <div class="post__media  |  layout__cell  |  gutters">
-            <a class="is-heir" href="{{ route({page: model.articels|first.path_prefix ~ 'article', slug: model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
+            <a class="is-heir" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
                 {{ image.post(model.articles|first.link.mediaObject|lead) }}
             </a>
         </div>
@@ -16,7 +17,7 @@
                     <blockquote class="quote">{{ model.articles|first.contentBlocks|filterArray('type', 'blockquote')|first.content|striptags('<strong><em><u><a><sub><sup>')|raw }}</blockquote>
                 </div>
                 <div class="stack__unit stack__pin  |  divider divider--top">
-                    <a class="block-link  |  is-heir"  href="{{ route({page: model.articles|first.path_prefix ~ 'article', slug: model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
+                    <a class="block-link  |  is-heir"  href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
                         {{ model.articles|first.headline|t(locales) }}
                     </a>
                     <time class="meta">{{ model.articles|first.datePublished|tdate('%e %B %Y') }}</time>
@@ -39,7 +40,7 @@
                 {% endif %}
 
                 <h3 class="title title--tile anchor--reset">
-                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({page: model.articles|first.path_prefix ~ 'article', slug: model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
+                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
                         {{ model.articles|first.headline }}
                     </a>
                 </h3>
@@ -60,7 +61,7 @@
                 {% endif %}
 
                 {% if show_read_more|default(1) %}
-                   <a class="read-more" href="{{ route({page: model.articles|first.path_prefix ~ 'article', id: model.articles|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
+                   <a class="read-more" href="{{ route({'page': model.articles|first.path, id: model.articles|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
                 {% endif %}
 
             </div>

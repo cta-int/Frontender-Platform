@@ -7,7 +7,7 @@
         "id": "_id",
         "title": "headline",
         "description": "about",
-        "thumbnail": "lead_image.metadata.thumbnailUrl"
+        "thumbnail": "image"
     },
     "filters": {
         "type": {

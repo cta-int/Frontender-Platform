@@ -61,18 +61,17 @@
     },
     story: "speakers"
 }]%}
-
-<header class="{{ [container_class]|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+<header{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if medium %}
         {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
     {% endif %}
     <div class="article-headline  |  layout layout--reverse">
-        <div class="layout  layout--align-middle  |  layout__cell layout__cell--main">
+        <div class="layout layout__cell layout__cell--main  |  leader-inside  |  trailer-inside">
             <div class="layout__cell layout__cell--main  |  gutters">
                 <div class="leader-inside  |  trailer">
-                    <h1 class="article-headline__title  |  title title--headline">{{ model.headline }}</h1>
+                    <h1 class="article-headline__title  |  heading heading--hero">{{ model.headline }}</h1>
                     {% if model.alternativeHeadline %}
-                        <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                        <p class="article-headline__byline  |  meta   |  leader"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
                     {% endif %}
                 </div>
             </div>

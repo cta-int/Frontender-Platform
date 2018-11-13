@@ -12,13 +12,13 @@
 		<article class="layout">
 			<div class="layout__cell  |  media">
 				<div class="media__figure  |  gutters">
-					<a class="anchor anchor--shy" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">
+					<a class="anchor anchor--shy" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, 'id': article._id}) }}">
 		  			{{ image.post(article.link.mediaObject|lead) }}
 		  		</a>
 	  		</div>
 	  		<div class="media__body  |  gutters  |  trailer">
-	          <a class="anchor--reset anchor--shy  |  is-heir" href="{{ route({'page': article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, 'id': article._id}) }}">
-	              <h2 class="title">
+	          <a class="anchor--reset anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, 'id': article._id}) }}">
+	              <h2 class="heading">
 	                  {{ article.headline|t(locales) }}
 	              </h2>
 	          </a>

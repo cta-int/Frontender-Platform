@@ -1,0 +1,27 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if labels.title %}
+        <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
+
+    <ul class="list list--inline  |  leader  |  trailer" style="padding-left: 0;">
+        <li>
+            <a class="tab  |  meta is-current" href="#All-events">All events</a>
+        </li>
+        <li>
+            <a class="tab  |  meta" href="#Past-events">Past events</a>
+        </li>
+        <li>
+            <a class="tab  |  meta" href="#Upcoming-events">Upcoming events</a>
+        </li>
+    </ul>
+
+    <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
+        <!-- @TODO:: For event in related events -->
+            <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
+            </li>
+        <!-- End for event in related events -->
+    </ul>
+    </{{ config.container_tag|default('div') }}>

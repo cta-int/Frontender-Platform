@@ -14,29 +14,46 @@ use Prototype\Model\SCR\ArticlesModel;
 
 class SearchModel extends ArticlesModel
 {
-    use Searchable;
+    use Searchable {
+        __construct as public traitConstruct;
+        setState as public traitSetState;
+    }
+
+    public function __construct(\Slim\Container $container)
+    {
+        $this->traitConstruct($container);
+
+        $this->getState()
+            ->insert('articleType');
+    }
+
+    public function setState(array $values)
+    {
+        if (isset($values['articleType'])) {
+            $values['type'] = $values['articleType'];
+            unset($values['articleType']);
+        }
+
+        $this->traitSetState($values);
+    }
 
     public function fetch($raw = false)
     {
-        if (strpos($this->getState()->type, 'article.') === 0 || !$this->getState()->type) {
-            $container = $this->container;
-            $state = $this->getState()->getValues();
-            $response = parent::fetch(true);
+        $container = $this->container;
+        $state = $this->getState()->getValues();
+        $response = parent::fetch(true);
 
-            if ($raw) {
-                return $response;
-            }
-
-            return array_map(function ($item) use ($container, $state) {
-                $article = new ArticlesModel($container);
-                $article->setState($state);
-                $article->setData($item);
-
-                return $article;
-            }, $response['items']);
+        if ($raw) {
+            return $response;
         }
 
-        return false;
+        return array_map(function ($item) use ($container, $state) {
+            $article = new ArticlesModel($container);
+            $article->setState($state);
+            $article->setData($item);
+
+            return $article;
+        }, $response['items']);
     }
 
     public function getModelName() : string

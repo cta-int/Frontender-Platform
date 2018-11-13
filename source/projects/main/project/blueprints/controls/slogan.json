@@ -39,6 +39,12 @@
                 "en": "AGRF 2018"
             },
             "value": "agrf-2018.html.twig"
+        },
+        {
+            "label": {
+                "en": "COP 24"
+            },
+            "value": "cop24.html.twig"
         }
     ],
     "control": "core/list"

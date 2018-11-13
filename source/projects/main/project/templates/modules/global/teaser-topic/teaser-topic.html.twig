@@ -6,13 +6,13 @@
           {{ labels.label|t(locales) }}
         </div>
     {% endif %}
-    <h1 class="topic-teaser__title  |  title title--headline  |  trailer--normal">{{ labels.title|t(locales) }}</h1>
+    <h1 class="topic-teaser__title  |  heading heading--hero  |  trailer--normal">{{ labels.title|t(locales) }}</h1>
     {% if labels.body %}
         <p class="topic-teaser__body">{{ labels.body|t(locales) }}</p>
     {% endif %}
     {% if labels.slug.label|t(locales)|length > 1 %}
         <div class="leader leader-inside--normal">
-            <a class="button button--inverse" href="{{ route({page: labels.slug.page }) }}">
+            <a class="button button--inverse" href="{{ route({'page': labels.slug.page }) }}">
               {{ labels.slug.label|t(locales) }}
             </a>
         </div>

@@ -8,7 +8,7 @@
     </div>
     <div class="media__content">
         <h2 class="title title">
-            <a class="is-heir" href="{{ route({page: model.articleType|replace({'_': '-'}), id: model._id, slug: model.headline|t(locales)|slugify}) }}">{{ model.headline }}</a>
+            <a class="is-heir" href="{{ route({'page': model.articleType|replace({'_': '-'}), id: model._id, 'slug': model.headline|t(locales)|slugify}) }}">{{ model.headline }}</a>
         </h2>
         {% if(model.link.organization.sourceOrganization) %}
             <div class="media  |  location  |  leader--small">

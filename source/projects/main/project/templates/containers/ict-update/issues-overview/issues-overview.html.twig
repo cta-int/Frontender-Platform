@@ -49,7 +49,7 @@
                         </p>
                     </div>
                 </div>
-                <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
                     <figure>
                         <figcaption class="title title--lead title--section leader--small anchor--reset">{{ issue.headline|t(locales) }}</figcaption>
                         <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
@@ -72,7 +72,7 @@
                         {% endfor %}
 
                         <li class="trellis__cell trailer gutters">
-                            <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
                                 <figure>
                                     <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
                                     <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
@@ -85,7 +85,7 @@
                                     </figcaption>
                                 </figure>
                             </a>
-                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': 'ictupdate/issue', 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
+                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': issue.path, 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
                             {% if issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0 %}
                                 <div class="body--align-center">
                                     <a class="meta" href="{{ issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>

@@ -9,7 +9,7 @@
     </header>
     <div class="layout layout--reverse trailer-inside--small">
         <div class="layout__cell  |  wing--right">
-            <a class="post post--hero  |  layout layout--even  |  anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <a class="post post--hero  |  layout layout--even  |  anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                 <div class="post__media  |  layout__cell  |  gutters">
                     {{ image.post_hero(model.link.mediaObject|lead) }}
                 </div>
@@ -35,8 +35,8 @@
                     {% for container in containers %}
                         <li class="short-list__item">
                             <div class="trailer--tiny">{{ date.article(container.model.datePublished) }}</div>
-                            <a href="{{ route({'page': container.model.path_prefix ~ 'article', slug: container.model.headline|t(locales)|slugify, 'id': container.model._id}) }}">
-                                <h2 class="block-link">{{ container.model.headline }}</h2>
+                            <a class="anchor--shy" href="{{ route({'page': container.model.path, 'slug': container.model.headline|t(locales)|slugify, 'id': container.model._id}) }}">
+                                <h2 class="heading">{{ container.model.headline }}</h2>
                             </a>
                         </li>
                     {% endfor %}

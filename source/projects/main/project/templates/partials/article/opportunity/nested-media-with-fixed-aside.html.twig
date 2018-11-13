@@ -1,5 +1,4 @@
-{# set resource_route = route({page: article.articleType|replace({'_': '-'}), slug: article.headline|t(locales)|slugify, id: article.issue._id}) #}
-{% set resource_route = route({page: model.articleType|replace({'_': '-'}), id: model._id, slug: model.headline|t(locales)|slugify}) %}
+{% set resource_route = route({'page': model.articleType|replace({'_': '-'}), id: model._id, 'slug': model.headline|t(locales)|slugify}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 <div class="media">
     <div class="media__figure  |  gutters gutter-mobile--right">

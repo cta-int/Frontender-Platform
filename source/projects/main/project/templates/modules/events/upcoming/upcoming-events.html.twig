@@ -1,6 +1,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<div class="wing--right {{ [container_class]|join('  |  ') }}">
+<div class="wing--right {{ [config.container_class]|join('  |  ') }}">
     {% if labels.title %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
     {% endif %}
