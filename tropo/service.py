@@ -516,6 +516,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
 Add the TargetGroup to a Listener on the ALB
  - path-pattern is given as a Parameter to this stack
 """
+# Http Listener
 listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpListenerRule1",
     Actions=[
@@ -566,6 +567,7 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=Ref(listener_priority2)
 ))
 
+# Https listeners
 If(service_host_condition, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsListenerRule1",
