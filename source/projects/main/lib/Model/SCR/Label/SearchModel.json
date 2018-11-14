@@ -7,5 +7,14 @@
         "id": "_id",
         "title": "name"
     },
-    "filters": {}
+    "filters": {},
+    "strategy": {
+        "theme-color": {
+            "6e7d45e3-fc9f-4010-952c-a336d01bb03d": "theme theme--youth",
+            "6567e105-820e-484c-b82e-728b8474e1c9": "theme theme--digitalisation",
+            "9d206e7f-c883-4798-9bf4-89d3f0f47228": "theme theme--climate",
+            "7cd83d87-4285-4e4d-bc39-74bc87532a0c": "theme theme--nutrition",
+            "f267b616-a552-4747-9030-dbca6ebfa817": "theme theme--gender"
+        }
+    }
 }

@@ -59,6 +59,7 @@ trait Searchable
 
         if (isset($values['id'])) {
             $values['must'][] = $this->addTerm('field', '_id', $values['id']);
+            unset($values['id']);
         }
 
         if (isset($values['to'])) {

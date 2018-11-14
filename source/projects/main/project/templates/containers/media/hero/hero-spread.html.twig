@@ -1,0 +1,39 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/label.html.twig" as label %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'well well--slim-fit  |  layout layout--split  |  spread-layout  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--aside  |  stack stack--stacked">
+        <div class="wings  |  stack__unit  |  leader">
+            {% if content.quote|length > 0 %}
+                <blockquote class="gutters  |  quote">{{ content.quote|t(locales) }}</blockquote>
+            {% endif %}
+            {% if content.quote_source|length > 0 %}
+                <p class="meta  |  gutters  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
+            {% endif %}
+        </div>
+        <div class="stack__unit stack__pin  |  spread  |  leader-inside  |  wings  |  block-link">
+            <p class="gutters  |  trailer--small">
+                {% if model.datePublished|length > 0 %}
+                    <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
+                {% endif %}
+                {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
+                    {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
+                {% endif %}
+            </p>
+            <a class="gutters  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
+        </div>
+    </div>
+    <div class="layout__cell layout__cell--main  |  wing--right">
+        {% if model.link.mediaObject|length > 0 %}
+            <a class="spread__hero" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                {{ image.post_hero(model.link.mediaObject|lead, 'spread__hero') }}
+                {% if content.label|length > 0 %}
+                    <p class="spread__label  |  label">{{ content.label|t(locales) }}</p>
+                {% endif %}
+            </a>
+        {% endif %}
+    </div>
+</{{ config.container_tag|default('div') }}>

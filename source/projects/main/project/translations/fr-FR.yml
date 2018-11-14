@@ -8,7 +8,6 @@ working with cta: Travailler avec cta
 # Main Navigation
 publications: Publications
 tools: Outils
-events: Événements
 blog: Blog
 news: Nouvelles
 knowledge and innovation: Connaissance et innovation
@@ -287,7 +286,6 @@ tender highlight: Point culminant
 follow us: Suivez nous
 
 disclaimer_text: Ce document est produit avec le soutien financier de l’Union Européenne. Le contenu de ce document relève de la seule responsabilité du CTA et ne peut, en aucun cas, être considéré comme reflétant les positions de l’Union Européenne.
-
 
 # Error page
 error_intro: We can't seem to find what you are looking for.

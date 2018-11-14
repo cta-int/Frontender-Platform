@@ -135,32 +135,6 @@ class EventsModel extends ScrModel
         return parent::getPropertyPath();
     }
 
-    public function getPropertyTheme()
-    {
-        if ($this['type'] === 'Project') {
-            $regions = [
-                '7729886' => 'purple',
-                '7729889' => 'red',
-                '7729885' => 'orange',
-                '9406051' => 'yellow',
-                '7729891' => 'gold',
-                '2363254' => 'blue'
-            ];
-            $ids = array_column($this['analysis']['geoname']['geonames'] ?? [], '_id');
-
-            die('Called');
-
-            $items = array_intersect($ids, array_keys($regions));
-            $event['region_id'] = array_shift($items);
-
-            if ($event['region_id']) {
-                return $regions[$event['region_id']];
-            }
-        }
-
-        return false;
-    }
-
     private function _bindRegionId(&$event)
     {
         // get all the regions.
@@ -180,5 +154,45 @@ class EventsModel extends ScrModel
         if ($event['region_id']) {
             $event['theme'] = $regions[$event['region_id']];
         }
+    }
+
+    public function getPropertyTheme()
+    {
+        if (!isset($this->container['theme-color'])) {
+            $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        }
+
+        $themeColors = $this->container['theme-color'];
+        $color = '';
+
+        if ($this['type'] === 'Project') {
+            $regions = [
+                '7729886' => 'purple',
+                '7729889' => 'red',
+                '7729885' => 'orange',
+                '9406051' => 'yellow',
+                '7729891' => 'gold',
+                '2363254' => 'blue'
+            ];
+            $ids = array_column($this['analysis']['geoname']['geonames'] ?? [], '_id');
+
+            $items = array_intersect($ids, array_keys($regions));
+            $event['region_id'] = array_shift($items);
+
+            if ($event['region_id']) {
+                $color = $regions[$event['region_id']];
+            }
+        } else if (isset($this['label']) && count($this['label'])) {
+            $labels = array_filter($this['label'], function ($label) use ($themeColors) {
+                return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
+            });
+
+            $color = array_shift($labels);
+            $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
+        }
+
+        return [
+            'color' => $color
+        ];
     }
 }

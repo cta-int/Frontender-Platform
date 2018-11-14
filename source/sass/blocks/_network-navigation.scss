@@ -23,29 +23,32 @@ Styleguide 4.2
   button {
     font-weight: 300;
     font-size: to-unit(12px);
-    &,
-    .theme--blue &,
-    .theme--lime &,
-    .theme--yellow &,
-    .theme--gold &,
-    .theme--orange & ,
-    .theme--salmon &,
-    .theme--red &,
-    .theme--burgundy &,
-    .theme--purple & {
-      color: rgba($white, .8);
-    }
+    color: rgba($white, .8);
+    // &,
+    // .theme--blue &,
+    // .theme--lime &,
+    // .theme--yellow &,
+    // .theme--gold &,
+    // .theme--orange & ,
+    // .theme--salmon &,
+    // .theme--red &,
+    // .theme--burgundy &,
+    // .theme--purple & {
+    //   color: rgba($white, .8);
+    // }
   }
   .menu__item.is-active,
   .menu__item.is-current {
     color: $white;
+    font-weight: 600;
   }
   .menu__item.is-active:hover,
   .menu__item.is-active:active,
   .menu__item.is-current:hover,
   .menu__item.is-current:active,
   a:hover,
-  a:active {
+  a:active,
+  a:visited {
     color: $white;
   }
   @include breakpoint($gt-small-desktop) {
