@@ -517,7 +517,7 @@ Add the TargetGroup to a Listener on the ALB
  - path-pattern is given as a Parameter to this stack
 """
 listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
-    "ListenerRule1",
+    "HttpListenerRule1",
     Actions=[
         elasticloadbalancingv2.Action(
             TargetGroupArn=Ref(target_group),
@@ -541,9 +541,34 @@ listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=Ref(listener_priority)
 ))
 
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        )
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="path-pattern",
+            Values=[Ref(service_path)]
+        ),
+        If(service_host_condition,
+           elasticloadbalancingv2.Condition(
+               Field="host-header",
+               Values=[Join("", ["www.", Ref(service_host)])]
+           ),
+           Ref("AWS::NoValue")
+           )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=Ref(listener_priority)
+))
+
 If(service_host_condition, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "ListenerRule2",
+        "HttpsListenerRule1",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
@@ -554,6 +579,26 @@ If(service_host_condition, t.add_resource(
             elasticloadbalancingv2.Condition(
                 Field="host-header",
                 Values=[Join("", ["www.", Ref(service_host)])]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=Ref(listener_priority2)
+    )
+), Ref("AWS::NoValue"))
+
+If(service_host_condition, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=[Ref(service_host)]
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
@@ -621,109 +666,6 @@ service = t.add_resource(ecs.Service(
     ),
 ))
 
-"""
-Make the service a ScalableTarget
-"""
-# scalable_target = t.add_resource(applicationautoscaling.ScalableTarget(
-#     'ScalableTarget',
-#     MaxCapacity=Ref(autoscaling_max),
-#     MinCapacity=Ref(autoscaling_min),
-#     ResourceId=Join("/", [
-#         "service",
-#         ImportValue(Sub("${EcsStack}-Cluster")),
-#         GetAtt(service, "Name")
-#     ]),
-#     RoleARN=GetAtt(autoscale_role, "Arn"),
-#     ScalableDimension='ecs:service:DesiredCount',
-#     ServiceNamespace='ecs',
-# ))
-#
-# """
-# Scale out/in policies
-#  - Scale out +50%, scale in -1
-# """
-# service_scale_out_policy = t.add_resource(applicationautoscaling.ScalingPolicy(
-#     'ServiceScaleOutPolicy',
-#     PolicyName='ServiceScaleOutPolicy',
-#     PolicyType='StepScaling',
-#     ScalingTargetId=Ref(scalable_target),
-#     StepScalingPolicyConfiguration=applicationautoscaling.StepScalingPolicyConfiguration(
-#         AdjustmentType='PercentChangeInCapacity',
-#         Cooldown=300,
-#         MetricAggregationType='Average',
-#         StepAdjustments=[
-#             applicationautoscaling.StepAdjustment(
-#                 MetricIntervalLowerBound=0,
-#                 ScalingAdjustment=50,
-#             ),
-#         ],
-#     ),
-# ))
-#
-# service_scale_in_policy = t.add_resource(applicationautoscaling.ScalingPolicy(
-#     'ServiceScaleInPolicy',
-#     PolicyName='ServiceScaleInPolicy',
-#     PolicyType='StepScaling',
-#     ScalingTargetId=Ref(scalable_target),
-#     StepScalingPolicyConfiguration=applicationautoscaling.StepScalingPolicyConfiguration(
-#         AdjustmentType='ChangeInCapacity',
-#         Cooldown=300,
-#         MetricAggregationType='Average',
-#         StepAdjustments=[
-#             applicationautoscaling.StepAdjustment(
-#                 MetricIntervalUpperBound=0,
-#                 ScalingAdjustment=-1,
-#             ),
-#         ],
-#     ),
-# ))
-#
-# """
-# CloudWatch Alarms
-#  - Thresholds for scaling service out/in based on CPU usage
-# """
-#
-# service_cpu_alarm_high = t.add_resource(cloudwatch.Alarm(
-#     'ServiceCpuAlarmHigh',
-#     AlarmDescription='Scale out if avg CPU usage of a service is >70% for 2 minutes',
-#     Namespace='AWS/ECS',
-#     Dimensions=[cloudwatch.MetricDimension(
-#         Name="ServiceName",
-#         Value=GetAtt(service, "Name")
-#     ),
-#         cloudwatch.MetricDimension(
-#             Name="ClusterName",
-#             Value=ImportValue(Sub("${EcsStack}-Cluster"))
-#         )],
-#     MetricName='CPUUtilization',
-#     Statistic='Average',
-#     Period='60',
-#     EvaluationPeriods='2',
-#     Threshold='70',
-#     ComparisonOperator='GreaterThanThreshold',
-#     AlarmActions=[Ref(service_scale_out_policy)],
-# ))
-#
-# service_cpu_alarm_low = t.add_resource(cloudwatch.Alarm(
-#     'ServiceCpuAlarmLow',
-#     AlarmDescription='Scale in if avg CPU usage of a service is <25% for 20 minutes',
-#     Namespace='AWS/ECS',
-#     Dimensions=[cloudwatch.MetricDimension(
-#         Name="ServiceName",
-#         Value=GetAtt(service, "Name")
-#     ),
-#         cloudwatch.MetricDimension(
-#             Name="ClusterName",
-#             Value=ImportValue(Sub("${EcsStack}-Cluster"))
-#         )],
-#     MetricName='CPUUtilization',
-#     Statistic='Average',
-#     Period='60',
-#     EvaluationPeriods='20',
-#     Threshold='25',
-#     ComparisonOperator='LessThanThreshold',
-#     AlarmActions=[Ref(service_scale_in_policy)],
-# ))
 t.add_resource(ssm.Parameter(
     container_port.title + "Ref",
     Name=Sub("/cfn/${AWS::StackName}/" + container_port.title + "/Ref"),
