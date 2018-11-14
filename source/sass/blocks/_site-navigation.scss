@@ -99,34 +99,7 @@ Styleguide 4.3
       }
       &.is-current,
       &.is-active {
-        color: $color-theme;
-        .theme--blue & {
-          color: $color-blue;
-        }
-        .theme--lime & {
-          color: $color-lime;
-        }
-        .theme--yellow & {
-          color: $color-yellow;
-        }
-        .theme--gold & {
-          color: $color-gold;
-        }
-        .theme--orange & {
-          color: $color-orange;
-        }
-        .theme--salmon & {
-          color: $color-salmon;
-        }
-        .theme--red & {
-          color: $color-red;
-        }
-        .theme--burgundy & {
-          color: $color-burgundy;
-        }
-        .theme--purple & {
-          color: $color-purple;
-        }
+        @include theme-color;
       }
     }
   }
