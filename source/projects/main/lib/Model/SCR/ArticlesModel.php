@@ -311,14 +311,16 @@ class ArticlesModel extends ScrModel
             $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
         }
 
-        $labels = array_filter($this['link']['label'], function ($label) {
-            return $label['type'] == 'theme';
+        $themeColors = $this->container['theme-color'];
+
+        $labels = array_filter($this['link']['label'], function ($label) use ($themeColors) {
+            return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
         });
         $color = '';
 
         if (count($labels)) {
             $color = array_shift($labels);
-            $color = isset($this->container['theme-color']['theme']['color'][$color['_id']]) ? $this->container['theme-color']['theme']['color'][$color['_id']] : '';
+            $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
         }
 
         return [
