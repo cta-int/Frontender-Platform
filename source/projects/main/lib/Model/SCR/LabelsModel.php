@@ -19,10 +19,8 @@ class LabelsModel extends ScrModel
             $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
         }
 
-        var_dump($this['type']);
-
         return [
-            'color' => isset($this->container['theme-color'][$this['type']]['theme'][$this['_id']]) ? $this->container['theme-color']['theme']['theme-color'][$this['_id']] : ''
+            'color' => isset($this->container['theme-color'][$this['type']]['theme-color'][$this['_id']]) ? $this->container['theme-color'][$this['type']]['theme-color'][$this['_id']] : ''
         ];
     }
 }

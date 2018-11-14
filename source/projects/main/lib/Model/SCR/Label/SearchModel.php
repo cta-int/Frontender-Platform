@@ -23,11 +23,14 @@ class SearchModel extends ScrModel
         $container = $this->container;
         $state = $this->getState()->getValues();
         $response = parent::fetch(true);
+        $fields = [];
 
         // Check if we have an id in the must fields.
-        $fields = array_filter($state['must'], function ($state) {
-            return $state['id'] == '_id';
-        });
+        if (isset($state['must']) && is_array($state['must'])) {
+            $fields = array_filter($state['must'], function ($state) {
+                return $state['id'] == '_id';
+            });
+        }
 
         if (count($fields)) {
             $id = array_column($fields, 'value');
