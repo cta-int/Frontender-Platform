@@ -95,18 +95,19 @@ class ArticlesModel extends ScrModel
             {
                 if (!$this->cachedArticles) {
                     $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-                    $this->cachedArticles = $articles->setState([
+                    $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
                         }, $this->article['link']['label']),
                         'limit' => $this->state->similar_limit,
-                        'language' => $this->state->language,
+                        'language' => $this->state->language ?? 'en',
                         'mustNot' => [[
                             'type' => 'field',
                             'id' => '_id',
                             'value' => $this->article['_id']
                         ]]
-                    ])->fetch();
+                    ]);
+                    $this->cachedArticles = $articles->fetch();
                 }
 
                 return $this->cachedArticles;
