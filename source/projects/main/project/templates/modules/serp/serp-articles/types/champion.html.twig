@@ -31,7 +31,7 @@
                     <p>
                         <time class="meta" datetime="{{ article.datePublished }}">{{ article.datePublished|tdate('%e %B %Y') }}</time>
                         {% if article.articleType %}
-                            <span class="meta">{{ 'in'|t(locales) }} {% include 'partials/article/content_type_category.html.twig' %}</span>
+                            <span class="meta">{{ 'in'|t(locales) }} {% include 'partials/article/content_type_category.html.twig' with {model: article} %}</span>
                         {% endif %}
                     </p>
                     {% if article.link.person.author|length > 0 %}
