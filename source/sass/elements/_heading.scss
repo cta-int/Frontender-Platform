@@ -14,22 +14,48 @@ Styleguide 3.2
 */
 
 .heading {
-    margin-top: rhythm(6);
+    // margin-top: rhythm(6);
     font-family: $font-family--meta;
-    font-weight: 600;
-    font-size: to-unit(18px);
-    line-height: to-unit(rhythm(8), 1, 18px);
+    font-weight: $font-weight--meta;
+    font-size: to-unit(16px);
+    line-height: 1.225;
+    &,
+    a &,
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
+    &--tile {
+        @include title-18px();
+    }
+
+    &--focus {
+        @include title-20px();
+    }
     &--sub {
-        font-size: to-unit(15px);
         line-height: to-unit(rhythm(7), 1, 15px);
     }
     &--alternate {
         font-weight: 400;
     }
+    // &--snug {
+    //     margin-top: 0;
+    // }
+    @include breakpoint($gt-medium-handheld) {
+        &--tile,
+        &--hero {
+          @include title-24px();
+        }
+    }
     @include breakpoint($gt-small-desktop) {
-        margin-top: rhythm(16);
+        // margin-top: rhythm(16);
         &--sub {
             margin-top: rhythm(10);
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        &--hero {
+          @include title-48px();
         }
     }
 }

@@ -66,7 +66,7 @@
                             <div class="panel__body">
                                 {% if loopContainer.links %}
                                     {% for link in loopContainer.links %}
-                                        <a class="meta  |  gutters" href="{{ route({page: link.path.page }) }}">{{ link.label|t(locales) }}</a>
+                                        <a class="meta  |  gutters" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a>
                                     {% endfor %}
                                 {% endif %}
                                 {% include loopContainer.template with loopContainer %}
@@ -89,7 +89,7 @@
                                 <div class="panel__body">
                                     {% if loopContainer.links %}
                                         {% for link in loopContainer.links %}
-                                            <a class="meta  |  gutters" href="{{ route({page: link.path.page }) }}">{{ link.label|t(locales) }}</a>
+                                            <a class="meta  |  gutters" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a>
                                         {% endfor %}
                                     {% endif %}
                                     {% include 'modules/articles/post-tiles/post-tiles--media.html.twig' with loopContainer %}

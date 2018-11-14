@@ -16,7 +16,7 @@
         <div class="layout__cell  |  wing--right">
             <div class="grid grid--stories">
                 <article class="grid__cell grid grid--stories  |  posting  |  trailer">
-                    <a class="anchor--shy anchor--reset  |  is-heir  |   grid grid--posts" href="{{ route({'page': 'ictupdate/article', 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                    <a class="anchor--shy anchor--reset  |  is-heir  |   grid grid--posts" href="{{ route({'page': model.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
                         <figure class="grid__cell  |  gutters  |  trailer--tiny">
                             <img class="image image--stretch" alt="Drones for agriculture" src="{{ model|first.link.mediaObject|lead.metadata.url }}">
                         </figure>
@@ -48,7 +48,7 @@
                                 {% endfor %}
 
                                 <li class="trellis__cell trailer gutters">
-                                    <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': 'ictupdate/article', 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    <a class="anchor--shy anchor--reset  |  is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
                                         <figure>
                                             <img class="image image--stretch" alt="{{ 'Issue' }} {{ issue_nr }}" src="{{ issue.link.mediaObject|lead.metadata.url }}">
                                             <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">

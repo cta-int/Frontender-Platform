@@ -27,40 +27,18 @@ Styleguide 3.5
   font-size: to-unit(12px);
   font-weight: 600;
   line-height: 1em;
+  .teaser &,
+  .well & {
+    color: $white;
+    border-color: $white;
+  }
   &:hover,
   &:active,
   &:focus {
+    @include theme-border;
+    @include theme-background;
+
     color: $white;
-    background: $color-theme;
-    // border-color: $color-theme;
-    @include theme-border();
-    .theme--blue & {
-      background-color: $color-blue;
-    }
-    .theme--lime & {
-      background-color: $color-lime;
-    }
-    .theme--yellow & {
-      background-color: $color-yellow;
-    }
-    .theme--gold & {
-      background-color: $color-gold;
-    }
-    .theme--orange & {
-      background-color: $color-orange;
-    }
-    .theme--salmon & {
-      background-color: $color-salmon;
-    }
-    .theme--red & {
-      background-color: $color-red;
-    }
-    .theme--burgundy & {
-      background-color: $color-burgundy;
-    }
-    .theme--purple & {
-      background-color: $color-purple;
-    }
   }
   &--wide {
     padding: rhythm(3) rhythm(15);

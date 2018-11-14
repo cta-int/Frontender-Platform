@@ -40,7 +40,7 @@
 
 {% macro press_article(article, light, context = null) %}
     {% import _self as share %}
-    {% set url = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+    {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
     {{ share.bar({
@@ -84,7 +84,7 @@
     {% import _self as share %}
 
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-    {% set url = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+    {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
     
     {{ share.bar({
         url: url,
@@ -114,7 +114,7 @@
         {% if config.ictupdate %}
             {% if config.ictupdate.number %}
                 <li class="share-list__item divider  divider--left">
-                    <a class="label {% if config.light %} share--whisper{% endif %}" href="{{ route({page: 'ictupdate/issue', id: config.ictupdate.issue}) }}">
+                    <a class="label {% if config.light %} share--whisper{% endif %}" href="{{ route({'page': 'ictupdate/issue', 'id': config.ictupdate.issue}) }}">
                         {{ 'Issue'|t(locales) }} {{ config.ictupdate.number }}
                     </a>
                 </li>

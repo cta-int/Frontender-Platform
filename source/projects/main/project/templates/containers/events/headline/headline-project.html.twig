@@ -10,22 +10,14 @@
             {{ image.hero(model.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
         </div>
     {% endif %}
-    <div class="article-headline  |  layout layout--align-middle  |  wings">
-        <div class="layout__cell  |  gutters">
-            {% if not model.alternativeHeadline %}
-                <div class="leader  |  trailer">
-            {% endif %}
-            <h1 class="article-headline__title  |  title title--headline">
+    <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+        <div class="layout__cell layout__cell--main  |  wings">
+            <h1 class="heading heading--hero  |  trailer  |  gutters">
                 {{ model.name }}
             </h1>
-            {% if not model.alternativeHeadline %}
-                </div>
-            {% endif %}
-            {% if model.alternativeHeadline %}
-                <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
-            {% endif %}
+            <p class="title title--section  |  gutters"><strong class="reset">{{ model.type }}</strong></p>
         </div>
-        <div class="layout__cell layout__cell--aside  |  gutters  |  wings  |  caption--right">
+        <div class="layout__cell layout__cell--aside  |  wings">
             {% if model.mediaObject|lead %}
                 {% if model.mediaObject|lead.about %}
                     <p class="caption  |  gutters">{{ model.mediaObject|lead.about }}</p>

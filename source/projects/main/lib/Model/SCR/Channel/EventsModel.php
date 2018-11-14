@@ -50,6 +50,10 @@ class EventsModel extends AbstractModel
             $values['includeRelated'] = 'false';
         }
 
+        if (isset($values['eventType'])) {
+            $values['eventType'] = str_replace('event.', '', $values['eventType']);
+        }
+
         return parent::setState($values);
     }
 

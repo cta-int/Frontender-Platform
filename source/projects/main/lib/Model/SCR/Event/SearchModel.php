@@ -9,6 +9,7 @@
 namespace Prototype\Model\SCR\Event;
 
 use Prototype\Model\SCR\ScrModel;
+use Prototype\Model\SCR\EventsModel;
 use Prototype\Model\Traits\Imagable;
 use Prototype\Model\Traits\Searchable;
 use Slim\Container;
@@ -52,24 +53,20 @@ class SearchModel extends ScrModel
 
     public function fetch($raw = false)
     {
-        if (strpos($this->getState()->type, 'event.') === 0 || !$this->getState()->type) {
-            $container = $this->container;
-            $state = $this->getState()->getValues();
-            $response = parent::fetch(true);
+        $container = $this->container;
+        $state = $this->getState()->getValues();
+        $response = parent::fetch(true);
 
-            if ($raw) {
-                return $response;
-            }
-
-            return array_map(function ($item) use ($container, $state) {
-                $event = new EventsModel($container);
-                $event->setState($state);
-                $event->setData($item);
-
-                return $event;
-            }, $response['items']);
+        if ($raw) {
+            return $response;
         }
 
-        return false;
+        return array_map(function ($item) use ($container, $state) {
+            $event = new EventsModel($container);
+            $event->setState($state);
+            $event->setData($item);
+
+            return $event;
+        }, $response['items']);
     }
 }

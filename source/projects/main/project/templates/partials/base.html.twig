@@ -113,12 +113,13 @@
                     if(href.charAt(0) === '#' && $(this).attr('data-prevent-scroll') === undefined) {
                         model.preventDefault();
 
-                        var $target = $(href),
-                            offset = $target.offset().top;
+                        var $target = $(href);
 
-                        $('html,body').stop().animate({
-                            scrollTop: offset
-                        }, 500);
+                        if($target.length) {
+                            $('html,body').stop().animate({
+                                scrollTop: $target.offset().top
+                            }, 500);
+                        }
                     }
                 });
 
@@ -194,9 +195,7 @@
 
         {{ block('body') }}
 
-        <script>
-            {{ renderAssets('beforeBodyEnd')|raw }}
-        </script>
+        {{ renderAssets('beforeBodyEnd')|raw }}
 
         <script type='text/javascript'>
             var _sf_async_config={};

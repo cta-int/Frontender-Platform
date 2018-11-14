@@ -79,7 +79,7 @@
             <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
                 {% if model.issue|length > 0 %}
                 	<div class="gutters">
-                        <a class="anchor anchor--reset anchor--shy  |  is-heir" href="{{ route({page: 'ictupdate/issue', id: model.issue._id}) }}">
+                        <a class="anchor anchor--reset anchor--shy  |  is-heir" href="{{ route({'page': model.issue.path, id: model.issue._id}) }}">
                             <div class="issue-label  |  media  |  leader--small  |  trailer--small">
                                 <div class="issue-label__nr" data-issue-nr="{{ model.issue.number }}"></div>
                                 <div class="issue-label__caption">

@@ -9,70 +9,42 @@ theme
 Styleguide 1.6.6
 */
 
-@mixin theme-color($transparency: 100%) {
-  color: $color-green;
-  .theme--blue & {
-    color: $color-blue;
-  }
-  .theme--lime & {
-    color: $color-lime;
-  }
-  .theme--yellow & {
-    color: $color-yellow;
-  }
-  .theme--gold & {
-    color: $color-gold;
-  }
-  .theme--orange & {
-    color: $color-orange;
-  }
-  .theme--salmon & {
-    color: $color-salmon;
-  }
-  .theme--red & {
-    color: $color-red;
-  }
-  .theme--burgundy & {
-    color: $color-burgundy;
-  }
-  .theme--purple & {
-    color: $color-purple;
-  }
-  .theme--dark & {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
+// @mixin theme-color($transparency: 100%) {
+//   color: $color-green;
+
+//   @each $color_name, $color_value in $brand-colours {
+//     .theme--#{$color_name} & {
+//       color: $color_value;
+//     }
+//   }
+
+//   @each $color_name, $color_value in $spore-colours {
+//     .theme--#{$color_name} & {
+//       color: $color_value;
+//     }
+//   }
+
+//   .theme--dark & {
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
+// }
 
 @mixin theme-color($shade: 100%) {
   color: mix($color-green, $color-body, $shade);
-  .theme--blue & {
-    color: mix($color-blue, $color-body, $shade);
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      color: mix($color_value, $color-body, $shade);
+    }
   }
-  .theme--lime & {
-    color: mix($color-lime, $color-body, $shade);
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      color: mix($color_value, $color-body, $shade);
+    }
   }
-  .theme--yellow & {
-    color: mix($color-yellow, $color-body, $shade);
-  }
-  .theme--gold & {
-    color: mix($color-gold, $color-body, $shade);
-  }
-  .theme--orange & {
-    color: mix($color-orange, $color-body, $shade);
-  }
-  .theme--salmon & {
-    color: mix($color-salmon, $color-body, $shade);
-  }
-  .theme--red & {
-    color: mix($color-red, $color-body, $shade);
-  }
-  .theme--burgundy & {
-    color: mix($color-burgundy, $color-body, $shade);
-  }
-  .theme--purple & {
-    color: mix($color-purple, $color-body, $shade);
-  }
+
   .theme--dark & {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -81,66 +53,33 @@ Styleguide 1.6.6
 
 @mixin theme-border($shade: 100%) {
   border-color: mix($color-green, $white, $shade);
-  .theme--blue & {
-    border-color: mix($color-blue, $white, $shade);
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      border-color: mix($color_value, $white, $shade);
+    }
   }
-  .theme--lime & {
-    border-color: mix($color-lime, $white, $shade);
-  }
-  .theme--yellow & {
-    border-color: mix($color-yellow, $white, $shade);
-  }
-  .theme--gold & {
-    border-color: mix($color-gold, $white, $shade);
-  }
-  .theme--orange & {
-    border-color: mix($color-orange, $white, $shade);
-  }
-  .theme--salmon & {
-    border-color: mix($color-salmon, $white, $shade);
-  }
-  .theme--red & {
-    border-color: mix($color-red, $white, $shade);
-  }
-  .theme--burgundy & {
-    border-color: mix($color-burgundy, $white, $shade);
-  }
-  .theme--purple & {
-    border-color: mix($color-purple, $white, $shade);
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      border-color: mix($color_value, $white, $shade);
+    }
   }
 }
 
 @mixin theme-opaque-background($transparency) {
   background-color: mix($color-green, $white, $transparency);
-  .theme--blue & {
-    background-color: mix($color-blue, $white, $transparency);
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      background-color: mix($color_value, $white, $transparency);
+    }
   }
-  .theme--lime & {
-    background-color: mix($color-lime, $white, $transparency);
-  }
-  .theme--yellow & {
-    background-color: mix($color-yellow, $white, $transparency);
-  }
-  .theme--gold & {
-    background-color: mix($color-gold, $white, $transparency);
-  }
-  .theme--orange & {
-    background-color: mix($color-orange, $white, $transparency);
-  }
-  .theme--salmon & {
-    background-color: mix($color-salmon, $white, $transparency);
-  }
-  .theme--red & {
-    background-color: mix($color-red, $white, $transparency);
-  }
-  .theme--burgundy & {
-    background-color: mix($color-burgundy, $white, $transparency);
-  }
-  .theme--purple & {
-    background-color: mix($color-purple, $white, $transparency);
-  }
-  .theme--dark & {
-    background-color: mix($color-body, $white, $transparency);
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      background-color: mix($color_value, $white, $transparency);
+    }
   }
 }
 
@@ -150,84 +89,34 @@ Styleguide 1.6.6
   }
   background-color: $color-green;
   background-color: transparentize($color-green, $transparency);
-  .theme--blue & {
-    background-color: $color-blue;
-    background-color: transparentize($color-blue, $transparency);
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
+      background-color: transparentize($color_value, $transparency);
+    }
   }
-  .theme--lime & {
-    background-color: $color-lime;
-    background-color: transparentize($color-lime, $transparency);
-  }
-  .theme--yellow & {
-    background-color: $color-yellow;
-    background-color: transparentize($color-yellow, $transparency);
-  }
-  .theme--gold & {
-    background-color: $color-gold;
-    background-color: transparentize($color-gold, $transparency);
-  }
-  .theme--orange & {
-    background-color: $color-orange;
-    background-color: transparentize($color-orange, $transparency);
-  }
-  .theme--salmon & {
-    background-color: $color-salmon;
-    background-color: transparentize($color-salmon, $transparency);
-  }
-  .theme--red & {
-    background-color: $color-red;
-    background-color: transparentize($color-red, $transparency);
-  }
-  .theme--burgundy & {
-    background-color: $color-burgundy;
-    background-color: transparentize($color-burgundy, $transparency);
-  }
-  .theme--purple & {
-    background-color: $color-purple;
-    background-color: transparentize($color-purple, $transparency);
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
+      background-color: transparentize($color_value, $transparency);
+    }
   }
 }
 
-@mixin theme-transparent-background-inline($transparency) {
-  @if unit($transparency) is "%" {
-    $transparency: (100% - $transparency) / 100 / 1%;
-  }
+@mixin theme-background() {
   background-color: $color-green;
-  background-color: transparentize($color-green, $transparency);
-  &.theme--blue {
-    background-color: $color-blue;
-    background-color: transparentize($color-blue, $transparency);
+
+  @each $color_name, $color_value in $brand-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
+    }
   }
-  &.theme--lime {
-    background-color: $color-lime;
-    background-color: transparentize($color-lime, $transparency);
-  }
-  &.theme--yellow {
-    background-color: $color-yellow;
-    background-color: transparentize($color-yellow, $transparency);
-  }
-  &.theme--gold {
-    background-color: $color-gold;
-    background-color: transparentize($color-gold, $transparency);
-  }
-  &.theme--orange {
-    background-color: $color-orange;
-    background-color: transparentize($color-orange, $transparency);
-  }
-  &.theme--salmon {
-    background-color: $color-salmon;
-    background-color: transparentize($color-salmon, $transparency);
-  }
-  &.theme--red {
-    background-color: $color-red;
-    background-color: transparentize($color-red, $transparency);
-  }
-  &.theme--burgundy {
-    background-color: $color-burgundy;
-    background-color: transparentize($color-burgundy, $transparency);
-  }
-  &.theme--purple {
-    background-color: $color-purple;
-    background-color: transparentize($color-purple, $transparency);
+
+  @each $color_name, $color_value in $spore-colours {
+    .theme--#{$color_name} & {
+      background-color: $color_value;
+    }
   }
 }

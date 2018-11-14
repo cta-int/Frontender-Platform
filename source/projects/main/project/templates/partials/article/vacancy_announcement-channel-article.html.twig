@@ -7,7 +7,7 @@
     </div>
     <div class="stack__unit">
       <a class="anchor--reset anchor--shy  |  stack" href="javascript:void(0);">
-        <h2 class="title"><a href="{{ route({'page': model.articleType|default('article'), 'id': model._id}) }}">{{ model.headline }}</a></h2>
+        <h2 class="heading"><a href="{{ route({'page': model.articleType|default('article'), 'id': model._id}) }}">{{ model.headline }}</a></h2>
       </a>
       <div class="body--whisper  |  leader--small">
       	{% if model.link.organization.sourceOrganization | length > 1 %}

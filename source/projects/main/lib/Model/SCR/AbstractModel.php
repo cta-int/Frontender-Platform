@@ -13,6 +13,7 @@ use Prototype\Model\State\State;
 use Frontender\Core\Object\ObjectArray;
 use Prototype\Model\Traits\Translatable;
 use Pimple\Container;
+use Doctrine\Common\Inflector\Inflector;
 
 abstract class AbstractModel implements \ArrayAccess
 {
@@ -134,5 +135,17 @@ abstract class AbstractModel implements \ArrayAccess
         if ($this->offsetExists($offset)) {
             unset($this->data[$offset]);
         }
+    }
+
+    public function getPropertyPath() : string
+    {
+        $name = Inflector::singularize($this->getModelName());
+        $parts = preg_split('/(?=[A-Z])/', $name);
+
+        // Split on capitals.
+        // And return the last.
+
+        // By default we will return the simple model name itself.
+        return strtolower(end($parts));
     }
 }

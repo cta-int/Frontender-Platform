@@ -66,11 +66,12 @@ class EventsModel extends ScrModel
             {
                 if (!$this->cachedArticles) {
                     $related_articles = new \Prototype\Model\SCR\Event\ArticlesModel($this->container);
-                    $this->cachedEvents = $related_articles->setState([
+                    $this->cachedArticles = $related_articles->setState([
                         'id' => $this->state->id,
                         'limit' => 8,
                         'language' => $this->state->language
-                    ])->fetch();
+                    ]);
+                    $this->cachedArticles = $this->cachedArticles->fetch();
                 }
 
                 return $this->cachedArticles;
@@ -107,22 +108,31 @@ class EventsModel extends ScrModel
             'events' => array_map(function ($event) use ($state, $container) {
                 $model = new EventsModel($container);
                 return $model
-                    ->setState($state)
+                    ->setState($state->getValues())
                     ->setData($event);
             }, $related['events']),
             'articles' => array_map(function ($article) use ($state, $container) {
                 $model = new ArticlesModel($container);
                 return $model
-                    ->setState($state)
-                    ->setData($event);
+                    ->setState($state->getValues())
+                    ->setData($article);
             }, $related['articles']),
             'persons' => array_map(function ($person) use ($state, $container) {
                 $model = new PersonsModel($container);
                 return $model
-                    ->setState($state)
-                    ->setData($event);
+                    ->setState($state->getValues())
+                    ->setData($person);
             })
         ];
+    }
+
+    public function getPropertyPath() : string
+    {
+        if ($this['type'] === 'Project') {
+            return 'project';
+        }
+
+        return parent::getPropertyPath();
     }
 
     public function getPropertyTheme()

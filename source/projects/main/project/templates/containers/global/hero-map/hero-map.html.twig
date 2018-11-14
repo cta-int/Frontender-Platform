@@ -13,7 +13,7 @@
                         {% for link in template_config.links.region %}
                             <li class="layout__cell  |  title title--sub-section  |  trailer--small">
                                 <span class="legenda__item--identifier legenda__item--{{ link.colour|replace({'theme theme--': ''}) }}"></span>
-                                <a class="is-heir" href="{{ route({page:'channel', slug: link.label|t(locales)|slugify, id: link.id}) }}">{{link.label|t(locales) }}</a>
+                                <a class="is-heir" href="{{ route({page:'channel', 'slug': link.label|t(locales)|slugify, id: link.id}) }}">{{link.label|t(locales) }}</a>
                             </li>
                         {% endfor %}
                     </ul>

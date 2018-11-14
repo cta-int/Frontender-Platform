@@ -1,0 +1,11 @@
+{
+    "label": {
+        "en": "Find content: label",
+        "fr": "Find content: label"
+    },
+    "map": {
+        "id": "_id",
+        "title": "name"
+    },
+    "filters": {}
+}

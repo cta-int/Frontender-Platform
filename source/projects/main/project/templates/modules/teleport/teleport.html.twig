@@ -3,7 +3,7 @@
     or as a variable passed to it using 'with'
 #}
 {% import "macros/template.html.twig" as helper %}
-{% set href = route({page: 'channel', id: model._id, slug: model.name|t(locales)|slugify}) %}
+{% set href = route({'page': model.path, id: model._id, 'slug': model.name|t(locales)|slugify}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'teleport  |  media  |  title')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

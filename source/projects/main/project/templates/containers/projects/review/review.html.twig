@@ -1,0 +1,29 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout layout--reverse">
+        <div class="layout__cell layout__cell--main">
+            <div class="grid grid--posts">
+                <div class="grid__cell">
+                    Review article1
+                </div>
+                <div class="grid__cell">
+                    Review article2
+                </div>
+                <div class="grid__cell">
+                    Review article3
+                </div>
+                <div class="grid__cell">
+                    Review article4
+                </div>
+            </div>
+        </div>
+
+        <div class="layout__cell layout__cell--aside wings">
+            {% if labels.description %}
+                <p class="gutters">{{ labels.description|t(locales) }}</p>
+            {% endif %}
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

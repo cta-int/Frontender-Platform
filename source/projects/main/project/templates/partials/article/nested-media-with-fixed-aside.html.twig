@@ -6,7 +6,7 @@
 <article class="{{['layout',class]|join('  |  ')}}">
     {% if show_lead_image|default(1) %}
         <div class="layout__cell layout__cell--aside  |  gutters  |  trailer">
-            <a class="anchor anchor--shy" href="{{ route({'page': model.path_prefix ~ 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <a class="anchor anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
     			{{ image.post(model.link.mediaObject|lead) }}
     		</a>
         </div>
@@ -20,14 +20,14 @@
                 {% if show_publication_label|default(0) %}
             	    [show_publication_label]
                 {% endif %}
-                <h2 class="title">
-                    <a class="anchor" href="{{ route({'page': 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                <h2 class="heading">
+                    <a class="anchor" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                         {{ model.headline }}
                     </a>
                 </h2>
                 {{ model.about }}
                 <div class="leader--small  |  block-link">
-                    <a class="anchor" href="{{ route({'page': 'article', slug: model.headline|t(locales)|slugify, 'id': model._id}) }}">Read more</a>
+                    <a class="anchor" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">Read more</a>
                 </div>
             </div>
             <div class="layout__cell layout__cell--aside  |  gutters  |  trailer">

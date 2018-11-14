@@ -1,7 +1,7 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/author.html.twig" as author %}
 
-{% set resource_route = route({page: article.path_prefix ~ 'article', slug: article.headline|t(locales)|slugify, id: article._id}) %}
+{% set resource_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <article class="media">

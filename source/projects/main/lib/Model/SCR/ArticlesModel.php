@@ -12,6 +12,8 @@ use Prototype\Model\Traits\Projectable;
 use Slim\Container;
 use Prototype\Model\Traits\Imagable;
 use Prototype\Model\SCR\MediaModel;
+use Frontender\Core\DB\Adapter;
+use Frontender\Core\Template\Filter\Translate;
 
 class ArticlesModel extends ScrModel
 {
@@ -116,16 +118,14 @@ class ArticlesModel extends ScrModel
     {
         // We only come here if we have labels.
         $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-        $review = $searchModel->setState([
+        $searchModel->setState([
             'type' => 'article.issue',
-            'label' => array_map(function ($label) {
-                return $label['_id'];
-            }, $labels),
+            'label' => array_column($this['link']['label'], '_id'),
             'limit' => 1,
             'language' => $this->container->language->get(),
             'recursive' => false
-        ])->fetch();
-        $review = $review['ArticlesSearches'];
+        ]);
+        $review = $searchModel->fetch();
 
 		// Do a count just in case.
         if (!count($review)) {
@@ -133,34 +133,6 @@ class ArticlesModel extends ScrModel
         }
 
         return array_shift($review);
-    }
-
-    public function getPropertyPath_prefix()
-    {
-        $routes = $this->getRoutes();
-        if (!count($routes)) {
-            return false;
-        }
-
-        if (array_key_exists('link', $article) && count($article['link']['label'])) {
-            $links = [];
-
-            foreach ($article['link']['label'] as $link) {
-                $links[$link['_id']] = $link;
-            }
-
-            $intersect = array_intersect_key($routes, $links);
-            if (!count($intersect)) {
-                return $article;
-            }
-
-            $route = array_shift($intersect);
-
-			// Get the first intersection.
-            return $route['path'] . '/';
-        }
-
-        return false;
     }
 
     private function getPropertyRoutes()
@@ -265,5 +237,71 @@ class ArticlesModel extends ScrModel
         }
 
         return [];
+    }
+
+    public function getPropertyPath() : string
+    {
+        // If we have no labels, or they are empty, we will return the parent.
+        if (!isset($this['link']['label']) || !count($this['link']['label'])) {
+            return parent::getPropertyPath();
+        }
+
+        // We will check if there is a route for one of the labels that we have.
+        $routes = Adapter::getInstance()->collection('routes.static')->find([
+            'source' => ['$regex' => 'scr\/label.*', '$options' => 'i']
+        ])->toArray();
+        $routes = Adapter::getInstance()->toJSON($routes, true);
+
+        // I now need my own labels.
+        $labels = $this['link']['label'];
+        $own_label_ids = array_column($labels, '_id');
+
+        // I will check if there is an intersect of the routes, everyone that isn't found will not be returned.
+        $routes = array_filter($routes, function ($route) use ($own_label_ids) {
+            // We already have the label ids, so we will use it.
+            $parts = explode('/', $route['source']);
+            $label_id = end($parts);
+
+            return in_array($label_id, $own_label_ids);
+        });
+
+        // If no label routes are found, we will return the route as it is supposed to be.
+        if (!count($routes)) {
+            return parent::getPropertyPath();
+        }
+
+        $flipped_labels = array_flip($own_label_ids);
+        $routes = array_map(function ($route) use ($labels, $flipped_labels) {
+            // Every maintaining route will have the label appended to it.
+            // I need the key of the label I need to add so I flip the array, so the value becomes the key and the key becomes the value.
+            $parts = explode('/', $route['source']);
+            $label_id = end($parts);
+            $key = $flipped_labels[$label_id];
+
+            $route['label'] = $labels[$key];
+            $route['score'] = count(explode('/', $route['label']['name']));
+
+            return $route;
+        }, $routes);
+
+        // I now need to sort the routes, the most specific route will be used,
+        // the score is calculated at the amount or parts it has.
+        uasort($routes, function ($a, $b) {
+            if ($a < $b) {
+                return -1;
+            } else if ($b < $a) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        $prefix = array_shift($routes);
+
+        // Use the translated value.
+        $filter = new Translate($this->container);
+        $prefix = $filter->translate($prefix['destination']);
+
+        return implode('/', [$prefix, parent::getPropertyPath()]);
     }
 }

@@ -53,6 +53,21 @@ $color-red: #ec2d10;
 $color-burgundy: #ba222a;
 $color-purple: #9b3381;
 
+$color-spore-red: #f54c23;
+$color-spore-teal: #077fc1;
+$color-spore-blue: #3f68b1;
+$color-spore-light-blue: #79accf;
+$color-spore-dark-blue: #044e7e;
+$color-spore-grey-blue: #6d8c9f;
+$color-spore-lime: #bbae03;
+$color-spore-olive-green: #778d3e;
+$color-spore-forest-green: #5f810a;
+$color-spore-oker: #db9623;
+$color-spore-brown: #774b04;
+$color-spore-taupe: #7b6d65;
+
+
+
 
 /*
 Social media colours
@@ -114,3 +129,33 @@ $color-anchor: mix($color-highlight, $color-green, 30%);
 $color-anchor--hover: $color-yellow;
 $color-anchor--active: mix($color-shadow, $color-yellow, 30%);
 $color-anchor--visited: mix($color-shadow, $color-green, 30%);
+
+/* Collections */
+
+$brand-colours: (
+    blue: $color-blue,
+    lime: $color-lime,
+    yellow: $color-yellow,
+    gold: $color-gold,
+    orange: $color-orange,
+    salmon: $color-salmon,
+    red: $color-red,
+    burgundy: $color-burgundy,
+    purple: $color-purple
+);
+$theme-colours: ();
+$spore-colours: (
+    spore-blue: $color-spore-blue,
+    spore-brown: $color-spore-brown,
+    spore-dark-blue: $color-spore-dark-blue,
+    spore-forest-green: $color-spore-forest-green,
+    spore-grey-blue: $color-spore-grey-blue,
+    spore-light-blue: $color-spore-light-blue,
+    spore-lime: $color-spore-lime,
+    spore-oker: $color-spore-oker,
+    spore-olive-green: $color-spore-olive-green,
+    spore-red: $color-spore-red,
+    spore-taupe: $color-spore-taupe,
+    spore-teal: $color-spore-teal
+);
+$colours: ();
