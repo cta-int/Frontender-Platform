@@ -312,15 +312,17 @@ class ArticlesModel extends ScrModel
         }
 
         $themeColors = $this->container['theme-color'];
-
-        $labels = array_filter($this['link']['label'], function ($label) use ($themeColors) {
-            return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
-        });
         $color = '';
 
-        if (count($labels)) {
-            $color = array_shift($labels);
-            $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
+        if (isset($this['link']['label'])) {
+            $labels = array_filter($this['link']['label'], function ($label) use ($themeColors) {
+                return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
+            });
+
+            if (count($labels)) {
+                $color = array_shift($labels);
+                $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
+            }
         }
 
         return [

@@ -163,10 +163,6 @@ class EventsModel extends ScrModel
         }
 
         $themeColors = $this->container['theme-color'];
-
-        $labels = array_filter($this['label'], function ($label) use ($themeColors) {
-            return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
-        });
         $color = '';
 
         if ($this['type'] === 'Project') {
@@ -186,7 +182,11 @@ class EventsModel extends ScrModel
             if ($event['region_id']) {
                 $color = $regions[$event['region_id']];
             }
-        } else if (count($labels)) {
+        } else if (isset($this['label']) && count($this['label'])) {
+            $labels = array_filter($this['label'], function ($label) use ($themeColors) {
+                return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
+            });
+
             $color = array_shift($labels);
             $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
         }
