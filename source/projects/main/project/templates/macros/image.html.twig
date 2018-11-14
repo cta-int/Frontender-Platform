@@ -19,7 +19,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 
 {% macro triptych(image) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-    
+
     <picture class="image image--stretch">
         <source
             media="(min-width: 768px)"
@@ -124,7 +124,7 @@ $landscape - Breakpoint for landscape oriented viewports.
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
     <img
-        class="image image--stretch"
+        class="image image--stretch {{ classes }}"
         src="https://res.cloudinary.com/cta/image/upload/w_750,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }}"
         srcset="https://res.cloudinary.com/cta/image/upload/w_1480,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 1500w,https://res.cloudinary.com/cta/image/upload/w_1280,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 1280w,https://res.cloudinary.com/cta/image/upload/w_740,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 750w,https://res.cloudinary.com/cta/image/upload/w_640,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 640w,https://res.cloudinary.com/cta/image/upload/w_480,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 480w,https://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 320w"
         sizes="(min-width: 1024px) 50vw, (min-width: 768px) 100vw"

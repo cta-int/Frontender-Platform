@@ -1,0 +1,92 @@
+{
+    "name": {
+        "en-GB": "Hero spread"
+    },
+    "description": {
+        "en-GB": "Hero with quote and background cover"
+    },
+    "template": "containers/media/hero/hero-spread.html.twig",
+    "template_config": {
+        "model": {
+			"label": {
+				"en-GB": "Content"
+			},
+			"controls": {
+				"data": {
+					"control": "project/model/article",
+					"value": {
+						"adapter": "SCR",
+						"model": "Article\\Search",
+						"id": "6630063a-5f24-4ae4-b1d3-df78a1959a3e"
+					}
+				}
+			}
+		},
+        "config": {
+			"label": {
+				"en-GB": "Settings"
+			},
+			"controls": {
+				"wings": {
+					"value": "",
+					"control": "project/wings"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"divider": {
+					"value": "",
+					"control": "project/divider"
+				},
+				"container_tag": {
+					"value": "div",
+					"control": "project/container_tag"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				}
+			}
+		},
+        "content": {
+            "label": {
+                "en-GB": "Content"
+            },
+            "controls": {
+                "quote": {
+    				"label": {
+    					"en-GB": "Quote"
+    				},
+    				"value": {
+    					"en-GB": "Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+    					"fr-FR": "Agriculture presents extraordinary opportunities for young African entrepreneurs."
+    				},
+    				"control": "core/textarea"
+    			},
+    			"quote_source": {
+    				"label": {
+    					"en-GB": "Quote source"
+    				},
+    				"value": {
+    					"en-GB": "Parminder Vir,  CEO OF Africa’s leading philanthropic organisation ",
+    					"fr-FR": "Parminder Vir,  CEO OF Africa’s leading philanthropic organisation "
+    				},
+    				"control": "core/text"
+    			}
+            }
+        }
+    }
+}
