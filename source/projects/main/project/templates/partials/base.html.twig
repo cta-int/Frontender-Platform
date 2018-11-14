@@ -187,10 +187,8 @@
         </script>
     </head>
 
-    <body{{ helper.class_attribute(config, '')|raw }}>
+    <body{{ helper.class_attribute(config, model.theme.color|default(''))|raw }}>
 
-            {{ dump(model.theme) }}
-            {{ dump(model.theme.color) }}
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ5C3Q"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
