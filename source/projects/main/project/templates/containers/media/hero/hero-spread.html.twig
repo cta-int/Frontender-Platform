@@ -7,12 +7,18 @@
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'well well--slim-fit  |  layout layout--split')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  stack stack--stacked">
         <div class="wings  |  stack__unit  |  leader">
-            <blockquote class="gutters  |  quote">{{ content.quote|t(locales) }}</blockquote>
-            <p class="meta  |  gutters  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
+            {% if content.quote|length > 0 %}
+                <blockquote class="gutters  |  quote">{{ content.quote|t(locales) }}</blockquote>
+            {% endif %}
+            {% if content.quote_source|length > 0 %}
+                <p class="meta  |  gutters  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
+            {% endif %}
         </div>
         <div class="stack__unit stack__pin  |  spread  |  leader-inside  |  wings  |  block-link">
             <p class="gutters  |  trailer--small">
-                <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
+                {% if model.datePublished|length > 0 %}
+                    <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
+                {% endif %}
                 {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
                     {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
                 {% endif %}
@@ -21,8 +27,10 @@
         </div>
     </div>
     <div class="layout__cell layout__cell--main  |  wing--right">
-        <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
-            {{ image.post_hero(model.link.mediaObject|lead, 'spread__hero') }}
-        </a>
+        {% if model.link.mediaObject|length > 0 %}
+            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                {{ image.post_hero(model.link.mediaObject|lead, 'spread__hero') }}
+            </a>
+        {% endif %}
     </div>
 </{{ config.container_tag|default('div') }}>
