@@ -85,7 +85,17 @@
     					"fr-FR": "Parminder Vir,  CEO OF Africa’s leading philanthropic organisation "
     				},
     				"control": "core/text"
-    			}
+    			},
+                "label": {
+                    "label": {
+    					"en-GB": "Label"
+    				},
+    				"value": {
+    					"en-GB": "Spore exclusive",
+    					"fr-FR": "Spore exclusive"
+    				},
+    				"control": "core/text"
+                }
             }
         }
     }

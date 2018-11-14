@@ -4,7 +4,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'well well--slim-fit  |  layout layout--split')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'well well--slim-fit  |  layout layout--split  |  spread-layout  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  stack stack--stacked">
         <div class="wings  |  stack__unit  |  leader">
             {% if content.quote|length > 0 %}
@@ -28,8 +28,11 @@
     </div>
     <div class="layout__cell layout__cell--main  |  wing--right">
         {% if model.link.mediaObject|length > 0 %}
-            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <a class="spread__hero" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
                 {{ image.post_hero(model.link.mediaObject|lead, 'spread__hero') }}
+                {% if content.label|length > 0 %}
+                    <p class="spread__label  |  label">{{ content.label|t(locales) }}</p>
+                {% endif %}
             </a>
         {% endif %}
     </div>

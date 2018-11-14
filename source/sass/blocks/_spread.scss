@@ -1,9 +1,20 @@
 .spread {
-    position: relative;
     font-size: to-unit(12px);
+    &,
+    &__hero,
     & > * {
         position: relative;
+    }
+    & > * {
         z-index: 2;
+    }
+    @include breakpoint($lt-small-desktop) {
+        position: absolute;
+        bottom: 0;
+        padding-top: $gutter-width * 2;
+        &-layout {
+            padding-bottom: $gutter-width * 2;
+        }
     }
     &:after {
         content: '';
@@ -16,9 +27,23 @@
         z-index: 1;
     }
     &__hero {
-        position: relative;
         display: block;
         width: 100%;
+        @include breakpoint($lt-small-desktop) {
+            padding: 0 $gutter-width / 4;
+            margin: $gutter-width / 2 0;
+        }
+    }
+    &__label,
+    &__hero {
         z-index: 3;
+    }
+    &__label {
+        position: absolute;
+        top: 0;
+        right: $gutter-width / 2;
+        @include breakpoint($gt-small-desktop) {
+            right: 0;
+        }
     }
 }
