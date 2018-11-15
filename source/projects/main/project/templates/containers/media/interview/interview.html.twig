@@ -14,13 +14,13 @@
     </div>
     <div class="layout__cell  |  well">
         <div class="interview  |  well well--full  |  wings  |  leader-inside  |  trailer-inside">
-            {% if content.label|length > 0 %}
+            {% if content.label|t(locales)|length > 0 %}
                 <p class="title  |  trailer">{{ content.label|t(locales) }}</p>
             {% endif %}
-            {% if content.quote|length > 0 %}
+            {% if content.quote|t(locales)|length > 0 %}
                 <blockquote class="quote  |  wing--right">{{ content.quote|t(locales) }}</blockquote>
             {% endif %}
-            {% if content.quote_source|length > 0 %}
+            {% if content.quote_source|t(locales)|length > 0 %}
                 <p class="title title--sub-section  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
             {% endif %}
         </div>
