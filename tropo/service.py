@@ -163,6 +163,9 @@ t.add_condition(is_prod, Equals("PROD", Ref(stack_env)))
 service_host_condition = "ServiceHostCondition"
 t.add_condition(service_host_condition, Not(Equals("", Ref(service_host))))
 
+is_UAT = "IsUAT"
+t.add_condition(is_UAT, Equals("UAT", Ref(stack_env)))
+
 t.add_resource(cfn_datadog.MetricAlert(
     "DDAlarmServiceCount",
     Condition=is_prod,
@@ -517,7 +520,7 @@ Add the TargetGroup to a Listener on the ALB
  - path-pattern is given as a Parameter to this stack
 """
 # Http Listener
-listener_rule1 = t.add_resource(elasticloadbalancingv2.ListenerRule(
+t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpListenerRule1",
     Actions=[
         elasticloadbalancingv2.Action(
@@ -605,6 +608,166 @@ If(service_host_condition, t.add_resource(
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
         Priority=Ref(listener_priority2)
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsSporeListenerRule",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=24
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsSporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=25
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpSporeListenerRule",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=24
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpSporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=25
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsICTUpdateListenerRule",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["ictupdate.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=24
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsICTUpdateListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.ictupdate.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=25
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpICTUpdateListenerRule",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["ictupdate.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=24
+    )
+), Ref("AWS::NoValue"))
+
+If(is_UAT, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpICTUpdateListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.ictupdate.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=25
     )
 ), Ref("AWS::NoValue"))
 
