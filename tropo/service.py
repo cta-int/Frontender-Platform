@@ -611,6 +611,7 @@ If(service_host_condition, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
+# spore.cta.int
 If(is_UAT, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsSporeListenerRule",
@@ -691,6 +692,7 @@ If(is_UAT, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
+# ictupdate.cta.int
 If(is_UAT, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsICTUpdateListenerRule",
@@ -707,7 +709,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=24
+        Priority=26
     )
 ), Ref("AWS::NoValue"))
 
@@ -727,7 +729,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=25
+        Priority=27
     )
 ), Ref("AWS::NoValue"))
 
@@ -747,7 +749,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=24
+        Priority=26
     )
 ), Ref("AWS::NoValue"))
 
@@ -767,7 +769,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=25
+        Priority=27
     )
 ), Ref("AWS::NoValue"))
 
