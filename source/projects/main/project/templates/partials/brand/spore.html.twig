@@ -1,4 +1,5 @@
-<a class="site-navigation__brand  |  gutters" href="">
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+<a class="site-navigation__brand  |  gutters" href="{{ route({'page': main_menu.brand_link.page|t(locales)}) }}">
     <div class="brand--extension brand--spore">
         <img class="brand" src="{{ '/assets/images/logos/brands/logo-spore.svg' }}" alt="{{ 'Spore Magazine' }}"/>
     </div>
