@@ -29,6 +29,9 @@ Styleguide 3.30
     font-size: 2.75em;
     line-height: 1;
     @include theme-color();
+    .well--full & {
+        color: rgba($black, .26);
+    }
     html:lang(fr) & {
       font-size: 1.75em;
       left: rhythm(2) * -1;
