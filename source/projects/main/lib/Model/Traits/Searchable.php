@@ -25,9 +25,9 @@ trait Searchable
 
     public function setState(array $values)
     {
-        $values['must'] = array_key_exists('must', $values) && is_array($values['must']) ? $values['must'] : [];
-        $values['should'] = array_key_exists('should', $values) && is_array($values['should']) ? $values['should'] : [];
-        $values['mustNot'] = array_key_exists('mustNot', $values) && is_array($values['mustNot']) ? $values['mustNot'] : [];
+        $values['must'] = array_key_exists('must', $values) && is_array($values['must']) ? $values['must'] : $this->getState()->must;
+        $values['should'] = array_key_exists('should', $values) && is_array($values['should']) ? $values['should'] : $this->getState()->should;
+        $values['mustNot'] = array_key_exists('mustNot', $values) && is_array($values['mustNot']) ? $values['mustNot'] : $this->getState()->mustNot;
 
         if (isset($values['location']) && !empty($values['location'])) {
             $values['must'][] = $this->addTerm('geo', 'http://sws.geonames.org/' . $values['location'] . '/');

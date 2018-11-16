@@ -22,9 +22,9 @@ class SearchModel extends ScrModel
     }
     use Imagable;
 
-    public function __construct(Container $contianer)
+    public function __construct(Container $container)
     {
-        $this->parentConstruct($contianer);
+        $this->parentConstruct($container);
 
         $this->getState()
             ->insert('upcoming');
@@ -63,7 +63,9 @@ class SearchModel extends ScrModel
 
         return array_map(function ($item) use ($container, $state) {
             $event = new EventsModel($container);
-            $event->setState($state);
+            $event->setState(array_merge($state, [
+                'id' => $item['_id']
+            ]));
             $event->setData($item);
 
             return $event;
