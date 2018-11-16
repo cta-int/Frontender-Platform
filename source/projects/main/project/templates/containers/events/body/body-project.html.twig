@@ -7,6 +7,60 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <div class="layout layout--split">
+    {# Project Title #}
+    {# model.name #}
+
+    {# Description #}
+    {# model.description #}
+
+    {# Project Keywords #}
+    {# none existing #}
+
+    {# Cononical URL #}
+    {# route({'page': model.path, 'slug': model.name|sligify, 'id': model.id}) #}
+
+    {# Event Theme color #}
+    {# model.theme.color #}
+
+    {# Lead image #}
+    {# model.leadImage.metadata.url #}
+
+    {# Lead image description #}
+    {# model.leadImage.description #}
+
+    {# Lead image about #}
+    {# model.leadImage.about #}
+
+    {# Lead image credit #}
+    {# model.leadImage.credit #}
+
+    {# Theme label #}
+    {# model.theme.label #}
+
+    {# Content type #}
+    {# model.type #}
+
+    {# Takeaways #}
+    {# model.takeaways #}
+
+    {# Event Content (as array) #}
+    {# model.contentBlocks #}
+
+    {# Agrovoc labels (as array) #}
+    {# model.analysis.agrovoc #}
+
+    {# External links (as array) #}
+    {# model.externalLink #}
+
+    {# Project updates #}
+    {# model.updates #}
+
+    {# @Babs this is an example as an alias, located in the EventsModel #}
+    {# Concepts #}
+    {# model.concepts #}
+
+    {{ dump(model.updates|length) }}
+
 
     <div class="layout__cell layout__cell--main  |  wings  |  trailer-inside--hero  |  divider divider--right">
         <div>

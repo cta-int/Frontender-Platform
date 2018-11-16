@@ -164,6 +164,7 @@ class EventsModel extends ScrModel
 
         $themeColors = $this->container['theme-color'];
         $color = '';
+        $label = false;
 
         if ($this['type'] === 'Project') {
             $regions = [
@@ -187,12 +188,60 @@ class EventsModel extends ScrModel
                 return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
             });
 
-            $color = array_shift($labels);
-            $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
+            $label = array_shift($labels);
+            $color = isset($this->container['theme-color'][$label['type']]['theme-color'][$label['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$label['_id']] : '';
         }
 
         return [
-            'color' => $color
+            'color' => $color,
+            'label' => $label
         ];
+    }
+
+    public function getPropertyLeadImage()
+    {
+        if (!is_array($this['mediaObject']) || !count($this['mediaObject'])) {
+            return false;
+        }
+
+        $images = array_filter($this['mediaObject'], function ($item) {
+            return $item['type'] === 'image';
+        });
+
+        // Check if a media object is an image.
+        $featured = array_filter($images, function ($item) {
+            if (!array_key_exists('weight', $item)) {
+                return 0;
+            }
+
+            return $item['weight'] === 'featured';
+        });
+
+        if (count($featured) == 0) {
+            return false;
+        }
+
+        $image = array_shift($featured);
+
+        // Merge the data with the data from the SCR to get a complete item.
+        // Or just return that one.
+
+        $model = new MediaModel($this->container);
+        $model->setState([
+            'id' => $image['_id']
+        ]);
+        $image = $model->fetch();
+
+        return array_shift($image);
+    }
+
+    public function getPropertyTakeaways()
+    {
+        $this['contentBlocks'][0]['type'] === 'list' ? $this['contentBlocks'][0] : false;
+    }
+
+    public function getPropertyConcepts()
+    {
+        return isset($this['analysis']['agrovoc']) ? $this['analysis']['agrovoc'] : [];
     }
 }

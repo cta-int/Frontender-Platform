@@ -20,7 +20,8 @@ trait Searchable
             ->insert('from')
             ->insert('terms')
             ->insert('type')
-            ->insert('id');
+            ->insert('id')
+            ->insert('label');
     }
 
     public function setState(array $values)
