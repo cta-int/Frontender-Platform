@@ -1,0 +1,25 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if model|length > 0 %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <h2 class="title title--container  |  wings  |  trailer">
+        <span class="gutters">{{ content.title|t(locales)|default('Section title') }}</span>
+    </h2>
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside  |  wings">
+            <p class="gutters">{{ content.description|t(locales)|default('Lorem ipsum dolor sit amet.') }}</p>
+        </div>
+        <div class="layout__cell layout__cell--main  |  grid grid--teletubbies  |  wing--right">
+            <article class="grid__cell  |  gutters">Item</article>
+            <article class="grid__cell  |  gutters">Item</article>
+            <article class="grid__cell  |  gutters">Item</article>
+            <article class="grid__cell  |  gutters">Item</article>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>
+{% endif %}
