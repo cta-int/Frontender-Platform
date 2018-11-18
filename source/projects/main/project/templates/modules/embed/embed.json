@@ -1,12 +1,6 @@
 {
-    "name": {
-        "en-GB": "Embed container",
-        "fr-FR": "Embed container"
-    },
-    "description": {
-        "en-GB": "Embed container",
-        "fr-FR": "Embed container"
-    },
+    "name": "Embedded content",
+    "description": "Embed container",
     "template": "modules/embed/embed.html.twig",
     "template_config": {
         "config": {
