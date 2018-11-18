@@ -19,7 +19,7 @@
             <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|t }}</a>
         {% endif %}
 
-        <h3 class="title  |  anchor--reset">
+        <h3 class="heading  |  anchor--reset">
             <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
                 {{ article.headline }}
             </a>
@@ -31,14 +31,16 @@
             </p>
         {% endif %}
 
-        {% if config.show_topic and article.analysis.agrovoc.concepts | first.broader | first.label | length > 0 %}
-            <p class="author  |  leader--tiny">{{ 'in'|t(locales) }}
-                <a href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ article.analysis.agrovoc.concepts|first.broader|first._id }}">{{ article.analysis.agrovoc.concepts|first.broader|first.label|t(locales) }}</a>
-            </p>
-        {% endif %}
-
         {% if config.show_stand_first|default(1) %}
            <p class="post__intro">{{ article.about|raw }}</p>
+        {% endif %}
+
+        {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
+          <ul class="reset  |  tag-list  |  list--inline trailer--small">
+              {% for label in article.analysis.agrovoc.concepts|slice(0, 2) %}
+                  <li>{{ concept.tag(label, locale) }}</li>
+              {% endfor %}
+          </ul>
         {% endif %}
 
         {% if config.show_read_more|default(1) %}

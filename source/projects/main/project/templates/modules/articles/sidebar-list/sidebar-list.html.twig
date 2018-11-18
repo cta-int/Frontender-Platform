@@ -1,0 +1,53 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if model|length > 0 %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+	{% if labels.title|t(locales)|length %}
+		<h2 class="title title--section  |  gutters  |  trailer">{{ labels.title|t(locales) }}</h2>
+	{% endif %}
+
+	{% if config.template == 'partials/article/post-row.html.twig'%}
+		{% for article in model|slice(0,4) %}
+			<article class="leader  |  gutters">
+				{% include config.template with c|merge({ 'model': article }) %}
+			</article>
+		{% endfor %}
+	{% else %}
+		<div class="wing--right  |  trailer">
+			<div class="wing--right">
+				{% for article in model|slice(0,1) %}
+					<article class="gutters">
+						{% include config.template with {model: article, config: {
+							'show_lead_image':  config.show_lead_image in [1,2], 
+							'show_stand_first': config.show_stand_first in [1,2], 
+							'show_read_more': config.show_read_more in [1,2], 
+							'show_type': config.show_type in [1,2], 
+							'show_topic': config.show_topic in [1,2], 
+							'show_publication': config.show_publication in [1,2]
+						}} %}
+					</article>
+				{% endfor %}
+				{% for article in model|slice(1,4) %}
+					<article class="gutters">
+						{% include config.template with {model: article, config: {
+							'show_lead_image':  config.show_lead_image in [1], 
+							'show_stand_first': config.show_stand_first in [1], 
+							'show_read_more': config.show_read_more in [1], 
+							'show_type': config.show_type in [1], 
+							'show_topic': config.show_topic in [1], 
+							'show_publication': config.show_publication in [1]
+						}} %}
+					</article>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+
+</{{ config.container_tag|default('div') }}>
+{% endif %}
