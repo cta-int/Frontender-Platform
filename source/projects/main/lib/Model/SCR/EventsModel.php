@@ -93,15 +93,22 @@ class EventsModel extends ScrModel
         };
     }
 
-    public function getProjectOutputs()
+    public function getPropertyOutputs()
     {
         // Linked content, type file
     }
 
-    public function getProjectUpdates()
+    public function getPropertyUpdates()
     {
-        $_label = $this->getPropertyLabels('programme', true);
-        // Articles with programme label and of type 'blog'
+        $_label = $this->getLabels('programme', true);
+
+        $model = new SearchModel($this->container);
+        $model->setState([
+            'type' => 'article.blog',
+            'limit' => 3,
+            'label' => $_label['_id']
+        ]);
+        return $model->fetch();
     }
 
     public function getPropertyRelated()
@@ -166,20 +173,20 @@ class EventsModel extends ScrModel
     //         $event['theme'] = $regions[$event['region_id']];
     //     }
     // }   
-    
-    public function getPropertyLabels(string $type='', bool $first=false)
+
+    public function getLabels(string $type = '', bool $first = false)
     {
         $_labels = $this->data['label'];
 
-        if( $type != '' ) {
-            foreach( $_labels as $key => $value) {
-                if($value['type'] != $type) {
+        if ($type != '') {
+            foreach ($_labels as $key => $value) {
+                if ($value['type'] != $type) {
                     unset($_labels[$key]);
-                }  
+                }
             }
         }
 
-        if( $first ) {
+        if ($first) {
             // $_labels = array_slice($_labels, 0, 1);
             $_labels = array_shift($_labels);
         }
@@ -189,38 +196,22 @@ class EventsModel extends ScrModel
 
     public function getPropertyTheme()
     {
-        $_label = $this->getPropertyLabels('strategy', true);
-        // @todo make this a model property, $this->config
-        $_config = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
-        $_theme = [];
-        
-        if( isset($_config[$_label['type']]['theme-color'][$_label['_id']]) ) {
+        $_label = $this->getLabels('strategy', true);
+        $_theme = [
+            'color' => ''
+        ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
             $_theme['color'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
-        } 
-        
+        }
+
         return $_theme;
-
-        // if (!isset($this->container['theme-color'])) {
-        //     $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
-        // }
-
-        // $themeColors = $this->container['theme-color'];
-        // $color = '';
-
-        // if (isset($this['link']['label'])) {
-        //     $labels = array_filter($this['link']['label'], function ($label) use ($themeColors) {
-        //         return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
-        //     });
-
-        //     if (count($labels)) {
-        //         $color = array_shift($labels);
-        //         $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
-        //     }
-        // }
-
-        // return [
-        //     'color' => $color
-        // ];
     }
 
     public function getPropertyLeadImage()
