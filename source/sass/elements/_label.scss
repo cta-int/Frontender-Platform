@@ -27,6 +27,7 @@ Styleguide 3.9
   font-style: normal;
   /* In case this is an anchor tag */
   text-decoration: none;
+  @include theme-opaque-background(100%);
   &,
   &:hover {
     color: $white;
