@@ -11,6 +11,7 @@ namespace Prototype\Model\SCR;
 use Slim\Container;
 use Prototype\Model\SCR\Event\AttendeesModel;
 use Prototype\Model\Traits\Imagable;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class EventsModel extends ScrModel
 {
@@ -106,7 +107,7 @@ class EventsModel extends ScrModel
         $model->setState([
             'type' => 'article.blog',
             'limit' => 3,
-            'label' => $_label['_id']
+            'label' => [$_label['_id']]
         ]);
         return $model->fetch();
     }
