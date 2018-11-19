@@ -4,7 +4,7 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-{% if model|length > 0 %}
+{% if model|length %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
@@ -13,7 +13,7 @@
 	{% endif %}
 
 	{% if config.template == 'partials/article/post-row.html.twig'%}
-		{% for article in model|slice(0,4) %}
+		{% for article in model %}
 			<article class="leader  |  gutters">
 				{% include config.template with c|merge({ 'model': article }) %}
 			</article>
@@ -33,7 +33,7 @@
 						}} %}
 					</article>
 				{% endfor %}
-				{% for article in model|slice(1,4) %}
+				{% for article in model|slice(1) %}
 					<article class="gutters">
 						{% include config.template with {model: article, config: {
 							'show_lead_image':  config.show_lead_image in [1], 
