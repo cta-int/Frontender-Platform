@@ -4,7 +4,7 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-{% if model|length > 0 %}
+{% if model.link.mediaObject|findType('file')|length > 0 %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <h2 class="title title--container  |  wings  |  trailer">
