@@ -70,7 +70,7 @@
     <div class="layout__cell layout__cell--aside  |  wings">
         {% for c in containers %}
             {% if c.template_id  == 'project_updates' %}
-                {% include c.template with c|merge({ 'model':  model.similar.articles }) %}
+                {% include c.template with c|merge({ 'model':  model.updates }) %}
             {% elseif c.template_id  == "project_downloads" %}
                 {% include c.template with c|merge({ 'model':  model.link.mediaObject|findType('file') }) %}
             {% else %}
