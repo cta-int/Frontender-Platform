@@ -96,7 +96,15 @@ class EventsModel extends ScrModel
 
     public function getPropertyOutputs()
     {
-        // Linked content, type file
+        $_label = $this->getLabels('programme', true);
+
+        $model = new SearchModel($this->container);
+        $model->setState([
+            'type' => 'article.review',
+            'limit' => 4,
+            'label' => [$_label['_id']]
+        ]);
+        return $model->fetch();
     }
 
     public function getPropertyUpdates()
@@ -106,7 +114,7 @@ class EventsModel extends ScrModel
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.blog',
-            'limit' => 3,
+            'limit' => 4,
             'label' => [$_label['_id']]
         ]);
         return $model->fetch();
@@ -195,11 +203,18 @@ class EventsModel extends ScrModel
         return $_labels;
     }
 
+    public function getPropertyStrategyLabel()
+    {
+        $_label = $this->getLabels('strategy', true);
+    }
+
     public function getPropertyTheme()
     {
         $_label = $this->getLabels('strategy', true);
+
         $_theme = [
-            'color' => ''
+            'selector' => '',
+            'label' => ''
         ];
 
         if (!isset($this->container['theme-color'])) {
@@ -209,10 +224,10 @@ class EventsModel extends ScrModel
         }
 
         if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
-            $_theme['color'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
         }
 
-        return $_theme;
+        return $_label;
     }
 
     public function getPropertyLeadImage()
