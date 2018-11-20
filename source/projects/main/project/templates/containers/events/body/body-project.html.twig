@@ -73,9 +73,7 @@
             {% if c.template_id  == 'project_updates' %}
                 {% include c.template with c|merge({ 'model':  model.updates }) %}
             {% elseif c.template_id  == "project_downloads" %}
-                {# {{ dump(model.mediaObject|filterArray('type', 'file')) }} #}
-
-                {% include c.template with c|merge({ 'model':  model.downloads }) %}
+                {% include c.template with c|merge({ 'model':  model.mediaObject|filterArray('type', 'file') }) %}
             {% else %}
                 {% include c.template with c %}
             {% endif %}
