@@ -100,7 +100,7 @@ class EventsModel extends ScrModel
 
         $model = new SearchModel($this->container);
         $model->setState([
-            'type' => 'article.review',
+            'type' => 'article.issue',
             'limit' => 4,
             'label' => [$_label['_id']]
         ]);
