@@ -4,7 +4,7 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-{% if model.link.mediaObject|findType('file')|length > 0 %}
+{% if model.outputs|length > 0 %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <h2 class="title title--container  |  wings  |  trailer">
@@ -15,10 +15,9 @@
             <p class="gutters">{{ content.description|t(locales)|default('Lorem ipsum dolor sit amet.') }}</p>
         </div>
         <div class="layout__cell layout__cell--main  |  grid grid--teletubbies  |  wing--right">
-            <article class="grid__cell  |  gutters">Item</article>
-            <article class="grid__cell  |  gutters">Item</article>
-            <article class="grid__cell  |  gutters">Item</article>
-            <article class="grid__cell  |  gutters">Item</article>
+            {% for article in model.outputs %}
+                <article class="grid__cell  |  gutters">Item</article>
+            {% endfor %}
         </div>
     </div>
 </{{ config.container_tag|default('div') }}>
