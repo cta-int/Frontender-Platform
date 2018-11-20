@@ -4,6 +4,7 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/date.html.twig" as date %}
 {% import "macros/location.html.twig" as location %}
+{% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 {% import "macros/template.html.twig" as helper %}
@@ -14,8 +15,8 @@
         <div class="social__share  |  trailer  |  gutters">
             {{ share.bar_article(model, true) }}
         </div>
-        
-        <p class="title title--section  |  gutters"><strong>{{ model.theme.label|default('Theme label') }}</strong></p>
+
+        <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ label.theme_to_string(model.theme) }}</strong></p>
 
         <div class="post-body">
             {% if model.description %}
@@ -72,7 +73,7 @@
             {% if c.template_id  == 'project_updates' %}
                 {% include c.template with c|merge({ 'model':  model.updates }) %}
             {% elseif c.template_id  == "project_downloads" %}
-                {% include c.template with c|merge({ 'model':  model.link.mediaObject|findType('file') }) %}
+                {% include c.template with c|merge({ 'model':  model.downloads }) %}
             {% else %}
                 {% include c.template with c %}
             {% endif %}
@@ -132,5 +133,3 @@
     {# @Babs this is an example as an alias, located in the EventsModel #}
     {# Concepts #}
     {# model.concepts #}
-
-    {{ dump(model.updates|length) }}
