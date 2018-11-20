@@ -16,6 +16,8 @@
         </div>
         <div class="layout__cell layout__cell--main  |  grid grid--teletubbies  |  wing--right">
             {% for article in model.outputs %}
+                {{ dump(article.lead_image) }}
+
                 <article class="grid__cell  |  gutters">Item</article>
             {% endfor %}
         </div>
