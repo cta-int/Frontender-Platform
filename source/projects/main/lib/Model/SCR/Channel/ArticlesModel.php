@@ -19,6 +19,7 @@ class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
         parent::__construct($container);
 
         $this->getState()
+            ->insert('id', null, false)
             ->insert('language', $this->container->language->get())
             ->insert('format', 'scr')
             ->insert('sortDirection', 'desc')
