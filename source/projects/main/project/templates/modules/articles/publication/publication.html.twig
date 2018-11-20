@@ -8,25 +8,21 @@
 {{ dump(data) }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    
+
     <h2 class="title title--section  |  trailer">{{ 'Featured publication'|t(locales) }}</h2>
 
-
-    <!-- Temporary publication. Select publication using Frontender lookup -->
-    <article class="wing--right">
+    <article class="wing--right  |  trailer">
         <div class="wing--right">
-            <div class="publication-cover well">
-                {# {{model.image}}  #}
-                <img class="publication-cover__image" src="https://publications.cta.int/media/publications/images/l/1889_Cover_scan_yGcSfhg.png" alt="Africa agriculture status report 2017: Youth and agriculture in Sub-Saharan Africa" />
-            </div>
+            {# {{model.image}}  #}
+            <img class="img" src="{{ model.image }}" alt="{{ model.headline|t(locales) }}" />
         </div>
-        <div class="media__content">
-            <div class="media media--unfold">
-                <div class="media__body  |  gutters">
-                    {# {{model.headline}}  #}
-                    <h2 class="title  |  trailer--small">Africa agriculture status report 2017: Youth and agriculture in Sub-Saharan Africa</h2>
-                </div>
-            </div>
+        <div class="leader">
+            {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
+                <p class="meta">{{ model.link.label|filterArray('type', 'publication') }}</p>
+            {% endif %}
+            <h3 class="heading  |  anchor--reset">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
+            </h3>
         </div>
     </article>
 
@@ -39,6 +35,5 @@
             PDF 120MB
         </div>
     </a>
-    <!-- END:: Temporary publication. Select publication using Frontender lookup -->
 </{{ config.container_tag|default('div') }}>
 {% endif %}
