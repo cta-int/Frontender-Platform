@@ -87,7 +87,12 @@ Styleguide 3.18
     .theme--salmon &,
     .theme--red &,
     .theme--burgundy &,
-    .theme--purple & {
+    .theme--purple &,
+    .theme--youth &,
+    .theme--digitalisation &,
+    .theme--climate &,
+    .theme--gender &,
+    .theme--nutrition & {
       border-color: $white;
       border-color: rgba($white, .4);
       .well--neutral & {
