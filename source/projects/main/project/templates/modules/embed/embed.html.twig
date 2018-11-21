@@ -2,26 +2,28 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, '')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    
+    {% if attributes.title|t(locales)|length > 0 %}
+    <h2 class="title title--section  |  trailer">{{ attributes.title|t(locales) }}</h2>
+    {% endif %}
+
+    {% if attributes.standfirst|t(locales)|length > 0 %}
+        <p class="trailer">{{ attributes.standfirst|t(locales) }}</p>
+    {% endif %}
+
     {% if attributes.embed|length > 0 %}
         <div id="embed">
             {{ attributes.embed|raw }}
             {% if attributes.show_icon == 1 %}
                 <span class="av">
-                    <span class="icon icon--controller-play"><span class="is-narrative">Play</span></span>
+                    <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                 </span>
             {% endif %}
         </div>
     {% endif %}
 
-    {% if attributes.title|length > 0 %}
-        <h2 class="title title--section  |  trailer--normal">{{ attributes.title|t(locales) }}</h2>
+    {% if attributes.link.page|t(locales)|length > 0 %}
+        <a class="title" href="{{ attributes.link.page|t(locales) }}" target="_blank">{{ attributes.link.label|default('Watch the video')|t(locales) }}</a>
     {% endif %}
 
-    {% if attributes.standfirst|length > 0 %}
-        <p>Embed standfirst</p>
-    {% endif %}
-
-    {% if attributes.link|length > 0 %}
-        <a class="title" href="{{ attributes.link.page|t(locales) }}" target="_blank">{{ attributes.link.label|t(locales) }}</a>
-    {% endif %}
 </{{ config.container_tag|default('div') }}>

@@ -1,104 +1,99 @@
 {
-    "name": "Embedded content",
-    "description": "Embed container",
-    "template": "modules/embed/embed.html.twig",
-    "template_config": {
-        "config": {
-			"label": {
-				"en-GB": "Settings"
-			},
-			"controls": {
-				"wings": {
-					"value": "wings",
-					"control": "project/wings"
-				},
-				"leader": {
-					"value": "",
-					"control": "project/leader"
-				},
-				"leader_inside": {
-					"value": "",
-					"control": "project/leader_inside"
-				},
-				"trailer": {
-					"value": "",
-					"control": "project/trailer"
-				},
-				"trailer_inside": {
-					"value": "",
-					"control": "project/trailer_inside"
-				},
-				"divider": {
-					"value": "",
-					"control": "project/divider"
-				},
-				"container_tag": {
-					"value": "div",
-					"control": "project/container_tag"
-				},
-				"container_class": {
-					"value": "",
-					"control": "project/container_class"
-				}
-			}
+	"attributes": {
+		"label": {
+			"en-GB": "Attributes"
 		},
-        "attributes": {
-            "label": {
-				"en-GB": "Attributes"
+		"controls": {
+			"title": {
+				"value": {
+					"en-GB": "Container title",
+					"fr-FR": "Container title"
+				},
+				"label": {
+					"en-GB": "Title"
+				},
+				"control": "core/text"
 			},
-            "controls": {
-                "title": {
-					"value": {
-						"en-GB": "Container title",
-						"fr-FR": "Container title"
-					},
-					"label": {
-						"en-GB": "Title"
-					},
-					"core": "core/text"
+			"standfirst": {
+				"value": {
+					"en-GB": "Container standfirst",
+					"fr-FR": "Container standfirst"
 				},
-                "standfirst": {
-					"value": {
-						"en-GB": "Container standfirst",
-						"fr-FR": "Container standfirst"
-					},
-					"label": {
-						"en-GB": "Standfirst"
-					},
-					"core": "core/textarea"
+				"label": {
+					"en-GB": "Standfirst"
 				},
-                "link": {
-					"value": {
-						"label": {
-							"en-GB": "Watch the video",
-							"fr-FR": "Regardez le vidéo"
-						},
-						"page": {
-							"en-GB": "https://vimeo.com/91156049",
-							"fr-FR": "https://vimeo.com/91156049"
-						},
-						"id": ""
-					},
-					"label": {
-						"en-GB": "Content link"
-					},
-					"control": "core/route"
+				"control": "core/textarea"
+			},
+			"show_icon": {
+				"value": 1,
+				"label": {
+					"en-GB": "Show play icon"
 				},
-                "show_icon": {
-					"value": 1,
-					"label": {
-						"en-GB": "Show play icon"
-					},
-					"control": "core/boolean"
+				"control": "core/boolean"
+			},
+			"embed": {
+				"value": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/tXjil_lCaWA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+				"label": {
+					"en-GB": "Embed code"
 				},
-                "embed": {
-                    "value": "embed code",
-                    "label": {
-                        "en-GB": "Embed code"
-                    },
-                    "control": "core/textarea"
-                }
-            }
-        }
-    }
+				"control": "core/textarea"
+			},
+			"link": {
+				"value": {
+					"label": {
+						"en-GB": "Watch the video",
+						"fr-FR": "Regardez le vidéo"
+					},
+					"page": {
+						"en-GB": "https://vimeo.com/91156049",
+						"fr-FR": "https://vimeo.com/91156049"
+					},
+					"id": ""
+				},
+				"label": {
+					"en-GB": "Content link"
+				},
+				"control": "core/route"
+			}
+		}
+	},
+	"config": {
+		"label": {
+			"en-GB": "Settings"
+		},
+		"controls": {
+			"wings": {
+				"value": "",
+				"control": "project/wings"
+			},
+			"leader": {
+				"value": "",
+				"control": "project/leader"
+			},
+			"leader_inside": {
+				"value": "",
+				"control": "project/leader_inside"
+			},
+			"trailer": {
+				"value": "",
+				"control": "project/trailer"
+			},
+			"trailer_inside": {
+				"value": "",
+				"control": "project/trailer_inside"
+			},
+			"divider": {
+				"value": "",
+				"control": "project/divider"
+			},
+			"container_tag": {
+				"value": "div",
+				"control": "project/container_tag"
+			},
+			"container_class": {
+				"value": "gutters",
+				"control": "project/container_class"
+			}
+		}
+	}
 }
