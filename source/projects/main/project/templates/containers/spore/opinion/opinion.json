@@ -1,10 +1,10 @@
 {
     "template": "containers/global/group/group.html.twig",
     "name": {
-        "en-GB": "Dossier"
+        "en-GB": "Opinion papers"
     },
     "description": {
-        "en-GB": "Dossier container"
+        "en-GB": "Opinion container"
     },
     "template_config": {
         "config": {
@@ -41,7 +41,7 @@
                     "control": "project/divider"
                 },
                 "container_class": {
-                    "value": "",
+                    "value": "well",
                     "control": "project/container_class"
                 }
             }
@@ -63,7 +63,7 @@
                     },
                     "controls": {
                         "container_title": {
-                            "value": "Dossier",
+                            "value": "Opinion papers",
                             "label": {
                                 "en-GB": "Container title"
                             },
@@ -133,7 +133,7 @@
             "description": {
                 "en-GB": "Dossier"
             },
-            "template": "containers/spore/dossier/dossier.html.twig",
+            "template": "containers/spore/opinion/opinion.html.twig",
             "template_config": {
 
             }
