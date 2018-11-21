@@ -23,8 +23,10 @@ Styleguide 3.18
   border: 0 solid mix($color-body, $white, 26%);
   border: 0 solid rgba($color-theme, .26);
   // scss-lint:enable DuplicateProperty
+  
   &--top {
     border-top-width: 1px;
+    
   }
   &--right {
     border-right-width: 1px;
@@ -35,6 +37,42 @@ Styleguide 3.18
   &--left {
     border-left-width: 1px;
   }
+
+  &--top,
+  &--bottom {
+    &.gutters {
+      position: relative;
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: gutter(.5);
+        right: gutter(.5);
+        height: 0;
+        border: inherit;
+      }
+    }
+  }
+  &--top {
+    border-top-width: 0;
+    &.gutters {
+      &::after {
+        top: 0;
+        border-top-width: 1px;
+      }
+    }
+  }
+  &--bottom {
+    border-bottom-width: 0;
+    &.gutters {
+      &::after {
+        bottom: 0;
+        border-bottom-width: 1px;
+      }
+    }
+  }
+
   .theme--blue & {
     border-color: rgba($color-blue, .26);
   }
