@@ -1,7 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, '')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'gutters')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if attributes.embed|length > 0 %}
         <div id="embed">
             {{ attributes.embed|raw }}
