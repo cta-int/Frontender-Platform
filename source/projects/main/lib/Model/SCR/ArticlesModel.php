@@ -328,7 +328,12 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyStrategyLabel()
     {
-        $_label = $this->getLabels('strategy', true);
+        return $this->getLabels('strategy', true);
+    }
+
+    public function getPropertyPublicationLabel()
+    {
+        return $this->getLabels('publication', true);
     }
 
     public function getPropertyTheme()

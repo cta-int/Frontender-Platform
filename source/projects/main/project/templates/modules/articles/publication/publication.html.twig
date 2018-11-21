@@ -1,39 +1,42 @@
 {% import "macros/template.html.twig" as helper %}
+{% import "macros/date.html.twig" as date %}
 {% import "macros/image.html.twig" as image %}
+{% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 
 {% if model %}
-
-{{ dump(data) }}
-
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
     <h2 class="title title--section  |  trailer">{{ 'Featured publication'|t(locales) }}</h2>
-
-    <article class="wing--right  |  trailer">
-        <div class="wing--right">
-            {# {{model.image}}  #}
-            <img class="img" src="{{ model.image }}" alt="{{ model.headline|t(locales) }}" />
+    <article class="grid__cell  |  publication-layout">
+        <div class="publication-layout__cover">
+            <figure class="publication-cover">
+                {{ image.cover(model.lead_image, 'publication-cover__image') }}
+            </figure>
         </div>
-        <div class="leader">
-            {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
-                <p class="meta">{{ model.link.label|filterArray('type', 'publication') }}</p>
-            {% endif %}
-            <h3 class="heading  |  anchor--reset">
-                <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
-            </h3>
+        <div class="publication-layout__body">
+            <p class="trailer--tiny">
+                    {{ date.article(model.datePublished) }}
+                {% if model.publicationLabel %}
+                    <span class="meta">{{ model.publicationLabel.name|t(locales) }}</span>
+                {% endif %}
+            </p>
+            <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
+            <div class="leader">
+                {% for link in model.link %}
+                    <a class="publication-download publication-download--s trailer--tiny" href="">
+                        <span class="publication-download__item">
+                            PDF
+                        </span>
+                        <span class="publication-download__item">
+                            120MB
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
         </div>
     </article>
 
-    {# model.link.mediaObject|filterArray('contentType', 'application/pdf') #}
-    <a class="publication-download" href="javascript:void(0);">
-        <div class="publication-download__item">
-            Download
-        </div>
-        <div class="publication-download__item">
-            PDF 120MB
-        </div>
-    </a>
 </{{ config.container_tag|default('div') }}>
 {% endif %}

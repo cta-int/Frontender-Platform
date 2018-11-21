@@ -92,6 +92,45 @@ Styleguide 4.40
 	}
 }
 
+.publication-layout {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	&__cover {
+
+	}
+	&__body {
+
+	}
+	@include breakpoint($gt-medium-handheld) {
+		flex-direction: row;
+		// margin-right: 1/12*100vw;
+		&__cover {
+			margin-right: gutter(.5);
+		}
+	}
+	@include breakpoint($gt-large-handheld) {
+		flex-direction: row;
+		margin-right: 1/12*100vw;
+		&__cover {
+			width: 4/12*100vw;
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		margin-right: 0;
+		&__cover {
+			width: 4/18*100vw;
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		flex-direction: column;
+		margin-right: 2/18*100vw;
+		&__cover {
+			width: auto;
+		}
+	}
+}
+
 .publication-download {
 	display: inline-flex;
 	border: 1px solid rgba($black, .26);
@@ -104,16 +143,24 @@ Styleguide 4.40
 		border-left: 1px solid rgba($black, .26);
 		color: #BDBDBD;
 	}
+	&--s &__item {
+		font-size: to-unit(14px);
+		padding: rhythm(1) rhythm(3);
+	}
 }
 
 .publication-cover {
 	display: inline-block;
 	position: relative;
 	padding: 0;
+	margin-top: gutter(.5);
+	margin-right: gutter(1);
 	&__image {
 		width: 100%;
-		max-width: (3/12)*100vw;
 		display: block;
+		position: relative;
+		bottom: gutter(.5);
+		left: gutter(.5);
 	}
 	&::before {
 		content: '';
@@ -121,9 +168,9 @@ Styleguide 4.40
 		width: 100%;
 		height: 100%;
 		position: absolute;
-		top: rhythm(2);
-		right: rhythm(2);
+		top: rhythm(0);
+		right: rhythm(0);
 		z-index: -1;
-		background: inherit;
+		background: rgba($black, .10);
 	}
 }
