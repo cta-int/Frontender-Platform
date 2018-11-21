@@ -2,9 +2,9 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <ul class="{{ ['reset  |  trailer trailer-inside', container_class]|join('  |  ') }}">
-    {% for event in model.events %}
+    {% for event in model %}
         <li>
-            {% include "partials/event/nested-media-with-fixed-aside.html.twig" with {model: event} %}
+            {% include "partials/event/nested-media-with-fixed-aside.html.twig" with {'model': event} %}
             {% if not loop.last %}
                 <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
             {% endif %}
