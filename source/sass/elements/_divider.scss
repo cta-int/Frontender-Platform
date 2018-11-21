@@ -24,15 +24,8 @@ Styleguide 3.18
   border: 0 solid rgba($color-theme, .26);
   // scss-lint:enable DuplicateProperty
   
-  &--top {
-    border-top-width: 1px;
-    
-  }
   &--right {
     border-right-width: 1px;
-  }
-  &--bottom {
-    border-bottom-width: 1px;
   }
   &--left {
     border-left-width: 1px;
@@ -55,8 +48,9 @@ Styleguide 3.18
     }
   }
   &--top {
-    border-top-width: 0;
+    border-top-width: 1px;
     &.gutters {
+      border-top-width: 0;
       &::after {
         top: 0;
         border-top-width: 1px;
@@ -64,8 +58,9 @@ Styleguide 3.18
     }
   }
   &--bottom {
-    border-bottom-width: 0;
+    border-bottom-width: 1px;
     &.gutters {
+      border-bottom-width: 0;
       &::after {
         bottom: 0;
         border-bottom-width: 1px;
