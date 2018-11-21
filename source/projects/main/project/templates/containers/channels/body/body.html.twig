@@ -137,12 +137,14 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'wings')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if labels.container_title|t(locales) %}
-        <h2 class="title title--container  |  gutters  |  trailer">{{ labels.container_title|t(locales) }}</h2>
+        <h2 class="title title--container  |  wings  |  trailer">
+            <span class="gutters">{{ labels.container_title|t(locales) }}</span>
+        </h2>
     {% endif %}
     <div class="layout">
-        <div class="layout__cell layout__cell--aside layout__cell--divider">
+        <div class="layout__cell layout__cell--aside layout__cell--divider  wings">
             <nav class="gutters">
                 <ul class="is-gt-small-desktop  |  reset">
                     {% for c in containers %}
