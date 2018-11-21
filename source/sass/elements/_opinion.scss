@@ -1,0 +1,78 @@
+.opinion {
+    position: relative;
+    margin-bottom: rhythm(30);
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: $gutter-width;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid $white;
+    }
+    .well {
+        background: $white;
+    }
+    .heading {
+        font-weight: 400;
+    }
+    &--theme .well {
+        @include theme-opaque-background(100%);
+        color: $white;
+    }
+    &__icons {
+        font-size: to-unit(24px);
+    }
+    &__footer {
+        position: absolute;
+        right: 0;
+        bottom: -70px;
+        left: 0;
+        @include breakpoint($gt-small-desktop) {
+            bottom: -50px;
+        }
+    }
+    &__heading {
+        font-size: to-unit(34px);
+        font-weight: 400;
+    }
+}
+
+.theme--spore-red .opinion--theme::after {
+    border-top-color: $color-spore-red;
+}
+.theme--spore-teal .opinion--theme::after {
+    border-top-color: $color-spore-teal;
+}
+.theme--spore-blue .opinion--theme::after {
+    border-top-color: $color-spore-blue;
+}
+.theme--spore-light-blue .opinion--theme::after {
+    border-top-color: $color-spore-light-blue;
+}
+.theme--spore-dark-blue .opinion--theme::after {
+    border-top-color: $color-spore-dark-blue;
+}
+.theme--spore-grey-blue .opinion--theme::after {
+    border-top-color: $color-spore-grey-blue;
+}
+.theme--spore-lime .opinion--theme::after {
+    border-top-color: $color-spore-lime;
+}
+.theme--spore-olive-green .opinion--theme::after {
+    border-top-color: $color-spore-olive-green;
+}
+.theme--spore-forest-green .opinion--theme::after {
+    border-top-color: $color-spore-forest-green;
+}
+.theme--spore-oker .opinion--theme::after {
+    border-top-color: $color-spore-oker;
+}
+.theme--spore-brown .opinion--theme::after {
+    border-top-color: $color-spore-brown;
+}
+.theme--spore-taupe .opinion--theme::after {
+    border-top-color: $color-spore-taupe;
+}
