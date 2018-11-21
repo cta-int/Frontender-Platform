@@ -1,0 +1,18 @@
+.dossier {
+    @include breakpoint($gt-small-desktop) {
+        &__item.is-active,
+        &__item.is-current {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+                left: $gutter-width * -1;
+                background: $white;
+                width: 29px;
+                height: 29px;
+            }
+        }
+    }
+}
