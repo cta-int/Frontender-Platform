@@ -1,0 +1,15 @@
+{% macro download(file, size = '') %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    <a 
+        class="publication-download {{ size == 'small' ? 'publication-download--s' }} {{ class }}" 
+        href="{{ file.url }}"
+        title="{{ file.name|t(locales)|default('') }}"
+        >
+        <span class="publication-download__item">
+            {{ file.contentType|getFileFormat }}
+        </span>
+        <span class="publication-download__item">
+            {{ file.url|getFileSize }}
+        </span>
+    </a>
+{% endmacro %}

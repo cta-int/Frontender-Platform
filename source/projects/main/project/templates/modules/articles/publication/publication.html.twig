@@ -2,6 +2,7 @@
 {% import "macros/date.html.twig" as date %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/label.html.twig" as label %}
+{% import "macros/file.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 
@@ -25,14 +26,7 @@
             <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
             <div class="leader">
                 {% for link in model.link %}
-                    <a class="publication-download publication-download--s trailer--tiny" href="">
-                        <span class="publication-download__item">
-                            PDF
-                        </span>
-                        <span class="publication-download__item">
-                            120MB
-                        </span>
-                    </a>
+                    {{ file.download(file, 'small', 'trailer--tiny')}}
                 {% endfor %}
             </div>
         </div>
