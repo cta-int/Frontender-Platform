@@ -35,15 +35,6 @@
                 position: relative;
                 padding-left: $gutter-width / 2;
                 padding-right: $gutter-width / 2;
-                &::after {
-                    content: "";
-                    @include theme-opaque-background(100%);
-                    position: absolute;
-                    top: 100%;
-                    right: 0;
-                    left: 0;
-                    height: rhythm(4);
-                }
                 .stack {
                     height: 100%;
                 }
@@ -51,6 +42,21 @@
             .trend__title {
                 display: block;
             }
+        }
+    }
+}
+
+.trend__body::after {
+    content: "";
+    @include theme-opaque-background(100%);
+    position: absolute;
+    top: 100%;
+    left: -999em;
+    height: rhythm(4);
+    @include breakpoint($gt-small-desktop) {
+        .trend--wide & {
+            right: 0;
+            left: 0;
         }
     }
 }
