@@ -79,6 +79,18 @@ class EventsModel extends ScrModel
                 return $this->cachedArticles;
             }
 
+            public function events()
+            {
+                if (!$this->cachedAllEvents) {
+                    $now = new \DateTime();
+                    $future = new \DateTime();
+
+                    $this->cachedAllEvents = $this->getEvents([]);
+                }
+
+                return $this->cachedAllEvents;
+            }
+
             public function upcomingEvents()
             {
                 if (!$this->cachedUpcomingEvents) {
