@@ -13,8 +13,6 @@ The macro accepts a config object:
     {% set pages = entryModels|pagination(total, entryModels|first) %}
     {% set next = pages|slice(pages|length - 2, 1)|last %}
 
-    {{ dump(next) }}
-
     {% if config.model_name %}
         {% if entryModels|first.state.limit + entryModels|first.state.skip < total %}
             <div class="{{ ["body--align-center  |  leader  |  wing--right", class]|join(" | ") }}">
