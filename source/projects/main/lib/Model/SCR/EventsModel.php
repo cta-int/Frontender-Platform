@@ -12,7 +12,6 @@ use Slim\Container;
 use Prototype\Model\SCR\Event\AttendeesModel;
 use Prototype\Model\Traits\Imagable;
 use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\SCR\Event\SearchModel;
 
 class EventsModel extends ScrModel
 {
@@ -83,12 +82,12 @@ class EventsModel extends ScrModel
             public function upcomingEvents()
             {
                 if (!$this->cachedUpcomingEvents) {
-                    $now = new DateTime();
-                    $future = new DateTime();
+                    $now = new \DateTime();
+                    $future = new \DateTime();
 
                     $this->cachedUpcomingEvents = $this->getEvents([
-                        'from' => $now->format(DateTimeInterface::ISO8601),
-                        'to' => $future->modify('+5 years')->format(DateTimeInterface::ISO8601)
+                        'from' => $now->format('Y-m-d\TH:i:sO'),
+                        'to' => $future->modify('+5 years')->format('Y-m-d\TH:i:sO')
                     ]);
                 }
 
@@ -98,12 +97,12 @@ class EventsModel extends ScrModel
             public function pastEvents()
             {
                 if (!$this->cachedPastEvents) {
-                    $now = new DateTime();
-                    $past = new DateTime();
+                    $now = new \DateTime();
+                    $past = new \DateTime();
 
                     $this->cachedPastEvents = $this->getEvents([
-                        'from' => $past->modify('-5 years')->format($this->cachedUpcomingEvents),
-                        'to' => $now->format($this->cachedUpcomingEvents)
+                        'from' => $past->modify('-5 years')->format('Y-m-d\TH:i:sO'),
+                        'to' => $now->format('Y-m-d\TH:i:sO')
                     ]);
                 }
 
@@ -112,17 +111,30 @@ class EventsModel extends ScrModel
 
             private function getEvents($state)
             {
-                $model = new SearchModel($this->container);
+                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
                 $model->setState(array_merge([
-                    'id' => $this->state->id,
                     'limit' => 5,
                     'label' => array_map(function ($label) {
-                        echo '<pre>';
-                        print_r($label);
-                        echo '</pre>';
-                        die();
-                    }, $this->event['labels']),
-                    'language' => $this->state->language
+                        return $label['_id'];
+                    }, $this->event['label']),
+                    'concept' => array_map(function ($concept) {
+                        return $concept['_id'];
+                    }, $this->event['analysis']['agrovoc']['concepts']),
+                    'geo' => array_map(function ($geo) {
+                        return $geo['uri'];
+                    }, $this->event['analysis']['geonames'] ?? []),
+                    'language' => $this->state->language,
+                    'mustNot' => [
+                        [
+                            'type' => 'field',
+                            'id' => 'type',
+                            'value' => 'Project'
+                        ], [
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->event['_id']
+                        ]
+                    ]
                 ], $state));
 
                 return $model->fetch();

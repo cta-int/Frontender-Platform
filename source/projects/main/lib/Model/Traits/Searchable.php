@@ -58,6 +58,12 @@ trait Searchable
             }
         }
 
+        if (isset($values['geo']) && !empty($values['geo'])) {
+            foreach ($values['geo'] as $term) {
+                $values['must'][] = $this->addTerm('geo', $term);
+            }
+        }
+
         if (isset($values['id'])) {
             $values['must'][] = $this->addTerm('field', '_id', $values['id']);
             unset($values['id']);

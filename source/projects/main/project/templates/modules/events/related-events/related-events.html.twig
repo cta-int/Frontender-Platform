@@ -16,6 +16,11 @@
 
     <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
         {% for event in model.similar.upcomingEvents %}
+
+        {{ dump(model._id) }}
+        {{ dump(event._id) }}
+        {{ dump(event.type) }}
+
         <!-- @TODO:: For event in related events -->
             <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
                 {% include 'partials/event/short-list-item.html.twig' with {model: event} %}

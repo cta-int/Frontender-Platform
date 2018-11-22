@@ -236,6 +236,10 @@
                     "location": "json",
                     "type": "array"
                 },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
                 "location": {
                     "location": "json",
                     "type": "object"
