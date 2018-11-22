@@ -50,17 +50,18 @@ class EventsModel extends ScrModel
 
     public function getPropertySimilar()
     {
-        return new class ($this->getState(), $this->container)
+        return new class ($this->getState(), $this->container, $this->data)
         {
             private $cachedEvents = null;
             private $cachedArticles = null;
             private $container;
             private $state;
 
-            public function __construct($state, $container)
+            public function __construct($state, $container, $event)
             {
                 $this->state = $state;
                 $this->container = $container;
+                $this->event = $event;
             }
 
             public function articles()
@@ -80,16 +81,75 @@ class EventsModel extends ScrModel
 
             public function events()
             {
-                if (!$this->cachedEvents) {
-                    $related_events = new \Prototype\Model\SCR\Event\EventsModel($this->container);
-                    $this->cachedEvents = $related_events->setState([
-                        'id' => $this->state->id,
-                        'limit' => 8,
-                        'language' => $this->state->language
-                    ])->fetch();
+                if (!$this->cachedAllEvents) {
+                    $now = new \DateTime();
+                    $future = new \DateTime();
+
+                    $this->cachedAllEvents = $this->getEvents([]);
                 }
 
-                return $this->cachedEvents;
+                return $this->cachedAllEvents;
+            }
+
+            public function upcomingEvents()
+            {
+                if (!$this->cachedUpcomingEvents) {
+                    $now = new \DateTime();
+                    $future = new \DateTime();
+
+                    $this->cachedUpcomingEvents = $this->getEvents([
+                        'from' => $now->format('Y-m-d\TH:i:sO'),
+                        'to' => $future->modify('+5 years')->format('Y-m-d\TH:i:sO')
+                    ]);
+                }
+
+                return $this->cachedUpcomingEvents;
+            }
+
+            public function pastEvents()
+            {
+                if (!$this->cachedPastEvents) {
+                    $now = new \DateTime();
+                    $past = new \DateTime();
+
+                    $this->cachedPastEvents = $this->getEvents([
+                        'from' => $past->modify('-5 years')->format('Y-m-d\TH:i:sO'),
+                        'to' => $now->format('Y-m-d\TH:i:sO')
+                    ]);
+                }
+
+                return $this->cachedPastEvents;
+            }
+
+            private function getEvents($state)
+            {
+                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+                $model->setState(array_merge([
+                    'limit' => 5,
+                    'label' => array_map(function ($label) {
+                        return $label['_id'];
+                    }, $this->event['label']),
+                    'concept' => array_map(function ($concept) {
+                        return $concept['_id'];
+                    }, $this->event['analysis']['agrovoc']['concepts']),
+                    'geo' => array_map(function ($geo) {
+                        return $geo['uri'];
+                    }, $this->event['analysis']['geonames'] ?? []),
+                    'language' => $this->state->language,
+                    'mustNot' => [
+                        [
+                            'type' => 'field',
+                            'id' => 'type',
+                            'value' => 'Project'
+                        ], [
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->event['_id']
+                        ]
+                    ]
+                ], $state));
+
+                return $model->fetch();
             }
         };
     }

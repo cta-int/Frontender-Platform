@@ -7,27 +7,35 @@
 
     <ul class="list list--inline  |  leader  |  trailer" style="padding-left: 0;">
         <li>
-            <a class="tab  |  meta is-current" href="#Upcoming-events">Upcoming events</a>
+            <a class="tab  |  meta is-current" href="#Upcoming-events">All events</a>
         </li>
         <li>
             <a class="tab  |  meta" href="#Past-events">Past events</a>
         </li>
     </ul>
 
-    <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
-        {% for event in model.similar.upcomingEvents %}
-        <!-- @TODO:: For event in related events -->
-            <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
-                {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
-            </li>
-        <!-- End for event in related events -->
-        {% endfor %}
-        {% for event in model.similar.pastEvents %}
-        <!-- @TODO:: For event in related events -->
-            <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
-                {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
-            </li>
-        <!-- End for event in related events -->
-        {% endfor %}
+    <div class="panel-group" data-tab-config="{&quot;children&quot;: &quot;.panel&quot;, &quot;attribute&quot;: &quot;href&quot;, &quot;allowMultiple&quot;: 0, &quot;openFirst&quot;: 1, &quot;scrollTo&quot;: 0}">
+        <section class="panel is-active" id="Upcoming-events">
+            <div class="panel__body">
+                <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
+                    {% for event in model.similar.events %}
+                        <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                            {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section class="panel is-inactive" id="Past-events">
+            <div class="panel__body">
+                <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
+                    {% for event in model.similar.pastEvents %}
+                        <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                            {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
     </ul>
     </{{ config.container_tag|default('div') }}>
