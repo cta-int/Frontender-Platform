@@ -1,13 +1,175 @@
-{% set hasContent = false %}
-{% for loopContainer in containers %}
-    {% if loopContainer.model.articles | length > 0 %}
-        {% set hasContent = true %}
-    {% elseif loopContainer.model.events | length > 0 %}
-        {% set hasContent = true %}
+{{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
+{{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {
+    tab_config: {
+        selector: tab_config.selector|default('.panel-group')
+    }
+}) }}
+
+{% set panelData = {} %}
+{% for c in containers %}
+    
+    {# article.blog #}
+    {% if c.content.type == 'article.blog' %}
+        {% set panelData = panelData|merge({ 'article.blog': model.blogArticles }) %}
+
+    {# article.impact #}
+    {% elseif c.content.type == 'article.impact' %}
+        {% set panelData = panelData|merge({ 'article.impact': model.impactArticles }) %}
+
+    {# article.article.corporate_news #}
+    {% elseif c.content.type == 'article.corporate_news' %}
+        {% set panelData = panelData|merge({ 'article.corporate_news': model.corporateNewsArticles }) %}
+    
+    {# article.background #}
+    {% elseif c.content.type == 'article.background' %}
+        {% set panelData = panelData|merge({ 'article.background': model.backgroundArticles }) %}
+    
+    {# article.opinion #}
+    {% elseif c.content.type == 'article.opinion' %}
+        {% set panelData = panelData|merge({ 'article.opinion': model.opinionArticles }) %}
+    
+    {# article.interview #}
+    {% elseif c.content.type == 'article.interview' %}
+        {% set panelData = panelData|merge({ 'article.interview': model.interviewArticles }) %}
+    
+    {# article.syndicated #}
+    {% elseif c.content.type == 'article.syndicated' %}
+        {% set panelData = panelData|merge({ 'article.syndicated': model.syndicatedArticles }) %}
+    
+    {# article.review #}
+    {% elseif c.content.type == 'article.review' %}
+        {% set panelData = panelData|merge({ 'article.review': model.reviewArticles }) %}
+    
+    {# article.technical_scientific #}
+    {% elseif c.content.type == 'article.technical_scientific' %}
+        {% set panelData = panelData|merge({ 'article.technical_scientific': model.technicalScientificArticles }) %}
+    
+    {# article.data_report #}
+    {% elseif c.content.type == 'article.data_report' %}
+        {% set panelData = panelData|merge({ 'article.data_report': model.dataReportArticles }) %}
+    
+    {# article.communique #}
+    {% elseif c.content.type == 'article.communique' %}
+        {% set panelData = panelData|merge({ 'article.communique': model.vacancyArticles }) %}
+    
+    {# article.vacancy #}
+    {% elseif c.content.type == 'article.vacancy' %}
+        {% set panelData = panelData|merge({ 'article.vacancy': model.vacancyArticles }) %}
+    
+    {# article.internship #}
+    {% elseif c.content.type == 'article.internship' %}
+        {% set panelData = panelData|merge({ 'article.internship': model.internshipArticles }) %}
+    
+    {# article.call_for_external_expert #}
+    {% elseif c.content.type == 'article.call_for_external_expert' %}
+        {% set panelData = panelData|merge({ 'article.call_for_external_expert': model.callForExternalExpertArticles }) %}
+    
+    {# article.call_for_tender #}
+    {% elseif c.content.type == 'article.call_for_tender' %}
+        {% set panelData = panelData|merge({ 'article.call_for_tender': model.callForTenderArticles }) %}
+    
+    {# article.call_for_proposal #}
+    {% elseif c.content.type == 'article.call_for_proposal' %}
+        {% set panelData = panelData|merge({ 'article.call_for_proposal': model.callForProposalArticles }) %}
+    
+    {# article.partnership #}
+    {% elseif c.content.type == 'article.partnership' %}
+        {% set panelData = panelData|merge({ 'article.partnership': model.partnershipArticles }) %}
+    
+    {# article.tender_award_notice #}
+    {% elseif c.content.type == 'article.tender_award_notice' %}
+        {% set panelData = panelData|merge({ 'article.tender_award_notice': model.tenderAwardNoticeArticles }) %}
+    
+    {# article.tender_highlight #}
+    {% elseif c.content.type == 'article.tender_highlight' %}
+        {% set panelData = panelData|merge({ 'tenderHighlightArticles': model.tenderHighlightArticles }) %}
+    
+    {# article.speech #}
+    {% elseif c.content.type == 'article.speech' %}
+        {% set panelData = panelData|merge({ 'article.speech': model.speechArticles }) %}
+
     {% endif %}
+
+    {# Conference #}
+    {% if c.content.type == 'event.Conference' %}
+        {% set panelData = panelData|merge({ 'event.Conference': model.conferenceEvents }) %}
+
+    {# Workshop #}
+    {% elseif c.content.type == 'Workshop' %}
+        {% set panelData = panelData|merge({ 'event.Workshop': model.workshopEvents }) %}
+
+    {# Training (online) #}
+    {% elseif c.content.type == 'event.Training (online)' %}
+        {% set panelData = panelData|merge({ 'event.Training (online)': model.trainingOnlineEvents }) %}
+
+    {# Training #}
+    {% elseif c.content.type == 'event.Training' %}
+        {% set panelData = panelData|merge({ 'event.Training': model.trainingEvents }) %}
+
+    {# Briefing #}
+    {% elseif articleType == 'event.Briefing' %}
+        {% set panelData = panelData|merge({ 'event.Briefing': model.briefingEvents }) %}
+
+    {# Meeting #}
+    {% elseif c.content.type == 'event.Meeting' %}
+        {% set panelData = panelData|merge({ 'event.Meeting': model.meetingEvents }) %}
+
+    {# Hackathon #}
+    {% elseif c.content.type == 'event.Hackathon' %}
+        {% set panelData = panelData|merge({ 'event.Hackathon': model.hackathonEvents }) %}
+
+    {# Forum #}
+    {% elseif c.content.type == 'event.Forum' %}
+        {% set panelData = panelData|merge({ 'event.Forum': model.forumEvents }) %}
+
+    {# Field visit #}
+    {% elseif c.content.type == 'event.Field visit' %}
+        {% set panelData = panelData|merge({ 'event.Field visit': model.fieldVisitEvents }) %}
+
+    {# Other #}
+    {% elseif c.content.type == 'event.Other' %}
+        {% set panelData = panelData|merge({ 'event.Other': model.otherEvents }) %}
+
+    {% endif %}
+    
 {% endfor %}
 
-{% if hasContent %}
-    {% include 'containers/global/container-header/container-header.html.twig' with {config:{container_class:"wings"}} %}
-    {% include 'containers/global/panels/panels.html.twig' %}
-{% endif %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if labels.container_title|t(locales) %}
+        <h2 class="title title--container  |  wings  |  trailer">
+            <span class="gutters">{{ labels.container_title|t(locales) }}</span>
+        </h2>
+    {% endif %}
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside layout__cell--divider  wings">
+            <nav class="gutters">
+                <ul class="is-gt-small-desktop  |  reset">
+                    {% for c in containers %}
+                        {% if panelData[c.content.type]|length %}
+                            <li>
+                                <a class="{{ ["title title--tab", c.config.tab_class, c.config.active ? "is-active"]|join(" | ") }}" href="#{{ c.labels.panel_title|t(locales)|slugify }}">{{ c.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="{{ ['panel-group', 'layout__cell', 'wing--right', show_outer_wing ? 'wing--right']|join(' ') }}" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
+            {% for c in containers %}
+                {% if panelData[c.content.type]|length %}
+                    <section class="{{ c.config.active == true ? "is-active " : "is-inactive " }}{{ ["panel", c.config.panel_class]|join(" | ") }}" id="{{ c.labels.panel_title|t(locales)|slugify }}">
+                        <h2 class="panel__title  |  title">
+                            <a class="panel__trigger  |  gutters" href="#{{ c.labels.panel_title|t(locales)|slugify }}">{{ c.labels.panel_title|t(locales) }}</a>
+                        </h2>
+                        <div class="panel__body">
+                            {% include c.template with c|merge({'model': panelData[c.content.type]}) %}
+                        </div>
+                    </section>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

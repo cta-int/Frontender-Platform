@@ -1,0 +1,26 @@
+.interview {
+    margin: rhythm(-20) rhythm(5) 0;
+    padding-left: $gutter-width / 2;
+    padding-right: $gutter-width / 2;
+    @include breakpoint($gt-small-desktop) {
+        padding-left: 1 / 18 * 100vw;
+        margin: 0 1 / 18 * 100vw 0 1 / 18 * -100vw;
+    }
+    @include breakpoint($gt-medium-desktop) {
+        margin: rhythm(10) 1 / 18 * 100vw 0 1 / 18 * -100vw;
+        .quote {
+            padding-top: rhythm(17);
+            font-size: to-unit(34px);
+        }
+        .quote:before {
+            top: 0;
+        }
+    }
+    &__link {
+        display: block;
+    }
+    &__image {
+        background-size: cover;
+        background-position: center;
+    }
+}

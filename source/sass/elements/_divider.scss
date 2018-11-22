@@ -23,18 +23,51 @@ Styleguide 3.18
   border: 0 solid mix($color-body, $white, 26%);
   border: 0 solid rgba($color-theme, .26);
   // scss-lint:enable DuplicateProperty
-  &--top {
-    border-top-width: 1px;
-  }
+  
   &--right {
     border-right-width: 1px;
-  }
-  &--bottom {
-    border-bottom-width: 1px;
   }
   &--left {
     border-left-width: 1px;
   }
+
+  &--top,
+  &--bottom {
+    &.gutters {
+      position: relative;
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: gutter(.5);
+        right: gutter(.5);
+        height: 0;
+        border: inherit;
+      }
+    }
+  }
+  &--top {
+    border-top-width: 1px;
+    &.gutters {
+      border-top-width: 0;
+      &::after {
+        top: 0;
+        border-top-width: 1px;
+      }
+    }
+  }
+  &--bottom {
+    border-bottom-width: 1px;
+    &.gutters {
+      border-bottom-width: 0;
+      &::after {
+        bottom: 0;
+        border-bottom-width: 1px;
+      }
+    }
+  }
+
   .theme--blue & {
     border-color: rgba($color-blue, .26);
   }
@@ -62,6 +95,21 @@ Styleguide 3.18
   .theme--purple & {
     border-color: rgba($color-purple, .26);
   }
+  .theme--youth & {
+      border-color: rgba($color-youth, .26);
+  }
+  .theme--digitalisation & {
+      border-color: rgba($color-digitalisation, .26);
+  }
+  .theme--climate & {
+      border-color: rgba($color-climate, .26);
+  }
+  .theme--gender & {
+      border-color: rgba($color-gender, .26);
+  }
+  .theme--nutrition & {
+      border-color: rgba($color-nutrition, .26);
+  }
   &--inverse {
     &,
     .theme--blue &,
@@ -72,7 +120,12 @@ Styleguide 3.18
     .theme--salmon &,
     .theme--red &,
     .theme--burgundy &,
-    .theme--purple & {
+    .theme--purple &,
+    .theme--youth &,
+    .theme--digitalisation &,
+    .theme--climate &,
+    .theme--gender &,
+    .theme--nutrition & {
       border-color: $white;
       border-color: rgba($white, .4);
       .well--neutral & {

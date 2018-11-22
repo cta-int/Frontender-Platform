@@ -12,7 +12,7 @@ trait Imagable
                 return false;
             }
 
-            if (array_key_exists($key, $carry)) {
+            if (isset($carry[$key])) {
                 return $carry[$key];
             }
 

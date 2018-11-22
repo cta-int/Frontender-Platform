@@ -55,6 +55,21 @@ Styleguide 4.12
   .theme--purple & {
     border-color: rgba($color-purple, .26);
   }
+  .theme--youth & {
+    border-color: rgba($color-youth, .26);
+  }
+  .theme--digitalisation & {
+    border-color: rgba($color-digitalisation, .26);
+  }
+  .theme--climate & {
+    border-color: rgba($color-climate, .26);
+  }
+  .theme--gender & {
+    border-color: rgba($color-gender, .26);
+  }
+  .theme--nutrition & {
+    border-color: rgba($color-nutrition, .26);
+  }
 
   //scss-lint:enable DuplicateProperty
   border-width: 1px 0 0;

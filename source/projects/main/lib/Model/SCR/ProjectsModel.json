@@ -1,0 +1,11 @@
+{
+    "label": {
+        "en-GB": "Event",
+        "fr-FR": "Event"
+    },
+    "map": {
+        "id": "_id",
+        "title": "name",
+        "thumbnail": "image"
+    }
+}

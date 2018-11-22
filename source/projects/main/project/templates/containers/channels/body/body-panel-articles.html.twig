@@ -1,84 +1,86 @@
-{% import "macros/image.html.twig" as image %}
-{% import "macros/label.html.twig" as label %}
-{% import "macros/author.html.twig" as author %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-
-{% if model.articles|length > 0 %}
-    <div class="post post--hero  |  layout layout--even">
-        <div class="post__media  |  layout__cell  |  gutters">
-            <a class="is-heir" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
-                {{ image.post(model.articles|first.link.mediaObject|lead) }}
-            </a>
-        </div>
-
-        {% if model.articles|first.contentBlocks|filterArray('type', 'blockquote')|first %}
-            <div class="layout__cell  |  gutters  |  stack stack--stacked">
-                <div class="stack__unit">
-                    <blockquote class="quote">{{ model.articles|first.contentBlocks|filterArray('type', 'blockquote')|first.content|striptags('<strong><em><u><a><sub><sup>')|raw }}</blockquote>
-                </div>
-                <div class="stack__unit stack__pin  |  divider divider--top">
-                    <a class="block-link  |  is-heir"  href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
-                        {{ model.articles|first.headline|t(locales) }}
-                    </a>
-                    <time class="meta">{{ model.articles|first.datePublished|tdate('%e %B %Y') }}</time>
-                </div>
+{% if model|length > 0 %}
+    {% import "macros/template.html.twig" as helper %}
+    {% import "macros/image.html.twig" as image %}
+    {% import "macros/label.html.twig" as label %}
+    {% import "macros/author.html.twig" as author %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="post post--hero  |  layout layout--even">
+            <div class="post__media  |  layout__cell  |  gutters">
+                <a class="is-heir" href="{{ route({'page': model.article|first.path, 'slug': model.articl|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                    {{ image.post(model|first.link.mediaObject|lead) }}
+                </a>
             </div>
-        {% else %}
-        <div class="post__content  |  layout__cell  |  stack stack--stacked">
-            <div class="stack__unit  |  gutters">
 
-                {% if show_publication_date|default(1) %}
-                    {{ date.article(model.articles|first.datePublished) }}
-                {% endif %}
-
-                {% if config.show_publication|default(1) %}
-                    {{ label.publications( model.articles|first.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ') }}
-                {% endif %}
-
-                {% if show_channel|default(0) %}
-                    <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
-                {% endif %}
-
-                <h3 class="title title--tile anchor--reset">
-                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, id: model.articles|first._id}) }}">
-                        {{ model.articles|first.headline }}
-                    </a>
-                </h3>
-
-                {% if show_author_name|default(1) and model.articles|first.link.person.author|first.name  %}
-                    <div class="media media--middle  |  bleed">
-                        <div class="media__figure  |  gutters">
-                            <img class="image image--stretch" width="30" height="30" alt="{{ model.articles|first.link.person.author|first.name }}" src="{{ model.articles|first.link.person.author|first.avatar }}">
-                        </div>
-                        <div class="media__content  |  body--whisper">
-                            {{ author.single(model.articles|first.link.person.author) }}
-                        </div>
+            {% if model|first.contentBlocks|filterArray('type', 'blockquote')|first %}
+                <div class="layout__cell  |  gutters  |  stack stack--stacked">
+                    <div class="stack__unit">
+                        <blockquote class="quote">{{ model|first.contentBlocks|filterArray('type', 'blockquote')|first.content|striptags('<strong><em><u><a><sub><sup>')|raw }}</blockquote>
                     </div>
-                {% endif %}
+                    <div class="stack__unit stack__pin  |  divider divider--top">
+                        <a class="block-link  |  is-heir"  href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                            {{ model|first.headline|t(locales) }}
+                        </a>
+                        <time class="meta">{{ model|first.datePublished|tdate('%e %B %Y') }}</time>
+                    </div>
+                </div>
+            {% else %}
+            <div class="post__content  |  layout__cell  |  stack stack--stacked">
+                <div class="stack__unit  |  gutters">
 
-                {% if show_stand_first|default(1) %}
-                   <p class="post__intro">{{ model.articles|first.about|raw }}</p>
-                {% endif %}
+                    {% if show_publication_date|default(1) %}
+                        {{ date.article(model|first.datePublished) }}
+                    {% endif %}
 
-                {% if show_read_more|default(1) %}
-                   <a class="read-more" href="{{ route({'page': model.articles|first.path, id: model.articles|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
-                {% endif %}
+                    {% if config.show_publication|default(1) %}
+                        {{ label.publications( model|first.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ') }}
+                    {% endif %}
 
+                    {% if show_channel|default(0) %}
+                        <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
+                    {% endif %}
+
+                    <h3 class="title title--tile anchor--reset">
+                        <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                            {{ model|first.headline }}
+                        </a>
+                    </h3>
+
+                    {% if show_author_name|default(1) and model|first.link.person.author|first.name  %}
+                        <div class="media media--middle  |  bleed">
+                            <div class="media__figure  |  gutters">
+                                <img class="image image--stretch" width="30" height="30" alt="{{ model|first.link.person.author|first.name }}" src="{{ model|first.link.person.author|first.avatar }}">
+                            </div>
+                            <div class="media__content  |  body--whisper">
+                                {{ author.single(model|first.link.person.author) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if show_stand_first|default(1) %}
+                    <p class="post__intro">{{ model|first.about|raw }}</p>
+                    {% endif %}
+
+                    {% if show_read_more|default(1) %}
+                    <a class="read-more" href="{{ route({'page': model|first.path, id: model|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
+                    {% endif %}
+
+                </div>
             </div>
-        </div>
-        {% endif %}
+            {% endif %}
 
-    </div>
-    <div class="grid grid--rows">
-        {% for article in model.articles|slice(1) %}
-            <article class="grid__cell  |  leader  |  gutters">
-                {% include 'partials/article/post-row.html.twig' with {model: article, config: {
-                    show_stand_first: 1,
-                    show_read_more: 1,
-                    show_lead_image: 1,
-                    show_publication: 1
-                }} %}
-            </article>
-        {% endfor %}
-    </div>
+        </div>
+        <div class="grid grid--rows">
+            {% for article in model|slice(1) %}
+                <article class="grid__cell  |  leader  |  gutters">
+                    {% include 'partials/article/post-row.html.twig' with {model: article, config: {
+                        show_stand_first: 1,
+                        show_read_more: 1,
+                        show_lead_image: 1,
+                        show_publication: 1
+                    }} %}
+                </article>
+            {% endfor %}
+        </div>
+    </{{ config.container_tag|default('div') }}>
 {% endif %}

@@ -1,0 +1,54 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/label.html.twig" as label %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+{% if model.outputs|length > 0 %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <h2 class="title title--container  |  wings  |  trailer">
+        <span class="gutters">{{ content.title|t(locales)|default('Section title') }}</span>
+    </h2>
+    <div class="layout">
+        <div class="layout__cell layout__cell--aside  |  wings  |  trailer--tiny">
+            <p class="gutters">{{ content.description|t(locales)|default('Lorem ipsum dolor sit amet.') }}</p>
+        </div>
+        <div class="layout__cell layout__cell--main  |  grid grid--teletubbies  |  wing--right">
+            {% for article in model.outputs %}
+
+                <article class="grid__cell  |  gutters">
+                    <figure class="publication-cover">
+                        {{ image.cover(article.lead_image, 'publication-cover__image') }}
+                    </figure>
+                    <p class="trailer--tiny">
+                        {% if config.show_publication_date|default(1) %}
+                            {{ date.article(article.datePublished) }}
+                        {% endif %}
+                        {% if article.publicationLabel %}
+                            <span class="meta">
+                                {{ article.publicationLabel.name|t(locales) }}
+                            </span>
+                        {% endif %}
+                    </p>
+                    <h3 class="heading  |  trailer--tiny">{{ article.headline|t(locales) }}</h3>
+
+                    <div class="leader--normal">
+                        {% for link in article.link %}
+                            <a class="publication-download publication-download--s trailer--tiny" href="">
+                                <span class="publication-download__item">
+                                    PDF
+                                </span>
+                                <span class="publication-download__item">
+                                    120MB
+                                </span>
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>
+{% endif %}

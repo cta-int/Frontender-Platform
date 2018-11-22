@@ -34,7 +34,9 @@ Styleguide 3.13
     @include theme-transparent-background(76%);
   }
   &--neutral {
-    background-color: mix($color-body, $white, 5%);
+    .theme & {
+      background-color: mix($color-body, $white, 5%);
+    }
   }
   &--full {
     @include theme-opaque-background(100%);

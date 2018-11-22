@@ -1,0 +1,53 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/label.html.twig" as label %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'layout layout--split  |  spread-layout  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell  |  interview__image">
+        {% if model.link.mediaObject|length > 0 %}
+            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                {{ image.post_hero(model.link.mediaObject|lead, 'is-lt-small-desktop') }}
+            </a>
+        {% endif %}
+    </div>
+
+    <script>
+        function screenSize() {
+            if ($(window).innerWidth() >= 1280) {
+                $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_800,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
+            }
+            else if ($(window).innerWidth() >= 1024 && $(window).innerWidth() <= 1279) {
+                $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_650,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
+            }
+        }
+        screenSize();
+    </script>
+
+
+    <div class="layout__cell  |  well">
+        <div class="interview  |  well well--full  |  wings  |  leader-inside  |  trailer-inside">
+            {% if content.label|t(locales)|length > 0 %}
+                <p class="title  |  trailer">{{ content.label|t(locales) }}</p>
+            {% endif %}
+            {% if content.quote|t(locales)|length > 0 %}
+                <blockquote class="quote  |  wing--right">{{ content.quote|t(locales) }}</blockquote>
+            {% endif %}
+            {% if content.quote_source|t(locales)|length > 0 %}
+                <p class="title title--sub-section  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
+            {% endif %}
+        </div>
+        <div class="block-link  |  leader  |  wing--right">
+            <p class="gutters  |  trailer--small">
+                {% if model.datePublished|length > 0 %}
+                    <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
+                {% endif %}
+                {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
+                    {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
+                {% endif %}
+            </p>
+            <a class="interview__link  |  gutters  |  wing--right  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

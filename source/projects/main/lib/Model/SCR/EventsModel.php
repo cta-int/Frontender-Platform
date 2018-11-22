@@ -11,6 +11,7 @@ namespace Prototype\Model\SCR;
 use Slim\Container;
 use Prototype\Model\SCR\Event\AttendeesModel;
 use Prototype\Model\Traits\Imagable;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class EventsModel extends ScrModel
 {
@@ -93,6 +94,32 @@ class EventsModel extends ScrModel
         };
     }
 
+    public function getPropertyOutputs()
+    {
+        $_label = $this->getLabels('programme', true);
+
+        $model = new SearchModel($this->container);
+        $model->setState([
+            'type' => 'article.issue',
+            'limit' => 4,
+            'label' => [$_label['_id']]
+        ]);
+        return $model->fetch();
+    }
+
+    public function getPropertyUpdates()
+    {
+        $_label = $this->getLabels('programme', true);
+
+        $model = new SearchModel($this->container);
+        $model->setState([
+            'type' => 'article.blog',
+            'limit' => 4,
+            'label' => [$_label['_id']]
+        ]);
+        return $model->fetch();
+    }
+
     public function getPropertyRelated()
     {
         $linksModel = new LinksModel($this->container);
@@ -135,64 +162,118 @@ class EventsModel extends ScrModel
         return parent::getPropertyPath();
     }
 
-    private function _bindRegionId(&$event)
+    // private function _bindRegionId(&$event)
+    // {
+    //     // get all the regions.
+    //     $regions = [
+    //         '7729886' => 'purple',
+    //         '7729889' => 'red',
+    //         '7729885' => 'orange',
+    //         '9406051' => 'yellow',
+    //         '7729891' => 'gold',
+    //         '2363254' => 'blue'
+    //     ];
+    //     $ids = array_column($event['analysis']['geoname']['geonames'] ?? [], '_id');
+
+    //     $items = array_intersect($ids, array_keys($regions));
+    //     $event['region_id'] = array_shift($items);
+
+    //     if ($event['region_id']) {
+    //         $event['theme'] = $regions[$event['region_id']];
+    //     }
+    // }   
+
+    public function getLabels(string $type = '', bool $first = false)
     {
-        // get all the regions.
-        $regions = [
-            '7729886' => 'purple',
-            '7729889' => 'red',
-            '7729885' => 'orange',
-            '9406051' => 'yellow',
-            '7729891' => 'gold',
-            '2363254' => 'blue'
-        ];
-        $ids = array_column($event['analysis']['geoname']['geonames'] ?? [], '_id');
+        $_labels = $this->data['label'];
 
-        $items = array_intersect($ids, array_keys($regions));
-        $event['region_id'] = array_shift($items);
-
-        if ($event['region_id']) {
-            $event['theme'] = $regions[$event['region_id']];
+        if ($type != '') {
+            foreach ($_labels as $key => $value) {
+                if ($value['type'] != $type) {
+                    unset($_labels[$key]);
+                }
+            }
         }
+
+        if ($first) {
+            // $_labels = array_slice($_labels, 0, 1);
+            $_labels = array_shift($_labels);
+        }
+
+        return $_labels;
+    }
+
+    public function getPropertyStrategyLabel()
+    {
+        $_label = $this->getLabels('strategy', true);
     }
 
     public function getPropertyTheme()
     {
-        if (!isset($this->container['theme-color'])) {
-            $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
-        }
+        $_label = $this->getLabels('strategy', true);
 
-        $themeColors = $this->container['theme-color'];
-        $color = '';
-
-        if ($this['type'] === 'Project') {
-            $regions = [
-                '7729886' => 'purple',
-                '7729889' => 'red',
-                '7729885' => 'orange',
-                '9406051' => 'yellow',
-                '7729891' => 'gold',
-                '2363254' => 'blue'
-            ];
-            $ids = array_column($this['analysis']['geoname']['geonames'] ?? [], '_id');
-
-            $items = array_intersect($ids, array_keys($regions));
-            $event['region_id'] = array_shift($items);
-
-            if ($event['region_id']) {
-                $color = $regions[$event['region_id']];
-            }
-        } else if (isset($this['label']) && count($this['label'])) {
-            $labels = array_filter($this['label'], function ($label) use ($themeColors) {
-                return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
-            });
-
-            $color = array_shift($labels);
-            $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
-        }
-
-        return [
-            'color' => $color
+        $_theme = [
+            'selector' => '',
+            'label' => ''
         ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+        }
+
+        return $_label;
+    }
+
+    public function getPropertyLeadImage()
+    {
+        if (!is_array($this['mediaObject']) || !count($this['mediaObject'])) {
+            return false;
+        }
+
+        $images = array_filter($this['mediaObject'], function ($item) {
+            return $item['type'] === 'image';
+        });
+
+        // Check if a media object is an image.
+        $featured = array_filter($images, function ($item) {
+            if (!array_key_exists('weight', $item)) {
+                return 0;
+            }
+
+            return $item['weight'] === 'featured';
+        });
+
+        if (count($featured) == 0) {
+            return false;
+        }
+
+        $image = array_shift($featured);
+
+        // Merge the data with the data from the SCR to get a complete item.
+        // Or just return that one.
+
+        $model = new MediaModel($this->container);
+        $model->setState([
+            'id' => $image['_id']
+        ]);
+        $image = $model->fetch();
+
+        return array_shift($image);
+    }
+
+    public function getPropertyTakeaways()
+    {
+        $this['contentBlocks'][0]['type'] === 'list' ? $this['contentBlocks'][0] : false;
+    }
+
+    public function getPropertyConcepts()
+    {
+        return isset($this['analysis']['agrovoc']) ? $this['analysis']['agrovoc'] : [];
     }
 }
