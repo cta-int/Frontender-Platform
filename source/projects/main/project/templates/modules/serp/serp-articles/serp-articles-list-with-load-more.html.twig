@@ -9,8 +9,9 @@
 {% endfor %}
 
 <div class="leader--hero  |  trailer--hero trailer-inside" data-pagination-parent>
-    {{ pagination.extend(article, article_total, article_model, {
-        model_name: 'Article\\Search',
+    {{ pagination.extend(model, model.articleTotal, {
+        model_name: 'Search',
+        adapter: 'SCR',
         target: "[data-serp-articles]",
         layout: "modules/serp/serp-articles/serp-articles-list-with-load-more.html.twig",
         config: {

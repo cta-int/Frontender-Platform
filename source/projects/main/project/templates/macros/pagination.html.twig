@@ -8,15 +8,15 @@ The macro accepts a config object:
 {'labels': {}, 'class': ''}
 #}
 
-{% macro extend(entries, total, model, config = {}) %}
+{% macro extend(entryModels, total, config = {}) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-    {% set pages = entries|pagination(total, model) %}
+    {% set pages = entries|pagination(total, entryModels|first) %}
     {% set next = pages|slice(pages|length - 2, 1)|last %}
 
     {% if config.model_name %}
-        {% if model.state().limit + model.state().skip < total %}
+        {% if entryModels|first.state.limit + entryModels|first.state.skip < total %}
             <div class="{{ ["body--align-center  |  leader  |  wing--right", class]|join(" | ") }}">
-                <a class="reset  |  button button--wide pagination-pager" href="{{ next.query }}" data-pagination-target="{{ config.target }}"{% if config.config %} data-pagination-config="{{ config.config|json_encode }}"{% endif %} data-pagination-model="{{ config.model_name }}" data-pagination-layout="{{ config.layout }}" data-pagination-states="{{ model.state().values()|json_encode }}">
+                <a class="reset  |  button button--wide pagination-pager" href="{{ next.query }}" data-pagination-target="{{ config.target }}"{% if config.config %} data-pagination-config="{{ config.config|json_encode }}"{% endif %} data-pagination-model="{{ config.model_name }}" data-pagination-adapter="{{ config.adapter }}" data-pagination-layout="{{ config.layout }}" data-pagination-states="{{ entryModels|first.state.values|json_encode }}">
                     {{ labels.next|default('Show more')|t(locales) }}
                 </a>
             </div>
