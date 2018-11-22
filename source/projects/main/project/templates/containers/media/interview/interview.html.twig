@@ -29,7 +29,7 @@
     <div class="layout__cell  |  well">
         <div class="interview  |  well well--full  |  wings  |  leader-inside  |  trailer-inside">
             {% if content.label|t(locales)|length > 0 %}
-                <p class="title  |  trailer">{{ content.label|t(locales) }}</p>
+                <p class="title  |  trailer  |  leader--small">{{ content.label|t(locales) }}</p>
             {% endif %}
             {% if content.quote|t(locales)|length > 0 %}
                 <blockquote class="quote  |  wing--right">{{ content.quote|t(locales) }}</blockquote>
@@ -38,8 +38,8 @@
                 <p class="title title--sub-section  |  leader  |  trailer-inside">{{ content.quote_source|t(locales) }}</p>
             {% endif %}
         </div>
-        <div class="block-link  |  leader  |  wing--right">
-            <p class="gutters  |  trailer--small">
+        <div class="leader  |  wing--right  |  gutters">
+            <p class="meta  |  gutters">
                 {% if model.datePublished|length > 0 %}
                     <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
                 {% endif %}
@@ -47,7 +47,9 @@
                     {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
                 {% endif %}
             </p>
-            <a class="interview__link  |  gutters  |  wing--right  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
+            <div class="block-link">
+                <a class="interview__link  |  gutters  |  wing--right  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
+            </div>
         </div>
     </div>
 </{{ config.container_tag|default('div') }}>

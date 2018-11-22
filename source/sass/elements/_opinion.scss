@@ -18,6 +18,9 @@
     .heading {
         font-weight: 400;
     }
+    .layout--even > .layout__cell:first-of-type > & {
+        margin-top: rhythm(20);
+    }
     &--theme .well {
         @include theme-opaque-background(100%);
         color: $white;
@@ -37,6 +40,7 @@
     &__heading {
         font-size: to-unit(34px);
         font-weight: 400;
+        line-height: rhythm(13);
     }
 }
 
