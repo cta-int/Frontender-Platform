@@ -6,8 +6,9 @@
 {% endfor %}
 
 <div class="grid__cell grid__cell--stretcher gutters body--align-center leader-inside--hero" data-pagination-parent>
-    {{ pagination.extend(model, articles_total, model, {
+    {{ pagination.extend(model, model.articleTotal, {
         model_name: 'Channel\\Articles',
+        adapter: 'SCR',
         target: "#" ~ labels.panel_title|t(locales)|slugify ~ ' .grid.panel__body',
         layout: "partials/article/post-tile/articles.html.twig",
         config: {
