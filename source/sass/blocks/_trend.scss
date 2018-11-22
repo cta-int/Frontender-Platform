@@ -1,0 +1,24 @@
+.trend {
+    &__image {
+        &::after {
+            content: "";
+            @include theme-opaque-background(100%);
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            height: rhythm(2);
+            @include breakpoint($gt-small-desktop) {
+                height: rhythm(4);
+            }
+        }
+    }
+    &__label {
+        position: absolute;
+        left: -999em;
+        @include breakpoint($gt-small-desktop) {
+            top: 0;
+            left: 0;
+        }
+    }
+}
