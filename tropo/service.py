@@ -627,7 +627,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=24
+        Priority=45
     )
 ), Ref("AWS::NoValue"))
 
@@ -647,7 +647,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=25
+        Priority=46
     )
 ), Ref("AWS::NoValue"))
 
@@ -667,7 +667,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=24
+        Priority=47
     )
 ), Ref("AWS::NoValue"))
 
@@ -687,7 +687,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=25
+        Priority=48
     )
 ), Ref("AWS::NoValue"))
 
@@ -707,7 +707,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=24
+        Priority=49
     )
 ), Ref("AWS::NoValue"))
 
@@ -727,7 +727,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=25
+        Priority=50
     )
 ), Ref("AWS::NoValue"))
 
@@ -747,7 +747,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=24
+        Priority=51
     )
 ), Ref("AWS::NoValue"))
 
@@ -767,7 +767,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=25
+        Priority=52
     )
 ), Ref("AWS::NoValue"))
 
