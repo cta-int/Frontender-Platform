@@ -16,74 +16,24 @@ Styleguide 3.36
 	&.is-current {
 		position: relative;
 		color: $white;
-		background: $color-theme;
-		&:after,
+    background: $color-theme;
+    @include theme-background();
 		&:before {
 			content: "";
 			position: absolute;
 			top: 100%;
 			left: 50%;
-			border: solid transparent;
-		}
-		&:before {
-			border-top-color: $color-theme;
+      @include theme-border();
+      border-style: solid;
 			border-width: rhythm(2);
-			margin-left: rhythm(2) * -1;
+      margin-left: rhythm(2) * -1;
+      &,
+      .theme & {
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+      }
 		}
-		.theme--blue & {
-      background-color: $color-blue;
-      &:before {
-      	border-top-color: $color-blue;
-      }
-    }
-    .theme--lime & {
-      background-color: $color-lime;
-      &:before {
-      	border-top-color: $color-lime;
-      }
-    }
-    .theme--yellow & {
-      background-color: $color-yellow;
-      &:before {
-      	border-top-color: $color-yellow;
-      }
-    }
-    .theme--gold & {
-      background-color: $color-gold;
-      &:before {
-      	border-top-color: $color-gold;
-      }
-    }
-    .theme--orange & {
-      background-color: $color-orange;
-      &:before {
-      	border-top-color: $color-orange;
-      }
-    }
-    .theme--salmon & {
-      background-color: $color-salmon;
-      &:before {
-      	border-top-color: $color-salmon;
-      }
-    }
-    .theme--red & {
-      background-color: $color-red;
-      &:before {
-      	border-top-color: $color-red;
-      }
-    }
-    .theme--burgundy & {
-      background-color: $color-burgundy;
-      &:before {
-      	border-top-color: $color-burgundy;
-      }
-    }
-    .theme--purple & {
-      background-color: $color-purple;
-      &:before {
-      	border-top-color: $color-purple;
-      }
-    }
 	}
 }
 
