@@ -21,4 +21,36 @@
             left: 0;
         }
     }
+    &__title {
+        display: none;
+    }
+    &--wide {
+        @include breakpoint($gt-small-desktop) {
+            display: flex;
+            .trend__image,
+            .trend__body {
+                flex: 1 0 50%;
+            }
+            .trend__body {
+                position: relative;
+                padding-left: $gutter-width / 2;
+                padding-right: $gutter-width / 2;
+                &::after {
+                    content: "";
+                    @include theme-opaque-background(100%);
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    left: 0;
+                    height: rhythm(4);
+                }
+                .stack {
+                    height: 100%;
+                }
+            }
+            .trend__title {
+                display: block;
+            }
+        }
+    }
 }
