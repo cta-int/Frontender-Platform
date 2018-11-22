@@ -9,7 +9,7 @@
             {{ file.contentType|getFileFormat }}
         </span>
         <span class="publication-download__item">
-            {{ file.url|getFileSize }}
+            {{ file.metadata.url|getFileSize }}
         </span>
     </a>
 {% endmacro %}

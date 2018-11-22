@@ -2,7 +2,7 @@
 {% import "macros/date.html.twig" as date %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/label.html.twig" as label %}
-{% import "macros/file.html.twig" as label %}
+{% import "macros/file.html.twig" as file %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 
@@ -25,8 +25,8 @@
             </p>
             <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
             <div class="leader">
-                {% for link in model.link %}
-                    {{ file.download(file, 'small', 'trailer--tiny')}}
+                {% for link in model.link.mediaObject|filterArray('type', 'file') %}
+                    {{ file.download(link, 'small', 'trailer--tiny')}}
                 {% endfor %}
             </div>
         </div>
