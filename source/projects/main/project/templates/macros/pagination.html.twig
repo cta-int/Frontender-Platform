@@ -15,7 +15,7 @@ The macro accepts a config object:
 
     {% if config.model_name %}
         {% if entryModels|first.state.limit + entryModels|first.state.skip < total %}
-            <div class="{{ ["body--align-center  |  leader  |  wing--right", class]|join(" | ") }}">
+            <div class="{{ ["body--align-center  |  trailer  |  wing--right", class]|join(" | ") }}">
                 <a class="reset  |  button button--wide pagination-pager" href="{{ next.query }}" data-pagination-target="{{ config.target }}"{% if config.config %} data-pagination-config="{{ config.config|json_encode }}"{% endif %} data-pagination-model="{{ config.model_name }}" data-pagination-adapter="{{ config.adapter }}" data-pagination-layout="{{ config.layout }}" data-pagination-states="{{ entryModels|first.state.values|json_encode }}">
                     {{ labels.next|default('Show more')|t(locales) }}
                 </a>

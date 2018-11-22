@@ -1,7 +1,7 @@
 {% import "macros/pagination.html.twig" as pagination %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<ul class="{{ ['reset  |  trailer trailer-inside', container_class]|join('  |  ') }}">
+<ul class="{{ ['reset  |  trailer-inside', container_class]|join('  |  ') }}">
     {% for event in model.events %}
         <li>
             {% include "partials/event/nested-media-with-fixed-aside.html.twig" with {'model': event} %}
