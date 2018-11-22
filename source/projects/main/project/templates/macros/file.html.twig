@@ -1,4 +1,4 @@
-{% macro download(file, size = '') %}
+{% macro download(file, size = '', class = '') %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     <a 
         class="publication-download {{ size == 'small' ? 'publication-download--s' }} {{ class }}" 

@@ -56,6 +56,6 @@ class Media extends \Twig_Extension
     public function getFileFormat($mimetype)
     {
         $mimes = new \Mimey\MimeTypes;
-        return $mimes->getExtension('application/json');
+        return $mimes->getExtension($mimetype);
     }
 }

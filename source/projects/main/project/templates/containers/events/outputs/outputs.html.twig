@@ -2,6 +2,8 @@
 {% import "macros/date.html.twig" as date %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/label.html.twig" as label %}
+{% import "macros/file.html.twig" as file %}
+
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 {% if model.outputs|length > 0 %}
@@ -34,15 +36,8 @@
                     <h3 class="heading  |  trailer--tiny">{{ article.headline|t(locales) }}</h3>
 
                     <div class="leader--normal">
-                        {% for link in article.link %}
-                            <a class="publication-download publication-download--s trailer--tiny" href="">
-                                <span class="publication-download__item">
-                                    PDF
-                                </span>
-                                <span class="publication-download__item">
-                                    120MB
-                                </span>
-                            </a>
+                        {% for link in article.link.mediaObject|filterArray('type', 'file') %}
+                            {{ file.download(link, 'small', 'trailer--tiny')}}
                         {% endfor %}
                     </div>
 
