@@ -25,6 +25,9 @@ Styleguide 3.13
   padding-top: rhythm(10);
   padding-bottom: rhythm(10);
   @include theme-transparent-background(26%);
+  &--lighter {
+    @include theme-transparent-background(10%);
+  }
   &--darker {
     padding-top: rhythm(10);
     padding-bottom: rhythm(10);
