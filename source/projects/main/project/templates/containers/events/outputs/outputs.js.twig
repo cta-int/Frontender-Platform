@@ -1,0 +1,22 @@
+var coverHeight = 0;
+var bodyHeight = 0;
+jQuery(function($) {
+    setTimeout(function() {
+        $(".publication-stack__cover").each(function() {
+            coverHeight = $(this).height() > coverHeight ? $(this).height() : coverHeight;
+        });
+        $(".publication-stack__body").each(function () {
+            bodyHeight = $(this).height() > bodyHeight ? $(this).height() : bodyHeight;
+        });
+        $(".publication-stack__cover").each(function() {
+            $(this)
+                .css("min-height", coverHeight)
+                .css("flex-basis", coverHeight);
+        });
+        $(".publication-stack__body").each(function () {
+            $(this)
+                .css("min-height", bodyHeight)
+                .css("flex-basis", bodyHeight);
+        });
+    }, 100);
+});

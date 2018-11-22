@@ -92,6 +92,21 @@ Styleguide 4.40
 	}
 }
 
+.publication-stack {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	&__cover {
+		display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+	}
+	&__body {
+
+	}
+}
+
+
 .publication-layout {
 	position: relative;
 	display: flex;
