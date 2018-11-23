@@ -10,6 +10,10 @@
             padding-left: $gutter-width / 2;
             padding-right: $gutter-width / 2;
         }
+        &__body,
+        &__image {
+            @include theme-border(100%);
+        }
     }
     &:not(.trend--wide) {
         .stack__unit.stack__pin {
@@ -45,9 +49,9 @@
             display: flex;
             .trend__image,
             .trend__body {
-                @include theme-border(100%);
                 flex: 1 0 50%;
-                border-bottom: rhythm(3) solid;
+                border-bottom-width: rhythm(3);
+                border-bottom-style: solid;
             }
             .trend__body {
                 position: relative;
