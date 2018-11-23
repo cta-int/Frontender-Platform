@@ -41,16 +41,16 @@
         </div>
     </div>
     <script>
-            function screenSize() {
-                if ($(window).innerWidth() >= 1280) {
-                    $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_800,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
-                }
-                else if ($(window).innerWidth() >= 1024 && $(window).innerWidth() <= 1279) {
-                    $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_650,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
-                }
+        function screenSize() {
+            if ($(window).innerWidth() >= 1280) {
+                $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_800,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
             }
-            $(window).on('resize', function(){
-                setTimeout(500, screenSize());
-            })
-         </script>
+            else if ($(window).innerWidth() >= 1024 && $(window).innerWidth() <= 1279) {
+                $(".interview__image").css("background-image", "url('https://res.cloudinary.com/cta/image/upload/w_650,ar_3:2,f_auto,c_fill/{{model.link.mediaObject|lead.metadata.id}}')");
+            }
+        }
+        $(window).on('ready', screenSize()).on('resize', function(){
+            setTimeout(500, screenSize());
+        })
+    </script>
 </{{ config.container_tag|default('div') }}>
