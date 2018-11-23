@@ -1,6 +1,6 @@
 .opinion {
     position: relative;
-    margin-bottom: rhythm(30);
+    margin-bottom: rhythm(40);
     &--theme {
         margin-bottom: 0;
         &::after {
@@ -37,8 +37,8 @@
     }
     &__footer {
         position: absolute;
+        top: 100%;
         right: 0;
-        bottom: -70px;
         left: 0;
     }
     &__heading {
@@ -50,9 +50,6 @@
     @include breakpoint($gt-small-desktop) {
         &__heading {
             margin-top: rhythm(10);
-        }
-        &__footer {
-            bottom: -50px;
         }
     }
 }
