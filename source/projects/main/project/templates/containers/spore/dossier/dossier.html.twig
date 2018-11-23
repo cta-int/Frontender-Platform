@@ -1,4 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
+
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 <div class="layout trailer-inside--small">
@@ -12,32 +15,24 @@
         <div class="layout layout--split">
             <div class="layout__cell  |  gutters">
                 <!-- Switch image based on active article -->
-                <img src="https://res.cloudinary.com/cta/image/upload/w_1480,ar_3:2,f_auto,c_fill/ohwhjqxdtrp2qvspxlod" alt="placeholder">
+                {% for article in model.articles|slice(0, 3) %}
+                    <img data-dossier-image="{{ article._id }}" class="is-inactive" src="{{ article.lead_image.metadata.url }}" alt="{{ article.headline|t }}">
+                {% endfor %}
             </div>
             <div class="layout__cell layout__cell--aside  |  wing--right">
                 <ul class="reset  |  dossier">
                     <!-- Set .is-active or .is-current on active/current article -->
-                    <li class="dossier__item is-active  |  divider divider--bottom  |  trailer trailer-inside  |  gutters">
-                        <p class="meta">analysis</p>
-                        <a class="is-heir" href="#">
-                            <h3 class="heading heading--tile  |  leader--small  |  trailer--small">Strategies for scaling agricultural innovations</h3>
-                        </a>
-                        <p>by <a class="anchor" href="#">Clayton Wilson</a></p>
-                    </li>
-                    <li class="dossier__item  |  divider divider--bottom  |  trailer trailer-inside  |  gutters">
-                        <p class="meta">analysis</p>
-                        <a class="is-heir" href="#">
-                            <h3 class="heading heading--tile  |  leader--small  |  trailer--small">Strategies for scaling agricultural innovations</h3>
-                        </a>
-                        <p>by <a class="anchor" href="#">Clayton Wilson</a></p>
-                    </li>
-                    <li class="dossier__item  |  divider divider--bottom  |  trailer trailer-inside  |  gutters">
-                        <p class="meta">analysis</p>
-                        <a class="is-heir" href="#">
-                            <h3 class="heading heading--tile  |  leader--small  |  trailer--small">Strategies for scaling agricultural innovations</h3>
-                        </a>
-                        <p>by <a class="anchor" href="#">Clayton Wilson</a></p>
-                    </li>
+                    {% for article in model.articles|slice(0, 3) %}
+                        <li class="dossier__item  |  divider divider--bottom  |  trailer trailer-inside  |  gutters" data-image-id="{{ article._id }}">
+                            <p class="meta">{{ article.articleType}} </p>
+                            <a class="is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                <h3 class="heading heading--tile  |  leader--small  |  trailer--small">{{ article.headline|t }}</h3>
+                            </a>
+                            {% if article.link.person.author|length %}
+                                <p>{{ author.single(article.link.person.author) }}</p>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
