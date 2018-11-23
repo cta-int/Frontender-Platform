@@ -1,0 +1,17 @@
+jQuery(function($) {
+    $(".topic-trends").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: false,
+        mobileFirst: true,
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    variableWidth: true
+                }
+            }
+        ]
+    });
+});
