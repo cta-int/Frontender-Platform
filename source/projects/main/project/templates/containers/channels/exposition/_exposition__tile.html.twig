@@ -29,7 +29,7 @@
                 {% for i, contentBlock in model.contentBlocks %}
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endfor %}
-                <div class="well well--slim-fit  |  leader  |  trailer">
+                <div class="well  |  leader  |  trailer">
                     {{ share.bar_article_linkedin(model) }}
                 </div>
             </article>

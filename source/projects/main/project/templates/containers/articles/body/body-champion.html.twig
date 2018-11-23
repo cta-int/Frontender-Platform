@@ -58,13 +58,13 @@
                     </div>
                 {% endif %}
 
-                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
+                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
                     {{ share.bar_article(model) }}
                 </div>
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
                 {% if ctaOrg %}
-                    <aside itemprop="sourceOrganization" itemscope itemtype="https://schema.org/Organization" class="well well--slim-fit well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
+                    <aside itemprop="sourceOrganization" itemscope itemtype="https://schema.org/Organization" class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
                         <h2 itemprop="name" class="title title--apropos  |  leader--small  |  trailer--small  |  gutters">{{ 'About'|t(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
 
                         {% if ctaOrg.description %}
@@ -158,7 +158,7 @@
                         {% endfor %}
                     </section>
                 {% endif %}
-                <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
+                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
                     {{ share.bar_article(article) }}
                 </div>
             </div>
@@ -167,7 +167,7 @@
     <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
-            <div class="mini-map  |  well well--neutral well--slim-fit  |  gutters-outside  |  trailer--hero">
+            <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
                 <div class="mini-map__map">
                     <div id="map" style="height: 250px;"></div>
                     {{ location.map(model.analysis.geoname.geonames|locationSpecific, "#map") }}

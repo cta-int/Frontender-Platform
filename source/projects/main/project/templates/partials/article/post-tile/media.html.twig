@@ -6,7 +6,7 @@
 {{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
 
 <div class="grid__cell  |  gutters  |  trailer">
-    <div class="tile  |  well well--neutral well--slim-fit {{ ["", container_class]|join("  |  ") }}">
+    <div class="tile  |  well well--neutral {{ ["", container_class]|join("  |  ") }}">
         <div>
             <a class="tile__head  |  anchor anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) }}">
                 {{ image.post_hero(model.link.mediaObject|lead) }}
