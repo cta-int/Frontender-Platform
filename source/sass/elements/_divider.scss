@@ -68,64 +68,11 @@ Styleguide 3.18
     }
   }
 
-  .theme--blue & {
-    border-color: rgba($color-blue, .26);
-  }
-  .theme--lime & {
-    border-color: rgba($color-lime, .26);
-  }
-  .theme--yellow & {
-    border-color: rgba($color-yellow, .26);
-  }
-  .theme--gold & {
-    border-color: rgba($color-gold, .26);
-  }
-  .theme--orange & {
-    border-color: rgba($color-orange, .26);
-  }
-  .theme--salmon & {
-    border-color: rgba($color-salmon, .26);
-  }
-  .theme--red & {
-    border-color: rgba($color-red, .26);
-  }
-  .theme--burgundy & {
-    border-color: rgba($color-burgundy, .26);
-  }
-  .theme--purple & {
-    border-color: rgba($color-purple, .26);
-  }
-  .theme--youth & {
-      border-color: rgba($color-youth, .26);
-  }
-  .theme--digitalisation & {
-      border-color: rgba($color-digitalisation, .26);
-  }
-  .theme--climate & {
-      border-color: rgba($color-climate, .26);
-  }
-  .theme--gender & {
-      border-color: rgba($color-gender, .26);
-  }
-  .theme--nutrition & {
-      border-color: rgba($color-nutrition, .26);
-  }
+  @include theme-border(26%);
+
   &--inverse {
     &,
-    .theme--blue &,
-    .theme--lime &,
-    .theme--yellow &,
-    .theme--gold &,
-    .theme--orange &,
-    .theme--salmon &,
-    .theme--red &,
-    .theme--burgundy &,
-    .theme--purple &,
-    .theme--youth &,
-    .theme--digitalisation &,
-    .theme--climate &,
-    .theme--gender &,
-    .theme--nutrition & {
+    .theme & {
       border-color: $white;
       border-color: rgba($white, .4);
       .well--neutral & {
