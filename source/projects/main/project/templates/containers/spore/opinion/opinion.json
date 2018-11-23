@@ -50,12 +50,12 @@
     "containers": [
         {
             "name": {
-                "en-GB": "Container header"
+                "en-GB": "Dossier"
             },
             "description": {
-                "en-GB": "Container-header"
+                "en-GB": "Dossier"
             },
-            "template": "containers/global/container-header/container-header.html.twig",
+            "template": "containers/spore/opinion/opinion.html.twig",
             "template_config": {
                 "labels": {
                     "label": {
@@ -70,72 +70,24 @@
                             "control": "core/text"
                         },
                         "link": {
-                            "value": {
-                                "label": {
-                                    "en-GB": "",
-                                    "fr-FR": ""
-                                },
-                                "page": "",
-                                "id": ""
-                            },
-                            "label": {
-                                "en-GB": "Link"
-                            },
-                            "control": "core/route"
-                        }
-                    }
-                },
-                "config": {
-                    "label": {
-                        "en-GB": "Settings"
-                    },
-                    "controls": {
-                        "show_margins": {
-                            "value": "",
-                            "control": "project/layout/show_margins"
-                        },
-                        "show_smaller_title": {
-                            "value": 0,
-                            "label": {
-                                "en-GB": "Show small title"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "show_link": {
-                            "value": 1,
-                            "label": {
-                                "en-GB": "Show link"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "container_class": {
-                            "value": "",
-                            "control": "project/container_class"
-                        },
-                        "container_tag": {
-                            "value": "section",
-                            "control": "project/container_tag"
-                        },
-                        "wings": {
-                            "value": "wings",
-                            "control": "project/wings"
-                        }
+							"value": {
+								"label": {
+									"en-GB": "Will inclusive financing mechanisms promote more women-led agribusinesses?",
+									"fr-FR": "Will inclusive financing mechanisms promote more women-led agribusinesses?"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Sidebar link"
+							},
+							"control": "core/route"
+						}
                     }
                 }
-            },
-            "containers": [],
-            "frontender": ""
-        },
-        {
-            "name": {
-                "en-GB": "Dossier"
-            },
-            "description": {
-                "en-GB": "Dossier"
-            },
-            "template": "containers/spore/opinion/opinion.html.twig",
-            "template_config": {
-
             }
         }
     ],

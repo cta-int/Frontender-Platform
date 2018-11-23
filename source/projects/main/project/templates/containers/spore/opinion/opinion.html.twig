@@ -3,10 +3,19 @@
 
 <div class="layout trailer-inside--small">
     <div class="layout__cell layout__cell--aside  |  wings">
+        {% if labels.container_title|length > 0 %}
+            <header class="trailer-inside container-header container-header--slim-fit">
+                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                    {{ labels.container_title|t(locales) }}
+                </h2>
+            </header>
+        {% endif %}
         <div class="trailer  |  post post--hero">
-            <a href="#">
-                <h2 class="opinion__heading  |  gutters">Will inclusive financing mechanisms promote more women-led agribusinesses?</h2>
-            </a>
+            {% if labels.link %}
+                <a href="{{ labels.link.page|t(locales) }}">
+                    <h2 class="opinion__heading  |  gutters">{{ labels.link.label|t(locales) }}</h2>
+                </a>
+            {% endif %}
         </div>
     </div>
     <div class="layout__cell  |  wing--right">
