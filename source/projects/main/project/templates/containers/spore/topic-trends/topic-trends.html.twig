@@ -5,7 +5,7 @@
     <div style="display: flex; flex-wrap: wrap;" class="topic-trends">
         <!-- Main container -->
         
-        <div class="trend trend--wide  |  {{ channel.articles|first.theme.label }}  |  gutters">
+        <div class="trend trend--wide  |  {{ channel.articles|first.theme.selector }}  |  gutters">
             <div class="trend__image  |  is-root">
                 <img class="image" src="{{ model.articles|first.lead_image.metadata.url }}" alt="">
                 <p class="trend__label  |  label">{{ model.name|t }}</p>
@@ -49,7 +49,7 @@
 
         <!-- Small container -->
         {% for channel in model|slice(1) %}
-            <div class="trend  |  {{ channel.articles|first.theme.label }}  |  gutters">
+            <div class="trend  |  {{ channel.articles|first.theme.selector }}  |  gutters">
                 <div class="trend__image  |  is-root">
                     <img class="image" src="{{ channel.articles|first.lead_image.metadata.url }}" alt="">
                     <p class="trend__label  |  label">{{ channel.name|t }}</p>
