@@ -74,9 +74,17 @@
     }
 }
 
-// Slick override
+// Slick overrides
 .slick-initialized .slick-slide.trend--wide {
     @include breakpoint($gt-small-desktop) {
         display: flex;
+    }
+}
+
+
+.trend__switches {
+    .carousel-switch {
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
