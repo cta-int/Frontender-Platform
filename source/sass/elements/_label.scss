@@ -27,7 +27,8 @@ Styleguide 3.9
   font-style: normal;
   /* In case this is an anchor tag */
   text-decoration: none;
-  @each $color_name, $color_value in $colours {
+  @include theme-opaque-background(100%);
+    @each $color_name, $color_value in $colours {
     .theme .theme--#{$color_name} & {
       background-color: mix($color_value, $white, 100%);
     }
