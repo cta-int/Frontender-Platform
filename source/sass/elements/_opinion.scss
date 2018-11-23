@@ -23,22 +23,6 @@
             border-bottom-color: transparent;
         }
     }
-    // &:before {
-    //     content: "";
-    //     position: absolute;
-    //     top: 100%;
-    //     left: 50%;
-    //     @include theme-border();
-    //     border-style: solid;
-    //             border-width: rhythm(2);
-    //     margin-left: rhythm(2) * -1;
-    //     &,
-    //     .theme & {
-    //         border-left-color: transparent;
-    //         border-right-color: transparent;
-    //         border-bottom-color: transparent;
-    //     }
-    // }
     .well--neutral {
         background: $white;
     }
@@ -72,40 +56,3 @@
         }
     }
 }
-
-// .theme--spore-red .opinion--theme::after {
-//     border-top-color: $color-spore-red;
-// }
-// .theme--spore-teal .opinion--theme::after {
-//     border-top-color: $color-spore-teal;
-// }
-// .theme--spore-blue .opinion--theme::after {
-//     border-top-color: $color-spore-blue;
-// }
-// .theme--spore-light-blue .opinion--theme::after {
-//     border-top-color: $color-spore-light-blue;
-// }
-// .theme--spore-dark-blue .opinion--theme::after {
-//     border-top-color: $color-spore-dark-blue;
-// }
-// .theme--spore-grey-blue .opinion--theme::after {
-//     border-top-color: $color-spore-grey-blue;
-// }
-// .theme--spore-lime .opinion--theme::after {
-//     border-top-color: $color-spore-lime;
-// }
-// .theme--spore-olive-green .opinion--theme::after {
-//     border-top-color: $color-spore-olive-green;
-// }
-// .theme--spore-forest-green .opinion--theme::after {
-//     border-top-color: $color-spore-forest-green;
-// }
-// .theme--spore-oker .opinion--theme::after {
-//     border-top-color: $color-spore-oker;
-// }
-// .theme--spore-brown .opinion--theme::after {
-//     border-top-color: $color-spore-brown;
-// }
-// .theme--spore-taupe .opinion--theme::after {
-//     border-top-color: $color-spore-taupe;
-// }
