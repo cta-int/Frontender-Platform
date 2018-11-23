@@ -46,7 +46,11 @@
         }
 
         &__image {
-            width: 6/12*100vw;
+            .layout.layout & {
+                flex-basis: 6/12*100vw;
+                width: 6/12*100vw;
+                max-width: 6/12*100vw;
+            }
             flex-shrink: 0;
             position: relative;
             background-size: cover;
@@ -69,6 +73,13 @@
             left: 1 / 18 * -100vw;
             width: 8 / 18 * 100vw;
             padding-left: 1 / 18 * 100vw;
+        }
+        &__image {
+            .layout.layout & {
+                flex-basis: 9/18*100vw;
+                width: 9/18*100vw;
+                max-width: 9/18*100vw;
+            }
         }
         .quote {
             padding-top: rhythm(17);
