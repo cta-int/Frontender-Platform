@@ -1,13 +1,75 @@
 .interview {
-    margin: rhythm(-20) rhythm(5) 0;
-    padding-left: $gutter-width / 2;
-    padding-right: $gutter-width / 2;
+    &__interview {
+        margin: rhythm(-14) rhythm(5) 0;
+        // padding-left: $gutter-width / 2;
+        // padding-right: $gutter-width / 2;
+        background-color: inherit;
+        }
+    &__body {
+        padding: gutter(.25) gutter() gutter(1);
+        .title {
+            margin-bottom: 2em;
+        }
+    }
+    &__footer {
+        @include bleed();
+    }
+    &__link {
+        display: block;
+    }
+    &__image {
+        // background-size: cover;
+        // background-position: center;
+        background-color: inherit;
+    }
+
+    @include breakpoint($gt-large-handheld) {
+        &__interview,
+        &__footer {
+            width: 8 / 12 * 100vw;
+        }
+    }
     @include breakpoint($gt-small-desktop) {
-        padding-left: 1 / 18 * 100vw;
-        margin: 0 1 / 18 * 100vw 0 1 / 18 * -100vw;
+        &__interview {
+            margin: rhythm(10) 0 0;
+            padding: 0;
+            position: relative;
+            left: 1 / 12 * -100vw;
+            width: 7 / 12 * 100vw;
+            padding-left: 1 / 12 * 100vw;
+        }
+        &__body,
+        &__footer {
+            position: relative;
+            left: gutter(-1);
+            padding-left: 0;
+        }
+
+        &__image {
+            width: 6/12*100vw;
+            flex-shrink: 0;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-color: inherit;
+            &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: gutter(1);
+                background-color: inherit;
+            }
+        }
     }
     @include breakpoint($gt-medium-desktop) {
-        margin: rhythm(10) 1 / 18 * 100vw 0 1 / 18 * -100vw;
+        &__interview {
+            margin: rhythm(20) 0 0;
+            left: 1 / 18 * -100vw;
+            width: 8 / 18 * 100vw;
+            padding-left: 1 / 18 * 100vw;
+        }
         .quote {
             padding-top: rhythm(17);
             font-size: to-unit(34px);
@@ -15,12 +77,5 @@
         .quote:before {
             top: 0;
         }
-    }
-    &__link {
-        display: block;
-    }
-    &__image {
-        background-size: cover;
-        background-position: center;
     }
 }
