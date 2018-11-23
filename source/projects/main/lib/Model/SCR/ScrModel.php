@@ -90,20 +90,22 @@ class ScrModel extends AbstractModel
 
     public function fetch($raw = false)
     {
-        $state = $this->getState();
+        $state = clone $this->getState();
+        $stateValues = $state->getValues();
         $ids = [];
 
 	    // Check the id if it is an array or not.
         if (is_array($state->id)) {
-            $ids = $state->id;
-            $state->id = null;
-            $state->limit = 100;
+            $ids = $stateValues['id'];
+            $stateValues['id'] = null;
+            $stateValues['limit'] = 100;
+
+            $name = Inflector::pluralize($this->getModelName());
+        } else {
+            $name = $state->isUnique() ? Inflector::singularize($this->getModelName()) : Inflector::pluralize($this->getModelName());
         }
 
-        $name = $state->isUnique() ? Inflector::singularize($this->getModelName()) : Inflector::pluralize($this->getModelName());
-
         $method = 'get' . ucfirst($name);
-        $stateValues = $state->getValues();
 
         if (isset($stateValues['locale'])) {
             $stateValues['language'] = $stateValues['locale'];
@@ -126,7 +128,6 @@ class ScrModel extends AbstractModel
 
         $model = $this;
         $container = $this->container;
-        $state = $this->getState();
 
         return array_map(function ($item) use ($model, $container, $state) {
             $newItem = new $model($container);

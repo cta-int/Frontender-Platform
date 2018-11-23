@@ -100,4 +100,15 @@ class State
 
         return count($states) === count($filled);
     }
+
+    public function __clone()
+    {
+        $state = new State();
+
+        foreach ($this->data as $key => $item) {
+            $state->insert($key, $item->value, $item->unique);
+        }
+
+        return $state;
+    }
 }
