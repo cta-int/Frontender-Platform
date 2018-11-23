@@ -146,6 +146,44 @@ Styleguide 4.40
 	}
 }
 
+.publication-grid {
+	display: flex;
+    flex-wrap: wrap;
+    .no-flexbox & {
+        display: block;
+        @extend .clear !optional;
+    }
+	&__cell {
+		flex: 0 1 100%;
+        max-width: 100%;
+		.no-flexbox & {
+            float: left;
+            width: 100%;
+        }
+		@include breakpoint($gt-small-handheld) {
+			flex-basis: percentage(1 / 2);
+			max-width: percentage(1 / 2);
+			.no-flexbox & {
+	            width: percentage(1 / 2);
+	        }
+		}
+		@include breakpoint($gt-medium-handheld) {
+			flex-basis: percentage(1 / 3);
+			max-width: percentage(1 / 3);
+			.no-flexbox & {
+	            width: percentage(1 / 3);
+	        }
+		}
+		@include breakpoint($gt-medium-desktop) {
+			flex-basis: percentage(1 / 5);
+			max-width: percentage(1 / 5);
+			.no-flexbox & {
+	            width: percentage(1 / 5);
+	        }
+		}
+	}
+}
+
 .publication-download {
 	display: inline-flex;
 	border: 1px solid rgba($black, .26);

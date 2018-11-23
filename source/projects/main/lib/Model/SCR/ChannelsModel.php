@@ -70,7 +70,15 @@ class ChannelsModel extends ScrModel
             }
         }
 
-        return $result;
+        if ($raw) {
+            return $result;
+        }
+
+        return array_map(function ($channel) {
+            $channel->getState()->insert('id', $channel['_id']);
+
+            return $channel;
+        }, $result);
     }
 
     public function getPropertyBlogArticles()
