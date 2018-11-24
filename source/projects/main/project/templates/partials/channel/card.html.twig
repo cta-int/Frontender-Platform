@@ -5,47 +5,50 @@
 {% import "macros/label.html.twig" as label %}
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set theme = channel.articles|first.theme.selector %}
 
-<div class="trend {{ config.wide ? 'trend--wide' }}  |  stack  |  gutters |  {{ channel.articles|first.theme.selector }}">
-    <div class="stack {{ config.wide == false ? 'stack--stacked' }} well well--neutral">
-        <div class="trend__image  |  is-root">
-            {{ image.post(channel.articles|first.lead_image) }}
-            <p class="trend__label  |  label">{{ channel.name|t }}</p>
+<div class="card {{ config.wide ? 'card--wide' }}  |  well well--neutral   |  {{ theme }}">
+    <div class="card__image">
+        {{ image.post(channel.articles|first.lead_image) }}
+        <strong class="card__label  |  label  |  is-gt-small-desktop">{{ channel.name|t(locales) }}</strong>
+        <span class="card__theme  |  label"></span>
+    </div>
+    <div class="card__body  |  stack stack--stacked">
+
+        {# Smaller than desktop #}
+        <div class="stack__unit stack stack--stacked  |  is-lt-small-desktop">
+            <h3 class="title  |  leader--normal  |  trailer--normal">
+                <span class="anchor anchor--shy  |  is-heir  |  gutters  |  ">{{ config.wide ? 'Latest trending articles'|t : channel.name|t(locales) }} </span>
+            </h3>
+            {% if channel.description|t(locales) %}
+                <p class="gutters  |  trailer--normal trailer-inside--normal">{{ channel.description|t(locales) }}</p>
+            {% endif %}
         </div>
-        <div class="trend__body  |  well well--neutral  |  leader-inside">
-            <div class="is-gt-small-desktop  |  stack stack--stacked">
-                <div class="stack__unit  |  gutters">
-                    {% if config.wide %}
-                        <h2 class="title  |  trend__title  |  trailer">Latest trending articles</h2>
-                    {% endif %}
-                    {% for article in channel.articles|slice(0, 2) %}
-                        <div class="trend__item">
-                            <p class="meta">
-                                <time datetime="2018-11-07T13:09:28+00:00">{{ article.dateModified|tdate('%A, %e %B %Y') }}</time>
-                                in <span>{{ article.articleType }}</span>
-                            </p>
-                            <div class="block-link">
-                                <a class="meta--lowercase  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
-                                    {{ article.headline }}
-                                </a>
-                            </div>
-                        </div>
-                    {% endfor %}
+
+        {# Larger than desktop #}
+        <div class="stack stack--stacked stack__unit  |  is-gt-small-desktop">
+            {% if config.wide %}
+                {# TODO Config title #}
+                <h3 class="title  |  leader leader-inside--normal  |  trailer-inside--small  |  {{ config.wide ? 'gutter--right' : 'gutters' }}">{{ 'Latest trending articles'|t(locales) }}</h3>
+            {% endif %}
+            {% for index, article in channel.articles|slice(0, config.wide ? 2 : 1) %}
+                <div class="card__post  |  {{ config.wide ? 'gutter-outside--right' : 'gutters' }}  |  leader-inside--normal trailer-inside--normal">
+                    {% include "partials/article/post.html.twig" with {'article': article, 'config': {
+                        'show_lead_image': 0,
+                        'show_stand_first': 0,
+                        'show_publication_date': 1,
+                        'show_author': 0,
+                        'show_read_more': 0,
+                        'show_type': 0,
+                        'show_topic': 0,
+                        'show_publication': 0
+                    }} %}
                 </div>
-                <div class="stack__unit stack__pin">
-                    <div class="leader-inside--small  |  trailer-inside--small">
-                        <a class="block-link  |  gutters" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">view all articles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="gutters  |  trailer-inside  |  is-lt-small-desktop">
-                <h3 class="heading  |  trailer--small  |  anchor--reset">
-                    <a class="anchor anchor--shy  |  is-heir" href="#">{{ channel.name|t }} </a>
-                </h3>
-                {% if channel.description %}
-                    <p class="trailer">{{ channel.description|t }}</p>
-                {% endif %}
-            </div>
+            {% endfor %}
         </div>
+        <div class="stack__unit stack__pin  |  {{ config.wide ? '' : 'divider divider--top' }}  |  is-gt-small-desktop  |  leader">
+            <a class="leader-inside--small  |  {{ config.wide ? 'trailer-inside' : 'trailer-inside--small  |  gutters' }}  |  block-link" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">view all articles</a>
+        </div>
+
     </div>
 </div>

@@ -1,12 +1,12 @@
 jQuery(function($) {
-    $(".topic-trends").slick({
+    $(".card-slider").slick({
         dots: false,
         infinite: true,
         centerMode: true,
         variableWidth: false,
         mobileFirst: true,
-        prevArrow: $('.carousel-previous'),
-        nextArrow: $('.carousel-next'),
+        prevArrow: $(".carousel-previous"),
+        nextArrow: $(".carousel-next"),
         responsive: [
             {
                 breakpoint: 600,
@@ -20,12 +20,12 @@ jQuery(function($) {
     var carousselHeight = 0;
     jQuery(function($) {
         setTimeout(function() {
-            $(".slick-track").each(function() {
-                carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight;
-            });
-            $(".trend").each(function() {
-                // $(this).css("height", carousselHeight);
-            });
-        }, 100);
+            // $(".slick-track").each(function() {
+            //     carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight;
+            // });
+            // $(".card").each(function() {
+            //     $(this).css("height", (carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight));
+            // });
+        }, 200);
     });
 });

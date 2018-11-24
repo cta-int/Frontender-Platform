@@ -4,17 +4,22 @@
     {{ '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'|addScript('beforeBodyEnd') }}
     {{ 'containers/spore/topic-trends/topic-trends.js.twig'|addScript('beforeBodyEnd') }}
 
-    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'is-root  |  trend__switches')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-        <div style="display: flex; flex-wrap: wrap;" class="topic-trends">
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'is-root')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="card-slider">
 
-            {% include "partials/channel/card.html.twig" with {'config': {
+
+            <div class="gutters card-slider__slide card-slider__double-slide">
+                {% include "partials/channel/card.html.twig" with {'config': {
                 'wide': true
             }, 'channel': model|first} %}
+            </div>
 
             {% for channel in model|slice(1) %}
+            <div class="gutters card-slider__slide">
                 {% include "partials/channel/card.html.twig" with {'config': {
                     'wide': false
-                }, 'channel': model|first} %}
+                }, 'channel': channel} %}
+            </div>
             {% endfor %}
 
         </div>
