@@ -1,0 +1,51 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+
+<div class="trend {{ config.wide ? 'trend--wide' }}  |  stack  |  gutters |  {{ channel.articles|first.theme.selector }}">
+    <div class="stack {{ config.wide == false ? 'stack--stacked' }} well well--neutral">
+        <div class="trend__image  |  is-root">
+            {{ image.post(channel.articles|first.lead_image) }}
+            <p class="trend__label  |  label">{{ channel.name|t }}</p>
+        </div>
+        <div class="trend__body  |  well well--neutral  |  leader-inside">
+            <div class="is-gt-small-desktop  |  stack stack--stacked">
+                <div class="stack__unit  |  gutters">
+                    {% if config.wide %}
+                        <h2 class="title  |  trend__title  |  trailer">Latest trending articles</h2>
+                    {% endif %}
+                    {% for article in channel.articles|slice(0, 2) %}
+                        <div class="trend__item">
+                            <p class="meta">
+                                <time datetime="2018-11-07T13:09:28+00:00">{{ article.dateModified|tdate('%A, %e %B %Y') }}</time>
+                                in <span>{{ article.articleType }}</span>
+                            </p>
+                            <div class="block-link">
+                                <a class="meta--lowercase  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                    {{ article.headline }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="stack__unit stack__pin">
+                    <div class="leader-inside--small  |  trailer-inside--small">
+                        <a class="block-link  |  gutters" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">view all articles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="gutters  |  trailer-inside  |  is-lt-small-desktop">
+                <h3 class="heading  |  trailer--small  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="#">{{ channel.name|t }} </a>
+                </h3>
+                {% if channel.description %}
+                    <p class="trailer">{{ channel.description|t }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

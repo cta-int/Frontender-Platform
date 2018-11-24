@@ -16,4 +16,16 @@ jQuery(function($) {
             }
         ]
     });
+
+    var carousselHeight = 0;
+    jQuery(function($) {
+        setTimeout(function() {
+            $(".slick-track").each(function() {
+                carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight;
+            });
+            $(".trend").each(function() {
+                // $(this).css("height", carousselHeight);
+            });
+        }, 100);
+    });
 });
