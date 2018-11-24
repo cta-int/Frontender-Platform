@@ -20,12 +20,18 @@ jQuery(function($) {
     var carousselHeight = 0;
     jQuery(function($) {
         setTimeout(function() {
+            $('.card--wide [data-background-image]')
+                .css("background", "no-repeat center")
+                .css("background-size", "cover")
+                .css("background-image", function(){
+                    return "url(\"" + $(this).find('img').hide().attr("src") + "\")";
+                });
             // $(".slick-track").each(function() {
             //     carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight;
             // });
             // $(".card").each(function() {
             //     $(this).css("height", (carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight));
             // });
-        }, 200);
+        }, 600);
     });
 });

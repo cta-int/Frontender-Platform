@@ -9,7 +9,9 @@
 
 <div class="card {{ config.wide ? 'card--wide' }}  |  well well--neutral   |  {{ theme }}">
     <div class="card__image">
-        {{ image.post(channel.articles|first.lead_image) }}
+        <figure data-background>
+            {{ image.card(channel.articles|first.lead_image, '', config.wide) }}
+        </figure>
         <strong class="card__label  |  label  |  is-gt-small-desktop">{{ channel.name|t(locales) }}</strong>
         <span class="card__theme  |  label"></span>
     </div>
@@ -46,7 +48,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="stack__unit stack__pin  |  {{ config.wide ? '' : 'divider divider--top' }}  |  is-gt-small-desktop  |  leader">
+        <div class="stack__unit stack__pin  |  {{ config.wide ? '' : 'divider divider--top' }}  |  is-gt-small-desktop  |  leader--small">
             <a class="leader-inside--small  |  {{ config.wide ? 'trailer-inside' : 'trailer-inside--small  |  gutters' }}  |  block-link" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">view all articles</a>
         </div>
 
