@@ -312,251 +312,29 @@ Styleguide 2.1
 
             &.well,
             .well & {
-                border-color: mix($color-green, $white, 4%);
-
-                .theme--blue & {
-                    border-color: mix($color-blue, $white, 4%);
-                }
-
-                .theme--lime & {
-                    border-color: mix($color-lime, $white, 4%);
-                }
-
-                .theme--yellow & {
-                    border-color: mix($color-yellow, $white, 4%);
-                }
-
-                .theme--gold & {
-                    border-color: mix($color-gold, $white, 4%);
-                }
-
-                .theme--orange & {
-                    border-color: mix($color-orange, $white, 4%);
-                }
-
-                .theme--salmon & {
-                    border-color: mix($color-salmon, $white, 4%);
-                }
-
-                .theme--red & {
-                    border-color: mix($color-red, $white, 4%);
-                }
-
-                .theme--burgundy & {
-                    border-color: mix($color-burgundy, $white, 4%);
-                }
-
-                .theme--purple & {
-                    border-color: mix($color-purple, $white, 4%);
-                }
+                border-color: rgba(255, 255, 255, .8);
             }
         }
     }
-    // // MOVE THIS CODE TO POST!!!
-    // @include breakpoint($lt-small-desktop) {
-    //   &--post > &__cell {
-    //     flex-basis: 100%;
-    //     max-width: percentage(18 / 18);
-    //   }
-    //   &--post &__cell {
-    //     .no-flexbox & {
-    //       width: 100%;
-    //     }
-    //   }
-    // }
     @include breakpoint($gt-medium-desktop) {
         &__cell--divider {
             border: 0;
-            box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-green, .26)};
-
-            .theme--blue & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-blue, .26)};
+            &,
+            .article-headline & {
+                @each $color_name, $color_value in $colours {
+                    .theme--#{$color_name} & {
+                        box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color_value, .26)};
+                    }
+                }
             }
-
-            .theme--lime & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-lime, .26)};
-            }
-
-            .theme--yellow & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-yellow, .26)};
-            }
-
-            .theme--gold & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-gold, .26)};
-            }
-
-            .theme--orange & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-orange, .26)};
-            }
-
-            .theme--salmon & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-salmon, .26)};
-            }
-
-            .theme--red & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-red, .26)};
-            }
-
-            .theme--burgundy & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-burgundy, .26)};
-            }
-
-            .theme--purple & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-purple, .26)};
-            }
-
-            .theme--spore-red & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-red, .26)};
-            }
-            .theme--spore-teal & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-teal, .26)};
-            }
-            .theme--spore-blue & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-blue, .26)};
-            }
-            .theme--spore-light-blue & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-light-blue, .26)};
-            }
-            .theme--spore-dark-blue & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-dark-blue, .26)};
-            }
-            .theme--spore-grey-blue & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-grey-blue, .26)};
-            }
-            .theme--spore-lime & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-lime, .26)};
-            }
-            .theme--spore-olive-green & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-olive-green, .26)};
-            }
-            .theme--spore-forest-green & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-forest-green, .26)};
-            }
-            .theme--spore-oker & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-oker, .26)};
-            }
-            .theme--spore-brown & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-brown, .26)};
-            }
-            .theme--spore-taupe & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color-spore-taupe, .26)};
-            }
+            
 
             &.well,
             .well & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-green, $white, 26%), inset rhythm(-5) 0 0 0 mix($color-green, $white, 4%)};
-
-                .theme--blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-blue, .26)};
-                }
-
-                .theme--lime & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-lime, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-lime, .26)};
-                }
-
-                .theme--yellow & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-yellow, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-yellow, .26)};
-                }
-
-                .theme--gold & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-gold, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-gold, .26)};
-                }
-
-                .theme--orange & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-orange, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-orange, .26)};
-                }
-
-                .theme--salmon & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-salmon, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-salmon, .26)};
-                }
-
-                .theme--red & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-red, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-red, .26)};
-                }
-
-                .theme--burgundy & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-burgundy, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-burgundy, .26)};
-                }
-
-                .theme--purple & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-purple, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-purple, .26)};
-                }
-
-                .theme--spore-red & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-red, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-red, .26)};
-                }
-                .theme--spore-teal & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-teal, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-teal, .26)};
-                }
-                .theme--spore-blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-blue, .26)};
-                }
-                .theme--spore-light-blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-light-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-light-blue, .26)};
-                }
-                .theme--spore-dark-blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-dark-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-dark-blue, .26)};
-                }
-                .theme--spore-grey-blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-grey-blue, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-grey-blue, .26)};
-                }
-                .theme--spore-lime & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-lime, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-lime, .26)};
-                }
-                .theme--spore-olive-green & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-olive-green, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-olive-green, .26)};
-                }
-                .theme--spore-forest-green & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-forest-green, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-forest-green, .26)};
-                }
-                .theme--spore-oker & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-oker, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-oker, .26)};
-                }
-                .theme--spore-brown & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-brown, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-brown, .26)};
-                }
-                .theme--spore-taupe & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color-spore-taupe, $white, 26%), inset rhythm(-5) 0 0 0 rgba($color-spore-taupe, .26)};
-                }
-            }
-
-            .article-headline & {
-                box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-green, inset rhythm(-5) 0 0 0 mix($color-green, $white, 60%)};
-
-                .theme--blue & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-blue, inset rhythm(-5) 0 0 0 mix($color-blue, $white, 60%)};
-                }
-
-                .theme--lime & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-lime, inset rhythm(-5) 0 0 0 mix($color-lime, $white, 60%)};
-                }
-
-                .theme--yellow & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-yellow, inset rhythm(-5) 0 0 0 mix($color-yellow, $white, 60%)};
-                }
-
-                .theme--gold & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-gold, inset rhythm(-5) 0 0 0 mix($color-gold, $white, 60%)};
-                }
-
-                .theme--orange & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-orange, inset rhythm(-5) 0 0 0 mix($color-orange, $white, 60%)};
-                }
-
-                .theme--salmon & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-salmon, inset rhythm(-5) 0 0 0 mix($color-salmon, $white, 60%)};
-                }
-
-                .theme--red & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-red, inset rhythm(-5) 0 0 0 mix($color-red, $white, 60%)};
-                }
-
-                .theme--burgundy & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-burgundy, inset rhythm(-5) 0 0 0 mix($color-burgundy, $white, 60%)};
-                }
-
-                .theme--purple & {
-                    box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $color-purple, inset rhythm(-5) 0 0 0 mix($color-purple, $white, 60%)};
+                @each $color_name, $color_value in $colours {
+                    .theme--#{$color_name} & {
+                        box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color_value, $white, 26%), inset rhythm(-5) 0 0 0 mix($color_value, $white, 4%)};
+                    }
                 }
             }
         }
