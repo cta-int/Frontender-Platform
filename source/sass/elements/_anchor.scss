@@ -19,24 +19,30 @@ a,
   @extend %fx !optional;
   // text-decoration: underline;
   // cursor: pointer !important;
-  &,
-  &:active,
-  &:visited {
-    @include theme-color();
+  & {
+    &:active,
+    &:visited,
+    {
+      @include theme-color();
+    }
   }
+
+  @each $color_name, $color_value in $colours {
+    .theme--#{$color_name} &,
+    .theme .theme--#{$color_name} & {
+      &,
+      &:active,
+      &:visited {
+        color: mix($color_value, $color-body, 100%);
+      }
+    }
+  }
+  
   &:visited .is-heir {
     color: inherit;
   }
   &:hover,
-  .theme--blue &,
-  .theme--lime &,
-  .theme--yellow &,
-  .theme--gold &,
-  .theme--orange &,
-  .theme--salmon &,
-  .theme--red &,
-  .theme--burgundy &,
-  .theme--purple &,
+  .theme &,
   &.is-heir,
   &:hover .is-heir {
     &,
