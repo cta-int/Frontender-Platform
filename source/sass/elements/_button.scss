@@ -34,7 +34,8 @@ Styleguide 3.5
   
   &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  .well.well &--dark:hover {
     @include theme-border;
     @include theme-background;
 
@@ -108,36 +109,9 @@ Styleguide 3.5
     }
   }
   &.is-current {
-    @include theme-border();
     color: $white;
-    background-color: $color-theme;
-    .theme--blue & {
-      background-color: $color-blue;
-    }
-    .theme--lime & {
-      background-color: $color-lime;
-    }
-    .theme--yellow & {
-      background-color: $color-yellow;
-    }
-    .theme--gold & {
-      background-color: $color-gold;
-    }
-    .theme--orange & {
-      background-color: $color-orange;
-    }
-    .theme--salmon & {
-      background-color: $color-salmon;
-    }
-    .theme--red & {
-      background-color: $color-red;
-    }
-    .theme--burgundy & {
-      background-color: $color-burgundy;
-    }
-    .theme--purple & {
-      background-color: $color-purple;
-    }
+    @include theme-border(100%);
+    @include theme-background();
   }
 }
 
