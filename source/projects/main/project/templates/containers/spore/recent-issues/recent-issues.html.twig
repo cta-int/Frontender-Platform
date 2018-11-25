@@ -37,7 +37,7 @@
     <aside class="layout__cell layout__cell--aside layout__cell--divider  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="wings">
             <div class="gutters">
-                <h2 class="title title--section">Current issue</h2>
+                <h2 class="title title--section">{{ labels.title_sidebar|t(locales) }}</h2>
 
                 <article class="leader">
                     <div class="publication-layout__cover">
@@ -68,7 +68,7 @@
     <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="wings">
             <div class="gutters">
-                <h2 class="title title--section">Past issues</h2>
+                <h2 class="title title--section">{{ labels.title_main|t(locales) }}</h2>
                 <div class="publication-grid  |  leader">
                     {% for issue in issues|slice(1) %}
                     <article class="publication-grid__cell  |  trailer">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         {% if issue.no == 185 %}
-                        <a class="button button--dark button--stretch leader--giant trailer" href="/en/ictupdate/issues">All issues</a>
+                        <a class="button button--dark button--stretch leader--giant trailer" href="/en/spore/issues">{{ labels.title_button|t(locales) }}</a>
                         {% endif %}
                     </article>
                     {% endfor %}

@@ -11,14 +11,14 @@
             <div class="gutters card-slider__slide card-slider__double-slide">
                 {% include "partials/channel/card.html.twig" with {'config': {
                 'wide': true
-            }, 'channel': model|first} %}
+            }, 'channel': model|first, 'labels': labels} %}
             </div>
 
             {% for channel in model|slice(1) %}
             <div class="gutters card-slider__slide">
                 {% include "partials/channel/card.html.twig" with {'config': {
                     'wide': false
-                }, 'channel': channel} %}
+                }, 'channel': channel, 'labels': labels} %}
             </div>
             {% endfor %}
 
