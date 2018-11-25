@@ -187,18 +187,23 @@ Styleguide 4.40
 .publication-download {
 	display: inline-flex;
 	border: 1px solid rgba($black, .26);
+	
 	&__item {
 		@extend %meta-text;
 		padding: rhythm(3) rhythm(5);
 		font-weight: 400;
 	}
-	.publication-download__item + .publication-download__item {
-		border-left: 1px solid rgba($black, .26);
-		color: #BDBDBD;
+	&__item + &__item {
+		border: inherit;
+		border-width: 0 0 0 1px;
+		color: rgba($black, .26);
 	}
 	&--s &__item {
 		font-size: to-unit(14px);
 		padding: rhythm(1) rhythm(3);
+	}
+	.well & {
+		border-color: $white;
 	}
 }
 
@@ -214,6 +219,7 @@ Styleguide 4.40
 		position: relative;
 		bottom: gutter(.5);
 		left: gutter(.5);
+		z-index: 1;
 	}
 	&::before {
 		content: '';
@@ -223,7 +229,7 @@ Styleguide 4.40
 		position: absolute;
 		top: rhythm(0);
 		right: rhythm(0);
-		z-index: -1;
+		// z-index: 0;
 		background: rgba($black, .10);
 	}
 }

@@ -21,17 +21,17 @@ Styleguide 3.5
   display: inline-block;
   padding: rhythm(3) rhythm(5);
   background: $white;
-  border: $border-width solid $color-body;
   text-decoration: none;
-  color: $color-body;
   font-size: to-unit(12px);
   font-weight: 600;
   line-height: 1em;
-  .teaser &,
-  .well & {
-    color: $white;
-    border-color: $white;
+  &,
+  &--dark,
+  .well.well &--dark {
+    border: $border-width solid $color-body;
+    color: $color-body;
   }
+  
   &:hover,
   &:active,
   &:focus {
@@ -83,8 +83,15 @@ Styleguide 3.5
       }
     }
   }
-  &--inverse {
+  .teaser &,
+  .well &,
+  &--inverse,
+  &--dark {
     background: transparent;
+  }
+  .teaser &,
+  .well &,
+  &--inverse {
     border-color: $white;
     &,
     &:visited {
