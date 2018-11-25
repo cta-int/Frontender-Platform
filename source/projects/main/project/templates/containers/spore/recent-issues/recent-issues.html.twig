@@ -1,5 +1,37 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set issues = [
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/mclavvcyqbdthxqlcwjw.jpg',
+        'no': '190',
+        'title': 'Serving smallholder farmers in a digital age'
+    },
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/k55ibalvmap3megrnbuo.png',
+        'no': '189',
+        'title': 'Building a better e-agribusiness'
+    },
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/pimidd8cozae9btxr3qj.jpg',
+        'no': '188',
+        'title': 'Transforming the informal economy'
+    },
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/crjnlwcnbkyrxuoa6bt3.jpg',
+        'no': '187',
+        'title': 'Women driving agricultural innovation'
+    },
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/rlap47yozinz0prmiwte.jpg',
+        'no': '186',
+        'title': 'Reducing risk and maximising revenues'
+    },
+    {
+        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/ygp2nvrrmldf4npqqvld.jpg',
+        'no': '185',
+        'title': 'The growth of an inclusive digital agri-finance'
+    }
+] %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout  |  well')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <aside class="layout__cell layout__cell--aside layout__cell--divider  |  leader-inside--hero  |  trailer-inside--hero">
@@ -10,14 +42,14 @@
                 <article class="leader">
                     <div class="publication-layout__cover">
                         <figure class="publication-cover">
-                            <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
+                            <img class="publication-cover__image" src="{{ issues|first.cover }}" alt="">
                         </figure>
                     </div>
                     <div class="publication-layout__body">
                         <p class="trailer--tiny">
-                            <h3 class="block-link">Spore issue N.190</h3>
+                            <h3 class="block-link">Spore issue N.{{ issues|first.no }}</h3>
                         </p>
-                        <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
+                        <h3 class="heading  |  trailer--tiny">{{ issues|first.title }}</h3>
                         <div class="leader--normal">
                             <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
                                 <span class="publication-download__item">pdf</span>
@@ -38,17 +70,18 @@
             <div class="gutters">
                 <h2 class="title title--section">Past issues</h2>
                 <div class="publication-grid  |  leader">
+                    {% for issue in issues|slice(1) %}
                     <article class="publication-grid__cell  |  trailer">
                         <div class="publication-layout__cover">
                             <figure class="publication-cover">
-                                <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
+                                <img class="publication-cover__image" src="{{ issue.cover }}" alt="">
                             </figure>
                         </div>
                         <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">Spore issue N.190</h3>
+                            <p class="trailer--tiny meta block-link">
+                                <strong>Spore issue N.{{ issue.no }}</strong>
                             </p>
-                            <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
+                            <h3 class="heading  |  trailer--tiny">{{ issue.title }}</h3>
                             <div class="leader--normal">
                                 <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
                                     <span class="publication-download__item">pdf</span>
@@ -58,92 +91,11 @@
                                 </a>
                             </div>
                         </div>
+                        {% if issue.no == 185 %}
+                        <a class="button button--dark button--stretch leader--giant trailer" href="/en/ictupdate/issues">All issues</a>
+                        {% endif %}
                     </article>
-                    <article class="publication-grid__cell  |  trailer">
-                        <div class="publication-layout__cover">
-                            <figure class="publication-cover">
-                                <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
-                            </figure>
-                        </div>
-                        <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">Spore issue N.190</h3>
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
-                            <div class="leader--normal">
-                                <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                    <span class="publication-download__item">pdf</span>
-                                </a>
-                                <a class="publication-download publication-download--s trailer--tiny" href="">
-                                    <span class="publication-download__item">EPUB</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="publication-grid__cell  |  trailer">
-                        <div class="publication-layout__cover">
-                            <figure class="publication-cover">
-                                <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
-                            </figure>
-                        </div>
-                        <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">Spore issue N.190</h3>
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
-                            <div class="leader--normal">
-                                <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                    <span class="publication-download__item">pdf</span>
-                                </a>
-                                <a class="publication-download publication-download--s trailer--tiny" href="">
-                                    <span class="publication-download__item">EPUB</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="publication-grid__cell  |  trailer">
-                        <div class="publication-layout__cover">
-                            <figure class="publication-cover">
-                                <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
-                            </figure>
-                        </div>
-                        <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">Spore issue N.190</h3>
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
-                            <div class="leader--normal">
-                                <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                    <span class="publication-download__item">pdf</span>
-                                </a>
-                                <a class="publication-download publication-download--s trailer--tiny" href="">
-                                    <span class="publication-download__item">EPUB</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="publication-grid__cell  |  trailer">
-                        <div class="publication-layout__cover">
-                            <figure class="publication-cover">
-                                <img class="publication-cover__image" src="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz" srcset="https://res.cloudinary.com/cta/image/upload/w_480/q6fohw6gnw1u1p5b5wzz 480w,https://res.cloudinary.com/cta/image/upload/w_320/q6fohw6gnw1u1p5b5wzz 320w,https://res.cloudinary.com/cta/image/upload/w_240/q6fohw6gnw1u1p5b5wzz 240w" sizes="100vw, (min-width: 480px) 480px" alt="ICT Update 83: Youth e-agriculture entrepreneurship">
-                            </figure>
-                        </div>
-                        <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">Spore issue N.190</h3>
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">Youth e-agriculture entrepreneurship</h3>
-                            <div class="leader--normal">
-                                <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                    <span class="publication-download__item">pdf</span>
-                                </a>
-                                <a class="publication-download publication-download--s trailer--tiny" href="">
-                                    <span class="publication-download__item">EPUB</span>
-                                </a>
-                            </div>
-                        </div>
-                        <a class="button button--stretch leader trailer" href="/en/ictupdate/issues">All issues</a>
-                    </article>
+                    {% endfor %}
                 </div>
             </div>
         </div>
