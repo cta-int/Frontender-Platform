@@ -4,6 +4,7 @@ Well
 Container with themed background
 
 .well - 26%
+.well.well--lighter - 10%
 .well.well--darker - 54%
 .well.well--darkest - 76%
 .well.well--full - 100%
@@ -37,7 +38,8 @@ Styleguide 3.13
     @include theme-opaque-background(76%);
   }
   &--neutral {
-    .theme & {
+    .theme &,
+    & {
       background-color: mix($color-body, $white, 5%);
     }
   }
