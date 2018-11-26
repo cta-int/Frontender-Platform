@@ -50,13 +50,60 @@
     "containers": [
         {
             "name": {
-                "en-GB": "Container header"
+                "en-GB": "Dossier"
             },
             "description": {
-                "en-GB": "Container-header"
+                "en-GB": "Dossier"
             },
-            "template": "containers/global/container-header/container-header.html.twig",
+            "template": "containers/spore/opinion/opinion.html.twig",
             "template_config": {
+                "model": {
+					"label": {
+						"en-GB": "Resource"
+					},
+					"controls": {
+						"data": {
+							"value": {
+								"adapter": "SCR",
+								"model": "channels",
+								"id": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+							},
+							"adapters": [
+								{
+									"value": "SCR",
+									"label": {
+										"en-GB": "SCR"
+									},
+									"models": [
+										{
+											"value": "Article\\Search",
+											"label": {
+												"en-GB": "Articles"
+											}
+										},
+										{
+											"value": "channels",
+											"label": {
+												"en-GB": "Channels"
+											}
+										},
+										{
+											"value": "Event\\Search",
+											"label": {
+												"en-GB": "Events"
+											}
+										}
+									]
+								}
+							],
+							"control": "project/model/article_channel_event"
+						},
+						"limit": {
+							"value": "3",
+							"control": "project/model/limit"
+						}
+					}
+				},
                 "labels": {
                     "label": {
                         "en-GB": "Content"
@@ -70,72 +117,24 @@
                             "control": "core/text"
                         },
                         "link": {
-                            "value": {
-                                "label": {
-                                    "en-GB": "",
-                                    "fr-FR": ""
-                                },
-                                "page": "",
-                                "id": ""
-                            },
-                            "label": {
-                                "en-GB": "Link"
-                            },
-                            "control": "core/route"
-                        }
-                    }
-                },
-                "config": {
-                    "label": {
-                        "en-GB": "Settings"
-                    },
-                    "controls": {
-                        "show_margins": {
-                            "value": "",
-                            "control": "project/layout/show_margins"
-                        },
-                        "show_smaller_title": {
-                            "value": 0,
-                            "label": {
-                                "en-GB": "Show small title"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "show_link": {
-                            "value": 1,
-                            "label": {
-                                "en-GB": "Show link"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "container_class": {
-                            "value": "",
-                            "control": "project/container_class"
-                        },
-                        "container_tag": {
-                            "value": "section",
-                            "control": "project/container_tag"
-                        },
-                        "wings": {
-                            "value": "wings",
-                            "control": "project/wings"
-                        }
+							"value": {
+								"label": {
+									"en-GB": "Will inclusive financing mechanisms promote more women-led agribusinesses?",
+									"fr-FR": "Will inclusive financing mechanisms promote more women-led agribusinesses?"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Sidebar link"
+							},
+							"control": "core/route"
+						}
                     }
                 }
-            },
-            "containers": [],
-            "frontender": ""
-        },
-        {
-            "name": {
-                "en-GB": "Dossier"
-            },
-            "description": {
-                "en-GB": "Dossier"
-            },
-            "template": "containers/spore/opinion/opinion.html.twig",
-            "template_config": {
-
             }
         }
     ],

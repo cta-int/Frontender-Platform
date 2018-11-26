@@ -8,4 +8,4 @@
     {% endif %}
 {% endfor %}
 
-{{ pagination.pages(articles, articles_total, model|default(container.model)) }}
+{{ pagination.pages(articles|first, articles_total) }}

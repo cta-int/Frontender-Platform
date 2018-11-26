@@ -19,7 +19,7 @@
                     <a class="anchor--reset anchor--shy  |  stack" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify , id: model._id}) }}">
                         <h2 class="heading heading--focus">{{ model.name }}</h2>
                     </a>
-                    <div class="leader--small">
+                    <div class="leader--tiny">
                         {{ date.event_long(model.startDate, model.endDate) }}
                     </div>
                     <div class="body--whisper  |  leader--small">

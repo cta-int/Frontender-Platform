@@ -29,7 +29,7 @@ class Random extends \Twig_Extension
 
     public function killRender()
     {
-        die('Called');
+        die('Died?');
     }
 
     public function randomPartial($path)

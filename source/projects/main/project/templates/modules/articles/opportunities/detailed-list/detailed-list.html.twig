@@ -24,8 +24,9 @@
       </div>
     {% else %}
         <div class="body--align-center | leader-inside--hero  |  trailer trailer-inside" data-pagination-parent>
-            {{ pagination.extend(model, articles_total, model, {
+            {{ pagination.extend(model, model.total, {
                 model_name: 'Channel\\Articles',
+                adapter: 'SCR',
                 target: "#" ~ pagination_id,
                 layout: "modules/articles/opportunities/detailed-list/detailed-list.html.twig",
                 config: {

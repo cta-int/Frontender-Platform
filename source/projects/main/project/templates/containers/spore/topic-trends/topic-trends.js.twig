@@ -1,0 +1,37 @@
+jQuery(function($) {
+    $(".card-slider").slick({
+        dots: false,
+        infinite: true,
+        centerMode: true,
+        variableWidth: false,
+        mobileFirst: true,
+        prevArrow: $(".carousel-previous"),
+        nextArrow: $(".carousel-next"),
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    variableWidth: true
+                }
+            }
+        ]
+    });
+
+    var carousselHeight = 0;
+    jQuery(function($) {
+        setTimeout(function() {
+            $('.card--wide [data-background-image]')
+                .css("background", "no-repeat center")
+                .css("background-size", "cover")
+                .css("background-image", function(){
+                    return "url(\"" + $(this).find('img').hide().attr("src") + "\")";
+                });
+            // $(".slick-track").each(function() {
+            //     carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight;
+            // });
+            // $(".card").each(function() {
+            //     $(this).css("height", (carousselHeight = $(this).height() > carousselHeight ? $(this).height() : carousselHeight));
+            // });
+        }, 600);
+    });
+});

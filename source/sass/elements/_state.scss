@@ -60,52 +60,91 @@ Styleguide 3.99
   align-self: center;
 }
 
-.is-gt-small-handheld,
-.is-gt-medium-handheld,
-.is-gt-large-handheld,
-.is-gt-small-desktop,
-.is-lt-small-desktop,
-.is-gt-medium-desktop,
-.is-gt-large-desktop {
-  display: none;
+.is-lt-small-handheld.is-lt-small-handheld,
+.is-lt-medium-handheld.is-lt-medium-handheld,
+.is-lt-large-handheld.is-lt-large-handheld,
+.is-lt-small-desktop.is-lt-small-desktop,
+.is-lt-medium-desktop.is-lt-medium-desktop,
+.is-lt-large-desktop.is-lt-large-desktop,
+.is-gt-small-handheld.is-gt-small-handheld,
+.is-gt-medium-handheld.is-gt-medium-handheld,
+.is-gt-large-handheld.is-gt-large-handheld,
+.is-gt-small-desktop.is-gt-small-desktop,
+.is-gt-medium-desktop.is-gt-medium-desktop,
+.is-gt-large-desktop.is-gt-large-desktop {
+  & {
+    display: none;
+  }
 }
-.is-gt-small-handheld {
-  @include breakpoint($gt-small-handheld) {
+
+.is-lt-small-handheld.is-lt-small-handheld {
+  @include breakpoint($lt-small-handheld) {
     display: block;
     display: inherit;
   }
 }
-.is-gt-medium-handheld {
-  @include breakpoint($gt-medium-handheld) {
+.is-lt-medium-handheld.is-lt-medium-handheld {
+  @include breakpoint($lt-medium-handheld) {
     display: block;
     display: inherit;
   }
 }
-.is-gt-large-handheld {
-  @include breakpoint($gt-large-handheld) {
+.is-lt-large-handheld.is-lt-large-handheld {
+  @include breakpoint($lt-large-handheld) {
     display: block;
     display: inherit;
   }
 }
-.is-lt-small-desktop {
+.is-lt-small-desktop.is-lt-small-desktop {
   @include breakpoint($lt-small-desktop) {
     display: block;
     display: inherit;
   }
 }
-.is-gt-small-desktop {
+.is-lt-medium-desktop.is-lt-medium-desktop {
+  @include breakpoint($lt-medium-desktop) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-lt-large-desktop.is-lt-large-desktop {
+  @include breakpoint($lt-large-desktop) {
+    display: block;
+    display: inherit;
+  }
+}
+
+.is-gt-small-handheld.is-gt-small-handheld {
+  @include breakpoint($gt-small-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-medium-handheld.is-gt-medium-handheld {
+  @include breakpoint($gt-medium-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-large-handheld.is-gt-large-handheld {
+  @include breakpoint($gt-large-handheld) {
+    display: block;
+    display: inherit;
+  }
+}
+.is-gt-small-desktop.is-gt-small-desktop {
   @include breakpoint($gt-small-desktop) {
     display: block;
     display: inherit;
   }
 }
-.is-gt-medium-desktop {
+.is-gt-medium-desktop.is-gt-medium-desktop {
   @include breakpoint($gt-medium-desktop) {
     display: block;
     display: inherit;
   }
 }
-.is-gt-large-desktop {
+.is-gt-large-desktop.is-gt-large-desktop {
   @include breakpoint($gt-large-desktop) {
     display: block;
     display: inherit;

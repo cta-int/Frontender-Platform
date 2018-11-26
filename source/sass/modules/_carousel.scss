@@ -1,7 +1,7 @@
 /*
 Carousel
 
-Carousel cannot be displayed on the styleguide due to a javascript dependency 
+Carousel cannot be displayed on the styleguide due to a javascript dependency
 
 Styleguide 5.20
 */
@@ -43,6 +43,7 @@ Styleguide 5.20
 		}
 	}
 	&-switch {
+		@include theme-transparent-background(100%);
 		position: absolute;
 	    top: 25%;
 	    transform: translateY(-75%);
@@ -50,7 +51,6 @@ Styleguide 5.20
 	    height: rhythm(21);
 	    font-size: to-unit(30px);
 	    color: $white;
-	    background: $color-theme;
 	    &:first-of-type {
 	    	left: 0;
 	    }

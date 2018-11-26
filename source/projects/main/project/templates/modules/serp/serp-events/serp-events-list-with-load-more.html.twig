@@ -13,8 +13,9 @@
 {% endfor %}
 
 <div class="leader--hero  |  trailer--hero" data-pagination-parent>
-    {{ pagination.extend(event, event_total, event_model, {
-        model_name: 'Event\\Search',
+    {{ pagination.extend(model, model.eventTotal, {
+        model_name: 'Search',
+        adapter: 'SCR',
         target: "[data-serp-events]",
         layout: "modules/serp/serp-events/serp-events-list-with-load-more.html.twig",
         config: {

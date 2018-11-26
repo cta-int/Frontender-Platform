@@ -45,9 +45,8 @@ class SearchModel extends ScrModel
 
         if (in_array('article', $types)) {
             $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-            $initial = $query[$type] ?? [];
+            $model->setState($this->getState()->getValues());
 
-            $model->setState(array_merge($this->getState()->getValues(), $initial));
             return $model->fetch();
         }
 
@@ -61,9 +60,8 @@ class SearchModel extends ScrModel
 
         if (in_array('article', $types)) {
             $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-            $initial = $query[$type] ?? [];
+            $model->setState($this->getState()->getValues());
 
-            $model->setState(array_merge($this->getState()->getValues(), $initial));
             $response = $model->fetch(true);
 
             return $response['total'];
@@ -79,9 +77,8 @@ class SearchModel extends ScrModel
 
         if (in_array('event', $types)) {
             $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
-            $initial = $query[$type] ?? [];
+            $model->setState($this->getState()->getValues());
 
-            $model->setState(array_merge($this->getState()->getValues(), $initial));
             return $model->fetch();
         }
 
@@ -95,9 +92,8 @@ class SearchModel extends ScrModel
 
         if (in_array('event', $types)) {
             $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
-            $initial = $query[$type] ?? [];
+            $model->setState($this->getState()->getValues());
 
-            $model->setState(array_merge($this->getState()->getValues(), $initial));
             $response = $model->fetch(true);
 
             return $response['total'];

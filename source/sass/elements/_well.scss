@@ -22,16 +22,19 @@ Styleguide 3.13
  * 1. Disable bolding effect of text on a darker background
  */
 .well {
-  padding-top: rhythm(10);
-  padding-bottom: rhythm(10);
-  @include theme-transparent-background(26%);
-  &--darker {
+  @include theme-opaque-background(26%);
+  &--padded {
     padding-top: rhythm(10);
     padding-bottom: rhythm(10);
-    @include theme-transparent-background(54%);
+  }
+  &--lighter {
+    @include theme-opaque-background(10%);
+  }
+  &--darker {
+    @include theme-opaque-background(54%);
   }
   &--darkest {
-    @include theme-transparent-background(76%);
+    @include theme-opaque-background(76%);
   }
   &--neutral {
     .theme & {
@@ -40,14 +43,9 @@ Styleguide 3.13
   }
   &--full {
     @include theme-opaque-background(100%);
-    padding-top: rhythm(10);
-    padding-bottom: rhythm(10);
     color: $white;
     -webkit-font-smoothing: antialiased; /* 1 */
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
-  }
-  &--slim-fit {
-      padding: 0;
   }
 }

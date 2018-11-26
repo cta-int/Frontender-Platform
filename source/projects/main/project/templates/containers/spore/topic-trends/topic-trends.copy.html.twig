@@ -1,0 +1,102 @@
+{{ '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'|addScript('beforeBodyEnd') }}
+{{ 'containers/spore/topic-trends/topic-trends.js.twig'|addScript('beforeBodyEnd') }}
+
+{% if model|length %}
+    <div class="is-root  |  trend__switches">
+        <div style="display: flex; flex-wrap: wrap;" class="topic-trends">
+            <!-- Main container -->
+
+            <div class="trend trend--wide  |  {{ channel.articles|first.theme.selector }}  |  gutters">
+                <div class="trend__image  |  is-root">
+                    <img class="image" src="{{ model.articles|first.lead_image.metadata.url }}" alt="">
+                    <p class="trend__label  |  label">{{ model.name|t }}</p>
+                </div>
+                <div class="trend__body  |  well well--neutral  |  leader-inside">
+                    <div class="is-gt-small-desktop  |  stack stack--stacked">
+                        <div class="stack__unit  |  gutters">
+                            <h2 class="title  |  trend__title  |  trailer">Latest trending articles</h2>
+                            {% for article in model.articles|slice(0, 2) %}
+                                <div class="trend__item">
+                                    <p class="meta">
+                                        <time datetime="2018-11-07T13:09:28+00:00"> {{ article.dateModified|tdate('%A, %e %B %Y') }}</time>
+                                        in <span>{{ article.articleType|t }}</span>
+                                    </p>
+                                    <div class="block-link">
+                                        <a class="meta--lowercase  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                            {{ article.headline|t }}
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="stack__unit stack__pin">
+                            <div class="leader-inside--small  |  trailer-inside--small">
+                                <a class="block-link  |  gutters" href="{{ route({page: model.path, slug: model.name|t|slugify, id: model._id}) }} ">view all articles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gutters  |  trailer-inside  |  is-lt-small-desktop">
+                        <h3 class="heading  |  trailer--small  |  anchor--reset">
+                            <a class="anchor anchor--shy  |  is-heir" href="#">{{ model.name|t }}</a>
+                        </h3>
+                        {% if model.description %}
+                            <p class="trailer">{{ model.description|t }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- END:: Main container -->
+
+            <!-- Small container -->
+            {% for channel in model|slice(1) %}
+                <div class="trend  |  {{ channel.articles|first.theme.selector }}  |  gutters">
+                    <div class="trend__image  |  is-root">
+                        <img class="image" src="{{ channel.articles|first.lead_image.metadata.url }}" alt="">
+                        <p class="trend__label  |  label">{{ channel.name|t }}</p>
+                    </div>
+                    <div class="trend__body  |  well well--neutral  |  leader-inside">
+                        <div class="is-gt-small-desktop  |  stack stack--stacked">
+                            <div class="stack__unit  |  gutters">
+                                <h2 class="title  |  trend__title  |  trailer">Latest trending articles</h2>
+                                {% for article in channel.articles|slice(0, 2) %}
+                                    <div class="trend__item">
+                                        <p class="meta">
+                                            <time datetime="2018-11-07T13:09:28+00:00">{{ article.dateModified|tdate('%A, %e %B %Y') }}</time>
+                                            in <span>{{ article.articleType }}</span>
+                                        </p>
+                                        <div class="block-link">
+                                            <a class="meta--lowercase  |  is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
+                                                {{ article.headline }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="stack__unit stack__pin">
+                                <div class="leader-inside--small  |  trailer-inside--small">
+                                    <a class="block-link  |  gutters" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">view all articles</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gutters  |  trailer-inside  |  is-lt-small-desktop">
+                            <h3 class="heading  |  trailer--small  |  anchor--reset">
+                                <a class="anchor anchor--shy  |  is-heir" href="#">{{ channel.name|t }} </a>
+                            </h3>
+                            {% if channel.description %}
+                                <p class="trailer">{{ channel.description|t }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- END:: Small container -->
+        </div>
+        <button class="carousel-switch carousel-previous  |  slick-arrow" aria-label="Previous">
+            <span class="icon icon--chevron-left"></span>
+        </button>
+        <button class="carousel-switch carousel-next  |  slick-arrow" aria-label="Next">
+            <span class="icon icon--chevron-right"></span>
+        </button>
+    </div>
+{% endif %}
