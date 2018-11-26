@@ -1,8 +1,8 @@
 {% macro download(file, size = '', class = '') %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
-    <a 
-        class="publication-download {{ size == 'small' ? 'publication-download--s' }} {{ class }}" 
-        href="{{ file.url }}"
+    <a
+        class="publication-download {{ size == 'small' ? 'publication-download--s' }} {{ class }}"
+        href="{{ file.metadata.url }}"
         title="{{ file.name|t(locales)|default('') }}"
         >
         <span class="publication-download__item">
