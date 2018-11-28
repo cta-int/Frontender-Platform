@@ -7,10 +7,10 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 {% set theme = channel.articles|first.theme.selector %}
 
-<div class="card {{ config.wide ? 'card--wide' }}  |  well well--neutral   |  {{ theme }}">
+<div class="card {{ config.show_wide ? 'card--wide' }}  |  well well--neutral   |  {{ theme }}"}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="card__image">
         <figure data-background>
-            {{ image.card(channel.articles|first.lead_image, '', config.wide) }}
+            {{ image.card(channel.articles|first.lead_image, '', config.show_wide) }}
         </figure>
         <strong class="card__label  |  label  |  is-gt-small-desktop">{{ channel.name|t(locales) }}</strong>
         <span class="card__theme  |  label"></span>
@@ -20,7 +20,7 @@
         {# Smaller than desktop #}
         <div class="stack__unit stack stack--stacked  |  is-lt-small-desktop">
             <h3 class="title  |  leader--normal  |  trailer--normal">
-                <span class="anchor anchor--shy  |  is-heir  |  gutters  |  ">{{ config.wide ? labels.first_card_link_label|t(locales)|default(channel.name|t(locales)) : channel.name|t(locales) }} </span>
+                <span class="anchor anchor--shy  |  is-heir  |  gutters  |  ">{{ config.show_wide ? labels.first_card_link_label|t(locales)|default(channel.name|t(locales)) : channel.name|t(locales) }} </span>
             </h3>
             {% if channel.description|t(locales) %}
                 <p class="gutters  |  trailer--normal trailer-inside--normal">{{ channel.description|t(locales) }}</p>
@@ -29,12 +29,12 @@
 
         {# Larger than desktop #}
         <div class="stack stack--stacked stack__unit  |  is-gt-small-desktop">
-            {% if config.wide %}
+            {% if config.show_wide %}
                 {# TODO Config title #}
-                <h3 class="title  |  leader leader-inside--normal  |  trailer-inside--small  |  {{ config.wide ? 'gutter--right' : 'gutters' }}">{{ 'Latest trending articles'|t(locales) }}</h3>
+                <h3 class="title  |  leader leader-inside--normal  |  trailer-inside--small  |  {{ config.show_wide ? 'gutter--right' : 'gutters' }}">{{ 'Latest trending articles'|t(locales) }}</h3>
             {% endif %}
-            {% for index, article in channel.articles|slice(0, config.wide ? 2 : 1) %}
-                <div class="card__post  |  {{ config.wide ? 'gutter-outside--right' : 'gutters' }}  |  leader-inside--normal trailer-inside--normal">
+            {% for index, article in channel.articles|slice(0, config.show_wide ? 2 : 1) %}
+                <div class="card__post  |  {{ config.show_wide ? 'gutter-outside--right' : 'gutters' }}  |  leader-inside--normal trailer-inside--normal">
                     {% include "partials/article/post.html.twig" with {'article': article, 'config': {
                         'show_lead_image': 0,
                         'show_stand_first': 0,
@@ -48,8 +48,8 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="stack__unit stack__pin  |  {{ config.wide ? '' : 'divider divider--top' }}  |  is-gt-small-desktop  |  leader--small">
-            <a class="leader-inside--small  |  {{ config.wide ? 'trailer-inside' : 'trailer-inside--small  |  gutters' }}  |  block-link" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">{{ (config.wide ? labels.first_card_link_label|t(locales) : labels.card_link_label|t(locales))|default('View all articles'|t) }}</a>
+        <div class="stack__unit stack__pin  |  {{ config.show_wide ? '' : 'divider divider--top' }}  |  is-gt-small-desktop  |  leader--small">
+            <a class="leader-inside--small  |  {{ config.show_wide ? 'trailer-inside' : 'trailer-inside--small  |  gutters' }}  |  block-link" href="{{ route({page: channel.path, slug: channel.name|t|slugify, id: channel._id}) }}">{{ (config.show_wide ? labels.first_card_link_label|t(locales) : labels.card_link_label|t(locales))|default('View all articles'|t) }}</a>
         </div>
 
     </div>
