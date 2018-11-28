@@ -5,12 +5,13 @@
         {% if model.sponsor | length > 0 %}
             <h4 class="title  |  meta  |  trailer--normal">{{ 'Funding partners'|t(locales) }}</h4>
             {% for sponsor in model.sponsor %}
+                {% set sponsorDisplayname = sponsor.alternateName|t(locales) != '' ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) %}
                 <ul class="reset">
                     <li>
                         {% if sponsor.website|length > 0 %}
-                            <a href="{{ sponsor.website }}" target="_blank">{{ sponsor.name|t(locales) }}</a>
+                            <a href="{{ sponsor.website }}" target="_blank">{{ sponsorDisplayname }}</a>
                         {% else %}
-                            <p>{{ sponsor.name|t(locales) }}</p>
+                            <p>{{ sponsorDisplayname }}</p>
                         {% endif %}
                     </li>
                 </ul>
@@ -20,11 +21,12 @@
             <h4 class="title  |  meta  |  trailer--normal  |  leader">{{ 'Implementing partners'|t(locales) }}</h4>
             <ul class="reset">
             {% for organizer in model.organizer %}
+                {% set organizerDisplayname = organizer.alternateName|t(locales) != '' ? organizer.alternateName|t(locales) : organizer.name|t(locales) %}
                 <li>
                     {% if sponsor.website|length > 0 %}
-                        <a href="{{ organizer.website }}" target="_blank">{{ organizer.name|t(locales) }}</a>
+                        <a href="{{ organizer.website }}" target="_blank">{{ organizerDisplayname }}</a>
                     {% else %}
-                        <p>{{ organizer.name|t(locales) }}</p>
+                        <p>{{ organizerDisplayname }}</p>
                     {% endif %}
                 </li>
             {% endfor %}
