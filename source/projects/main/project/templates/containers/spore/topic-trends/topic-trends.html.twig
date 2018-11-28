@@ -7,18 +7,25 @@
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'is-root')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         <div class="card-slider">
 
+            {% if(containers) %}
+                {% for c in containers %}
+                    <div class="gutters card-slider__slide {{ c.config.show_wide ? 'card-slider__double-slide' }}">
+                        {% include c.template with {
+                            'config': c.config,
+                            'labels': c.labels,
+                            'channel': c.model
+                        } %}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
-            <div class="gutters card-slider__slide card-slider__double-slide">
-                {% include "partials/channel/card.html.twig" with {'config': {
-                'wide': true
-            }, 'channel': model|first, 'labels': labels} %}
-            </div>
-
-            {% for channel in model|slice(1) %}
+            {% for channel in model %}
             <div class="gutters card-slider__slide">
-                {% include "partials/channel/card.html.twig" with {'config': {
-                    'wide': false
-                }, 'channel': channel, 'labels': labels} %}
+                {% include "partials/channel/card.html.twig" with {
+                    'config': config,
+                    'channel': channel,
+                    'labels': labels
+                } %}
             </div>
             {% endfor %}
 

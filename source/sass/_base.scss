@@ -29,3 +29,7 @@ Styleguide 1.0
 
 /* 1.4 Base styles */
 @import "base/base";
+
+q, blockquote {
+    quotes: "\201C" "\201D" "\2018" "\2019"
+}

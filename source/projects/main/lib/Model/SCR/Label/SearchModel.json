@@ -8,6 +8,22 @@
         "title": "name"
     },
     "filters": {},
+    "publication": {
+        "theme-color": {
+            "d6cb31cf-7457-41b8-a151-5d86d29c424a": "theme theme--spore-teal",
+            "ae1ef07f-ce6d-40b6-8d76-8a728026ac80": "theme theme--spore-grey-blue",
+            "36d0ddba-c242-4f29-93c6-c9a990d81ba3": "theme theme--spore-red",
+            "788005b4-b861-447c-9db9-fa6dae682a98": "theme theme--spore-ochre",
+            "feb3c986-8c3b-429b-986d-cb8097cb27f9": "theme theme--spore-taupe",
+            "24f4fb33-9b5a-48b7-baed-767d5da98bf7": "theme theme--spore-forest-green",
+            "ae277fd1-97a9-4274-9b35-74dfaf1f2956": "theme theme--spore-olive-green",
+            "theme theme--spore-blue": "theme theme--spore-blue",
+            "theme theme--spore-brown": "theme theme--spore-brown",
+            "theme theme--spore-dark-blue": "theme theme--spore-dark-blue",
+            "theme theme--spore-light-blue": "theme theme--spore-light-blue",
+            "theme theme--spore-lime": "theme theme--spore-lime"
+        }
+    },
     "strategy": {
         "theme-color": {
             "6e7d45e3-fc9f-4010-952c-a336d01bb03d": "theme theme--youth",
