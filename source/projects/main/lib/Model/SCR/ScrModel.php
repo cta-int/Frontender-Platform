@@ -111,6 +111,10 @@ class ScrModel extends AbstractModel
             $stateValues['language'] = $stateValues['locale'];
         }
 
+        if (!isset($stateValues['language'])) {
+            $stateValues['language'] = $this->container->language->get();
+        }
+
         if (isset($stateValues['language'])) {
             $stateValues['language'] = substr($stateValues['language'], 0, 2);
         }
