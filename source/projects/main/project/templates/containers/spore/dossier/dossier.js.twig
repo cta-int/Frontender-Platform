@@ -1,42 +1,27 @@
 jQuery(function($) {
     $(".dossier")
         .find(".dossier__item")
-        .on("click", function(event) {
+        .on("mouseover", function(event) {
             event.preventDefault();
 
-            var activeSibling = $(this)
-                    .siblings(".is-active")
-                    .first(),
-                currentSibling = $(this);
-
-            $(this)
+            var el = $(this);
+            console.log(this);
+            
+            el.addClass("is-active")
                 .siblings()
                 .removeClass("is-active");
-            $(this).addClass("is-active");
 
-            if (!activeSibling.length) {
-                $(
-                    "[data-dossier-image=" +
-                        $(currentSibling).data("image-id") +
-                        "]"
-                ).fadeIn(400);
-            }
-
-            $(
-                "[data-dossier-image=" + $(activeSibling).data("image-id") + "]"
-            ).fadeOut(400, function() {
-                $(this).hide();
-                $(
-                    "[data-dossier-image=" +
-                        $(currentSibling).data("image-id") +
-                        "]"
-                ).fadeIn(400);
-            });
-        });
-
-    $("[data-dossier-image]").hide();
-    $(".dossier")
-        .find(".dossier__item")
+            // $("[data-dossier-image=" + el.data("image-id") + "]")
+            //     .fadeIn(400)
+            //     .siblings()
+            //     .fadeOut(400);
+            $("[data-dossier-image=" + el.data("image-id") + "]")
+                .addClass("is-active")
+                .removeClass("is-inactive")
+                .siblings()
+                .addClass("is-inactive")
+                .removeClass("is-active");
+        })
         .first()
-        .trigger("click");
+        .trigger("mouseover");
 });

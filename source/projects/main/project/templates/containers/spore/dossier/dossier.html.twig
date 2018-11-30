@@ -1,40 +1,48 @@
 {% import "macros/template.html.twig" as helper %}
 {% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
 {{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
 
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
-<div class="layout trailer-inside--small">
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  wing--left">
         <div class="trailer  |  post post--hero  |  gutter--right">
-            <h2 class="heading heading--tile  |  gutters gutter-hero--right">Scaling: A high priority for agriculture</h2>
-            <p class="post__intro  |  gutters gutter-hero--right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2 class="heading heading--tile  |  gutters gutter-hero--right">
+                {{ model.name|t(locales) }}
+            </h2>
+            <p class="post__intro  |  gutters gutter-hero--right">
+                {{ model.description|t(locales) }}
+            </p>
         </div>
     </div>
-    <div class="layout__cell">
-        <div class="layout layout--split">
-            <div class="layout__cell  |  gutters">
-                <!-- Switch image based on active article -->
-                {% for article in model.articles|slice(0, 3) %}
-                    <img data-dossier-image="{{ article._id }}" class="is-inactive" src="{{ article.lead_image.metadata.url }}" alt="{{ article.headline|t }}">
+    <div class="layout__cell ">
+        <div class="layout layout--split dossier">
+            <div class="layout__cell  |  gutters-outside  |  dossier__gallery">
+                {# Switch image based on active article #}
+                {% for article in model.articles|slice(0, 4) %}
+                    <a class="anchor anchor--shy  |  dossier__image" href="{{ article_link }}" data-dossier-image="{{ article._id }}" data-dossier-type="{{ ('content_type_category_' ~ article.articleType)|t }}">
+                        {{ image.post_hero(article.link.mediaObject|lead) }}
+                    </a>
                 {% endfor %}
             </div>
-            <div class="layout__cell layout__cell--aside  |  wing--right">
-                <ul class="reset  |  dossier">
-                    <!-- Set .is-active or .is-current on active/current article -->
-                    {% for article in model.articles|slice(0, 3) %}
-                        <li class="dossier__item  |  divider divider--bottom  |  trailer trailer-inside  |  gutters" data-image-id="{{ article._id }}">
-                            <p class="meta">{{ article.articleType}} </p>
-                            <a class="is-heir" href="{{ route({page: article.path, slug: article.headline|t|slugify, id: article._id}) }}">
-                                <h3 class="heading heading--tile  |  leader--small  |  trailer--small">{{ article.headline|t }}</h3>
-                            </a>
-                            {% if article.link.person.author|length %}
-                                <p>{{ author.single(article.link.person.author) }}</p>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            <ul class="reset  |  layout__cell layout__cell--aside  |  wing--right  |  dossier__documents  |  gutters">
+                {#  Set .is-active or .is-current on active/current article #}
+                {% for article in model.articles|slice(0, 4) %}
+                    <li class="dossier__item" data-image-id="{{ article._id }}">
+                            {% include "partials/article/post.html.twig" with {'config': {
+                            'show_lead_image': 0,
+                            'show_stand_first': 0,
+                            'show_publication_date': 0,
+                            'show_author': 1,
+                            'show_read_more': 0,
+                            'show_type': 1,
+                            'show_topic': 0,
+                            'show_publication': 0
+                        }, 'article': article} %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-</div>
+</{{ config.container_tag|default('div') }}>
