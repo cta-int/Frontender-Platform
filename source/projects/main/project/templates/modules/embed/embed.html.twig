@@ -13,7 +13,7 @@
 
     {% if attributes.embed|length > 0 %}
         <div id="embed">
-            {{ attributes.embed|raw }}
+            {{ attributes.embed|t(locales)|raw }}
             {% if attributes.show_icon == 1 %}
                 <span class="av">
                     <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
