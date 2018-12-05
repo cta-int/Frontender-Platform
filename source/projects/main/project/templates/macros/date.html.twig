@@ -1,4 +1,5 @@
 {% macro event_short(start_date, end_date, timezone = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     <time class="meta" datetime="{{ start_date }}">{{ start_date|tdate('%e %b %Y', timezone) }}</time>
     {% if end_date is defined and start_date|tdate('%Y-%m%d', timezone) != end_date|tdate('%Y-%m%d', timezone) %}
         <time class="meta" datetime="{{ end_date }}">{{ end_date|tdate(' – %e %b %Y', timezone) }}</time>
@@ -6,6 +7,7 @@
 {% endmacro %}
 
 {% macro event_long(start_date, end_date, timezone = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     <time class="meta" datetime="{{ start_date }}">{{ start_date|tdate('%A, %e %B %Y', timezone) }}</time>
     {% if end_date is defined and start_date|tdate('%Y-%m%d', timezone) != end_date|tdate('%Y-%m%d', timezone) %}
         <time class="meta" datetime="{{ end_date }}">{{ end_date|tdate(' – %A, %e %B %Y', timezone) }}</time>
@@ -13,12 +15,14 @@
 {% endmacro %}
 
 {% macro article(date, timezone = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     {% if date %}
         <time class="meta" datetime="{{ date }}">{{ date|tdate('%e %B %Y', timezone) }}</time>
     {% endif %}
 {% endmacro %}
 
 {% macro tile(date, timezone = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     <span class="date">
         <span class="date__head">{{ date|tdate('%b', timezone) }}</span>
         <span class="date__body">{{ date|tdate('%e', timezone) }}</span>
@@ -32,5 +36,6 @@
 {% endmacro %}
 
 {% macro issue_date(date, timezone = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     <time class="meta" datetime="{{ date }}">{{ date|tdate('%B %Y', timezone) }}</time>
 {% endmacro %}

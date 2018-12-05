@@ -16,7 +16,7 @@
 {% macro theme_to_string(label, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
     {% if label.name %}
-        {{ label.name|split('/')|last}}
+        {{ label.name|t(locales)|split('/')|last}}
     {% endif %}
 {% endmacro %}
 
