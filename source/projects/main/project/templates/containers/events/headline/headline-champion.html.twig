@@ -6,7 +6,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
 
 {% if model.mediaObject|lead %}
-    <header>
+    <header class="is-root">
         <figure class="hero hero--event-teaser">
             {{ image.hero(model.mediaObject|lead, is_crowned, "hero__figure  |  image image--stretch") }}
 
@@ -46,8 +46,8 @@
                 </div>
             </figcaption>
         </figure>
-        {% if model.mediaObject.mediaObject|lead.credit %}
-            <div class="meta meta--whisper  |  wings  |  leader-inside--small"><span class="gutters">{{ model.mediaObject|lead.credit|t(locales) }}</span></div>
+        {% if model.mediaObject|lead.credit %}
+            <div class="caption__copyright  |  meta">{{ model.mediaObject|lead.credit|t(locales) }}</div>
         {% endif %}
     </header>
 {% else %}
