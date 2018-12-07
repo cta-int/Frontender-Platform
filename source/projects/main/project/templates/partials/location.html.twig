@@ -10,7 +10,7 @@
             {# This is a legitimate location object#}
             <a class="is-heir" href="/{{ locale }}/search?location={{ location._id }}">{{ location.label|t(locales) }}</a>
         {% else %}
-            {{ location.name|t(locales) }}
+            {{ location.name }}
         {% endif %}
     </div>
 </div>
