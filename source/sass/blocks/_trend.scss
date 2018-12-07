@@ -1,9 +1,11 @@
-.slick-slide, .slick-track {
-    display: flex !important;
-}
-.slick-slide {
-    flex-basis: auto;
-    height: auto !important;
+.card-slider {
+    .slick-slide, .slick-track {
+        display: flex !important;
+    }
+    .slick-slide {
+        flex-basis: auto;
+        height: auto !important;
+    }
 }
 .card-slider {
     flex-wrap: wrap;
@@ -90,5 +92,5 @@
             width: 50%;
         }
     }
-    
+
 }
