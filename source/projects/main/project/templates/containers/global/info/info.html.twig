@@ -1,6 +1,6 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["layout", config.container_class]|join("  |  ") }}">
     <div class="layout__cell  layout__cell--main  |  gutters">

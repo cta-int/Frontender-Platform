@@ -1,29 +1,29 @@
 {% macro label(concept, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept._id }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro label_large(concept, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <a class="label  |  trailer--tiny" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept._id }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro tag(concept, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept._id }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro tag_name(concept, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.id|replace({'http://aims.fao.org/aos/agrovoc/':''}) }}">{{ concept.name|t(locales) }}</a>
 {% endmacro %}
 
 {% macro concepts_to_string(concepts, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if concepts|length %}
         {% set labels = [] %}
@@ -35,7 +35,7 @@
 {% endmacro %}
 
 {% macro channel_concepts_to_string(concepts, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     
     {% if concepts|length %}
         {% set labels = [] %}

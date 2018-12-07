@@ -4,7 +4,7 @@
     {% import "macros/image.html.twig" as image %}
     {% import "macros/label.html.twig" as label %}
     {% import "macros/file.html.twig" as file %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     {{ 'containers/events/outputs/outputs.js.twig'|addScript('beforeBodyEnd') }}
 
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

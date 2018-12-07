@@ -1,5 +1,5 @@
 {% import "macros/pagination.html.twig" as pagination %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% for article in model.articles %}
     {% include "partials/article/post-tile/article.html.twig" with {model: model.articles} %}

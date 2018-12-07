@@ -1,5 +1,5 @@
 {% import "macros/share.html.twig" as share %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="{{ tile_class }}  |  shade">
     <a class="article-image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('{{ model.link.mediaObject|first.metadata.previewUrl }}');" data-modal="modal-{{ model._id }}">

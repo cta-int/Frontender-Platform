@@ -2,7 +2,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="{{ ["hero hero--tab-teaser", container_class]|join("  |  ") }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="ie9-hero">

@@ -2,7 +2,7 @@
 {% import "macros/date.html.twig" as date %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/label.html.twig" as label %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'well  |  layout layout--split  |  spread-layout  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  stack stack--stacked">

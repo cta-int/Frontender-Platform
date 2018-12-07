@@ -2,7 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/template.html.twig" as helper %}
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <header class="{{ ['trailer--hero', container_class]|join('  |  ') }}">
     {% if model.link.mediaObject | lead %}

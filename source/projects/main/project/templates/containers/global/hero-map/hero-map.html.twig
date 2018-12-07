@@ -1,6 +1,6 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <figure {{ helper.class_attribute(config, 'hero hero--map hero--event-teaser')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <img class="hero__figure  |  image image--stretch" width="1680" height="900" alt="CTA Regions" src="https://res.cloudinary.com/cta/image/upload/v1522829452/lcrehglg6ptp5j2ecq4f.png"/>

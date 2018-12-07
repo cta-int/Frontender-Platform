@@ -3,7 +3,7 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if model.mediaObject|lead %}
     <header class="is-root">

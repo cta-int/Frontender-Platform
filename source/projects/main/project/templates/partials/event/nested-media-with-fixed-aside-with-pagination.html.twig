@@ -1,5 +1,5 @@
 {% import "macros/pagination.html.twig" as pagination %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <ul class="{{ ['reset  |  trailer-inside', container_class]|join('  |  ') }}">
     {% for event in model.events %}

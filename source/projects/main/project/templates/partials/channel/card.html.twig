@@ -4,7 +4,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/label.html.twig" as label %}
 {% import "macros/template.html.twig" as helper %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set theme = channel.articles|first.theme.selector %}
 
 <div class="card {{ config.show_wide ? 'card--wide' }}  |  well well--neutral   |  {{ theme }}"}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

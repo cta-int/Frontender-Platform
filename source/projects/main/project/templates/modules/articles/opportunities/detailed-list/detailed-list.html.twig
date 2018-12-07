@@ -1,6 +1,6 @@
 {% import "macros/pagination.html.twig" as pagination %}
 {% set pagination_id = random() %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if model.articles | length > 0 %}
     <div id="{{ pagination_id }}">
