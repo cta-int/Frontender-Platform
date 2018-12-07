@@ -23,7 +23,7 @@
             {% for organizer in model.organizer %}
                 {% set organizerDisplayname = organizer.alternateName|t(locales) != '' ? organizer.alternateName|t(locales) : organizer.name|t(locales) %}
                 <li>
-                    {% if sponsor.website|length > 0 %}
+                    {% if organizer.website|length > 0 %}
                         <a href="{{ organizer.website }}" target="_blank">{{ organizerDisplayname }}</a>
                     {% else %}
                         <p>{{ organizerDisplayname }}</p>
