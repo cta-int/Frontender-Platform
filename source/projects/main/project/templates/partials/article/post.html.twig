@@ -3,7 +3,7 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/author.html.twig" as author %}
 {% import "macros/label.html.twig" as label %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 

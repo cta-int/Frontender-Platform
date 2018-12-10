@@ -1,6 +1,6 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} class="layout layout--narrow{% if class %} {{ class }}{% endif %}">
 	<div class="layout__cell  |  wings  |  body--align-center">

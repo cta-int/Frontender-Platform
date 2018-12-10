@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <option {% if config.selected == 'article.background' or query.type == 'article.background' %}selected="selected" {% endif %} value="article.background">{{ 'Background stories'|t(locales) }}</option>
 <option {% if config.selected == 'article.blog' or query.type == 'article.blog' %}selected="selected" {% endif %} value="article.blog">{{ 'Blog articles'|t(locales) }}</option>

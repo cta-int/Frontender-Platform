@@ -3,7 +3,7 @@
 
 {% set class = helper.class(config)|trim %}
 {% set panel_link = route({ 'page': links.section_link.page }) %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme }}">
 	<div class="hero hero--carousel">

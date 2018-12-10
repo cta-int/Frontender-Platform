@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <p class="{{ config.large_lead ? 'lead lead--l' : 'lead'}}  |  trailer  |  gutters">{{ labels.lead|t(locales) }}</p>
 {% for paragraph in labels.body %}

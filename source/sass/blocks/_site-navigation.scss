@@ -80,6 +80,9 @@ Styleguide 4.3
       float: left;
     }
   }
+  &__brand--spore {
+    flex-shrink: 0;
+  }
   &__brand--cta,
   .menu__item {
     position: relative;

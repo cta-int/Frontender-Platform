@@ -1,7 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
 {% set articles = ArticlesSearches|sortArray('headline', 'asc') %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <section class="article-headline">
 	<div class="post-header__title layout layout--reverse">

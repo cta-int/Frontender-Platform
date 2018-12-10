@@ -3,7 +3,7 @@
     {% import "macros/image.html.twig" as image %}
     {% import "macros/label.html.twig" as label %}
     {% import "macros/author.html.twig" as author %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         <div class="post post--hero  |  layout layout--even">
             <div class="post__media  |  layout__cell  |  gutters">

@@ -2,7 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/template.html.twig" as helper %}
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if model.metadata.id %}

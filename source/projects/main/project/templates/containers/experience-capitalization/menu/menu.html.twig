@@ -1,6 +1,6 @@
 {{ '/assets/css/exposition.css'|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="toggle  |  fx is-inactive" {% if query.fromFrontender %} style="position: absolute;"{% endif %}>
     <div class="toggle-switch">

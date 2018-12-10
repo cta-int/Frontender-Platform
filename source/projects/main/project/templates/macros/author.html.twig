@@ -1,5 +1,5 @@
 {% macro single(authors) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
         {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
@@ -7,7 +7,7 @@
 {% endmacro %}
 
 {% macro all(authors) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
         {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
@@ -17,7 +17,7 @@
 {% endmacro %}
 
 {% macro long(authors) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
         {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
@@ -36,7 +36,7 @@
 {% endmacro %}
 
 {% macro job(authors) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
         {{ 'by'|t(locales) }} {{ authors|first.givenName ~ ' ' ~ authors|first.familyName|default(authors|first.givenName ~ ' ' ~ authors|first.familyName) ~ ' - ' ~ authors|first.jobTitle }}

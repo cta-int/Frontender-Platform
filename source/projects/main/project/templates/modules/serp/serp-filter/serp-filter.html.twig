@@ -1,6 +1,6 @@
 {{ 'modules/serp/serp-filter/serp-filter.js.twig'|addScript('beforeBodyEnd') }}
 
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <form class="gutters leader-inside--hero trailer" data-search-attributes>
     <h2 class="title title--section">{{ labels.title|t(locales)|default('Filter results'|t(locales)) }}</h2>

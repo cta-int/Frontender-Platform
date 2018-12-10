@@ -3,7 +3,7 @@
 
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="credits  |  gutters" {{ helper.container_id_attribute(frontender, "frontender")|raw }} style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ config.credit_image }}');">
     <div class="standout  |  leader-inside--hero  |  trailer-inside--hero">

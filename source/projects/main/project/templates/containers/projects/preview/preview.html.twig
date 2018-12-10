@@ -3,7 +3,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set resource_route = route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('article') }} {{ helper.class_attribute(config, 'project-preview  |  layout layout--align-end layout--even  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="project-preview__body  |  layout__cell layout__cell--aside">

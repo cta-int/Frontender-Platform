@@ -1,5 +1,5 @@
 {% macro label_names_to_string(labels, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if labels|length %}
         {% for label in labels %}
@@ -14,15 +14,15 @@
 
 {# Get the cleaned label name (without the label type name) #}
 {% macro theme_to_string(label, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     {% if label.name %}
-        {{ label.name|split('/')|last}}
+        {{ label.name|t(locales)|split('/')|last}}
     {% endif %}
 {% endmacro %}
 
 {# Extract a string of comma separated label titles and return it #}
 {% macro publications(labels, locale) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if labels|length %}
         {% set publication_titles = []%}

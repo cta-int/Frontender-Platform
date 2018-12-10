@@ -1,5 +1,5 @@
 {% import "macros/template.html.twig" as helper %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if labels.title %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
@@ -7,10 +7,10 @@
 
     <ul class="list list--inline  |  leader  |  trailer" style="padding-left: 0;">
         <li>
-            <a class="tab  |  meta is-current" href="#Upcoming-events">All events</a>
+            <a class="tab  |  meta is-current" href="#Upcoming-events">{{ 'All events'|t(locales) }}</a>
         </li>
         <li>
-            <a class="tab  |  meta" href="#Past-events">Past events</a>
+            <a class="tab  |  meta" href="#Past-events">{{ 'Past events'|t(locales) }}</a>
         </li>
     </ul>
 
