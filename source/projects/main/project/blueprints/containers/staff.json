@@ -1,554 +1,699 @@
 {
-    "template": "containers/global/group/group.html.twig",
-    "description": {
-        "en-GB": "CTA Staff"
-    },
-    "name": {
-        "en-GB": "CTA Staff"
-    },
-    "template_config": {
-        "config": {
-            "label": {
-                "en-GB": "Settings"
-            },
-            "controls": {
-                "container_tag": {
-                    "value": "section",
-                    "control": "project/container_tag"
-                },
-                "leader": {
-                    "value": "",
-                    "control": "project/leader"
-                },
-                "leader_inside": {
-                    "value": "",
-                    "control": "project/leader_inside"
-                },
-                "trailer": {
-                    "value": "",
-                    "control": "project/trailer"
-                },
-                "trailer_inside": {
-                    "value": "",
-                    "control": "project/trailer_inside"
-                },
-                "divider": {
-                    "value": "",
-                    "control": "project/divider"
-                }
-            }
-        }
-    },
-    "containers": [
-        {
-            "name": {
-                "en-GB": "Container header"
-            },
-            "description": {
-                "en-GB": "Container-header"
-            },
-            "template": "containers/global/container-header/container-header.html.twig",
-            "template_config": {
-                "labels": {
-                    "label": {
-                        "en-GB": "Content"
-                    },
-                    "controls": {
-                        "container_title": {
-                            "value": {
-                                "en-GB": "CTA Staff",
-                                "fr-FR": "Nos collaborateurs"
-                            },
-                            "label": {
-                                "en-GB": "Container title"
-                            },
-                            "control": "core/text"
-                        }
-                    }
-                },
-                "config": {
-                    "label": {
-                        "en-GB": "Settings"
-                    },
-                    "controls": {
-                        "container_tag": {
-                            "value": "section",
-                            "control": "project/container_tag"
-                        },
-                        "title_tag": {
-                            "value": "h1",
-                            "label": {
-                                "en-GB": "Title level"
-                            },
-                            "control": "core/list",
-                            "options": [
-                                {
-                                    "value": "h1",
-                                    "label": "<h1>"
-                                },
-                                {
-                                    "value": "h2",
-                                    "label": "<h2>"
-                                },
-                                {
-                                    "value": "h3",
-                                    "label": "<h3>"
-                                }
-                            ]
-                        },
-                        "show_smaller_title": {
-                            "value": 0,
-                            "label": {
-                                "en-GB": "Show small title"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "container_class": {
-                            "value": "",
-                            "control": "project/container_class",
-                            "type": "hidden"
-                        },
-                        "wings": {
-                            "value": "wings",
-                            "control": "project/wings",
-                            "type": "hidden"
-                        }
-                    }
-                }
-            },
-            "containers": [],
-            "frontender": "b02e526083396a716901d0045f775819"
-        },
-        {
-            "template": "containers/global/panels/panels-static.html.twig",
-            "description": {
-                "en-GB": "Panels"
-            },
-            "name": {
-                "en-GB": "Panels"
-            },
-            "template_config": {
-                "config": {
-                    "label": {
-                        "en-GB": "Settings"
-                    },
-                    "controls": {
-                        "container_tag": {
-                            "value": "article",
-                            "control": "project/container_tag"
-                        },
-                        "container_class": {
-                            "value": "",
-                            "control": "project/container_class",
-                            "type": "hidden"
-                        },
-                        "layout": {
-                            "value": "layout",
-                            "label": {
-                                "en-GB": "Layout"
-                            },
-                            "control": "project/layout/layout",
-                            "type": "hidden"
-                        },
-                        "show_divider": {
-                            "value": 1,
-                            "control": "project/layout/show_divider"
-                        },
-                        "show_narrow": {
-                            "value": 0,
-                            "control": "project/layout/show_narrow",
-                            "type": "hidden"
-                        },
-                        "show_outer_wing": {
-                            "value": 1,
-                            "control": "project/layout/show_outer_wing",
-                            "type": "hidden"
-                        },
-                        "show_empty_panels": {
-                            "value": 0,
-                            "label": {
-                                "en-GB": "Display empty panels"
-                            },
-                            "control": "core/boolean",
-                            "type": "hidden"
-                        }
-                    }
-                },
-                "tab_config": {
-                    "label": {
-                        "en-GB": "Tab settings"
-                    },
-                    "controls": {
-                        "selector": {
-                            "value": ".panel-group",
-                            "label": {
-                                "en-GB": "Parent selector"
-                            },
-                            "control": "core/text"
-                        },
-                        "children": {
-                            "value": ".panel",
-                            "label": {
-                                "en-GB": "Child selector"
-                            },
-                            "control": "core/text"
-                        },
-                        "attribute": {
-                            "value": "href",
-                            "label": {
-                                "en-GB": "Trigger attribute"
-                            },
-                            "control": "core/text"
-                        },
-                        "allow_multiple": {
-                            "value": 0,
-                            "label": {
-                                "en-GB": "Allow multiple tabs to be open"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "open_first": {
-                            "value": 1,
-                            "label": {
-                                "en-GB": "Open first tab"
-                            },
-                            "control": "core/boolean"
-                        },
-                        "scroll_to": {
-                            "value": 1,
-                            "label": {
-                                "en-GB": "Animate scroll"
-                            },
-                            "control": "core/boolean"
-                        }
-                    }
-                },
-                "containers": [
-                    {
-                        "template_config": {
-                            "model": [],
-                            "labels": {
-                                "label": {
-                                    "en-GB": "Labels"
-                                },
-                                "controls": {
-                                    "panel_title": {
-                                        "value": {
-                                            "en-GB": "Impact Stories",
-                                            "fr-FR": "Article d'impact"
-                                        },
-                                        "label": {
-                                            "en-GB": "Title"
-                                        },
-                                        "control": "core/text"
-                                    }
-                                }
-                            },
-                            "config": {
-                                "controls": {
-                                    "active": {
-                                        "value": 1,
-                                        "label": {
-                                            "en-GB": "Open tab"
-                                        },
-                                        "control": "project/show"
-                                    },
-                                    "tab_class": {
-                                        "value": "",
-                                        "label": {
-                                            "en-GB": "Tab class"
-                                        },
-                                        "control": "project/container_class"
-                                    },
-                                    "panel_class": {
-                                        "value": "",
-                                        "label": {
-                                            "en-GB": "Panel class"
-                                        },
-                                        "control": "project/container_class"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            "containers": [
-                {
-                    "name": {
-                        "en-GB": "Staff"
-                    },
-                    "decsription": {
-                        "en-GB": "Staff"
-                    },
-                    "template": "containers/global/group/group.html.twig",
-                    "template_config": {
-                        "labels": {
-                            "label": {
-                                "en-GB": "Labels"
-                            },
-                            "controls": {
-                                "panel_title": {
-                                    "value": {
-                                        "en-GB": "CTA Staff",
-                                        "fr-FR": "Nos collaborateurs"
-                                    },
-                                    "label": {
-                                        "en-GB": "Title"
-                                    },
-                                    "control": "core/text"
-                                }
-                            }
-                        }
-                    },
-                    "containers": [
-                        {
-                            "template": "modules/staff/staff.html.twig",
-                            "description": {
-                                "en-GB": "Directors Office"
-                            },
-                            "name": {
-                                "en-GB": "Directors Office"
-                            },
-                            "template_config": {
-                                "labels": {
-                                    "label": {
-                                        "en-GB": "Labels"
-                                    },
-                                    "controls": {
-                                        "title": {
-                                            "value": {
-                                                "en-GB": "Directors Office",
-                                                "fr-FR": "Direction"
-                                            },
-                                            "label": {
-                                                "en-GB": "Title"
-                                            },
-                                            "control": "core/text"
-                                        }
-                                    }
-                                },
-                                "content": {
-                                    "label": {
-                                        "en-GB": "Content"
-                                    },
-                                    "controls": {
-                                        "staff": {
-                                            "value": [
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Michael Hailu",
-                                                        "fr-FR": "Michael Hailu"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Director",
-                                                        "fr-FR": "Director"
-                                                    }
-                                                },
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Michael Hailu",
-                                                        "fr-FR": "Michael Hailu"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Director",
-                                                        "fr-FR": "Director"
-                                                    }
-                                                },
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Michael Hailu",
-                                                        "fr-FR": "Michael Hailu"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Director",
-                                                        "fr-FR": "Director"
-                                                    }
-                                                },
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Michael Hailu",
-                                                        "fr-FR": "Michael Hailu"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Director",
-                                                        "fr-FR": "Director"
-                                                    }
-                                                },
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Michael Hailu",
-                                                        "fr-FR": "Michael Hailu"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Director",
-                                                        "fr-FR": "Director"
-                                                    }
-                                                }
-                                            ],
-                                            "label": {
-                                                "en-GB": "Staff"
-                                            },
-                                            "controls": {
-                                                "name": {
-                                                    "label": {
-                                                        "en-GB": "Name"
-                                                    },
-                                                    "control": "core/text"
-                                                },
-                                                "function": {
-                                                    "label": {
-                                                        "en-GB": "Function"
-                                                    },
-                                                    "control": "core/text"
-                                                }
-                                            },
-                                            "repeatable": true,
-                                            "type": "hidden"
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "label": {
-                                        "en-GB": "Layout"
-                                    },
-                                    "controls": {
-                                        "columns": {
-                                            "value": 1,
-                                            "label": {
-                                                "en-GB": "Display content in two columns (on larger viewports)"
-                                            },
-                                            "control": "core/boolean"
-                                        }
-                                    }
-                                }
-                            },
-                            "frontender": "6949fcc79a514ee0f004908d4569cd03"
-                        }
-                    ]
-                },
-                {
-                    "name": {
-                        "en-GB": "Board"
-                    },
-                    "decsription": {
-                        "en-GB": "Board"
-                    },
-                    "template": "containers/global/group/group.html.twig",
-                    "template_config": {
-                        "labels": {
-                            "label": {
-                                "en-GB": "Labels"
-                            },
-                            "controls": {
-                                "panel_title": {
-                                    "value": {
-                                        "en-GB": "Board members",
-                                        "fr-FR": "Membres du conseil d'administration"
-                                    },
-                                    "label": {
-                                        "en-GB": "Title"
-                                    },
-                                    "control": "core/text"
-                                }
-                            }
-                        }
-                    },
-                    "containers": [
-                        {
-                            "template": "modules/staff/board.html.twig",
-                            "description": {
-                                "en-GB": "Profiles"
-                            },
-                            "name": {
-                                "en-GB": "Profiles"
-                            },
-                            "template_config": {
-                                "content": {
-                                    "label": {
-                                        "en-GB": "Content"
-                                    },
-                                    "controls": {
-                                        "introduction": {
-                                            "value": {
-                                                "en-GB": "Executive Board of the Technical Centre for Agricultural and Rural Cooperation (CTA), as per decision no 4/2013 of the ACP-EU Committee of Ambassadors of 7 November 2013. Appointed members to the Executive Board of the Technical Centre for Agricultural and Rural Cooperation (CTA), as per decision no 4/2013 of the ACP-EU Committee of Ambassadors of 7 November 2013 on the Statutes of the Centre. For a term of five years, ending on 6 November 2018:\r* Professor Baba Y. Abubakar\r* Professor Augusto Manuel Correia\r* Dr Helena Johansson\r* Professor Faustin R. Kamuzora\r* Professor Clement K. Sankat\r\rFor a term of three years and four months ending on 29 February 2020:\r\r* Professor Frederike Praasterink",
-                                                "fr-FR": "Conseil d'administration du Centre technique de coopération agricole et rurale (CTA), conformément à la décision n ° 4/2013 du Comité des ambassadeurs des pays ACP-UE du 7 novembre 2013. Membres nommés au Conseil d'administration du Centre technique de coopération agricole et rurale (CTA), conformément à la décision n° 4/2013 du Comité des ambassadeurs des pays ACP-UE du 7 Novembre 2013 sur les statuts du Centre. Pour un mandat de cinq ans, se terminant le 6 novembre 2018:\r* Professeur Baba Y. Abubakar\r* Professeur Augusto Manuel Correia\r* Dr Helena Johansson\r* Professeur Faustin R. Kamuzora\r* Professeur K. Clement Sankat\r\rPour un mandat de trois ans et quatre mois, se terminant le 29 février 2020:\r\r* Professeur Frederike Partirent"
-                                            },
-                                            "label": {
-                                                "en-GB": "Introduction"
-                                            },
-                                            "control": "core/textarea"
-                                        },
-                                        "staff": {
-                                            "value": [
-                                                {
-                                                    "name": {
-                                                        "en-GB": "Augusto Manuel Correia",
-                                                        "fr-FR": "Augusto Manuel Correia"
-                                                    },
-                                                    "function": {
-                                                        "en-GB": "Chairman",
-                                                        "fr-FR": "Président du conseil d’administration"
-                                                    },
-                                                    "biography": {
-                                                        "en-GB": "PhD in Tropical Agriculture (1990) from the Instituto Superior de Agronomia (Universidade Técnica de Lisboa), Portugal\r\r* Associate Professor (Sustainable Development of African Rural Communities, Tropical Agriculture Production and Systems Tropical Agriculture) at the Instituto Superior de Agronomia (ISA) since 1981\r* Former member of the Steering Committee of the European Forum for Agricultural Research (EFARD) (1999-2001)\r* Former president of the Portuguese Agency for Development (IPAD) (2005-2012)\r* National Expert for the 5th Framework Program for Development Assistance of the EU",
-                                                        "fr-FR": "Doctorat d’agriculture tropicale (1990), Instituto Superior de Agronomia (Universidade Técnica de Lisboa), Portugal\r\r* Professeur associé (Développement durable des communautés rurales africaines, agriculture tropicale et systèmes de agricoles tropicaux), Instituto Superior de Agronomia, depuis 1981\r* Membre du comité du Forum européen sur la recherche agricole pour le développement (EFARD) de 1999 à 2001\r* Président de l’Agence portugaise de développement (IPAD) de 2005 à 2012\r* Expert national du 5e programme-cadre pour l'aide publique au développement de l'Union européenne"
-                                                    },
-                                                    "country": {
-                                                        "en-GB": "Portugal",
-                                                        "fr-FR": "Hollande"
-                                                    },
-                                                    "picture": "https://res.cloudinary.com/cta/image/upload/v1523537124/newhwa9ag3msdmptrihl.png"
-                                                }
-                                            ],
-                                            "label": {
-                                                "en-GB": "Staff"
-                                            },
-                                            "controls": {
-                                                "name": {
-                                                    "label": {
-                                                        "en-GB": "Name"
-                                                    },
-                                                    "control": "core/text"
-                                                },
-                                                "function": {
-                                                    "label": {
-                                                        "en-GB": "Function"
-                                                    },
-                                                    "control": "core/text"
-                                                },
-                                                "biography": {
-                                                    "label": {
-                                                        "en-GB": "Biography"
-                                                    },
-                                                    "control": "core/textarea"
-                                                },
-                                                "country": {
-                                                    "label": {
-                                                        "en-GB": "Country"
-                                                    },
-                                                    "control": "core/text"
-                                                },
-                                                "image": {
-                                                    "label": {
-                                                        "en-GB": "Image URL"
-                                                    },
-                                                    "control": "core/text"
-                                                }
-                                            },
-                                            "repeatable": true
-                                        }
-                                    }
-                                }
-                            },
-                            "frontender": "6949fcc79a514ee0f004908d4569cd03"
-                        }
-                    ]
-                }
-            ],
-            "frontender": "b02e526083396a716901d0045f775820"
-        }
-    ],
-    "frontender": "8176352ed90e1ad6483f8602adafbc8f",
-    "blueprint": "5c1646ebad180d41533bd3e4"
+	"template": "layouts/global.html.twig",
+	"description": {
+		"en-GB": "Container Development"
+	},
+	"page_config": [],
+	"template_config": [],
+	"containers": [
+		{
+			"template": "containers/global/group/group.html.twig",
+			"description": {
+				"en-GB": "CTA Staff"
+			},
+			"name": {
+				"en-GB": "CTA Staff"
+			},
+			"template_config": {
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "section",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"leader_inside": {
+							"value": "",
+							"control": "project/leader_inside"
+						},
+						"trailer": {
+							"value": "",
+							"control": "project/trailer"
+						},
+						"trailer_inside": {
+							"value": "",
+							"control": "project/trailer_inside"
+						},
+						"divider": {
+							"value": "",
+							"control": "project/divider"
+						}
+					}
+				}
+			},
+			"containers": [
+				{
+					"name": {
+						"en-GB": "Container header"
+					},
+					"description": {
+						"en-GB": "Container-header"
+					},
+					"template": "containers/global/container-header/container-header.html.twig",
+					"template_config": {
+						"labels": {
+							"label": {
+								"en-GB": "Content"
+							},
+							"controls": {
+								"container_title": {
+									"value": {
+										"en-GB": "CTA Staff",
+										"fr-FR": "Nos collaborateurs"
+									},
+									"label": {
+										"en-GB": "Container title"
+									},
+									"control": "core/text"
+								}
+							}
+						},
+						"config": {
+							"label": {
+								"en-GB": "Settings"
+							},
+							"controls": {
+								"container_tag": {
+									"value": "section",
+									"control": "project/container_tag"
+								},
+								"title_tag": {
+									"value": "h1",
+									"label": {
+										"en-GB": "Title level"
+									},
+									"control": "core/list",
+									"options": [
+										{
+											"value": "h1",
+											"label": "<h1>"
+										},
+										{
+											"value": "h2",
+											"label": "<h2>"
+										},
+										{
+											"value": "h3",
+											"label": "<h3>"
+										}
+									]
+								},
+								"show_smaller_title": {
+									"value": 0,
+									"label": {
+										"en-GB": "Show small title"
+									},
+									"control": "core/boolean"
+								},
+								"container_class": {
+									"value": "",
+									"control": "project/container_class",
+									"type": "hidden"
+								},
+								"wings": {
+									"value": "wings",
+									"control": "project/wings",
+									"type": "hidden"
+								}
+							}
+						}
+					},
+					"containers": [],
+					"frontender": "b02e526083396a716901d0045f775819"
+				},
+				{
+					"template": "containers/global/panels/panels-static.html.twig",
+					"description": {
+						"en-GB": "Panels"
+					},
+					"name": {
+						"en-GB": "Panels"
+					},
+					"template_config": {
+						"config": {
+							"label": {
+								"en-GB": "Settings"
+							},
+							"controls": {
+								"container_tag": {
+									"value": "section",
+									"control": "project/container_tag"
+								},
+								"container_class": {
+									"value": "",
+									"control": "project/container_class",
+									"type": "hidden"
+								},
+								"layout": {
+									"value": "layout",
+									"label": {
+										"en-GB": "Layout"
+									},
+									"control": "project/layout/layout",
+									"type": "hidden"
+								},
+								"show_divider": {
+									"value": 1,
+									"control": "project/layout/show_divider"
+								},
+								"show_narrow": {
+									"value": 0,
+									"control": "project/layout/show_narrow",
+									"type": "hidden"
+								},
+								"show_outer_wing": {
+									"value": 1,
+									"control": "project/layout/show_outer_wing",
+									"type": "hidden"
+								},
+								"show_empty_panels": {
+									"value": 0,
+									"label": {
+										"en-GB": "Display empty panels"
+									},
+									"control": "core/boolean",
+									"type": "hidden"
+								}
+							}
+						},
+						"tab_config": {
+							"label": {
+								"en-GB": "Tab settings"
+							},
+							"controls": {
+								"selector": {
+									"value": ".panel-group",
+									"label": {
+										"en-GB": "Parent selector"
+									},
+									"control": "core/text"
+								},
+								"children": {
+									"value": ".panel",
+									"label": {
+										"en-GB": "Child selector"
+									},
+									"control": "core/text"
+								},
+								"attribute": {
+									"value": "href",
+									"label": {
+										"en-GB": "Trigger attribute"
+									},
+									"control": "core/text"
+								},
+								"allow_multiple": {
+									"value": 0,
+									"label": {
+										"en-GB": "Allow multiple tabs to be open"
+									},
+									"control": "core/boolean"
+								},
+								"open_first": {
+									"value": 1,
+									"label": {
+										"en-GB": "Open first tab"
+									},
+									"control": "core/boolean"
+								},
+								"scroll_to": {
+									"value": 1,
+									"label": {
+										"en-GB": "Animate scroll"
+									},
+									"control": "core/boolean"
+								}
+							}
+						},
+						"containers": [
+							{
+								"template_config": {
+									"model": [],
+									"labels": {
+										"label": {
+											"en-GB": "Labels"
+										},
+										"controls": {
+											"panel_title": {
+												"value": {
+													"en-GB": "Impact Stories",
+													"fr-FR": "Article d'impact"
+												},
+												"label": {
+													"en-GB": "Title"
+												},
+												"control": "core/text"
+											}
+										}
+									},
+									"config": {
+										"controls": {
+											"active": {
+												"value": 1,
+												"label": {
+													"en-GB": "Open tab"
+												},
+												"control": "project/show"
+											},
+											"tab_class": {
+												"value": "",
+												"label": {
+													"en-GB": "Tab class"
+												},
+												"control": "project/container_class"
+											},
+											"panel_class": {
+												"value": "",
+												"label": {
+													"en-GB": "Panel class"
+												},
+												"control": "project/container_class"
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"containers": [
+						{
+							"name": {
+								"en-GB": "Staff"
+							},
+							"decsription": {
+								"en-GB": "Staff"
+							},
+							"template": "containers/global/group/group.html.twig",
+							"template_config": {
+								"labels": {
+									"label": {
+										"en-GB": "Labels"
+									},
+									"controls": {
+										"panel_title": {
+											"value": {
+												"en-GB": "CTA Staff",
+												"fr-FR": "Nos collaborateurs"
+											},
+											"label": {
+												"en-GB": "Title"
+											},
+											"control": "core/text"
+										}
+									}
+								}
+							},
+							"containers": [
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Directors Office"
+									},
+									"name": {
+										"en-GB": "Directors Office"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Directors Office",
+														"fr-FR": "Direction"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true,
+													"type": "hidden"
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": "6949fcc79a514ee0f004908d4569cd05"
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Directors Office"
+									},
+									"name": {
+										"en-GB": "Directors Office"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Directors Office",
+														"fr-FR": "Direction"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Michael Hailu",
+																"fr-FR": "Michael Hailu"
+															},
+															"function": {
+																"en-GB": "Director",
+																"fr-FR": "Director"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true,
+													"type": "hidden"
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": "6949fcc79a514ee0f004908d4569cd04"
+								}
+							]
+						},
+						{
+							"name": {
+								"en-GB": "Board"
+							},
+							"decsription": {
+								"en-GB": "Board"
+							},
+							"template": "containers/global/group/group.html.twig",
+							"template_config": {
+								"labels": {
+									"label": {
+										"en-GB": "Labels"
+									},
+									"controls": {
+										"panel_title": {
+											"value": {
+												"en-GB": "Board members",
+												"fr-FR": "Membres du conseil d'administration"
+											},
+											"label": {
+												"en-GB": "Title"
+											},
+											"control": "core/text"
+										}
+									}
+								}
+							},
+							"containers": [
+								{
+									"template": "modules/staff/board.html.twig",
+									"description": {
+										"en-GB": "Profiles"
+									},
+									"name": {
+										"en-GB": "Profiles"
+									},
+									"template_config": {
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"introduction": {
+													"value": {
+														"en-GB": "Executive Board of the Technical Centre for Agricultural and Rural Cooperation (CTA), as per decision no 4/2013 of the ACP-EU Committee of Ambassadors of 7 November 2013. Appointed members to the Executive Board of the Technical Centre for Agricultural and Rural Cooperation (CTA), as per decision no 4/2013 of the ACP-EU Committee of Ambassadors of 7 November 2013 on the Statutes of the Centre. For a term of five years, ending on 6 November 2018:\r* Professor Baba Y. Abubakar\r* Professor Augusto Manuel Correia\r* Dr Helena Johansson\r* Professor Faustin R. Kamuzora\r* Professor Clement K. Sankat\r\rFor a term of three years and four months ending on 29 February 2020:\r\r* Professor Frederike Praasterink",
+														"fr-FR": "Conseil d'administration du Centre technique de coopération agricole et rurale (CTA), conformément à la décision n ° 4/2013 du Comité des ambassadeurs des pays ACP-UE du 7 novembre 2013. Membres nommés au Conseil d'administration du Centre technique de coopération agricole et rurale (CTA), conformément à la décision n° 4/2013 du Comité des ambassadeurs des pays ACP-UE du 7 Novembre 2013 sur les statuts du Centre. Pour un mandat de cinq ans, se terminant le 6 novembre 2018:\r* Professeur Baba Y. Abubakar\r* Professeur Augusto Manuel Correia\r* Dr Helena Johansson\r* Professeur Faustin R. Kamuzora\r* Professeur K. Clement Sankat\r\rPour un mandat de trois ans et quatre mois, se terminant le 29 février 2020:\r\r* Professeur Frederike Partirent"
+													},
+													"label": {
+														"en-GB": "Introduction"
+													},
+													"control": "core/textarea"
+												},
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Augusto Manuel Correia",
+																"fr-FR": "Augusto Manuel Correia"
+															},
+															"function": {
+																"en-GB": "Chairman",
+																"fr-FR": "Président du conseil d’administration"
+															},
+															"biography": {
+																"en-GB": "PhD in Tropical Agriculture (1990) from the Instituto Superior de Agronomia (Universidade Técnica de Lisboa), Portugal\r\r* Associate Professor (Sustainable Development of African Rural Communities, Tropical Agriculture Production and Systems Tropical Agriculture) at the Instituto Superior de Agronomia (ISA) since 1981\r* Former member of the Steering Committee of the European Forum for Agricultural Research (EFARD) (1999-2001)\r* Former president of the Portuguese Agency for Development (IPAD) (2005-2012)\r* National Expert for the 5th Framework Program for Development Assistance of the EU",
+																"fr-FR": "Doctorat d’agriculture tropicale (1990), Instituto Superior de Agronomia (Universidade Técnica de Lisboa), Portugal\r\r* Professeur associé (Développement durable des communautés rurales africaines, agriculture tropicale et systèmes de agricoles tropicaux), Instituto Superior de Agronomia, depuis 1981\r* Membre du comité du Forum européen sur la recherche agricole pour le développement (EFARD) de 1999 à 2001\r* Président de l’Agence portugaise de développement (IPAD) de 2005 à 2012\r* Expert national du 5e programme-cadre pour l'aide publique au développement de l'Union européenne"
+															},
+															"country": {
+																"en-GB": "Portugal",
+																"fr-FR": "Hollande"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537124/newhwa9ag3msdmptrihl.png"
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														},
+														"biography": {
+															"label": {
+																"en-GB": "Biography"
+															},
+															"control": "core/textarea"
+														},
+														"country": {
+															"label": {
+																"en-GB": "Country"
+															},
+															"control": "core/text"
+														},
+														"image": {
+															"label": {
+																"en-GB": "Image URL"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										}
+									},
+									"frontender": "6949fcc79a514ee0f004908d4569cd03"
+								}
+							]
+						}
+					],
+					"frontender": "b02e526083396a716901d0045f775820"
+				}
+			],
+			"frontender": "8176352ed90e1ad6483f8602adafbc8f",
+			"blueprint": "5c1646ebad180d41533bd3e4"
+		}
+	],
+	"alias": [],
+	"route": [],
+	"frontender": "57f3f7f0dc0e0e7912b66c406d248dd7",
+	"name": "Container Development"
 }
