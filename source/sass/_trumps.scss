@@ -119,3 +119,14 @@
         }
     }
 }
+
+.markdown {
+    p {
+        @extend .paragraph;
+    }
+    ul {
+        @extend .paragraph;
+        padding-left: 0;
+        margin-left: 1em;
+    }
+}
