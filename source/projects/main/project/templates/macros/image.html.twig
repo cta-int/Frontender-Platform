@@ -157,6 +157,14 @@ $landscape - Breakpoint for landscape oriented viewports.
         />
 {% endmacro %}
 
+
+{% macro profile_photo(url, alt) %}
+    <img
+        src="{{ url }}"
+        alt="{{ alt }}"
+    />
+{% endmacro %}
+
 {% macro person(person, size) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
