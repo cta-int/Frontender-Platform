@@ -1,0 +1,33 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/image.html.twig" as image %}
+
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if content.introduction|t|length > 0 %}
+        <div class="profile  |  markdown  |  gutters  |  wing--right  |  trailer--hero">
+            {{ content.introduction|t|markdown|raw }}
+        </div>
+    {% endif %}
+
+    {% for person in content.staff %}
+    <article class="layout layout--reverse  |  wing--right">
+        <div class="layout__cell  |  gutters">
+            <h2 class="title">{{ person.name|t }}</h2>
+            <div class="markdown">
+                {{ person.biography|t|markdown|raw }}
+            </div>
+        </div>
+        <footer class="layout__cell layout__cell--aside  |  gutters  |  profile  |  trailer">
+            <figure class="profile__image">
+                {{ image.profile_photo(person.picture|t|default("https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png"), person.name|t) }}
+            </figure>
+            <div class="profile__text">
+                <p class="profile__name  |  title  |  trailer--small">{{ person.name|t }}</p>
+                <p class="body--whisper">{{ person.function|t(locales) }}</p>
+                <p class="body--whisper">{{ person.country|t(locales) }}</p>
+            </div>
+        </footer>
+    </article>
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>
