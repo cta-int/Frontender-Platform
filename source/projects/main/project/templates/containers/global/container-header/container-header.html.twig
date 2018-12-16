@@ -10,9 +10,9 @@
     <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, class)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
         {% if labels.container_title|t(locales) %}
-        <h2 class="container-header__title  |  title {{ config.show_smaller_title ? 'title--tile' : 'title--container' }} trailer-inside--tiny  |  gutters">
+        <{{config.title_tag|default('h2')}} class="container-header__title  |  title {{ config.show_smaller_title ? 'title--tile' : 'title--container' }} trailer-inside--tiny  |  gutters">
             {{ labels.container_title|t(locales) }}
-        </h2>
+        </{{config.title_tag|default('h2')}}>
         {% endif %}
 
         {% if has_tools or has_link %}
