@@ -638,6 +638,101 @@
 																"fr-FR": "Hollande"
 															},
 															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537124/newhwa9ag3msdmptrihl.png"
+														},
+														{
+															"name": {
+																"en-GB": "Clement K. Sankat",
+																"fr-FR": "Clement K. Sankat"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD from the University of Guelph’s School of Engineering, Canada, Honorary Doctorate degree (2010) from the University of New Brunswick MSc and BSc in Mechanical Engineering from the University of the West Indies, Trinidad and Tobago.\r\r Chartered Engineer (CEng), Fellow of the Institute of Agricultural Engineers (FIAgrE) of the UK, Fellow of the Association of Professional Engineers of Trinidad and Tobago (FAPETT) and Fellow of the Canadian Society for Bioengineering\r\r* President of the University of Belize since 2017\r* Board of Advisors, Confucius Institute, Hanban, Beijing, China\r* Former Pro-Vice-Chancellor and Campus Principal of The University of the West Indies, St Augustine Campus, Trinidad (2008-2016)",
+																"fr-FR": "Doctorat d’ingénierie, University of Guelph’s School of Engineering, Canada Doctorat honorifique (2010, University of New Brunswick, Canada Maîtrise universitaire ès sciences et licence en Ingénierie mécanique, University of the West Indies, Trinidad et Tobago\r\r* Président, University of Belize, depuis 2017\r* Membre du conseil d’administration, Confucius Institute, Hanban, Pékin, Chine\r* Vice-chancelier, The University of the West Indies, St Augustine, Trinidad et Tobago, de 2008 à 2016"
+															},
+															"country": {
+																"en-GB": "Trinidad and Tobago",
+																"fr-FR": "Trinité-et-Tobago"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537239/neisyg138pyyefrg1hcs.png"
+														},
+														{
+															"name": {
+																"en-GB": "Baba Yusuf Abubakar",
+																"fr-FR": "Baba Yusuf Abubakar"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Animal Breeding and Genetics (1985) from Cornell University, USA\r\r* Visiting Professor, University of Abuja (2016-present)\r* Pioneer Executive Secretary, Agricultural Research Council of Nigeria (2006-2016)\r* Director, Office of the Secretary to the Government of the Federation, Nigeria (2003-2006)\r* Programme Leader (Poultry), National Animal Production Research Institute (NAPRI/ABU), Shika-Zaria (1991-1997)\r* Research Officer, NAPRI/ABU (1978-2003)\r* Promoted Professor of Animal Science, NAPRI/ABU (1995)\r* Liaison officer, Centre for Agricultural Biosciences International (CABI), (2008- 2016)\r* Member of the Consultative Group on International Agricultural Research [CGIAR] ExCo & Fund/System Council representing Sub-Saharan Africa, 2008-2009 & 2010-2016 respectively\r* Chairman, Governing Board of the West and Central African Council for Agricultural Research and Development (CORAF /WECARD), (2010-2012)\r* Member of the Governing Board of the Forum for Agricultural Research in Africa (FARA), (2010- 2012)\r* Member of the Expert Panel on the development of Science Agenda for Agriculture in Africa (2013)\r* Member, Board of Trustees, WorldFish Center (2017-2020)\r* Received Presidential National Honours Award of Officer of the Order of the Federal Republic (OFR) in 2011 and the CORAF/WECARD Award of Honour for invaluable contribution to Agricultural Research and Development in West and Central Africa in 2012.",
+																"fr-FR": "Doctorat en Sciences animales et génétique (1985), Cornell University, Etats-Unis\r\r* Professeur invité, University of Abuja, depuis 2016\r* Secrétaire exécutif, Agricultural Research Council of Nigeria, de 2006 à 2016\r* Directeur du Secrétariat du gouvernement fédéral du Nigéria, de 2003 à 2006\r* Chef de programme (Volaille), National Animal Production Research Institute (NAPRI/ABU), Nigeria, de 1991 à 1997\r* Chargé de recherche, NAPRI/ABU, de 1978 à 2003\r* Professeur des Sciences animales, NAPRI/ABU, 1995\r* Officier de liaison, Centre for Agricultural Biosciences International (CABI), de 2008 à 2016\r* Membre, pour le Groupe consultatif pour la recherche agricole internationale (CGIAR), du comité exécutif pour l’Afrique sub-saharienne, de 2008 à 2009, puis de 2010 à 2016\r* Président du conseil d’administration du Conseil ouest et centre africain pour la recherche et le développement agricoles (CORAF /WECARD), de 2010 à 2012\r* Membre du conseil d’administration du Forum pour la recherche agricole en Afrique (FARA), de 2010 à 2012\r* Membre du panel d’experts pour l’Agenda scientifique pour l’agriculture en Afrique (2013)\r* Membre du conseil d’administration de WorldFish Center, depuis 2017\r* Received Presidential National Honours Award of Officer of the Order of the Federal Republic (OFR) in 2011 and the CORAF/WECARD Award of Honour for invaluable contribution to Agricultural Research and Development in West and Central Africa in 2012."
+															},
+															"country": {
+																"en-GB": "Nigeria",
+																"fr-FR": "Nigéria"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537160/psnjrbbohpwjeq4qphgo.png"
+														},
+														{
+															"name": {
+																"en-GB": "Helena Johansson",
+																"fr-FR": "Helena Johansson"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Economics (2003) from Lund University, Sweden\r\r* Director of the AgriFood Economics Centre, Lund University, Sweden since 2009\r* Researcher at the Swedish Institute for Food and Agriculture Economics (2001-2008)\r* Lecturer at the Department of Economics, Lund University (2002-2003)",
+																"fr-FR": "Doctorat d’Economie (2003), Lund University, Suède\r\r* Directrice du AgriFood Economics Centre, Lund University, depuis 2009\r* Chercheuse au Swedish Institute for Food and Agriculture Economics, de 2001 à 2008\r* Maître de conference (Economie), Lund University, de 2002 à 2003"
+															},
+															"country": {
+																"en-GB": "Sweden",
+																"fr-FR": "Suède"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537355/yaecgbkmvwxyebqnvx7l.png"
+														},
+														{
+															"name": {
+																"en-GB": "Faustin Kamuzora",
+																"fr-FR": "Faustin Kamuzora"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Information Technology (2006) from the University of Bradford, USA MSc in Agricultural International Trade (1996) from the North Carolina Agricultural and Technical State University, USA\r\r* Permanent Secretary of Tanzanian Ministry of Communication, Science and Technology\r* Deputy vice-chancellor, Mzumbe University, Tanzania (2007- present)\r* Researcher and trainer at Mzumbe University (1992 – present)\r* Executive Secretary of the Agricultural Economist Society of Tanzania",
+																"fr-FR": "Doctorat de Technologie de l’information (2006), University of Bradford, Etats-Unis Maîtrise universitaire ès sciences de Commerce agricole international (1996), North Carolina Agricultural and Technical State University, Etats-Unis\r\r* Secrétaire permanent du ministère du ministère de la Communication, des sciences et la technologie de Tanzanie\r* Vice-chancelier, Mzumbe University, Tanzania, depuis 2007\r* Chercheur et formateur, Mzumbe University, depuis 1992\r* Secrétaire exécutif des économistes agricoles de Tanzanie"
+															},
+															"country": {
+																"en-GB": "Tanzania",
+																"fr-FR": "Tanzanie"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537311/mhyd6qckej2zh3nwq5l5.png"
+														},
+														{
+															"name": {
+																"en-GB": "Frederike Praasterink",
+																"fr-FR": "Frederike Praasterink"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "MSc in Horticulture & Crop protection (1988) from Wageningen University & Research, The Netherlands\r\r* Senior lecturer (Future Food Systems) at HAS University of Applied Sciences, The Netherlands, since 2006\r* Expert/Consultant for the FAO (1995-2008)",
+																"fr-FR": "Maîtrise universitaire ès sciences Horticulture et protection des cultures, Wageningen University & Research, Pays-Bas\r\r* Maître de conference (Systèmes alimentaires), HAS University of Applied Sciences, Pays-Bas, depuis 2006\r* Expert consultante pour la FAO, de 1995 à 2008"
+															},
+															"country": {
+																"en-GB": "The Netherlands",
+																"fr-FR": "Pays-Bas"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537416/rzykh7t58btagu6mdgch.png"
 														}
 													],
 													"label": {
