@@ -401,8 +401,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -508,8 +507,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -745,8 +743,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -932,8 +929,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -1149,8 +1145,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -1296,8 +1291,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -1443,8 +1437,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -1590,8 +1583,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
