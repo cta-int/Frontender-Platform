@@ -28,7 +28,7 @@
             <div class="issue-label__nr" data-issue-nr="{{ model|first.number }}"></div>
             <div class="issue-label__caption">
                 <p>
-                    <strong>{{ 'Issue'|t(locales) }} {{ model|first.number }}</strong>
+                    <strong>{{ "issue'|i18n }} {{ model|first.number }}</strong>
                     <span>{{ model|first.datePublished|tdate('%e %B %Y') }}</span>
                 </p>
             </div>
@@ -44,7 +44,7 @@
             <div class="leader--small">
                 <a class="button button--stretch"
                    href="{{ model|first.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}"
-                   target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>
+                   target="_blank">{{ 'Download in PDF format'|i18n }}</a>
             </div>
         {% endif %}
     </div>
@@ -52,22 +52,22 @@
     <form class="leader--hero" method="post" action="https://ctaint.wufoo.eu/forms/m7p5x7/#public">
         <input type="hidden" name="idstamp" value="Ppma7o+2LxA/UkYd/IPXFAGOYgNad6m5vGqo2v42qFo=">
 
-        <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|t(locales) }}</h2>
+        <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|i18n }}</h2>
         <fieldset class="leader trailer">
-            <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|t(locales) }}</label>
+            <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|i18n }}</label>
             <input class="fld" type="text" id="firstname" name="Field6">
-            <label class="fld-label title title--meta" for="lastname">{{ 'Lastname'|t(locales) }}</label>
+            <label class="fld-label title title--meta" for="lastname">{{ 'Lastname'|i18n }}</label>
             <input class="fld" type="text" id="lastname" name="Field7">
-            <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|t(locales) }}</label>
+            <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|i18n }}</label>
             <input class="fld" type="text" name="Field1" id="email">
 
-            <label class="fld-label title title--meta">{{ 'Language'|t(locales) }}</label>
+            <label class="fld-label title title--meta">{{ 'Language'|i18n }}</label>
             <label><input class="fld-radio" name="Field10" type="radio" value="English"><span
-                        class="fld-radio">{{ 'English'|t(locales) }}</span></label>
+                        class="fld-radio">{{ 'English'|i18n }}</span></label>
             <label><input class="fld-radio" name="Field10" type="radio" value="French"><span
-                        class="fld-radio">{{ 'French'|t(locales) }}</span></label>
+                        class="fld-radio">{{ 'French'|i18n }}</span></label>
         </fieldset>
-        <button class="button button--stretch">{{ labels.button|default('Subscribe'|t(locales))|t(locales) }}</button>
+        <button class="button button--stretch">{{ labels.button|default('Subscribe'|i18n)|t(locales) }}</button>
     </form>
 
 

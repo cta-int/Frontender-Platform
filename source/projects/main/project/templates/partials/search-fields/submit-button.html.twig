@@ -2,5 +2,5 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__submit')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    <button class="button button--wide" type="submit">{{ labels.label|t(locales)|default('Search'|t(locales)) }}</button>
+    <button class="button button--wide" type="submit">{{ labels.label|t(locales)|default('Search'|i18n) }}</button>
 </{{ config.container_tag|default('div') }}>

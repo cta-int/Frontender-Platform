@@ -12,7 +12,7 @@
         {% endif %}
 
         {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-            <span class="meta">{{ 'in'|t(locales) }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}</span>
+            <span class="meta">{{ 'in'|i18n }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}</span>
         {% endif %}
 
         {% if config.show_type|default(1) %}
@@ -44,7 +44,7 @@
         {% endif %}
 
         {% if config.show_read_more|default(1) %}
-           <a class="read-more" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ 'Read more'|t(locales) }}</a>
+           <a class="read-more" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
     {% if config.show_lead_image|default(1) and article.link.mediaObject|lead %}

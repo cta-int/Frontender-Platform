@@ -2,7 +2,7 @@
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
     {% endif %}
 {% endmacro %}
 
@@ -10,9 +10,9 @@
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
     {% elseif authors|length > 1 %}
-        {{ 'by'|t(locales) }} {{ 'Multiple authors'|t(locales) }}
+        {{ 'by'|i18n }} {{ 'Multiple authors'|t(locales) }}
     {% endif %}
 {% endmacro %}
 
@@ -20,14 +20,14 @@
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|t(locales) }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
     {% elseif authors|length > 1 %}
-        {{ 'by'|t(locales) }}
+        {{ 'by'|i18n }}
         {% for author in authors %}
             {% if not loop.first and not loop.last %}
                 ,
             {% elseif not loop.first and loop.last %}
-                {{ 'and'|t(locales) }}
+                {{ 'and'|i18n }}
             {% endif %}
 
             {{ '%s %s'|format(author.givenName, author.familyName) }}
@@ -39,14 +39,14 @@
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|t(locales) }} {{ authors|first.givenName ~ ' ' ~ authors|first.familyName|default(authors|first.givenName ~ ' ' ~ authors|first.familyName) ~ ' - ' ~ authors|first.jobTitle }}
+        {{ 'by'|i18n }} {{ authors|first.givenName ~ ' ' ~ authors|first.familyName|default(authors|first.givenName ~ ' ' ~ authors|first.familyName) ~ ' - ' ~ authors|first.jobTitle }}
     {% elseif authors|length > 1 %}
-        {{ 'by'|t(locales) }}
+        {{ 'by'|i18n }}
         {% for author in authors %}
             {% if not loop.first and not loop.last %}
                 ,
             {% elseif not loop.first and loop.last %}
-                {{ 'and'|t(locales) }}
+                {{ 'and'|i18n }}
             {% endif %}
             {{ '%s %s - %s'|format(author.givenName, author.familyName, author.jobTitle) }}
         {% endfor %}

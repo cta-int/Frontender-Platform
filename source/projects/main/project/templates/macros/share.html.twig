@@ -115,7 +115,7 @@
             {% if config.ictupdate.number %}
                 <li class="share-list__item divider  divider--left">
                     <a class="label {% if config.light %} share--whisper{% endif %}" href="{{ route({'page': 'ictupdate/issue', 'id': config.ictupdate.issue}) }}">
-                        {{ 'Issue'|t(locales) }} {{ config.ictupdate.number }}
+                        {{ "issue'|i18n }} {{ config.ictupdate.number }}
                     </a>
                 </li>
             {% endif %}

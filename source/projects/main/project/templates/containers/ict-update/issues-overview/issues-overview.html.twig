@@ -44,7 +44,7 @@
                     <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
                     <div class="issue-label__caption">
                         <p>
-                            <strong>{{'Issue'|t(locales)}} {{ issue_nr }}</strong>
+                            <strong>{{"issue'|i18n}} {{ issue_nr }}</strong>
                             <span>{{ article|first.datePublished|date("F Y"|t(locales)) }}</span>
                         </p>
                     </div>
@@ -78,17 +78,17 @@
                                     <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
                                         <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
                                         <span class="issue-label__caption">
-                                            {{ 'Issue'|t(locales) }}
+                                            {{ "issue'|i18n }}
                                             {{ issue_nr }}
                                             {{ issue.datePublished|tdate('%B %Y') }}
                                         </span>
                                     </figcaption>
                                 </figure>
                             </a>
-                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': issue.path, 'id': issue._id}) }}">{{ 'View issue'|t(locales) }}</a>
+                            <a class="button button--stretch  |  leader--small" href="{{ route({'page': issue.path, 'id': issue._id}) }}">{{ 'View issue'|i18n }}</a>
                             {% if issue.link.mediaObject|filterArray('contentType', 'application/pdf')|length > 0 %}
                                 <div class="body--align-center">
-                                    <a class="meta" href="{{ issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|t(locales) }}</a>
+                                    <a class="meta" href="{{ issue.link.mediaObject|filterArray('contentType', 'application/pdf')|first.metadata.url }}" target="_blank">{{ 'Download in PDF format'|i18n }}</a>
                                 </div>
                             {% endif %}
 

@@ -25,14 +25,14 @@
                                 <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
                                 <div class="issue-label__caption anchor--reset">
                                     <p>
-                                        <strong>{{ 'Issue'|t(locales) }}
+                                        <strong>{{ "issue'|i18n }}
                                             {{ issue_nr }}</strong><br>
                                         <span>{{ model|first.datePublished|tdate('%B %Y') }}</span>
                                     </p>
                                 </div>
                             </div>
                             <h3 class="title title--lead title--section">{{ model|first.headline|t(locales) }}</h3>
-                            <span class="read-more">{{ 'View issue'|t(locales) }}</span>
+                            <span class="read-more">{{ 'View issue'|i18n }}</span>
                         </div>
                     </a>
                 </article>
@@ -54,7 +54,7 @@
                                             <figcaption class="issue-label issue-label--s issue-label--offset-top media leader-inside--tiny">
                                                 <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
                                                 <span class="issue-label__caption">
-                                                    {{ 'Issue'|t(locales) }}
+                                                    {{ "issue'|i18n }}
                                                     {{ issue_nr }}
                                                     {{ issue.datePublished|tdate('%B %Y') }}
                                                 </span>
@@ -63,7 +63,7 @@
                                     </a>
 
                                     {% if loop.last %}
-                                        <a class="button button--stretch leader trailer" href="{{ route({'page': 'ictupdate/issues'}) }}">{{ 'All issues'|t(locales) }}</a>
+                                        <a class="button button--stretch leader trailer" href="{{ route({'page': 'ictupdate/issues'}) }}">{{ 'All issues'|i18n }}</a>
                                     {% endif %}
                                 </li>
                             {% endfor %}

@@ -29,7 +29,7 @@
         {% endif %}
 
         {% if show_read_more|default(1) %}
-	       <a class="read-more" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|t(locales) }}</a>
+	       <a class="read-more" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
 </div>

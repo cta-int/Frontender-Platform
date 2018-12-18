@@ -17,7 +17,7 @@ The macro accepts a config object:
         {% if entryModels|first.state.limit + entryModels|first.state.skip < total %}
             <div class="{{ ["body--align-center  |  trailer  |  wing--right", class]|join(" | ") }}">
                 <a class="reset  |  button button--wide pagination-pager" href="{{ next.query }}" data-pagination-target="{{ config.target }}"{% if config.config %} data-pagination-config="{{ config.config|json_encode }}"{% endif %} data-pagination-model="{{ config.model_name }}" data-pagination-adapter="{{ config.adapter }}" data-pagination-layout="{{ config.layout }}" data-pagination-states="{{ entryModels|first.state.values|json_encode }}">
-                    {{ labels.next|default('Show more')|t(locales) }}
+                    {{ labels.next|default('Show more')|i18n }}
                 </a>
             </div>
         {% endif %}
@@ -62,12 +62,12 @@ The macro accepts a config object:
     <div class="{{ ["stack", class]|join(" | ") }}">
         <div class="stack__unit">
             <a class="reset  |  button" href="{{ previous.query }}">
-                {{ labels.prev|default('Previous')|t(locales) }}
+                {{ labels.prev|default('Previous')|i18n }}
             </a>
         </div>
         <div class="stack__unit stack__pin">
             <a class="reset  |  button" href="{{ next.query }}">
-                {{ labels.next|default('Next')|t(locales) }}
+                {{ labels.next|default('Next')|i18n }}
             </a>
         </div>
     </div>

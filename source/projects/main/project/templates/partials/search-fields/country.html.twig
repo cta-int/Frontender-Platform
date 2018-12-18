@@ -3,13 +3,13 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__location')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="fld">
-        <label for="ctx-item__country" class="fld-label">{{ labels.field_label|t(locales)|default('Country'|t(locales)) }}</label>
+        <label for="ctx-item__country" class="fld-label">{{ labels.field_label|t(locales)|default('Country'|i18n) }}</label>
         <select id="ctx-item__country" name="location" class="placeholder-visible">
-            <option value="">{{ 'All'|t(locales) }}</option>
+            <option value="">{{ 'All'|i18n }}</option>
             {% if config.show_regions %}
-                <optgroup label="{{ 'Regions'|t(locales) }}">
+                <optgroup label="{{ 'Regions'|i18n }}">
                 </optgroup>
-                <optgroup label="{{ 'Countries'|t(locales) }}">
+                <optgroup label="{{ 'Countries'|i18n }}">
                     {% for country in countries|sortArray('countryName') %}
                         <option {% if query.location and country.geonameId == query.location %} selected="selected" {% endif %} value="{{ country.geonameId }}">{{ country.countryName }}</option>
                     {% endfor %}
