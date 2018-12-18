@@ -11,23 +11,23 @@
     {% endif %}
 
     {% for person in content.staff %}
-    <article class="layout layout--reverse  |  wing--right">
-        <div class="layout__cell  |  gutters">
-            <h2 class="title">{{ person.name|t }}</h2>
-            <div class="markdown">
-                {{ person.biography|t|markdown|raw }}
+        <article class="layout layout--reverse  |  wing--right  |  trailer--hero">
+            <div class="layout__cell  |  gutters">
+                <h2 class="title">{{ person.name|t }}</h2>
+                <div class="markdown">
+                    {{ person.biography|t|markdown|raw }}
+                </div>
             </div>
-        </div>
-        <footer class="layout__cell layout__cell--aside  |  gutters  |  profile  |  trailer">
-            <figure class="profile__image">
-                {{ image.profile_photo(person.picture|t|default("https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png"), person.name|t) }}
-            </figure>
-            <div class="profile__text">
-                <p class="profile__name  |  title  |  trailer--small">{{ person.name|t }}</p>
-                <p class="body--whisper">{{ person.function|t(locales) }}</p>
-                <p class="body--whisper">{{ person.country|t(locales) }}</p>
-            </div>
-        </footer>
-    </article>
+            <footer class="layout__cell layout__cell--aside  |  gutters  |  profile  |  trailer">
+                <figure class="profile__image">
+                    {{ image.profile_photo(person.picture|t|default("https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png"), person.name|t) }}
+                </figure>
+                <div class="profile__text">
+                    <p class="profile__name  |  title  |  trailer--small">{{ person.name|t }}</p>
+                    <p class="body--whisper">{{ person.function|t(locales) }}</p>
+                    <p class="body--whisper">{{ person.country|t(locales) }}</p>
+                </div>
+            </footer>
+        </article>
     {% endfor %}
 </{{ config.container_tag|default('div') }}>

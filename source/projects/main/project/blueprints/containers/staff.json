@@ -355,42 +355,32 @@
 														},
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Debbie Kleinbussink",
+																"fr-FR": "Debbie Kleinbussink"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Executive Officer Director’s Office",
+																"fr-FR": "Chargée de direction"
 															}
 														},
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Josina Leguit",
+																"fr-FR": "Josina Leguit"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Administrative and Research Assistant Director’s Office",
+																"fr-FR": "Assistante administrative et de recherche Bureau du directeur"
 															}
 														},
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Perry Pahladsingh",
+																"fr-FR": "Perry Pahladsingh"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
-															}
-														},
-														{
-															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
-															},
-															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Financial Controller Internal Audit (acting)",
+																"fr-FR": "Contrôleur Financier Audit Interne (par intérim)"
 															}
 														}
 													],
@@ -411,8 +401,7 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
 												}
 											}
 										},
@@ -422,7 +411,7 @@
 											},
 											"controls": {
 												"columns": {
-													"value": 1,
+													"value": 0,
 													"label": {
 														"en-GB": "Display content in two columns (on larger viewports)"
 													},
@@ -440,10 +429,10 @@
 								{
 									"template": "modules/staff/staff.html.twig",
 									"description": {
-										"en-GB": "Directors Office"
+										"en-GB": "Brussels Office"
 									},
 									"name": {
-										"en-GB": "Directors Office"
+										"en-GB": "Brussels Office"
 									},
 									"template_config": {
 										"labels": {
@@ -453,8 +442,8 @@
 											"controls": {
 												"title": {
 													"value": {
-														"en-GB": "Directors Office",
-														"fr-FR": "Direction"
+														"en-GB": "Brussels Office",
+														"fr-FR": "Bureau de Bruxelles"
 													},
 													"label": {
 														"en-GB": "Title"
@@ -472,52 +461,32 @@
 													"value": [
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Isolina Boto",
+																"fr-FR": "Isolina Boto"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Manager, Brussels Office",
+																"fr-FR": "Responsable du bureau de Bruxelles"
 															}
 														},
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Lebo Mofolo",
+																"fr-FR": "Lebo Mofolo"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Policy Development Briefings Officer",
+																"fr-FR": "Chargée des Briefings sur le Développement"
 															}
 														},
 														{
 															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
+																"en-GB": "Christelle Amorin",
+																"fr-FR": "Christelle Amorin"
 															},
 															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
-															}
-														},
-														{
-															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
-															},
-															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
-															}
-														},
-														{
-															"name": {
-																"en-GB": "Michael Hailu",
-																"fr-FR": "Michael Hailu"
-															},
-															"function": {
-																"en-GB": "Director",
-																"fr-FR": "Director"
+																"en-GB": "Intern Communication & Agribusiness Development",
+																"fr-FR": "Stagiaire en communication et développement de l’agritourisme"
 															}
 														}
 													],
@@ -538,8 +507,243 @@
 															"control": "core/text"
 														}
 													},
-													"repeatable": true,
-													"type": "hidden"
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 0,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": "6949fcc79a514ee0f004908d4569cd04"
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Agribusiness & Value Chain"
+									},
+									"name": {
+										"en-GB": "Agribusiness & Value Chain"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Agribusiness & Value Chain",
+														"fr-FR": "Agri-entreprises & Chaîne de valeur"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Piet Visser",
+																"fr-FR": "Piet Visser"
+															},
+															"function": {
+																"en-GB": "Team Leader, Agribusiness & Value Chain",
+																"fr-FR": "Chef d’équipe, Agri-entreprises & Chaîne de valeur"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Oluyede Ajayi",
+																"fr-FR": "Oluyede Ajayi"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, Ag & Climate ChangeSabdiyo Dido Bashuna",
+																"fr-FR": "Coordonnateur de Programme Sr, Agriculture & Changement Climatique"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Sabdiyo Dido Bashuna",
+																"fr-FR": "Sabdiyo Dido Bashuna"
+															},
+															"function": {
+																"en-GB": "Sr Technical Advisor, Value Chain & Agribusiness",
+																"fr-FR": "Conseillère Technique Sr, Chaîne de valeur & Agri-entreprises"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Vincent Fautrel",
+																"fr-FR": "Vincent Fautrel"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, Value Chain",
+																"fr-FR": "Coordonnateur de Programme Sr, Filières Agricoles"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Judith Francis",
+																"fr-FR": "Judith Francis"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, S&T Policy",
+																"fr-FR": "Coordonnatrice de Programme Sr, Politiques S & T"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Emil Jejov",
+																"fr-FR": "Emil Jejov"
+															},
+															"function": {
+																"en-GB": "Operations Officer, Pacific Islands Food Systems project",
+																"fr-FR": "Chargé Opérationnel du Projet Systèmes Alimentaires des Iles du Pacifique"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Mariam Kadzamira",
+																"fr-FR": "Mariam Kadzamira"
+															},
+															"function": {
+																"en-GB": "Climate Change Officer",
+																"fr-FR": "Chargée du Changement Climatique"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Jana Dietershagen",
+																"fr-FR": "Jana Dietershagen"
+															},
+															"function": {
+																"en-GB": "Chargé technique, projet Systèmes alimentaires des îles du Pacifique",
+																"fr-FR": "Technical Officer, Pacific Islands Food Systems Project"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Armelle Degrave",
+																"fr-FR": "Armelle Degrave"
+															},
+															"function": {
+																"en-GB": "Administrative Coordination Officer",
+																"fr-FR": "Administrative Coordination Officer"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Caroline Andriessen",
+																"fr-FR": "Caroline Andriessen"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Félix Nkwetta Ajong",
+																"fr-FR": "Félix Nkwetta Ajong"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Angeles Salvador",
+																"fr-FR": "Angeles Salvador"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Maïté Zammattio",
+																"fr-FR": "Maïté Zammattio"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Oluwaseun Adedeji",
+																"fr-FR": "Oluwaseun Adedeji"
+															},
+															"function": {
+																"en-GB": "Intern Agribusiness Technical support",
+																"fr-FR": "Stagiaire assistance technique, agrobusiness et chaîne de valeur"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Constance Barbou des Courières",
+																"fr-FR": "Constance Barbou des Courières"
+															},
+															"function": {
+																"en-GB": "Intern Agricultural Value Chains in West and Central Africa",
+																"fr-FR": "Stagiaire Chaîne de valeur agricoles de l'Afrique de l'Ouest et du Centre"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Jemima Afari-Kwarteng",
+																"fr-FR": "Jemima Afari-Kwarteng"
+															},
+															"function": {
+																"en-GB": "Intern Agribusiness Administration and Communication support",
+																"fr-FR": "Stagiaire - Appui en Administration et Communications, secteur Agroalimentaire"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
 												}
 											}
 										},
@@ -562,7 +766,847 @@
 											}
 										}
 									},
-									"frontender": "6949fcc79a514ee0f004908d4569cd04"
+									"frontender": ""
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "ICT for Agriculture"
+									},
+									"name": {
+										"en-GB": "ICT for Agriculture"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "ICT for Agriculture",
+														"fr-FR": "TIC pour l’Agriculture"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Benjamin Addom",
+																"fr-FR": "Benjamin Addom"
+															},
+															"function": {
+																"en-GB": "Team Leader, ICT for Agriculture",
+																"fr-FR": "Chef d’équipe, TIC pour l’Agriculture"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Chris Addison",
+																"fr-FR": "Chris Addison"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, Data4Ag",
+																"fr-FR": "Coordonnateur de Programme Sr, Données pour l’Agriculture"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Ken Lohento",
+																"fr-FR": "Ken Lohento"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, ICT4Ag",
+																"fr-FR": "Coordonnateur de Programme Sr, TIC pour l’Agriculture"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Giacomo Rambaldi",
+																"fr-FR": "Giacomo Rambaldi"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, ICT4Ag",
+																"fr-FR": "Coordonnateur de Programme Sr, TIC pour l’Agriculture"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Carol Kakooza",
+																"fr-FR": "Carol Kakooza"
+															},
+															"function": {
+																"en-GB": "Project Coordinator, MUIIS (Uganda)",
+																"fr-FR": "Coordinatrice du Projet MUIIS (Ouganda)"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Chipo Msengezi",
+																"fr-FR": "Chipo Msengezi"
+															},
+															"function": {
+																"en-GB": "Project Coordinator, GODAN Action",
+																"fr-FR": "Coordinatrice du Projet GODAN Action"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Sèlidji Hermann Tossou",
+																"fr-FR": "Sèlidji Hermann Tossou"
+															},
+															"function": {
+																"en-GB": "Project Officer ICT4Ag",
+																"fr-FR": "Chargé de projets TIC4Ag"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Marion van Boven",
+																"fr-FR": "Marion van Boven"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Arnoldine Stals",
+																"fr-FR": "Arnoldine Stals"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Yanick Bakker",
+																"fr-FR": "Yanick Bakker"
+															},
+															"function": {
+																"en-GB": "Intern Event Support ICT4Ag",
+																"fr-FR": "Stagiaire support événements ICT4Ag"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Osseni Senou",
+																"fr-FR": "Osseni Senou"
+															},
+															"function": {
+																"en-GB": "Intern Technical Support and M&E, ICT4Ag",
+																"fr-FR": "Stagiaire appui technique et suivi-évaluation TIC pour l’agriculture"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": ""
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Communications"
+									},
+									"name": {
+										"en-GB": "Communications"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Communications",
+														"fr-FR": "Communication"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Toby Johnson",
+																"fr-FR": "Toby Johnson"
+															},
+															"function": {
+																"en-GB": "Team Leader, Communications",
+																"fr-FR": "Chef d’équipe, Communication"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Stéphane Gambier",
+																"fr-FR": "Stéphane Gambier"
+															},
+															"function": {
+																"en-GB": "Sr Programme Coordinator, Communications",
+																"fr-FR": "Coordonnateur de Programme Sr, Communication"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Thierry Lewyllie",
+																"fr-FR": "Thierry Lewyllie"
+															},
+															"function": {
+																"en-GB": "Programme Coordinator, Web",
+																"fr-FR": "Coordonnateur de Programme, Web"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Murielle Vandreck",
+																"fr-FR": "Murielle Vandreck"
+															},
+															"function": {
+																"en-GB": "Programme Coordinator, Publications",
+																"fr-FR": "Coordonnateur de Programme, Publications"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Bertil Videt",
+																"fr-FR": "Bertil Videt"
+															},
+															"function": {
+																"en-GB": "Programme Coordinator, Marketing & Communication",
+																"fr-FR": "Coordonnateur de Programme, Marketing & Communication"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Olivier Hersperger",
+																"fr-FR": "Olivier Hersperger"
+															},
+															"function": {
+																"en-GB": "Web Content Manager",
+																"fr-FR": "Responsable du Contenu Web"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Anne Legroscollard",
+																"fr-FR": "Anne Legroscollard"
+															},
+															"function": {
+																"en-GB": "Communication Officer",
+																"fr-FR": "Chargée de Communications"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Mirjam Bos",
+																"fr-FR": "Mirjam Bos"
+															},
+															"function": {
+																"en-GB": "Administrative Assistant",
+																"fr-FR": "Assistante administrative"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Evelyne Kort-Nerincx",
+																"fr-FR": "Evelyne Kort-Nerincx"
+															},
+															"function": {
+																"en-GB": "Administrative Assistant",
+																"fr-FR": "Assistante administrative"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Gabriela Bahre",
+																"fr-FR": "Gabriela Bahre"
+															},
+															"function": {
+																"en-GB": "Data Assistant",
+																"fr-FR": "Assistante Traitement des données"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Husna Yagoub",
+																"fr-FR": "Husna Yagoub"
+															},
+															"function": {
+																"en-GB": "Data Assistant",
+																"fr-FR": "Assistante Traitement des données"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Joash Moitui",
+																"fr-FR": "Joash Moitui"
+															},
+															"function": {
+																"en-GB": "Intern Social Media",
+																"fr-FR": "Stagiaire Réseaux sociaux"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Shari-Ann Palmer",
+																"fr-FR": "Shari-Ann Palmer"
+															},
+															"function": {
+																"en-GB": "Intern Communications",
+																"fr-FR": "Stagiaire Communication"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Hilda Mirembe",
+																"fr-FR": "Hilda Mirembe"
+															},
+															"function": {
+																"en-GB": "Intern Graphic Design",
+																"fr-FR": "Stagiaire Communication visuelle"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": ""
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Learning, Monitoring and Evaluation (LME) unit"
+									},
+									"name": {
+										"en-GB": "Learning, Monitoring and Evaluation (LME) unit"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Learning, Monitoring and Evaluation (LME) unit",
+														"fr-FR": "Unité Apprentissage, Suivi & Évaluation (ASE)"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Ibrahim Khadar",
+																"fr-FR": "Ibrahim Khadar"
+															},
+															"function": {
+																"en-GB": "Manager, Learning, Monitoring & Evaluation Unit",
+																"fr-FR": "Chef d’unité, Apprentissage, Suivi & Évaluation"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Tarikua Woldetsadick",
+																"fr-FR": "Tarikua Woldetsadick"
+															},
+															"function": {
+																"en-GB": "LME Officer",
+																"fr-FR": "Chargée d’Apprentissage, Suivi et Évaluation"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Aurélie Reynier",
+																"fr-FR": "Aurélie Reynier"
+															},
+															"function": {
+																"en-GB": "M&E Officer",
+																"fr-FR": "Chargée de Suivi & Évaluation"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Raya Dekkers",
+																"fr-FR": "Raya Dekkers"
+															},
+															"function": {
+																"en-GB": "Administrative Assistant",
+																"fr-FR": "Assistante administrative"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Jorge Chávez-Tafúr",
+																"fr-FR": "Jorge Chávez-Tafúr"
+															},
+															"function": {
+																"en-GB": "Project Coordinator, KM – Experience Capitalization",
+																"fr-FR": "Coordinateur du projet Capitalisation Expérience"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Merche Rodriguez Carpintero",
+																"fr-FR": "Merche Rodriguez Carpintero"
+															},
+															"function": {
+																"en-GB": "Project Assistant",
+																"fr-FR": "Assistante de Projet"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Imelda Aniambossou",
+																"fr-FR": "Imelda Aniambossou"
+															},
+															"function": {
+																"en-GB": "Intern Monitoring & Evaluation (M&E), Data Management and Organisational Learning",
+																"fr-FR": "Stagiaire Suivi & evaluation (S&E), gestion des données et apprentissage organisationnel"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": ""
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Human Resources and Administration"
+									},
+									"name": {
+										"en-GB": "Human Resources and Administration"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Human Resources and Administration",
+														"fr-FR": "Ressources humaines et administration"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Pascal Deleu",
+																"fr-FR": "Pascal Deleu"
+															},
+															"function": {
+																"en-GB": "Head of Human Resources and Administration",
+																"fr-FR": "Chef de département Ressources Humaines et Administration"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Christèle Coutureau",
+																"fr-FR": "Christèle Coutureau"
+															},
+															"function": {
+																"en-GB": "Human Resources Officer",
+																"fr-FR": "Chargée des Ressources Humaines"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Julia Nijhof",
+																"fr-FR": "Julia Nijhof"
+															},
+															"function": {
+																"en-GB": "Human Resources Assistant",
+																"fr-FR": "Assistante aux Ressources Humaines"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Ellen van Dijk",
+																"fr-FR": "Ellen van Dijk"
+															},
+															"function": {
+																"en-GB": "Administrative Assistant",
+																"fr-FR": "Assistante Administrative"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Ad Biemans",
+																"fr-FR": "Ad Biemans"
+															},
+															"function": {
+																"en-GB": "Caretaker",
+																"fr-FR": "Huissier / Services Géneraux"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Thomas Mendo Essiane",
+																"fr-FR": "Thomas Mendo Essiane"
+															},
+															"function": {
+																"en-GB": "Messenger / Driver",
+																"fr-FR": "Messager / Chauffeur"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Manuela van Betuw",
+																"fr-FR": "Manuela van Betuw"
+															},
+															"function": {
+																"en-GB": "Receptionist",
+																"fr-FR": "Réceptionniste"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": ""
+								},
+								{
+									"template": "modules/staff/staff.html.twig",
+									"description": {
+										"en-GB": "Corporate Services Department (CSD)"
+									},
+									"name": {
+										"en-GB": "Corporate Services Department (CSD)"
+									},
+									"template_config": {
+										"labels": {
+											"label": {
+												"en-GB": "Labels"
+											},
+											"controls": {
+												"title": {
+													"value": {
+														"en-GB": "Corporate Services Department (CSD)",
+														"fr-FR": "Département des Services Communs"
+													},
+													"label": {
+														"en-GB": "Title"
+													},
+													"control": "core/text"
+												}
+											}
+										},
+										"content": {
+											"label": {
+												"en-GB": "Content"
+											},
+											"controls": {
+												"staff": {
+													"value": [
+														{
+															"name": {
+																"en-GB": "Thierry Doudet",
+																"fr-FR": "Thierry Doudet"
+															},
+															"function": {
+																"en-GB": "Manager Corporate Services",
+																"fr-FR": "Chef de Programme Services Communs"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Christine Webster",
+																"fr-FR": "Christine Webster"
+															},
+															"function": {
+																"en-GB": "Sr Procurement and Grants Coordinator",
+																"fr-FR": "Coordonnatrice Sr, Achats et des Subventions"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Igor Biskupic",
+																"fr-FR": "Igor Biskupic"
+															},
+															"function": {
+																"en-GB": "ICT Coordinator",
+																"fr-FR": "Coordonnateur TIC"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Louis Kolkman",
+																"fr-FR": "Louis Kolkman"
+															},
+															"function": {
+																"en-GB": "IT Technician",
+																"fr-FR": "Technicien Informatique"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Pauline Klein",
+																"fr-FR": "Pauline Klein"
+															},
+															"function": {
+																"en-GB": "Senior Financial Officer (interim)",
+																"fr-FR": "Responsable sénior des Finances (intérim)"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Serge Adolph",
+																"fr-FR": "Serge Adolph"
+															},
+															"function": {
+																"en-GB": "Account Payable Assistant",
+																"fr-FR": "Aide-comptable"
+															}
+														},
+														{
+															"name": {
+																"en-GB": "Marco van Maurik",
+																"fr-FR": "Marco van Maurik"
+															},
+															"function": {
+																"en-GB": "Account Payable Assistant",
+																"fr-FR": "Aide-comptable"
+															}
+														}
+													],
+													"label": {
+														"en-GB": "Staff"
+													},
+													"controls": {
+														"name": {
+															"label": {
+																"en-GB": "Name"
+															},
+															"control": "core/text"
+														},
+														"function": {
+															"label": {
+																"en-GB": "Function"
+															},
+															"control": "core/text"
+														}
+													},
+													"repeatable": true
+												}
+											}
+										},
+										"config": {
+											"label": {
+												"en-GB": "Settings"
+											},
+											"controls": {
+												"columns": {
+													"value": 1,
+													"label": {
+														"en-GB": "Display content in two columns (on larger viewports)"
+													},
+													"control": "core/boolean"
+												},
+												"container_class": {
+													"value": "leader",
+													"control": "project/container_class"
+												}
+											}
+										}
+									},
+									"frontender": ""
 								}
 							]
 						},
@@ -638,6 +1682,101 @@
 																"fr-FR": "Hollande"
 															},
 															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537124/newhwa9ag3msdmptrihl.png"
+														},
+														{
+															"name": {
+																"en-GB": "Clement K. Sankat",
+																"fr-FR": "Clement K. Sankat"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD from the University of Guelph’s School of Engineering, Canada, Honorary Doctorate degree (2010) from the University of New Brunswick MSc and BSc in Mechanical Engineering from the University of the West Indies, Trinidad and Tobago.\r\r Chartered Engineer (CEng), Fellow of the Institute of Agricultural Engineers (FIAgrE) of the UK, Fellow of the Association of Professional Engineers of Trinidad and Tobago (FAPETT) and Fellow of the Canadian Society for Bioengineering\r\r* President of the University of Belize since 2017\r* Board of Advisors, Confucius Institute, Hanban, Beijing, China\r* Former Pro-Vice-Chancellor and Campus Principal of The University of the West Indies, St Augustine Campus, Trinidad (2008-2016)",
+																"fr-FR": "Doctorat d’ingénierie, University of Guelph’s School of Engineering, Canada Doctorat honorifique (2010, University of New Brunswick, Canada Maîtrise universitaire ès sciences et licence en Ingénierie mécanique, University of the West Indies, Trinidad et Tobago\r\r* Président, University of Belize, depuis 2017\r* Membre du conseil d’administration, Confucius Institute, Hanban, Pékin, Chine\r* Vice-chancelier, The University of the West Indies, St Augustine, Trinidad et Tobago, de 2008 à 2016"
+															},
+															"country": {
+																"en-GB": "Trinidad and Tobago",
+																"fr-FR": "Trinité-et-Tobago"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537239/neisyg138pyyefrg1hcs.png"
+														},
+														{
+															"name": {
+																"en-GB": "Baba Yusuf Abubakar",
+																"fr-FR": "Baba Yusuf Abubakar"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Animal Breeding and Genetics (1985) from Cornell University, USA\r\r* Visiting Professor, University of Abuja (2016-present)\r* Pioneer Executive Secretary, Agricultural Research Council of Nigeria (2006-2016)\r* Director, Office of the Secretary to the Government of the Federation, Nigeria (2003-2006)\r* Programme Leader (Poultry), National Animal Production Research Institute (NAPRI/ABU), Shika-Zaria (1991-1997)\r* Research Officer, NAPRI/ABU (1978-2003)\r* Promoted Professor of Animal Science, NAPRI/ABU (1995)\r* Liaison officer, Centre for Agricultural Biosciences International (CABI), (2008- 2016)\r* Member of the Consultative Group on International Agricultural Research [CGIAR] ExCo & Fund/System Council representing Sub-Saharan Africa, 2008-2009 & 2010-2016 respectively\r* Chairman, Governing Board of the West and Central African Council for Agricultural Research and Development (CORAF /WECARD), (2010-2012)\r* Member of the Governing Board of the Forum for Agricultural Research in Africa (FARA), (2010- 2012)\r* Member of the Expert Panel on the development of Science Agenda for Agriculture in Africa (2013)\r* Member, Board of Trustees, WorldFish Center (2017-2020)\r* Received Presidential National Honours Award of Officer of the Order of the Federal Republic (OFR) in 2011 and the CORAF/WECARD Award of Honour for invaluable contribution to Agricultural Research and Development in West and Central Africa in 2012.",
+																"fr-FR": "Doctorat en Sciences animales et génétique (1985), Cornell University, Etats-Unis\r\r* Professeur invité, University of Abuja, depuis 2016\r* Secrétaire exécutif, Agricultural Research Council of Nigeria, de 2006 à 2016\r* Directeur du Secrétariat du gouvernement fédéral du Nigéria, de 2003 à 2006\r* Chef de programme (Volaille), National Animal Production Research Institute (NAPRI/ABU), Nigeria, de 1991 à 1997\r* Chargé de recherche, NAPRI/ABU, de 1978 à 2003\r* Professeur des Sciences animales, NAPRI/ABU, 1995\r* Officier de liaison, Centre for Agricultural Biosciences International (CABI), de 2008 à 2016\r* Membre, pour le Groupe consultatif pour la recherche agricole internationale (CGIAR), du comité exécutif pour l’Afrique sub-saharienne, de 2008 à 2009, puis de 2010 à 2016\r* Président du conseil d’administration du Conseil ouest et centre africain pour la recherche et le développement agricoles (CORAF /WECARD), de 2010 à 2012\r* Membre du conseil d’administration du Forum pour la recherche agricole en Afrique (FARA), de 2010 à 2012\r* Membre du panel d’experts pour l’Agenda scientifique pour l’agriculture en Afrique (2013)\r* Membre du conseil d’administration de WorldFish Center, depuis 2017\r* Received Presidential National Honours Award of Officer of the Order of the Federal Republic (OFR) in 2011 and the CORAF/WECARD Award of Honour for invaluable contribution to Agricultural Research and Development in West and Central Africa in 2012."
+															},
+															"country": {
+																"en-GB": "Nigeria",
+																"fr-FR": "Nigéria"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537160/psnjrbbohpwjeq4qphgo.png"
+														},
+														{
+															"name": {
+																"en-GB": "Helena Johansson",
+																"fr-FR": "Helena Johansson"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Economics (2003) from Lund University, Sweden\r\r* Director of the AgriFood Economics Centre, Lund University, Sweden since 2009\r* Researcher at the Swedish Institute for Food and Agriculture Economics (2001-2008)\r* Lecturer at the Department of Economics, Lund University (2002-2003)",
+																"fr-FR": "Doctorat d’Economie (2003), Lund University, Suède\r\r* Directrice du AgriFood Economics Centre, Lund University, depuis 2009\r* Chercheuse au Swedish Institute for Food and Agriculture Economics, de 2001 à 2008\r* Maître de conference (Economie), Lund University, de 2002 à 2003"
+															},
+															"country": {
+																"en-GB": "Sweden",
+																"fr-FR": "Suède"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537355/yaecgbkmvwxyebqnvx7l.png"
+														},
+														{
+															"name": {
+																"en-GB": "Faustin Kamuzora",
+																"fr-FR": "Faustin Kamuzora"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "PhD in Information Technology (2006) from the University of Bradford, USA MSc in Agricultural International Trade (1996) from the North Carolina Agricultural and Technical State University, USA\r\r* Permanent Secretary of Tanzanian Ministry of Communication, Science and Technology\r* Deputy vice-chancellor, Mzumbe University, Tanzania (2007- present)\r* Researcher and trainer at Mzumbe University (1992 – present)\r* Executive Secretary of the Agricultural Economist Society of Tanzania",
+																"fr-FR": "Doctorat de Technologie de l’information (2006), University of Bradford, Etats-Unis Maîtrise universitaire ès sciences de Commerce agricole international (1996), North Carolina Agricultural and Technical State University, Etats-Unis\r\r* Secrétaire permanent du ministère du ministère de la Communication, des sciences et la technologie de Tanzanie\r* Vice-chancelier, Mzumbe University, Tanzania, depuis 2007\r* Chercheur et formateur, Mzumbe University, depuis 1992\r* Secrétaire exécutif des économistes agricoles de Tanzanie"
+															},
+															"country": {
+																"en-GB": "Tanzania",
+																"fr-FR": "Tanzanie"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537311/mhyd6qckej2zh3nwq5l5.png"
+														},
+														{
+															"name": {
+																"en-GB": "Frederike Praasterink",
+																"fr-FR": "Frederike Praasterink"
+															},
+															"function": {
+																"en-GB": "Board member",
+																"fr-FR": "Membre d'équipage"
+															},
+															"biography": {
+																"en-GB": "MSc in Horticulture & Crop protection (1988) from Wageningen University & Research, The Netherlands\r\r* Senior lecturer (Future Food Systems) at HAS University of Applied Sciences, The Netherlands, since 2006\r* Expert/Consultant for the FAO (1995-2008)",
+																"fr-FR": "Maîtrise universitaire ès sciences Horticulture et protection des cultures, Wageningen University & Research, Pays-Bas\r\r* Maître de conference (Systèmes alimentaires), HAS University of Applied Sciences, Pays-Bas, depuis 2006\r* Expert consultante pour la FAO, de 1995 à 2008"
+															},
+															"country": {
+																"en-GB": "The Netherlands",
+																"fr-FR": "Pays-Bas"
+															},
+															"picture": "https://res.cloudinary.com/cta/image/upload/v1523537416/rzykh7t58btagu6mdgch.png"
 														}
 													],
 													"label": {
