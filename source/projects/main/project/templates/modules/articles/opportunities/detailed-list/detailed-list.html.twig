@@ -2,19 +2,34 @@
 {% set pagination_id = random() %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% if model.articles | length > 0 %}
+{# Manually remove closed opportunities #}
+{% set opportunities = [] %}
+{% for article in model.articles %}
+    {% if article.procurementStatus == 'open' %}
+        {% set opportunities = opportunities|merge([article]) %}
+    {% endif %}
+{% endfor %}
+{% if opportunities|length > 0 %}
     <div id="{{ pagination_id }}">
         {# This is only here to make the view worth looking at. #}
         {% if options.show_first_hr|default(false) %}
             <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
         {% endif %}
 
-        {% for article in model.articles %}
-            {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
-            {% if not loop.last %}
-                <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
-            {% endif %}
-        {% endfor %}
+        {% if labels.show_result %}
+            {% for article in opportunities %}
+                {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
+                {% if not loop.last %}
+                    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="trailer--hero  |  gutters">{{ labels.text_empty_result|default({
+                "en-GB": "There are no matching opportunities at this time",
+                "fr-FR": "Il n'y a pas d'opportunités correspondantes pour le moment."
+            })|t(locales) }}</p>
+        {% endif %}
+
     </div>
 
     {% if config.show_link|default(0) %}
@@ -38,5 +53,15 @@
         </div>
     {% endif %}
 {% else %}
-    <p class="leader--hero  |  trailer--hero  |  gutters">{{ 'there are no matching opportunities at this time'|t(locales) }}</p>
+    <p class="trailer--hero  |  gutters">{{ labels.text_empty_result|default({
+        "en-GB": "There are no matching opportunities at this time",
+        "fr-FR": "Il n'y a pas d'opportunités correspondantes pour le moment."
+    })|t(locales) }}</p>
+
+    {% if config.show_link|default(0) %}
+      <div class="body--align-center | leader-inside--hero  |  trailer trailer-inside">
+
+        {% include 'partials/menu-link.html.twig' with {link: labels.link, config: {anchor_class: 'button'}} %}
+      </div>
+    {% endif %}
 {% endif %}

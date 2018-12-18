@@ -37,10 +37,6 @@
     },
     "docblock": {
       "files": ["**/*.html", "**/*.css"]
-    },
-    "scsslint": {
-      "files": "**/*.scss",
-      "config": ".scss-lint.yml"
     }
   }
 }

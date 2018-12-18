@@ -11,8 +11,7 @@ var gulp = require('gulp'),
     autopref = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     htmlmin = require('gulp-htmlmin'),
-    through2 = require('through2'),
-    scsslint = require('gulp-scss-lint');
+    through2 = require('through2');
 
 global.loop = function(array, callback) {
     var promises = [];
@@ -170,14 +169,4 @@ gulp.task('docblock', ['assets', 'minify', 'uglify', 'move'], function() {
                 }
             });
     });
-});
-
-gulp.task('scsslint', function() {
-    var config = global.config.plugins.scsslint;
-
-    return gulp.src(filesArray(global.config.source + '/sass', config.files))
-        .pipe(scsslint({
-            config: require('fs').existsSync((process.cwd() + '/' + config.config).replace(' ', '\\ ')) ? (process.cwd() + '/' + config.config).replace(' ', '\\ ') : null,
-            maxBuffer: 1024 * 1024
-        }));
 });
