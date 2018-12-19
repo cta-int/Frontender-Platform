@@ -18,7 +18,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 #}
 
 {% macro triptych(image) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <picture class="image image--stretch">
         <source
@@ -45,69 +45,69 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro triptych_hero(image_src) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<picture class="image image--stretch">
-    <source
-        media="(min-width: 1024px)"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_720,w_940,f_auto,c_fill/{{ image.metadata.id }} 940w,
-                https://res.cloudinary.com/cta/image/upload/h_720,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
-                https://res.cloudinary.com/cta/image/upload/h_720,w_600,f_auto,c_fill/{{ image.metadata.id }} 600w"
-        sizes="66vw"
-        />
-    <source
-        media="(min-width: 480px)"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
-                https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 400w"
-        sizes="100vw"
-        />
-    {# Fallback, smallest handheld #}
-    <img
-        class="image image--stretch"
-        src="https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }}"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_720,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 720w,
-                https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 360w"
-        sizes="100vw"
-        width="360"
-        height="360"
-        alt=""
-        />
-</picture>
+    <picture class="image image--stretch">
+        <source
+            media="(min-width: 1024px)"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_720,w_940,f_auto,c_fill/{{ image.metadata.id }} 940w,
+                    https://res.cloudinary.com/cta/image/upload/h_720,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
+                    https://res.cloudinary.com/cta/image/upload/h_720,w_600,f_auto,c_fill/{{ image.metadata.id }} 600w"
+            sizes="66vw"
+            />
+        <source
+            media="(min-width: 480px)"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
+                    https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 400w"
+            sizes="100vw"
+            />
+        {# Fallback, smallest handheld #}
+        <img
+            class="image image--stretch"
+            src="https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }}"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_720,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 720w,
+                    https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 360w"
+            sizes="100vw"
+            width="360"
+            height="360"
+            alt=""
+            />
+    </picture>
 {% endmacro %}
 
 {% macro contact(image) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<picture class="image image--stretch">
-    <source
-        media="(min-width: 1024px)"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_720,w_940,f_auto,c_fill/{{ image.metadata.id }} 940w,
-                https://res.cloudinary.com/cta/image/upload/h_720,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
-                https://res.cloudinary.com/cta/image/upload/h_720,w_600,f_auto,c_fill/{{ image.metadata.id }} 600w"
-        sizes="66vw"
-        />
-    <source
-        media="(min-width: 480px)"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
-                https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 400w"
-        sizes="100vw"
-        />
-    {# Fallback, smallest handheld #}
-    <img
-        class="image image--stretch"
-        src="https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }}"
-        srcset="https://res.cloudinary.com/cta/image/upload/h_720,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 720w,
-                https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 360w"
-        sizes="100vw"
-        width="360"
-        height="360"
-        alt=""
-        />
-</picture>
+    <picture class="image image--stretch">
+        <source
+            media="(min-width: 1024px)"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_720,w_940,f_auto,c_fill/{{ image.metadata.id }} 940w,
+                    https://res.cloudinary.com/cta/image/upload/h_720,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
+                    https://res.cloudinary.com/cta/image/upload/h_720,w_600,f_auto,c_fill/{{ image.metadata.id }} 600w"
+            sizes="66vw"
+            />
+        <source
+            media="(min-width: 480px)"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 800w,
+                    https://res.cloudinary.com/cta/image/upload/h_360,w_800,f_auto,c_fill/{{ image.metadata.id }} 400w"
+            sizes="100vw"
+            />
+        {# Fallback, smallest handheld #}
+        <img
+            class="image image--stretch"
+            src="https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }}"
+            srcset="https://res.cloudinary.com/cta/image/upload/h_720,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 720w,
+                    https://res.cloudinary.com/cta/image/upload/h_360,ar_1:1,f_auto,c_fill/{{ image.metadata.id }} 360w"
+            sizes="100vw"
+            width="360"
+            height="360"
+            alt=""
+            />
+    </picture>
 {% endmacro %}
 
 {% macro post(image) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <img
         class="image image--stretch"
@@ -121,7 +121,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro post_hero(image, classes) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <img
         class="image image--stretch {{ classes }}"
@@ -135,7 +135,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro carousel(image, classes) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <img
         class="{{ classes|default('image image--stretch') }}"
@@ -149,7 +149,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro speaker(url) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <img
         src="{{ url }}"
@@ -157,8 +157,16 @@ $landscape - Breakpoint for landscape oriented viewports.
         />
 {% endmacro %}
 
+
+{% macro profile_photo(url, alt) %}
+    <img
+        src="{{ url }}"
+        alt="{{ alt }}"
+    />
+{% endmacro %}
+
 {% macro person(person, size) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if person.gender == "Male" %}
         {% set fallback = 'https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png' %}
@@ -175,7 +183,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro speaker(person) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if person.gender == "Male" %}
         {% set fallback = 'https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png' %}
@@ -190,7 +198,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro hero(image, crowned, classes) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if crowned %}
     <picture class="crown {{ classes|default("image image--stretch") }}">
@@ -336,7 +344,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro hero_twitter(image, crowned, classes) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if crowned %}
     <picture class="crown {{ classes|default("image image--stretch") }}">
@@ -482,7 +490,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro post_tile(image, class) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <picture class="{{ class|default('image image--stretch') }}">
         <source
@@ -508,13 +516,32 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro cover(image, class) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <img
         class="{{ class }}"
         src="https://res.cloudinary.com/cta/image/upload/w_480/{{ image.metadata.id }}"
         srcset="https://res.cloudinary.com/cta/image/upload/w_480/{{ image.metadata.id }} 480w,https://res.cloudinary.com/cta/image/upload/w_320/{{ image.metadata.id }} 320w,https://res.cloudinary.com/cta/image/upload/w_240/{{ image.metadata.id }} 240w"
         sizes="100vw, (min-width: 480px) 480px"
-        alt="{{ image.metadata.title }}"
+        alt="{{ image.metadata.title|t(locales) }}"
         />
+{% endmacro %}
+
+{% macro card(image, class = '', wide = false) %}
+    {% import _self as me %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {% if wide %}
+        <img
+            class="image image--stretch"
+            src="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }}"
+            srcset="https://res.cloudinary.com/cta/image/upload/w_500,ar_3:4,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 500w,https://res.cloudinary.com/cta/image/upload/w_320,ar_2:3,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 320w,https://res.cloudinary.com/cta/image/upload/w_240,ar_2:3,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 240w,https://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 160w"
+            sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw"
+            width="160"
+            height="240"
+            alt=""
+            />
+    {% else %}
+        {{ me.post(image, class) }}
+    {% endif %}
 {% endmacro %}

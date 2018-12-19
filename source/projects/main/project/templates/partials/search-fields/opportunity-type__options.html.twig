@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <option {% if config.selected == 'article.vacancy' or query.type == 'article.vacancy' %}selected="selected" {% endif %} value="article.vacancy">{{ 'Vacancies'|t(locales) }}</option>
 <option {% if config.selected == 'article.internship' or query.type == 'article.internship' %}selected="selected" {% endif %} value="article.internship">{{ 'Internships'|t(locales) }}</option>

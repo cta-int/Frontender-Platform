@@ -1,5 +1,3 @@
-{% import "macros/pagination.html.twig" as pagination %}
-
 <div class="grid grid--musketeers">
     {% for article in model %}
         {% include "partials/article/post-tile/media.html.twig" with {model: article}%}

@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if location %}
 <div class="media media--middle  |  {% if not dark %}location{% endif %}">
@@ -10,7 +10,7 @@
             {# This is a legitimate location object#}
             <a class="is-heir" href="/{{ locale }}/search?location={{ location._id }}">{{ location.label|t(locales) }}</a>
         {% else %}
-            {{ location.name|t(locales) }}
+            {{ location.name }}
         {% endif %}
     </div>
 </div>

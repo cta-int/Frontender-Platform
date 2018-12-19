@@ -27,6 +27,12 @@ Styleguide 3.9
   font-style: normal;
   /* In case this is an anchor tag */
   text-decoration: none;
+  @include theme-opaque-background(100%);
+  @each $color_name, $color_value in $colours {
+    .theme .theme--#{$color_name} & {
+      background-color: mix($color_value, $white, 100%);
+    }
+  }
   &,
   &:hover {
     color: $white;
@@ -45,63 +51,6 @@ Styleguide 3.9
   }
   &--stretch {
     width: 100%;
-  }
-  &-list--dark & {
-    background: mix($color-theme, $color-body, 60%);
-    .theme--blue & {
-      background: mix($color-blue, $color-body, 60%);
-    }
-    .theme--lime & {
-      background: mix($color-lime, $color-body, 60%);
-    }
-    .theme--yellow & {
-      background: mix($color-yellow, $color-body, 60%);
-    }
-    .theme--gold & {
-      background: mix($color-gold, $color-body, 60%);
-    }
-    .theme--orange & {
-      background: mix($color-orange, $color-body, 60%);
-    }
-    .theme--salmon & {
-      background: mix($color-salmon, $color-body, 60%);
-    }
-    .theme--red & {
-      background: mix($color-red, $color-body, 60%);
-    }
-    .theme--burgundy & {
-      background: mix($color-burgundy, $color-body, 60%);
-    }
-    .theme--purple & {
-      background: mix($color-purple, $color-body, 60%);
-    }
-  }
-  .theme--blue & {
-    background-color: $color-blue;
-  }
-  .theme--lime & {
-    background-color: $color-lime;
-  }
-  .theme--yellow & {
-    background-color: $color-yellow;
-  }
-  .theme--gold & {
-    background-color: $color-gold;
-  }
-  .theme--orange & {
-    background-color: $color-orange;
-  }
-  .theme--salmon & {
-    background-color: $color-salmon;
-  }
-  .theme--red & {
-    background-color: $color-red;
-  }
-  .theme--burgundy & {
-    background-color: $color-burgundy;
-  }
-  .theme--purple & {
-    background-color: $color-purple;
   }
 }
 

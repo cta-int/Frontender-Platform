@@ -39,7 +39,7 @@ class SearchModel extends ScrModel
             $label->setState([
                 'id' => array_shift($id)
             ]);
-            return $label->fetch();
+            return $label->fetch($raw);
         }
 
         if ($raw) {

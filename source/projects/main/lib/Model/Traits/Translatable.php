@@ -13,6 +13,10 @@ trait Translatable
 
     public function translate($item)
     {
+        if (!is_array($item)) {
+            return $item;
+        }
+
         foreach ($item as $key => $value) {
             if (in_array($key, array_keys($this->translations))) {
                 $newKey = $this->translations[$key];

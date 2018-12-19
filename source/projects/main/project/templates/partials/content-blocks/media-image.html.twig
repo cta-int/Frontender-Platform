@@ -1,9 +1,9 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <figure class="gutters  |  leader leader-inside--small  |  trailer trailer-inside--small">
     <img class="image image--stretch" src="{{ contentBlock.url }}" alt="{{ contentBlock.about|t(locales)|default(article.headline) }}" />
     {% if contentBlock.about|t(locales) or contentBlock.credit|t(locales) %}
-        <figcaption class="well well--neutral  |  leader-inside--small  |  trailer-inside--small">
+        <figcaption class="well well--padded well--neutral  |  leader-inside--small  |  trailer-inside--small">
             {% if contentBlock.about %}
                 <p class="caption">{{ contentBlock.about|t(locales) }}</p>
             {% endif %}

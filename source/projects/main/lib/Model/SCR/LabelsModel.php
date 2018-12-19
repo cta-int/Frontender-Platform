@@ -20,7 +20,22 @@ class LabelsModel extends ScrModel
         }
 
         return [
-            'color' => isset($this->container['theme-color'][$this['type']]['theme-color'][$this['_id']]) ? $this->container['theme-color'][$this['type']]['theme-color'][$this['_id']] : ''
+            'selector' => isset($this->container['theme-color'][$this['type']]['theme-color'][$this['_id']]) ? $this->container['theme-color'][$this['type']]['theme-color'][$this['_id']] : ''
         ];
+    }
+
+    public function fetch($raw = false)
+    {
+        $labels = parent::fetch($raw);
+
+        if ($raw) {
+            return $labels;
+        }
+
+        foreach ($labels as $label) {
+            $label['name'] = $this->translate($label['name']);
+        }
+
+        return $labels;
     }
 }

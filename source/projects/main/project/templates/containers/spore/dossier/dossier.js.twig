@@ -1,0 +1,26 @@
+jQuery(function($) {
+    $(".dossier")
+        .find(".dossier__item")
+        .on("mouseover", function(event) {
+            event.preventDefault();
+
+            var el = $(this);
+            
+            el.addClass("is-active")
+                .siblings()
+                .removeClass("is-active");
+
+            // $("[data-dossier-image=" + el.data("image-id") + "]")
+            //     .fadeIn(400)
+            //     .siblings()
+            //     .fadeOut(400);
+            $("[data-dossier-image=" + el.data("image-id") + "]")
+                .addClass("is-active")
+                .removeClass("is-inactive")
+                .siblings()
+                .addClass("is-inactive")
+                .removeClass("is-active");
+        })
+        .first()
+        .trigger("mouseover");
+});

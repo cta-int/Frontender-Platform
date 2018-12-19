@@ -4,6 +4,7 @@ Well
 Container with themed background
 
 .well - 26%
+.well.well--lighter - 10%
 .well.well--darker - 54%
 .well.well--darkest - 76%
 .well.well--full - 100%
@@ -22,30 +23,31 @@ Styleguide 3.13
  * 1. Disable bolding effect of text on a darker background
  */
 .well {
-  padding-top: rhythm(10);
-  padding-bottom: rhythm(10);
-  @include theme-transparent-background(26%);
-  &--darker {
+  @include theme-opaque-background(26%);
+  &--padded {
     padding-top: rhythm(10);
     padding-bottom: rhythm(10);
-    @include theme-transparent-background(54%);
+  }
+  &--lighter {
+    @include theme-opaque-background(10%);
+  }
+  &--darker {
+    @include theme-opaque-background(54%);
   }
   &--darkest {
-    @include theme-transparent-background(76%);
+    @include theme-opaque-background(76%);
   }
   &--neutral {
-    background-color: mix($color-body, $white, 5%);
+    .theme &,
+    & {
+      background-color: mix($color-body, $white, 5%);
+    }
   }
   &--full {
     @include theme-opaque-background(100%);
-    padding-top: rhythm(10);
-    padding-bottom: rhythm(10);
     color: $white;
     -webkit-font-smoothing: antialiased; /* 1 */
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
-  }
-  &--slim-fit {
-      padding: 0;
   }
 }

@@ -2,7 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 
 {% set resource_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <article class="media">
     <div class="media__content">

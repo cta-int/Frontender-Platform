@@ -1,7 +1,7 @@
 {% import "macros/image.html.twig" as image %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="tile  |  well well--neutral well--slim-fit  |  leader--small">
+<div class="tile  |  well well--neutral  |  leader--small">
     <div class="tile__head">
         <a class="tile__head  |  anchor anchor--shy" href="{{ file.metadata.url }}">
             {{ image.post_hero(file) }}

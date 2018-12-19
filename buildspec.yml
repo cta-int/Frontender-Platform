@@ -16,7 +16,7 @@ phases:
       - apt-get update
       - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
       - curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-      - gem2.0 install scss_lint -v 0.56.0
+     # - gem2.0 install scss_lint -v 0.56.0
      # - /usr/local/bin/composer global require "naderman/composer-aws:~0.2"
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
       - bash --version

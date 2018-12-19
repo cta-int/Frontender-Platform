@@ -1,3 +1,4 @@
-<a class="site-navigation__brand  |  gutters" href="{{ route({'page': 'ictupdate'}) }}">
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+<a class="site-navigation__brand  |  gutters" href="{{ route({'page': main_menu.brand_link.page|t(locales)}) }}">
     <img class="brand brand--extension" alt="{{ 'CTA Publishing' }}" src="{{ '/assets/images/logos/brands/logo-cta-publishing.png' }}">
 </a>

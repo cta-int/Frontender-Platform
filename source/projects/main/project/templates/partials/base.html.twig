@@ -145,7 +145,7 @@
                     Actionable.prototype.ajax({
                         method: 'get',
                         target: $(this).data('pagination-target'),
-                        url: '/en/partial?layout=' + $(this).data('pagination-layout') + '&model=' + $(this).data('pagination-model') + '&config=' + JSON.stringify(config),
+                        url: '/en/partial?layout=' + $(this).data('pagination-layout') + '&adapter=' + $(this).data('pagination-adapter') + '&model=' + $(this).data('pagination-model') + '&config=' + JSON.stringify(config),
                         states: states,
                         append: true
                     }, function() {
@@ -187,7 +187,7 @@
         </script>
     </head>
 
-    <body{{ helper.class_attribute(config, model.theme.color|default(''))|raw }}>
+    <body{{ helper.class_attribute(config, model.theme.selector|default(''))|raw }}>
 
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ5C3Q"

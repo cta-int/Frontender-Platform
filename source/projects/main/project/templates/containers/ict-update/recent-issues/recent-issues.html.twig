@@ -1,7 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
 {% set model = ArticlesSearches|sortArray('headline', 'asc') %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="layout  |  well" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <aside class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  trailer-inside">

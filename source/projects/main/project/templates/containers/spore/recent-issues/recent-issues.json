@@ -1,0 +1,8 @@
+{
+    "name": "Spore - Recent issues",
+    "description": "Spore - Recent issues",
+    "template": "containers/spore/recent-issues/recent-issues.html.twig",
+    "template_config": {},
+    "frontender": "",
+    "blueprint": ""
+}

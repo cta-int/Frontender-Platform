@@ -1,14 +1,15 @@
 {% import "macros/pagination.html.twig" as pagination %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% for article in model.articles %}
     {% include "partials/article/post-tile/article.html.twig" with {model: model.articles} %}
 {% endfor %}
 
 <div class="grid__cell grid__cell--stretcher gutters body--align-center leader-inside--hero" data-pagination-parent>
-    {{ pagination.extend(model, articles_total, model, {
-        model_name: 'Channel\\Articles',
-        target: "#" ~ labels.panel_title|t(locales)|slugify ~ ' .grid.panel__body',
+    {{ pagination.extend(model, model.articles|first.total, {
+        model_name: 'Channels',
+        adapter: 'SCR',
+        target: "#" ~ labels.panel_title|t(locales)|slugify ~ ' .panel__body .grid',
         layout: "partials/article/post-tile/articles.html.twig",
         config: {
             labels: {

@@ -1,0 +1,41 @@
+{% if model|length %}
+    {% import "macros/template.html.twig" as helper %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+    {{ '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'|addScript('beforeBodyEnd') }}
+    {{ 'containers/spore/topic-trends/topic-trends.js.twig'|addScript('beforeBodyEnd') }}
+
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'is-root')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="card-slider">
+
+            {% if(containers) %}
+                {% for c in containers %}
+                    <div class="gutters card-slider__slide {{ c.config.show_wide ? 'card-slider__double-slide' }}">
+                        {% include c.template with {
+                            'config': c.config,
+                            'labels': c.labels,
+                            'channel': c.model
+                        } %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% for channel in model %}
+            <div class="gutters card-slider__slide">
+                {% include "partials/channel/card.html.twig" with {
+                    'config': config,
+                    'channel': channel,
+                    'labels': labels
+                } %}
+            </div>
+            {% endfor %}
+
+        </div>
+        <button class="carousel-switch carousel-previous  |  slick-arrow" aria-label="Previous">
+            <span class="icon icon--chevron-left"></span>
+        </button>
+        <button class="carousel-switch carousel-next  |  slick-arrow" aria-label="Next">
+            <span class="icon icon--chevron-right"></span>
+        </button>
+    </{{ config.container_tag|default('div') }}>
+{% endif %}
+

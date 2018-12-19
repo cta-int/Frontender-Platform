@@ -3,53 +3,50 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/author.html.twig" as author %}
 {% import "macros/label.html.twig" as label %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% set article_link = route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) %}
+{% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
 <div class="post">
     {% if config.show_lead_image %}
         <div class="post__media">
             <a class="anchor anchor--shy" href="{{ article_link }}">
-                {{ image.post(model.link.mediaObject|lead) }}
+                {{ image.post(article.link.mediaObject|lead) }}
             </a>
         </div>
     {% endif %}
     <div class="post__content  |  leader-inside">
         {% if config.show_publication_date|default(1) %}
-            {{ date.article(model.datePublished) }}
+            {{ date.article(article.datePublished) }}
         {% endif %}
 
-        {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length > 0 %}
-            <span class="meta">
-                {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
-            </span>
+        {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
+            <span class="meta">{{ 'in'|t(locales) }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}</span>
+        {% endif %}
+
+        {% if config.show_type|default(1) %}
+            <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|t }}</a>
         {% endif %}
 
         <h3 class="heading  |  anchor--reset">
             <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
-                {{ model.headline }}
+                {{ article.headline }}
             </a>
         </h3>
 
-        {% if config.show_author_name and model.link.person.author | length > 0 %}
+        {% if config.show_author_name and article.link.person.author | length > 0 %}
             <p class="post__author  |  author">
-                {{ author.long(model.link.person.author) }}
+                {{ author.long(article.link.person.author) }}
             </p>
         {% endif %}
 
-        {% if config.show_article_type|default(0) %}
-            <p class="meta  |  leader--tiny">
-            {{ '<a href="/search?q=&location=&time=&type=%s">%s</a>'|format(model.articleType,model.articleType|t(locales))|raw }}</p>
-        {% endif %}
-
         {% if config.show_stand_first %}
-            <p class="is-gt-small-desktop  |  post__intro">{{ model.about|raw }}</p>
+            <p class="is-gt-small-desktop  |  post__intro">{{ article.about|raw }}</p>
         {% endif %}
 
-        {% if config.show_topic|default(0) and model.analysis.agrovoc.concepts|length > 0 %}
+        {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
           <ul class="reset  |  tag-list  |  list--inline trailer--small">
-              {% for label in model.analysis.agrovoc.concepts|slice(0, 2) %}
+              {% for label in article.analysis.agrovoc.concepts|slice(0, 2) %}
                   <li>{{ concept.tag(label, locale) }}</li>
               {% endfor %}
           </ul>

@@ -1,5 +1,5 @@
 {% macro bar_event(event, light, context = null) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% import _self as share %}
 
@@ -19,7 +19,7 @@
 {% endmacro %}
 
 {% macro bar_article(article, light, context = null) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     
     {% import _self as share %}
 
@@ -41,7 +41,7 @@
 {% macro press_article(article, light, context = null) %}
     {% import _self as share %}
     {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {{ share.bar({
         url: url,
@@ -59,7 +59,7 @@
 {% macro bar_ictupdate_article(article, light, context = null) %}
     {% import _self as share %}
 
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {{ share.bar({
         light: light|default(false),
@@ -83,7 +83,7 @@
 {% macro bar_article_linkedin(article, light, context = null) %}
     {% import _self as share %}
 
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
     
     {{ share.bar({
@@ -103,7 +103,7 @@
 {% endmacro %}
 
 {% macro bar(config, context = null) %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     <ul class="share-list reset list--float">
         {% if config.label and config.label.text and config.label.link %}

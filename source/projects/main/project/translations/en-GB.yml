@@ -57,14 +57,12 @@ planned: Planned
 
 # Unclassified translations
 topic: Topic
-topics: Topics
 data: Data
 location: Location
 search: Search
 region: Region
 find events: Find events
 find projects: Find projects
-topics: Topics
 all topics: All topics
 all: All
 type keywords: Type Keywords
@@ -167,6 +165,13 @@ content_type_category_technical_scientific: Technical scientific articles
 content_type_category_tender_award_notice: Tender award notices
 content_type_category_internship: Internships
 content_type_category_call_for_external_expert: Call for external experts
+content_type_category_call_for_tender: Call for tender
+content_type_category_issue: Issue
+content_type_category_vacancy: Vacancy
+content_type_category_call_for_proposal: Call for proposal
+content_type_category_partnership: Partnership
+content_type_category_tender_highlight: Tender highlight
+
 background: Background stories
 communique: Communiqués
 blog: Blog articles

@@ -1,13 +1,17 @@
 {# import "macros/pagination.html.twig" as pagination #}
 
-{% if model.events|length > 0 %}
-    {% include "modules/events/detailed-list/detailed-list.html.twig" %}
+{% if model|length > 0 %}
+    {% import "macros/template.html.twig" as helper %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        {% include "modules/events/detailed-list/detailed-list.html.twig" %}
 
-    {#% if events_total > container.model.params.limit %}
-        {{ pagination.extend(events, events_total, model|default(container.model), {
-            model_name: 'Channel\\Events',
-            target: "#" ~ slug,
-            layout: "modules/events/detailed-list/detailed-list.html.twig"
-        }) }}
-    {% endif %#}
+        {#% if events_total > container.model.params.limit %}
+            {{ pagination.extend(events, events_total, model|default(container.model), {
+                model_name: 'Channel\\Events',
+                target: "#" ~ slug,
+                layout: "modules/events/detailed-list/detailed-list.html.twig"
+            }) }}
+        {% endif %#}
+    </{{ config.container_tag|default('div') }}>
 {% endif %}

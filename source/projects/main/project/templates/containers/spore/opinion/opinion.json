@@ -1,0 +1,143 @@
+{
+    "template": "containers/global/group/group.html.twig",
+    "name": {
+        "en-GB": "Opinion papers"
+    },
+    "description": {
+        "en-GB": "Opinion container"
+    },
+    "template_config": {
+        "config": {
+            "label": {
+                "en-GB": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "wings": {
+                    "value": "",
+                    "control": "project/wings"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "well",
+                    "control": "project/container_class"
+                }
+            }
+        }
+    },
+    "containers": [
+        {
+            "name": {
+                "en-GB": "Dossier"
+            },
+            "description": {
+                "en-GB": "Dossier"
+            },
+            "template": "containers/spore/opinion/opinion.html.twig",
+            "template_config": {
+                "model": {
+					"label": {
+						"en-GB": "Resource"
+					},
+					"controls": {
+						"data": {
+							"value": {
+								"adapter": "SCR",
+								"model": "channels",
+								"id": "fa50aaeb-bab6-4cd2-9d5b-39fdb824d21e"
+							},
+							"adapters": [
+								{
+									"value": "SCR",
+									"label": {
+										"en-GB": "SCR"
+									},
+									"models": [
+										{
+											"value": "Article\\Search",
+											"label": {
+												"en-GB": "Articles"
+											}
+										},
+										{
+											"value": "channels",
+											"label": {
+												"en-GB": "Channels"
+											}
+										},
+										{
+											"value": "Event\\Search",
+											"label": {
+												"en-GB": "Events"
+											}
+										}
+									]
+								}
+							],
+							"control": "project/model/article_channel_event"
+						},
+						"limit": {
+							"value": "3",
+							"control": "project/model/limit"
+						}
+					}
+				},
+                "labels": {
+                    "label": {
+                        "en-GB": "Content"
+                    },
+                    "controls": {
+                        "container_title": {
+                            "value": "Opinion papers",
+                            "label": {
+                                "en-GB": "Container title"
+                            },
+                            "control": "core/text"
+                        },
+                        "link": {
+							"value": {
+								"label": {
+									"en-GB": "Will inclusive financing mechanisms promote more women-led agribusinesses?",
+									"fr-FR": "Will inclusive financing mechanisms promote more women-led agribusinesses?"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Sidebar link"
+							},
+							"control": "core/route"
+						}
+                    }
+                }
+            }
+        }
+    ],
+    "frontender": "",
+    "blueprint": ""
+}

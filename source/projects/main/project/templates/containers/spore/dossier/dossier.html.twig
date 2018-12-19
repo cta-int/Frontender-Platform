@@ -1,0 +1,48 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
+
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--aside  |  wing--left">
+        <div class="trailer  |  post post--hero  |  gutter--right">
+            <h2 class="heading heading--tile  |  gutters gutter-hero--right">
+                {{ model.name|t(locales) }}
+            </h2>
+            <p class="post__intro  |  gutters gutter-hero--right">
+                {{ model.description|t(locales) }}
+            </p>
+        </div>
+    </div>
+    <div class="layout__cell ">
+        <div class="layout layout--split dossier">
+            <div class="layout__cell  |  gutters-outside  |  dossier__gallery">
+                {# Switch image based on active article #}
+                {% for article in model.articles|slice(0, 4) %}
+                    <a class="anchor anchor--shy  |  dossier__image" href="{{ article_link }}" data-dossier-image="{{ article._id }}" data-dossier-type="{{ ('content_type_category_' ~ article.articleType)|t }}">
+                        {{ image.post_hero(article.link.mediaObject|lead) }}
+                    </a>
+                {% endfor %}
+            </div>
+            <ul class="reset  |  layout__cell layout__cell--aside  |  wing--right  |  dossier__documents  |  gutters">
+                {#  Set .is-active or .is-current on active/current article #}
+                {% for article in model.articles|slice(0, 4) %}
+                    <li class="dossier__item" data-image-id="{{ article._id }}">
+                            {% include "partials/article/post.html.twig" with {'config': {
+                            'show_lead_image': 0,
+                            'show_stand_first': 0,
+                            'show_publication_date': 0,
+                            'show_author': 1,
+                            'show_read_more': 0,
+                            'show_type': 1,
+                            'show_topic': 0,
+                            'show_publication': 0
+                        }, 'article': article} %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

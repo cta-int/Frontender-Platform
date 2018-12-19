@@ -1,0 +1,43 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if labels.title|t|length > 0 %}
+        <h3 class="credits-department  |  trailer  |  gutters">{{ labels.title|t }}</h3>
+    {% endif %}
+    <div class="credit">
+        {% if config.columns and content.staff > 1 %}
+            <div class="credit__cell  |  gutters">
+                <ul class="reset">
+                    {% for person in content.staff|slice(0, (content.staff|length/2)|round) %}
+                        <li class="trailer--small">
+                            <p>{{ person.name|t }}</p>
+                            <p class="job-title">{{ person.function|t }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="credit__cell  |  gutters">
+                <ul class="reset">
+                    {% for person in content.staff|slice((content.staff|length/2)|round) %}
+                        <li class="trailer--small">
+                            <p>{{ person.name|t }}</p>
+                            <p class="job-title">{{ person.function|t }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="credit__cell  |  gutters">
+                <ul class="reset">
+                    {% for person in content.staff %}
+                        <li class="trailer--small">
+                            <p>{{ person.name|t }}</p>
+                            <p class="job-title">{{ person.function|t }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</{{ config.container_tag|default('div') }}>

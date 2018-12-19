@@ -1,7 +1,7 @@
 {% import "macros/share.html.twig" as share %}
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/location.html.twig" as location %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <section class="panel  |  layout" id="overview">
     {# MAIN COLUMN:START #}
@@ -28,7 +28,7 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <div class="well well--slim-fit  |  gutters-outside  |  leader  |  trailer">
+            <div class="well  |  gutters-outside  |  leader  |  trailer">
                 {{ share.bar_article(model) }}
             </div>
         </div>

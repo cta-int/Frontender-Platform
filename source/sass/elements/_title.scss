@@ -111,7 +111,7 @@ Styleguide 3.3
       @include title-30px();
     }
     &--container {
-      @include title-30px();
+      // @include title-30px();
     }
   }
   .theme--dark & {

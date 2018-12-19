@@ -2,9 +2,10 @@
 {% import "macros/template.html.twig" as helper %}
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<header class="trailer--hero">
+{% import "macros/template.html.twig" as helper %}
+<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'trailer--hero')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if model.mediaObject|lead %}
         <div class="ie9-hero">
             {{ image.hero(model.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
@@ -30,4 +31,4 @@
             {% endif %}
         </div>
     </div>
-</header>
+</{{ config.container_tag|default('header') }}>

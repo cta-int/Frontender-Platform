@@ -306,28 +306,55 @@ class ArticlesModel extends ScrModel
         return implode('/', [$prefix, parent::getPropertyPath()]);
     }
 
-    public function getPropertyTheme()
+    public function getLabels(string $type = '', bool $first = false)
     {
-        if (!isset($this->container['theme-color'])) {
-            $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
-        }
+        $_labels = $this->data['link']['label'];
 
-        $themeColors = $this->container['theme-color'];
-        $color = '';
-
-        if (isset($this['link']['label'])) {
-            $labels = array_filter($this['link']['label'], function ($label) use ($themeColors) {
-                return isset($themeColors[$label['type']]['theme-color'][$label['_id']]);
-            });
-
-            if (count($labels)) {
-                $color = array_shift($labels);
-                $color = isset($this->container['theme-color'][$color['type']]['theme-color'][$color['_id']]) ? $this->container['theme-color'][$color['type']]['theme-color'][$color['_id']] : '';
+        if ($type != '') {
+            foreach ($_labels as $key => $value) {
+                if ($value['type'] != $type) {
+                    unset($_labels[$key]);
+                }
             }
         }
 
-        return [
-            'color' => $color
+        if ($first) {
+            // $_labels = array_slice($_labels, 0, 1);
+            $_labels = array_shift($_labels);
+        }
+
+        return $_labels;
+    }
+
+    public function getPropertyStrategyLabel()
+    {
+        return $this->getLabels('strategy', true);
+    }
+
+    public function getPropertyPublicationLabel()
+    {
+        return $this->getLabels('publication', true);
+    }
+
+    public function getPropertyTheme()
+    {
+        $_label = $this->getLabels('strategy', true);
+
+        $_theme = [
+            'selector' => '',
+            'label' => ''
         ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+        }
+
+        return $_label;
     }
 }

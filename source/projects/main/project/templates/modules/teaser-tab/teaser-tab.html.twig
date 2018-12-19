@@ -1,7 +1,7 @@
 {% import "macros/image.html.twig" as image %}
 {% set is_crowned = 'is-crowned' in config.container_class %}
 {% set resource_route = route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ hashedPath('/assets/javascript/tabs.js')|addScript('beforeBodyEnd') }}
 {{ 'containers/global/panels/panels.js.twig'|addScript('beforeBodyEnd', {

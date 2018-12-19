@@ -23,56 +23,56 @@ Styleguide 3.18
   border: 0 solid mix($color-body, $white, 26%);
   border: 0 solid rgba($color-theme, .26);
   // scss-lint:enable DuplicateProperty
-  &--top {
-    border-top-width: 1px;
-  }
+  
   &--right {
     border-right-width: 1px;
-  }
-  &--bottom {
-    border-bottom-width: 1px;
   }
   &--left {
     border-left-width: 1px;
   }
-  .theme--blue & {
-    border-color: rgba($color-blue, .26);
+
+  &--top,
+  &--bottom {
+    &.gutters {
+      position: relative;
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: gutter(.5);
+        right: gutter(.5);
+        height: 0;
+        border: inherit;
+      }
+    }
   }
-  .theme--lime & {
-    border-color: rgba($color-lime, .26);
+  &--top {
+    border-top-width: 1px;
+    &.gutters {
+      border-top-width: 0;
+      &::after {
+        top: 0;
+        border-top-width: 1px;
+      }
+    }
   }
-  .theme--yellow & {
-    border-color: rgba($color-yellow, .26);
+  &--bottom {
+    border-bottom-width: 1px;
+    &.gutters {
+      border-bottom-width: 0;
+      &::after {
+        bottom: 0;
+        border-bottom-width: 1px;
+      }
+    }
   }
-  .theme--gold & {
-    border-color: rgba($color-gold, .26);
-  }
-  .theme--orange & {
-    border-color: rgba($color-orange, .26);
-  }
-  .theme--salmon & {
-    border-color: rgba($color-salmon, .26);
-  }
-  .theme--red & {
-    border-color: rgba($color-red, .26);
-  }
-  .theme--burgundy & {
-    border-color: rgba($color-burgundy, .26);
-  }
-  .theme--purple & {
-    border-color: rgba($color-purple, .26);
-  }
+
+  @include theme-border(26%);
+
   &--inverse {
     &,
-    .theme--blue &,
-    .theme--lime &,
-    .theme--yellow &,
-    .theme--gold &,
-    .theme--orange &,
-    .theme--salmon &,
-    .theme--red &,
-    .theme--burgundy &,
-    .theme--purple & {
+    .theme & {
       border-color: $white;
       border-color: rgba($white, .4);
       .well--neutral & {

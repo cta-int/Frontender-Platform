@@ -1,0 +1,130 @@
+{
+    "name": {
+        "en-GB": "Topics and trends"
+    },
+    "description": {
+        "en-GB": "Topics and trends container"
+    },
+    "template": "containers/global/group/group.html.twig",
+    "template_config": {
+        "config": {
+            "label": {
+                "en-GB": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "leader_inside": {
+                    "value": "",
+                    "control": "project/leader_inside"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "trailer_inside": {
+                    "value": "",
+                    "control": "project/trailer_inside"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        }
+    },
+    "containers": [
+        {
+            "name": {
+                "en-GB": "Header"
+            },
+            "description": {
+                "en-GB": "Carousel header"
+            },
+            "template": "containers/global/carousel/carousel-header.html.twig",
+            "template_config": {
+                "labels": {
+                    "label": {
+                        "en-GB": "Labels"
+                    },
+                    "controls": {
+                        "title": {
+                            "label": {
+                                "en-GB": "Title"
+                            },
+                            "control": "core/text",
+                            "value": {
+                                "en-GB": "A global view",
+                                "fr-FR": "A global view"
+                            }
+                        },
+                        "body": {
+                            "label": {
+                                "en-GB": "Body"
+                            },
+                            "control": "core/text",
+                            "value": {
+                                "en-GB": "",
+                                "fr-FR": ""
+                            }
+                        }
+                    }
+                },
+                "config": {
+                    "label": {
+                        "en-GB": "Settings"
+                    },
+                    "controls": {
+                        "leader": {
+                            "value": "",
+                            "control": "project/leader"
+                        },
+                        "leader_inside": {
+                            "value": "leader-inside",
+                            "control": "project/leader_inside"
+                        },
+                        "trailer": {
+                            "value": "",
+                            "control": "project/trailer"
+                        },
+                        "trailer_inside": {
+                            "value": "trailer-inside",
+                            "control": "project/trailer_inside"
+                        },
+                        "container_tag": {
+                            "value": "header",
+                            "control": "project/container_tag"
+                        },
+                        "container_class": {
+                            "value": "",
+                            "control": "project/container_class"
+                        }
+                    }
+                }
+            },
+            "frontender": ""
+        },
+        {
+            "name": {
+                "en-GB": "Topic trends"
+            },
+            "description": {
+                "en-GB": "Carousel of topics and trends"
+            },
+            "template": "containers/spore/topic-trends/topic-trends.html.twig",
+            "template_config": {}
+        }
+    ],
+    "frontender": "",
+    "blueprint": ""
+}

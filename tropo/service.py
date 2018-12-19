@@ -611,7 +611,6 @@ If(service_host_condition, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
-# spore.cta.int
 If(is_UAT, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsSporeListenerRule",
@@ -628,7 +627,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=24
+        Priority=45
     )
 ), Ref("AWS::NoValue"))
 
@@ -648,7 +647,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=25
+        Priority=46
     )
 ), Ref("AWS::NoValue"))
 
@@ -668,7 +667,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=24
+        Priority=47
     )
 ), Ref("AWS::NoValue"))
 
@@ -688,11 +687,10 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=25
+        Priority=48
     )
 ), Ref("AWS::NoValue"))
 
-# ictupdate.cta.int
 If(is_UAT, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsICTUpdateListenerRule",
@@ -709,7 +707,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=26
+        Priority=49
     )
 ), Ref("AWS::NoValue"))
 
@@ -729,7 +727,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
-        Priority=27
+        Priority=50
     )
 ), Ref("AWS::NoValue"))
 
@@ -749,7 +747,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=26
+        Priority=51
     )
 ), Ref("AWS::NoValue"))
 
@@ -769,7 +767,7 @@ If(is_UAT, t.add_resource(
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
-        Priority=27
+        Priority=52
     )
 ), Ref("AWS::NoValue"))
 

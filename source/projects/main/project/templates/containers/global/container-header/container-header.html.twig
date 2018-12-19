@@ -4,15 +4,15 @@
 {% set has_tools = config.show_tools|trim|length > 0 %}
 {% set has_link = labels.link.label|t(locales)|trim|length > 0 %}
 {% set class = ['container-header', config.show_margins, (not has_title and (has_tools or has_link)) ? 'container-header--filter']|join(' ')|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if labels.container_title|t(locales)|trim|length > 0 or (has_tools or has_link) %}
     <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, class)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
         {% if labels.container_title|t(locales) %}
-        <h2 class="container-header__title  |  title {{ config.show_smaller_title ? 'title--tile' : 'title--container' }} trailer-inside--tiny  |  gutters">
+        <{{config.title_tag|default('h2')}} class="container-header__title  |  title {{ config.show_smaller_title ? 'title--tile' : 'title--container' }} trailer-inside--tiny  |  gutters">
             {{ labels.container_title|t(locales) }}
-        </h2>
+        </{{config.title_tag|default('h2')}}>
         {% endif %}
 
         {% if has_tools or has_link %}

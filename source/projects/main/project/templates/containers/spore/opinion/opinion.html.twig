@@ -1,0 +1,73 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div class="layout trailer-inside--small">
+    <div class="layout__cell layout__cell--aside  |  wings">
+        {% if labels.container_title|length > 0 %}
+            <header class="trailer-inside container-header container-header--slim-fit">
+                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                    {{ labels.container_title|t(locales) }}
+                </h2>
+            </header>
+        {% endif %}
+        <div class="trailer  |  post post--hero">
+            {% if labels.link %}
+                <a href="{{ labels.link.page|t(locales) }}">
+                    <h2 class="opinion__heading  |  gutters">{{ labels.link.label|t(locales) }}</h2>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="layout__cell  |  wing--right">
+        <div class="layout layout--even  |  wing--right">
+            <div class="layout__cell">
+                {% for article in model.articles|slice(0,1) %}
+                    <div class="gutters  |  leader--hero">
+                        <div class="opinion">
+                            <div class="well well--neutral well--padded |  gutters">
+                                <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ article.headline|t(locales) }}</h2>
+                                <a class="leader-inside--small  |  gutters  |  block-link" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">Read more</a>
+                            </div>
+                            {% if article.link.person.author %}
+                                <p class="opinion__footer  |  gutters gutters-outside  |  leader">
+                                    {{ author.job(article.link.person.author) }}
+                                </p>
+                            {% endif %}
+                         </div>
+                     </div>
+                {% endfor %}
+
+                <div class="gutters">
+                    <div class="opinion opinion--theme">
+                        <div class="well well--full well--padded |  gutters">
+                            <h2 class="heading heading--tile  |  gutters  |  trailer--small">Join the discussion on</h2>
+                            <div class="gutters  |  opinion__icons  |  leader--normal">
+                                <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTApage" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
+                                <a class="anchor--shy  |  is-heir" href="https://twitter.com/ctaflash" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
+                                <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/technical-centre-for-agricultural-and-rural-cooperation-acp-eu-cta-" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layout__cell">
+                {% for article in model.articles|slice(1,3) %}
+                    <div class="gutters">
+                        <div class="opinion">
+                            <div class="well well--neutral well--padded |  gutters">
+                                <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ article.headline|t(locales) }}</h2>
+                                <a class="leader-inside--small  |  gutters  |  block-link" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">Read more</a>
+                            </div>
+                            {% if article.link.person.author %}
+                                <p class="opinion__footer  |  gutters gutters-outside  |  leader">
+                                    {{ author.job(article.link.person.author) }}
+                                </p>
+                            {% endif %}
+                         </div>
+                     </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

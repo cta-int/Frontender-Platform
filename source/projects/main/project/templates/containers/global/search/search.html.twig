@@ -1,7 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'well  |  is-root  |  trailer  |  is-illustrated')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'well well--padded  |  is-root  |  trailer  |  is-illustrated')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <form class="layout  |  trailer--hero" method="get" action="{{ route({'page': 'search'}) }}">
         <div class="layout__cell  |  layout__cell--aside  |  wings  |  trailer">
             {% if containers|length > 1 %}

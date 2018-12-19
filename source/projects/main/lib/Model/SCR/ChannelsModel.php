@@ -12,6 +12,7 @@ use Slim\Container;
 use Prototype\Model\SCR\Channel\ArticlesModel;
 use Prototype\Model\SCR\Channel\EventsModel;
 use Prototype\Model\SCR\Channel\PersonsModel;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class ChannelsModel extends ScrModel
 {
@@ -69,6 +70,256 @@ class ChannelsModel extends ScrModel
             }
         }
 
-        return $result;
+        if ($raw) {
+            return $result;
+        }
+
+        return array_map(function ($channel) {
+            $channel->getState()->insert('id', $channel['_id']);
+
+            return $channel;
+        }, $result);
+    }
+
+    public function getPropertyBlogArticles()
+    {
+        // {{ model.blogArticles }}
+        return $this->getArticles([
+            'articleType' => 'article.blog'
+        ]);
+    }
+
+    public function getPropertyImpactArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.impact'
+        ]);
+    }
+
+    public function getPropertyCorporateNewsArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.corporate_news'
+        ]);
+    }
+
+    public function getPropertyBackgroundArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.background'
+        ]);
+    }
+
+    public function getPropertyOpinionArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.opinion'
+        ]);
+    }
+
+    public function getPropertyInterviewArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.interview'
+        ]);
+    }
+
+    public function getPropertySyndicatedArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.syndicated'
+        ]);
+    }
+
+    public function getPropertyreviewArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.review'
+        ]);
+    }
+
+    public function getPropertyTechnicalScientificArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.technical_scientific'
+        ]);
+    }
+
+    public function getPropertyDataReportArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.data_report'
+        ]);
+    }
+
+    public function getPropertyCommuniqueArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.communique'
+        ]);
+    }
+
+    public function getPropertyVacancyArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.vacancy'
+        ]);
+    }
+
+    public function getPropertyInternshipArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.internship'
+        ]);
+    }
+
+    public function getPropertyCallForExternalExpertArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.call_for_external_expert'
+        ]);
+    }
+
+    public function getPropertyCallForTenderArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.call_for_tender'
+        ]);
+    }
+
+    public function getPropertyCallForProposalArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.call_for_proposal'
+        ]);
+    }
+
+    public function getPropertyPartnershipArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.partnership'
+        ]);
+    }
+
+    public function getPropertyTenderAwardNoticeArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.tender_award_notice'
+        ]);
+    }
+
+    public function getPropertyTenderHighlightArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.tender_highlight'
+        ]);
+    }
+
+    public function getPropertySpeechArticles()
+    {
+        return $this->getArticles([
+            'articleType' => 'article.speech'
+        ]);
+    }
+
+    public function getPropertyConferenceEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Conference'
+        ]);
+    }
+
+    public function getPropertyWorkshopEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Workshop'
+        ]);
+    }
+
+    public function getPropertyTrainingOnlineEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Training (online)'
+        ]);
+    }
+
+    public function getPropertyTrainingEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Training'
+        ]);
+    }
+
+    public function getPropertyBriefingEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Briefing'
+        ]);
+    }
+
+    public function getPropertyMeetingEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Meeting'
+        ]);
+    }
+
+    public function getPropertyHackathonEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Hackathon'
+        ]);
+    }
+
+    public function getPropertyForumEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Forum'
+        ]);
+    }
+
+    public function getPropertyFieldVisitEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Field visit'
+        ]);
+    }
+
+    public function getPropertyProjectEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Project'
+        ]);
+    }
+
+    public function getPropertyOtherEvents()
+    {
+        return $this->getEvents([
+            'eventType' => 'Other'
+        ]);
+    }
+
+    private function getArticles($state = [])
+    {
+        $state = array_merge($state, [
+            'limit' => 5,
+            'id' => $this['_id']
+        ]);
+
+        $model = new ArticlesModel($this->container);
+        $model->setState($state);
+        return $model->fetch();
+    }
+
+    private function getEvents($state = [])
+    {
+        $state = array_merge($state, [
+            'limit' => 5,
+            'id' => $this['_id']
+        ]);
+
+        $model = new EventsModel($this->container);
+        $model->setState($state);
+        return $model->fetch();
     }
 }

@@ -2,7 +2,7 @@
 {% import "macros/date.html.twig" as date %}
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if(article.related.articles|length > 0) %}
 	<figure class="{{ [" hero hero--topic-teaser", container_class]|join(" | ") }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>

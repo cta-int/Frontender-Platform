@@ -188,7 +188,7 @@ gulp.task('dev', function() {
 });
 
 gulp.task('test', function() {
-    tasks = tasks.concat(['scsslint', 'imagemin', 'concat', 'uglify', 'autopref', 'minify']);
+    tasks = tasks.concat(['imagemin', 'concat', 'uglify', 'autopref', 'minify']);
     gulp.start(['move', 'build', 'styleguide', 'assets']);
 });
 

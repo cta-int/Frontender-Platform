@@ -1,6 +1,6 @@
 {% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'layout layout--split  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell  |  contact--hero" style="background: url(http://res.cloudinary.com/cta/image/upload/h_900,w_1200,g_faces:center,f_auto,c_fill/{{ model.metadata.id }}.png) top center; background-size: cover;"></div>

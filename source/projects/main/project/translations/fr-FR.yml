@@ -16,7 +16,6 @@ value chain: Chaîne de valeur
 # Search Menu
 search cta: Recherche CTA
 projects: Projets
-topics: Sujets
 regions: Régions
 more: Plus
 advanced search: Recherche Avancée
@@ -134,9 +133,22 @@ last week: la semaine dernière
 last month: le mois dernier
 last year: l'année dernière
 
+# Search
+result in projects and events: Résultat dans des projets et des événements
+results in projects and events: Résultats dans les projets et les événements
+no events or projects found for: Aucun événement ou projet trouvé pour
+no events or projects found: Aucun événement ou projet trouvé
+result in articles: Résultat en articles
+results in articles: Résultats en articles
+no articles found for: Aucun article trouvé pour
+no articles found: Aucun article trouvé
+
 # Event translations
 related media: Médias associés
+related articles: Articles associés
+related events: Événements associés
 event overview: Aperçu de l'événement
+event website: Site de l'événement
 speakers: Speakers
 attendees: Participants
 organisers: Les organisateurs
@@ -253,6 +265,7 @@ view_reference: Voir la référence
 disclaimer: Avertissement
 about the author: A propos de l'auteur
 articles: articles
+in: dans
 
 # Article types
 all article types: Tous les types d'articles

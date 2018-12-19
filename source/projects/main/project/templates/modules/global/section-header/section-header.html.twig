@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('h1') }} class="{{['title title--section  |  gutters', config.container_class]|join('  |  ') }}">
     {{ config.container_title|t(locales) }}

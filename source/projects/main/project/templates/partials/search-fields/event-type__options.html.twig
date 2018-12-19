@@ -1,4 +1,4 @@
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr'} %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <option {% if config.selected == 'event.Conference' or query.type == 'event.Conference' %}selected="selected" {% endif %} value="event.Conference">{{ 'Conferences'|t(locales) }}</option>
 <option {% if config.selected == 'event.Workshop' or query.type == 'event.Workshop' %}selected="selected" {% endif %} value="event.Workshop">{{ 'Workshops'|t(locales) }}</option>
