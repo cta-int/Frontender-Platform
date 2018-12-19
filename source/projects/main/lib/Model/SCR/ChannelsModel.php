@@ -26,7 +26,7 @@ class ChannelsModel extends ScrModel
             ->insert('label_id', null)
             ->insert('limit', 20)
             ->insert('skip', 0)
-            ->insert('articleType', 'blog')
+            ->insert('articleType')
             ->insert('eventType');
     }
 
