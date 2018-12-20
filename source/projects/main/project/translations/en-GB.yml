@@ -151,15 +151,15 @@ event_officer: Officers
 
 # Article content category mappings
 content_type_category_background: Background stories
-content_type_category_communique: Communiqués
-content_type_category_blog: Blog articles
+content_type_category_communique: Press releases
+content_type_category_blog: Blog
 content_type_category_corporate_news: News
 content_type_category_data_report: Data reports
 content_type_category_impact: Impact Stories
 content_type_category_interview: Interviews
 content_type_category_opinion: Opinion articles
 content_type_category_review: Reviews
-content_type_category_syndicated: Syndicated news
+content_type_category_syndicated: CTA in the press
 content_type_category_speech: Speeches
 content_type_category_technical_scientific: Technical scientific articles
 content_type_category_tender_award_notice: Tender award notices
