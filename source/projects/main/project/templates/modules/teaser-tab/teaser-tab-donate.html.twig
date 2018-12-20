@@ -4,9 +4,9 @@
 <div class="is-inactive  |  tab-teaser__panel" id="{{ tab.id ~ model._id }}">
 	<div class="tab-teaser__panel-wing  |  leader">
 		<div class="gutters">
-			<h2 class="title title--lead  |  gutters">{{'Your donation will help build more businesses that empower agricultural  and rural communities in Western Africa'|t }}.</h2>
+			<h2 class="title title--lead  |  gutters">{{'Your donation will help build more businesses that empower agricultural and rural communities in Western Africa'|t }}.</h2>
 			<form class="leader">
-				<label class="fld-label  |  gutters">{{ 'Choose or type the amount'|t(locales) }}</label>
+				<label class="fld-label  |  gutters">{{ 'Choose or type the amount'|i18n }}</label>
 				<div class="grid grid--teletubbies">
 					<div class="grid__cell  |  gutters  |  trailer--small">
 						<button class="button button--stretch">€ 30</button>
@@ -22,11 +22,11 @@
 					</div>
 				</div>
 				<div class="gutters  |  leader">
-					<button class="button button--wide">{{ 'Donate now'|t(locales) }}</button>
+					<button class="button button--wide">{{ 'Donate now'|i18n }}</button>
 				</div>
 			</form>
 			<div class="gutters  |  leader">
-				<p class="block-link">{{ 'Spread the word'|t(locales) }}</p>
+				<p class="block-link">{{ 'Spread the word'|i18n }}</p>
 				<div class="social__share  |  leader--small  |  trailer">
 					{{ share.bar_article(model, true) }}
 				</div>

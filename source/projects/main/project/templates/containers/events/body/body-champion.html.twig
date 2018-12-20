@@ -15,7 +15,7 @@
             <nav class="gutters">
                 <ul class="is-gt-small-desktop  |  reset">
                     <li>
-                        <a class="title title--tab" href="#overview">{{ 'Event Overview'|t(locales) }}</a>
+                        <a class="title title--tab" href="#overview">{{ 'Event Overview'|i18n }}</a>
                     </li>
 
                     {% for type in ['keynote', 'chair', 'speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'translator'] %}
@@ -26,37 +26,37 @@
 
                     {% if has_speakers %}
                         <li>
-                            <a class="title title--tab" href="#speakers">{{ 'Speakers'|t(locales) }}</a>
+                            <a class="title title--tab" href="#speakers">{{ 'Speakers'|i18n }}</a>
                         </li>
                     {% endif %}
 
                     {% if model.attendees|length > 0 %}
                         <li>
-                            <a class="title title--tab" href="#attendees">{{ 'Attendees'|t(locales) }}</a>
+                            <a class="title title--tab" href="#attendees">{{ 'Attendees'|i18n }}</a>
                         </li>
                     {% endif %}
 
                     {% if model.organizer|length > 0 %}
                         <li>
-                            <a class="title title--tab" href="#organisers">{{ 'Organisers'|t(locales) }}</a>
+                            <a class="title title--tab" href="#organisers">{{ 'Organisers'|i18n }}</a>
                         </li>
                     {% endif %}
 
                     {% if model.sponsor|length > 0 %}
                         <li>
-                            <a class="title title--tab" href="#sponsors">{{ 'Sponsors'|t(locales) }}</a>
+                            <a class="title title--tab" href="#sponsors">{{ 'Sponsors'|i18n }}</a>
                         </li>
                     {% endif %}
 
                     {% if model.mediaObject | findType('document') | length > 0 %}
                         <li>
-                            <a class="title title--tab" href="#downloads">{{ 'Downloads'|t(locales) }}</a>
+                            <a class="title title--tab" href="#downloads">{{ 'Downloads'|i18n }}</a>
                         </li>
                     {% endif %}
                 </ul>
                 {% if model.eventbrite and model.eventbrite.managedBySCR %}
                     <p class="leader  |  trailer">
-                        <a class="button button--wide" href="{{ model.eventbrite.url }}" target="_blank">{{ 'Register now'|t(locales) }}</a>
+                        <a class="button button--wide" href="{{ model.eventbrite.url }}" target="_blank">{{ 'Register now'|i18n }}</a>
                     </p>
                 {% endif %}
             </nav>

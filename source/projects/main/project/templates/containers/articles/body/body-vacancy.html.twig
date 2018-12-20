@@ -11,7 +11,7 @@
                 </div>
 
                 <footer class="gutters  |  trailer--hero">
-                    <p class="meta">{{ 'published on'|t(locales) }} {{ model.datePublished|tdate('%A, %e %B %Y') }}. {% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'Updated on'|t(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                    <p class="meta">{{ 'published on'|i18n }} {{ model.datePublished|tdate('%A, %e %B %Y') }}. {% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'Updated on'|i18n }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
                 </footer>
 
                 <div>
@@ -49,24 +49,24 @@
 
                 <dl class="meta  |  trailer--hero  |  gutters">
                     {% if model.procurementEndDate %}
-                    <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|t(locales) }}:</strong></dt>
+                    <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|i18n }}:</strong></dt>
                     <dd class="trailer--small">
                         {{ model.procurementEndDate|tdate('%e %B %Y') }} {{ model.procurementEndDisplay|t(locales) }}
                     </dd>
                     {% endif %}
                     {% if model.procurementType %}
-                        <dt><strong>{{ labels.procurementType|default('type of contract')|t(locales) }}:</strong></dt>
+                        <dt><strong>{{ labels.procurementType|default('type of contract')|i18n }}:</strong></dt>
                         <dd class="trailer--small">{{ model.procurementType|t(locales) }}</dd>
                     {% endif %}
                     {% if model.link.organization.sourceOrganization|length > 0 %}
-                        <dt><strong>{{ 'Location'|t(locales) }}:</strong></dt>
+                        <dt><strong>{{ 'Location'|i18n }}:</strong></dt>
                         <dd class="trailer--small">{{ model.link.organization.sourceOrganization|first.location.address.addressLocality ~ ', ' ~ model.link.organization.sourceOrganization|first.location.address.addressCountry }}</dd>
                     {% endif %}
                 </dl>
 
                 {% if model.link.mediaObject|findType('file')|length > 0 %}
                     <section class="trailer trailer-inside--small  |  gutters">
-                        <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h2>
+                        <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|i18n }}</h2>
 
                         {% for file in model.link.mediaObject|findType('file') %}
                             {% include 'partials/download.html.twig' with {file: file} %}

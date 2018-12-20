@@ -26,7 +26,7 @@
 
     {% if model.link.mediaObject|findType('file')|length > 0 %}
         <aside class="leader-inside  |  divider divider--top  |  gutters-outside">
-            <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|t(locales) }}</h2>
+            <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|i18n }}</h2>
 
             {% for file in model.link.mediaObject|findType('file') %}
                 {% include 'partials/download.html.twig' with {file: file} %}

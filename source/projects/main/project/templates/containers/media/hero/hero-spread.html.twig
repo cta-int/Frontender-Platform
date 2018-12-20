@@ -20,7 +20,7 @@
                     <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
                 {% endif %}
                 {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
-                    {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
+                    {{ 'in'|i18n }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}
                 {% endif %}
             </p>
             <a class="gutters  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>

@@ -2,7 +2,7 @@
 
 <section class="panel  |  wing--right" id="downloads">
   <h2 class="title">
-    <a class="panel__trigger  |  gutters  |  is-heir" href="#downloads">{{ 'Downloads'|t(locales) }}</a>
+    <a class="panel__trigger  |  gutters  |  is-heir" href="#downloads">{{ 'Downloads'|i18n }}</a>
   </h2>
   <div class="panel__body">
     <ul class="grid grid--musketeers  |  reset">
@@ -15,7 +15,7 @@
 				</div>
 				<div class="media__body  |  gutters">
 					<a class="block-link  |  download-size" href="{{ download.metadata.url }}" target="_blank">{{ download.name|default(download.description) }}</a>
-					<p class="download-size">{{ 'format'|t(locales) }} {{ download.contentType|extension }}, {{ download.metadata.url|getFileSize }}</p>
+					<p class="download-size">{{ 'format'|i18n }} {{ download.contentType|extension }}, {{ download.metadata.url|getFileSize }}</p>
 				</div>
 			</div>
 	      </li>

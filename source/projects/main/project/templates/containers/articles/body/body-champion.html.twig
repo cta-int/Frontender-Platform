@@ -16,12 +16,12 @@
                 <div class="social__share  |  trailer  |  gutters">
                     {{ share.bar_article(model, true) }}
                 </div>
-            
+
                 <footer class="gutters  |  trailer--hero">
                     {# todo link to view with all similar article.articleTypes #}
                     {% if model.datePublished %}
                         <p class="meta" itemprop="datePublished">
-                            {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }} 
+                            {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }}
                             <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|i18n(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
                     {% endif %}
                     {% if model.link.person.author %}

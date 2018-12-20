@@ -304,3 +304,27 @@ disclaimer_text: Ce document est produit avec le soutien financier de l’Union 
 error_intro: We can't seem to find what you are looking for.
 error_description: You may have typed the address incorrectly or you may have used an outdated link.
 error_escape: Please go back to the <a href="/">home page</a> or use the above navigation bar to choose a new direction.
+
+
+# Article content category mappings
+content_type_category_background: Contexte
+content_type_category_communique: Communiqués
+content_type_category_blog: Blog
+content_type_category_corporate_news: Brèves
+content_type_category_data_report: Data
+content_type_category_impact: Histoires d'impact
+content_type_category_interview: Entretiens
+content_type_category_opinion: Opinions
+content_type_category_review: Critiques
+content_type_category_syndicated: CTA dans la presse
+content_type_category_speech: Discours
+content_type_category_technical_scientific: Articles techniques et scientifiques
+content_type_category_tender_award_notice: Avis d'attribution de marchés
+content_type_category_internship: Stages
+content_type_category_call_for_external_expert: Appel à manifestations d'intérêt d’experts
+content_type_category_call_for_tender: Appel d'offres
+content_type_category_issue: Numéro
+content_type_category_vacancy: Poste vacant
+content_type_category_call_for_proposal: Appel à propositions
+content_type_category_partnership: Partenariat
+content_type_category_tender_highlight: Autre appel d’offres

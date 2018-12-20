@@ -6,9 +6,9 @@
     <section class="trailer--giant">
         <h2 class="title title--section  |  fld--label  |  leader  |  trailer  |  gutters">
             {% if model.eventTotal == 1 %}
-                {{ model.eventTotal }} {{ 'Result in projects and events'|t(locales) }}
+                {{ model.eventTotal }} {{ 'Result in projects and events'|i18n }}
             {% else %}
-                {{ model.eventTotal }} {{ 'Results in projects and events'|t(locales) }}
+                {{ model.eventTotal }} {{ 'Results in projects and events'|i18n }}
             {% endif %}
         </h2>
         {% if model.eventTotal > 0 %}
@@ -17,9 +17,9 @@
             </div>
         {% else %}
             {% if query.q %}
-                <p class="leader trailer gutters">{{ 'No events or projects found for'|t(locales) }} &ldquo;{{ query.q }}&rdquo;</p>
+                <p class="leader trailer gutters">{{ 'No events or projects found for'|i18n }} &ldquo;{{ query.q }}&rdquo;</p>
             {% else %}
-                <p class="leader trailer gutters">{{ 'No events or projects found'|t(locales) }}</p>
+                <p class="leader trailer gutters">{{ 'No events or projects found'|i18n }}</p>
             {% endif %}
         {% endif %}
     </section>

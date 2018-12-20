@@ -36,7 +36,7 @@
         {% if model.link.mediaObject|findType('file')|length > 0 %}
             <footer class="gutters">
                 <div class="leader--hero leader-inside divider divider--top">
-                    <h3 class="title trailer">{{ 'Downloads'|t(locales) }}</h3>
+                    <h3 class="title trailer">{{ 'Downloads'|i18n }}</h3>
 
                     {% for file in model.link.mediaObject|findType('file') %}
                         {% include 'partials/download.html.twig' with {file: file} %}
@@ -50,7 +50,7 @@
         {% if model.link.mediaObject|findType('image')|length %}
             <div class="wings trailer-inside--hero leader-inside--hero">
                 <h1 class="title title--section gutters">
-                    {{ 'Related media'|t(locales) }}
+                    {{ 'Related media'|i18n }}
                 </h1>
 
                 <div class="grid grid--even">

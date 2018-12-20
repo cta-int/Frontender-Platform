@@ -4,16 +4,16 @@
 <form{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} method="post" action="https://ctaint.wufoo.eu/forms/m7p5x7/#public">
     <input type="hidden" name="idstamp" value="Ppma7o+2LxA/UkYd/IPXFAGOYgNad6m5vGqo2v42qFo=">
     <input type="hidden" name="Field10" value="{{ locale }}">
-    <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|t(locales) }}</h2>
+    <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|i18n }}</h2>
     <fieldset class="leader trailer">
-        <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|t(locales) }}</label>
+        <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|i18n }}</label>
         <input class="fld" type="text" id="firstname" name="Field6">
-        <label class="fld-label title title--meta" for="lastname">{{ 'Lastname'|t(locales) }}</label>
+        <label class="fld-label title title--meta" for="lastname">{{ 'Lastname'|i18n }}</label>
         <input class="fld" type="text" id="lastname" name="Field7">
-        <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|t(locales) }}</label>
+        <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|i18n }}</label>
         <input class="fld" type="text" name="Field1" id="email">
     </fieldset>
-    <button class="button button--stretch">{{ labels.button|default('Subscribe'|t(locales))|t(locales) }}</button>
+    <button class="button button--stretch">{{ labels.button|default('Subscribe'|i18n)|t(locales) }}</button>
 
     <ul class="share-list reset list--float  leader  leader">
         <li class="share-list__item divider  divider--left">
@@ -23,7 +23,7 @@
                 target="_blank">
                 <span data-icon="facebook" class="icon icon--facebook">
                     <span>
-                        <span class="is-narrative">{{ 'Follow us'|t(locales) }}</span>
+                        <span class="is-narrative">{{ 'follow us'|i18n }}</span>
                     </span>
                 </span>
             </a>
@@ -35,7 +35,7 @@
                 target="_blank">
                 <span data-icon="twitter" class="icon icon--twitter">
                     <span>
-                        <span class="is-narrative">{{ 'Follow us'|t(locales) }}</span>
+                        <span class="is-narrative">{{ 'follow us'|i18n }}</span>
                     </span>
                 </span>
             </a>
@@ -47,7 +47,7 @@
                 target="_blank">
                 <span data-icon="linkedin" class="icon icon--linkedin">
                     <span>
-                        <span class="is-narrative">{{ 'Follow us'|t(locales) }}</span>
+                        <span class="is-narrative">{{ 'follow us'|i18n }}</span>
                     </span>
                 </span>
             </a>
@@ -59,7 +59,7 @@
                 target="_blank">
                 <span data-icon="instagram" class="icon icon--instagram">
                     <span>
-                        <span class="is-narrative">{{ 'Follow us'|t(locales) }}</span>
+                        <span class="is-narrative">{{ 'follow us'|i18n }}</span>
                     </span>
                 </span>
             </a>
@@ -71,7 +71,7 @@
                 target="_blank">
                 <span data-icon="youtube" class="icon icon--youtube">
                     <span>
-                        <span class="is-narrative">{{ 'Follow us'|t(locales) }}</span>
+                        <span class="is-narrative">{{ 'follow us'|i18n }}</span>
                     </span>
                 </span>
             </a>

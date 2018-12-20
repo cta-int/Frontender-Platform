@@ -37,7 +37,7 @@
     <div class="site-navigation__nav">
         <ul class="list--inline  |  menu  |  site-navigation__menu">
             {% if main_menu.brand|default('cta.html.twig') is same as('_cta.html.twig_') %}
-                <li><a class="menu__item {{ is_active(path_for('home', {locale: locale}), 'is-current') }}" href="{{ route() }}">{{ 'Home'|t(locales) }}</a></li>
+                <li><a class="menu__item {{ is_active(path_for('home', {locale: locale}), 'is-current') }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
             {% endif %}
             {% for link in main_menu.links %}
                 {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
@@ -52,7 +52,7 @@
 					    </a>
                 {% endif %}
                 <label class="is-narrative" for="site-search">Search</label>
-                <input class="site-search__input" id="site-search" name="q" value="{{ query.q }}" placeholder="{{ 'Search CTA'|t(locales) }} &hellip;" type="text" />
+                <input class="site-search__input" id="site-search" name="q" value="{{ query.q }}" placeholder="{{ 'Search CTA'|i18n }} &hellip;" type="text" />
                 <button class="is-narrative" type="submit">Search</button>
             </form>
             <ul class="list--inline  |  menu menu--secondary  |  site-navigation__menu">
@@ -67,7 +67,7 @@
 
 <template data-template="demoted-menu">
     <li class="site-navigation__demoted  |  is-inactive" id="demoted-menu">
-        <a href="#demoted-menu" class="menu__item" data-toggle=".site-navigation__demoted">{{ 'More'|t(locales) }}&nbsp;<span class="icon icon--chevron-down"></span></a>
+        <a href="#demoted-menu" class="menu__item" data-toggle=".site-navigation__demoted">{{ 'More'|i18n }}&nbsp;<span class="icon icon--chevron-down"></span></a>
         <ul></ul>
     </li>
 </template>
