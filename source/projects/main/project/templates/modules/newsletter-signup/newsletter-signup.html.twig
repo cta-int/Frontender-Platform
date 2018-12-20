@@ -4,7 +4,7 @@
 <form{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} method="post" action="https://ctaint.wufoo.eu/forms/m7p5x7/#public">
     <input type="hidden" name="idstamp" value="Ppma7o+2LxA/UkYd/IPXFAGOYgNad6m5vGqo2v42qFo=">
     <input type="hidden" name="Field10" value="{{ locale }}">
-    <h2 class="title">{{ labels.title|default('Subscribe to the CTA Newsletter')|i18n }}</h2>
+    <h2 class="title">{{ labels.title|t(locales)|default('Subscribe to the CTA Newsletter')|i18n }}</h2>
     <fieldset class="leader trailer">
         <label class="fld-label title title--meta" for="firstname">{{ 'Firstname'|i18n }}</label>
         <input class="fld" type="text" id="firstname" name="Field6">
@@ -13,7 +13,7 @@
         <label class="fld-label title title--meta" for="email">{{ 'E-mail address'|i18n }}</label>
         <input class="fld" type="text" name="Field1" id="email">
     </fieldset>
-    <button class="button button--stretch">{{ labels.button|default('Subscribe'|i18n)|t(locales) }}</button>
+    <button class="button button--stretch">{{ labels.button|t(locales)|default('Subscribe'|i18n)|t(locales) }}</button>
 
     <ul class="share-list reset list--float  leader  leader">
         <li class="share-list__item divider  divider--left">
