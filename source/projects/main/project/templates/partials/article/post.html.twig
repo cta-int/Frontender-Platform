@@ -25,7 +25,7 @@
         {% endif %}
 
         {% if config.show_type|default(1) %}
-            <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|t }}</a>
+            <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
         {% endif %}
 
         <h3 class="heading  |  anchor--reset">
