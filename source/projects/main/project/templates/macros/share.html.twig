@@ -20,7 +20,7 @@
 
 {% macro bar_article(article, light, context = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-    
+
     {% import _self as share %}
 
     {{ share.bar({
@@ -85,7 +85,7 @@
 
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
-    
+
     {{ share.bar({
         url: url,
         light: light|default(false),
@@ -115,7 +115,7 @@
             {% if config.ictupdate.number %}
                 <li class="share-list__item divider  divider--left">
                     <a class="label {% if config.light %} share--whisper{% endif %}" href="{{ route({'page': 'ictupdate/issue', 'id': config.ictupdate.issue}) }}">
-                        {{ "issue'|i18n }} {{ config.ictupdate.number }}
+                        {{ 'Issue'|i18n }} {{ config.ictupdate.number }}
                     </a>
                 </li>
             {% endif %}

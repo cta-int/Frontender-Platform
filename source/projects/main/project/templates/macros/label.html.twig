@@ -31,10 +31,10 @@
             {# if the publication has a rout, wrap in a, else wrap in span #}
             {% if label._id|publication_route %}
 
-                {% set publication_titles = publication_titles|merge(['<a href="%s">%s</a>'|format(label._id|publication_route, label.name|t(locales)|replace({('Publication'|t(locales))~'/':'', ("issue'|i18n)~'/':''}))]) %}
+                {% set publication_titles = publication_titles|merge(['<a href="%s">%s</a>'|format(label._id|publication_route, label.name|t(locales)|replace({('Publication'|t(locales))~'/':'', ('Issue'|i18n)~'/':''}))]) %}
             {% else %}
 
-                {% set publication_titles = publication_titles|merge(['<span>%s</span>'|format(label.name|t(locales)|replace({('Publication'|t(locales))~'/':'', ("issue'|i18n)~'/':''}))]) %}
+                {% set publication_titles = publication_titles|merge(['<span>%s</span>'|format(label.name|t(locales)|replace({('Publication'|t(locales))~'/':'', ('Issue'|i18n)~'/':''}))]) %}
             {% endif %}
         {% endfor %}
     {% endif %}
