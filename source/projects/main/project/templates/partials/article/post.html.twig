@@ -16,17 +16,20 @@
         </div>
     {% endif %}
     <div class="post__content  |  leader-inside">
-        {% if config.show_publication_date|default(1) %}
-            {{ date.article(article.datePublished) }}
-        {% endif %}
 
-        {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-            <span class="meta">{{ 'in'|i18n }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}</span>
-        {% endif %}
+        <p class="post__meta  |  trailer--tiny">
+            {% if config.show_publication_date|default(1) %}
+                {{ date.article(article.datePublished) }}
+            {% endif %}
 
-        {% if config.show_type|default(1) %}
-            <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
-        {% endif %}
+            {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
+                <span class="meta">{{ 'in'|i18n }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}</span>
+            {% endif %}
+
+            {% if config.show_type|default(1) %}
+                <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
+            {% endif %}
+        </p>
 
         <h3 class="heading  |  anchor--reset">
             <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
