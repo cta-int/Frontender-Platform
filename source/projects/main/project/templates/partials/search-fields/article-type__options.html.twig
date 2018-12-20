@@ -1,21 +1,21 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<option {% if config.selected == 'article.background' or query.type == 'article.background' %}selected="selected" {% endif %} value="article.background">{{ 'Background stories'|i18n }}</option>
-<option {% if config.selected == 'article.blog' or query.type == 'article.blog' %}selected="selected" {% endif %} value="article.blog">{{ 'Blog articles'|i18n }}</option>
-<option {% if config.selected == 'article.communique' or query.type == 'article.communique' %}selected="selected" {% endif %} value="article.communique">{{ 'Communiqués'|i18n }}</option>
-<option {% if config.selected == 'article.corporate_news' or query.type == 'article.corporate_news' %}selected="selected" {% endif %} value="article.corporate_news">{{ 'News'|i18n }}</option>
-<option {% if config.selected == 'article.data_report' or query.type == 'article.data_report' %}selected="selected" {% endif %} value="article.data_report">{{ 'Data reports'|i18n }}</option>
-<option {% if config.selected == 'article.impact' or query.type == 'article.impact' %}selected="selected" {% endif %} value="article.impact">{{ 'Impact stories'|i18n }}</option>
-<option {% if config.selected == 'article.interview' or query.type == 'article.interview' %}selected="selected" {% endif %} value="article.interview">{{ 'Interviews'|i18n }}</option>
-<option {% if config.selected == 'article.opinion' or query.type == 'article.opinion' %}selected="selected" {% endif %} value="article.opinion">{{ 'Opinion articles'|i18n }}</option>
-<option {% if config.selected == 'article.review' or query.type == 'article.review' %}selected="selected" {% endif %} value="article.review">{{ 'Reviews'|i18n }}</option>
-<option {% if config.selected == 'article.syndicated' or query.type == 'article.syndicated' %}selected="selected" {% endif %} value="article.syndicated">{{ 'Syndicated news'|i18n }}</option>
-<option {% if config.selected == 'article.technical_scientific' or query.type == 'article.technical_scientific' %}selected="selected" {% endif %} value="article.technical_scientific">{{ 'Technical and scientific articles'|i18n }}</option>
-<option {% if config.selected == 'article.tender_award_notice' or query.type == 'article.tender_award_notice' %}selected="selected" {% endif %} value="article.tender_award_notice">{{ 'Tender award notices'|i18n }}</option>
-<option {% if config.selected == 'article.tender_highlight' or query.type == 'article.tender_highlight' %}selected="selected" {% endif %} value="article.tender_highlight">{{ 'Tender highlights'|i18n }}</option>
-<option {% if config.selected == 'article.vacancy' or query.type == 'article.vacancy' %}selected="selected" {% endif %} value="article.vacancy">{{ 'Vacancies'|i18n }}</option>
-<option {% if config.selected == 'article.internship' or query.type == 'article.internship' %}selected="selected" {% endif %} value="article.internship">{{ 'Internships'|i18n }}</option>
-<option {% if config.selected == 'article.call_for_external_expert' or query.type == 'article.call_for_external_expert' %}selected="selected" {% endif %} value="article.call_for_external_expert">{{ 'Calls for external experts'|i18n }}</option>
-<option {% if config.selected == 'article.call_for_tender' or query.type == 'article.call_for_tender' %}selected="selected" {% endif %} value="article.call_for_tender">{{ 'Calls for tenders'|i18n }}</option>
-<option {% if config.selected == 'article.call_for_proposal' or query.type == 'article.call_for_proposal' %}selected="selected" {% endif %} value="article.call_for_proposal">{{ 'Calls for proposals'|i18n }}</option>
-<option {% if config.selected == 'article.partnership' or query.type == 'article.partnership' %}selected="selected" {% endif %} value="article.partnership">{{ 'Partnership'|i18n }}</option>
+<option {% if config.selected == 'article.background' or query.type == 'article.background' %}selected="selected" {% endif %} value="article.background">{{ 'content_type_category_background'|i18n }}</option>
+<option {% if config.selected == 'article.blog' or query.type == 'article.blog' %}selected="selected" {% endif %} value="article.blog">{{ 'content_type_category_blog'|i18n }}</option>
+<option {% if config.selected == 'article.communique' or query.type == 'article.communique' %}selected="selected" {% endif %} value="article.communique">{{ 'content_type_category_communique'|i18n }}</option>
+<option {% if config.selected == 'article.corporate_news' or query.type == 'article.corporate_news' %}selected="selected" {% endif %} value="article.corporate_news">{{ 'content_type_category_corporate_news'|i18n }}</option>
+<option {% if config.selected == 'article.data_report' or query.type == 'article.data_report' %}selected="selected" {% endif %} value="article.data_report">{{ 'content_type_category_data_report'|i18n }}</option>
+<option {% if config.selected == 'article.impact' or query.type == 'article.impact' %}selected="selected" {% endif %} value="article.impact">{{ 'content_type_category_impact'|i18n }}</option>
+<option {% if config.selected == 'article.interview' or query.type == 'article.interview' %}selected="selected" {% endif %} value="article.interview">{{ 'content_type_category_interview'|i18n }}</option>
+<option {% if config.selected == 'article.opinion' or query.type == 'article.opinion' %}selected="selected" {% endif %} value="article.opinion">{{ 'content_type_category_opinion'|i18n }}</option>
+<option {% if config.selected == 'article.review' or query.type == 'article.review' %}selected="selected" {% endif %} value="article.review">{{ 'content_type_category_review'|i18n }}</option>
+<option {% if config.selected == 'article.syndicated' or query.type == 'article.syndicated' %}selected="selected" {% endif %} value="article.syndicated">{{ 'content_type_category_syndicated'|i18n }}</option>
+<option {% if config.selected == 'article.technical_scientific' or query.type == 'article.technical_scientific' %}selected="selected" {% endif %} value="article.technical_scientific">{{ 'content_type_category_technical_scientific'|i18n }}</option>
+<option {% if config.selected == 'article.tender_award_notice' or query.type == 'article.tender_award_notice' %}selected="selected" {% endif %} value="article.tender_award_notice">{{ 'content_type_category_tender_award_notice'|i18n }}</option>
+<option {% if config.selected == 'article.tender_highlight' or query.type == 'article.tender_highlight' %}selected="selected" {% endif %} value="article.tender_highlight">{{ 'content_type_category_tender_highlight'|i18n }}</option>
+<option {% if config.selected == 'article.vacancy' or query.type == 'article.vacancy' %}selected="selected" {% endif %} value="article.vacancy">{{ 'content_type_category_vacancy'|i18n }}</option>
+<option {% if config.selected == 'article.internship' or query.type == 'article.internship' %}selected="selected" {% endif %} value="article.internship">{{ 'content_type_category_internship'|i18n }}</option>
+<option {% if config.selected == 'article.call_for_external_expert' or query.type == 'article.call_for_external_expert' %}selected="selected" {% endif %} value="article.call_for_external_expert">{{ 'content_type_category_call_for_external_expert'|i18n }}</option>
+<option {% if config.selected == 'article.call_for_tender' or query.type == 'article.call_for_tender' %}selected="selected" {% endif %} value="article.call_for_tender">{{ 'content_type_category_call_for_tender'|i18n }}</option>
+<option {% if config.selected == 'article.call_for_proposal' or query.type == 'article.call_for_proposal' %}selected="selected" {% endif %} value="article.call_for_proposal">{{ 'content_type_category_call_for_proposal'|i18n }}</option>
+<option {% if config.selected == 'article.partnership' or query.type == 'article.partnership' %}selected="selected" {% endif %} value="article.partnership">{{ 'content_type_category_partnership'|i18n }}</option>
