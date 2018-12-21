@@ -31,7 +31,9 @@
                     {% endif %}
                 </footer>
 
-                <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ label.theme_to_string(model.theme) }}</strong></p>
+                {% if model.theme %}
+                    <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ label.theme_to_string(model.theme) }}</strong></p>
+                {% endif %}
 
                 <div class="post-anchor  |  clear">
                     {% if model.about %}
