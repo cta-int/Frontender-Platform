@@ -33,7 +33,7 @@
                     {% endif %}
 
                     {% if config.show_publication|default(1) %}
-                        {{ label.publications( model|first.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ') }}
+                        {{ label.publications( model|first.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ') }}
                     {% endif %}
 
                     {% if show_channel|default(0) %}
@@ -62,7 +62,7 @@
                     {% endif %}
 
                     {% if show_read_more|default(1) %}
-                    <a class="read-more" href="{{ route({'page': model|first.path, id: model|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
+                    <a class="read-more" href="{{ route({'page': model|first.path, id: model|first._id}) }}">{{ 'Read more'|i18n }}</a>
                     {% endif %}
 
                 </div>

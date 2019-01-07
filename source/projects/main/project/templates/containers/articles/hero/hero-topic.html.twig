@@ -12,9 +12,9 @@
 	      	</h1>
 		      <p class="leader  |  trailer  |  gutters">{{ model.about|t(locales) }}</p>
 		      {% if show_read_more|default(1) %}
-		       <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|t(locales) }}</a>
+		       <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
 	        {% endif %}
 		    </div>
-		    <em class="headline__tax  |  wings"><span class="label  |  gutters">{{ (labels.label|t(locales) is not empty) ? labels.label|t(locales) : model.articleType|t(locales) }}</span></em>
+		    <em class="headline__tax  |  wings"><span class="label  |  gutters">{{ (labels.label|t(locales) is not empty) ? labels.label|t(locales) : model.articleType|i18n }}</span></em>
     </figcaption>
 </{{ config.container_tag|default('figure') }}>

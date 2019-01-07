@@ -1,5 +1,14 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% block scripts %}
+    <script>
+        jQuery(function($) {
+            $('.panel-group').tabs();
+        });
+    </script>
+{% endblock %}
+
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if labels.title %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>

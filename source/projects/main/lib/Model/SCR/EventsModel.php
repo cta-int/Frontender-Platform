@@ -177,7 +177,20 @@ class EventsModel extends ScrModel
             'limit' => 4,
             'label' => [$_label['_id']]
         ]);
-        return $model->fetch();
+        $updates = $model->fetch();
+
+        usort($updates, function ($a, $b) {
+            $aDate = strtotime($a['datePublished']);
+            $bDate = strtotime($b['datePublished']);
+
+            if ($aDate === $bDate) {
+                return 0;
+            }
+
+            return $aDate < $bDate ? 1 : -1;
+        });
+
+        return $updates;
     }
 
     public function getPropertyRelated()

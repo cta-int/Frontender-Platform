@@ -3,9 +3,9 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__content-type  |  ctx-item__date')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="fld">
-        <label for="ctx-item__article" class="fld-label">{{ labels.field_label|t(locales)|default('Type'|t(locales)) }}</label>
+        <label for="ctx-item__article" class="fld-label">{{ labels.field_label|t(locales)|default('Type'|i18n) }}</label>
         <select id="ctx-item__article" name="type" class="placeholder-visible">
-            <option value="">{{ 'All'|t(locales) }}</option>
+            <option value="">{{ 'All'|i18n }}</option>
             {% include 'partials/search-fields/article-type__options.html.twig'%}
         </select>
     </div>

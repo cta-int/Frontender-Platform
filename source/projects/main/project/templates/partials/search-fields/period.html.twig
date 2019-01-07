@@ -5,12 +5,12 @@
     <div class="fld">
         <label for="ctx-item__date" class="fld-label">{{ labels.field_label|t(locales)|default('Period'|t(locales)) }}</label>
         <select id="ctx-item__date" name="time" class="placeholder-visible">
-            <option value="">{{ 'All'|t(locales) }}</option>
-            <option value="-1 hour" {% if query.time == '-1 hour' %}selected="selected" {% endif %}>{{ 'Last hour'|t(locales) }}</option>
-            <option value="-24 hours" {% if query.time == '-24 hours' %}selected="selected" {% endif %}>{{ 'Last 24 hours'|t(locales) }}</option>
-            <option value="-1 week" {% if query.time == '-1 week' %}selected="selected" {% endif %}>{{ 'Last week'|t(locales) }}</option>
-            <option value="-1 month" {% if query.time == '-1 month' %}selected="selected" {% endif %}>{{ 'Last month'|t(locales) }}</option>
-            <option value="-1 year" {% if query.time == '-1 year' %}selected="selected" {% endif %}>{{ 'Last year'|t(locales) }}</option>
+            <option value="">{{ 'All'|i18n }}</option>
+            <option value="-1 hour" {% if query.time == '-1 hour' %}selected="selected" {% endif %}>{{ 'Last hour'|i18n }}</option>
+            <option value="-24 hours" {% if query.time == '-24 hours' %}selected="selected" {% endif %}>{{ 'Last 24 hours'|i18n }}</option>
+            <option value="-1 week" {% if query.time == '-1 week' %}selected="selected" {% endif %}>{{ 'Last week'|i18n }}</option>
+            <option value="-1 month" {% if query.time == '-1 month' %}selected="selected" {% endif %}>{{ 'Last month'|i18n }}</option>
+            <option value="-1 year" {% if query.time == '-1 year' %}selected="selected" {% endif %}>{{ 'Last year'|i18n }}</option>
         </select>
     </div>
 </{{ config.container_tag|default('div') }}>

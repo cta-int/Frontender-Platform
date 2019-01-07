@@ -5,65 +5,33 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set class = helper.class(config)|trim %}
 
+
 <header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class]|join('  |  ') }}">
     <div class="ie9-hero">
         {% if model.link.mediaObject|lead %}
             {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
         {% endif %}
     </div>
-    <div class="article-headline  |  layout layout--reverse">
-        <div class="layout  layout--align-middle  |  layout__cell layout__cell--main">
-            <div class="layout__cell layout__cell--main  |  gutters">
-                <div class="leader  |  trailer">
-                    <h1 class="article-headline__title  |  heading heading--hero">
-                        {{ model.headline }}
-                    </h1>
-                </div>
-                {% if model.alternativeHeadline %}
-                    <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
-                {% endif %}
-            </div>
-            <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
-                {% if model.link.mediaObject|lead %}
-                    {% if model.link.mediaObject|lead.about %}
-                        <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about }}</p>
-                    {% endif %}
-                    {% if model.link.mediaObject|lead.credit %}
-                        <p class="credit  |  gutters  |  trailer">{{ model.link.mediaObject|lead.credit }}</p>
-                    {% endif %}
-                {% else %}
-                    <span class="is-silent">&nbsp;</span>
-                {% endif %}
-            </div>
+    <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+        <div class="layout__cell layout__cell--main  |  wings">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
+                {{ model.headline }}
+            </h1>
+            {% if model.alternativeHeadline %}
+                <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+            {% endif %}
+            <p class="title title--section  |  gutters"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
         </div>
-        <div class="layout__cell layout__cell--aside  |  gutters">
-            {% if model.issue | length > 0 %}
-                <div class="wings">
-                    <div class="post-header__about  |  gutters">
-                        {% set issue_nr = null %}
-                        {% for label in model.issue.link.label|filterArray('type', 'issue') %}
-                            {% set issue_nr = label.name|issueNumber %}
-                        {% endfor %}
-                        <a class="anchor--shy anchor--reset" href="{{ route({'page': model.path, 'slug': model.issue.headline|t(locales)|slugify, 'id': model.issue._id}) }}">
-                            <figure class="issue issue--s  |  trailer">
-                                <img class="issue__cover" alt="{{ model.issue.headline|t(locales) }}" src="{{ model.issue.link.mediaObject|lead.metadata.url }}">
-                                <figcaption class="issue-label issue-label--offset-top issue-label--s media leader-inside--tiny">
-                                    <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
-                                    <div class="issue-label__caption">
-                                        <p>
-                                            <strong>{{ model.issue.headline|t(locales) }}</strong><br>
-                                            <span>
-                                                {{ 'Issue'|t(locales) }}
-                                                {{ issue_nr }}<br>
-                                                {{ model.issue.datePublished|tdate('%e %B %Y') }}
-                                            </span>
-                                        </p>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                </div>
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+            {% if model.link.mediaObject|lead %}
+                {% if model.link.mediaObject|lead.about %}
+                    <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about }}</p>
+                {% endif %}
+                {% if model.link.mediaObject|lead.credit %}
+                    <p class="credit  |  gutters  |  trailer">{{ model.link.mediaObject|lead.credit }}</p>
+                {% endif %}
+            {% else %}
+                <span class="is-silent">&nbsp;</span>
             {% endif %}
         </div>
     </div>
