@@ -45,6 +45,12 @@
                 "en": "COP 24"
             },
             "value": "cop24.html.twig"
+        },
+        {
+            "label": {
+                "en": "CWA2018"
+            },
+            "value": "CWA2018.html.twig"
         }
     ],
     "control": "core/list"
