@@ -158,6 +158,10 @@ class EventsModel extends ScrModel
     {
         $_label = $this->getLabels('programme', true);
 
+        if (!count($_label)) {
+            return false;
+        }
+
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.issue',
@@ -170,6 +174,10 @@ class EventsModel extends ScrModel
     public function getPropertyUpdates()
     {
         $_label = $this->getLabels('programme', true);
+
+        if (!count($_label)) {
+            return false;
+        }
 
         $model = new SearchModel($this->container);
         $model->setState([
