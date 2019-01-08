@@ -158,7 +158,7 @@ class EventsModel extends ScrModel
     {
         $_label = $this->getLabels('programme', true);
 
-        if (!count($_label)) {
+        if (!$_label) {
             return false;
         }
 
@@ -175,7 +175,7 @@ class EventsModel extends ScrModel
     {
         $_label = $this->getLabels('programme', true);
 
-        if (!count($_label)) {
+        if (!$_label) {
             return false;
         }
 
@@ -278,7 +278,11 @@ class EventsModel extends ScrModel
 
         if ($first) {
             // $_labels = array_slice($_labels, 0, 1);
-            $_labels = array_shift($_labels);
+            if (count($_labels)) {
+                $_labels = array_shift($_labels);
+            }
+
+            return false;
         }
 
         return $_labels;
@@ -292,6 +296,10 @@ class EventsModel extends ScrModel
     public function getPropertyTheme()
     {
         $_label = $this->getLabels('strategy', true);
+
+        if (!$_label) {
+            return false;
+        }
 
         $_theme = [
             'selector' => '',
