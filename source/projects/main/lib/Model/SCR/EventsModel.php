@@ -279,7 +279,7 @@ class EventsModel extends ScrModel
         if ($first) {
             // $_labels = array_slice($_labels, 0, 1);
             if (count($_labels)) {
-                $_labels = array_shift($_labels);
+                return array_shift($_labels);
             }
 
             return false;
