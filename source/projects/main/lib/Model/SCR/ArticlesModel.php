@@ -112,6 +112,33 @@ class ArticlesModel extends ScrModel
 
                 return $this->cachedArticles;
             }
+
+            public function publicationArticles()
+            {
+                if (!$this->cachedPublicationArticles) {
+                    $labels = $this->article['link']['label'];
+                    $labels = array_filter($labels, function ($label) {
+                        return $label['type'] === 'publication';
+                    });
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => array_map(function ($label) {
+                            return $label['_id'];
+                        }, $labels),
+                        'limit' => $this->state->similar_limit,
+                        'language' => $this->state->language ?? 'en',
+                        'mustNot' => [[
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->article['_id']
+                        ]]
+                    ]);
+                    $this->cachedPublicationArticles = $articles->fetch();
+                }
+
+                return $this->cachedPublicationArticles;
+            }
         };
     }
 

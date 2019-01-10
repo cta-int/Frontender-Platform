@@ -1,0 +1,23 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+
+<{{ config.container_tag|default('div') }} class="{{[container_class]|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+<div class="grid grid--posts">
+
+    {% if event.similar.articles %}
+        {% for article in event.similar.articles|slice(0,4) %}
+            <div class="grid__cell  |  trailer  |  gutters">
+                {% include "partials/article/post.html.twig" %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if article.similar.publicationArticles %}
+        {% for article in article.similar.publicationArticles|slice(0,4) %}
+            <div class="grid__cell  |  trailer  |  gutters">
+                {% include "partials/article/post.html.twig" %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+</{{ config.container_tag|default('div') }}>
