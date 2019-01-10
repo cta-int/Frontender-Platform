@@ -1,0 +1,42 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/label.html.twig" as label %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+
+<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class]|join('  |  ') }}">
+    <div class="ie9-hero">
+        {% if model.link.mediaObject|lead %}
+            {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
+        {% endif %}
+    </div>
+    <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+        <div class="layout__cell layout__cell--main  |  wings">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
+                {{ model.headline }}
+            </h1>
+            {% if model.theme %}
+                <p class="article-headline__byline  |  meta  |  trailer  |  gutters"><strong class="reset">{{ label.theme_to_string(model.theme) }}</strong></p>
+            {% endif %}
+
+            {% if model.publicationLabel %}
+                <p class="title title--section  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+            {% if model.link.mediaObject|lead %}
+                {% if model.link.mediaObject|lead.about %}
+                    <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about }}</p>
+                {% endif %}
+                {% if model.link.mediaObject|lead.credit %}
+                    <p class="credit  |  gutters  |  trailer">{{ model.link.mediaObject|lead.credit }}</p>
+                {% endif %}
+            {% else %}
+                <span class="is-silent">&nbsp;</span>
+            {% endif %}
+        </div>
+    </div>
+</header>
