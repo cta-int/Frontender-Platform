@@ -18,7 +18,7 @@
                 {{ model.headline }}
             </h1>
             {% if model.alternativeHeadline %}
-                <p class="article-headline__byline  |  meta  |  trailer"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                <p class="article-headline__byline  |  meta  |  trailer  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
             <p class="title title--section  |  gutters"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
         </div>
