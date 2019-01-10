@@ -351,6 +351,15 @@ class ArticlesModel extends ScrModel
             $_config = $this->container['theme-color'];
         }
 
+        if ($this['publicationLabel']) {
+            $_oldLabel = $_label;
+            $_label = $this['publicationLabel'];
+
+            if (!isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+                $_label = $_oldLabel;
+            }
+        }
+
         if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
             $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
         }
