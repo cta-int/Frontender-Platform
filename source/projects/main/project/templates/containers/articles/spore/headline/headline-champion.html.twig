@@ -28,7 +28,7 @@
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about }}</p>
                 {% endif %}
                 {% if model.link.mediaObject|lead.credit %}
-                    <p class="credit  |  gutters  |  trailer">{{ model.link.mediaObject|lead.credit }}</p>
+                    <p class="credit  |  gutters  |  trailer">&copy; {{ model.link.mediaObject|lead.credit }}</p>
                 {% endif %}
             {% else %}
                 <span class="is-silent">&nbsp;</span>

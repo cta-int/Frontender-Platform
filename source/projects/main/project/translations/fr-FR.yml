@@ -307,11 +307,11 @@ error_escape: Please go back to the <a href="/">home page</a> or use the above n
 
 
 # Article content category mappings
-content_type_category_background: Contexte
-content_type_category_communique: Communiqués
+content_type_category_background: Analyse
+content_type_category_communique: Communiqué
 content_type_category_blog: Blog
 content_type_category_corporate_news: Brèves
-content_type_category_data_report: Data
+content_type_category_data_report: Reportage
 content_type_category_impact: Histoires d'impact
 content_type_category_interview: Entretiens
 content_type_category_opinion: Opinions

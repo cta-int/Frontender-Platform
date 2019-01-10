@@ -31,9 +31,6 @@
                 {% if model.datePublished|length > 0 %}
                     <time datetime="{{ model.datePublished }}">{{ model.datePublished|tdate('%e %B %Y', null) }}</time>
                 {% endif %}
-                {% if model.link.label|filterArray('type', 'publication')|length > 0 %}
-                    {{ 'in'|i18n }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}
-                {% endif %}
             </p>
             <div class="block-link">
                 <a class="interview__link  |  gutters  |  wing--right  |  meta--lowercase  |  is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ model.headline|t(locales) }}</a>
