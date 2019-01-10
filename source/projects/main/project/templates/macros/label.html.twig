@@ -40,3 +40,29 @@
     {% endif %}
     {{ publication_titles|humanList(' %s '|format('and'|i18n))|raw }}
 {% endmacro %}
+
+{# Extract a string of comma separated label titles and return it #}
+{% macro publication(labels, locale) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {% if labels|length %}
+        {% set publication = "" %}
+        {# reverse the array, we only want the first root publication as it appears in the SCR output #}
+        {% for label in labels|reverse %}
+
+            {% if label.name|replace({"Publication/": ""}) matches "{[\/]}" %}
+                {# do nothing, this is not a root publication #}
+            {% else %}
+
+                {% if label._id|publication_route %}
+                    {# the publication has a route, wrap in link #}
+                    <span>{{ label.name|replace({"Publication/": ""}) }}</span>
+                {% else %}
+                    <span>{{ label.name|replace({"Publication/": ""}) }}</span>
+                {% endif %}
+
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% endmacro %}
