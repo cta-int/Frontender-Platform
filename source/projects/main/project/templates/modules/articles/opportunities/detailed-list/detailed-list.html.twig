@@ -16,12 +16,19 @@
             <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
         {% endif %}
 
-        {% for article in opportunities %}
-            {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
-            {% if not loop.last %}
-                <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
-            {% endif %}
-        {% endfor %}
+        {% if labels.show_result %}
+            {% for article in opportunities %}
+                {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
+                {% if not loop.last %}
+                    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="trailer--hero  |  gutters">{{ labels.text_empty_result|default({
+                "en-GB": "There are no matching opportunities at this time",
+                "fr-FR": "Il n'y a pas d'opportunités correspondantes pour le moment."
+            })|t(locales) }}</p>
+        {% endif %}
 
     </div>
 
