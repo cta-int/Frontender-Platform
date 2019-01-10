@@ -18,10 +18,6 @@
             <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
                 {{ model.headline }}
             </h1>
-            {% if model.theme %}
-                <p class="article-headline__byline  |  meta  |  trailer  |  gutters"><strong class="reset">{{ label.theme_to_string(model.theme) }}</strong></p>
-            {% endif %}
-
             {% if model.publicationLabel %}
                 <p class="title title--section  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
             {% endif %}
