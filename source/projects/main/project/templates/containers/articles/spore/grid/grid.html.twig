@@ -12,8 +12,8 @@
         {% endfor %}
     {% endif %}
 
-    {% if article.similar.articles %}
-        {% for article in article.similar.articles|slice(0,4) %}
+    {% if article.similar.publicationArticles %}
+        {% for article in article.similar.publicationArticles|slice(0,4) %}
             <div class="grid__cell  |  trailer  |  gutters">
                 {% include "partials/article/post.html.twig" %}
             </div>

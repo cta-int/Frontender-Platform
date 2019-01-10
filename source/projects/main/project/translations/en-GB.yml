@@ -150,21 +150,21 @@ event_translator: Translators
 event_officer: Officers
 
 # Article content category mappings
-content_type_category_background: Background stories
-content_type_category_communique: Press releases
+content_type_category_background: Analysis
+content_type_category_communique: Press release
 content_type_category_blog: Blog
 content_type_category_corporate_news: News
-content_type_category_data_report: Data reports
-content_type_category_impact: Impact Stories
-content_type_category_interview: Interviews
-content_type_category_opinion: Opinion articles
-content_type_category_review: Reviews
-content_type_category_syndicated: CTA in the press
-content_type_category_speech: Speeches
-content_type_category_technical_scientific: Technical scientific articles
-content_type_category_tender_award_notice: Tender award notices
-content_type_category_internship: Internships
-content_type_category_call_for_external_expert: Call for external experts
+content_type_category_data_report: Field report
+content_type_category_impact: Impact story
+content_type_category_interview: Interview
+content_type_category_opinion: Opinion article
+content_type_category_review: Review
+content_type_category_syndicated: Press review
+content_type_category_speech: Archive
+content_type_category_technical_scientific: Technical scientific article
+content_type_category_tender_award_notice: Tender award notice
+content_type_category_internship: Internship
+content_type_category_call_for_external_expert: Call for external expert
 content_type_category_call_for_tender: Call for tender
 content_type_category_issue: Issue
 content_type_category_vacancy: Vacancy
@@ -172,21 +172,21 @@ content_type_category_call_for_proposal: Call for proposal
 content_type_category_partnership: Partnership
 content_type_category_tender_highlight: Tender highlight
 
-background: Background stories
-communique: Press releases
-blog: Blog articles
+background: Analysis
+communique: Press release
+blog: Blog
 corporate_news: News
-data_report: Data reports
-impact: Impact Stories
-interview: Interviews
-opinion: Opinion articles
-review: Reviews
-syndicated: Syndicated news
-speech: Speeches
-technical_scientific: Technical scientific articles
-tender_award_notice: Tender award notices
-internship: Internships
-call_for_external_expert: Call for external experts
+data_report: Field report
+impact: Impact story
+interview: Interview
+opinion: Opinion article
+review: Review
+syndicated: Press review
+speech: Archive
+technical_scientific: Technical scientific article
+tender_award_notice: Tender award notice
+internship: Internship
+call_for_external_expert: Call for external expert
 
 disclaimer_text: This document has been produced with the financial assistance of the European Union. The contents of this document are the sole responsibility of CTA and can under no circumstances be regarded as reflecting the position of the European Union.
 

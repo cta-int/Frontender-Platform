@@ -46,8 +46,8 @@
     {% import _self as label %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-    {% if label.publication_to_string|length %}
-        <span>{{ label.publication_to_string }}</span>
+    {% if label.publication_to_string(labels)|length %}
+        <span>{{ label.publication_to_string(labels) }}</span>
     {% endif %}
 {% endmacro %}
 

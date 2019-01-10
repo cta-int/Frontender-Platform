@@ -32,8 +32,12 @@
     });
 </script>
 
-<nav class="{{ ["site-navigation  |  wings", container_class]|join("  |  ") }} {{ settings.show_menu }}">
-    {% include 'partials/brand/' ~ main_menu.brand|default('cta.html.twig') %}
+<nav class="{{ ["site-navigation  |  wings", container_class]|join("  |  ") }} {{ settings.show_menu }}" {% if masthead_config.colour_theme_masthead %}style="background-color: #fdb735;"{% endif %}>
+    {% if masthead_config.colour_theme_masthead %}
+        {% include 'partials/brand/cta-blog.html.twig' %}
+    {% else %}
+        {% include 'partials/brand/' ~ main_menu.brand|default('cta.html.twig') %}
+    {% endif %}
     <div class="site-navigation__nav">
         <ul class="list--inline  |  menu  |  site-navigation__menu">
             {% if main_menu.brand|default('cta.html.twig') is same as('_cta.html.twig_') %}
