@@ -23,7 +23,7 @@
             {% endif %}
 
             {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-                <span class="meta">{{ 'in'|i18n }} {{ label.publications(article.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ')}}</span>
+                <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
             {% endif %}
 
             {% if config.show_type|default(1) %}

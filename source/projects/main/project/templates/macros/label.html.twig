@@ -40,3 +40,42 @@
     {% endif %}
     {{ publication_titles|humanList(' %s '|format('and'|i18n))|raw }}
 {% endmacro %}
+
+{# Extract the root publication label #}
+{% macro publication(labels, root = true, wrap = true, locale) %}
+    {% import _self as label %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {% if label.publication_to_string|length %}
+        <span>{{ label.publication_to_string }}</span>
+    {% endif %}
+{% endmacro %}
+
+{# Extract the root publication label #}
+{% macro publication_to_string(labels, root = true, locale) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {% if labels|length %}
+        {% set publication = "" %}
+        {# reverse the array, we only want the first root publication as it appears in the SCR output #}
+        {% for label in labels|reverse %}
+
+            {% if label.name|replace({"Publication/": ""}) matches "{[\/]}" %}
+                {% if root %}
+                    {# do nothing, this is not a root publication #}
+                {% else %}
+                    {% set publication = label.name|replace({"Publication/": ""}) %}
+                {% endif %}
+            {% else %}
+                {% if root %}
+                    {% set publication = label.name|replace({"Publication/": ""}) %}
+                {% else %}
+                    {# do nothing, this is a root publication #}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if publication != "" %}
+        {{ publication }}
+    {% endif %}
+{% endmacro %}
