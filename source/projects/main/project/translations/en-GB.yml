@@ -160,7 +160,7 @@ content_type_category_interview: Interview
 content_type_category_opinion: Opinion article
 content_type_category_review: Review
 content_type_category_syndicated: Press review
-content_type_category_speech: Speech
+content_type_category_speech: Archive
 content_type_category_technical_scientific: Technical scientific article
 content_type_category_tender_award_notice: Tender award notice
 content_type_category_internship: Internship
@@ -182,7 +182,7 @@ interview: Interview
 opinion: Opinion article
 review: Review
 syndicated: Press review
-speech: Speech
+speech: Archive
 technical_scientific: Technical scientific article
 tender_award_notice: Tender award notice
 internship: Internship
