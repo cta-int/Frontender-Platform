@@ -15,6 +15,8 @@
     &__image.is-inactive {
         transition: opacity ease 400;
         opacity: 0;
+        /* inactive images are still clickable without setting a negative z-index */
+        z-index: -1;
     }
 
     &__item {
