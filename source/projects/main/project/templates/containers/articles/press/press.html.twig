@@ -54,7 +54,9 @@
                         {% endfor %}
                     </aside>
                 {% endif %}
-                {% include 'modules/newsletter-signup/newsletter-signup.html.twig' with {labels: {title: 'Subscribe to the CTA Newsletter'|i18n}} %}
+                <div class="leader">
+                    {% include 'modules/newsletter-signup/newsletter-signup.html.twig' with {labels: {title: 'Subscribe to the CTA Newsletter'|i18n}} %}
+                </div>
             </div>
             <div class="{{ ['panel-group', 'layout__cell', 'wing--right', show_outer_wing ? 'wing--right']|join(' ') }}" data-tab-config="{&quot;children&quot;: &quot;{{ tab_config.children|default('.panel') }}&quot;, &quot;attribute&quot;: &quot;{{ tab_config.attribute|default('href') }}&quot;, &quot;allowMultiple&quot;: {{ tab_config.allow_multiple|default(0) }}, &quot;openFirst&quot;: {{ tab_config.open_first|default(1) }}, &quot;scrollTo&quot;: {{ tab_config.scroll_to|default(1) }}}">
                 {% for loopContainer in containers %}
