@@ -16,7 +16,7 @@
 
                 <footer class="gutters  |  trailer--hero">
                     {# todo link to view with all similar article.articleTypes #}
-                    <p class="meta">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.publication %}{{ 'in'|i18n }} <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.publication|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|i18n }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                    <p class="meta">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.publication %}{{ 'in'|i18n }} <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.publication|t(locales) }}</a>.{% endif %}</p>
                     <div class="media__content  |  body--whisper  |  leader--tiny">
                         {{ author.job(model.link.person.author) }}
                     </div>
