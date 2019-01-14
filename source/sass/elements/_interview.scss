@@ -11,9 +11,6 @@
             margin-bottom: 2em;
         }
     }
-    &__footer {
-        @include bleed();
-    }
     &__link {
         display: block;
     }
@@ -28,6 +25,9 @@
         &__footer {
             width: 8 / 12 * 100vw;
         }
+        &__footer {
+            @include bleed();
+        }
     }
     @include breakpoint($gt-small-desktop) {
         &__interview {
@@ -37,6 +37,9 @@
             left: 1 / 12 * -100vw;
             width: 7 / 12 * 100vw;
             padding-left: 1 / 12 * 100vw;
+        }
+        &__footer {
+            width: 6 / 12 * 100vw;
         }
         &__body,
         &__footer {
@@ -71,8 +74,11 @@
         &__interview {
             margin: rhythm(20) 0 0;
             left: 1 / 18 * -100vw;
-            width: 8 / 18 * 100vw;
             padding-left: 1 / 18 * 100vw;
+        }
+        &__interview,
+        &__footer {
+            width: 8 / 18 * 100vw;
         }
         &__image {
             .layout.layout & {
