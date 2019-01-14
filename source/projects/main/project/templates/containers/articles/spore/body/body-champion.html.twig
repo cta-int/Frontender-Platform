@@ -188,9 +188,9 @@
         {% if model.link.person.author|filterArray('description', null)|length > 0 %}
             <aside class="trailer--hero">
                 {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
-                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the authors'|i18n(locales) }}</h2>
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'authors'|i18n(locales) }}</h2>
                 {% else %}
-                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the author'|i18n(locales) }}</h2>
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'author'|i18n(locales) }}</h2>
                 {% endif %}
                 {% for auth in model.link.person.author|filterArray('familyName', null) %}
                     <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer--normal">
