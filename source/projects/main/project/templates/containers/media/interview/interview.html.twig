@@ -5,13 +5,13 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'interview  |  layout layout--split  |  well  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    <a class="layout__cell layout__cell--aside  |  interview__image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+    <div class="layout__cell layout__cell--aside  |  interview__image">
         {% if model.link.mediaObject|length > 0 %}
             <div>
                 {{ image.post_hero(model.link.mediaObject|lead, 'is-lt-small-desktop') }}
             </div>
         {% endif %}
-    </a>
+    </div>
     <div class="layout__cell layout__cell--main">
         <a class="interview__interview  |  well well--full" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
             <div class="interview__body">
