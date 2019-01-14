@@ -4,13 +4,17 @@
         // padding-left: $gutter-width / 2;
         // padding-right: $gutter-width / 2;
         background-color: inherit;
+        &.well--full {
+            color: $white;
         }
+    }
     &__body {
         padding: gutter(.25) gutter() gutter(1);
         .title {
             margin-bottom: 2em;
         }
     }
+    &__interview,
     &__link {
         display: block;
     }

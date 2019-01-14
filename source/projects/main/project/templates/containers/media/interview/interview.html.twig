@@ -5,15 +5,15 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'interview  |  layout layout--split  |  well  |  is-root')|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    <div class="layout__cell layout__cell--aside  |  interview__image">
+    <a class="layout__cell layout__cell--aside  |  interview__image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
         {% if model.link.mediaObject|length > 0 %}
-            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <div>
                 {{ image.post_hero(model.link.mediaObject|lead, 'is-lt-small-desktop') }}
-            </a>
+            </div>
         {% endif %}
-    </div>
+    </a>
     <div class="layout__cell layout__cell--main">
-        <div class="interview__interview  |  well well--full">
+        <a class="interview__interview  |  well well--full" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
             <div class="interview__body">
                 {% if content.label|t(locales)|length > 0 %}
                     <p class="title  |  leader--small">{{ content.label|t(locales) }}</p>
@@ -25,7 +25,7 @@
                     <p class="title title--sub-section leader leader-inside">{{ content.quote_source|t(locales) }}</p>
                 {% endif %}
             </div>
-        </div>
+        </a>
         <div class="interview__footer leader-inside trailer-inside--hero  |  wing--right  |  gutters">
             <p class="meta  |  gutters">
                 {% if model.datePublished|length > 0 %}
