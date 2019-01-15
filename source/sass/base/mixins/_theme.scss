@@ -63,6 +63,10 @@ Styleguide 1.6.6
       background-color: mix($color_value, $white, $transparency);
     }
   }
+  .theme--dark & {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @mixin theme-transparent-background($transparency) {

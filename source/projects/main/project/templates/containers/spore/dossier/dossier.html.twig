@@ -21,6 +21,7 @@
             <div class="layout__cell  |  gutters-outside  |  dossier__gallery">
                 {# Switch image based on active article #}
                 {% for article in model.articles|slice(0, 4) %}
+                    {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
                     <a class="anchor anchor--shy  |  dossier__image" href="{{ article_link }}" data-dossier-image="{{ article._id }}" data-dossier-type="{{ ('content_type_category_' ~ article.articleType)|t }}">
                         {{ image.post_hero(article.link.mediaObject|lead) }}
                     </a>

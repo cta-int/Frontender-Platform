@@ -30,8 +30,7 @@
         {# Larger than desktop #}
         <div class="stack stack--stacked stack__unit  |  is-gt-small-desktop">
             {% if config.show_wide %}
-                {# TODO Config title #}
-                <h3 class="title  |  leader leader-inside--normal  |  trailer-inside--small  |  {{ config.show_wide ? 'gutter--right' : 'gutters' }}">{{ 'Latest trending articles'|t(locales) }}</h3>
+                <h3 class="title  |  leader leader-inside--normal  |  trailer-inside--small  |  {{ config.show_wide ? 'gutter--right' : 'gutters' }}">{{ labels.card_title|t(locales)|default('Latest trending articles'|t(locales)) }}</h3>
             {% endif %}
             {% for index, article in channel.articles|slice(0, config.show_wide ? 2 : 1) %}
                 <div class="card__post  |  {{ config.show_wide ? 'gutter-outside--right' : 'gutters' }}  |  leader-inside--normal trailer-inside--normal">

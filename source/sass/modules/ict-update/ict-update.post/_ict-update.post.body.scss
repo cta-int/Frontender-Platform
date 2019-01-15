@@ -399,6 +399,9 @@ Styleguide 5.50.3.2
     max-width: 100%;
     height: auto;
   }
+  [itemprop="author"] img {
+    margin-right: 0;
+  }
   .wp-caption-text {
     font-size: to-unit(14px);
     font-style: italic;

@@ -1,20 +1,41 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{ ["topic-teaser  |  teaser", container_class]|join(" | ") }}">
-    {% if labels.label %}
-        <div class="topic-teaser__label  |  meta meta--inverse">
-          {{ labels.label|t(locales) }}
-        </div>
-    {% endif %}
-    <h1 class="topic-teaser__title  |  heading heading--hero  |  trailer--normal">{{ labels.title|t(locales) }}</h1>
-    {% if labels.body %}
-        <p class="topic-teaser__body">{{ labels.body|t(locales) }}</p>
-    {% endif %}
-    {% if labels.slug.label|t(locales)|length > 1 %}
-        <div class="leader leader-inside--normal">
-            <a class="button button--inverse" href="{{ route({'page': labels.slug.page }) }}">
-              {{ labels.slug.label|t(locales) }}
-            </a>
-        </div>
-    {% endif %}
-</div>
+{% if labels.slug.page %}
+    <a class="{{ ["topic-teaser  |  teaser", container_class]|join(" | ") }}" href="{{ route({'page': labels.slug.page }) }}">
+        {% if labels.label %}
+            <div class="topic-teaser__label  |  meta meta--inverse">
+              {{ labels.label|t(locales) }}
+            </div>
+        {% endif %}
+        <h1 class="topic-teaser__title  |  heading heading--hero  |  trailer--normal">{{ labels.title|t(locales) }}</h1>
+        {% if labels.body %}
+            <p class="topic-teaser__body">{{ labels.body|t(locales) }}</p>
+        {% endif %}
+        {% if labels.slug.label|t(locales)|length > 1 %}
+            <div class="leader leader-inside--normal">
+                <p class="button button--inverse">
+                    {{ labels.slug.label|t(locales) }}
+                </p>
+            </div>
+        {% endif %}
+    </a>
+{% else %}
+    <div class="{{ ["topic-teaser  |  teaser", container_class]|join(" | ") }}">
+        {% if labels.label %}
+            <div class="topic-teaser__label  |  meta meta--inverse">
+              {{ labels.label|t(locales) }}
+            </div>
+        {% endif %}
+        <h1 class="topic-teaser__title  |  heading heading--hero  |  trailer--normal">{{ labels.title|t(locales) }}</h1>
+        {% if labels.body %}
+            <p class="topic-teaser__body">{{ labels.body|t(locales) }}</p>
+        {% endif %}
+        {% if labels.slug.label|t(locales)|length > 1 %}
+            <div class="leader leader-inside--normal">
+                <a class="button button--inverse" href="{{ route({'page': labels.slug.page }) }}">
+                  {{ labels.slug.label|t(locales) }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
