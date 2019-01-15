@@ -33,7 +33,7 @@
 </script>
 
 <nav class="{{ ["site-navigation  |  wings", container_class]|join("  |  ") }} {{ settings.show_menu }}">
-    {% if model.publicationLabel.name == 'Publication/Blog' %}
+    {% if model.blog %}
         {% include 'partials/brand/cta-blog.html.twig' %}
     {% else %}
         {% include 'partials/brand/' ~ main_menu.brand|default('cta.html.twig') %}
