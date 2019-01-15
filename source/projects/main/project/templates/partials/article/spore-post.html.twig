@@ -1,0 +1,71 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
+
+<div class="post">
+    {% if config.show_lead_image %}
+        <div class="post__media">
+            <a class="anchor anchor--shy" href="{{ article_link }}">
+                {{ image.post(article.link.mediaObject|lead) }}
+            </a>
+        </div>
+    {% endif %}
+    <div class="post__content  |  leader-inside">
+        {% if article.link.organization.sourceOrganization|first.name or article.analysis.geoname.geonames|locationSpecific %}
+            <div class="post__meta  |  trailer-inside--small trailer--small  |  divider divider--bottom">
+                {% if article.link.organization.sourceOrganization|first.name %}
+                    <p class="meta">{{ article.link.organization.sourceOrganization|first.name }}</p>
+                {% endif %}
+                {% if article.analysis.geoname.geonames|locationSpecific %}
+                    <p>{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <p class="post__meta  |  trailer--tiny">
+            {% if config.show_publication_date|default(1) %}
+                {{ date.article(article.datePublished) }}
+            {% endif %}
+
+            {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
+                <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
+            {% endif %}
+
+            {% if config.show_type|default(1) %}
+                <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
+            {% endif %}
+        </p>
+
+        <h3 class="heading  |  anchor--reset">
+            <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
+                {{ article.headline }}
+            </a>
+        </h3>
+
+        {% if config.show_author_name and article.link.person.author | length > 0 %}
+            <p class="post__author  |  author">
+                {{ author.long(article.link.person.author) }}
+            </p>
+        {% endif %}
+
+        {% if config.show_stand_first %}
+            <p class="is-gt-small-desktop  |  post__intro">{{ article.about|raw }}</p>
+        {% endif %}
+
+        {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
+          <ul class="reset  |  tag-list  |  list--inline trailer--small">
+              {% for label in article.analysis.agrovoc.concepts|slice(0, 2) %}
+                  <li>{{ concept.tag(label, locale) }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if config.show_read_more %}
+            <a class="read-more  |  is-gt-small-desktop" href="{{ article_link }}">{{ 'Read more'|i18n }}</a>
+        {% endif %}
+    </div>
+</div>
