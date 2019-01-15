@@ -400,7 +400,7 @@ class ArticlesModel extends ScrModel
         $dossier = null;
 
         foreach( $this['link']['label'] as $label ) {
-            if(strpos($label['name'], 'Dossier')) {
+            if(stripos($label['name'], 'dossier') !== false) {
                 $dossier = $label;
                 break;
             }
@@ -414,8 +414,8 @@ class ArticlesModel extends ScrModel
         $blog = null;
 
         foreach( $this['link']['label'] as $label ) {
-            if(strpos($label['name'], 'Blog')) {
-                $dossier = $label;
+            if(stripos($label['name'], 'blog') !== false) {
+                $blog = $label;
                 break;
             }
         }
