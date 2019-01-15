@@ -74,6 +74,7 @@ $color-digitalisation: #9a3324;
 $color-climate: #693c5e;
 $color-gender: #046a38;
 $color-nutrition: #487a7b;
+$color-blog: #FDB735;
 
 
 
@@ -156,7 +157,8 @@ $theme-colours: (
     digitalisation: $color-digitalisation,
     climate: $color-climate,
     gender: $color-gender,
-    nutrition: $color-nutrition
+    nutrition: $color-nutrition,
+    blog: $color-blog
 );
 $spore-colours: (
     spore-blue: $color-spore-blue,
