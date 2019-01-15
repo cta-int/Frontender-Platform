@@ -393,4 +393,33 @@ class ArticlesModel extends ScrModel
 
         return $_label;
     }
+
+    public function getPropertyDossier()
+    {
+        // Return dossier label if present, null if not
+        $dossier = null;
+
+        foreach( $this['link']['label'] as $label ) {
+            if(strpos($label['name'], 'Dossier')) {
+                $dossier = $label;
+                break;
+            }
+        }
+        return $dossier;
+    }
+
+    public function getPropertyBlog() {
+
+        // Return blog label if present, null if not
+        $blog = null;
+
+        foreach( $this['link']['label'] as $label ) {
+            if(strpos($label['name'], 'Blog')) {
+                $dossier = $label;
+                break;
+            }
+        }
+
+        return $blog;
+    }
 }
