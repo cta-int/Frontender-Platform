@@ -179,7 +179,7 @@
                 {% endif %}
 
                 {% for auth in model.link.person.author|filterArray('familyName', null) %}
-                    <div class="media  |  leader--normal  |  trailer--normal">
+                    <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer--normal">
                         <div class="media__figure  |  gutters">
                             {{ image.person(auth, 50) }}
                         </div>
