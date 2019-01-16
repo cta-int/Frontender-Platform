@@ -4,11 +4,12 @@
 {{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
 
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set resource_link = route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  wing--left">
         <div class="trailer  |  post post--hero  |  gutter--right">
-            {% set resource_link = route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) %}
+            <!-- @TODO: Link to Dossier page -->
             <h2 class="heading heading--tile  |  gutters gutter-hero--right  |  anchor--reset">
                 <a class="anchor anchor--shy  |  is-heir" href="{{ resource_link }}">
                     {{ model.name|t(locales) }}
@@ -17,6 +18,7 @@
             <p class="post__intro  |  gutters gutter-hero--right">
                 {{ model.description|t(locales) }}
             </p>
+            <!-- @TODO: Link to Dossier page -->
             <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
         </div>
     </div>
