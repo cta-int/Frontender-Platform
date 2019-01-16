@@ -21,7 +21,7 @@ Styleguide 3.44
         font-size: to-unit(28px);
         line-height: to-unit(rhythm(11), 1, 28px);
     }
-    .heading + & {
+    .post-body .heading + & {
         margin-top: rhythm(8);
     }
     strong {
