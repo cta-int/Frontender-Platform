@@ -228,6 +228,10 @@ class ArticlesModel extends ScrModel
         $mediaModel = new MediaModel($this->container);
         $article = $this;
 
+        if (!isset($this->data['contentBlocks'])) {
+            return '';
+        }
+
         $contentBlocks = array_map(function ($block) use ($article, $mediaModel) {
             if ((isset($block['subtype']) && $block['subtype'] === 'image') || (isset($block['type']) && $block['type'] === 'video')) {
                 $item = $mediaModel->setState([
@@ -392,5 +396,34 @@ class ArticlesModel extends ScrModel
         }
 
         return $_label;
+    }
+
+    public function getPropertyDossier()
+    {
+        // Return dossier label if present, null if not
+        $dossier = null;
+
+        foreach( $this['link']['label'] as $label ) {
+            if(stripos($label['name'], 'dossier') !== false) {
+                $dossier = $label;
+                break;
+            }
+        }
+        return $dossier;
+    }
+
+    public function getPropertyBlog() {
+
+        // Return blog label if present, null if not
+        $blog = null;
+
+        foreach( $this['link']['label'] as $label ) {
+            if(stripos($label['name'], 'blog') !== false) {
+                $blog = $label;
+                break;
+            }
+        }
+
+        return $blog;
     }
 }

@@ -22,11 +22,11 @@
                     {% if model.datePublished %}
                         <p class="meta" itemprop="datePublished">
                             {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }}
-                            <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}{% if model.dateModified|date('Y-m-d') != model.datePublished|date('Y-m-d') %} {{ 'updated_on'|i18n(locales) }} {{ model.dateModified|tdate('%A, %e %B %Y') }}{% endif %}</p>
+                            <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}</p>
                     {% endif %}
                     {% if model.link.person.author %}
                         <div class="media__content  |  body--whisper  |  leader--tiny">
-                            {{ author.job(model.link.person.author) }}
+                            {{ author.long(model.link.person.author) }}
                         </div>
                     {% endif %}
                 </footer>
@@ -188,9 +188,9 @@
         {% if model.link.person.author|filterArray('description', null)|length > 0 %}
             <aside class="trailer--hero">
                 {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
-                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the authors'|i18n(locales) }}</h2>
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'authors'|i18n(locales) }}</h2>
                 {% else %}
-                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'about the author'|i18n(locales) }}</h2>
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'author'|i18n(locales) }}</h2>
                 {% endif %}
                 {% for auth in model.link.person.author|filterArray('familyName', null) %}
                     <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer--normal">

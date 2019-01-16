@@ -20,15 +20,20 @@ Styleguide 3.22
 */
 
 .teaser {
-  background: $white;
-  background: rgba($white, .8);
-  &--theme {
-    @include theme-transparent-background(76%);
-  }
-  .hero--carousel & {
-  	background: $white;
-  	@include breakpoint($gt-medium-desktop) {
-  		background: rgba($white, .8);
-  	}
-  }
+    background: $white;
+    background: rgba($white, .8);
+    &--theme {
+        @include theme-transparent-background(76%);
+    }
+    .hero--carousel & {
+        background: $white;
+        @include breakpoint($gt-medium-desktop) {
+            background: rgba($white, .8);
+        }
+    }
+}
+
+a.teaser.topic-teaser {
+    display: block;
+    color: $white;
 }

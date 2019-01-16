@@ -74,6 +74,7 @@ $color-digitalisation: #9a3324;
 $color-climate: #693c5e;
 $color-gender: #046a38;
 $color-nutrition: #487a7b;
+$color-blog: #FFA300;
 
 
 
@@ -149,14 +150,16 @@ $brand-colours: (
     salmon: $color-salmon,
     red: $color-red,
     burgundy: $color-burgundy,
-    purple: $color-purple
+    purple: $color-purple,
+    dark: $color-body
 );
 $theme-colours: (
     youth: $color-youth,
     digitalisation: $color-digitalisation,
     climate: $color-climate,
     gender: $color-gender,
-    nutrition: $color-nutrition
+    nutrition: $color-nutrition,
+    blog: $color-blog
 );
 $spore-colours: (
     spore-blue: $color-spore-blue,

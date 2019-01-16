@@ -10,6 +10,7 @@
     "filters": {},
     "publication": {
         "theme-color": {
+            "e2c0339d-36c0-4379-b45e-8048f308afcf": "theme theme--blog",
             "d6cb31cf-7457-41b8-a151-5d86d29c424a": "theme theme--spore-teal",
             "ae1ef07f-ce6d-40b6-8d76-8a728026ac80": "theme theme--spore-grey-blue",
             "36d0ddba-c242-4f29-93c6-c9a990d81ba3": "theme theme--spore-red",
