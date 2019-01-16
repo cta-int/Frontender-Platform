@@ -8,12 +8,16 @@
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  wing--left">
         <div class="trailer  |  post post--hero  |  gutter--right">
-            <h2 class="heading heading--tile  |  gutters gutter-hero--right">
-                {{ model.name|t(locales) }}
+            {% set resource_link = route({'page': model.path, 'slug': model.headline|t(locales)|slugify, id: model._id}) %}
+            <h2 class="heading heading--tile  |  gutters gutter-hero--right  |  anchor--reset">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ resource_link }}">
+                    {{ model.name|t(locales) }}
+                </a>
             </h2>
             <p class="post__intro  |  gutters gutter-hero--right">
                 {{ model.description|t(locales) }}
             </p>
+            <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
         </div>
     </div>
     <div class="layout__cell ">
