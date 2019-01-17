@@ -424,9 +424,11 @@ class ArticlesModel extends ScrModel
         } else {
             $issueArticle = false;
         }
+        $labelsModel = new LabelsModel($this->container);
+        $labelsModel->setData($label);
 
         return [
-            'label' => $label,
+            'label' => $labelsModel,
             'issue' => $issueArticle
         ];
     }
