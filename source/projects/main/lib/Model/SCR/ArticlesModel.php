@@ -14,6 +14,7 @@ use Prototype\Model\Traits\Imagable;
 use Prototype\Model\SCR\MediaModel;
 use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class ArticlesModel extends ScrModel
 {
@@ -401,29 +402,59 @@ class ArticlesModel extends ScrModel
     public function getPropertyDossier()
     {
         // Return dossier label if present, null if not
-        $dossier = null;
+        $label = $this->getLabel('publication', 'dossier');
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$label['_id']],
+            'type' => 'article.issue',
+            'limit' => 1
+        ]);
+        $issueArticle = $search->fetch();
 
-        foreach( $this['link']['label'] as $label ) {
-            if(stripos($label['name'], 'dossier') !== false) {
-                $dossier = $label;
-                break;
-            }
+        // The fetch function always returns an array, so we will check if we have an instance,
+        // If so we will need that instance, if there is nothing, we will set the value to false,
+        // This way twig doesn't break.
+        if (count($issueArticle) >= 1) {
+            $issueArticle = array_shift($issueArticle);
+        } else {
+            $issueArticle = false;
         }
-        return $dossier;
+
+        return [
+            'label' => $label,
+            'issue' => $issueArticle
+        ];
     }
 
-    public function getPropertyBlog() {
-
+    public function getPropertyBlog()
+    {
         // Return blog label if present, null if not
         $blog = null;
 
-        foreach( $this['link']['label'] as $label ) {
-            if(stripos($label['name'], 'blog') !== false) {
+        foreach ($this['link']['label'] as $label) {
+            if (stripos($label['name'], 'blog') !== false) {
                 $blog = $label;
                 break;
             }
         }
 
         return $blog;
+    }
+
+    private function getLabel(string $type, string $needle) : array
+    {
+        // Return the first label that is as we defined it.
+        $foundLabel = [];
+
+        foreach ($this['link']['label'] as $label) {
+            if ($label['type'] == $type) {
+                if (stripos($label['name'], $needle) !== false) {
+                    $foundLabel = $label;
+                    break;
+                }
+            }
+        }
+
+        return $foundLabel;
     }
 }

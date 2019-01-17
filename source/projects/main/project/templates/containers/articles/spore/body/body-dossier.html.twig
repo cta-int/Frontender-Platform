@@ -113,20 +113,20 @@
             <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
             <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.standfirst|t }}</p>
             <ul class="reset leader--normal">
-                {% for article in model.dossier.issue.similar.articlew %}
-                <li class="divider divider--bottom leader-inside trailer-inside">
-                    {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
-                        'show_publication_date': 0,
-                        'show_publication': 0,
-                        'show_type': 1,
-                        'show_author_name': 0,
-                        'show_stand_first': 1,
-                        'show_topic': 0,
-                        'show_read_more': 1,
-                        'show_lead_image': 1
-                    } } %}
-                </li>
-                {% endif %}
+                {% for article in model.dossier.issue.similar.articles %}
+                    <li class="divider divider--bottom leader-inside trailer-inside">
+                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                            'show_publication_date': 0,
+                            'show_publication': 0,
+                            'show_type': 1,
+                            'show_author_name': 0,
+                            'show_stand_first': 1,
+                            'show_topic': 0,
+                            'show_read_more': 1,
+                            'show_lead_image': 1
+                        } } %}
+                    </li>
+                {% endfor %}
             </ul>
         </aside>
     </div>
