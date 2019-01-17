@@ -228,6 +228,10 @@ class ArticlesModel extends ScrModel
         $mediaModel = new MediaModel($this->container);
         $article = $this;
 
+        if (!isset($this->data['contentBlocks'])) {
+            return '';
+        }
+
         $contentBlocks = array_map(function ($block) use ($article, $mediaModel) {
             if ((isset($block['subtype']) && $block['subtype'] === 'image') || (isset($block['type']) && $block['type'] === 'video')) {
                 $item = $mediaModel->setState([
