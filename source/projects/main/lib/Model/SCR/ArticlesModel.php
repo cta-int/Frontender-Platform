@@ -320,10 +320,10 @@ class ArticlesModel extends ScrModel
         // I now need to sort the routes, the most specific route will be used,
         // the score is calculated at the amount or parts it has.
         uasort($routes, function ($a, $b) {
-            if ($a < $b) {
-                return -1;
-            } else if ($b < $a) {
+            if ($a['score'] < $b['score']) {
                 return 1;
+            } else if ($b['score'] < $a['score']) {
+                return -1;
             }
 
             return 0;
