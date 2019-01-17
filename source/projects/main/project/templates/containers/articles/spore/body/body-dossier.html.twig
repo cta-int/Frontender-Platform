@@ -109,9 +109,9 @@
     </div>
     <div class="layout__cell layout__cell--aside  |  wings">
         <aside class="gutters">
-            <p class="title title--section wing--right trailer"><strong>{{ model.dossier.label.name|t|default('Dossier: Youth')  }}</strong></p>
-            <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t|default('Engaging youth in climate-smart agriculture') }}</h1>
-            <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.standfirst|t|default('Development efforts look to harness youth as the driving force for a new generation of climate-smart farmers, as adverse climate change impacts wreak ever greater havoc on agriculture across ACP countries.') }}</p>
+            <p class="title title--section wing--right trailer"><strong>{{ model.dossier.label.name|t  }}</strong></p>
+            <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
+            <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.standfirst|t }}</p>
             <ul class="reset leader--normal">
                 {% for article in model.dossier.issue.similar.articlew %}
                 <li class="divider divider--bottom leader-inside trailer-inside">

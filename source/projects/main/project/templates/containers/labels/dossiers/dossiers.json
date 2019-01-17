@@ -132,7 +132,7 @@
 			"description": {
 				"en-GB": ""
 			},
-			"template": "containers/channels/dossier/dossier.html.twig",
+			"template": "containers/labels/dossiers/dossiers.html.twig",
 			"template_config": {
 				"config": {
 					"label": {
