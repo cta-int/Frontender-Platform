@@ -6,16 +6,16 @@
     <p class="post__meta  |  trailer--small">
         {# link to first article in this issue #}
         <a class="meta" href="{{ route({
-            'page': article.similar.articles|first.path, 
-            'slug': article.similar.articles|first.headline|t(locales)|slugify, 
+            'page': article.similar.articles|first.path,
+            'slug': article.similar.articles|first.headline|t(locales)|slugify,
             'id': article.similar.articles|first._id}) }}">
             <strong>{{ article.dossier.label.name }}</strong>
         </a>
     </p>
     <h3 class="heading  |  anchor--reset">
         <a class="anchor anchor--shy  |  is-heir" href="{{ route({
-            'page': article.similar.articles|first.path, 
-            'slug': article.similar.articles|first.headline|t(locales)|slugify, 
+            'page': article.similar.articles|first.path,
+            'slug': article.similar.articles|first.headline|t(locales)|slugify,
             'id': article.similar.articles|first._id}) }}">{{ article.headline|t }}</a>
     </h3>
     <p class="post__intro">{{ article.about|t }}</p>

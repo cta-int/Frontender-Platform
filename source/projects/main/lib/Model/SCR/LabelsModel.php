@@ -25,6 +25,12 @@ class LabelsModel extends ScrModel
         ];
     }
 
+    public function getPropertyDisplay_name()
+    {
+        $parts = explode('/', $this['name']);
+        return array_pop($parts);
+    }
+
     public function getPropertyIssues()
     {
         $search = new SearchModel($this->container);
