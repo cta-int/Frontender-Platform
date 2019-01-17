@@ -17,12 +17,12 @@
     &__double-slide {
         // kicks in at larger breakpoint
     }
-    // @include breakpoint($gt-medium-handheld) {
-    //     &__slide {
-    //         flex-basis: 6 / 12 * 100vw;
-    //         max-width: 6 / 12 * 100vw;
-    //     }
-    // }
+    @include breakpoint($gt-medium-handheld) {
+        &__slide {
+            flex-basis: 6 / 12 * 100vw;
+            max-width: 6 / 12 * 100vw;
+        }
+    }
     @include breakpoint($gt-small-desktop) {
         &__slide {
             flex-basis: 4 / 18 * 100vw;
