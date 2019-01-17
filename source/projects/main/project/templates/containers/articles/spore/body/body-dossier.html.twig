@@ -111,7 +111,7 @@
         <aside class="gutters">
             <p class="title title--section wing--right trailer"><strong>{{ model.dossier.label.name|t  }}</strong></p>
             <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
-            <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.standfirst|t }}</p>
+            <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.about|t }}</p>
             <ul class="reset leader--normal">
                 {% for article in model.dossier.issue.similar.articles %}
                     <li class="divider divider--bottom leader-inside trailer-inside">

@@ -9,5 +9,5 @@
     <h3 class="heading  |  anchor--reset">
         <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ article.headline|t }}</a>
     </h3>
-    <p class="post__intro">{{ article.standfirst|t }}</p>
+    <p class="post__intro">{{ article.about|t }}</p>
 </article>
