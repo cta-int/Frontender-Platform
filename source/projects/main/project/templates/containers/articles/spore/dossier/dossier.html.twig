@@ -130,6 +130,11 @@
                         </li>
                     {% endfor %}
                 </ul>
+                {% if link.link is defined %}
+                <div class="leader trailer button-bar button-bar--center">
+                    <a href="{{ route({'page': link.link.page|t }) }}" class="is-heir"><span class="button button--slim">{{ link.link.label|t }}</span></a>
+                </div>
+                {% endif %}
             </aside>
         </div>
     </div>
