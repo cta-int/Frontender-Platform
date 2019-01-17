@@ -1,6 +1,1 @@
-{# Check if the article is part of a dossier or opinion #}
-{% if model.dossier %}
-    {% include 'containers/articles/spore/body/body-dossier.html.twig' %}
-{% else %}
-    {% include 'containers/articles/spore/body/body-' ~ model.articleType|default('champion') ~ '.html.twig' %}
-{% endif %}
+{% include 'containers/articles/spore/body/body-' ~ model.articleType|default('champion') ~ '.html.twig' %}

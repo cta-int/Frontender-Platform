@@ -6,9 +6,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set class = helper.class(config)|trim %}
 
-
-<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ [config.container_class]|join('  |  ') }}">
-    <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+<header {{ helper.class_attribute(config, 'trailer--hero')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="article-headline  |  layout  |  leader-inside--giant trailer-inside--hero">
         <div class="layout__cell layout__cell--main  |  wings">
             <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
                 {{ model.headline }}

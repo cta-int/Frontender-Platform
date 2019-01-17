@@ -1,8 +1,0 @@
-{% import "macros/template.html.twig" as helper %}
-{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'grid grid--teletubbies')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    {% for i in 1..20 %}
-        {% include 'partials/article/dossier.html.twig' %}
-    {% endfor %}
-</{{ config.container_tag|default('div') }}>

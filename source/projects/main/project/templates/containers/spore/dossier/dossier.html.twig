@@ -9,24 +9,22 @@
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  wing--left">
         <div class="trailer  |  post post--hero  |  gutter--right">
-            <!-- @TODO: Link to Dossier page -->
             <h2 class="heading heading--tile  |  gutters gutter-hero--right  |  anchor--reset">
                 <a class="anchor anchor--shy  |  is-heir" href="{{ resource_link }}">
-                    {{ model.name|t(locales) }}
+                    {{ model.headline|t(locales) }}
                 </a>
             </h2>
             <p class="post__intro  |  gutters gutter-hero--right">
-                {{ model.description|t(locales) }}
+                {{ model.about|t(locales) }}
             </p>
-            <!-- @TODO: Link to Dossier page -->
-            <a class="read-more  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
+            <a class="read-more  |  leader--normal  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
         </div>
     </div>
     <div class="layout__cell ">
         <div class="layout layout--split dossier">
             <div class="layout__cell  |  gutters-outside  |  dossier__gallery">
                 {# Switch image based on active article #}
-                {% for article in model.articles|slice(0, 4) %}
+                {% for article in model.similar.articles|slice(0, 4) %}
                     {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
                     <a class="anchor anchor--shy  |  dossier__image" href="{{ article_link }}" data-dossier-image="{{ article._id }}" data-dossier-type="{{ ('content_type_category_' ~ article.articleType)|t }}">
                         {{ image.post_hero(article.link.mediaObject|lead) }}
@@ -35,7 +33,7 @@
             </div>
             <ul class="reset  |  layout__cell layout__cell--aside  |  wing--right  |  dossier__documents  |  gutters">
                 {#  Set .is-active or .is-current on active/current article #}
-                {% for article in model.articles|slice(0, 4) %}
+                {% for article in model.similar.articles|slice(0, 4) %}
                     <li class="dossier__item" data-image-id="{{ article._id }}">
                             {% include "partials/article/post.html.twig" with {'config': {
                             'show_lead_image': 0,

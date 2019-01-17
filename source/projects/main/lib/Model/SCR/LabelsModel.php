@@ -3,6 +3,7 @@
 namespace Prototype\Model\SCR;
 
 use Slim\Container;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class LabelsModel extends ScrModel
 {
@@ -22,6 +23,23 @@ class LabelsModel extends ScrModel
         return [
             'selector' => isset($this->container['theme-color'][$this['type']]['theme-color'][$this['_id']]) ? $this->container['theme-color'][$this['type']]['theme-color'][$this['_id']] : ''
         ];
+    }
+
+    public function getPropertyDisplay_name()
+    {
+        $parts = explode('/', $this['name']);
+        return array_pop($parts);
+    }
+
+    public function getPropertyIssues()
+    {
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$this['_id']],
+            'type' => 'article.issue'
+        ]);
+
+        return $search->fetch();
     }
 
     public function fetch($raw = false)
