@@ -4,7 +4,7 @@
 <article>
     <p class="post__meta  |  trailer--small">
         {# link to first article in this issue #}
-        <a class="meta" href="{{ route({'page': article.similar.articles|first.path, 'slug': article.similar.articles|first.headline|t(locales)|slugify, id: article.similar.articles|first._id}) }}">{{ article.dossier.label.name }}</a>
+        <a class="meta" href="{{ route({'page': article.similar.articles|first.path, 'slug': article.similar.articles|first.headline|t(locales)|slugify, id: article.similar.articles|first._id}) }}">{{ article.dossier.label.display_name }}</a>
     </p>
     <h3 class="heading  |  anchor--reset">
         <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ article.headline|t }}</a>
