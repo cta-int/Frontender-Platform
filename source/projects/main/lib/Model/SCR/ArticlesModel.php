@@ -403,6 +403,11 @@ class ArticlesModel extends ScrModel
     {
         // Return dossier label if present, null if not
         $label = $this->getLabel('publication', 'dossier');
+
+        if (!isset($label['_id'])) {
+            return false;
+        }
+
         $search = new SearchModel($this->container);
         $search->setState([
             'label' => [$label['_id']],
