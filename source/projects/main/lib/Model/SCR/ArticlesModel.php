@@ -433,6 +433,40 @@ class ArticlesModel extends ScrModel
         ];
     }
 
+    public function getPropertyOpinion()
+    {
+        // Return opinion label if present, null if not
+        $label = $this->getLabel('publication', 'opinion:');
+
+        if (!isset($label['_id'])) {
+            return false;
+        }
+
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$label['_id']],
+            'type' => 'article.issue',
+            'limit' => 1
+        ]);
+        $issueArticle = $search->fetch();
+
+        // The fetch function always returns an array, so we will check if we have an instance,
+        // If so we will need that instance, if there is nothing, we will set the value to false,
+        // This way twig doesn't break.
+        if (count($issueArticle) >= 1) {
+            $issueArticle = array_shift($issueArticle);
+        } else {
+            $issueArticle = false;
+        }
+        $labelsModel = new LabelsModel($this->container);
+        $labelsModel->setData($label);
+
+        return [
+            'label' => $labelsModel,
+            'issue' => $issueArticle
+        ];
+    }
+
     public function getPropertyBlog()
     {
         // Return blog label if present, null if not
