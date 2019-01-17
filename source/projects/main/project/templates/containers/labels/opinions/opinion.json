@@ -1,10 +1,11 @@
+
 {
 	"template": "containers/global/group/group.html.twig",
 	"name": {
-		"en-GB": "Spore - Dossier"
+		"en-GB": "Spore - opinion"
 	},
 	"description": {
-		"en-GB": "Spore - Dossier"
+		"en-GB": "Spore - opinion"
 	},
 	"template_config": {
 		"config": {
@@ -64,8 +65,8 @@
 					"controls": {
 						"container_title": {
 							"value": {
-								"en-GB": "Dossiers",
-								"fr-FR": "Dossiers"
+								"en-GB": "opinions",
+								"fr-FR": "opinions"
 							},
 							"label": {
 								"en-GB": "Container title"
@@ -127,12 +128,12 @@
 		},
 		{
 			"name": {
-				"en-GB": "Dossier grid"
+				"en-GB": "opinion grid"
 			},
 			"description": {
 				"en-GB": ""
 			},
-			"template": "containers/labels/dossiers/dossiers.html.twig",
+			"template": "containers/labels/opinions/opinions.html.twig",
 			"template_config": {
 				"config": {
 					"label": {

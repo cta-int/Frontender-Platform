@@ -111,11 +111,11 @@
         </div>
         <div class="layout__cell layout__cell--aside  |  wings">
             <aside class="gutters">
-                <p class="title title--section wing--right trailer"><strong>{{ model.dossier.label.display_name|t  }}</strong></p>
-                <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
-                <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.about|t }}</p>
+                <p class="title title--section wing--right trailer"><strong>{{ model.opinion.label.display_name|t  }}</strong></p>
+                <h1 class="heading heading--tile wing--right">{{ model.opinion.issue.headline|t }}</h1>
+                <p class="paragraph paragraph--lead wing--right">{{ model.opinion.issue.about|t }}</p>
                 <ul class="reset leader--normal">
-                    {% for article in model.dossier.issue.similar.articles %}
+                    {% for article in model.opinion.issue.similar.articles %}
                         <li class="divider divider--bottom leader-inside trailer-inside">
                             {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
                                 'show_publication_date': 0,
