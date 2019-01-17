@@ -13,7 +13,11 @@
             {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
         {% endif %}
     </div>
-    <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+    {% if model.link.mediaObject|lead %}
+        <div class="article-headline  |  layout  |  leader-inside--hero trailer-inside--hero">
+    {% else %}
+        <div class="article-headline  |  layout  |  leader-inside--giant trailer-inside--hero">
+    {% endif %}
         <div class="layout__cell layout__cell--main  |  wings">
             <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
                 {{ model.headline }}
