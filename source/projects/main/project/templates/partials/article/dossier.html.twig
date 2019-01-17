@@ -1,9 +1,13 @@
-<div class="grid__cell  |  gutters  |  trailer">
+{#
+    This is the output of an article of type issue. It is typically used for displaying dossier and opinion listings.
+#}
+<article>
     <p class="post__meta  |  trailer--small">
-        <a class="meta" href="#">Dossier: Scaling</a>
+        {# link to first article in this issue #}
+        <a class="meta" href="{{ route({'page': article.similar|first.path, 'slug': article.similar|first.headline|t(locales)|slugify, id: article.similar|first._id}) }}">{{ article.dossier.label.name }}</a>
     </p>
     <h3 class="heading  |  anchor--reset">
-        <a class="anchor anchor--shy  |  is-heir" href="#">A High priority for agriculture</a>
+        <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ article.headline|t }}</a>
     </h3>
-    <p class="post__intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-</div>
+    <p class="post__intro">{{ article.standfirst|t }}</p>
+</article>
