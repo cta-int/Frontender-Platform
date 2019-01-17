@@ -402,7 +402,7 @@ class ArticlesModel extends ScrModel
     public function getPropertyDossier()
     {
         // Return dossier label if present, null if not
-        $label = $this->getLabel('publication', 'dossier');
+        $label = $this->getLabel('publication', 'dossier:');
 
         if (!isset($label['_id'])) {
             return false;
