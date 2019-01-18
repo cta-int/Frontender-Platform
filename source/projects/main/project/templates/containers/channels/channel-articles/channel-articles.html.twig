@@ -51,7 +51,7 @@
     {# Article list #}
     <div class="layout layout--even wings">
     {% for article in model.articles %}
-        <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside--normal">
+        <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
         {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
             'container_class': 'post--wide',
             'show_publication_date': 1,
