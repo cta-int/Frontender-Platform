@@ -8,6 +8,8 @@
         "Family": "scr-platform",
         "ListenerPriority": "4",
         "ListenerPriority2": "5",
+        "ListenerPriority3": "3",
+        "ListenerPriority4": "6",
         "NetworkStack": "UAT-network",
         "ServicePath": "/*",
         "ServiceHost": "frontender-uat-v2.cta.int",
