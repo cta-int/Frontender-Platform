@@ -704,7 +704,7 @@ If(service_host2_condition, t.add_resource(
         Conditions=[
             elasticloadbalancingv2.Condition(
                 Field="host-header",
-                Values=[Join("", ["www.", Ref(service_host2)])]
+                Values=[Ref(service_host2)]
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
@@ -724,7 +724,7 @@ If(service_host2_condition, t.add_resource(
         Conditions=[
             elasticloadbalancingv2.Condition(
                 Field="host-header",
-                Values=[Ref(service_host2)]
+                Values=[Join("", ["www.", Ref(service_host2)])]
             )
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
