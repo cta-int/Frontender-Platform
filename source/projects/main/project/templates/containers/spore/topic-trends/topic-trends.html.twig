@@ -13,7 +13,7 @@
                         {% include c.template with {
                             'config': c.config,
                             'labels': c.labels,
-                            'channel': c.model
+                            'model': c.model
                         } %}
                     </div>
                 {% endfor %}
@@ -23,7 +23,7 @@
             <div class="gutters card-slider__slide">
                 {% include "partials/channel/card.html.twig" with {
                     'config': config,
-                    'channel': channel,
+                    'model': channel,
                     'labels': labels
                 } %}
             </div>

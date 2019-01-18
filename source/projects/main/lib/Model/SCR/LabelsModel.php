@@ -27,7 +27,14 @@ class LabelsModel extends ScrModel
 
     public function getPropertyDisplay_name()
     {
-        $parts = explode('/', $this['name']);
+        $name = $this['name'];
+        $language = $this->container->language->get();
+
+        if(is_array($name) && isset($name[$language])) {
+            $name = $name[$language];
+        }
+
+        $parts = explode('/', $name);
         return array_pop($parts);
     }
 
@@ -37,6 +44,16 @@ class LabelsModel extends ScrModel
         $search->setState([
             'label' => [$this['_id']],
             'type' => 'article.issue'
+        ]);
+
+        return $search->fetch();
+    }
+
+    public function getPropertyArticles()
+    {
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$this['_id']]
         ]);
 
         return $search->fetch();
