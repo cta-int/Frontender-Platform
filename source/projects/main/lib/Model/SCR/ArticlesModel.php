@@ -433,6 +433,37 @@ class ArticlesModel extends ScrModel
         ];
     }
 
+    public function getPropertyNumber()
+    {
+        if($this['articleType'] !== 'issue') {
+            return false;
+        }
+
+        // Check if we have labels.
+        if(!isset($this['link']['label']) || !count($this['link']['label'])) {
+            return false;
+        }
+
+        $labels = array_map(function($label) {
+            $matches = null;
+            if(preg_match('/(\d+)/', $label['name'], $matches) === 1) {
+                $label['number'] = $matches[1];
+            }
+
+            return $label;
+        }, $this['link']['label']);
+        $labels = array_filter($labels, function($label) {
+            return isset($label['number']);
+        });
+
+        if(!count($labels)) {
+            return false;
+        }
+
+        $label = array_shift($labels);
+        return $label['number'];
+    }
+
     public function getPropertyOpinion()
     {
         // Return opinion label if present, null if not
