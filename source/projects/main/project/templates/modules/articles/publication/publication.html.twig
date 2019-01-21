@@ -24,11 +24,18 @@
                 {% endif %}
             </p>
             <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
-            <div class="leader">
-                {% for link in model.link.mediaObject|filterArray('type', 'file') %}
-                    {{ file.download(link, 'small', 'trailer--tiny')}}
-                {% endfor %}
-            </div>
+            {% if model.externalLink %}
+                <div class="leader">
+                    {% for link in model.externalLink %}
+                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                            <span class="publication-download__item">{{ link.name }}</span>
+                            {% if link.url|getFileSize %}
+                                <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </article>
 
