@@ -402,7 +402,17 @@ class ArticlesModel extends ScrModel
     public function getPropertyDossier()
     {
         // Return dossier label if present, null if not
-        $label = $this->getLabel('publication', 'dossier:');
+        switch($this->container->language->get()) {
+            case 'fr-FR':
+                $needle = 'dossier :';
+                continue;
+            case 'en-GB':
+            default:
+                $needle = 'dossier:';
+                continue;
+        } 
+        
+        $label = $this->getLabel('publication', $needle);
 
         if (!isset($label['_id'])) {
             return false;
@@ -522,7 +532,7 @@ class ArticlesModel extends ScrModel
             if ($label['type'] == $type) {
                 if (stripos($label['name'], $needle) !== false) {
                     $foundLabel = $label;
-                    break;
+                    // break;
                 }
             }
         }
