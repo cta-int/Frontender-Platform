@@ -6,7 +6,7 @@
         <div class="wings">
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_sidebar|t(locales) }}</h2>
-                {% for issue in model.issues|slice(0,1) %}
+                {% for issue in model|slice(0,1) %}
                     <!-- <pre>{#{ dump(issue.link.mediaObject|lead) }#}</pre> -->
                     <article class="leader">
                         <div class="publication-layout__cover">
@@ -41,7 +41,7 @@
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_main|t(locales) }}</h2>
                 <ol class="publication-grid  |  leader  |  reset">
-                    {% for issue in model.issues|slice(1) %}
+                    {% for issue in model|slice(1) %}
                         <li class="publication-grid__cell  |  trailer">
                             <article>
                                 <div class="publication-layout__cover">

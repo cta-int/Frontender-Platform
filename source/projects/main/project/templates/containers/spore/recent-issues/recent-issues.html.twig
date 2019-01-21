@@ -6,7 +6,7 @@
         <div class="wings">
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_sidebar|t(locales) }}</h2>
-                {% for issue in model.issues|slice(0,1) %}
+                {% for issue in model|slice(0,1) %}
                     <!-- <pre>{#{ dump(issue.link.mediaObject|lead) }#}</pre> -->
                     <article class="leader">
                         <div class="publication-layout__cover">
@@ -41,7 +41,7 @@
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_main|t(locales) }}</h2>
                 <div class="publication-grid  |  leader">
-                    {% for issue in model.issues|slice(1,4) %}
+                    {% for issue in model|slice(1,4) %}
                         <article class="publication-grid__cell  |  trailer">
                             <div class="publication-layout__cover">
                                 <figure class="publication-cover">
@@ -64,7 +64,7 @@
                         </article>
                     {% endfor %}
 
-                    {% for issue in model.issues|slice(5,1) %}
+                    {% for issue in model|slice(5,1) %}
                         <div class="publication-grid__cell  |  trailer">
                             <article>
                                 <div class="publication-layout__cover">
