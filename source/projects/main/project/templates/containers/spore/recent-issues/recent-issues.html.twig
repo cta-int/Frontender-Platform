@@ -86,9 +86,11 @@
                                     </div>
                                 </div>
                             </article>
-                            <a class="button button--dark button--stretch  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
-                                {{ labels.title_button.label|t(locales) }}
-                            </a>
+                            {% if labels.title_button.label %}
+                                <a class="button button--dark button--stretch  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
+                                    {{ labels.title_button.label|t(locales) }}
+                                </a>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
