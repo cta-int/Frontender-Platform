@@ -19,14 +19,12 @@
                 {{ date.article(model.datePublished) }}
             {% endif %}
 
-            {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length > 0 %}
-                <span class="meta">
-                    {{ 'in'|t(locales) }} {{ label.publications(model.link.label|filterArray('type', 'publication'), ' '~'and'|t(locales)~' ')}}
-                </span>
+            {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length %}
+                <span class="meta">{{ 'in'|i18n }} {{ label.publication(model.link.label|filterArray('type', 'publication'))}}</span>
             {% endif %}
 
-            {% if show_channel|default(0) %}
-                <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
+            {% if config.show_type|default(1) %}
+                <a class="meta" href="/search?q=&location=&time=&type=article.{{ model.articleType }}">{{ ('content_type_category_' ~ model.articleType)|i18n }}</a>
             {% endif %}
 
             <h3 class="heading heading--focus anchor--reset">
@@ -46,7 +44,7 @@
             {% endif %}
 
             {% if show_read_more|default(1) %}
-    	       <a class="read-more" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|t(locales) }}</a>
+    	       <a class="read-more" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">{{ 'Read more'|i18n }}</a>
             {% endif %}
 
         </div>

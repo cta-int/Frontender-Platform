@@ -158,6 +158,10 @@ class EventsModel extends ScrModel
     {
         $_label = $this->getLabels('programme', true);
 
+        if (!$_label) {
+            return false;
+        }
+
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.issue',
@@ -171,13 +175,30 @@ class EventsModel extends ScrModel
     {
         $_label = $this->getLabels('programme', true);
 
+        if (!$_label) {
+            return false;
+        }
+
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.blog',
             'limit' => 4,
             'label' => [$_label['_id']]
         ]);
-        return $model->fetch();
+        $updates = $model->fetch();
+
+        usort($updates, function ($a, $b) {
+            $aDate = strtotime($a['datePublished']);
+            $bDate = strtotime($b['datePublished']);
+
+            if ($aDate === $bDate) {
+                return 0;
+            }
+
+            return $aDate < $bDate ? 1 : -1;
+        });
+
+        return $updates;
     }
 
     public function getPropertyRelated()
@@ -257,7 +278,11 @@ class EventsModel extends ScrModel
 
         if ($first) {
             // $_labels = array_slice($_labels, 0, 1);
-            $_labels = array_shift($_labels);
+            if (count($_labels)) {
+                return array_shift($_labels);
+            }
+
+            return false;
         }
 
         return $_labels;
@@ -271,6 +296,10 @@ class EventsModel extends ScrModel
     public function getPropertyTheme()
     {
         $_label = $this->getLabels('strategy', true);
+
+        if (!$_label) {
+            return false;
+        }
 
         $_theme = [
             'selector' => '',

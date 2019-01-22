@@ -1,0 +1,155 @@
+
+{
+	"template": "containers/global/group/group.html.twig",
+	"name": {
+		"en-GB": "Spore - opinion"
+	},
+	"description": {
+		"en-GB": "Spore - opinion"
+	},
+	"template_config": {
+		"config": {
+			"label": {
+				"en-GB": "Settings"
+			},
+			"controls": {
+				"container_tag": {
+					"value": "section",
+					"control": "project/container_tag"
+				},
+				"wings": {
+					"value": "wings",
+					"control": "project/wings"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"divider": {
+					"value": "",
+					"control": "project/divider"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				}
+			}
+		}
+	},
+	"containers": [
+		{
+			"name": {
+				"en-GB": "Container header"
+			},
+			"description": {
+				"en-GB": "Container-header"
+			},
+			"template": "containers/global/container-header/container-header.html.twig",
+			"template_config": {
+				"labels": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"container_title": {
+							"value": {
+								"en-GB": "opinions",
+								"fr-FR": "opinions"
+							},
+							"label": {
+								"en-GB": "Container title"
+							},
+							"control": "core/text"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"page": "",
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"show_margins": {
+							"value": "",
+							"control": "project/layout/show_margins"
+						},
+						"show_smaller_title": {
+							"value": 0,
+							"label": {
+								"en-GB": "Show small title"
+							},
+							"control": "core/boolean"
+						},
+						"show_link": {
+							"value": 1,
+							"label": {
+								"en-GB": "Show link"
+							},
+							"control": "core/boolean"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						},
+						"container_tag": {
+							"value": "header",
+							"control": "project/container_tag"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": ""
+		},
+		{
+			"name": {
+				"en-GB": "opinion grid"
+			},
+			"description": {
+				"en-GB": ""
+			},
+			"template": "containers/labels/opinions/opinions.html.twig",
+			"template_config": {
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": ""
+		}
+	],
+	"frontender": ""
+}

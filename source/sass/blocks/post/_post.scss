@@ -5,6 +5,9 @@
   .grid--posts & {
     margin-bottom: rhythm(18);
   }
+  &__meta {
+    line-height: 1;
+  }
   &__title {
     margin: rhythm(1) 0 rhythm(2);
   }

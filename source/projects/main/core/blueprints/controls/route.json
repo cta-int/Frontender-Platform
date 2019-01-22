@@ -4,7 +4,10 @@
             "en": "Home",
             "fr": "Acceuil"
         },
-        "page": "home",
+        "page": {
+            "en": "home",
+            "fr": "home"
+        },
         "id": ""
     },
     "label": {

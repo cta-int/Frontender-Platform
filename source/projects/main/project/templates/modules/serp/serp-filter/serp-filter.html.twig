@@ -11,5 +11,5 @@
             {% include loopContainer.template with loopContainer %}
         {% endfor %}
     </fieldset>
-    <button class="button button--stretch">{{ labels.button|t(locales)|default('Search'|t(locales)) }}</button>
+    <button class="button button--stretch">{{ labels.button|t(locales)|default('Search'|i18n) }}</button>
 </form>

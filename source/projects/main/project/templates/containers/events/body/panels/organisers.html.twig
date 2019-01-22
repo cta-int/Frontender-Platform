@@ -2,7 +2,7 @@
 
 <section class="panel  |  wing--right" id="organisers">
     <h2 class="title">
-          <a class="panel__trigger  |  gutters  |  is-heir" href="#organisers">{{ 'Organisers'|t(locales) }}</a>
+          <a class="panel__trigger  |  gutters  |  is-heir" href="#organisers">{{ 'Organisers'|i18n }}</a>
     </h2>
     <div class="panel__body">
         <ul class="reset">
@@ -20,7 +20,7 @@
 
                             {% if organizer.website %}
                                 <p class="leader--small">
-                                    <a class="block-link" href="{{ organizer.website }}" target="_blank">{{ 'visit official website'|t(locales) }}</a>
+                                    <a class="block-link" href="{{ organizer.website }}" target="_blank">{{ 'visit official website'|i18n }}</a>
                                 </p>
                             {% endif %}
                         </div>

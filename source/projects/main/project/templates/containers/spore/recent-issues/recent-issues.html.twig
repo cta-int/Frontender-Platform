@@ -1,100 +1,97 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-{% set issues = [
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/mclavvcyqbdthxqlcwjw.jpg',
-        'no': '190',
-        'title': 'Serving smallholder farmers in a digital age'
-    },
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/k55ibalvmap3megrnbuo.png',
-        'no': '189',
-        'title': 'Building a better e-agribusiness'
-    },
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/pimidd8cozae9btxr3qj.jpg',
-        'no': '188',
-        'title': 'Transforming the informal economy'
-    },
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/crjnlwcnbkyrxuoa6bt3.jpg',
-        'no': '187',
-        'title': 'Women driving agricultural innovation'
-    },
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/rlap47yozinz0prmiwte.jpg',
-        'no': '186',
-        'title': 'Reducing risk and maximising revenues'
-    },
-    {
-        'cover': 'http://res.cloudinary.com/cta/image/upload/c_fill,f_auto,fl_progressive,g_face,x_0,y_0/ygp2nvrrmldf4npqqvld.jpg',
-        'no': '185',
-        'title': 'The growth of an inclusive digital agri-finance'
-    }
-] %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout  |  well')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <aside class="layout__cell layout__cell--aside layout__cell--divider  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="wings">
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_sidebar|t(locales) }}</h2>
-
-                <article class="leader">
-                    <div class="publication-layout__cover">
-                        <figure class="publication-cover">
-                            <img class="publication-cover__image" src="{{ issues|first.cover }}" alt="">
-                        </figure>
-                    </div>
-                    <div class="publication-layout__body">
-                        <p class="trailer--tiny">
-                            <h3 class="block-link">Spore issue N.{{ issues|first.no }}</h3>
-                        </p>
-                        <h3 class="heading  |  trailer--tiny">{{ issues|first.title }}</h3>
-                        <div class="leader--normal">
-                            <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                <span class="publication-download__item">pdf</span>
-                                <span class="publication-download__item">2 MB</span>
-                            </a>
-                            <a class="publication-download publication-download--s trailer--tiny" href="">
-                                <span class="publication-download__item">epub</span>
-                                <span class="publication-download__item">70 MB</span>
-                            </a>
+                {% for issue in model|slice(0,1) %}
+                    <!-- <pre>{#{ dump(issue.link.mediaObject|lead) }#}</pre> -->
+                    <article class="leader">
+                        <div class="publication-layout__cover">
+                            <figure class="publication-cover">
+                                <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
+                            </figure>
                         </div>
-                    </div>
-                </article>
+                        <div class="publication-layout__body">
+                            <p class="trailer--tiny">
+                                <h3 class="block-link">{{ 'spore_issue_no'|i18n }} {{ issue.number }}</h3>
+                            </p>
+                            <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
+                            <div class="leader--normal">
+                                {% for link in issue.externalLink %}
+                                    <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                        {% if link.url|getFileSize %}
+                                            <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
             </div>
         </div>
     </aside>
+
     <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="wings">
             <div class="gutters">
                 <h2 class="title title--section">{{ labels.title_main|t(locales) }}</h2>
                 <div class="publication-grid  |  leader">
-                    {% for issue in issues|slice(1) %}
-                    <article class="publication-grid__cell  |  trailer">
-                        <div class="publication-layout__cover">
-                            <figure class="publication-cover">
-                                <img class="publication-cover__image" src="{{ issue.cover }}" alt="">
-                            </figure>
-                        </div>
-                        <div class="publication-layout__body">
-                            <p class="trailer--tiny meta block-link">
-                                <strong>Spore issue N.{{ issue.no }}</strong>
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">{{ issue.title }}</h3>
-                            <div class="leader--normal">
-                                <a class="publication-download publication-download--s trailer--tiny" href="" title="ICT Update 83: Youth   e-agriculture entrepreneurship">
-                                    <span class="publication-download__item">pdf</span>
-                                </a>
-                                <a class="publication-download publication-download--s trailer--tiny" href="">
-                                    <span class="publication-download__item">EPUB</span>
-                                </a>
+                    {% for issue in model|slice(1,4) %}
+                        <article class="publication-grid__cell  |  trailer">
+                            <div class="publication-layout__cover">
+                                <figure class="publication-cover">
+                                    <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
+                                </figure>
                             </div>
+                            <div class="publication-layout__body">
+                                <p class="trailer--tiny meta block-link">
+                                    <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
+                                </p>
+                                <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
+                                <div class="leader--normal">
+                                    {% for link in issue.externalLink %}
+                                        <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
+                                            <span class="publication-download__item">{{ link.name }}</span>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+                    {% for issue in model|slice(5,1) %}
+                        <div class="publication-grid__cell  |  trailer">
+                            <article>
+                                <div class="publication-layout__cover">
+                                    <figure class="publication-cover">
+                                        <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
+                                    </figure>
+                                </div>
+                                <div class="publication-layout__body">
+                                    <p class="trailer--tiny meta block-link">
+                                        <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
+                                    </p>
+                                    <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
+                                    <div class="leader--normal">
+                                        {% for link in issue.externalLink %}
+                                            <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
+                                                <span class="publication-download__item">{{ link.name }}</span>
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </article>
+                            {% if labels.title_button.label %}
+                                <a class="button button--dark button--stretch  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
+                                    {{ labels.title_button.label|t(locales) }}
+                                </a>
+                            {% endif %}
                         </div>
-                        {% if issue.no == 185 %}
-                        <a class="button button--dark button--stretch leader--giant trailer" href="/en/spore/issues">{{ labels.title_button|t(locales) }}</a>
-                        {% endif %}
-                    </article>
                     {% endfor %}
                 </div>
             </div>

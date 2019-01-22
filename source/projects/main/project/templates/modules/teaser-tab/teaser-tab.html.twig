@@ -41,7 +41,7 @@
 
     <div class="timeline timeline--overlay  |  timeline--{{ yearPassedPercentage() }}  |  stack">
         <div class="stack__unit stack__pin  |  is-gt-small-desktop  |  meta">
-            <div class="timeline__label  |  gutters">{{ 'project_timeline'|t(locales) }}</div>
+            <div class="timeline__label  |  gutters">{{ 'project_timeline'|i18n }}</div>
         </div>
         {% for year in model.startDate|default('now')|date('Y')..model.endDate|default('2020-01-01')|date('Y') %}
             <div class="stack__unit  |  meta">

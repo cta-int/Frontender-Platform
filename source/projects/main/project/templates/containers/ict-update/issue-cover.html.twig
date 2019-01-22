@@ -29,7 +29,7 @@
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
     {% if lead_article %}
-        {% include 'containers/articles/hero/hero-topic.html.twig' with {model: lead_article, labels: {label: 'Issue'|t(locales) ~ ' ' ~ issue_nr}} %}
+        {% include 'containers/articles/hero/hero-topic.html.twig' with {model: lead_article, labels: {label: 'Issue'|i18n ~ ' ' ~ issue_nr}} %}
     {% endif %}
 
     <div class="layout leader--hero">
@@ -56,7 +56,7 @@
                     <div class="issue-label__nr" data-issue-nr="{{ issue_nr }}"></div>
                     <div class="issue-label__caption">
                         <p>
-                            <strong>{{'Issue'|t(locales)}} {{ issue_nr }}</strong>
+                            <strong>{{'Issue'|i18n}} {{ issue_nr }}</strong>
                             <span>{{ model.datePublished|date("F Y"|t(locales)) }}</span>
                         </p>
                     </div>

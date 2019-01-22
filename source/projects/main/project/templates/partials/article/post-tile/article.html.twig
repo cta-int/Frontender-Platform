@@ -13,11 +13,13 @@
             {% endfor %}
         </div>
         <article class="tile__body  |  gutters  |  leader  |  trailer">
-            <div class="trailer--small icon icon--theme icon--leaf"></div>
-            <h2 class="heading">
-                {{ article.headline|t(locales) }}
-            </h2>
-            <p class="post__intro">{{ article.about|t(locales) }}</p>
+            <a class="anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+                <div class="trailer--small icon icon--theme icon--leaf"></div>
+                <h2 class="heading">
+                    {{ article.headline|t(locales) }}
+                </h2>
+                <p class="post__intro">{{ article.about|t(locales) }}</p>
+            </a>
         </article>
         <div class="tile__footer  |  divider divider--inverse divider--top media media--middle">
             <p class="gutters media__body media__stretcher">{{ date.article(article.datePublished) }}</p>

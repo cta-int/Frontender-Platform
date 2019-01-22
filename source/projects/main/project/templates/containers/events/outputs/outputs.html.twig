@@ -37,13 +37,20 @@
                             </p>
                             <h3 class="heading  |  trailer--tiny">{{ article.headline|t(locales) }}</h3>
                         </div>
-                        <div class="publication-stack__footer">
-                            <div class="leader--normal">
-                                {% for link in article.link.mediaObject|filterArray('type', 'file') %}
-                                    {{ file.download(link, 'small', 'trailer--tiny')}}
-                                {% endfor %}
+                        {% if article.externalLink %}
+                            <div class="publication-stack__footer">
+                                <div class="leader--normal">
+                                    {% for link in article.externalLink %}
+                                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                            <span class="publication-download__item">{{ link.name }}</span>
+                                            {% if link.url|getFileSize %}
+                                                <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                            {% endif %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     </article>
                 {% endfor %}
             </div>

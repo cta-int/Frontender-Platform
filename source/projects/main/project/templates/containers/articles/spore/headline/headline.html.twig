@@ -1,0 +1,1 @@
+{% include 'containers/articles/spore/headline/headline-' ~ model.articleType|lower|replace({' ': '-'})|default('champion') ~ '.html.twig' %}

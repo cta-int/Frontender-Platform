@@ -13,31 +13,31 @@
 
                 {% if model.datePublished %}
                     <p class="meta  |  leader--small  |  trailer--small">
-                        <strong>{{ 'published on'|t(locales) }}:</strong><br/>
+                        <strong>{{ 'published on'|i18n }}:</strong><br/>
                         {{ model.datePublished|tdate('%e %B %Y') }}
                     </p>
                 {% endif %}
 
                 <p>{{ model.about }}</p>
 
-                <a class="read-more  |  leader--small" href="{{ resource_route }}">{{ 'Read more'|t(locales) }}</a>
+                <a class="read-more  |  leader--small" href="{{ resource_route }}">{{ 'Read more'|i18n }}</a>
             </div>
             <div class="media__figure  media__aside  |  wings  |  trailer">
                 <dl class="meta  |  trailer--normal trailer-inside--tiny  |  gutters">
                     {% if model.procurementStartDate and not model.articleType in ['vacancy'] %}
-                        <dt><strong>{{ labels.procurementStartDate|default('indicative starting date')|t(locales) }}:</strong></dt>
+                        <dt><strong>{{ labels.procurementStartDate|default('indicative starting date')|i18n }}:</strong></dt>
                         <dd class="trailer--small">
                             {{ model.procurementStartDate|tdate('%e %B %Y') }} {{ model.procurementStartDisplay|t(locales) }}
                         </dd>
                     {% endif %}
                     {% if model.procurementStartDate %}
-                        <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|t(locales) }}:</strong></dt>
+                        <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|i18n }}:</strong></dt>
                         <dd class="trailer--small">
                             {{ model.procurementEndDate|tdate('%e %B %Y') }} {{ model.procurementEndDisplay|t(locales) }}
                         </dd>
                     {% endif %}
                     {% if model.procurementType %}
-                        <dt><strong>{{ labels.procurementType|default('type of contract')|t(locales) }}:</strong></dt>
+                        <dt><strong>{{ labels.procurementType|default('type of contract')|i18n }}:</strong></dt>
                         <dd class="trailer--small">{{ model.procurementType|t(locales) }}</dd>
                     {% endif %}
                 </dl>

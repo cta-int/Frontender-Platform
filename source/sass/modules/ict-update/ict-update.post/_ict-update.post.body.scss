@@ -369,10 +369,12 @@ Styleguide 5.50.3.2
 
 // scss-lint:disable NestingDepth
 .post-body {
-  h2, h3 {
-    font-family: $font-family--meta;
-    font-weight: 600;
-  }
+    h2, h3, h4, h5, h6 {
+        margin-top: rhythm(10);
+        font-family: $font-family--meta;
+        font-size: to-unit(18px);
+        font-weight: 600;
+    }
   p,
   ul,
   ol,
@@ -396,6 +398,9 @@ Styleguide 5.50.3.2
     margin: 0 rhythm(10) 0 0;
     max-width: 100%;
     height: auto;
+  }
+  [itemprop="author"] img {
+    margin-right: 0;
   }
   .wp-caption-text {
     font-size: to-unit(14px);

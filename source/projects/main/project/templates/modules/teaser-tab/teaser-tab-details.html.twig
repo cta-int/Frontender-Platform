@@ -4,14 +4,14 @@
 <div class="tab-teaser__panel tab-teaser__panel--info  |  stack stack--stacked" id="{{ tab.id ~ event._id }}">
     <div class="tab-teaser__panel-wing  |  stack__unit  |  leader-inside">
         <div class="gutters">
-            <div class="gutter  |  meta">{{ 'Project'|t(locales) }}</div>
+            <div class="gutter  |  meta">{{ 'Project'|i18n }}</div>
             <h2 class="tab-teaser__title  |  title  |  gutter  |  leader--tiny  |  trailer--tiny">
                 <a href="{{ resource_route }}">
                     {{ model.name|t(locales) }}
                 </a>
             </h2>
             <p class="tab-teaser__about  |  body--whisper  |  gutter">{{ model.description|striptags[:140] ~ '…' }}</p>
-            <a class="read-more  |  gutter" href="{{ resource_route }}">{{ 'Read more'|t(locales) }}</a>
+            <a class="read-more  |  gutter" href="{{ resource_route }}">{{ 'Read more'|i18n }}</a>
         </div>
     </div>
     <div class="stack__unit stack__pin">
@@ -27,7 +27,7 @@
                 <div class="media  |  location">
                     <span class="icon icon--theme icon--map-marker"></span>
                     <div class="location__body  |  media__content">
-                        <span class="is-narrative">{{ 'Region'|t(locales) }}:</span>
+                        <span class="is-narrative">{{ 'Region'|i18n }}:</span>
                         {{ region.name|t(locales) }}
                     </div>
                 </div>

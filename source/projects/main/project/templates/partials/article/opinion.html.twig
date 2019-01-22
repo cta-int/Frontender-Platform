@@ -1,0 +1,22 @@
+{#
+    This is the output of an article of type issue. It is typically used for displaying dossier and opinion listings.
+#}
+<article>
+    <p class="post__meta  |  trailer--small">
+        {# link to first article in this issue #}
+        <a class="meta" href="{{ route({
+            'page': article.similar.articles|first.path,
+            'slug': article.similar.articles|first.headline|t(locales)|slugify,
+            'id': article.similar.articles|first._id}) }}">
+            <strong>{{ article.opinion.label.display_name }}</strong>
+        </a>
+    </p>
+    <h3 class="heading  |  anchor--reset">
+        <a class="anchor anchor--shy  |  is-heir" href="{{ route({
+            'page': article.similar.articles|first.path,
+            'slug': article.similar.articles|first.headline|t(locales)|slugify,
+            'id': article.similar.articles|first._id}) }}">{{ article.headline|t }}
+        </a>
+    </h3>
+    <p class="post__intro">{{ article.about|t }}</p>
+</article>

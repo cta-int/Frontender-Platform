@@ -10,7 +10,7 @@
             {{ share.bar_event(model, true) }}
         </div>
         <h2 class="title">
-            <a class="panel__trigger  |  gutters  |  is-heir" href="#overview">{{ 'Event overview'|t(locales) }}</a>
+            <a class="panel__trigger  |  gutters  |  is-heir" href="#overview">{{ 'Event overview'|i18n }}</a>
         </h2>
         <div class="panel__body">
             <div class="post-body  |  paragraph--lead  |  gutters">
@@ -55,7 +55,7 @@
                                     </span>
                                 </a>
                                 <div class="location__body  |  media__content">
-                                    <a class="is-heir" href="{{ model.url }}" target="_blank">{{ 'Event website'|t(locales) }}</a>
+                                    <a class="is-heir" href="{{ model.url }}" target="_blank">{{ 'Event website'|i18n }}</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
 
             <aside class="gutters">
                 {% if model.organizer|filterArray('avatar')|length > 0 %}
-                    <h3 class="title  |  leader  |  trailer--small">{{ 'Organisers'|t(locales) }}</h3>
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Organisers'|i18n }}</h3>
                     <div class="leader-inside--small  |  trailer--small">
 
                         {% for organisation in model.organizer|filterArray('avatar') %}
@@ -97,7 +97,7 @@
                 {% endif %}
 
                 {% if model.externalLink|length > 0 %}
-                    <h3 class="title  |  leader  |  trailer--small">{{ 'External links'|t(locales) }}</h3>
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'External links'|i18n }}</h3>
                     <ul class="reset">
                     {% for link in model.externalLink %}
                         <li class="leader--small  |  leader--small">
@@ -111,7 +111,7 @@
 
                 {# Related articles #}
                 {% if model.related.articles|length > 0 %}
-                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|t(locales) }}</h3>
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|i18n }}</h3>
                     <ul class="reset">
                         {% for model in model.related.articles %}
                             <li class="leader--small  |  leader--small">
@@ -125,7 +125,7 @@
 
                 {# Related events #}
                 {% if model.related.events|length > 0 %}
-                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|t(locales) }}</h3>
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|i18n }}</h3>
                     <ul class="reset">
                         {# Show everything except the projects. #}
                         {% for model in model.related.events|filterArray('type', 'Project', true) %}
@@ -139,7 +139,7 @@
                 {% endif %}
 
                 {% if model.similar.events|filterArray('type', 'Project')|length > 0 %}
-                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|t(locales) }}</h3>
+                    <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|i18n }}</h3>
                     <ul class="reset">
                         {% for model in model.similar.events|filterArray('type', 'Project') %}
                             <li class="leader--normal  |  trailer--normal">

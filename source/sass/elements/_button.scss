@@ -113,6 +113,16 @@ Styleguide 3.5
     @include theme-border(100%);
     @include theme-background();
   }
+  &-bar {
+    text-align: center;
+    & {
+      display: inline-block;
+    }
+    &--center {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 }
 
 @include breakpoint($gt-small-desktop) {
@@ -120,5 +130,6 @@ Styleguide 3.5
     // padding: rhythm(3.5) rhythm(10);
   }
 }
+
 
 // scss-lint:enable NestingDepth

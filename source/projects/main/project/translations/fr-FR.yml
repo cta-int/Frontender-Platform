@@ -264,6 +264,8 @@ footnotes: Notes de bas de page
 view_reference: Voir la référence
 disclaimer: Avertissement
 about the author: A propos de l'auteur
+author: auteur
+authors: auteurs
 articles: articles
 in: dans
 
@@ -304,3 +306,30 @@ disclaimer_text: Ce document est produit avec le soutien financier de l’Union 
 error_intro: We can't seem to find what you are looking for.
 error_description: You may have typed the address incorrectly or you may have used an outdated link.
 error_escape: Please go back to the <a href="/">home page</a> or use the above navigation bar to choose a new direction.
+
+
+# Article content category mappings
+content_type_category_background: Analyse
+content_type_category_communique: Communiqué
+content_type_category_blog: Blog
+content_type_category_corporate_news: Brèves
+content_type_category_data_report: Reportage
+content_type_category_impact: Histoire d’impact
+content_type_category_interview: Entretien
+content_type_category_opinion: Opinion
+content_type_category_review: Critique
+content_type_category_syndicated: Revue de presse
+content_type_category_speech: Archive
+content_type_category_technical_scientific: Article de fond
+content_type_category_tender_award_notice: Avis d’attribution de marché
+content_type_category_internship: Stage
+content_type_category_call_for_external_expert: Appel à manifestations d’intérêt d’experts
+content_type_category_call_for_tender: Appel d’offre
+content_type_category_issue: Numéro
+content_type_category_vacancy: Poste vacant
+content_type_category_call_for_proposal: Appel à propositions
+content_type_category_partnership: Partenariat
+content_type_category_tender_highlight: Autre appel d’offre
+
+# Spore
+spore_issue_no: Spore N°

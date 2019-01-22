@@ -19,7 +19,7 @@
 				</div>
 				  <p class="leader  |  trailer  |  gutters">{{ article.related.articles|first.about|striptags[:140] ~ '…' }}</p>
 				  {% if show_read_more|default(1) %}
-				   <a class="read-more  |  gutters" href="{{ route({'page': article.path, 'id': article.related.articles|first._id}) }}">{{ 'Read more'|t(locales) }}</a>
+				   <a class="read-more  |  gutters" href="{{ route({'page': article.path, 'id': article.related.articles|first._id}) }}">{{ 'Read more'|i18n }}</a>
 				{% endif %}
 				</div>
 				<em class="headline__tax  |  wings"><span class="label  |  gutters">{{ article.related.articles|first.articleType }}</span></em>

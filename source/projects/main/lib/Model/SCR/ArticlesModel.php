@@ -14,6 +14,7 @@ use Prototype\Model\Traits\Imagable;
 use Prototype\Model\SCR\MediaModel;
 use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
+use Prototype\Model\SCR\Article\SearchModel;
 
 class ArticlesModel extends ScrModel
 {
@@ -112,6 +113,33 @@ class ArticlesModel extends ScrModel
 
                 return $this->cachedArticles;
             }
+
+            public function publicationArticles()
+            {
+                if (!$this->cachedPublicationArticles) {
+                    $labels = $this->article['link']['label'];
+                    $labels = array_filter($labels, function ($label) {
+                        return $label['type'] === 'publication';
+                    });
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => array_map(function ($label) {
+                            return $label['_id'];
+                        }, $labels),
+                        'limit' => $this->state->similar_limit,
+                        'language' => $this->state->language ?? 'en',
+                        'mustNot' => [[
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->article['_id']
+                        ]]
+                    ]);
+                    $this->cachedPublicationArticles = $articles->fetch();
+                }
+
+                return $this->cachedPublicationArticles;
+            }
         };
     }
 
@@ -201,6 +229,10 @@ class ArticlesModel extends ScrModel
         $mediaModel = new MediaModel($this->container);
         $article = $this;
 
+        if (!isset($this->data['contentBlocks'])) {
+            return '';
+        }
+
         $contentBlocks = array_map(function ($block) use ($article, $mediaModel) {
             if ((isset($block['subtype']) && $block['subtype'] === 'image') || (isset($block['type']) && $block['type'] === 'video')) {
                 $item = $mediaModel->setState([
@@ -288,10 +320,10 @@ class ArticlesModel extends ScrModel
         // I now need to sort the routes, the most specific route will be used,
         // the score is calculated at the amount or parts it has.
         uasort($routes, function ($a, $b) {
-            if ($a < $b) {
-                return -1;
-            } else if ($b < $a) {
+            if ($a['score'] < $b['score']) {
                 return 1;
+            } else if ($b['score'] < $a['score']) {
+                return -1;
             }
 
             return 0;
@@ -351,10 +383,160 @@ class ArticlesModel extends ScrModel
             $_config = $this->container['theme-color'];
         }
 
+        if ($this['publicationLabel']) {
+            $_oldLabel = $_label;
+            $_label = $this['publicationLabel'];
+
+            if (!isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+                $_label = $_oldLabel;
+            }
+        }
+
         if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
             $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
         }
 
         return $_label;
+    }
+
+    public function getPropertyDossier()
+    {
+        // Return dossier label if present, null if not
+        switch($this->container->language->get()) {
+            case 'fr-FR':
+                $needle = 'dossier :';
+                continue;
+            case 'en-GB':
+            default:
+                $needle = 'dossier:';
+                continue;
+        } 
+        
+        $label = $this->getLabel('publication', $needle);
+
+        if (!isset($label['_id'])) {
+            return false;
+        }
+
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$label['_id']],
+            'type' => 'article.issue',
+            'limit' => 1
+        ]);
+        $issueArticle = $search->fetch();
+
+        // The fetch function always returns an array, so we will check if we have an instance,
+        // If so we will need that instance, if there is nothing, we will set the value to false,
+        // This way twig doesn't break.
+        if (count($issueArticle) >= 1) {
+            $issueArticle = array_shift($issueArticle);
+        } else {
+            $issueArticle = false;
+        }
+        $labelsModel = new LabelsModel($this->container);
+        $labelsModel->setData($label);
+
+        return [
+            'label' => $labelsModel,
+            'issue' => $issueArticle
+        ];
+    }
+
+    public function getPropertyNumber()
+    {
+        if($this['articleType'] !== 'issue') {
+            return false;
+        }
+
+        // Check if we have labels.
+        if(!isset($this['link']['label']) || !count($this['link']['label'])) {
+            return false;
+        }
+
+        $labels = array_map(function($label) {
+            $matches = null;
+            if(preg_match('/(\d+)/', $label['name'], $matches) === 1) {
+                $label['number'] = $matches[1];
+            }
+
+            return $label;
+        }, $this['link']['label']);
+        $labels = array_filter($labels, function($label) {
+            return isset($label['number']);
+        });
+
+        if(!count($labels)) {
+            return false;
+        }
+
+        $label = array_shift($labels);
+        return $label['number'];
+    }
+
+    public function getPropertyOpinion()
+    {
+        // Return opinion label if present, null if not
+        $label = $this->getLabel('publication', 'opinion:');
+
+        if (!isset($label['_id'])) {
+            return false;
+        }
+
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$label['_id']],
+            'type' => 'article.issue',
+            'limit' => 1
+        ]);
+        $issueArticle = $search->fetch();
+
+        // The fetch function always returns an array, so we will check if we have an instance,
+        // If so we will need that instance, if there is nothing, we will set the value to false,
+        // This way twig doesn't break.
+        if (count($issueArticle) >= 1) {
+            $issueArticle = array_shift($issueArticle);
+        } else {
+            $issueArticle = false;
+        }
+        $labelsModel = new LabelsModel($this->container);
+        $labelsModel->setData($label);
+
+        return [
+            'label' => $labelsModel,
+            'issue' => $issueArticle
+        ];
+    }
+
+    public function getPropertyBlog()
+    {
+        // Return blog label if present, null if not
+        $blog = null;
+
+        foreach ($this['link']['label'] as $label) {
+            if (stripos($label['name'], 'blog') !== false) {
+                $blog = $label;
+                break;
+            }
+        }
+
+        return $blog;
+    }
+
+    private function getLabel(string $type, string $needle) : array
+    {
+        // Return the first label that is as we defined it.
+        $foundLabel = [];
+
+        foreach ($this['link']['label'] as $label) {
+            if ($label['type'] == $type) {
+                if (stripos($label['name'], $needle) !== false) {
+                    $foundLabel = $label;
+                    // break;
+                }
+            }
+        }
+
+        return $foundLabel;
     }
 }
