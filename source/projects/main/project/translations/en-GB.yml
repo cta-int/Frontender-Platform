@@ -194,3 +194,6 @@ disclaimer_text: This document has been produced with the financial assistance o
 error_intro: We can't seem to find what you are looking for.
 error_description: You may have typed the address incorrectly or you may have used an outdated link.
 error_escape: Please go back to the <a href="/">home page</a> or use the above navigation bar to choose a new direction.
+
+# Spore
+spore_issue_no: Spore N.

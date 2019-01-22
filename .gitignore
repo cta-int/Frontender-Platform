@@ -4,3 +4,5 @@ tmp
 build
 .sass-cache
 composer.lock
+source/projects/main/project/templates/containers/spore/recent-issues/recent-issues.html.twig
+source/projects/main/project/templates/containers/labels/issues/issues.html.twig
