@@ -38,9 +38,9 @@
                 <aside class="gutters leader trailer">
                     <div class="well">
                         {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
-                            <h2 class="title gutters leader-inside--normal">{{ 'About the authors'|i18n(locales) }}</h2>
+                            <h2 class="title gutters leader-inside--normal">{{ 'about_the_authors'|i18n(locales) }}</h2>
                         {% else %}
-                            <h2 class="title gutters leader-inside--normal">{{ 'About the author'|i18n(locales) }}</h2>
+                            <h2 class="title gutters leader-inside--normal">{{ 'about_the_author'|i18n(locales) }}</h2>
                         {% endif %}
                         {% for auth in model.link.person.author|filterArray('familyName', null) %}
                             <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer-inside--normal">
@@ -48,9 +48,9 @@
                                     {{ image.person(auth, 50) }}
                                 </div>
                                 <div class="media__body  |  gutter--right  |  body--whisper">
-                                    <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
-                                    {% if auth.description %}
-                                        <p itemprop="description" class="">{{ auth.description }}</p>
+                                    <p class=""><span class="meta--bold">{{ auth.givenName ~ ' ' ~ auth.familyName}}</span>{% if auth.jobTitle %}<span>, {{ auth.jobTitle }}</span>{% endif %}</p>
+                                    {% if auth.biography %}
+                                        <p itemprop="description" class="leader--tiny">{{ auth.biography }}</p>
                                     {% endif %}
                                 </div>
                             </div>
