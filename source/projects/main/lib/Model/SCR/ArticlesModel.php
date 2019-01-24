@@ -111,8 +111,8 @@ class ArticlesModel extends ScrModel
 
                     $this->cachedArticles = $articles->fetch();
                     usort($this->cachedArticles, function($a, $b){
-                        $aDatePublished = new \DateTime($a->datePublished);
-                        $bDatePublished = new \DateTime($b->datePublished);
+                        $aDatePublished = new \DateTime($a['datePublished']);
+                        $bDatePublished = new \DateTime($b['datePublished']);
                         if($aDatePublished == $bDatePublished) {
                             return 0;
                         }

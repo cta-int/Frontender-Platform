@@ -6,11 +6,21 @@ use Prototype\Model\SCR\ScrModel;
 use Prototype\Model\Traits\Searchable;
 use Prototype\Model\SCR\LabelsModel;
 use Prototype\Model\Traits\Translatable;
+use Slim\Container;
 
 class SearchModel extends ScrModel
 {
-    use Searchable;
+    use Searchable {
+        __construct as public traitConstruct;
+    }
     use Translatable;
+
+    public function __construct(Container $container) {
+        $this->traitConstruct($container);
+
+        $this->getState()
+            ->insert('articleLimit');
+    }
 
     public function getModelName() : string
     {
@@ -37,7 +47,8 @@ class SearchModel extends ScrModel
 
             $label = new LabelsModel($container);
             $label->setState([
-                'id' => array_shift($id)
+                'id' => array_shift($id),
+                'articleLimit' => $state['articleLimit']
             ]);
             return $label->fetch($raw);
         }

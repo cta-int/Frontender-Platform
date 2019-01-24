@@ -11,7 +11,9 @@ class LabelsModel extends ScrModel
     {
         parent::__construct($container);
 
-        $this->getState()->insert('id', null, true);
+        $this->getState()
+            ->insert('id', null, true)
+            ->insert('articleLimit');
     }
 
     public function getPropertyTheme()
@@ -53,10 +55,22 @@ class LabelsModel extends ScrModel
     {
         $search = new SearchModel($this->container);
         $search->setState([
-            'label' => [$this['_id']]
+            'label' => [$this['_id']],
+            'limit' => $this->getState()->articleLimit
         ]);
 
-        return $search->fetch();
+        $result = $search->fetch();
+
+        usort($result, function($a, $b){
+            $aDatePublished = new \DateTime($a['datePublished']);
+            $bDatePublished = new \DateTime($b['datePublished']);
+            if($aDatePublished == $bDatePublished) {
+                return 0;
+            }
+            return $aDatePublished > $bDatePublished ? -1 : 1;
+        });
+
+        return $result;
     }
 
     public function fetch($raw = false)
