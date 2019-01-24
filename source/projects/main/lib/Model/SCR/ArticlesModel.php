@@ -486,7 +486,17 @@ class ArticlesModel extends ScrModel
     public function getPropertyOpinion()
     {
         // Return opinion label if present, null if not
-        $label = $this->getLabel('publication', 'opinion:');
+        switch($this->container->language->get()) {
+            case 'fr-FR':
+                $needle = 'opinion :';
+                continue;
+            case 'en-GB':
+            default:
+                $needle = 'opinion:';
+                continue;
+        } 
+        
+        $label = $this->getLabel('publication', $needle);
 
         if (!isset($label['_id'])) {
             return false;
