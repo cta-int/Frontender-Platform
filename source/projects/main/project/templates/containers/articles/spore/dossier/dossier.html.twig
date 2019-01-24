@@ -29,9 +29,34 @@
                     </div>
                 {% endif %}
             </footer>
-
+            
             {% if model.alternativeHeadline %}
                 <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ model.alternativeHeadline|t(locales) }}</strong></p>
+            {% endif %}
+
+            {% if config.show_author|default(0) and model.link.person.author|filterArray('description', null)|length > 0 %}
+                <aside class="gutters leader trailer">
+                    <div class="well">
+                        {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
+                            <h2 class="title gutters leader-inside--normal">{{ 'About the authors'|i18n(locales) }}</h2>
+                        {% else %}
+                            <h2 class="title gutters leader-inside--normal">{{ 'About the author'|i18n(locales) }}</h2>
+                        {% endif %}
+                        {% for auth in model.link.person.author|filterArray('familyName', null) %}
+                            <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer-inside--normal">
+                                <div class="media__figure  |  gutters">
+                                    {{ image.person(auth, 50) }}
+                                </div>
+                                <div class="media__body  |  gutter--right  |  body--whisper">
+                                    <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                                    {% if auth.description %}
+                                        <p itemprop="description" class="">{{ auth.description }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </aside>
             {% endif %}
 
             <div class="post-anchor  |  clear">
