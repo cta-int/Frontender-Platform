@@ -108,7 +108,16 @@ class ArticlesModel extends ScrModel
                             'value' => $this->article['_id']
                         ]]
                     ]);
+
                     $this->cachedArticles = $articles->fetch();
+                    usort($this->cachedArticles, function($a, $b){
+                        $aDatePublished = new \DateTime($a['datePublished']);
+                        $bDatePublished = new \DateTime($b['datePublished']);
+                        if($aDatePublished == $bDatePublished) {
+                            return 0;
+                        }
+                        return $aDatePublished > $bDatePublished ? -1 : 1;
+                    });
                 }
 
                 return $this->cachedArticles;
@@ -477,7 +486,17 @@ class ArticlesModel extends ScrModel
     public function getPropertyOpinion()
     {
         // Return opinion label if present, null if not
-        $label = $this->getLabel('publication', 'opinion:');
+        switch($this->container->language->get()) {
+            case 'fr-FR':
+                $needle = 'opinion :';
+                continue;
+            case 'en-GB':
+            default:
+                $needle = 'opinion:';
+                continue;
+        } 
+        
+        $label = $this->getLabel('publication', $needle);
 
         if (!isset($label['_id'])) {
             return false;
@@ -490,6 +509,7 @@ class ArticlesModel extends ScrModel
             'limit' => 1
         ]);
         $issueArticle = $search->fetch();
+
 
         // The fetch function always returns an array, so we will check if we have an instance,
         // If so we will need that instance, if there is nothing, we will set the value to false,
