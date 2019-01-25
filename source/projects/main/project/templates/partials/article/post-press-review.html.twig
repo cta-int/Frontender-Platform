@@ -22,18 +22,14 @@
                 {{ date.article(article.datePublished) }}
             {% endif %}
 
-            {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-                <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
-            {% endif %}
-
-            {% if config.show_type|default(1) %}
-                <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
+            {% if config.show_alttitle|default(1) and article.alternativeHeadline|length %}
+                <span class="meta">{{ 'in'|i18n }} {{ article.alternativeHeadline|t(locales) }}</span>
             {% endif %}
         </p>
 
         <h3 class="heading  |  anchor--reset">
             <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
-                {{ article.headline }}
+                {{ article.headline|t(locales) }}
             </a>
         </h3>
 
@@ -44,7 +40,7 @@
         {% endif %}
 
         {% if config.show_stand_first %}
-            <p class="is-gt-small-desktop  |  post__intro">{{ article.about|raw }}</p>
+            <p class="is-gt-small-desktop  |  post__intro">{{ article.about|t(locales)|raw }}</p>
         {% endif %}
 
         {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
