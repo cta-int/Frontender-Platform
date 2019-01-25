@@ -1,9 +1,9 @@
 {% if (model.syndicatedArticles|length) %}
 {% import "macros/template.html.twig" as helper %}
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, ' grid grid--musketeers')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, config.grid|default(' grid grid--musketeers'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% for article in model.syndicatedArticles %}
-    <div class="grid__cell gutters">
-        {% include "partials/article/post.html.twig" with {'config': {
+    <div class="grid__cell gutters leader--normal trailer--normal">
+        {% include "partials/article/post-press-review.html.twig" with {'config': {
             'show_lead_image': 1,
             'show_stand_first': 1,
             'show_publication_date': 1,
@@ -11,6 +11,7 @@
             'show_read_more': 1,
             'show_type': 0,
             'show_topic': 0,
+            'show_alttitle': config.show_alttitle,
             'show_publication': 0
         }, 'article': article} %}
     </div>

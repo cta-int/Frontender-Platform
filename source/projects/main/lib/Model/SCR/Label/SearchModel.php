@@ -48,7 +48,7 @@ class SearchModel extends ScrModel
             $label = new LabelsModel($container);
             $label->setState([
                 'id' => array_shift($id),
-                'articleLimit' => $state['articleLimit']
+                'articleLimit' => $state['articleLimit'] ?? false
             ]);
             return $label->fetch($raw);
         }

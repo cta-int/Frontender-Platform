@@ -56,7 +56,7 @@ class LabelsModel extends ScrModel
         $search = new SearchModel($this->container);
         $search->setState([
             'label' => [$this['_id']],
-            'limit' => $this->getState()->articleLimit
+            'limit' => $this->getState()->articleLimit ?? false
         ]);
 
         $result = $search->fetch();

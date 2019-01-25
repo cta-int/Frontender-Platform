@@ -28,19 +28,21 @@
             <div class="post__content  |  layout__cell  |  stack stack--stacked">
                 <div class="stack__unit  |  gutters">
 
-                    {% if show_publication_date|default(1) %}
-                        {{ date.article(model|first.datePublished) }}
-                    {% endif %}
+                    <p class="post__meta  |  trailer--tiny">
+                        {% if config.show_publication_date|default(1) %}
+                            {{ date.article(model|first.datePublished) }}
+                        {% endif %}
+            
+                        {% if config.show_publication|default(1) and model|first.link.label|filterArray('type', 'publication')|length %}
+                            <span class="meta">{{ 'in'|i18n }} {{ label.publication(model|first.link.label|filterArray('type', 'publication'))}}</span>
+                        {% endif %}
+            
+                        {% if config.show_type|default(0) %}
+                            <a class="meta" href="/search?q=&location=&time=&type=article.{{ model|first.articleType }}">{{ ('content_type_category_' ~ model|first.articleType)|i18n }}</a>
+                        {% endif %}
+                    </p>
 
-                    {% if config.show_publication|default(1) %}
-                        {{ label.publications( model|first.link.label|filterArray('type', 'publication'), ' '~'and'|i18n~' ') }}
-                    {% endif %}
-
-                    {% if show_channel|default(0) %}
-                        <span class="meta">in <a href="javascript:void(0);">CTA</a></span>
-                    {% endif %}
-
-                    <h3 class="title title--tile anchor--reset">
+                    <h3 class="heading heading--focus anchor--reset">
                         <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, id: model|first._id}) }}">
                             {{ model|first.headline }}
                         </a>
