@@ -2,7 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% extends 'partials/base.html.twig' %}
+{% extends getTemplatePath('partials/base', 'default') %}
 
 {% block body %}
     {% for loopContainer in containers %}
