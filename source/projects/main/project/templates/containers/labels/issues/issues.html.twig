@@ -15,9 +15,7 @@
                             </figure>
                         </div>
                         <div class="publication-layout__body">
-                            <p class="trailer--tiny">
-                                <h3 class="block-link">{{ 'spore_issue_no'|i18n }} {{ issue.number }}</h3>
-                            </p>
+                            <p class="trailer--tiny meta"><strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong></p>
                             <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
                             <div class="leader--normal">
                                 {% for link in issue.externalLink %}
@@ -50,7 +48,7 @@
                                     </figure>
                                 </div>
                                 <div class="publication-layout__body">
-                                    <p class="trailer--tiny meta block-link">
+                                    <p class="trailer--tiny meta">
                                         <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
                                     </p>
                                     <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>

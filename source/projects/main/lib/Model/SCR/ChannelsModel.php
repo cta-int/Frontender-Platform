@@ -301,11 +301,11 @@ class ChannelsModel extends ScrModel
 
     private function getArticles($state = [])
     {
-        $state = array_merge($state, [
+        $state = array_merge([
             'limit' => 5,
             'id' => $this['_id']
-        ]);
-
+        ], $this->getState()->getValues(), $state);
+        
         $model = new ArticlesModel($this->container);
         $model->setState($state);
         return $model->fetch();
@@ -313,10 +313,10 @@ class ChannelsModel extends ScrModel
 
     private function getEvents($state = [])
     {
-        $state = array_merge($state, [
+        $state = array_merge([
             'limit' => 5,
             'id' => $this['_id']
-        ]);
+        ], $this->getState()->getValues(), $state);
 
         $model = new EventsModel($this->container);
         $model->setState($state);

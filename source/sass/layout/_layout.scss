@@ -272,43 +272,7 @@ Styleguide 2.1
         &--split &__cell--divider,
         &--even &__cell--divider {
             border-right: 1px solid;
-            border-color: mix($color-green, $white, 26%);
-
-            .theme--blue & {
-                border-color: mix($color-blue, $white, 26%);
-            }
-
-            .theme--lime & {
-                border-color: mix($color-lime, $white, 26%);
-            }
-
-            .theme--yellow & {
-                border-color: mix($color-yellow, $white, 26%);
-            }
-
-            .theme--gold & {
-                border-color: mix($color-gold, $white, 26%);
-            }
-
-            .theme--orange & {
-                border-color: mix($color-orange, $white, 26%);
-            }
-
-            .theme--salmon & {
-                border-color: mix($color-salmon, $white, 26%);
-            }
-
-            .theme--red & {
-                border-color: mix($color-red, $white, 26%);
-            }
-
-            .theme--burgundy & {
-                border-color: mix($color-burgundy, $white, 26%);
-            }
-
-            .theme--purple & {
-                border-color: mix($color-purple, $white, 26%);
-            }
+            @include theme-border(26%);
 
             &.well,
             .well & {
