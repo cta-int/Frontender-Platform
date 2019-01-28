@@ -11,8 +11,6 @@
         "ListenerPriority3": "14",
         "ListenerPriority4": "15",
         "NetworkStack": "UAT-network",
-        "ServicePath": "/*",
-        "ServicePath2": "/*",
         "ServiceHost": "frontender-uat-v2.cta.int",
         "ServiceHost2": "spore.frontender-uat-v2.cta.int",
         "ScrHostname": "http://UAT-ecs-stateless-eu-central-1.cta.int/",

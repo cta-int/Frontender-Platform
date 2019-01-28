@@ -116,13 +116,6 @@ network_stack = t.add_parameter(Parameter(
     Default="network"
 ))
 
-service_path = t.add_parameter(Parameter(
-    "ServicePath",
-    Type="String",
-    Description="Path portion of the service URL",
-    Default="/*"
-))
-
 service_host = t.add_parameter(Parameter(
     "ServiceHost",
     Type="String",
@@ -132,13 +125,6 @@ service_host = t.add_parameter(Parameter(
 
 service_host_condition = "ServiceHostCondition"
 t.add_condition(service_host_condition, Not(Equals("", Ref(service_host))))
-
-service_path2 = t.add_parameter(Parameter(
-    "ServicePath2",
-    Type="String",
-    Description="Path portion of the service URL",
-    Default="/*"
-))
 
 service_host2 = t.add_parameter(Parameter(
     "ServiceHost2",
@@ -191,8 +177,6 @@ stack_env = t.add_parameter(Parameter(
 ))
 is_prod = "IsProd"
 t.add_condition(is_prod, Equals("PROD", Ref(stack_env)))
-service_host_condition = "ServiceHostCondition"
-t.add_condition(service_host_condition, Not(Equals("", Ref(service_host))))
 
 is_UAT = "IsUAT"
 t.add_condition(is_UAT, Equals("UAT", Ref(stack_env)))
@@ -561,16 +545,10 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path)]
+            Field="host-header",
+            Values=[Ref(service_host)]
         ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Ref(service_host)]
-           ),
-           Ref("AWS::NoValue")
-           )
+        Ref("AWS::NoValue")
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority)
@@ -586,16 +564,9 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path)]
-        ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Join("", ["www.", Ref(service_host)])]
-           ),
-           Ref("AWS::NoValue")
-           )
+            Field="host-header",
+            Values=[Join("", ["www.", Ref(service_host)])]
+        )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority2)
@@ -611,16 +582,9 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path2)]
+            Field="host-header",
+            Values=[Ref(service_host2)]
         ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Ref(service_host2)]
-           ),
-           Ref("AWS::NoValue")
-           )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority3)
@@ -636,16 +600,9 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path2)]
+            Field="host-header",
+            Values=[Join("", ["www.", Ref(service_host2)])]
         ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Join("", ["www.", Ref(service_host2)])]
-           ),
-           Ref("AWS::NoValue")
-           )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority4)
@@ -906,16 +863,16 @@ for az in ["A", "B", "C"]:
             GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
         )
     )
-    sg_alb_public_ingress_rules443[az] = t.add_resource(
-        ec2.SecurityGroupIngress(
-            "CtaPlatformIngressRuleSsl" + az,
-            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
-            IpProtocol="6",
-            FromPort=443,
-            ToPort=443,
-            GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
-        )
+sg_alb_public_ingress_rules443[az] = t.add_resource(
+    ec2.SecurityGroupIngress(
+        "CtaPlatformIngressRuleSsl" + az,
+        CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
+        IpProtocol="6",
+        FromPort=443,
+        ToPort=443,
+        GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
     )
+)
 
 """
 Service definition
