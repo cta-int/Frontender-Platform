@@ -3,7 +3,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <ol class="reset grid grid--teletubbies">
-        {% for article in model.issues|slice(0,20) %}
+        {% for article in model.issues %}
             <li class="grid__cell  |  gutters  |  trailer">
                 {% include 'partials/article/dossier.html.twig' %}
             </li>        

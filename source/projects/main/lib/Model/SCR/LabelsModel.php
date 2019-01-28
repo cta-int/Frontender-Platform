@@ -32,7 +32,7 @@ class LabelsModel extends ScrModel
         $name = $this['name'];
         $language = $this->container->language->get();
 
-        if(is_array($name) && isset($name[$language])) {
+        if (is_array($name) && isset($name[$language])) {
             $name = $name[$language];
         }
 
@@ -45,7 +45,8 @@ class LabelsModel extends ScrModel
         $search = new SearchModel($this->container);
         $search->setState([
             'label' => [$this['_id']],
-            'type' => 'article.issue'
+            'type' => 'article.issue',
+            'limit' => $this->getState()->articleLimit ?? false
         ]);
 
         return $search->fetch();
@@ -61,10 +62,10 @@ class LabelsModel extends ScrModel
 
         $result = $search->fetch();
 
-        usort($result, function($a, $b){
+        usort($result, function ($a, $b) {
             $aDatePublished = new \DateTime($a['datePublished']);
             $bDatePublished = new \DateTime($b['datePublished']);
-            if($aDatePublished == $bDatePublished) {
+            if ($aDatePublished == $bDatePublished) {
                 return 0;
             }
             return $aDatePublished > $bDatePublished ? -1 : 1;
