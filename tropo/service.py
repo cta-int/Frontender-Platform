@@ -548,7 +548,6 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
             Field="host-header",
             Values=[Ref(service_host)]
         ),
-        Ref("AWS::NoValue")
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority)
