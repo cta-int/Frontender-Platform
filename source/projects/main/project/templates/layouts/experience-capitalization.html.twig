@@ -1,4 +1,4 @@
-{% extends 'partials/base.html.twig' %}
+{% extends getTemplatePath('partials/base', 'default') %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% block body %}
