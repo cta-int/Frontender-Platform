@@ -929,6 +929,88 @@ If(is_prod, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsporeListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=80
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=90
+    )
+), Ref("AWS::NoValue"))
+
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpssporeListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=80
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpssporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=90
+    )
+), Ref("AWS::NoValue"))
+
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
 sg_alb_public_ingress_rules443 = {}
