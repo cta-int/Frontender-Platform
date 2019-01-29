@@ -848,6 +848,87 @@ If(is_UAT, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpCTAINTListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=60
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpCTAINTListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=70
+    )
+), Ref("AWS::NoValue"))
+
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsCTAINTListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=60
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsCTAINTListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=70
+    )
+), Ref("AWS::NoValue"))
+
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
 sg_alb_public_ingress_rules443 = {}
