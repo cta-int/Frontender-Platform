@@ -850,7 +850,7 @@ If(is_UAT, t.add_resource(
 
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "HttpCTAINTListenerRule2",
+        "HttpctaintListenerRule1",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
@@ -870,7 +870,7 @@ If(is_prod, t.add_resource(
 
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "HttpCTAINTListenerRule2",
+        "HttpctaintListenerRule2",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
@@ -891,7 +891,7 @@ If(is_prod, t.add_resource(
 
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "HttpsCTAINTListenerRule2",
+        "HttpsctaintListenerRule1",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
@@ -911,7 +911,7 @@ If(is_prod, t.add_resource(
 
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
-        "HttpsCTAINTListenerRule2",
+        "HttpsctaintListenerRule2",
         Actions=[
             elasticloadbalancingv2.Action(
                 TargetGroupArn=Ref(target_group),
