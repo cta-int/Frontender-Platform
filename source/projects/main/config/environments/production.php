@@ -1,24 +1,15 @@
 <?php
+
 /**
  * @package     Dipity
  * @copyright   Copyright (C) 2014 - 2017 Dipity B.V. All rights reserved.
  * @link        http://www.dipity.eu
  */
 
-// /* Production */
-// ini_set('display_errors', 0);
-
-// return [
-//     'debug'      => 0,
-//     'caching'    => 1,
-// ];
-
-/* Development */
-ini_set('display_errors', 1);
+/* Production */
+ini_set('display_errors', 0);
 
 return [
-    'debug'             => 1,
-    'caching'           => 0,
-    'offline'           => 0,
-    'translation_debug' => 0,
+    'debug' => 0,
+    'caching' => 1,
 ];
