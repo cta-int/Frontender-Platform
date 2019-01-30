@@ -29,7 +29,7 @@ Styleguide 4.34
   font-size: to-unit(14px);
   border-width: 0 0 0 7px;
   border-style: solid;
-  @include theme-border();
+  border-color: $color-theme;
   &__title {
     font-size: to-unit(14px);
     color: $white;

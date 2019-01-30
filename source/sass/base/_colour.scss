@@ -142,6 +142,7 @@ $color-anchor--visited: mix($color-shadow, $color-green, 30%);
 /* Collections */
 
 $brand-colours: (
+    dark: $color-body,
     blue: $color-blue,
     lime: $color-lime,
     yellow: $color-yellow,
@@ -150,8 +151,7 @@ $brand-colours: (
     salmon: $color-salmon,
     red: $color-red,
     burgundy: $color-burgundy,
-    purple: $color-purple,
-    dark: $color-body
+    purple: $color-purple
 );
 $theme-colours: (
     youth: $color-youth,
