@@ -41,13 +41,15 @@ class CountryModel extends ScrModel
         $container = $this->container;
         $state = $this->getState();
 
-        return array_map(function ($item) use ($model, $container, $state) {
+        $countries = array_map(function ($item) use ($model, $container, $state) {
             $newItem = new $model($container);
             $newItem->setData($item);
             $newItem->setState($state->getValues());
 
             return $newItem;
         }, $countries);
+
+        return array_values($countries);
     }
 
     private function _filterItems($items, $ids)
