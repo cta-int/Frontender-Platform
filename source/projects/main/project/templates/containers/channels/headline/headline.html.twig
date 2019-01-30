@@ -3,6 +3,7 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
 <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'article-headline  |  leader-inside--hero  |  trailer-inside--normal  |  layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout  |  layout__cell layout__cell--main">
         <div class="layout__cell layout__cell--main  |  gutters">
@@ -15,7 +16,7 @@
             <div class="gutters">
                 {% if model.query.must|filterArray('type', 'geo')|first %}
                     {% include "partials/location.html.twig" with {
-                        "location": model.query.must|filterArray('type', 'geo')|first,
+                        "location": model.query.must|filterArray('type', 'geo')|first.sourceData,
                         "dark": true
                     } %}
                 {% endif %}
