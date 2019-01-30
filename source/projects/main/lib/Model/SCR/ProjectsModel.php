@@ -124,4 +124,9 @@ class ProjectsModel extends EventsModel
             }
         };
     }
+
+    public function getPropertyPath()
+    {
+        return 'project';
+    }
 }
