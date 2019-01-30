@@ -47,8 +47,8 @@ class ArticlesModel extends ScrModel
         $related = new LinksModel($this->container);
         $related = $related->setState([
             'doc_type' => 'article',
-            'doc_id' => $this->state->id,
-            'limit' => $this->state->related_limit
+            'doc_id' => $this->getState()->id,
+            'limit' => $this->getState()->related_limit
         ])->fetch();
 
         $state = $this->getState();
@@ -58,21 +58,21 @@ class ArticlesModel extends ScrModel
             'events' => array_map(function ($event) use ($state, $container) {
                 $model = new EventsModel($container);
                 return $model
-                    ->setState($state)
+                    ->setState($state->getValues())
                     ->setData($event);
             }, $related['events']),
             'articles' => array_map(function ($article) use ($state, $container) {
                 $model = new ArticlesModel($container);
                 return $model
-                    ->setState($state)
-                    ->setData($event);
+                    ->setState($state->getValues())
+                    ->setData($article);
             }, $related['articles']),
             'persons' => array_map(function ($person) use ($state, $container) {
                 $model = new PersonsModel($container);
                 return $model
-                    ->setState($state)
-                    ->setData($event);
-            })
+                    ->setState($state->getValues())
+                    ->setData($person);
+            }, $related['persons'])
         ];
     }
 
@@ -110,10 +110,10 @@ class ArticlesModel extends ScrModel
                     ]);
 
                     $this->cachedArticles = $articles->fetch();
-                    usort($this->cachedArticles, function($a, $b){
+                    usort($this->cachedArticles, function ($a, $b) {
                         $aDatePublished = new \DateTime($a['datePublished']);
                         $bDatePublished = new \DateTime($b['datePublished']);
-                        if($aDatePublished == $bDatePublished) {
+                        if ($aDatePublished == $bDatePublished) {
                             return 0;
                         }
                         return $aDatePublished > $bDatePublished ? -1 : 1;
@@ -411,7 +411,7 @@ class ArticlesModel extends ScrModel
     public function getPropertyDossier()
     {
         // Return dossier label if present, null if not
-        switch($this->container->language->get()) {
+        switch ($this->container->language->get()) {
             case 'fr-FR':
                 $needle = 'dossier :';
                 continue;
@@ -419,8 +419,8 @@ class ArticlesModel extends ScrModel
             default:
                 $needle = 'dossier:';
                 continue;
-        } 
-        
+        }
+
         $label = $this->getLabel('publication', $needle);
 
         if (!isset($label['_id'])) {
@@ -454,28 +454,28 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyNumber()
     {
-        if($this['articleType'] !== 'issue') {
+        if ($this['articleType'] !== 'issue') {
             return false;
         }
 
         // Check if we have labels.
-        if(!isset($this['link']['label']) || !count($this['link']['label'])) {
+        if (!isset($this['link']['label']) || !count($this['link']['label'])) {
             return false;
         }
 
-        $labels = array_map(function($label) {
+        $labels = array_map(function ($label) {
             $matches = null;
-            if(preg_match('/(\d+)/', $label['name'], $matches) === 1) {
+            if (preg_match('/(\d+)/', $label['name'], $matches) === 1) {
                 $label['number'] = $matches[1];
             }
 
             return $label;
         }, $this['link']['label']);
-        $labels = array_filter($labels, function($label) {
+        $labels = array_filter($labels, function ($label) {
             return isset($label['number']);
         });
 
-        if(!count($labels)) {
+        if (!count($labels)) {
             return false;
         }
 
@@ -486,7 +486,7 @@ class ArticlesModel extends ScrModel
     public function getPropertyOpinion()
     {
         // Return opinion label if present, null if not
-        switch($this->container->language->get()) {
+        switch ($this->container->language->get()) {
             case 'fr-FR':
                 $needle = 'opinion :';
                 continue;
@@ -494,8 +494,8 @@ class ArticlesModel extends ScrModel
             default:
                 $needle = 'opinion:';
                 continue;
-        } 
-        
+        }
+
         $label = $this->getLabel('publication', $needle);
 
         if (!isset($label['_id'])) {
