@@ -73,6 +73,9 @@ Styleguide 4.37
     text-align: center;
   }
 }
+.theme--dark .strategic-goals__item.strategic-goals__item {
+    color: $white;
+}
 .illustration {
   &--fish-market-supplier {
     font-size: 6em;
