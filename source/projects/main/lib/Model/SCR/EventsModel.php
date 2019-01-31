@@ -25,7 +25,7 @@ class EventsModel extends ScrModel
             ->insert('id', null, true)
             ->insert('language', $this->container->language->get())
             ->insert('format', 'scr')
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip')
             ->insert('upcoming', 'false')
             ->insert('includeCancelled', false)

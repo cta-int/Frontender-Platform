@@ -5,7 +5,7 @@
 {# Manually remove closed opportunities #}
 {% set opportunities = [] %}
 {% for article in model.articles %}
-    {% if article.procurementStatus == 'open' %}
+    {% if article.procurementStatus == 'open' or article.procurementStatus == 'closing soon' %}
         {% set opportunities = opportunities|merge([article]) %}
     {% endif %}
 {% endfor %}
