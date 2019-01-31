@@ -49,7 +49,9 @@ class SearchModel extends ArticlesModel
 
         return array_map(function ($item) use ($container, $state) {
             $article = new ArticlesModel($container);
-            $article->setState($state);
+            $article->setState(array_merge($state, [
+                'id' => $item['_id']
+            ]));
             $article->setData($item);
 
             return $article;
