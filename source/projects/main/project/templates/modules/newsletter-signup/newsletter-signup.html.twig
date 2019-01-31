@@ -1,7 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<form{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} method="post" action="https://cta.us5.list-manage.com/subscribe/post">
+<form{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} method="post" action="https://cta.us5.list-manage.com/subscribe/post" target="_blank">
     <input type="hidden" name="u" value="3dc86afdfe91e13b55050810d">
     <input type="hidden" name="id" value="e00775f956">
     <input type="hidden" name="mc_signupsource" value="hosted">
@@ -9,12 +9,12 @@
 
     <h2 class="title">{{ labels.title|t(locales)|default('Subscribe to the CTA Newsletter')|i18n }}</h2>
     <fieldset class="leader trailer">
-        <label class="fld-label title title--meta" for="MERGE0">{{ 'E-mail address'|i18n }}</label>
-        <input class="fld" type="text" id="MERGE0" name="MERGE0">
         <label class="fld-label title title--meta" for="MERGE1">{{ 'Firstname'|i18n }}</label>
         <input class="fld" type="text" id="MERGE1" name="MERGE1">
         <label class="fld-label title title--meta" for="MERGE2">{{ 'Lastname'|i18n }}</label>
         <input class="fld" type="text" id="MERGE2" name="MERGE2">
+        <label class="fld-label title title--meta" for="MERGE0">{{ 'E-mail address'|i18n }}</label>
+        <input class="fld" type="text" id="MERGE0" name="MERGE0">
     </fieldset>
 
     <button class="button button--stretch">{{ labels.button|t(locales)|default('Subscribe'|i18n)|t(locales) }}</button>
