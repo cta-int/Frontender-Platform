@@ -49,7 +49,19 @@ class LabelsModel extends ScrModel
             'limit' => $this->getState()->articleLimit ?? false
         ]);
 
-        return $search->fetch();
+        $result = $search->fetch();
+
+        // This functionality is born because the search endpoint of the SCR doesn't support custom ordering yet.
+        usort($result, function ($a, $b) {
+            $aDatePublished = new \DateTime($a['datePublished']);
+            $bDatePublished = new \DateTime($b['datePublished']);
+            if ($aDatePublished == $bDatePublished) {
+                return 0;
+            }
+            return $aDatePublished > $bDatePublished ? -1 : 1;
+        });
+
+        return $result;
     }
 
     public function getPropertyArticles()
@@ -62,6 +74,7 @@ class LabelsModel extends ScrModel
 
         $result = $search->fetch();
 
+        // This functionality is born because the search endpoint of the SCR doesn't support custom ordering yet.
         usort($result, function ($a, $b) {
             $aDatePublished = new \DateTime($a['datePublished']);
             $bDatePublished = new \DateTime($b['datePublished']);

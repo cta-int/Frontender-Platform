@@ -24,18 +24,20 @@ Styleguide 3.13
  */
 .well {
   @include theme-opaque-background(26%);
-  &--padded {
-    padding-top: rhythm(10);
-    padding-bottom: rhythm(10);
-  }
-  &--lighter {
-    @include theme-opaque-background(10%);
-  }
-  &--darker {
-    @include theme-opaque-background(54%);
-  }
-  &--darkest {
-    @include theme-opaque-background(76%);
+  & {
+    &--padded {
+      padding-top: rhythm(10);
+      padding-bottom: rhythm(10);
+    }
+    &--lighter {
+      @include theme-opaque-background(10%);
+    }
+    &--darker {
+      @include theme-opaque-background(54%);
+    }
+    &--darkest {
+      @include theme-opaque-background(76%);
+    }
   }
   &--neutral {
     .theme &,
