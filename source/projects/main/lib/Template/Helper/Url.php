@@ -51,24 +51,18 @@ class Url extends Helper\Url
             $slug_key = $slugs[$data->current()->getModelName()];
             $translator = new Translate($this->container);
             $escaping = new Escaping();
-		// Check if we have an item in pimple.
-		// If so we will return that item.
-            if ($this->container->has('translate_item')) {
-                $item = $this->container->get('translate_item');
-            } else if ($data) {
-                $model = clone $data->current();
-                $state = $model->getState()->getValues();
-                $state['language'] = null;
 
-                $model->setState($state);
-                $item = $model->fetch();
+            $model = clone $data->current();
+            $state = $model->getState()->getValues();
+            $state['language'] = $locale;
 
-                if (count($item)) {
-                    $item = array_shift($item);
-                    $this->container['translate_item'] = $item;
-                } else {
-                    $item = false;
-                }
+            $model->setState($state);
+            $item = $model->fetch();
+
+            if (count($item)) {
+                $item = array_shift($item);
+            } else {
+                $item = false;
             }
 
             if ($item) {
