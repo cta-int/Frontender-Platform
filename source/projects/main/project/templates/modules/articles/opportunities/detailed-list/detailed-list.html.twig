@@ -3,13 +3,30 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {# Manually remove closed opportunities #}
-{% set opportunities = [] %}
+{% set opportunities_open = [] %}
+{% set opportunities_closed = [] %}
+
 {% for article in model.articles %}
     {% if article.procurementStatus == 'open' or article.procurementStatus == 'closing soon' %}
-        {% set opportunities = opportunities|merge([article]) %}
+        {% set opportunities_open = opportunities_open|merge([article]) %}
+    {% endif %}
+    {% if article.procurementStatus == 'cancelled' or article.procurementStatus == 'closed' %}
+        {% set opportunities_closed = opportunities_closed|merge([article]) %}
     {% endif %}
 {% endfor %}
-{% if opportunities|length > 0 %}
+
+{% set has_results = 0 %}
+{% if config.show_state == 1 %}
+    {% set has_results = opportunities_open|length %}
+    {% set opportunities_closed = [] %}
+{% elseif config.show_state == 2 %}
+    {% set has_results = opportunities_closed|length %}
+    {% set opportunities_open = [] %}
+{% else %}
+    {% set has_results = opportunities_open|length or opportunities_closed|length %}
+{% endif %}
+
+{% if has_results %}
     <div id="{{ pagination_id }}">
         {# This is only here to make the view worth looking at. #}
         {% if options.show_first_hr|default(false) %}
@@ -17,12 +34,21 @@
         {% endif %}
 
         {% if labels.show_result %}
-            {% for article in opportunities %}
-                {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
-                {% if not loop.last %}
+
+            {% if opportunities_open|length %}
+                {% for article in opportunities_open %}
+                    {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
                     <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            {% if opportunities_closed|length %}
+                {% for article in opportunities_closed %}
+                    {% include "partials/article/opportunity/nested-media-with-fixed-aside.html.twig" with {model: article} %}
+                    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  trailer"/>
+                {% endfor %}
+            {% endif %}
+
         {% else %}
             <p class="trailer--hero  |  gutters">{{ labels.text_empty_result|default({
                 "en-GB": "There are no matching opportunities at this time",
