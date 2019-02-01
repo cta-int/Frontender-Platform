@@ -5,10 +5,19 @@
 {# Manually remove closed opportunities #}
 {% set opportunities = [] %}
 {% for article in model.articles %}
-    {% if article.procurementStatus == 'open' or article.procurementStatus == 'closing soon' %}
+    {% if not config.show_state %}
         {% set opportunities = opportunities|merge([article]) %}
+    {% elseif config.show_state|default(1) == 1 %}
+        {% if article.procurementStatus == 'open' or article.procurementStatus == 'closing soon' %}
+            {% set opportunities = opportunities|merge([article]) %}
+        {% endif %}
+    {% else %}
+        {% if article.procurementStatus == 'cancelled' or article.procurementStatus == 'closed' %}
+            {% set opportunities = opportunities|merge([article]) %}
+        {% endif %}
     {% endif %}
 {% endfor %}
+
 {% if opportunities|length > 0 %}
     <div id="{{ pagination_id }}">
         {# This is only here to make the view worth looking at. #}
