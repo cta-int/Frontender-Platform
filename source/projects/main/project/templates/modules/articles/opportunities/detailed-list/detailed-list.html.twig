@@ -18,8 +18,10 @@
 {% set has_results = 0 %}
 {% if config.show_state == 1 %}
     {% set has_results = opportunities_open|length %}
+    {% set opportunities_closed = [] %}
 {% elseif config.show_state == 2 %}
     {% set has_results = opportunities_closed|length %}
+    {% set opportunities_open = [] %}
 {% else %}
     {% set has_results = opportunities_open|length or opportunities_closed|length %}
 {% endif %}
