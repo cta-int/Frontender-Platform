@@ -325,4 +325,20 @@ class ChannelsModel extends ScrModel
         $model->setState($state);
         return $model->fetch();
     }
+
+    public function getPropertyTotalEvents()
+    {
+        $model = new EventsModel($this->container);
+        $model->setState($this->getState()->getValues());
+
+        return $model->getTotal();
+    }
+
+    public function getPropertyTotalArticles()
+    {
+        $model = new ArticlesModel($this->container);
+        $model->setState($this->getState()->getValues());
+
+        return $model->getTotal();
+    }
 }
