@@ -23,8 +23,6 @@
 {% else %}
     {% set has_results = opportunities_open|length or opportunities_closed|length %}
 {% endif %}
-    
-{% set has_results = 1 %}
 
 {% if has_results %}
     <div id="{{ pagination_id }}">
