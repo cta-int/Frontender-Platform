@@ -52,8 +52,9 @@ class Url extends Helper\Url
             $translator = new Translate($this->container);
             $escaping = new Escaping();
 
-            $model = clone $data->current();
-            $state = $model->getState()->getValues();
+            $model = get_class($data->current());
+            $model = new $model($this->container);
+            $state = $data->current()->getState()->getValues();
             $state['language'] = $locale;
 
             $model->setState($state);
