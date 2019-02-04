@@ -183,7 +183,7 @@ class EventsModel extends ScrModel
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.blog',
-            'limit' => 20,
+            'limit' => 50,
             'label' => [$_label['_id']]
         ]);
         $updates = $model->fetch();
