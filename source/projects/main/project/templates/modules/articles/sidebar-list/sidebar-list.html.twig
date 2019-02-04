@@ -12,10 +12,10 @@
 		<h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
 	{% endif %}
 
-	{% if config.template == 'partials/article/post-row.html.twig'%}
+	{% if config.template == 'partials/article/post-row.html.twig'%}		
 		{% for article in model %}
 			<article class="leader">
-				{% include config.template with c|merge({ 'model': article }) %}
+				{% include config.template with c|merge({ 'config': config.data|merge({'container_class': ''}), 'model': article }) %}
 			</article>
 		{% endfor %}
 	{% else %}
