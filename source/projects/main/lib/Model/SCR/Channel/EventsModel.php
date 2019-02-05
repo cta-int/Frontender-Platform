@@ -67,4 +67,25 @@ class EventsModel extends AbstractModel
 
         return $channel[0];
     }
+
+    public function fetch($raw = false)
+    {
+        $result = parent::fetch(true);
+
+        if ($raw) {
+            return $result;
+        }
+
+        $container = $this->container;
+        $state = $this->getState()->getValues();
+        return array_map(function ($event) use ($container, $state) {
+            $eventsModel = new \Prototype\Model\SCR\EventsModel($container);
+            $eventsModel->setData($event);
+            $eventsModel->setState(array_merge($state, [
+                'id' => $event['_id']
+            ]));
+
+            return $eventsModel;
+        }, $result['items']);
+    }
 }

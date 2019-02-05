@@ -2,11 +2,10 @@
     display: inline-block;
     position: relative;
     margin-bottom: rhythm(40);
+    border-color: $white;
     &--theme {
         margin-bottom: 0;
-        &::after {
-            @include theme-border;
-        }
+        @include theme-border;
     }
     &::after {
         content: '';
@@ -17,7 +16,7 @@
         height: 0;
         border-style: solid;
         border-width: 10px;
-        border-color: $white;
+        border-color: inherit;
         .theme & {
             border-left-color: transparent;
             border-right-color: transparent;
@@ -26,9 +25,6 @@
     }
     .well--neutral {
         background: $white;
-    }
-    .heading {
-        // font-weight: 400;
     }
     .layout--even > .layout__cell:first-of-type > & {
         margin-top: rhythm(20);

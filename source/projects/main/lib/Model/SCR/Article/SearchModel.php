@@ -11,6 +11,7 @@ namespace Prototype\Model\SCR\Article;
 use Prototype\Model\Traits\Searchable;
 use Slim\Container;
 use Prototype\Model\SCR\ArticlesModel;
+use Prototype\Model\Utils\Sorting;
 
 class SearchModel extends ArticlesModel
 {
@@ -47,13 +48,17 @@ class SearchModel extends ArticlesModel
             return $response;
         }
 
-        return array_map(function ($item) use ($container, $state) {
+        $result = array_map(function ($item) use ($container, $state) {
             $article = new ArticlesModel($container);
-            $article->setState($state);
+            $article->setState(array_merge($state, [
+                'id' => $item['_id']
+            ]));
             $article->setData($item);
 
             return $article;
         }, $response['items']);
+
+        return Sorting::sortBy($result, 'datePublished', Sorting::$DIRECTION_DESC);
     }
 
     public function getModelName() : string

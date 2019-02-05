@@ -28,7 +28,7 @@ Styleguide 3.30
     content: open-quote;
     font-size: 2.75em;
     line-height: 1;
-    @include theme-color();
+    color: $color-green;
     .well--full & {
         color: rgba($black, .26);
     }
@@ -40,6 +40,13 @@ Styleguide 3.30
   }
   &:after {
     content: no-close-quote;
+  }
+  @each $color_name, $color_value in $colours {
+    &.theme--#{$color_name}:before,
+    .theme--#{$color_name} &:before,
+    .theme .theme--#{$color_name} &:before {
+      color: $color_value;
+    }
   }
   &--hero:before {
     html:lang(fr) & {

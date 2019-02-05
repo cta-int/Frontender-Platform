@@ -5,7 +5,10 @@
         // padding-right: $gutter-width / 2;
         background-color: inherit;
         &.well--full {
-            color: $white;
+            &,
+            &:visited {
+                color: $white;
+            }
         }
     }
     &__body {
@@ -97,6 +100,7 @@
         }
         .quote:before {
             top: 0;
+            color: inherit;
         }
     }
 }

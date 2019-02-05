@@ -30,7 +30,7 @@
                                 <h2 class="heading heading--tile  |  gutters  |  trailer--small">
                                     {{ article.headline|t(locales) }}
                                 </h2>
-                                <span class="leader-inside--small  |  gutters  |  block-link">Read more</span>
+                                <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
                             </div>
                             {% if article.link.person.author %}
                                 <p class="opinion__footer  |  gutters gutters-outside  |  leader">
@@ -44,11 +44,11 @@
                 <div class="gutters">
                     <div class="opinion opinion--theme">
                         <div class="well well--full well--padded |  gutters">
-                            <h2 class="heading heading--tile  |  gutters  |  trailer--small">Join the discussion on</h2>
+                            <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ labels.join_discussion|t(locales) }}</h2>
                             <div class="gutters  |  opinion__icons  |  leader--normal">
-                                <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTApage" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
-                                <a class="anchor--shy  |  is-heir" href="https://twitter.com/ctaflash" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
-                                <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/technical-centre-for-agricultural-and-rural-cooperation-acp-eu-cta-" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
+                                <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTASpore" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
+                                <a class="anchor--shy  |  is-heir" href="https://twitter.com/Spore_mag" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
+                                <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/spore-magazine" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 <h2 class="heading heading--tile  |  gutters  |  trailer--small">
                                     {{ article.headline|t(locales) }}
                                 </h2>
-                                <span class="leader-inside--small  |  gutters  |  block-link">Read more</span>
+                                <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
                             </div>
                             {% if article.link.person.author %}
                                 <p class="opinion__footer  |  gutters gutters-outside  |  leader">

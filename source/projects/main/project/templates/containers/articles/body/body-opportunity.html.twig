@@ -19,7 +19,7 @@
                         <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
                     {% endif %}
 
-                        {% for contentBlock in article.contentBlocks %}
+                    {% for contentBlock in model.contentBlocks %}
                         {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                     {% endfor %}
                 </div>

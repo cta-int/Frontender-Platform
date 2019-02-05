@@ -27,7 +27,10 @@ class ChannelsModel extends ScrModel
             ->insert('limit', 20)
             ->insert('skip', 0)
             ->insert('articleType')
-            ->insert('eventType');
+            ->insert('eventType')
+            ->insert('sortDirection')
+            ->insert('sortProperty')
+            ->insert('upcoming', 'true');
     }
 
     public function getPropertyArticles()
@@ -305,7 +308,7 @@ class ChannelsModel extends ScrModel
             'limit' => 5,
             'id' => $this['_id']
         ], $this->getState()->getValues(), $state);
-        
+
         $model = new ArticlesModel($this->container);
         $model->setState($state);
         return $model->fetch();
@@ -321,5 +324,21 @@ class ChannelsModel extends ScrModel
         $model = new EventsModel($this->container);
         $model->setState($state);
         return $model->fetch();
+    }
+
+    public function getPropertyTotalEvents()
+    {
+        $model = new EventsModel($this->container);
+        $model->setState($this->getState()->getValues());
+
+        return $model->getTotal();
+    }
+
+    public function getPropertyTotalArticles()
+    {
+        $model = new ArticlesModel($this->container);
+        $model->setState($this->getState()->getValues());
+
+        return $model->getTotal();
     }
 }

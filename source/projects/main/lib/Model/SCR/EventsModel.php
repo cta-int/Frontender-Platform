@@ -12,6 +12,7 @@ use Slim\Container;
 use Prototype\Model\SCR\Event\AttendeesModel;
 use Prototype\Model\Traits\Imagable;
 use Prototype\Model\SCR\Article\SearchModel;
+use Prototype\Model\Utils\Sorting;
 
 class EventsModel extends ScrModel
 {
@@ -25,7 +26,7 @@ class EventsModel extends ScrModel
             ->insert('id', null, true)
             ->insert('language', $this->container->language->get())
             ->insert('format', 'scr')
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip')
             ->insert('upcoming', 'false')
             ->insert('includeCancelled', false)
@@ -182,23 +183,12 @@ class EventsModel extends ScrModel
         $model = new SearchModel($this->container);
         $model->setState([
             'type' => 'article.blog',
-            'limit' => 4,
+            'limit' => 50,
             'label' => [$_label['_id']]
         ]);
         $updates = $model->fetch();
 
-        usort($updates, function ($a, $b) {
-            $aDate = strtotime($a['datePublished']);
-            $bDate = strtotime($b['datePublished']);
-
-            if ($aDate === $bDate) {
-                return 0;
-            }
-
-            return $aDate < $bDate ? 1 : -1;
-        });
-
-        return $updates;
+        return Sorting::sortBy($updates, 'datePublished', Sorting::$DIRECTION_DESC);
     }
 
     public function getPropertyRelated()
