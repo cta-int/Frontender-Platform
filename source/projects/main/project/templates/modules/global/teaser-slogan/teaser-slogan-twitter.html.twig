@@ -1,9 +1,9 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if slogan.brand %}
-    {% include 'partials/slogan/' ~ slogan.brand %}
+    {% include 'partials/slogan/' ~ slogan.brand|t(locales) %}
 {% elseif slogan.image %}
-    {% include 'partials/slogan/' ~ slogan.image %}
+    {% include 'partials/slogan/' ~ slogan.image|t(locales) %}
 
     {% if slogan.hashtag %}
         <div>
