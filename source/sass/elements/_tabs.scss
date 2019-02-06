@@ -16,23 +16,24 @@ Styleguide 3.36
 	&.is-current {
 		position: relative;
 		color: $white;
-    background: $color-theme;
-    @include theme-background();
+	    background: $color-theme;
+	    @include theme-background();
+		@include theme-border();
 		&:before {
 			content: "";
 			position: absolute;
 			top: 100%;
 			left: 50%;
-      @include theme-border();
-      border-style: solid;
+		    border-color: inherit;
+		    border-style: solid;
 			border-width: rhythm(2);
-      margin-left: rhythm(2) * -1;
-      &,
-      .theme & {
-        border-left-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-      }
+      		margin-left: rhythm(2) * -1;
+      		&,
+      		.theme & {
+		        border-left-color: transparent;
+		        border-right-color: transparent;
+		        border-bottom-color: transparent;
+      		}
 		}
 	}
 }
