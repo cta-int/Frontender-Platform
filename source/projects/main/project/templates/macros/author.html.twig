@@ -1,7 +1,7 @@
 {% macro single(authors) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-    {% if(authors|length == 1) %}
+    {% if(authors|length) %}
         {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
     {% endif %}
 {% endmacro %}
