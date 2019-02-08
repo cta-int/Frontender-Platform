@@ -1,6 +1,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% import "macros/template.html.twig" as helper %}
 
-<article>
+<{{ config.container_tag|default('article') }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
     <header>
         <p class="meta  |  gutters">{{ model.alternativeHeadline|t(locales) }}</p>
         <h1 class="title title--section  |  gutters  |  leader--tiny  |  trailer--hero">{{ model.headline|t(locales) }}</h1>
@@ -33,4 +35,4 @@
             {% endfor %}
         </aside>
     {% endif %}
-</article>
+</{{ config.container_tag|default('article') }}>
