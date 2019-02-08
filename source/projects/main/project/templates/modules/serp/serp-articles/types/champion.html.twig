@@ -30,9 +30,6 @@
                 <div class="gutters">
                     <p>
                         <time class="meta" datetime="{{ article.datePublished }}">{{ article.datePublished|tdate('%e %B %Y') }}</time>
-                        {% if article.articleType %}
-                            <span class="meta">{{ 'in'|i18n }} {% include 'partials/article/content_type_category.html.twig' with {model: article} %}</span>
-                        {% endif %}
                     </p>
                     {% if article.link.person.author|length > 0 %}
                         <p class="meta meta--lowercase">{{ author.long(article.link.person.author) }}</p>
