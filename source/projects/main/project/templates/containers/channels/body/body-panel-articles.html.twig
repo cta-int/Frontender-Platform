@@ -48,10 +48,10 @@
                         </a>
                     </h3>
 
-                    {% if show_author_name|default(1) and model|first.link.person.author|first.name  %}
+                    {% if show_author_name|default(1) and model|first.link.person.author|first  %}
                         <div class="media media--middle  |  bleed">
                             <div class="media__figure  |  gutters">
-                                <img class="image image--stretch" width="30" height="30" alt="{{ model|first.link.person.author|first.name }}" src="{{ model|first.link.person.author|first.avatar }}">
+                                {{ image.person(model|first.link.person.author|first, 30) }}
                             </div>
                             <div class="media__content  |  body--whisper">
                                 {{ author.single(model|first.link.person.author) }}
