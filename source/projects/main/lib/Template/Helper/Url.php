@@ -50,7 +50,7 @@ class Url extends Helper\Url
         if (isset($slugs[$data->current()->getModelName()])) {
             $slug_key = $slugs[$data->current()->getModelName()];
             $translator = new Translate($this->container);
-            $escaping = new Escaping();
+            $escaping = new Escaping($this->container);
 
             $model = get_class($data->current());
             $model = new $model($this->container);
