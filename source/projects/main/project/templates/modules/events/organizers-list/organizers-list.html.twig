@@ -1,9 +1,11 @@
 {% if model|length %}
     {% import "macros/template.html.twig" as helper %}
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    <h3 class="title title--section  |  trailer--normal">{{ 'Partners'|t(locales) }}</h3>
+    {% if labels.title|t(locales)|length %}
+        <h3 class="title title--section  |  trailer--normal">{{ labels.title|t(locales) }}</h3>
+    {% endif %}
         {% if model.sponsor | length > 0 %}
-            <h4 class="title  |  meta  |  trailer--normal">{{ 'Funding partners'|t(locales) }}</h4>
+            <h4 class="title  |  meta  |  trailer--normal">{{ labels.sponsor_title|t(locales) }}</h4>
             {% for sponsor in model.sponsor %}
                 {% set sponsorDisplayname = sponsor.alternateName|t(locales) != '' ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) %}
                 <ul class="reset">
@@ -18,7 +20,7 @@
             {% endfor %}
         {% endif %}
         {% if model.organizer | length > 0 %}
-            <h4 class="title  |  meta  |  trailer--normal  |  leader">{{ 'Implementing partners'|t(locales) }}</h4>
+            <h4 class="title  |  meta  |  trailer--normal  |  leader">{{ labels.partner_title|t(locales) }}</h4>
             <ul class="reset">
             {% for organizer in model.organizer %}
                 {% set organizerDisplayname = organizer.alternateName|t(locales) != '' ? organizer.alternateName|t(locales) : organizer.name|t(locales) %}
