@@ -14,9 +14,11 @@
                 .replace(new RegExp(`[${charList}]+$`), "");
         };
 
-    try {
-        await db.collection("routes").drop();
-    } catch (err) {}
+    if (process.env.DEBUG) {
+        try {
+            await db.collection("routes").drop();
+        } catch (err) {}
+    }
 
     let newRoutesCollection = db.collection("routes");
 
