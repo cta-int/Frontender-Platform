@@ -33,7 +33,7 @@
         for (let index in redirects.static) {
             let destination = redirects.static[index];
 
-            if (destination.indexOf("http") === -1) {
+            if (destination.indexOf("http") !== 0) {
                 destination = `www.cta.int/${trim(destination)}`;
             }
 
@@ -50,7 +50,7 @@
         for (let index in redirects.dynamic) {
             let destination = redirects.dynamic[index];
 
-            if (destination.indexOf("http") === -1) {
+            if (destination.indexOf("http") !== 0) {
                 destination = `www.cta.int/${trim(destination)}`;
             }
 
