@@ -16,7 +16,12 @@
 
     if (process.env.DEBUG) {
         try {
-            await db.collection("routes").drop();
+            await db.collection("routes").deleteMany({
+                type: "simple"
+            });
+            await db.collection("routes").deleteMany({
+                type: "regex"
+            });
         } catch (err) {}
     }
 
@@ -26,9 +31,15 @@
     // No protocol will be added in this case, because the platform will do this for us.
     if (redirects.hasOwnProperty("static")) {
         for (let index in redirects.static) {
+            let destination = redirects.static[index];
+
+            if (destination.indexOf("http") === -1) {
+                destination = `www.cta.int/${trim(destination)}`;
+            }
+
             newRoutesCollection.insertOne({
                 resource: `www.cta.int/${trim(index)}`,
-                destination: `www.cta.int/${trim(redirects.static[index])}`,
+                destination: destination,
                 type: "simple",
                 status: 301
             });
@@ -37,9 +48,15 @@
 
     if (redirects.hasOwnProperty("dynamic")) {
         for (let index in redirects.dynamic) {
+            let destination = redirects.dynamic[index];
+
+            if (destination.indexOf("http") === -1) {
+                destination = `www.cta.int/${trim(destination)}`;
+            }
+
             newRoutesCollection.insertOne({
                 resource: `/www\\.cta\\.int\\/${trim(index, "\\^\\$\\/\\\\")}/`,
-                destination: `www.cta.int/${trim(redirects.dynamic[index])}`,
+                destination: destination,
                 type: "regex",
                 status: 301
             });
