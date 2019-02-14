@@ -166,6 +166,8 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro person(person, size) %}
+
+    {% set imagebasename = person.avatar|getFileBaseName() %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if person.gender == "Male" %}
@@ -175,10 +177,10 @@ $landscape - Breakpoint for landscape oriented viewports.
     {% endif %}
 
     <img
-            src="{{ person.avatar|default(fallback) }}"
-            width="{{ size }}"
-            height="{{ size }}"
-            alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
+        src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
+        width="{{ size }}"
+        height="{{ size }}"
+        alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
     />
 {% endmacro %}
 
