@@ -2,7 +2,9 @@
 
 {% if model.analysis.geoname.geonames|length %}
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-        <h3 class="title title--section  |  trailer--normal">{{ 'Country focus'|t(locales) }}</h3>
+        {% if labels.title|t(locales)|length %}
+            <h3 class="title title--section  |  trailer--normal">{{ labels.title|t(locales) }}</h3>
+        {% endif %}
         <ul class="reset  |  tag-list  |  list--inline">
             {% for country in model.analysis.geoname.geonames %}
                 <li>

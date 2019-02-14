@@ -53,7 +53,8 @@ a,
   }
   &--shy {
       &,
-      &:visited {
+      &:visited,
+      .theme & {
           color: inherit;
       }
   }
