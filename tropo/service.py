@@ -493,7 +493,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                 ),
                 ecs.Environment(
                     Name="ENV",
-                    Value="staging"
+                    Value="development"
                 ),
                 ecs.Environment(
                     Name="HTTP_HOSTNAME",
@@ -606,6 +606,8 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority4)
 ))
+
+t.add_resource(elasticloadbalancingv2.ListenerCertificate)
 
 # Https listeners
 If(service_host_condition, t.add_resource(
