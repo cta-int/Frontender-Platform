@@ -607,8 +607,6 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=Ref(listener_priority4)
 ))
 
-t.add_resource(elasticloadbalancingv2.ListenerCertificate)
-
 # Https listeners
 If(service_host_condition, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
