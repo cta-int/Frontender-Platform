@@ -9,7 +9,9 @@
 {% if model %}
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
-    <h2 class="title title--section  |  trailer">{{ 'Featured publication'|t(locales) }}</h2>
+    {% if labels.title|t(locales)|length > 0 %}
+        <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
     <article class="grid__cell  |  publication-layout">
         <div class="publication-layout__cover">
             <figure class="publication-cover">
