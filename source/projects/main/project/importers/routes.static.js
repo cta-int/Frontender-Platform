@@ -12,10 +12,26 @@
             .toArray(),
         newRoutesCollection = db.collection("routes");
 
+    if (process.env.DEBUG) {
+        try {
+            await db.collection("routes").deleteMany({
+                type: "landingpage"
+            });
+        } catch (err) {}
+    }
+
     let promises = oldRoutes.map(async route => {
+        let page = await db.collection("pages.public").findOne({
+            _id: require("mongodb").ObjectID(route.page_id)
+        });
+
         route.resource = route.source;
         route.type = "landingpage";
         route.status = 302;
+
+        if (page) {
+            route.page_lot = page.revision.lot || null;
+        }
 
         delete route.source;
 
