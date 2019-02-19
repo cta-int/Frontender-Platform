@@ -204,7 +204,7 @@
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
                     <aside class="trailer--hero">
-                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|t(locales) }} {{ organization.name|t(locales) }}</h1>
+                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n }} {{ organization.name|t(locales) }}</h1>
                         <p class="body--whisper  |  gutters">
                             {{ organization.description|t(locales) }}
                         </p>
