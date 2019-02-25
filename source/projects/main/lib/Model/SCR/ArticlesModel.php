@@ -154,18 +154,24 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyIssue()
     {
+        $labelIds = array_column($this['link']['label'], '_id');
+
+        if (!count($labelIds)) {
+            return false;
+        }
+
         // We only come here if we have labels.
         $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
         $searchModel->setState([
             'type' => 'article.issue',
-            'label' => array_column($this['link']['label'], '_id'),
+            'label' => $labelIds,
             'limit' => 1,
             'language' => $this->container->language->get(),
             'recursive' => false
         ]);
         $review = $searchModel->fetch();
 
-		// Do a count just in case.
+        // Do a count just in case.
         if (!count($review)) {
             return false;
         }
@@ -185,17 +191,17 @@ class ArticlesModel extends ScrModel
         $path = $project['path'] . '/routes.json';
         $routes = file_exists($path) ? json_decode(file_get_contents($path), true) : [];
 
-		// We will only need the label routes.
-		// If there are none, we will return an empty array.
+        // We will only need the label routes.
+        // If there are none, we will return an empty array.
         if (!array_key_exists('labels', $routes)) {
             return [];
         } else if (count($routes['labels']) <= 0) {
             return [];
         }
 
-		// We now know it is available and it has items.
+        // We now know it is available and it has items.
         $routes = $routes['labels'];
-		// First we will filter out the ones we don't need.
+        // First we will filter out the ones we don't need.
         $routes = array_filter($routes, function ($item) {
             if (!array_key_exists('publish_at', $item)) {
                 return false;
@@ -216,7 +222,7 @@ class ArticlesModel extends ScrModel
             return $a['publish_at'] < $b['publish_at'] ? 1 : -1;
         });
 
-		// Now we will format on segments.
+        // Now we will format on segments.
         uasort($routes, function ($a, $b) {
             $segements_a = count(explode('/', $a['path']));
             $segements_b = count(explode('/', $b['path']));
@@ -281,7 +287,7 @@ class ArticlesModel extends ScrModel
         return [];
     }
 
-    public function getPropertyPath() : string
+    public function getPropertyPath(): string
     {
         // If we have no labels, or they are empty, we will return the parent.
         if (!isset($this['link']['label']) || !count($this['link']['label'])) {
@@ -543,7 +549,7 @@ class ArticlesModel extends ScrModel
         return $blog;
     }
 
-    private function getLabel(string $type, string $needle) : array
+    private function getLabel(string $type, string $needle): array
     {
         // Return the first label that is as we defined it.
         $foundLabel = [];
