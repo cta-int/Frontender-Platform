@@ -1,0 +1,14 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% if labels.title|t(locales) %}
+        <h2 class="title title--section  |  trailer  |  gutters">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
+    {% if labels.lead|t(locales) %}
+        <p class="{{ config.large_lead ? 'lead lead--l' : 'lead'}}  |  leader--hero  |  trailer  |  gutters">{{ labels.lead|t(locales) }}</p>
+    {% endif %}
+    {% for paragraph in labels.body %}
+        <p class="trailer  |  gutters">{{ paragraph|t(locales)|raw }}</p>
+    {% endfor %}
+</div>
