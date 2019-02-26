@@ -24,6 +24,9 @@ class TwitterModel extends ScrModel
 
     public function fetch($raw = false)
     {
+        $result = new $this($this->container);
+        $result->setData(['tweets' => []]);
+
         if ($this->container['settings']['customer_key'] && $this->container['settings']['customer_secret'] && $this->container['settings']['token'] && $this->container['settings']['token_secret']) {
             $oauthc = new \OAuth($this->container['settings']['customer_key'], $this->container['settings']['customer_secret'], OAUTH_SIG_METHOD_HMACSHA1, OAUTH_AUTH_TYPE_URI);
             $oauthc->enableDebug();
@@ -48,12 +51,14 @@ class TwitterModel extends ScrModel
                     $this->sanitizeTweet($tweet);
                 }
 
-                return ['tweets' => $data];
+                $result->setData(['tweets' => $data]);
+
+                return [$result];
             } catch (\OAuthException $e) {
             }
         }
 
-        return ['tweets' => []];
+        return [$result];
     }
 
     private function sanitizeTweet(&$tweet)
