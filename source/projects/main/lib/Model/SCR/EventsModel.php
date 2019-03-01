@@ -155,7 +155,7 @@ class EventsModel extends ScrModel
         };
     }
 
-    public function getPropertyOutputs()
+    public function getPropertyIssues()
     {
         $_label = $this->getLabels('programme', true);
 
