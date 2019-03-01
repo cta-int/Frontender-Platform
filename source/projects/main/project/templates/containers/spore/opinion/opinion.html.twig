@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="layout__cell">
-                {% for article in model.similar.articles|slice(1,3) %}
+                {% for article in model.similar.articles|slice(1) %}
                     <div class="gutters">
                         <a class="opinion anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
                             <div class="well well--neutral well--padded |  gutters">
