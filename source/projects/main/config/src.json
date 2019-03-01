@@ -772,8 +772,7 @@
             "parameters": {
                 "type": {
                     "location": "query",
-                    "type": "string",
-                    "default": "article"
+                    "type": "string"
                 },
                 "label_id": {
                     "location": "query",
