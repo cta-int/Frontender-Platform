@@ -22,7 +22,7 @@ class ChannelsModel extends ScrModel
 
         $this->getState()
             ->insert('id', null, true)
-            ->insert('type', 'article')
+            ->insert('type')
             ->insert('label_id', null)
             ->insert('limit', 20)
             ->insert('skip', 0)
