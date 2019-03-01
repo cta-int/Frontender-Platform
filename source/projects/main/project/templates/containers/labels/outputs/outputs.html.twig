@@ -1,0 +1,63 @@
+{% if model.outputs|length > 0 %}
+    {% import "macros/template.html.twig" as helper %}
+    {% import "macros/date.html.twig" as date %}
+    {% import "macros/image.html.twig" as image %}
+    {% import "macros/label.html.twig" as label %}
+    {% import "macros/file.html.twig" as file %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+    {{ 'containers/events/outputs/outputs.js.twig'|addScript('beforeBodyEnd') }}
+
+    {{ dump(model.issues.length) }}
+
+    Hello World
+
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <h2 class="title title--container  |  wings  |  trailer">
+            <span class="gutters">{{ content.title|t(locales)|default('Section title') }}</span>
+        </h2>
+        <div class="layout">
+            <div class="layout__cell layout__cell--aside  |  wings  |  trailer--tiny">
+                <p class="gutters">{{ content.description|t(locales)|default('Lorem ipsum dolor sit amet.') }}</p>
+            </div>
+            <div class="layout__cell layout__cell--main  |  grid grid--posts  |  wing--right">
+                {% for article in model.issues %}
+
+                    <article class="grid__cell  |  gutters  |  publication-stack">
+                        <div class="publication-stack__cover">
+                            <figure class="publication-cover">
+                                {{ image.cover(article.lead_image, 'publication-cover__image') }}
+                            </figure>
+                        </div>
+                        <div class="publication-stack__body">
+                            <p class="trailer--tiny">
+                                {% if config.show_publication_date|default(1) %}
+                                    {{ date.article(article.datePublished) }}
+                                {% endif %}
+                                {% if article.publicationLabel %}
+                                    <span class="meta">
+                                        {{ article.publicationLabel.name|t(locales) }}
+                                    </span>
+                                {% endif %}
+                            </p>
+                            <h3 class="heading  |  trailer--tiny">{{ article.headline|t(locales) }}</h3>
+                        </div>
+                        {% if article.externalLink %}
+                            <div class="publication-stack__footer">
+                                <div class="leader--normal">
+                                    {% for link in article.externalLink %}
+                                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                            <span class="publication-download__item">{{ link.name }}</span>
+                                            {% if link.url|getFileSize %}
+                                                <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                            {% endif %}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </{{ config.container_tag|default('div') }}>
+{% endif %}
