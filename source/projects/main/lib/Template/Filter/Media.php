@@ -18,6 +18,11 @@ class Media extends \Twig_Extension
             new \Twig_Filter('findType', [$this, 'findType']),
             new \Twig_Filter('getFileSize', [$this, 'getSize']),
             new \Twig_Filter('getFileFormat', [$this, 'getFileFormat']),
+            new \Twig_Filter('getFileDir', [$this, 'getFileDir']),
+            new \Twig_Filter('getFileName', [$this, 'getFileName']),
+            new \Twig_Filter('getFileBaseName', [$this, 'getFileBaseName']),
+            new \Twig_Filter('getFileExtension', [$this, 'getFileExtension']),
+            new \Twig_Filter('getImageDimensions', [$this, 'getImageDimensions'])
         ];
     }
 
@@ -61,5 +66,37 @@ class Media extends \Twig_Extension
     {
         $mimes = new \Mimey\MimeTypes;
         return $mimes->getExtension($mimetype);
+    }
+
+    public function getFileDir($filename)
+    {
+        return pathinfo($filename, PATHINFO_DIRNAME);
+    }
+
+    public function getFileName($filename)
+    {
+        return pathinfo($filename, PATHINFO_FILENAME);
+    }
+
+    public function getFileBaseName($filename)
+    {
+        return pathinfo($filename, PATHINFO_BASENAME);
+    }
+
+    public function getFileExtension($filename)
+    {
+        return pathinfo($filename, PATHINFO_EXTENSION);
+    }
+
+    public function getImageDimensions($filename)
+    {
+        list($width, $height, $type, $attr) = getimagesize($filename);
+
+        return [
+            'width' => $width,
+            'height' => $height,
+            'type' => $type,
+            'attr' => $attr
+        ];
     }
 }

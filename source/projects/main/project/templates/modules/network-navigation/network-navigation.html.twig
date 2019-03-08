@@ -32,10 +32,10 @@
     <div class="is-heir  |  is-inactive  |  is-conducive  |  media__stretcher" id="network-navigation">
         <button class="menu-toggle" data-toggle="network-navigation"><span data-icon="{{ mobile.menu_icon|default('leaf') }}" class="icon icon--{{ mobile.menu_icon|default('leaf') }}"></span><span{{ not mobile.show_menu_label|default(0) ? ' class="is-narrative"'}}> {{ mobile.menu_label|default('Menu')|t(locales) }}</span></button>
         <ul class="fx menu menu--responsive">
-            <li><a class="menu__item {{ is_active(path_for('home', {locale: locale}), 'is-current') }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
+            <li><a class="menu__item {{ is_current(route()) ? 'is-current' : '' }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
             {% for link in links.links %}
                 {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
-                <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ is_active(route, ' is-current')}} %}</li>
+                <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) or is_current(route) ? ' is-current')}} %}</li>
             {% endfor %}
         </ul>
         <div class="menu menu__social-icons">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <ul class="menu language-switch">
-        <li class="language{{ locale is same as('en') ? '  |  is-active' }}"><a class="menu__item" href="{{ translate_url('en') }}">{{ 'EN'|t(locales) }}</a></li>
-        <li class="language{{ locale is same as('fr') ? '  |  is-active' }}"><a class="menu__item" href="{{ translate_url('fr') }}">{{ 'FR'|t(locales) }}</a></li>
+        <li class="language{{ locale is same as('en-GB') ? '  |  is-active' }}"><a class="menu__item" href="{{ translate_url('en') }}">{{ 'EN'|t(locales) }}</a></li>
+        <li class="language{{ locale is same as('fr-FR') ? '  |  is-active' }}"><a class="menu__item" href="{{ translate_url('fr') }}">{{ 'FR'|t(locales) }}</a></li>
     </ul>
 </nav>

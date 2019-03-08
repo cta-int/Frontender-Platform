@@ -38,7 +38,7 @@
     <div class="site-navigation__nav">
         <ul class="list--inline  |  menu  |  site-navigation__menu">
             {% for link in main_menu.links %}
-                <li><a class="menu__item {{ is_active(path_for(link.path.route, {locale: locale, page: link.path.page }), 'is-current') }}" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a></li>
+                <li><a class="menu__item {{ is_active(path_for(link.path.route, {locale: locale, page: link.path.page })) ? 'is-current' }}" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a></li>
             {% endfor %}
         </ul>
         <div class="site-navigation__browse">
@@ -52,7 +52,7 @@
             </form>
             <ul class="list--inline  |  menu menu--secondary  |  site-navigation__menu">
                 {% for link in browse_menu.links %}
-                    <li><a class="menu__item {{ is_active(path_for(link.path.route, {locale: locale, page: link.path.page }), 'is-current') }}" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a></li>
+                    <li><a class="menu__item {{ is_active(path_for(link.path.route, {locale: locale, page: link.path.page })) ? 'is-current' }}" href="{{ route({'page': link.path.page }) }}">{{ link.label|t(locales) }}</a></li>
                 {% endfor %}
             </ul>
         </div>

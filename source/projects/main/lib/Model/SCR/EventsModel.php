@@ -155,7 +155,7 @@ class EventsModel extends ScrModel
         };
     }
 
-    public function getPropertyOutputs()
+    public function getPropertyIssues()
     {
         $_label = $this->getLabels('programme', true);
 
@@ -220,11 +220,11 @@ class EventsModel extends ScrModel
                 return $model
                     ->setState($state->getValues())
                     ->setData($person);
-            })
+            }, $related['persons'])
         ];
     }
 
-    public function getPropertyPath() : string
+    public function getPropertyPath(): string
     {
         if ($this['type'] === 'Project') {
             return 'project';

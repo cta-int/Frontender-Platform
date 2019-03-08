@@ -166,19 +166,22 @@ $landscape - Breakpoint for landscape oriented viewports.
 {% endmacro %}
 
 {% macro person(person, size) %}
+
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if person.gender == "Male" %}
-        {% set fallback = 'https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png' %}
+        {% set avatar = person.avatar|default('https://res.cloudinary.com/cta/image/upload/ijy2iwobbptvyv2dqhbl.png') %}
     {% else %}
-        {% set fallback = 'https://res.cloudinary.com/cta/image/upload/lflynd2nauvodwfld0al.png' %}
+        {% set avatar = person.avatar|default('https://res.cloudinary.com/cta/image/upload/lflynd2nauvodwfld0al.png') %}
     {% endif %}
 
+    {% set imagebasename = avatar|getFileBaseName() %}
+
     <img
-            src="{{ person.avatar|default(fallback) }}"
-            width="{{ size }}"
-            height="{{ size }}"
-            alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
+        src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
+        width="{{ size }}"
+        height="{{ size }}"
+        alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
     />
 {% endmacro %}
 
@@ -192,8 +195,8 @@ $landscape - Breakpoint for landscape oriented viewports.
     {% endif %}
 
     <img
-            src="{{ person.avatar|default(fallback) }}"
-            alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
+        src="{{ person.avatar|default(fallback) }}"
+        alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
     />
 {% endmacro %}
 

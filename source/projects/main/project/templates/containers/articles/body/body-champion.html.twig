@@ -22,7 +22,7 @@
                     {% if model.datePublished %}
                         <p class="meta" itemprop="datePublished">
                             {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }}
-                            <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}</p>
+                            <a href="{{ route({'page': model.path, 'slug': model.issue.headline|t(locales)|slugify, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}</p>
                     {% endif %}
                     {% if model.link.person.author %}
                         <div class="media__content  |  body--whisper  |  leader--tiny">

@@ -41,11 +41,11 @@
     <div class="site-navigation__nav">
         <ul class="list--inline  |  menu  |  site-navigation__menu">
             {% if main_menu.brand|default('cta.html.twig') is same as('_cta.html.twig_') %}
-                <li><a class="menu__item {{ is_active(path_for('home', {locale: locale}), 'is-current') }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
+                <li><a class="menu__item {{ is_active(route()) ? 'is-current' }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
             {% endif %}
             {% for link in main_menu.links %}
                 {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
-                <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ is_active(route, ' is-current')}} %}</li>
+                <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) ? ' is-current')}} %}</li>
             {% endfor %}
         </ul>
         <div class="site-navigation__browse">
@@ -62,7 +62,7 @@
             <ul class="list--inline  |  menu menu--secondary  |  site-navigation__menu">
                 {% for link in browse_menu.links %}
                     {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
-                    <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ is_active(route, ' is-current')}} %}</li>
+                    <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) ? ' is-current')}} %}</li>
                 {% endfor %}
             </ul>
         </div>

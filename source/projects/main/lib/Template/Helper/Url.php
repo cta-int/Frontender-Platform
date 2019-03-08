@@ -23,9 +23,10 @@ class Url extends Helper\Url
         $query = http_build_query($this->container->request->getQueryParams());
         $page = $this->container['page']->getData();
         $params = $route->getArguments() ?? [];
-        $params['locale'] = $locale;
         $pageJson = $this->container['page']->getRequest()->getAttribute('json');
         $translateLocale = $this->translations[$locale] ?? $locale;
+        $params['locale'] = $translateLocale;
+
 
         if (isset($params['id']) && $params['id'] && isset($page['model'])) {
             // $params['id'] .= !empty($query) ? '?' . $query : '';
@@ -40,7 +41,7 @@ class Url extends Helper\Url
 
     public function getTranslatedSlug($data, $locale)
     {
-		// Get the item.
+        // Get the item.
         $slugs = [
             'events' => 'name',
             'articles' => 'headline',
@@ -50,7 +51,7 @@ class Url extends Helper\Url
         if (isset($slugs[$data->current()->getModelName()])) {
             $slug_key = $slugs[$data->current()->getModelName()];
             $translator = new Translate($this->container);
-            $escaping = new Escaping();
+            $escaping = new Escaping($this->container);
 
             $model = get_class($data->current());
             $model = new $model($this->container);

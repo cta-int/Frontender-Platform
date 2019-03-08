@@ -9,11 +9,13 @@
 {% if model %}
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'gutters')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
-    <h2 class="title title--section  |  trailer">{{ 'Featured publication'|t(locales) }}</h2>
+    {% if labels.title|t(locales)|length > 0 %}
+        <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
     <article class="grid__cell  |  publication-layout">
         <div class="publication-layout__cover">
             <figure class="publication-cover">
-                {{ image.cover(model.lead_image, 'publication-cover__image') }}
+                <img class="publication-cover__image" src="{{ model.contentBlocks|filterArray('subtype', 'image')|first.url }}" alt="{{ model.contentBlocks|filterArray('subtype', 'image')|first.about|t(locales) }}">
             </figure>
         </div>
         <div class="publication-layout__body">
