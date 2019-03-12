@@ -1,0 +1,21 @@
+.dlist {
+    clear: both;
+    &--grid {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    &__label {
+        clear: left;
+        margin-right: .5em;
+    }
+    &__value,
+    &__label {
+        float: left;
+        display: inline-block;
+        vertical-align: top;
+    }
+    &__value + &__label,
+    &__value + &__label + &__value {
+        margin-top: rhythm(1.5);
+    }
+}

@@ -15,6 +15,7 @@ use Prototype\Model\SCR\MediaModel;
 use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
 use Prototype\Model\SCR\Article\SearchModel;
+use Prototype\Model\Utils\Sorting;
 
 class ArticlesModel extends ScrModel
 {
@@ -34,7 +35,8 @@ class ArticlesModel extends ScrModel
             ->insert('recursive', true)
             ->insert('includeRelated', false)
             ->insert('related_limit', 16)
-            ->insert('similar_limit', 16);
+            ->insert('similar_limit', 16)
+            ->insert('articleLimit', 20);
     }
 
     public function getPropertyLead_image()
@@ -81,6 +83,7 @@ class ArticlesModel extends ScrModel
         return new class ($this, $this->getState(), $this->container)
         {
             private $cachedEvents = null;
+            private $cachedIssueArticles = null;
             private $cachedArticles = null;
             private $container;
             private $state;
@@ -92,15 +95,29 @@ class ArticlesModel extends ScrModel
                 $this->container = $container;
             }
 
-            public function articles()
+            public function articles($config = [])
             {
+                $config = array_merge([
+                    'limit' => 20
+                ], $config);
+
                 if (!$this->cachedArticles) {
+                    $labels = $this->article['link']['label'];
+
+                    if (isset($config['label'])) {
+                        $labels = $this->article->getLabels($config['label']);
+                    }
+
+                    if (!count($labels)) {
+                        return false;
+                    }
+
                     $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
-                        }, $this->article['link']['label']),
-                        'limit' => $this->state->similar_limit,
+                        }, $labels),
+                        'limit' => $config['limit'],
                         'language' => $this->state->language ?? 'en',
                         'mustNot' => [[
                             'type' => 'field',
@@ -149,34 +166,261 @@ class ArticlesModel extends ScrModel
 
                 return $this->cachedPublicationArticles;
             }
+
+            public function issues($config = [])
+            {
+                $config = array_merge([
+                    'limit' => 4,
+                    'label' => 'publication'
+                ], $config);
+
+                if (!$this->cachedIssueArticles) {
+                    $labels = $this->article->getLabels($config['label']);
+
+                    if (!count($labels)) {
+                        return false;
+                    }
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => array_map(function ($label) {
+                            return $label['_id'];
+                        }, $labels),
+                        'limit' => $config['limit'],
+                        'language' => $this->state->language ?? 'en',
+                        'articleType' => 'article.issue',
+                        'mustNot' => [[
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->article['_id']
+                        ]]
+                    ]);
+                    $result = $articles->fetch();
+                    $this->cachedIssueArticles = Sorting::sortBy($result, 'datePublished', Sorting::$DIRECTION_DESC);
+                }
+
+                return $this->cachedIssueArticles;
+            }
         };
     }
 
+    /*
+     * Method to retrieve a related issue and its assets.
+     * If the current article is an issue (i.e. if it has an issue label) that is returned.
+     *
+     */
     public function getPropertyIssue()
     {
-        $labelIds = array_column($this['link']['label'], '_id');
+        $article = new class ($this, $this->getState(), $this->container)
+        {
+            public $cachedIssue = null;
+            private $cachedIssues = null;
+            private $cachedIssueArticles = null;
+            private $cachedIssueInterview = null;
+            private $container;
+            private $state;
+            private $issueLabel = null;
+            private $issueNumberLabel = null;
 
-        if (!count($labelIds)) {
+            public function __construct($article, $state, $container)
+            {
+                $this->state = $state;
+                $this->container = $container;
+                // getIssue() also sets issueLabel and issueNumberLabel
+                $this->cachedIssue = $this->getIssue($article);
+            }
+
+            private function getIssue($article)
+            {
+                // If the current article IS the issue, return it, otherwise get the correct issue.
+                // If the article has both an issue label AND an issue label with a nr (#123) it is an issue itself.
+                // If the article only has an issue label with a nr (#123) it is an article that belongs to an issue.
+
+                if (!$this->cachedIssue) {
+                    if ($this->isIssue($article)) {
+                        $this->cachedIssue = $article;
+                    } else {
+                        $this->cachedIssue = $this->getArticleIssue($article);
+                    }
+                }
+                return $this->cachedIssue;
+            }
+
+            private function getArticleIssue($article)
+            {
+                if (is_null($this->issueLabel) || is_null($this->issueNumberLabel)) {
+                    // This is not an issue
+                    return false;
+                }
+
+                $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                $articles->setState([
+                    'label' => [$this->issueLabel['_id'], $this->issueNumberLabel['_id']],
+                    'limit' => 1,
+                    'language' => $this->state->language ?? 'en',
+                    'articleType' => 'article.issue'
+                ]);
+                $result = $articles->fetch();
+
+                return array_shift($result);
+            }
+
+            public function isIssue($article)
+            {
+                $issue_labels = $article->getLabels('issue');
+
+                if (empty($issue_labels)) {
+                    // This is not an issue, nor an issue article
+                    return false;
+                }
+
+                // Just get the names, we're only using them to determine 
+                // if we're dealing with an issue or an issue article.
+                $flat_labels = array_map(function ($label) {
+                    return $label['name'];
+                }, $issue_labels);
+
+                $issue_name = '';
+                $issue_no = '';
+                $issue_label = '';
+                $label_type = '';
+
+                foreach ($flat_labels as $index => $label) {
+
+                    // We only want to inspect if there is not more than two parts to the label (i.e. Issue/Spore #182/Something else).
+                    if (count(explode('/', $label)) > 2) {
+                        continue;
+                    }
+
+                    // Does this label contain the issue number?
+                    if (strpos($label, '#')) {
+
+                        // Get the issue name, we use it to cross check if both labels are 
+                        // for the same publications (i.e. Spore or ICT Update)
+                        list($issue_label, $issue_no) = explode('#', $label);
+                        list($label_type, $issue_name) = explode('/', $issue_label);
+
+                        $issue_no = trim($issue_no);
+                        $issue_name = trim($issue_name);
+
+                        // Set the issue number label so we can use it again
+                        $this->issueNumberLabel = $issue_labels[$index];
+
+                        break; // Stop after the first issue number; we're not supporting multiple issues for a single article at the moment
+                    } else {
+                        continue;
+                    }
+                }
+
+                foreach ($flat_labels as $index => $label) {
+                    if ($label == 'Issue/' . $issue_name) {
+                        $this->issueLabel = $issue_labels[$index];
+                        // This article is THE issue
+                        return $article;
+                    }
+                }
+
+                return false;
+            }
+
+            public function articles($config = [])
+            {
+                $config = array_merge([
+                    'limit' => 20
+                ], $config);
+
+                if (!$this->cachedIssueArticles) {
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => [$this->issueNumberLabel['_id']],
+                        'limit' => $config['limit'],
+                        'language' => $this->state->language ?? 'en'
+                    ]);
+
+                    if( $this->interview() ) {
+                        $articles->setState([
+                            'mustNot' => [[
+                                'type' => 'field',
+                                'id' => '_id',
+                                'value' => $this->cachedIssue['_id']
+                            ], [
+                                'type' => 'field',
+                                'id' => '_id',
+                                'value' => $this->cachedIssueInterview['_id']
+                            ]]
+                        ]);
+                    } else {
+                        $articles->setState([
+                            'mustNot' => [[
+                                'type' => 'field',
+                                'id' => '_id',
+                                'value' => $this->cachedIssue['_id']
+                            ]]
+                        ]);
+                    }
+
+                    $this->cachedIssueArticles = $articles->fetch();
+                    $this->cachedIssueArticles = Sorting::sortBy($this->cachedIssueArticles, 'datePublished', Sorting::$DIRECTION_DESC);
+                }
+
+                return $this->cachedIssueArticles;
+            }
+
+            public function interview($config = [])
+            {
+                if (!$this->cachedIssueInterview) {
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => [$this->issueNumberLabel['_id']],
+                        'limit' => 1,
+                        'language' => $this->state->language ?? 'en',
+                        'articleType' => 'article.interview'
+                    ]);
+
+                    $result = $articles->fetch();
+
+                    $this->cachedIssueInterview = array_shift($result);
+                }
+
+                return $this->cachedIssueInterview;
+            }
+
+            public function issues($config = [])
+            {
+                $config = array_merge([
+                    'limit' => 4
+                ], $config);
+
+                if (!$this->cachedIssues) {
+
+                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles->setState([
+                        'label' => [$this->issueLabel['_id']],
+                        'limit' => $config['limit'],
+                        'language' => $this->state->language ?? 'en',
+                        'articleType' => 'article.issue',
+                        'mustNot' => [[
+                            'type' => 'field',
+                            'id' => '_id',
+                            'value' => $this->cachedIssue['_id']
+                        ]]
+                    ]);
+
+                    $this->cachedIssues = $articles->fetch();
+                    $this->cachedIssues = Sorting::sortBy($this->cachedIssues, 'datePublished', Sorting::$DIRECTION_DESC);
+                }
+
+                return $this->cachedIssues;
+            }
+        };
+
+        if (!$article->cachedIssue) {
             return false;
         }
 
-        // We only come here if we have labels.
-        $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
-        $searchModel->setState([
-            'type' => 'article.issue',
-            'label' => $labelIds,
-            'limit' => 1,
-            'language' => $this->container->language->get(),
-            'recursive' => false
-        ]);
-        $review = $searchModel->fetch();
-
-        // Do a count just in case.
-        if (!count($review)) {
-            return false;
-        }
-
-        return array_shift($review);
+        return $article;
     }
 
     private function getPropertyRoutes()
@@ -294,47 +538,26 @@ class ArticlesModel extends ScrModel
             return parent::getPropertyPath();
         }
 
-        // We will check if there is a route for one of the labels that we have.
-        $routes = Adapter::getInstance()->collection('routes.static')->find([
-            'source' => ['$regex' => 'scr\/label.*', '$options' => 'i']
-        ])->toArray();
-        $routes = Adapter::getInstance()->toJSON($routes, true);
+        $labels = array_map(function ($label) {
+            $route = Adapter::getInstance()->collection('routes')->findOne([
+                'resource' => ['$regex' => 'scr\/label[\\\/].*?' . $label['_id'], '$options' => 'i']
+            ]);
+            $label['score'] = count(explode('/', $label['name']));
 
-        // I now need my own labels.
-        $labels = $this['link']['label'];
-        $own_label_ids = array_column($labels, '_id');
+            if ($route) {
+                $label['route'] = $route['destination'];
+            }
 
-        // I will check if there is an intersect of the routes, everyone that isn't found will not be returned.
-        $routes = array_filter($routes, function ($route) use ($own_label_ids) {
-            // We already have the label ids, so we will use it.
-            $parts = explode('/', $route['source']);
-            $label_id = end($parts);
+            return $label;
+        }, $this['link']['label']);
 
-            return in_array($label_id, $own_label_ids);
+        $labels = array_filter($labels, function ($label) {
+            return isset($label['route']) && !empty($label['route']);
         });
-
-        // If no label routes are found, we will return the route as it is supposed to be.
-        if (!count($routes)) {
-            return parent::getPropertyPath();
-        }
-
-        $flipped_labels = array_flip($own_label_ids);
-        $routes = array_map(function ($route) use ($labels, $flipped_labels) {
-            // Every maintaining route will have the label appended to it.
-            // I need the key of the label I need to add so I flip the array, so the value becomes the key and the key becomes the value.
-            $parts = explode('/', $route['source']);
-            $label_id = end($parts);
-            $key = $flipped_labels[$label_id];
-
-            $route['label'] = $labels[$key];
-            $route['score'] = count(explode('/', $route['label']['name']));
-
-            return $route;
-        }, $routes);
 
         // I now need to sort the routes, the most specific route will be used,
         // the score is calculated at the amount or parts it has.
-        uasort($routes, function ($a, $b) {
+        uasort($labels, function ($a, $b) {
             if ($a['score'] < $b['score']) {
                 return 1;
             } else if ($b['score'] < $a['score']) {
@@ -344,22 +567,27 @@ class ArticlesModel extends ScrModel
             return 0;
         });
 
-        $prefix = array_shift($routes);
+        $prefix = array_shift($labels);
 
         // Use the translated value.
         $filter = new Translate($this->container);
-        $prefix = $filter->translate($prefix['destination']);
+        $prefix = $filter->translate($prefix['route']);
 
         return implode('/', [$prefix, parent::getPropertyPath()]);
     }
 
-    public function getLabels(string $type = '', bool $first = false)
+    public function getLabels($types = [], bool $first = false)
     {
         $_labels = $this->data['link']['label'];
 
-        if ($type != '') {
+        // Make compatible with older requests that set type as a string
+        if (is_string($types)) {
+            $types = [$types];
+        }
+
+        if ($types[0]) {
             foreach ($_labels as $key => $value) {
-                if ($value['type'] != $type) {
+                if (!in_array($value['type'], $types)) {
                     unset($_labels[$key]);
                 }
             }

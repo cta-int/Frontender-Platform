@@ -16,13 +16,13 @@
     {% endif %}
 {% endmacro %}
 
-{% macro long(authors) %}
+{% macro long(authors, prefix = true) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ prefix ? 'by'|i18n ~ ' ' : '' }}{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
     {% elseif authors|length > 1 %}
-        {{ 'by'|i18n }}
+        {{ prefix ? 'by'|i18n ~ ' ' : '' }}
         {% for author in authors %}
             {% if not loop.first and not loop.last %}
                 ,

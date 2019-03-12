@@ -1,0 +1,67 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('section') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+    <header class="leader-inside trailer-inside" data-issue-nr="{{ model.number }}">
+        <p class="gutters">
+            <strong class="title title--apropos" style="display: block;">{{ labels.current_issue|t(locales)|default( 'current_issue'|i18n ) }}</strong>
+            {{ date.issue_date(model.datePublished) }}
+        </p>
+        <p class="title title--section gutters leader--normal">{{ label.publication(model.link.label|filterArray('type', 'publication')) }}</p>
+
+        <div class="publication-tile media media--cover leader">
+            <div class="publication-tile__cover media__figure gutters">
+                <figure class="publication-cover publication-cover--low">
+                    <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                        {{ image.contentBlock_cover(model|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                    </a>
+                </figure>
+            </div>
+            <div class="media__body  |  gutters">
+                <em>{{ model.getLabel.name|t(locales) }}</em>
+                <h1 class="heading heading--focus">
+                    <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                        {{ model.headline|t(locales) }}
+                    </a>
+                </h1>
+                {% if model.externalLink|length > 0 %}
+                    <div class="leader">
+                        {% for link in model.externalLink %}
+                            <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                <span class="publication-download__item">{{ link.name }}</span>
+                                {% if link.url|getFileSize %}
+                                    <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <hr class="divider divider--top gutters-outside"/>
+
+    {% for article in model.similar.publicationArticles %}
+        <div class="publication-tile media media--cover leader">
+            <div class="publication-tile__cover media__figure gutters">
+                {{ image.post(article.link.mediaObject|lead) }}
+            </div>
+            <div class="media__body  |  gutters">
+                {{ date.issue_date(article.datePublished) }}
+        
+                <h3 class="heading  |  anchor--reset">
+                    <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+                        {{ article.headline }}
+                    </a>
+                </h3>
+            </div>
+        </div>
+    {% endfor %}
+    
+</{{ config.container_tag|default('section') }}>

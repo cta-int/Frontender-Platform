@@ -103,12 +103,12 @@ Styleguide 5.2
 	}
 	&__meta {
 		// color: rgba($white, .60);
-		flex-basis: 6 / 18 * 100vw;
-		max-width: 6 / 18 * 100vw;
-		.no-flexbox & {
-			width: percentage(6 / 13);
-			max-width: percentage(6 / 13);
-		}
+		// flex-basis: 6 / 18 * 100vw;
+		// max-width: 6 / 18 * 100vw;
+		// .no-flexbox & {
+		// 	width: percentage(6 / 13);
+		// 	max-width: percentage(6 / 13);
+		// }
 		.meta {
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
@@ -135,6 +135,12 @@ Styleguide 5.2
 	}
 	.icon {
 		font-size: to-unit(28px);
+	}
+	@include breakpoint($lt-small-desktop) {
+		.grid__cell {
+			width: percentage(1/3);
+			flex-basis: percentage(1/3);
+		}
 	}
 	@include breakpoint($gt-small-desktop) {
 		.layout--footer {

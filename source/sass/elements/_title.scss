@@ -28,7 +28,7 @@ Styleguide 3.3
   font-weight: 600;
   @include title-16px();
   max-width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   a &,
   & a {
     text-decoration: none;

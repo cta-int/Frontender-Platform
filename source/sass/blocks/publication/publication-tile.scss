@@ -1,0 +1,80 @@
+/*
+ * 1.account for the publication shadow offset
+ */
+ .publication-tile /* .media .media--stretcher */ {
+	position: relative;
+	&__cover /* .media__figure */ {
+		width: 160px;
+		width: 3 / 6 * 100vw;
+	}
+	&__body /* .media__body */ {
+
+	}
+	&--s &__cover /* .media__figure */ {
+		width: 106px;
+		width: 2 / 6 * 100vw;
+	}
+	&--l {
+		
+	}
+	&--pull-top {
+
+	}
+	&--end /*.media--end*/ {}
+	&--middle /*.media--middle*/ {}
+
+	@include breakpoint($gt-medium-handheld) {
+		&__cover {
+			width: 2 / 6 * 100vw;
+		}
+	}
+	@include breakpoint("(min-width: #{to-unit(600px)})") {
+		&__cover,
+		&--s &__cover {
+			width: 1 / 6 * 100vw;
+		}
+		&--hero &__cover {
+			width: 2 / 6 * 100vw;
+		}
+		&--fold {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+		&--fold &__cover {
+			width: 2 / 6 * 100vw;
+		}
+		&--fold &__body {
+			width: 3 / 6 * 100vw;
+		}
+	}
+	@include breakpoint($gt-large-handheld) {
+		&__cover,
+		&--s &__cover {
+			width: 2 / 12 * 100vw;
+		}
+		&--hero &__cover,
+		&--fold &__cover {
+			width: 3 / 12 * 100vw;
+		}
+	}
+	@include breakpoint($gt-small-desktop) {
+		&__cover,
+		&--hero &__cover,
+		&--s &__cover {
+			width: 2 / 18 * 100vw;
+	  }
+		&--fold &__cover {
+			width: 3 / 18 * 100vw;
+		}
+	}
+	@include breakpoint($gt-medium-desktop) {
+		&__cover,
+		&--hero &__cover,
+		&--fold &__cover {
+			width: 2 / 18 * 100vw;
+		}
+		&--s &__cover {
+			width: 1 / 18 * 100vw;
+		}
+	}
+}

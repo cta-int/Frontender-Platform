@@ -14,6 +14,9 @@ Styleguide 3.43
     line-height: to-unit(rhythm(4), 1, 12px);
     padding-bottom: rhythm(1);
     opacity: .84;
+    font-smooth: auto;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
 	.credits-department &,
     .credits-department + & {
 		font-size: 1em;
@@ -22,7 +25,7 @@ Styleguide 3.43
     .caption + & {
         padding-top: rhythm(2);
     }
-    .well & {
+    .post-body .well & {
         padding-left: rhythm(3);
         padding-right: rhythm(3);
     }

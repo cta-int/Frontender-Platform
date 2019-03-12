@@ -12,32 +12,34 @@
     {% if labels.title|t(locales)|length > 0 %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
     {% endif %}
-    <article class="grid__cell  |  publication-layout">
-        <div class="publication-layout__cover">
+    <article class="publication-tile publication-tile--l media">
+        <div class="publication-tile__cover media__figure trailer-inside gutter--right">
             <figure class="publication-cover">
-                <img class="publication-cover__image" src="{{ model.contentBlocks|filterArray('subtype', 'image')|first.url }}" alt="{{ model.contentBlocks|filterArray('subtype', 'image')|first.about|t(locales) }}">
+                <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                    {{ image.contentBlock_cover(model|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                </a>
             </figure>
         </div>
-        <div class="publication-layout__body">
+        <div class="publication-tile__body media__body trailer-inside gutters">
             <p class="trailer--tiny">
-                    {{ date.article(model.datePublished) }}
-                {% if model.publicationLabel %}
-                    <span class="meta">{{ model.publicationLabel.name|t(locales) }}</span>
-                {% endif %}
-            </p>
-            <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
-            {% if model.externalLink %}
-                <div class="leader">
-                    {% for link in model.externalLink %}
-                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
-                            <span class="publication-download__item">{{ link.name }}</span>
-                            {% if link.url|getFileSize %}
-                                <span class="publication-download__item">{{ link.url|getFileSize }}</span>
-                            {% endif %}
-                        </a>
-                    {% endfor %}
-                </div>
+                {{ date.article(model.datePublished) }}
+            {% if model.publicationLabel %}
+                <span class="meta">{{ model.publicationLabel.name|t(locales) }}</span>
             {% endif %}
+        </p>
+        <h3 class="heading  |  trailer--tiny">{{ model.headline|t(locales) }}</h3>
+        {% if model.externalLink %}
+            <div class="leader">
+                {% for link in model.externalLink %}
+                    <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                        <span class="publication-download__item">{{ link.name }}</span>
+                        {% if link.url|getFileSize %}
+                            <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
         </div>
     </article>
 
