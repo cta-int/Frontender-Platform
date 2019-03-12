@@ -1,0 +1,122 @@
+.publication-banner {
+    color: $white;
+    &__meta {
+        width: 100%;
+        @include theme-color;
+        @include theme-opaque-background(26%);
+        padding-top: rhythm(2);
+        padding-bottom: rhythm(2);
+        font-family: $font-family--meta;
+        text-transform: uppercase;
+        font-size: to-unit(12px);
+    }
+    &__publication,
+    &__brand {
+        display: flex;
+        flex-direction: column;
+    }
+    &__cover,
+    &__brand {
+        padding-top: rhythm(5);
+        padding-bottom: rhythm(5);
+    }
+    &__publication {
+        @include theme-opaque-background(54%);
+    }
+    &__brand,
+    &__brand .brand {
+        @include theme-opaque-background(100%);
+    }
+    &__brand {
+        justify-content: center;
+    }
+    &__brand-headline,
+    &__brand-standfirst {
+        font-family: $font-family--meta;
+        font-weight: $font-weight--meta;
+    }
+    &__brand-headline + &__brand-standfirst {
+        margin-top: rhythm(3);
+    }
+    &__brand-headline {
+        @include theme-opaque-background(100%);
+        @include title-16px();
+    }
+    &__brand-standfirst {
+        @include title-12px();
+    }
+    @include breakpoint($lt-small-desktop) {
+        &__publication,
+        &__brand {
+            flex-basis: 50%;
+        }
+    }
+    @include breakpoint($gt-large-handheld) {
+        &__brand-headline {
+            @include title-18px();
+        }
+        &__brand-standfirst {
+            @include title-14px();
+        }
+        &__brand-headline + &__brand-standfirst {
+            margin-top: rhythm(4);
+        }
+    }
+    @include breakpoint($gt-small-desktop) {
+        &__meta {
+            padding-top: rhythm(3);
+            padding-bottom: rhythm(3);
+            font-size: to-unit(16px);
+            padding-left: 3 / 18 * 100vw;
+        }
+        &__brand-headline {
+            @include title-24px();
+        }
+        &__brand-standfirst {
+            @include title-16px();
+        }
+        &__brand-headline + &__brand-standfirst {
+            margin-top: rhythm(6);
+        }
+        &__cover {
+            .publication-tile {
+                padding-right: 1 / 18 * 100vw;
+            }
+            .publication-tile__cover.publication-tile__cover {
+                width: 2.5 / 16 * 100vw;
+                padding-right: gutter(.5);
+            }
+            .publication-cover {
+                margin-top: rhythm(-11);
+            }  
+        }
+        &__brand {
+            .publication-tile {
+                position: relative;
+                left: -1 / 18 * 100vw;
+            }
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        &__meta {
+            padding-left: 4 / 18 * 100vw;
+        }
+        &__brand-headline {
+            @include title-30px();
+        }
+        &__cover {
+            .publication-tile {
+                padding-right: 2 / 18 * 100vw;
+            }
+        }
+        &__brand {
+            .publication-tile {
+                position: relative;
+                left: -2 / 18 * 100vw;
+            }
+            .publication-tile__body {
+                margin-right: -1 / 18 * 100vw;
+            }
+        }
+    }
+}

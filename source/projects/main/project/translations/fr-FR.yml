@@ -249,6 +249,8 @@ and: et
 closing date for application: Date de clôture de la demande
 updated on: Mis à jour le
 follow us on twitter: Suivez-nous sur Twitter
+related_publications: Publications liés
+area: Domaine
 
 # Issues
 issue: numéro
@@ -256,6 +258,8 @@ view issue: Visualiser numéro
 all issues: Archive
 current issue: Dernier numéro
 download in pdf format: Télécharger pdf
+in this issue: Dans ce numéro
+other issues: Autres numéros
 
 # Article
 updated_on: Mis à jour le
@@ -265,8 +269,8 @@ view_reference: Voir la référence
 disclaimer: Avertissement
 about the author: A propos de l'auteur
 about: A propos de
-author: auteur
-authors: auteurs
+author: Auteur
+authors: Auteurs
 articles: articles
 in: dans
 

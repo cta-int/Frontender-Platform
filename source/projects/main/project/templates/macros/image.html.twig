@@ -530,6 +530,21 @@ $landscape - Breakpoint for landscape oriented viewports.
         />
 {% endmacro %}
 
+{% macro contentBlock_cover(contentBlock, class) %}
+
+    {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
+    {% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_240,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
+    
+    <img
+        class="{{ class }}"
+        src="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }}"
+        srcset="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }} 480w,https://res.cloudinary.com/cta/image/upload/w_320/{{ imagebasename }} 320w,https://res.cloudinary.com/cta/image/upload/w_240/{{ imagebasename }} 240w"
+        sizes="100vw, (min-width: 480px) 480px"
+        alt="{{ contentBlock|first.about|t(locales)|default('') }}"
+        />
+        
+{% endmacro %}
+
 {% macro card(image, class = '', wide = false) %}
     {% import _self as me %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}

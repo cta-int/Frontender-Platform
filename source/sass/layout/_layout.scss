@@ -185,11 +185,11 @@ Styleguide 2.1
             }
         }
 
-        &__cell--aside--l {
-            .layout--narrow & {
-                flex-basis: 3 / 18 * 100vw;
-            }
-        }
+        // &__cell--aside--l {
+        //     .layout--narrow & {
+        //         flex-basis: 3 / 18 * 100vw;
+        //     }
+        // }
 
         .no-flexbox & {
             &--split > .layout__cell:first-child:not(:last-child) {
@@ -252,9 +252,9 @@ Styleguide 2.1
             }
         }
 
-        &__cell &__cell--aside--l {
-            flex-basis: 5 / 18 * 100vw;
-        }
+        // &__cell &__cell--aside--l {
+        //     flex-basis: 5 / 18 * 100vw;
+        // }
 
         &__cell &__cell--aside,
         &__cell--aside,
@@ -268,44 +268,49 @@ Styleguide 2.1
             }
         }
 
-        &__cell--divider,
-        &--split &__cell--divider,
-        &--even &__cell--divider {
-            border-right: 1px solid;
-            @include theme-border(26%);
-
-            &.well,
-            .well & {
-                border-color: rgba(255, 255, 255, .8);
+        &__cell--divider {
+            &,
+            &-outside,
+            &-inside,
+            &-middle {
+                position: relative;
+                &::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 1px;
+                    background-color: mix($color-green, $white, 26%);
+                }
+                @each $color_name, $color_value in $colours {
+                    .theme--#{$color_name} &::after {
+                        background-color: mix($color_value, $white, 26%);
+                    }
+                }
+                &.well:not(.well--full),
+                .well:not(.well--full) & {
+                    .theme &::after {
+                        background-color: $white;
+                    }
+                }
             }
         }
     }
     @include breakpoint($gt-medium-desktop) {
         &__cell--divider {
-            border: 0;
-            &,
-            .article-headline & {
-                @each $color_name, $color_value in $colours {
-                    .theme--#{$color_name} & {
-                        box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 $white, inset rhythm(-5) 0 0 0 rgba($color_value, .26)};
-                    }
-                }
+            &::after,
+            &-inside::after {
+                transform: translateX( gutter(-.5) );
             }
-            
-
-            &.well,
-            .well & {
-                @each $color_name, $color_value in $colours {
-                    .theme--#{$color_name} & {
-                        box-shadow: #{inset (rhythm(-5) + 1px) 0 0 0 mix($color_value, $white, 26%), inset rhythm(-5) 0 0 0 mix($color_value, $white, 4%)};
-                    }
-                }
+            &-outside::after {
+                transform: translateX( gutter(.5) );
             }
         }
-        &--split &__cell--divider,
-        &--even &__cell--divider {
-            border-width: 1px;
-            box-shadow: none;
+        &__cell--divider-middle::after,
+        &--even &__cell--divider::after {
+            transform: none;
         }
     }
 }

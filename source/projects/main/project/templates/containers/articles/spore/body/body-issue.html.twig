@@ -1,1 +1,195 @@
-{% include "containers/articles/spore/body/body-champion.html.twig" %}
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/location.html.twig" as location %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/label.html.twig" as label %}
+{% set issue_interview = model.issue.interview() %}
+{% set issue_articles = model.issue.articles({'limit': 4}) %}
+{#% set other_issues = model.issue.issues({'limit': 4}) %#}
+{% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
+{% set quote = issue_interview.contentBlocks|filterArray('type', 'blockquote') %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div {{ helper.class_attribute(config, 'layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
+    <div class="layout__cell layout__cell--main wing--right">
+
+        {% if model.about %}
+            <p class="gutters  |  paragraph--lead  |   leader--hero  |  leader">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
+        {% endif %}
+        
+        {# render the content blocks - if the first block is a list, we treat it as the article takeaways #}
+        {% for i, contentBlock in model.contentBlocks %}
+            {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                </div>
+            {% elseif contentBlock.type == 'media' %}
+            {% else %}
+                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'contentBlock': contentBlock} %}
+            {% endif %}
+        {% endfor %}
+
+        {% if model.analysis.agrovoc.concepts %}
+            <div class="gutters  |  trailer  |  leader">
+                <ul class="reset  |  tag-list  |  list--inline">
+                    {% for label in model.analysis.agrovoc.concepts|slice(0, 20) %}
+                        <li>{{ concept.tag(label, locale) }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    
+        <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
+            {{ share.bar_article(model) }}
+        </div>
+
+        {% if issue_interview|length or issue_articles|length %}
+            <p class="title title--section leader--hero trailer--hero"><span class="gutters">{{ 'in this issue'|i18n }}</span></p>
+        {% endif %}
+
+        {% if issue_interview|length %}
+            {% set interview_route = route({'page': issue_interview.path, 'slug': issue_interview.headline|t(locales)|slugify, id: issue_interview._id}) %}
+            
+            <div class="post post--hero  |  layout layout--even">
+                <div class="post__media  |  layout__cell  |  gutters">
+                    <a class="anchor anchor--shy  |  is-heir" href="{{ interview_route }}">
+                        {{ image.post_hero(issue_interview.link.mediaObject|lead) }}
+                    </a>
+                </div>
+
+                {# Show quote if there is one, otherwise show standfirst #}
+                {% if quote|length %}
+
+                    <div class="post__content  |  layout__cell layout__cell--aside  |  stack stack--stacked">
+                        <a class="stack__unit anchor anchor--shy  |  is-heir" href="{{ interview_route }}">
+                            <div class="quote  |  gutters  |  leader--small  |  trailer--normal">
+                                {{ quote|first.content|striptags('<p><div><blockquote><strong><em><u><a><sub><sup>')|raw }}
+                            </div>
+                        </a>
+                        <div class="stack__unit stack__pin  |  gutters">
+                            <div class="pin-box  |  leader-inside--small">
+                                {% if model.publicationLabel %}
+                                    <strong class="title title--apropos  |  gutter">{{ label.publication_to_string(issue_interview.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong>
+                                {% endif %}                            
+                                {% if show_publication_date|default(1) %}
+                                    {{ date.article( issue_interview . datePublished ) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                {% else %}
+
+                    <div class="post__content  |  layout__cell layout__cell--aside  |  stack stack--stacked">
+                        <div class="stack__unit gutters">
+
+                            {% if show_publication_date|default(1) %}
+                                {{ date.article( issue_interview . datePublished ) }}
+                            {% endif %}
+                
+                            {% if config.show_publication|default(0) and issue_interview.link.label|filterArray('type', 'publication')|length %}
+                                <span class="meta">{{ 'in'|i18n }} {{ label.publication(issue_interview.link.label|filterArray('type', 'publication'))}}</span>
+                            {% endif %}
+                
+                            {% if config.show_type|default(1) %}
+                                <a class="meta  |  anchor anchor--shy  |  is-heir" href="/search?q=&location=&time=&type=article.{{ issue_interview.articleType }}">
+                                    {{ ('content_type_category_' ~ issue_interview.articleType)|i18n }}
+                                </a>
+                            {% endif %}
+                
+                            <h3 class="heading heading--focus anchor--reset">
+                                <a class="anchor anchor--shy  |  is-heir" href="{{ interview_route }}">
+                                    {{ issue_interview.headline }}
+                                </a>
+                            </h3>
+                
+                            {% if show_author_name|default(1) and issue_interview.link.person.author|first.name  %}
+                                <div class="body--whisper  |  leader--tiny">
+                                    {{ author.long(issue_interview.link.person.author) }}
+                                </div>
+                            {% endif %}
+                
+                            {% if show_stand_first|default(1) %}
+                               <p class="post__intro">{{ issue_interview.about|raw }}</p>
+                            {% endif %}
+                
+                            {% if show_read_more|default(0) %}
+                               <a class="read-more" href="{{ interview_route }}">{{ 'Read more'|i18n }}</a>
+                            {% endif %}
+                            
+                        </div>
+                        <div class="stack__unit stack__pin  |  gutters">
+                            <div class="pin-box  |  leader-inside--small">
+                                {% if model.publicationLabel %}
+                                    <strong class="title title--apropos  |  gutter">{{ label.publication_to_string(issue_interview.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+                
+            </div>
+
+        {% endif %}
+
+        {% if issue_articles|length %}
+            <div class="grid grid--rows">
+                {% for article in issue_articles %}
+                    <article class="grid__cell  |  leader  |  gutters">
+                        {% include 'partials/article/post-row.html.twig' with {model: article, config: {
+                            show_stand_first: 1,
+                            show_read_more: 0,
+                            show_type: 1,
+                            show_lead_image: 1,
+                            show_publication: 0
+                        }} %}
+                    </article>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+    <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wing--left gutter--right">
+        {% if similar_issues|length > 0 %}
+        <aside class="trailer">
+            <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
+            {% for issue in similar_issues %}
+                {% set issue_route = route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) %}
+                <article class="publication-tile publication-tile--s media leader--normal trailer--normal">
+                    <div class="publication-tile__cover media__figure gutters">
+                        <figure class="publication-cover publication-cover--s">
+                            <a href="{{ issue_route }}">
+                                {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="media__body  gutters">
+                        {% if config.show_publication|default(1) %}
+                            <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                        {% endif %}
+                        <h2 class="heading">
+                            <a class="is-heir" href="{{ issue_route }}">
+                                {{ issue.headline|t(locales) }}
+                            </a>
+                        </h2>
+                        {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                            <p class="author leader--tiny">
+                                {{ author.long(issue.link.person.author) }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </aside>
+        {% endif %}
+        
+    </div>
+</div>
+
+
+

@@ -35,7 +35,11 @@
     </span>
 {% endmacro %}
 
-{% macro issue_date(date, timezone = null) %}
+{% macro issue_year(date, timezone = null, class = null) %}
+    <time class="{{ class|default('meta') }}" datetime="{{ date }}">{{ date|tdate('%Y', timezone) }}</time>
+{% endmacro %}
+
+{% macro issue_date(date, timezone = null, class = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-    <time class="meta" datetime="{{ date }}">{{ date|tdate('%B %Y', timezone) }}</time>
+    <time class="{{ class|default('meta') }}" datetime="{{ date }}">{{ date|tdate('%B %Y', timezone) }}</time>
 {% endmacro %}

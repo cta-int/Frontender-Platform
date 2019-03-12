@@ -4,7 +4,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'article-headline  |  leader-inside--hero  |  trailer-inside--normal  |  layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'article-headline  |  well well--full  |  leader-inside--hero  |  trailer-inside--normal  |  layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout  |  layout__cell layout__cell--main">
         <div class="layout__cell layout__cell--main  |  gutters">
             <h1 class="trailer trailer-inside--tiny  |  heading heading--hero">{{ model.name|t(locales) }}</h1>

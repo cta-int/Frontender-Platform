@@ -84,10 +84,17 @@ regions_search: Search a country/region
 there are no matching opportunities at this time: There are no matching opportunities at this time.
 be the first to review: Be the first to review
 published on: Published on
+published: Published
 indicative starting date: Indicative starting date
 type of contract: Type of contract
 awards notice: Awards notice
 expiring: closing soon
+related_publications: Related publications
+area: Area
+
+# Issues
+in this issue: In this issue
+other issues: Other issues
 
 # Sorting & Filtering
 date (newer-older): Date (newer-older)
@@ -132,6 +139,8 @@ footnotes: Footnotes
 view_reference: View reference
 disclaimer: Disclaimer
 about the author: About the author
+author: Author
+authors: Authors
 
 # Event
 speakers: Speakers
