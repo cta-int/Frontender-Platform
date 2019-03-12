@@ -1,4 +1,5 @@
-{% if model.issues|length > 0 %}
+{% if model.outputs|length > 0 %}
+{{ dump(model.outputs) }}
     {% import "macros/template.html.twig" as helper %}
     {% import "macros/date.html.twig" as date %}
     {% import "macros/image.html.twig" as image %}
@@ -40,7 +41,6 @@
                         {% endif %}
                     </div>
                 </article>
-
             {% endfor %}
         </div>
     </{{ config.container_tag|default('div') }}>
