@@ -46,7 +46,7 @@
 
     <hr class="divider divider--top gutters-outside"/>
 
-    {% for article in model.similar.publicationArticles %}
+    {% for article in model.issue.articles({"limit": 3}) %}
         <div class="publication-tile media media--cover leader">
             <div class="publication-tile__cover media__figure gutters">
                 {{ image.post(article.link.mediaObject|lead) }}
