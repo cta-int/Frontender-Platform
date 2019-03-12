@@ -1,4 +1,4 @@
-{% if model.outputs|length > 0 %}
+{% if model.issues|length > 0 %}
     {% import "macros/template.html.twig" as helper %}
     {% import "macros/date.html.twig" as date %}
     {% import "macros/image.html.twig" as image %}
@@ -12,7 +12,7 @@
             <span class="gutters">{{ content.title|t(locales)|default('Section title') }}</span>
         </h2>
         <div class="grid grid--teletubbies wings" style="justify-content: flex-end;">
-            {% for article in model.outputs %}
+            {% for article in model.issues %}
                 <article class="grid__cell publication-tile publication-tile--fold media media--cover leader--normal trailer--normal">
                     <div class="publication-tile__cover media__figure gutters">
                         <figure class="publication-cover">
