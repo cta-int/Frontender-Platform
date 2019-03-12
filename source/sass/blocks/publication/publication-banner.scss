@@ -44,6 +44,11 @@
     }
     &__brand-standfirst {
         @include title-12px();
+        font-weight: 300;
+    }
+    .title,
+    &__brand-headline {
+        font-weight: 400;
     }
     @include breakpoint($lt-small-desktop) {
         &__publication,
