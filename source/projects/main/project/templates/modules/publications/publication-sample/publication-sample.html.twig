@@ -9,7 +9,6 @@
 
     <header class="leader-inside trailer-inside" data-issue-nr="{{ model.number }}">
         <p class="gutters">
-            <strong class="title title--apropos" style="display: block;">{{ labels.current_issue|t(locales)|default( 'current_issue'|i18n ) }}</strong>
             {{ date.issue_date(model.datePublished) }}
         </p>
         <p class="title title--section gutters leader--normal">{{ label.publication(model.link.label|filterArray('type', 'publication')) }}</p>
