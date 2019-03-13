@@ -11,49 +11,36 @@
         <h2 class="title title--container  |  wings  |  trailer">
             <span class="gutters">{{ content.title|t(locales)|default('Section title') }}</span>
         </h2>
-        <div class="layout">
-            <div class="layout__cell layout__cell--aside  |  wings  |  trailer--tiny">
-                <p class="gutters">{{ content.description|t(locales)|default('Lorem ipsum dolor sit amet.') }}</p>
-            </div>
-            <div class="layout__cell layout__cell--main  |  grid grid--posts  |  wing--right">
-                {% for article in model.issues %}
-
-                    <article class="grid__cell  |  gutters  |  publication-stack">
-                        <div class="publication-stack__cover">
-                            <figure class="publication-cover">
-                                {{ image.cover(article.lead_image, 'publication-cover__image') }}
-                            </figure>
-                        </div>
-                        <div class="publication-stack__body">
-                            <p class="trailer--tiny">
-                                {% if config.show_publication_date|default(1) %}
-                                    {{ date.article(article.datePublished) }}
-                                {% endif %}
-                                {% if article.publicationLabel %}
-                                    <span class="meta">
-                                        {{ article.publicationLabel.name|t(locales) }}
-                                    </span>
-                                {% endif %}
-                            </p>
-                            <h3 class="heading  |  trailer--tiny">{{ article.headline|t(locales) }}</h3>
-                        </div>
+        <div class="grid grid--teletubbies wings" style="justify-content: flex-end;">
+            {% for article in model.issues %}
+                <article class="grid__cell publication-tile publication-tile--fold media media--cover leader--normal trailer--normal">
+                    <div class="publication-tile__cover media__figure gutters">
+                        <figure class="publication-cover">
+                            <a href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, 'id': article._id}) }}">
+                                {{ image.contentBlock_cover(article.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="publication-tile__body media__body gutters leader-inside--normal trailer-inside--normal">
+                        <h2 class="heading">{{ article.headline|t(locales) }}</h2>
+                        {% if config.show_publication|default(1) %}
+                            <p class="leader-inside--normal">{{ date.issue_date(article.datePublished) }}</p>
+                        {% endif %}
                         {% if article.externalLink %}
-                            <div class="publication-stack__footer">
-                                <div class="leader--normal">
-                                    {% for link in article.externalLink %}
-                                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
-                                            <span class="publication-download__item">{{ link.name }}</span>
-                                            {% if link.url|getFileSize %}
-                                                <span class="publication-download__item">{{ link.url|getFileSize }}</span>
-                                            {% endif %}
-                                        </a>
-                                    {% endfor %}
-                                </div>
+                            <div class="leader--normal">
+                                {% for link in article.externalLink %}
+                                    <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                        {% if link.url|getFileSize %}
+                                            <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
                             </div>
                         {% endif %}
-                    </article>
-                {% endfor %}
-            </div>
+                    </div>
+                </article>
+            {% endfor %}
         </div>
     </{{ config.container_tag|default('div') }}>
 {% endif %}

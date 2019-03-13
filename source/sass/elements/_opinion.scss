@@ -1,11 +1,20 @@
 .opinion {
-    display: inline-block;
+    display: block;
     position: relative;
     margin-bottom: rhythm(40);
     border-color: $white;
+    &--slim-fit {
+        display: inline-block;
+    }
     &--theme {
         margin-bottom: 0;
         @include theme-border;
+        &::after {
+            opacity: .26;
+        }
+    }
+    &--full::after {
+        opacity: 1;
     }
     &::after {
         content: '';
@@ -17,11 +26,9 @@
         border-style: solid;
         border-width: 10px;
         border-color: inherit;
-        .theme & {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-        }
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
     }
     .well--neutral {
         background: $white;

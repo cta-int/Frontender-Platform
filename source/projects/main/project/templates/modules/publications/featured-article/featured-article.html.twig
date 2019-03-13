@@ -1,0 +1,65 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/label.html.twig" as label %}
+
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% if containers|length %}
+    <{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, ['']|join(' ')|trim)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="post post--hero  |  layout">
+            <div class="post__media  |  layout__cell  |  gutters">
+                <a class="is-heir" href="{{ route({'page': model.article|first.path, 'slug': model.articl|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                    {{ image.post_hero(model.link.mediaObject|lead) }}
+                </a>
+            </div>
+
+            <div class="post__content  |  layout__cell--aside  |  stack stack--stacked">
+                <div class="stack__unit  |  trailer  |  gutters">
+
+                    <p class="post__meta  |  trailer--tiny">
+                        {% if config.show_publication_date|default(1) %}
+                            {{ date.article(model.datePublished) }}
+                        {% endif %}
+
+                        {% if config.show_publication|default(1) and model.link.label|filterArray('type', 'publication')|length %}
+                            <span class="meta">{{ 'in'|i18n }} {{ label.publication(model.link.label|filterArray('type', 'publication'))}}</span>
+                        {% endif %}
+
+                        {% if config.show_type|default(0) %}
+                            <a class="meta" href="/search?q=&location=&time=&type=article.{{ model|first.articleType }}">{{ ('content_type_category_' ~ model|first.articleType)|i18n }}</a>
+                        {% endif %}
+                    </p>
+
+                    <h3 class="heading heading--focus anchor--reset">
+                        <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                            {{ model|first.headline }}
+                        </a>
+                    </h3>
+
+                    {% if show_author_name|default(1) and model|first.link.person.author|first  %}
+                        <div class="media media--middle  |  bleed">
+                            <div class="gutters  |  body--whisper">
+                                {{ author.single(model|first.link.person.author) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if show_stand_first|default(1) %}
+                    <p class="post__intro">{{ model|first.about|raw }}</p>
+                    {% endif %}
+
+                </div>
+
+                {% for c in containers %}
+                    {% if c.template_id  == 'publication' %}
+                        {% include c.template with c %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </{{ config.container_tag|default('article') }}>
+{% endif %}

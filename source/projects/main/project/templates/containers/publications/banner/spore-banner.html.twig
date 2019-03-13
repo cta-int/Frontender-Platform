@@ -1,0 +1,59 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'publication-banner layout layout--split')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="publication-banner__publication layout__cell layout__cell--main well">
+        <div class="publication-banner__meta wings">
+            <p class="gutters">
+                <strong>
+                    {{ label.publication(model.link.label|filterArray('type', 'publication')) }}
+                    {{ model.number }}
+                </strong>
+                {{ date.issue_date(model.datePublished, null, ' ') }}
+            </p>
+        </div>
+        
+        {# Publication cover #}
+        <article class="publication-banner__cover publication-tile media wings">
+            <div class="publication-tile__cover media__figure gutters">
+                <figure class="publication-cover publication-cover--l">
+                    <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                        {{ image.contentBlock_cover(model.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                    </a>
+                </figure>
+            </div>
+            <div class="publication-tile__body media__body leader-inside gutters">
+                <h1 class="title title--container gutters">
+                    {{ model.headline|t(locales) }}
+                </h1>
+                {% if model.externalLink|length > 0 %}
+                    <div class="leader gutters">
+                        {% for link in model.externalLink %}
+                            <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                <span class="publication-download__item">{{ link.name }}</span>
+                                {% if link.url|getFileSize %}
+                                    <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+    </div>
+    <div class="publication-banner__brand layout__cell layout__cell--aside wings is-gt-medium-handheld">
+        <div class="publication-tile media media--middle">
+            <div class="publication-tile__cover media__figure gutters">
+                <img class="brand" src="{{ '/assets/images/logos/brands/logo-spore.svg' }}" alt="{{ 'Spore Magazine' }}"/>
+            </div>
+            <div class="publication-tile__body media__body gutters">
+                <h2 class="publication-banner__brand-headline">{{ labels.headline|t(locales) }}</h2>
+                <p class="publication-banner__brand-standfirst">{{ labels.standfirst|t(locales) }}</p>
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

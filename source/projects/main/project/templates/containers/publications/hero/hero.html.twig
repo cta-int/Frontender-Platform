@@ -1,0 +1,16 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="ie9-hero">
+        {{ image.hero(model, is_crowned, "article-header__image  |  image image--stretch") }}
+    </div>
+    {% for c in containers %}
+        {% if c.template_id  == 'publication' %}
+            {% include c.template with c|merge({ 'heroimage':  model }) %}
+        {% endif %}
+    {% endfor %}
+</{{ config.container_tag|default('header') }}>

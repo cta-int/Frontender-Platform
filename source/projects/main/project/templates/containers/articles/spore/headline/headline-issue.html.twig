@@ -1,1 +1,83 @@
-{% include "containers/articles/spore/headline/headline-champion.html.twig" %}
+{% if model.link.mediaObject|lead %}
+
+    {% import "macros/image.html.twig" as image %}
+    {% import "macros/author.html.twig" as author %}
+    {% import "macros/date.html.twig" as date %}
+    {% import "macros/template.html.twig" as helper %}
+    {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="ie9-hero">
+            {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
+        </div>
+        <div class="article-headline well well--full  | layout layout--break-early-even">
+            <div class="layout__cell layout__cell--aside layout__cell--divider-outside  |  wing--left">
+        
+                {# Publication cover #}
+                <article class="publication-tile publication-tile--hero media trailer-inside">
+                    <div class="publication-tile__cover media__figure gutters">
+                        <figure class="publication-cover publication-cover--pull-top">
+                            <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                                {{ image.contentBlock_cover(model.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="publication-tile__body media__body leader-inside gutters">
+                        {% if model.number %}
+                            <p class="meta">
+                                <strong>{{ 'spore_issue_no'|i18n }} {{ model.number }}</strong>
+                            </p>
+                        {% endif %}
+                        {% if model.datePublished %}
+                            <p>
+                                {{ date.issue_date(model.datePublished) }}
+                            </p>
+                        {% endif %}
+                        {% if model.externalLink|length > 0 %}
+                            <div class="leader-inside--normal">
+                                {% for link in model.externalLink %}
+                                    <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                        {% if link.url|getFileSize %}
+                                            <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </article>
+        
+            </div>
+            <div class="layout__cell layout__cell--main  |  leader-inside trailer-inside  |  wings">
+                {% if model.publicationLabel %}
+                    <p class="title  |  trailer--normal  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
+                {% endif %}
+                <h1 class="article-headline__title  |  heading heading--moderate  |  gutters">
+                    {{ model.headline }}
+                </h1>
+                {% if model.alternativeHeadline %}
+                    <p class="article-headline__byline  |  leader  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                {% endif %}
+            </div>
+            <div class="layout__cell layout__cell--aside  |  leader-inside trailer-inside  |  wings">
+                {% if heroimage.about|t(locales)|length > 0 %}
+                    <p class="caption  |  gutters" data-prefix="{{ 'Image'|i18n }}: ">{{ heroimage.about|t(locales) }}</p>
+                {% endif %}
+                {% if heroimage.credit|t(locales)|length > 0 %}
+                    <p class="credit  |  gutters">&copy; {{ heroimage.credit|t(locales) }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </{{ config.container_tag|default('header') }}>
+
+
+{% else %}
+
+    {% include "containers/articles/headline/headline-issue.html.twig" %}
+
+{% endif %}
+
+
+

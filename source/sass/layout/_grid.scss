@@ -151,11 +151,18 @@ Styleguide 2.7
             left: 0;
             right: 0;
             height: 1px;
-            @include theme-opaque-background(26%);
+
+            background-color: mix($color-green, $white, 26%);
+
+            @each $color_name, $color_value in $colours {
+                .theme--#{$color_name} & {
+                    background-color: mix($color_value, $white, 26%);
+                }
+            }
         }
         &--rows &__cell.gutters:nth-child(odd)::before {
             left: gutter();
-            width: calc(#{12 / 18 * 100vw} - #{gutter(1)});
+            // width: calc(#{12 / 18 * 100vw} - #{gutter(1)});
         }
         &--rows &__cell.gutters:nth-child(even)::before {
             right: gutter();

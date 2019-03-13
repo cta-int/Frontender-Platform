@@ -55,6 +55,12 @@
                 },
                 {
                     "label": {
+                        "en-GB": "Issue"
+                    },
+                    "value": "article.issue"
+                },
+                {
+                    "label": {
                         "en-GB": "Syndicated"
                     },
                     "value": "article.syndicated"
