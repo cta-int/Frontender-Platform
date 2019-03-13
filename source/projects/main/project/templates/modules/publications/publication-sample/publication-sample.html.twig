@@ -9,7 +9,6 @@
 
     <header class="leader-inside trailer-inside" data-issue-nr="{{ model.number }}">
         <p class="gutters">
-            <strong class="title title--apropos" style="display: block;">{{ labels.current_issue|t(locales)|default( 'current_issue'|i18n ) }}</strong>
             {{ date.issue_date(model.datePublished) }}
         </p>
         <p class="title title--section gutters leader--normal">{{ label.publication(model.link.label|filterArray('type', 'publication')) }}</p>
@@ -47,7 +46,7 @@
 
     <hr class="divider divider--top gutters-outside"/>
 
-    {% for article in model.similar.publicationArticles %}
+    {% for article in model.issue.articles({"limit": 3}) %}
         <div class="publication-tile media media--cover leader">
             <div class="publication-tile__cover media__figure gutters">
                 {{ image.post(article.link.mediaObject|lead) }}
