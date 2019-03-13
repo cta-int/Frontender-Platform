@@ -8,7 +8,18 @@
         });
     </script>
 {% endblock %}
-
+{% set similarEvents = model.similar.events({
+    'limit': 4,
+    'label': [model.programmeLabel._id],
+    'concept': [],
+    'geo': []
+}) %}
+{% set similarPastEvents = model.similar.pastEvents({
+    'limit': 4,
+    'label': [model.programmeLabel._id],
+    'concept': [],
+    'geo': []
+}) %}
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% if labels.title %}
         <h2 class="title title--section  |  trailer">{{ labels.title|t(locales) }}</h2>
@@ -16,18 +27,29 @@
 
     <ul class="list list--inline  |  leader  |  trailer" style="padding-left: 0;">
         <li>
-            <a class="tab  |  meta is-current" href="#Upcoming-events">{{ 'All events'|t(locales) }}</a>
+            <a class="tab  |  meta is-current" href="#upcoming_events">{{ 'All events'|t(locales) }}</a>
         </li>
         <li>
-            <a class="tab  |  meta" href="#Past-events">{{ 'Past events'|t(locales) }}</a>
+            <a class="tab  |  meta" href="#past_events">{{ 'Past events'|t(locales) }}</a>
         </li>
     </ul>
 
     <div class="panel-group" data-tab-config="{&quot;children&quot;: &quot;.panel&quot;, &quot;attribute&quot;: &quot;href&quot;, &quot;allowMultiple&quot;: 0, &quot;openFirst&quot;: 1, &quot;scrollTo&quot;: 0}">
-        <section class="panel is-active" id="Upcoming-events">
+        <section class="panel is-active" id="upcoming_events">
             <div class="panel__body">
                 <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
-                    {% for event in model.similar.events %}
+                    {% for event in similarEvents %}
+                        <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
+                            {% include 'partials/event/short-list-item.html.twig' with {'event': event} %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section class="panel is-inactive" id="past_events">
+            <div class="panel__body">
+                <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
+                    {% for event in similarPastEvents %}
                         <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
                             {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
                         </li>
@@ -35,16 +57,5 @@
                 </ul>
             </div>
         </section>
-        <section class="panel is-inactive" id="Past-events">
-            <div class="panel__body">
-                <ul class="reset  |  trailer{{ show_short_list|default(0) ? '  |  short-list' }}">
-                    {% for event in model.similar.pastEvents %}
-                        <li class="{{ show_short_list|default(0) ? '  |  short-list__item' :  '  |  leader--normal  |  trailer--normal' }}">
-                            {% include 'partials/event/short-list-item.html.twig' with {model: event} %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-    </ul>
-    </{{ config.container_tag|default('div') }}>
+    </div>
+</{{ config.container_tag|default('div') }}>

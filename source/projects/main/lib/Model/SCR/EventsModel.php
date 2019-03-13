@@ -54,6 +54,9 @@ class EventsModel extends ScrModel
         return new class ($this->getState(), $this->container, $this->data)
         {
             private $cachedEvents = null;
+            private $cachedUpcomingEvents = null;
+            private $cachedPastEvents = null;
+            private $cachedAllProjects = null;
             private $cachedArticles = null;
             private $container;
             private $state;
@@ -80,75 +83,109 @@ class EventsModel extends ScrModel
                 return $this->cachedArticles;
             }
 
-            public function events()
+            public function projects($config = [])
+            {
+                if (!$this->cachedAllProjects) {
+                    $this->cachedAllProjects = $this->getEvents($config, true);
+                }
+
+                return $this->cachedAllProjects;
+            }
+            
+            public function events($config = [])
             {
                 if (!$this->cachedAllEvents) {
-                    $now = new \DateTime();
-                    $future = new \DateTime();
-
-                    $this->cachedAllEvents = $this->getEvents([]);
+                    $this->cachedAllEvents = $this->getEvents($config);
                 }
 
                 return $this->cachedAllEvents;
             }
 
-            public function upcomingEvents()
+            public function upcomingEvents($config = [])
             {
                 if (!$this->cachedUpcomingEvents) {
                     $now = new \DateTime();
                     $future = new \DateTime();
 
-                    $this->cachedUpcomingEvents = $this->getEvents([
+                    $config = array_merge([
                         'from' => $now->format('Y-m-d\TH:i:sO'),
                         'to' => $future->modify('+5 years')->format('Y-m-d\TH:i:sO')
-                    ]);
+                    ], $config);
+
+                    $this->cachedUpcomingEvents = $this->getEvents($config);
                 }
 
                 return $this->cachedUpcomingEvents;
             }
 
-            public function pastEvents()
+            public function pastEvents($config = [])
             {
                 if (!$this->cachedPastEvents) {
                     $now = new \DateTime();
                     $past = new \DateTime();
 
-                    $this->cachedPastEvents = $this->getEvents([
+                    $config = array_merge([
                         'from' => $past->modify('-5 years')->format('Y-m-d\TH:i:sO'),
                         'to' => $now->format('Y-m-d\TH:i:sO')
-                    ]);
+                    ], $config);
+
+                    $this->cachedPastEvents = $this->getEvents($config);
                 }
 
                 return $this->cachedPastEvents;
             }
 
-            private function getEvents($state)
+            private function getEvents($config = [], $projects = false)
             {
-                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
-                $model->setState(array_merge([
-                    'limit' => 5,
+                $config = array_merge([
+                    'limit' => 20,
                     'label' => array_map(function ($label) {
-                        return $label['_id'];
-                    }, $this->event['label']),
+                            return $label['_id'];
+                        }, $this->event['label']),
                     'concept' => array_map(function ($concept) {
-                        return $concept['_id'];
-                    }, $this->event['analysis']['agrovoc']['concepts']),
+                            return $concept['_id'];
+                        }, $this->event['analysis']['agrovoc']['concepts']),
                     'geo' => array_map(function ($geo) {
                         return $geo['uri'];
                     }, $this->event['analysis']['geonames'] ?? []),
-                    'language' => $this->state->language,
-                    'mustNot' => [
-                        [
-                            'type' => 'field',
-                            'id' => 'type',
-                            'value' => 'Project'
-                        ], [
-                            'type' => 'field',
-                            'id' => '_id',
-                            'value' => $this->event['_id']
+                    'language' => $this->state->language
+                ], $config);
+
+                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+                $model->setState([
+                    'limit' => $config['limit'],
+                    'label' => $config['label'],
+                    'concept' => $config['concept'],
+                    'geo' => $config['geo'],
+                    'language' => $this->state->language
+                ]);
+
+                if($projects) {
+                    $model->setState([
+                        'type' => 'event.Project',
+                        'mustNot' => [
+                            [
+                                'type' => 'field',
+                                'id' => '_id',
+                                'value' => $this->event['_id']
+                            ]
                         ]
-                    ]
-                ], $state));
+                    ]);
+                } else {
+                    $model->setState([
+                        'mustNot' => [
+                            [
+                                'type' => 'field',
+                                'id' => 'type',
+                                'value' => 'Project'
+                            ], [
+                                'type' => 'field',
+                                'id' => '_id',
+                                'value' => $this->event['_id']
+                            ]
+                        ]
+                    ]);
+                }
 
                 return $model->fetch();
             }
@@ -256,7 +293,7 @@ class EventsModel extends ScrModel
 
     public function getLabels(string $type = '', bool $first = false)
     {
-        $_labels = $this->data['label'];
+        $_labels = $this['label'];
 
         if ($type != '') {
             foreach ($_labels as $key => $value) {
@@ -267,7 +304,8 @@ class EventsModel extends ScrModel
         }
 
         if ($first) {
-            // $_labels = array_slice($_labels, 0, 1);
+            // print_r(array_shift($_labels));
+            $_labels = array_slice($_labels, 0, 1);
             if (count($_labels)) {
                 return array_shift($_labels);
             }
@@ -280,7 +318,17 @@ class EventsModel extends ScrModel
 
     public function getPropertyStrategyLabel()
     {
-        $_label = $this->getLabels('strategy', true);
+        return $this->getLabels('strategy', true);
+    }
+
+    public function getPropertyProgrammeLabel()
+    {
+        return $this->getLabels('programme', true);
+    }
+
+    public function getPropertyEventLabel()
+    {
+        return $this->getLabels('event', true);
     }
 
     public function getPropertyTheme()
