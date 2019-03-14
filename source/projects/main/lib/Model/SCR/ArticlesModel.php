@@ -339,7 +339,7 @@ class ArticlesModel extends ScrModel
                         'language' => $this->state->language ?? 'en'
                     ]);
 
-                    if( $this->interview() ) {
+                    if ($this->interview()) {
                         $articles->setState([
                             'mustNot' => [[
                                 'type' => 'field',
@@ -534,7 +534,7 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyPath(): string
     {
-        if( isset($this['link']['label']) && count($this['link']['label']) ) {
+        if (isset($this['link']['label']) && count($this['link']['label'])) {
 
             $labels = array_map(function ($label) {
                 $route = Adapter::getInstance()->collection('routes')->findOne([
@@ -569,24 +569,24 @@ class ArticlesModel extends ScrModel
 
             // Use the translated value.
             $filter = new Translate($this->container);
-            $prefix = $filter->translate($prefix['route']);   
+            $prefix = $filter->translate($prefix['route']);
         }
 
         return $this->getPageRoute($prefix);
     }
 
-    private function getPageRoute( string $prefix = '')
+    private function getPageRoute($prefix = '')
     {
-        $name = Inflector::singularize( $this->getModelName() );
-        
-        if( $this['issue'] ) {
+        $name = Inflector::singularize($this->getModelName());
+
+        if ($this['issue']) {
             $name = 'issue';
-        } elseif($this['articleType'] == 'issue') {
+        } elseif ($this['articleType'] == 'issue') {
             $name = 'issue';
         }
 
         $parts = preg_split('/(?=[A-Z])/', $name);
-        $parts = array_filter([$prefix,strtolower(end($parts))]);
+        $parts = array_filter([$prefix, strtolower(end($parts))]);
         $parts = implode('/', $parts);
 
         return trim($parts, '/');
