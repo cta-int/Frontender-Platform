@@ -80,13 +80,14 @@ class LabelsModel extends ScrModel
                     ]);
                     $result = $model->fetch($raw);
                     return array_shift($result);
-                } catch(\Error $e) { 
+                } catch (\Error $e) {
                     return null;
                 } catch (\Exception $e) {
                     return null;
                 }
             }, $this->getState()->id);
             $labels = array_filter($labels);
+            $labels = array_values($labels);
         } else {
             $labels = parent::fetch($raw);
         }
