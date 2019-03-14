@@ -16,6 +16,7 @@ use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
 use Prototype\Model\SCR\Article\SearchModel;
 use Prototype\Model\Utils\Sorting;
+use Doctrine\Common\Inflector\Inflector;
 
 class ArticlesModel extends ScrModel
 {
@@ -533,47 +534,62 @@ class ArticlesModel extends ScrModel
 
     public function getPropertyPath(): string
     {
-        // If we have no labels, or they are empty, we will return the parent.
-        if (!isset($this['link']['label']) || !count($this['link']['label'])) {
-            return parent::getPropertyPath();
+        if( isset($this['link']['label']) && count($this['link']['label']) ) {
+
+            $labels = array_map(function ($label) {
+                $route = Adapter::getInstance()->collection('routes')->findOne([
+                    'resource' => ['$regex' => 'scr\/label[\\\/].*?' . $label['_id'], '$options' => 'i']
+                ]);
+                $label['score'] = count(explode('/', $label['name']));
+
+                if ($route) {
+                    $label['route'] = $route['destination'];
+                }
+
+                return $label;
+            }, $this['link']['label']);
+
+            $labels = array_filter($labels, function ($label) {
+                return isset($label['route']) && !empty($label['route']);
+            });
+
+            // I now need to sort the routes, the most specific route will be used,
+            // the score is calculated at the amount or parts it has.
+            uasort($labels, function ($a, $b) {
+                if ($a['score'] < $b['score']) {
+                    return 1;
+                } else if ($b['score'] < $a['score']) {
+                    return -1;
+                }
+
+                return 0;
+            });
+
+            $prefix = array_shift($labels);
+
+            // Use the translated value.
+            $filter = new Translate($this->container);
+            $prefix = $filter->translate($prefix['route']);   
         }
 
-        $labels = array_map(function ($label) {
-            $route = Adapter::getInstance()->collection('routes')->findOne([
-                'resource' => ['$regex' => 'scr\/label[\\\/].*?' . $label['_id'], '$options' => 'i']
-            ]);
-            $label['score'] = count(explode('/', $label['name']));
+        return $this->getPageRoute($prefix);
+    }
 
-            if ($route) {
-                $label['route'] = $route['destination'];
-            }
+    private function getPageRoute( string $prefix = '')
+    {
+        $name = Inflector::singularize( $this->getModelName() );
+        
+        if( $this['issue'] ) {
+            $name = 'issue';
+        } elseif($this['articleType'] == 'issue') {
+            $name = 'issue';
+        }
 
-            return $label;
-        }, $this['link']['label']);
+        $parts = preg_split('/(?=[A-Z])/', $name);
+        $parts = array_filter([$prefix,strtolower(end($parts))]);
+        $parts = implode('/', $parts);
 
-        $labels = array_filter($labels, function ($label) {
-            return isset($label['route']) && !empty($label['route']);
-        });
-
-        // I now need to sort the routes, the most specific route will be used,
-        // the score is calculated at the amount or parts it has.
-        uasort($labels, function ($a, $b) {
-            if ($a['score'] < $b['score']) {
-                return 1;
-            } else if ($b['score'] < $a['score']) {
-                return -1;
-            }
-
-            return 0;
-        });
-
-        $prefix = array_shift($labels);
-
-        // Use the translated value.
-        $filter = new Translate($this->container);
-        $prefix = $filter->translate($prefix['route']);
-
-        return implode('/', [$prefix, parent::getPropertyPath()]);
+        return trim($parts, '/');
     }
 
     public function getLabels($types = [], bool $first = false)
