@@ -2,77 +2,53 @@
 {% import "macros/author.html.twig" as author %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="layout trailer-inside--small">
-    <div class="layout__cell layout__cell--aside  |  wings">
+<div class="layout">
+    <div class="layout__cell layout__cell--aside wing--left">
         {% if labels.container_title|length > 0 %}
-            <header class="trailer-inside container-header container-header--slim-fit">
+            <header class="trailer-inside container-header container-header--slim-fit trailer">
                 <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
                     {{ labels.container_title|t(locales) }}
                 </h2>
             </header>
         {% endif %}
-        <div class="trailer  |  post post--hero">
+        <p>
             <a href="{{ route({
                 'page': model.similar.articles|first.path,
                 'slug': model.similar.articles|first.headline|t(locales)|slugify,
                 'id': model.similar.articles|first._id}) }}">
                 <h2 class="opinion__heading  |  gutters">{{ model.headline|t(locales) }}</h2>
             </a>
+        </p>
+        <div class="wing--right">
+            <div class="gutters">
+                <aside class="opinion opinion--theme opinion--full opinion--slim-fit well well--full well--padded">
+                    <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ labels.join_discussion|t(locales) }}</h2>
+                    <div class="gutters  |  opinion__icons  |  leader--normal">
+                        <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTASpore" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
+                        <a class="anchor--shy  |  is-heir" href="https://twitter.com/Spore_mag" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
+                        <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/spore-magazine" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
+                    </div>
+                </aside>
+            </div>
         </div>
     </div>
-    <div class="layout__cell  |  wing--right">
-        <div class="layout layout--even  |  wing--right">
-            <div class="layout__cell">
-                {% for article in model.similar.articles|slice(0,1) %}
-                    <div class="gutters  |  leader--hero">
-                        <a class="opinion anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
-                            <div class="well well--neutral well--padded |  gutters">
-                                <h2 class="heading heading--tile  |  gutters  |  trailer--small">
-                                    {{ article.headline|t(locales) }}
-                                </h2>
-                                <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
-                            </div>
-                            {% if article.link.person.author %}
-                                <p class="opinion__footer  |  gutters gutters-outside  |  leader">
-                                    {{ author.job(article.link.person.author) }}
-                                </p>
-                            {% endif %}
-                        </a>
+    <div class="layout__cell  |  spreader wing--right">
+            {% for article in model.similar.articles %}
+            <div class="spreader__item  |  gutters leader trailer">
+                <a class="opinion anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+                    <div class="well well--neutral well--padded |  gutters">
+                        <h2 class="heading heading--tile  |  gutters  |  trailer--small">
+                            {{ article.headline|t(locales) }}
+                        </h2>
+                        <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
                     </div>
-                {% endfor %}
-
-                <div class="gutters">
-                    <div class="opinion opinion--theme opinion--full opinion--slim-fit">
-                        <div class="well well--full well--padded |  gutters">
-                            <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ labels.join_discussion|t(locales) }}</h2>
-                            <div class="gutters  |  opinion__icons  |  leader--normal">
-                                <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTASpore" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
-                                <a class="anchor--shy  |  is-heir" href="https://twitter.com/Spore_mag" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
-                                <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/spore-magazine" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {% if article.link.person.author %}
+                        <p class="opinion__footer  |  gutters gutters-outside  |  leader">
+                            {{ author.job(article.link.person.author) }}
+                        </p>
+                    {% endif %}
+                </a>
             </div>
-            <div class="layout__cell">
-                {% for article in model.similar.articles|slice(1) %}
-                    <div class="gutters">
-                        <a class="opinion anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
-                            <div class="well well--neutral well--padded |  gutters">
-                                <h2 class="heading heading--tile  |  gutters  |  trailer--small">
-                                    {{ article.headline|t(locales) }}
-                                </h2>
-                                <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
-                            </div>
-                            {% if article.link.person.author %}
-                                <p class="opinion__footer  |  gutters gutters-outside  |  leader">
-                                    {{ author.job(article.link.person.author) }}
-                                </p>
-                            {% endif %}
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>

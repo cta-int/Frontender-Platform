@@ -46,14 +46,12 @@
         left: 0;
     }
     &__heading {
-        font-size: to-unit(34px);
         font-weight: 400;
-        line-height: rhythm(13);
     }
 
     @include breakpoint($gt-small-desktop) {
         &__heading {
-            margin-top: rhythm(10);
+            font-size: to-unit(28px);
         }
     }
 }
