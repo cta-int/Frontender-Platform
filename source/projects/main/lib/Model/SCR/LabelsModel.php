@@ -73,13 +73,20 @@ class LabelsModel extends ScrModel
         if (is_array($this->getState()->id)) {
             $container = $this->container;
             $labels = array_map(function ($labelID) use ($raw, $container) {
-                $model = new LabelsModel($container);
-                $model->setState([
-                    'id' => $labelID
-                ]);
-                $result = $model->fetch($raw);
-                return array_shift($result);
+                try {
+                    $model = new LabelsModel($container);
+                    $model->setState([
+                        'id' => $labelID
+                    ]);
+                    $result = $model->fetch($raw);
+                    return array_shift($result);
+                } catch(\Error $e) { 
+                    return null;
+                } catch (\Exception $e) {
+                    return null;
+                }
             }, $this->getState()->id);
+            $labels = array_filter($labels);
         } else {
             $labels = parent::fetch($raw);
         }
