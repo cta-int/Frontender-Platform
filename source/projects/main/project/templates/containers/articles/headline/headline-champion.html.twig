@@ -18,11 +18,11 @@
         <div class="article-headline  |  well well--full  |  layout  |  leader-inside--giant trailer-inside--hero">
     {% endif %}
         <div class="layout__cell layout__cell--main  |  wings">
-            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters" itemprop="headline">
                 {{ model.headline }}
             </h1>
             {% if model.alternativeHeadline %}
-                <p class="article-headline__byline  |  meta  |  trailer  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                <p class="article-headline__byline  |  meta  |  trailer  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
             <p class="title title--section  |  gutters"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
         </div>

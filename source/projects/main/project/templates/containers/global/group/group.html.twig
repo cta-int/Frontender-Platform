@@ -1,6 +1,6 @@
 {% import "macros/template.html.twig" as helper %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {% if model.articleType %} itemscope itemtype="https://schema.org/Article" {% elseif model.startDate %} itemscope itemtype="https://schema.org/Event" {% endif %}>
     {% for loopContainer in containers %}
         {% include loopContainer.template with loopContainer %}
     {% endfor %}
