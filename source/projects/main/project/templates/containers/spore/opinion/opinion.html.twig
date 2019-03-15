@@ -21,7 +21,7 @@
             <h2 class="paragraph paragraph--theorem  |  trailer trailer-inside--tiny gutter--left gutter">{{ model.headline|t(locales) }}</h2>
         </a>
 
-        <div class="gutters">
+        <div class="gutters trailer is-gt-small-desktop">
             {% include 'containers/spore/opinion/opinion__share.html.twig' with { 'labels': labels, 'arrow_direction': 'up' } %}
         </div>
         
@@ -46,7 +46,11 @@
                     </a>
                 </div>
             {% endfor %}
-            
+
+            <div class="spreader__item gutters trailer is-lt-small-desktop">
+                {% include 'containers/spore/opinion/opinion__share.html.twig' with { 'labels': labels, 'arrow_direction': 'down' } %}
+            </div>
+
         </div>
     </div>
 </{{ config.container_tag|default('section') }}>
