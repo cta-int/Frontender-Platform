@@ -26,9 +26,6 @@
 			margin-top: rhythm(-5);
 		}
 	}
-	&--pull-bottom {
-		margin-bottom: -50%;
-	}
 	&--gutter-right {
 		margin-right: gutter(.75); /* 1 */
 	}
@@ -52,6 +49,9 @@
 	}
 	@include breakpoint($gt-small-desktop) {
 
+		&--pull-bottom {
+			margin-bottom: -50%;
+		}
 		&--l {
 			margin-top: gutter(.5);
 			margin-right: gutter(.5);
