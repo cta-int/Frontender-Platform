@@ -1,54 +1,52 @@
 {% import "macros/template.html.twig" as helper %}
 {% import "macros/author.html.twig" as author %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set total = model.similar.articles| length %}
 
-<div class="layout">
-    <div class="layout__cell layout__cell--aside wing--left">
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('section') }}{{ helper.class_attribute(config, 'layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <header class="layout__cell layout__cell--aside wing--left">
         {% if labels.container_title|length > 0 %}
-            <header class="trailer-inside container-header container-header--slim-fit trailer">
-                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+            <div class="trailer-inside container-header container-header--slim-fit trailer wing--right">
+                <h1 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
                     {{ labels.container_title|t(locales) }}
-                </h2>
-            </header>
-        {% endif %}
-        <p>
-            <a href="{{ route({
-                'page': model.similar.articles|first.path,
-                'slug': model.similar.articles|first.headline|t(locales)|slugify,
-                'id': model.similar.articles|first._id}) }}">
-                <h2 class="opinion__heading  |  gutters">{{ model.headline|t(locales) }}</h2>
-            </a>
-        </p>
-        <div class="wing--right">
-            <div class="gutters">
-                <aside class="opinion opinion--theme opinion--full opinion--slim-fit well well--full well--padded">
-                    <h2 class="heading heading--tile  |  gutters  |  trailer--small">{{ labels.join_discussion|t(locales) }}</h2>
-                    <div class="gutters  |  opinion__icons  |  leader--normal">
-                        <a class="anchor--shy  |  is-heir" href="https://www.facebook.com/CTASpore" target="_blank"><span class="icon icon--facebook  |  gutter--right"></span></a>
-                        <a class="anchor--shy  |  is-heir" href="https://twitter.com/Spore_mag" target="_blank"><span class="icon icon--twitter  |  gutter--right"></span></a>
-                        <a class="anchor--shy  |  is-heir" href="https://www.linkedin.com/company/spore-magazine" target="_blank"><span class="icon icon--linkedin  |  gutter--right"></span></a>
-                    </div>
-                </aside>
+                </h1>
             </div>
+        {% endif %}
+        <a href="{{ route({
+            'page': model.similar.articles|first.path,
+            'slug': model.similar.articles|first.headline|t(locales)|slugify,
+            'id': model.similar.articles|first._id}) }}">
+            <h2 class="paragraph paragraph--theorem  |  trailer trailer-inside--tiny gutter--left gutter">{{ model.headline|t(locales) }}</h2>
+        </a>
+
+        <div class="gutters">
+            {% include 'containers/spore/opinion/opinion__share.html.twig' with { 'labels': labels, 'arrow_direction': 'up' } %}
+        </div>
+        
+    </header>
+    <div class="layout__cell  |  wing--right">
+        <div class="spreader spreader--{{ total }}  |  wing--right">
+            {% for article in model.similar.articles %}
+                {% set route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
+                <div class="spreader__item gutters trailer">
+                    <a class="anchor anchor--shy is-heir" href="{{ route }}">
+                        <blockquote class="bubble bubble--down bubble--padded bubble--clear" cite="{{ route }}">
+                            <h2 class="heading heading--tile  |  trailer--small">
+                                {{ article.headline|t(locales) }}
+                            </h2>
+                            <span class="read-more">{{ labels.read_more|t(locales) }}</span>
+                        </blockquote>
+                        {% if article.link.person.author %}
+                            <cite class="bubble-cite title">
+                                {{ author.job(article.link.person.author) }}
+                            </cite>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+            
         </div>
     </div>
-    <div class="layout__cell  |  spreader wing--right">
-            {% for article in model.similar.articles %}
-            <div class="spreader__item  |  gutters leader trailer">
-                <a class="opinion anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
-                    <div class="well well--neutral well--padded |  gutters">
-                        <h2 class="heading heading--tile  |  gutters  |  trailer--small">
-                            {{ article.headline|t(locales) }}
-                        </h2>
-                        <span class="leader-inside--small  |  gutters  |  block-link">{{ labels.read_more|t(locales) }}</span>
-                    </div>
-                    {% if article.link.person.author %}
-                        <p class="opinion__footer  |  gutters gutters-outside  |  leader">
-                            {{ author.job(article.link.person.author) }}
-                        </p>
-                    {% endif %}
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+</{{ config.container_tag|default('section') }}>
