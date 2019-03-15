@@ -25,6 +25,9 @@ Styleguide 5.3.2
 */
 .article-headline {
   @include theme-opaque-background(100%);
+  @include breakpoint($lt-small-desktop) {
+    padding-top: rhythm(10);
+  }
   color: $white;
   &__title {
     -webkit-font-smoothing: antialiased;
