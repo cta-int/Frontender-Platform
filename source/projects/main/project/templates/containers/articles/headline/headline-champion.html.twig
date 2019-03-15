@@ -32,7 +32,7 @@
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about|t(locales) }}</p>
                 {% endif %}
                 {% if model.link.mediaObject|lead.credit %}
-                    <p class="credit  |  gutters  |  trailer">&copy; {{ model.link.mediaObject|lead.credit|t(locales) }}</p>
+                    <p class="credit  |  gutters  |  trailer" itemprop="copyrightHolder">&copy; {{ model.link.mediaObject|lead.credit|t(locales) }}</p>
                 {% endif %}
             {% else %}
                 <span class="is-silent">&nbsp;</span>
