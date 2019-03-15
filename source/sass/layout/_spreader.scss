@@ -2,13 +2,32 @@
  * Spreads elements across available space
  */
 
- .spreader {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     align-content: center;
-     justify-content: space-around;
-     &__item {
-         flex: 0 50%;
-     }
- }
+.spreader {
+    @include breakpoint($gt-large-handheld) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        &__item {
+            position: relative;
+            flex: 0 50%;
+        }
+    }
+    &--3 &__item,
+    &--4 &__item {
+        &:nth-child(odd) {
+            top: gutter(-.5);
+        }
+        &:nth-child(even) {
+            top: gutter(1.5);
+        }
+    }
+    &--5 &__item {
+        &:nth-child(odd) {
+            top: gutter(-1.75);
+        }
+        &:nth-child(even) {
+            top: gutter(1.75);
+        }
+    }
+}
