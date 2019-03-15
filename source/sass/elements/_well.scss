@@ -38,18 +38,24 @@ Styleguide 3.13
     &--darkest {
       @include theme-opaque-background(76%);
     }
+    &--full {
+      @include theme-opaque-background(100%);
+      color: $white;
+      &::after {
+        @include theme-color(100%);
+      }
+      -webkit-font-smoothing: antialiased; /* 1 */
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    &--full::after {
+      @include theme-color(100%);
+    }
   }
   &--neutral {
     .theme &,
     & {
       background-color: mix($color-body, $white, 5%);
     }
-  }
-  &--full {
-    @include theme-opaque-background(100%);
-    color: $white;
-    -webkit-font-smoothing: antialiased; /* 1 */
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
   }
 }
