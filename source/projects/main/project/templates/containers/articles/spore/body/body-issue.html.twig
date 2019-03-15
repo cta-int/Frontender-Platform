@@ -11,7 +11,7 @@
     {% import "macros/template.html.twig" as helper %}
     {% import "macros/label.html.twig" as label %}
     {% set issue_interview = model.issue.interview() %}
-    {% set issue_articles = model.issue.articles({'limit': 4}) %}
+    {% set issue_articles = model.issue.articles({'limit': 20}) %}
     {#% set other_issues = model.issue.issues({'limit': 4}) %#}
     {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
     {% set quote = issue_interview.contentBlocks|filterArray('type', 'blockquote') %}
