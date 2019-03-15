@@ -1,0 +1,139 @@
+{
+	"name": "Spore - Past issues",
+	"description": "Spore - Past issues",
+	"template": "containers/publications/past-issues/past-issues.html.twig",
+	"template_config": {
+		"labels": {
+			"label": {
+				"en": "Labels"
+			},
+			"controls": {
+				"title_sidebar": {
+					"label": {
+						"en-GB": "Aside container title",
+						"fr-FR": "Aside container title"
+					},
+					"value": {
+						"en-GB": "Past issues",
+						"fr-FR": "Numéro actuel"
+					},
+					"control": "core/text"
+				},
+				"title_main": {
+					"label": {
+						"en-GB": "Main container title",
+						"fr-FR": "Main container title"
+					},
+					"value": {
+						"en-GB": "Get a global perspective on agribusiness and sustainable agriculture",
+						"fr-FR": "Get a global perspective on agribusiness and sustainable agriculture"
+					},
+					"control": "core/text"
+				},
+				"body": {
+					"label": {
+						"en-GB": "Main container body",
+						"fr-FR": "Main container body"
+					},
+					"value": {
+						"en-GB": "Spore is the bi-monthly magazine for agricultural and rural development in ACP countries.",
+						"fr-FR": "Spore is the bi-monthly magazine for agricultural and rural development in ACP countries."
+					},
+					"control": "core/text"
+				},
+				"title_button": {
+					"value": {
+						"label": {
+							"en-GB": "All issues",
+							"fr-FR": "Tous les magazines"
+						},
+						"page": {
+							"en-GB": "spore/issues",
+							"fr-FR": "spore/issues"
+						},
+						"id": ""
+					},
+					"label": {
+						"en-GB": "Link"
+					},
+					"control": "core/route"
+				}
+			}
+		},
+		"config": {
+			"label": {
+				"en": "Settings"
+			},
+			"controls": {
+				"container_tag": {
+					"value": "section",
+					"control": "project/container_tag"
+				},
+				"wings": {
+					"value": "",
+					"control": "project/wings"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"divider": {
+					"value": "",
+					"control": "project/divider"
+				},
+				"colour_theme": {
+					"value": "",
+					"control": "project/colour_theme"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				}
+			}
+		},
+		"model": {
+			"label": {
+				"en-GB": "Content"
+			},
+			"controls": {
+				"limit": {
+					"value": 5,
+					"control": "core/hidden"
+				},
+				"sortProperty": {
+					"value": "datePublished",
+					"control": "core/hidden"
+				},
+				"sortDirecton": {
+					"value": "desc",
+					"control": "core/hidden"
+				},
+				"article_type": {
+					"value": "issue",
+					"control": "core/hidden"
+				},
+				"data": {
+					"control": "project/model/channel",
+					"value": {
+						"adapter": "SCR",
+						"model": "Channel\\Articles",
+						"id": "3aa4a2fa-6787-46c5-9c92-5250352be15f"
+					}
+				}
+			}
+		}
+	},
+	"frontender": "1552562698"
+}
