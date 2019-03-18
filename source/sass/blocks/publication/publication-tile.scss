@@ -72,6 +72,9 @@
 		&--hero &__cover,
 		&--fold &__cover {
 			width: 2 / 18 * 100vw;
+            @media screen and (min-width:0\0) {
+                width: 50%;
+            }
 		}
 		&--s &__cover {
 			width: 1 / 18 * 100vw;

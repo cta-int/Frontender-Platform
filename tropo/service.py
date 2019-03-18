@@ -1068,8 +1068,7 @@ service = t.add_resource(ecs.Service(
     DeploymentConfiguration=ecs.DeploymentConfiguration(
         MaximumPercent="100",
         MinimumHealthyPercent="50"
-    ),
-    HealthCheckGracePeriodSeconds=460
+    )
 ))
 
 t.add_resource(ssm.Parameter(
