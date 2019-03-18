@@ -132,7 +132,7 @@
                         <h2 class="title title--apropos">{{ 'Partners'|i18n(locales) }}</h2>
                         <ul class="reset">
                             {% for organization in model.link.organization.partnerOrganization %}
-                                <li itemcope itemtype="organization" class="leader--small">{{ organization.alternateName ? organization.alternateName|t(locales) : organization.name|t(locales) }}</li>
+                                <li itemscope itemtype="https://schema.org/Organization" class="leader--small">{{ organization.alternateName ? organization.alternateName|t(locales) : organization.name|t(locales) }}</li>
                             {% endfor %}
                         </ul>
                     </section>
