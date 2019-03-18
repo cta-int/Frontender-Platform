@@ -21,10 +21,6 @@
     <div {{ helper.class_attribute(config, 'layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
         <div class="layout__cell layout__cell--main wing--right">
 
-            {% if model.about %}
-                <p class="gutters  |  paragraph--lead  |   leader--hero  |  leader">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
-            {% endif %}
-            
             {# render the content blocks - if the first block is a list, we treat it as the article takeaways #}
             {% for i, contentBlock in model.contentBlocks %}
                 {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
@@ -158,42 +154,43 @@
             {% endif %}
 
         </div>
-        <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wing--left gutter--right">
-            {% if similar_issues|length > 0 %}
-            <aside class="trailer">
-                <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
-                {% for issue in similar_issues %}
-                    {% set issue_route = route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) %}
-                    <article class="publication-tile publication-tile--s media leader--normal trailer--normal">
-                        <div class="publication-tile__cover media__figure gutters">
-                            <figure class="publication-cover publication-cover--s">
-                                <a href="{{ issue_route }}">
-                                    {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="media__body  gutters">
-                            {% if config.show_publication|default(1) %}
-                                <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
-                            {% endif %}
-                            <h2 class="heading">
-                                <a class="is-heir" href="{{ issue_route }}">
-                                    {{ issue.headline|t(locales) }}
-                                </a>
-                            </h2>
-                            {% if config.show_author_name|default(1) and issue.link.person.author|length %}
-                                <p class="author leader--tiny">
-                                    {{ author.long(issue.link.person.author) }}
-                                </p>
-                            {% endif %}
-                        </div>
-                    </article>
-                {% endfor %}
-            </aside>
+        <div class="layout__cell layout__cell--aside  |  leader-inside--hero  |  trailer-inside--hero  |  wings">
+            {% if model.about %}
+                <p class="gutters  |  paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}
-            
+            {% if similar_issues|length > 0 %}
+                <aside class="trailer">
+                    <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
+                    {% for issue in similar_issues %}
+                        {% set issue_route = route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) %}
+                        <article class="publication-tile publication-tile--s media leader--normal trailer--normal">
+                            <div class="publication-tile__cover media__figure gutters">
+                                <figure class="publication-cover publication-cover--s">
+                                    <a href="{{ issue_route }}">
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="media__body  gutters">
+                                {% if config.show_publication|default(1) %}
+                                    <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                                {% endif %}
+                                <h2 class="heading">
+                                    <a class="is-heir" href="{{ issue_route }}">
+                                        {{ issue.headline|t(locales) }}
+                                    </a>
+                                </h2>
+                                {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                                    <p class="author leader--tiny">
+                                        {{ author.long(issue.link.person.author) }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </article>
+                    {% endfor %}
+                </aside>
+            {% endif %}
         </div>
     </div>
 
 {% endif %}
-
