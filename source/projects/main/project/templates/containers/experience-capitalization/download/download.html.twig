@@ -5,7 +5,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="download-wrapper  |  is-root  |  trailer-inside--hero">
+<div class="download-wrapper  |  is-root  |  trailer-inside--hero" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="download">
         <p class="download-title  |  gutters--double">{{ labels.title|t(locales) }}</p>
         <div class="button-set  |  leader">
