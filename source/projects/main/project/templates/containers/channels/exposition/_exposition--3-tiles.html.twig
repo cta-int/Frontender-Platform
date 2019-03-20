@@ -18,7 +18,7 @@
         next: model[1]
     } %}
 
-    {% if articles[1] %}
+    {% if model[1] %}
         {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
             model: model[1],
             tile_class: "article article--l",
