@@ -42,6 +42,35 @@
             <meta name="keywords" content="{{ concept.concepts_to_string(model.analysis.agrovoc.concepts, locale)|trim }}">
         {% endif %}
 
+        <!-- Twitter card -->
+        <meta name="twitter:card" content="summary" />
+        {% if model.headline|t(locales) is not empty %}
+            <meta name="twitter:title" content="{{ model.headline|t(locales) }}" />
+        {% elseif model.alternativeHeadline|t(locales) is not empty %}
+            <meta name="twitter:title" content="{{ model.alternativeHeadline|t(locales) }}" />
+        {% endif %}
+        {% if model.about|t(locales) is not empty %}
+            <meta name="twitter:description" content="{{ model.about|t(locales)|striptags|clearInlineStyles }}" />
+        {% endif %}
+        {% if model.link.mediaObject|lead is not empty %}
+            <meta name="twitter:image" content="https://res.cloudinary.com/cta/image/upload/w_960,ar_1:1,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" />
+        {% endif %}
+
+        <!-- Facebook card -->
+        <meta property="og:type" content="article" />
+        {% if model.headline|t(locales) is not empty %}
+            <meta property="og:title" content="{{ model.headline|t(locales) }}" />
+        {% elseif model.alternativeHeadline|t(locales) is not empty %}
+            <meta property="og:title" content="{{ model.alternativeHeadline|t(locales) }}" />
+        {% endif %}
+        <meta property="og:url" content="" />
+        {% if model.about|t(locales) is not empty %}
+            <meta property="og:description" content="{{ model.about|t(locales)|striptags|clearInlineStyles }}" />
+        {% endif %}
+        {% if model.link.mediaObject|lead is not empty %}
+            <meta property="og:image" content="https://res.cloudinary.com/cta/image/upload/w_960,ar_1:1,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" />
+        {% endif %}
+
     {% elseif model.description|t(locales) %}
         {# Event #}
         {% if model.description|t(locales) is not empty %}
