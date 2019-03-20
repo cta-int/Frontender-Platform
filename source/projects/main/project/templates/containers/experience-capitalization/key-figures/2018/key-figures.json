@@ -1,0 +1,66 @@
+{
+	"name": {
+		"en-GB": "Exposition figures"
+	},
+	"description": {
+		"en-GB": "Exposition figures"
+	},
+	"template": "containers/experience-capitalization/key-figures/2018/key-figures.html.twig",
+	"template_config": {
+		"labels": {
+			"label": {
+				"en-GB": "Labels",
+				"fr-FR": "Labels"
+			},
+			"controls": {
+				"title": {
+					"label": {
+						"en-GB": "Title",
+						"fr-FR": "Title"
+					},
+					"value": {
+						"en-GB": "Key figures for 2018",
+						"fr-FR": "Key figures for 2018"
+					},
+					"control": "core/text"
+				}
+			}
+		},
+		"config": {
+			"label": {
+				"en-GB": "Settings"
+			},
+			"controls": {
+				"container_tag": {
+					"value": "div",
+					"control": "project/container_tag"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "leader-inside--giant",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				},
+				"colour_theme": {
+					"value": "yellow",
+					"control": "project/colour_theme"
+				}
+			}
+		}
+	},
+	"frontender": "1553073175"
+}
