@@ -6,11 +6,8 @@
     <div class="toggle-switch">
         <div class="toggle--menu" data-toggle=".toggle"></div>
         <ul class="toggle--language  |  shade  |  reset">
-            {% for language in ['en', 'fr'] %}
-                <li class="fx">
-                    <a href="{{ translate_url(language) }}" class="anchor{{ locale is same as(language) ? '  |  is-active' }}">{{ language|upper }}</a>
-                </li>
-            {% endfor %}
+            <li class="fx"><a class="anchor{{ locale is same as('en-GB') ? '  |  is-active' }}" href="{{ translate_url('en') }}">{{ 'EN'|t(locales) }}</a></li>
+            <li class="fx"><a class="anchor{{ locale is same as('fr-FR') ? '  |  is-active' }}" href="{{ translate_url('fr') }}">{{ 'FR'|t(locales) }}</a></li>
         </ul>
     </div>
 
