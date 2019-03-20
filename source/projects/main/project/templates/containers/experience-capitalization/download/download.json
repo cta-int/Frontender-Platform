@@ -1,0 +1,53 @@
+{
+	"name": {
+		"en-GB": "Exposition download"
+	},
+	"description": {
+		"en-GB": "Exposition download container"
+	},
+	"template": "containers/experience-capitalization/download/download.html.twig",
+	"template_config": {
+        "labels": {
+			"label": {
+				"en-GB": "Labels",
+				"fr-FR": "Labels"
+			},
+			"controls": {
+				"title": {
+					"label": {
+						"en-GB": "Title",
+						"fr-FR": "Title"
+					},
+					"value": {
+						"en-GB": "Read our 2018 annual report offline",
+						"fr-FR": "Read our 2018 annual report offline"
+					},
+					"control": "core/text"
+				},
+                "download_link": {
+					"label": {
+						"en-GB": "Download link",
+						"fr-FR": "Download link"
+					},
+					"value": {
+						"en-GB": "https://s3-eu-west-1.amazonaws.com/cta-scr-media/54367853-436a-4a40-b0fa-afe6d29fe9fb.pdf",
+						"fr-FR": "https://s3-eu-west-1.amazonaws.com/cta-scr-media/54367853-436a-4a40-b0fa-afe6d29fe9fb.pdf"
+					},
+					"control": "core/text"
+				},
+				"download_label": {
+					"label": {
+						"en-GB": "Download label",
+						"fr-FR": "Download label"
+					},
+					"value": {
+						"en-GB": "Download",
+						"fr-FR": "Download"
+					},
+					"control": "core/text"
+				}
+			}
+		}
+    },
+	"frontender": "1553081407"
+}
