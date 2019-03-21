@@ -1,0 +1,437 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div class="credits  |  gutters" {{ helper.container_id_attribute(frontender, "frontender")|raw }} style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ config.credit_image }}');">
+    <div class="standout  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="standout-content  |  wings" {% if query.fromFrontender %} style="min-height: 45vw; height: 45vw; max-height: 100vw;"{% endif %}>
+            <h2 class="category  |  trailer">{{ config.credit_title|t(locales) }}</h2>
+            <div class="credit  |  trailer--hero  |  bleed">
+                <div class="credit__cell  |  gutters">
+                    <p class="credits-department  |  trailer">{{ {'en': 'Director\'s office', 'fr': "Direction"}|t(locales) }}</p>
+                    <ul class="reset">
+                        <li class="trailer--small">
+                            <p>Michael Hailu</p>
+                            <p class="job-title">{{ {'en': 'Director', 'fr': "Directeur"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Deborah Kleinbussink</p>
+                            <p class="job-title">{{ {'en': 'Executive Officer/Board Secretary', 'fr': "Chargée de direction/Secrétaire du Conseil d’Administration"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Josina Leguit</p>
+                            <p class="job-title">{{ {'en': 'Administrative & Research Assistant', 'fr': "Assistante administrative et de recherche"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="credit__cell  |  gutters">
+                    <p class="credits-department  |  trailer">{{ {'en': 'Brussels Office', 'fr': "Bureau de Bruxelles"}|t(locales) }}</p>
+                    <ul class="reset">
+                        <li class="trailer--small">
+                            <p>Isolina Boto </p>
+                            <p class="job-title">{{ {'en': 'Manager of Brussels Office', 'fr': "Responsable du bureau de Bruxelles"}|t(locales) }}</p>
+                        </li>
+                        <li>
+                            <p>Lebo Mofolo</p>
+                            <p class="job-title">{{ {'en': 'Policy Development Briefings Officer', 'fr': "Chargée des Briefings sur le développement"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Team Agribusiness & Value Chain', 'fr': "Equipe Agri-entreprises & Chaîne de Valeur"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell  |  gutters">
+                        <li class="trailer--small">
+                            <p>Piet Visser</p>
+                            <p class="job-title">{{ {'en': 'Team Leader', 'fr': "Leader Agri-entreprises & Chaîne de valeur"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Oluyede Ajayi</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Ag. & Climate Change', 'fr': "Coordinateur de programme sénior/Agriculture & Changement Climatique"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Sabdiyo Dido Bashuna</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Value Chains & Agribusiness', 'fr': "Coordinatrice de programme sénior/Chaînes de valeur & Agro-entreprise"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Vincent Fautrel</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Value Chains', 'fr': "Coordinateur de programme sénior/Chaînes de valeur"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Judith Ann Francis</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/S&T Policy', 'fr': "Coordinatrice de programme sénior/Politiques S&T"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Mariam Kadzamira</p>
+                            <p class="job-title">{{ {'en': 'Climate Change Officer', 'fr': "Chargée en Changement climatique"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell  |  gutters">
+                        <li class="trailer--small">
+                            <p>Armelle Degrave</p>
+                            <p class="job-title">{{ {'en': 'Administrative Coord. Officer', 'fr': "Chargée de la Coordination administrative"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Caroline Andriessen</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Felix Nkwetta Ajong</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Angeles Salvador</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Maïté Zammattio</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Team ICT for Agriculture', 'fr': "Equipe TIC pour l’Agriculture"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Benjamin Addom</p>
+                            <p class="job-title">{{ {'en': 'Team Leader', 'fr': "Leader TIC pour l’ agriculture"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Chris Addison</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Data4Ag', 'fr': "Coordinateur de programme sénior/Données pour l’agriculture"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Ken Lohento</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/ICT4Ag', 'fr': "Coordinateur de programme sénior/TIC pour l’agriculture"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Giacomo Rambaldi</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/ICT4Ag', 'fr': "Coordinateur de programme sénior/TIC pour l’agriculture"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Hermann Tossou</p>
+                            <p class="job-title">{{ {'en': 'Project Officer ICT4Ag', 'fr': "Chargé de projet TIC pour l’agriculture"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Marion van Boven</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Arnoldine Stals</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Team Communications', 'fr': "Equipe Communication"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Toby Johnson</p>
+                            <p class="job-title">{{ {'en': 'Team Leader', 'fr': "Leader Communication"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Stéphane Gambier</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Communication', 'fr': "Coordinateur de programme sénior/Communication"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Thierry Lewyllie</p>
+                            <p class="job-title">{{ {'en': 'Programme Coord/Web', 'fr': "Coordinateur de programme/Web"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Murielle Vandreck</p>
+                            <p class="job-title">{{ {'en': 'Programme Coord/Publications', 'fr': "Coordinatrice de programme/Publications"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Bertil Videt</p>
+                            <p class="job-title">{{ {'en': 'Programme Coord/Marketing & Communication', 'fr': "Coordinateur de programme/Communication et marketing"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Olivier Hersperger</p>
+                            <p class="job-title">{{ {'en': 'Web Content Manager', 'fr': "Responsable du contenu web"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Anne Legroscollard</p>
+                            <p class="job-title">{{ {'en': 'Communication Officer', 'fr': "Chargée de Communications"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Mirjam Bos</p>
+                            <p class="job-title">{{ {'en': 'Administrative Assistant', 'fr': "Assistante administrative"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Evelyne Kort-Nerincx</p>
+                            <p class="job-title">{{ {'en': 'Administrative Assistant', 'fr': "Assistante administrative"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Gabriela Gonçalves Bahre</p>
+                            <p class="job-title">{{ {'en': 'Data Assistant', 'fr': "Assistante traitement des données"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Husna Yagoub</p>
+                            <p class="job-title">{{ {'en': 'Data Assistant', 'fr': "Assistante traitement des données"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Learning, Monitoring and Evaluation (LME) Unit', 'fr': "Unité Apprentissage, Suivi et Évaluation"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Ibrahim Khadar</p>
+                            <p class="job-title">{{ {'en': 'Unit Manager', 'fr': "Chef d’unité"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Tarikua Getachew Woldetsadick</p>
+                            <p class="job-title">{{ {'en': 'LME Officer', 'fr': "Chargée d’apprentissage, suivi et évaluation"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Aurélie Reynier</p>
+                            <p class="job-title">{{ {'en': 'M&E Officer', 'fr': "Chargée de suivi et évaluation"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Raya Dekkers</p>
+                            <p class="job-title">{{ {'en': 'Administrative Assistant', 'fr': "Assistante administrative"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Krishan Bheenick</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Knowledge Management', 'fr': "Coordinateur de programme sénior/Gestion des connaissances"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Merche Rodriguez</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant', 'fr': "Assistante de projet"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Financial Control', 'fr': "Contrôle Financier"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Seema Shahi</p>
+                            <p class="job-title">{{ {'en': 'Internal Auditor/Financial Control', 'fr': "Auditeur interne / Responsable du Contrôle financier"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Perry Pahladsingh</p>
+                            <p class="job-title">{{ {'en': 'Interim Internal Auditor/Financial Control', 'fr': "Auditeur interne / Responsable du Contrôle financier"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Corporate Services', 'fr': "Services Généraux"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Thierry Doudet</p>
+                            <p class="job-title">{{ {'en': 'Corporate Services Manager', 'fr': "Chef des Services généraux"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Christine Webster</p>
+                            <p class="job-title">{{ {'en': 'Sr Procurement and Grants Officer', 'fr': "Responsable sénior des achats et des subventions"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Igor Biskupic</p>
+                            <p class="job-title">{{ {'en': 'ICT Coordinator', 'fr': "Coordinateur TIC"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Louis Kolkman</p>
+                            <p class="job-title">{{ {'en': 'IT Technician', 'fr': "Technicien informatique"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Peter Albers</p>
+                            <p class="job-title">{{ {'en': 'Head of Finance', 'fr': "Chef des Finances"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Serge Adolph</p>
+                            <p class="job-title">{{ {'en': 'Account Payable Assistant', 'fr': "Aide-comptable"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Marco Van Maurik</p>
+                            <p class="job-title">{{ {'en': 'Account Payable Assistant', 'fr': "Aide-comptable"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Human Resources & Administration', 'fr': "Ressources Humaines & Administration"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Pascal Deleu</p>
+                            <p class="job-title">{{ {'en': 'Head of Human Resources & Administration', 'fr': "Chef des Ressources Humaines et de l’Administration"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Christèle Coutureau</p>
+                            <p class="job-title">{{ {'en': 'Human Resources Officer', 'fr': "Chargée des ressources humaines"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Julia Nijhof</p>
+                            <p class="job-title">{{ {'en': 'Human Resources Assistant', 'fr': "Assistante aux ressources humaines"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Ellen van Dijk</p>
+                            <p class="job-title">{{ {'en': 'Administrative Assistant', 'fr': "Assistante administrative"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Adrianus Biemans</p>
+                            <p class="job-title">{{ {'en': 'Caretaker', 'fr': "Huissier"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Thomas Mendo-Essiane</p>
+                            <p class="job-title">{{ {'en': 'Messenger/Driver', 'fr': "Messager/chauffeur"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Manuela van Betuw</p>
+                            <p class="job-title">{{ {'en': 'Receptionist', 'fr': "Réceptionniste"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Project staff members', 'fr': "Membres du personnel rattachés à des projets"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Gian Nicola Francesconi</p>
+                            <p class="job-title">{{ {'en': 'Sr Tech. Adviser Cooperative Business Development', 'fr': "Conseiller technique sénior/Développement de l’entreprenariat coopératif agro-alimentaire"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Emil Jejov</p>
+                            <p class="job-title">{{ {'en': 'Operations Officer Pacific Islands Food Systems project', 'fr': "Chargé opérationnel du projet Systèmes alimentaires des Iles du Pacifique"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Jana Dietershagen</p>
+                            <p class="job-title">{{ {'en': 'Jr Tech. Officer Pacific Islands Food Systems project', 'fr': "Chargée technique junior, projet Systèmes alimentaires des Iles du Pacifique"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Carol Kakooza</p>
+                            <p class="job-title">{{ {'en': 'Project Coordinator MUIIS project (Uganda)', 'fr': "Coordinatrice du projet MUIIS (Uganda)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Chipo Msengezi</p>
+                            <p class="job-title">{{ {'en': 'Project Coordinator GODAN Action project', 'fr': "Coordinatrice du projet GODAN Action"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Jorge Chávez-Tafúr</p>
+                            <p class="job-title">{{ {'en': 'Project Coordinator Experience Capitalization project', 'fr': "Coordinateur du projet Capitalisation des expériences"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Interns', 'fr': "Stagiaires"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Christel Kenou</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Marc Bappa Se</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Constance Barbou des Courières</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Christelle Amorin</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Yanick Bakker</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Osseni Senou</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Joash Moitui</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Oluwaseun Adedeji</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Jemima Afari-Kwarteng</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Imelda Mirembe</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Shari-Ann Palmer</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Imelda Aniambossou</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="trailer--hero">
+                <p class="credits-department  |  trailer">{{ {'en': 'Staff members who left CTA in 2018', 'fr': "Membres du personnel ayant quitté le CTA en 2018"}|t(locales) }}</p>
+                <div class="credit  |  bleed">
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Lia Baruffa</p>
+                            <p class="job-title">{{ {'en': 'Project Assistant Experience Capitalization project (January 2018)', 'fr': "Assistante sur le projet Capitalisation des connaissances (janvier 2018)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Seema Shahi</p>
+                            <p class="job-title">{{ {'en': 'Internal Auditor/Financial Control (March 2018)', 'fr': "Auditeur interne / Responsable du Contrôle financier (mars 2018)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Mona Regad</p>
+                            <p class="job-title">{{ {'en': 'Administrative & Research Assistant (June 2018)', 'fr': "Assistant administrative et de recherche (juin 2018)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Gian Nicola Francesconi</p>
+                            <p class="job-title">{{ {'en': 'Sr Tech. Adviser Cooperative Business Development (July 2018)', 'fr': "Conseiller technique sénior/Développement de l’entreprenariat coopératif agro-alimentaire (juillet 2018)"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                    <ul class="reset  |  credit__cell credit-aside  |  gutters">
+                        <li class="trailer--small">
+                            <p>Krishan Bheenick</p>
+                            <p class="job-title">{{ {'en': 'Sr Programme Coord/Knowledge Management (August 2018)', 'fr': "Coordinateur de programme sénior/Gestion des connaissances (août 2018)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Peter Albers</p>
+                            <p class="job-title">{{ {'en': 'Head of Finance (November 2018)', 'fr': "Chef des Finances (novembre 2018)"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Kristel Kenou</p>
+                            <p class="job-title">{{ {'en': 'Intern', 'fr': "Stagiaire"}|t(locales) }}</p>
+                        </li>
+                        <li class="trailer--small">
+                            <p>Marc Bappa Se</p>
+                            <p class="job-title">{{ {'en': 'Intern', 'fr': "stagiaire"}|t(locales) }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="caption">©{{ config.credit_copyright|t(locales) }}</p>
+    <div class="header__sponsor" style="position: absolute;">
+        <!-- @TODO Replace with 3 sponsor icons, awaiting feedback from CTA -->
+        <img src="http://a-year-in-review-2016.cta.int/assets/images/header/europe-logo.png" alt="sponsors">
+    </div>
+</div>
