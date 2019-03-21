@@ -1,6 +1,13 @@
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{% set relationLabel = false  %}
+{% if config.relationLabel|default('programme') == 'programme' %}
+    {% set relationLabel = model.programmeLabel._id  %}
+{% elseif config.relationLabel == 'event' %}
+    {% set relationLabel = model.eventLabel._id  %}
+{% endif %}
+
 {% block scripts %}
     <script>
         jQuery(function($) {
@@ -10,13 +17,13 @@
 {% endblock %}
 {% set similarEvents = model.similar.events({
     'limit': 4,
-    'label': [model.programmeLabel._id],
+    'label': relationLabel ? [relationLabel] : false,
     'concept': [],
     'geo': []
 }) %}
 {% set similarPastEvents = model.similar.pastEvents({
     'limit': 4,
-    'label': [model.programmeLabel._id],
+    'label': relationLabel ? [relationLabel] : false,
     'concept': [],
     'geo': []
 }) %}
