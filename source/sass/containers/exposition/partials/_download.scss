@@ -1,0 +1,24 @@
+.download {
+	position: relative;
+	background: $color-theme;
+	padding: rhythm(6) 0;
+	@include breakpoint($gt-small-desktop) {
+		position: absolute;
+		top: -90px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+		&-wrapper {
+			background: $color-body;
+			padding-left: 6 / 18 * 100vw;
+			padding-right: 6 / 18 * 100vw;
+		}
+	}
+	&-title {
+		@include meta;
+		color: $white;
+		font-size: to-unit(22px);
+		font-weight: bold;
+		text-align: center;
+	}
+}

@@ -1,0 +1,24 @@
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div class="download-wrapper  |  is-root  |  trailer-inside--hero" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="download">
+        <p class="download-title  |  gutters--double">{{ labels.title|t(locales) }}</p>
+        <div class="button-set  |  leader">
+            <a class="button button--media  |  anchor--reset  |  fx" href="{{ labels.download_link|t(locales) }}" download="">
+                <span class="icon icon-open-book"></span>
+                <div>
+                    <p class="label--s">application/pdf</p>
+                    {% if labels.download_link|t(locales)|getFileSize %}
+                        <p class="label--xs">{{ labels.download_link|t(locales)|getFileSize }}</p>
+                    {% endif %}
+                </div>
+            </a>
+            <a class="button  |  anchor--reset  |  fx" href="{{ labels.download_link|t(locales) }}" download="">{{ labels.download_label|t(locales) }}</a>
+        </div>
+    </div>
+</div>
