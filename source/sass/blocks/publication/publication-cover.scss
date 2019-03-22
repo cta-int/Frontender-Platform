@@ -1,0 +1,69 @@
+/*
+	* This class is adding a drop shadow.
+	* The size of the cover is controlled by its parent element, 
+	* the image stretches to full width of the parent container.
+	*
+	* 1. Account for shadow offset, image must still align
+	* 2. Offset so shadow becomes visible
+  */
+  .publication-cover {
+	margin-top: gutter(.25); /* 1 */
+	margin-right: gutter(.25); /* 1 */
+	&,
+	&__image {
+		display: block;
+		position: relative;
+	}
+	&__image {
+		z-index: 1;
+		width: 100%;
+		bottom: gutter(.25); /* 2 */
+		left: gutter(.25); /* 2 */
+	}
+	&--pull-top {
+		margin-top: rhythm(-15);
+		&.publication-cover--s {
+			margin-top: rhythm(-5);
+		}
+	}
+	&--gutter-right {
+		margin-right: gutter(.75); /* 1 */
+	}
+	&--s {
+		margin-top: 4px;
+		margin-right: 4px;
+	}
+	&--s &__image {
+		bottom: 4px;
+		left: 4px;
+	}
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: rgba($black, .10);
+	}
+	@include breakpoint($gt-small-desktop) {
+
+		&--pull-bottom {
+			margin-bottom: -50%;
+		}
+		&--l {
+			margin-top: gutter(.5);
+			margin-right: gutter(.5);
+		}
+		&--l &__image {
+			bottom: gutter(.5);
+			left: gutter(.5);
+		}
+		&--pull-top {
+			&.publication-cover--s {
+				margin-top: rhythm(-10);
+			}
+		}
+	}
+}

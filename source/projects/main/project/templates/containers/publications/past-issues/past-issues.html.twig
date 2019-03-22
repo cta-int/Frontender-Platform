@@ -1,0 +1,57 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout  |  well')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <aside class="layout__cell layout__cell--aside layout__cell--divider  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="wing--left">
+            <div class="gutters">
+                <h2 class="title title--section">{{ labels.title_sidebar|t(locales) }}</h2>
+                {% if labels.title_main|t(locales) %}
+                    <h2 class="title title--hero  |  meta--lowercase  |  leader--hero">{{ labels.title_main|t(locales) }}</h2>
+                {% endif %}
+
+                {% if labels.body|t(locales) %}
+                    <p class="title title--lead  |  meta--lowercase  |  leader">{{ labels.body|t(locales) }}</p>
+                {% endif %}
+
+                {% if labels.title_button.label %}
+                    <a class="button button--dark button--wide  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
+                        {{ labels.title_button.label|t(locales) }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </aside>
+
+    <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="wings">
+            <div class="publication-grid  |  leader">
+                {% for issue in model %}
+                    <article class="publication-grid__cell  |  gutters  |  trailer">
+                        <div class="publication-layout__cover">
+                            <figure class="publication-cover">
+                                <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="publication-layout__body">
+                            <p class="leader--small  |  trailer--tiny  |  meta">
+                                <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
+                            </p>
+                            <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
+                            <div class="leader--normal">
+                                {% for link in issue.externalLink %}
+                                    <a class="publication-download publication-download--s  |  trailer--tiny" href="{{link.url}}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

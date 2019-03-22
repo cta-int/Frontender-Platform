@@ -31,19 +31,19 @@
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
 
         {% if config.show_secondary_first %}
-        <div class="layout__cell layout__cell--aside {{ config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [1,3] ? 'wings'}}">
-            {% for loopContainer in containers|slice(1) %}
-                {% include loopContainer.template with loopContainer %}
-            {% endfor %}
-        </div>
+            <div class="layout__cell layout__cell--aside{{ config.show_side_wings|default(1) ? '  |  wings'}}">
+                {% for loopContainer in containers|slice(1) %}
+                    {% include loopContainer.template with loopContainer %}
+                {% endfor %}
+            </div>
         {% endif %}
 
-        <div class="layout__cell layout__cell--main{{ config.show_secondary_first and config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [2,3] ? 'wings'}}">
+        <div class="layout__cell layout__cell--main{{ config.show_divider ? ' layout__cell--divider-middle'}}{{ config.show_wings|default(1) in [2,3] ? '  |  wings'}}">
             {% include containers|first.template with containers|first %}
         </div>
 
         {% if  not config.show_secondary_first %}
-        <div class="layout__cell layout__cell--aside {{ not config.show_secondary_first and config.show_divider ? ' layout__cell--divider'}} {{ config.show_wings|default(1) in [1,3] ? 'wings'}}">
+        <div class="layout__cell layout__cell--aside{{ config.show_wings|default(1) in [1,3] ? ' wings'}}">
             {% for loopContainer in containers|slice(1) %}
                 {% include loopContainer.template with loopContainer %}
             {% endfor %}

@@ -221,6 +221,9 @@
 		overflow-y: scroll;
 		height: 100%;
 	}
+	.share-list .share {
+		color: $white;
+	}
 	#modal {
 		position: fixed;
 		z-index: 5;

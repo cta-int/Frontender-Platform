@@ -95,7 +95,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+            <div class="layout__cell layout__cell--aside  |  wings">
                 {% if show_digital_identifier|default(1) or show_publisher|default(1) %}
                     {% if model.isbn %}
                         <dl class="meta  |  trailer--hero  |  gutters">
@@ -156,7 +156,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings">
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">

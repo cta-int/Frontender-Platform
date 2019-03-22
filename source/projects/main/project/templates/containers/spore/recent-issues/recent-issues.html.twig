@@ -1,3 +1,4 @@
+{% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
@@ -11,7 +12,9 @@
                     <article class="leader">
                         <div class="publication-layout__cover">
                             <figure class="publication-cover">
-                                <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
+                                <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                </a>
                             </figure>
                         </div>
                         <div class="publication-layout__body">
@@ -36,14 +39,41 @@
 
     <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="wings">
-            <div class="gutters">
-                <h2 class="title title--section">{{ labels.title_main|t(locales) }}</h2>
-                <div class="publication-grid  |  leader">
-                    {% for issue in model|slice(1,4) %}
-                        <article class="publication-grid__cell  |  trailer">
+            <h2 class="title title--section gutters">{{ labels.title_main|t(locales) }}</h2>
+            <div class="publication-grid  |  leader">
+                {% for issue in model|slice(1,4) %}
+                    <article class="publication-grid__cell  |  gutters  |  trailer">
+                        <div class="publication-layout__cover">
+                            <figure class="publication-cover">
+                                <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="publication-layout__body">
+                            <p class="trailer--tiny meta">
+                                <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
+                            </p>
+                            <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
+                            <div class="leader--normal">
+                                {% for link in issue.externalLink %}
+                                    <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+
+                {% for issue in model|slice(5,1) %}
+                    <div class="publication-grid__cell  |  gutters  |  trailer">
+                        <article>
                             <div class="publication-layout__cover">
                                 <figure class="publication-cover">
-                                    <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
+                                    <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                    </a>
                                 </figure>
                             </div>
                             <div class="publication-layout__body">
@@ -60,38 +90,13 @@
                                 </div>
                             </div>
                         </article>
-                    {% endfor %}
-
-                    {% for issue in model|slice(5,1) %}
-                        <div class="publication-grid__cell  |  trailer">
-                            <article>
-                                <div class="publication-layout__cover">
-                                    <figure class="publication-cover">
-                                        <img src="{{ issue.contentBlocks|filterArray('subtype', 'image')|first.url }}" class="publication-cover__image" alt="{{ issue.link.mediaObject|lead.about }}">
-                                    </figure>
-                                </div>
-                                <div class="publication-layout__body">
-                                    <p class="trailer--tiny meta">
-                                        <strong>{{ 'spore_issue_no'|i18n }} {{ issue.number }}</strong>
-                                    </p>
-                                    <h3 class="heading  |  trailer--tiny">{{ issue.headline|t(locales) }}</h3>
-                                    <div class="leader--normal">
-                                        {% for link in issue.externalLink %}
-                                            <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
-                                                <span class="publication-download__item">{{ link.name }}</span>
-                                            </a>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </article>
-                            {% if labels.title_button.label %}
-                                <a class="button button--dark button--stretch  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
-                                    {{ labels.title_button.label|t(locales) }}
-                                </a>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
+                        {% if labels.title_button.label %}
+                            <a class="button button--dark button--stretch  |  leader--hero  |  trailer" href="{{ route({ 'page': labels.title_button.page }) }}">
+                                {{ labels.title_button.label|t(locales) }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

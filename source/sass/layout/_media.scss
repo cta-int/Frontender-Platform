@@ -79,7 +79,7 @@ Styleguide 2.8
   }
   &--reverse .media__figure,
   &--reverse .media__body {
-    flex-direction: reversed;
+    flex-direction: row-reverse;
     .no-flexbox & {
       float: right;
     }

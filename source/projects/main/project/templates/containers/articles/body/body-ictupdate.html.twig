@@ -76,7 +76,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+            <div class="layout__cell layout__cell--aside  |  wings">
                 {% if model.issue|length > 0 %}
                 	<div class="gutters">
                         <a class="anchor anchor--reset anchor--shy  |  is-heir" href="{{ route({'page': model.issue.path, id: model.issue._id}) }}">
@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside layout__cell--aside--l  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings">
 
         {% if model.articleType == "review" %}
             {# Add image with type of product here #}

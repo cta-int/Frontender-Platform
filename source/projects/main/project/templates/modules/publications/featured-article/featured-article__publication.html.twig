@@ -1,0 +1,32 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/label.html.twig" as label %}
+
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% if model._id is defined %}
+    <div{{ helper.class_attribute(config, ['stack__unit stack__pin  |  leader  |  gutters']|join(' ')|trim)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <article class="publication-tile publication-tile--s  |  media  |  divider divider--top">
+            <div class="publication-tile__cover media__figure gutter">
+                <figure class="publication-cover publication-cover--s publication-cover--pull-top">
+                    <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                        {{ image.contentBlock_cover(model.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                    </a>
+                </figure>
+            </div>
+            <div class="media__body">
+                <h2 class="heading heading--apropos leader-inside--tiny">
+                    <a class="is-heir" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                        {{ model.headline|t(locales) }}
+                    </a>
+                </h2>
+                {% if config.show_publication|default(1) %}
+                    {{ date.issue_date(model.datePublished) }}
+                {% endif %}
+                
+            </div>
+        </article>
+    </div>
+{% endif %}

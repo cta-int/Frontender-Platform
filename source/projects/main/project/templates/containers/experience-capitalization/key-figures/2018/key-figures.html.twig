@@ -1,0 +1,93 @@
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+<{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'wings  |  no-overflow  |  keys-figures  |  exposition-wrapper')|raw }} id="section1" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="section section--hidden  |  gutter-outside--right">
+        <p class="section-number">1</p>
+    </div>
+    <h2 class="heading  |  section-heading  |  gutters  |  keys-header">{{ labels.title|t(locales) }}</h2>
+    <div class="keys  |  leader-inside--hero">
+        <div class="keys-row">
+            <div class="keys-fact keys--has-icon keys-bleed  |  is-root  |  gutters--double">
+                <p class="statistic">29</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'entrepreneurs have received training in drone operation and service delivery as part of the Eyes in the Sky project, across 14 countries.', 'fr': "entrepreneurs ont bénéficié d’une formation à l’utilisation des drones dans 14 pays dans le cadre du projet «Transformer l’agriculture africaine – les yeux dans le ciel pour des technologies intelligentes au sol»."}|t(locales) }}</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/crops.png" alt="crops" />
+                </div>
+            </div>
+            <div class="keys-fact keys--has-icon  |  is-root  |  gutters--double">
+                <p class="statistic">400</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'high-level participants attended 4 Brussels Briefings events.', 'fr': "participants les 4 briefings de Bruxelles ont réuni de haut niveau."}|t(locales) }}</p>
+                <div class="keys-illustration  |  gutters--double">
+                    <img src="/assets/images/illustrations/farm2.png" alt="farm" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">50</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'cooperatives and their members in Cameroon and DRC have been trained in good governance and leadership as part of the Manioc 21 programme.', 'fr': "coopératives et leurs membres au Cameroun et en RDC ont été formés à la bonne gouvernance et au leadership dans le cadre du programme Manioc 21."}|t(locales) }}</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">{{ {'en': '23,000', 'fr': "23 000"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'farmers in Swaziland', 'fr': "inscriptions au Swaziland"}|t(locales) }},</p>
+                <p class="statistic statistic--s">{{ {'en': '52,000', 'fr': "52 000"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'in Lesotho, and', 'fr': "au Lesotho et"}|t(locales) }}</p>
+                <p class="statistic statistic--s">{{ {'en': '11,298', 'fr': "11 298"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'in Uganda were registered with the Data4Ag project, which aims to improve their access to inputs, crop husbandry advice and markets.', 'fr': "en Ouganda. Ce projet a pour but d’améliorer leur accès aux intrants, à des conseils en techniques culturales et accès aux marchés."}|t(locales) }}</p>
+            </div>
+            <div class="keys-fact keys--has-icon  |  is-root  |  gutters--double">
+                <p class="statistic">3</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'Small Island Developing States implemented policy measures to enhance agri-tourism following the CTA project, Linking agriculture to tourism markets in Africa, the Caribbean and the Pacific.', 'fr': "petits états insulaires en développement ont pris des mesures politiques dans le but d’améliorer l’agritourisme grâce au projet «Renforcer le lien entre l’agriculture et le marché du tourisme dans les pays ACP»."}|t(locales) }}</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/farm.png" alt="farm" />
+                </div>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">{{ {'en': '62,141,973', 'fr': "62 141 973"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'people and', 'fr': "lecteurs potentiels et"}|t(locales) }}</p>
+                <p class="statistic statistic--s">11</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'articles were published by CTA experts.', 'fr': "articles d’opinion ont été publiés."}|t(locales) }}</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact  |  is-root  |  gutters--double">
+                <p class="statistic">{{ {'en': '254,364', 'fr': "254 364"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'farmers have been profiled by the MUIIS project and', 'fr': "producteurs et"}|t(locales) }}</p>
+                <p class="statistic statistic--s">{{ {'en': '3,130', 'fr': "3 130"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'producers are subscribed to one or more MUIIS services.', 'fr': "exploitants se sont inscrits aux services fournis."}|t(locales) }}</p>
+            </div>
+
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">{{ {'en': '9,012', 'fr': "9 012"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'views have been recorded on the CTA blog since its launch in October 2018.', 'fr': "pages vues sur le blog du CTA depuis son lancement en octobre."}|t(locales) }}</p>
+            </div>
+            <div class="keys-fact  |  gutters--double">
+                <p class="statistic">{{ {'en': '10,827', 'fr': "10 827"}|t(locales) }}</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'pastoralists purchased livestock insurance in Ethiopia and Kenya.', 'fr': "éleveurs ont contractualisé une assurance bétail en Éthiopie et au Kenya."}|t(locales) }}</p>
+            </div>
+        </div>
+        <div class="keys-row">
+            <div class="keys-fact keys--has-icon keys-bleed keys-bleed--right  |  is-root  |  gutters--double">
+                <p class="statistic">326</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'young businesses applied to Pitch AgriHack 2018;', 'fr': "jeunes sociétés ont postulé au concours PitchAgrihack 2018."}|t(locales) }}</p>
+                <p class="statistic statistic--s">26</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'finalist businesses where selected,', 'fr': "entreprises, dont"}|t(locales) }}</p>
+                <p class="statistic statistic--s">14</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'led by women;', 'fr': "dirigées par des femmes, ont été sélectionnées,"}|t(locales) }}</p>
+                <p class="statistic statistic--s">8</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'companies (50% led by women) were awarded in front of African Heads of State.', 'fr': "d’entre elles (dont 50 % dirigées par des femmes) ont reçu leur prix devant des chefs d’état africains."}|t(locales) }}</p>
+                <div class="keys-illustration  |  gutters">
+                    <img src="/assets/images/illustrations/gender.png" alt="Gender" />
+                </div>
+            </div>
+            <div class="keys-fact  |  is-root  |  gutters--double">
+                <p class="statistic">200</p>
+                <p class="lead-paragraph  |  leader--small">{{ {'en': 'rural youths have been provided with entrepreneurship and technical training to establish rice agri-businesses in Senegal and Mali.', 'fr': "jeunes ruraux ont bénéficié d’une formation technique et en entrepreunariat afin de créer des entreprises rizicoles au Sénégal et au Mali."}|t(locales) }}</p>
+            </div>
+        </div>
+    </div>
+</{{ config.container_tag|default('div') }}>

@@ -16,7 +16,10 @@ Styleguide 3.42
     font-family: $font-family--meta;
     opacity: .84;
     word-break: break-word;
-    .well & {
+    font-smooth: auto;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    .post-body .well & {
         padding-left: rhythm(3);
         padding-right: rhythm(3);
         font-weight: 400;

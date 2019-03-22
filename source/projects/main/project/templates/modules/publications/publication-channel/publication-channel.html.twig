@@ -1,0 +1,75 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+<{{ config.container_tag|default('section') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    
+    {# Lead issue #}
+    <article class="publication-channel-hero">
+        <p class="is-gt-large-handheld publication-channel-hero__title title leader-inside--normal trailer-inside--normal">
+            <strong>{{ 'Channel'|t }}</strong>
+        </p>
+        <div class="bubble bubble--down">
+            <div class="publication-tile publication-tile--fold media media--cover well leader-inside--normal trailer-inside--normal">
+                <div class="publication-tile__cover media__figure gutters">
+                    <figure class="publication-cover publication-cover--pull-top publication-cover--gutter-right">
+                        <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                            {{ image.contentBlock_cover(model|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        </a>
+                    </figure>
+                </div>
+                <div class="publication-tile__body media__body gutters">
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                            {{ model|first.headline|t(locales) }}
+                        </a>
+                    </h2>
+                    {% if config.show_publication|default(1) %}
+                        <p class="leader-inside--normal">{{ date.issue_date(model|first.datePublished) }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </article>
+
+    
+
+    {# Remaining issues #}
+    {% if model|slice(1)|length > 0 %}
+        <h2 class="title title--apropos leader trailer--normal">{{ labels.list_title|t(locales) }}</h2>
+        {% for issue in model|slice(1) %}
+            <article class="publication-tile publication-tile--s media trailer leader--normal trailer--normal">
+                <div class="publication-tile__cover media__figure gutter">
+                    <figure class="publication-cover publication-cover--s">
+                        <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        </a>
+                    </figure>
+                </div>
+                <div class="media__body">
+                    {% if config.show_publication|default(1) %}
+                        <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                    {% endif %}
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            {{ issue.headline|t(locales) }}
+                        </a>
+                    </h2>
+                    {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                        <p class="author">
+                            {{ author.long(issue.link.person.author) }}
+                        </p>
+                    {% endif %}
+                </div>
+            </article>
+        {% endfor %}
+    {% endif %}
+
+    <div class="leader--normal">
+        <a class="title title--filter  |  anchor" href="{{ links.link.page|t(locales) }}">{{ links.link.label|t(locales) }}</a>
+    </div>
+
+</{{ config.container_tag|default('section') }}>

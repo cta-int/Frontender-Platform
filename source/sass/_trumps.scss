@@ -130,3 +130,40 @@
         margin-left: 1em;
     }
 }
+
+[data-prefix] {
+    &::before {
+        content: attr(data-prefix);
+    }
+}
+[data-issue-nr] {
+    position: relative;
+    &::before {
+        @include theme-background;
+        content: attr(data-issue-nr);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: rhythm(16);
+        height: rhythm(16);
+        padding: rhythm(2);
+        color: $white;
+        font-family: $font-family--meta;
+        font-weight: $font-weight--meta;
+        font-size: to-unit(16px);
+        line-height: 1;
+        text-align: center;
+    }
+    @include breakpoint($gt-small-desktop) {
+        &::before {
+            position: absolute;
+            top: 0;
+            left: rhythm(-22);
+            width: rhythm(17);
+            height: rhythm(17);
+            padding: rhythm(2);
+            font-size: to-unit(20px);
+        }
+    }
+}

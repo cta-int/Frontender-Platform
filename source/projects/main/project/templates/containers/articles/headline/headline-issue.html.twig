@@ -1,1 +1,59 @@
-{% include "containers/articles/headline/headline-champion.html.twig" %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/date.html.twig" as date %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'article-headline  |  well well--full  |  layout layout--split')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <div class="layout__cell layout__cell--main layout__cell--divider-outside  |  leader-inside--hero trailer-inside--hero  |  wings">
+            <h1 class="article-headline__title  |  heading heading--moderate  |  trailer  |  gutters">
+                {{ model.headline }}
+            </h1>
+            {% if model.alternativeHeadline %}
+                <p class="article-headline__byline  |  meta  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--aside  |  leader-inside--hero trailer-inside--hero  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+            
+            <article class="publication-tile publication-tile--hero media">
+                <div class="publication-tile__cover media__figure gutters">
+                    <figure class="publication-cover publication-cover--pull-bottom">
+                        <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                            {{ image.contentBlock_cover(model.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        </a>
+                    </figure>
+                </div>
+                <div class="publication-tile__body media__body gutters">
+                    <dl class="dlist{{ model.link.person.author|length > 2 ? ' dlist--grid'}} meta meta--s meta--dark is-clear">
+                        {% if model.strategyLabel %}
+                            <dt class="dlist__label">{{ 'area' | i18n }}: </dt>
+                            <dd class="dlist__value"><strong>{{ model.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
+                        {% endif %}
+                        {% if model.link.person.author|length > 0 %}
+                            <dt class="dlist__label">{{ model.link.person.author|length > 1 ? 'authors' | i18n : 'author' | i18n }}: </dt>
+                            <dd class="dlist__value">{{ author.long(model.link.person.author, false) }}</dd>
+                        {% endif %}
+                        {% if model.datePublished %}
+                            <dt class="dlist__label">{{ 'published' | i18n }}: </dt>
+                            <dd class="dlist__value">{{ date.issue_year(model.datePublished, null, ' ') }}</dd>
+                        {% endif %}
+                    </dl>
+                    {% if model.externalLink|length > 0 %}
+                        <div class="leader">
+                            {% for link in model.externalLink %}
+                                <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                    <span class="publication-download__item">{{ link.name }}</span>
+                                    {% if link.url|getFileSize %}
+                                        <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </article>
+
+        </div>
+</{{ config.container_tag|default('header') }}>

@@ -1,0 +1,40 @@
+.publication-channel-hero {
+    
+    @include breakpoint($lt-large-handheld) {
+        .publication-cover--pull-top {
+            margin-top: gutter(.25);
+        }
+        .bubble .publication-cover {
+            margin-bottom: rhythm(2);
+        }
+    }
+    @include breakpoint($gt-large-handheld) {
+        &__title {
+            margin-left: 50%;
+            margin-left: 3 / 12 * 100vw;
+            padding-left: gutter(.5);
+            padding-left: 0vw;
+            padding-right: gutter(.5);
+            padding-right: 0vw;
+        }
+        .bubble .publication-tile__body {
+            padding-left: gutter(0);
+            padding-right: gutter(0);
+        }
+    }
+    @include breakpoint($gt-small-desktop) {
+        &__title {
+            margin-left: 160px;
+            margin-left: 3 / 18 * 100vw;
+            @media screen and (min-width:0\0) {
+                margin-left: 50%;
+            }
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        &__title {
+            margin-left: 160px;
+            margin-left: 2 / 18 * 100vw;
+        }
+    }
+}

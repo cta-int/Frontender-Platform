@@ -17,8 +17,8 @@ Styleguide 3.2
     // margin-top: rhythm(6);
     font-family: $font-family--meta;
     font-weight: $font-weight--meta;
-    font-size: to-unit(16px);
-    line-height: 1.225;
+    @include title-14px();
+    // overflow: hidden;
     &,
     a &,
     & a {
@@ -28,9 +28,8 @@ Styleguide 3.2
     &--tile {
         @include title-18px();
     }
-
     &--focus {
-        @include title-20px();
+        @include title-16px();
     }
     &--sub {
         line-height: to-unit(rhythm(7), 1, 15px);
@@ -38,24 +37,41 @@ Styleguide 3.2
     &--alternate {
         font-weight: 400;
     }
-    // &--snug {
-    //     margin-top: 0;
-    // }
     @include breakpoint($gt-medium-handheld) {
         &--tile,
         &--hero {
           @include title-24px();
         }
     }
+    @include breakpoint($gt-large-handheld) {
+        font-size: to-unit(16px);
+        &--apropos {
+            font-size: to-unit(14px);
+        }
+        &--focus {
+            @include title-20px();
+        }
+        // &--tile,
+        // &--hero {
+        //   @include title-24px();
+        // }
+    }
     @include breakpoint($gt-small-desktop) {
         // margin-top: rhythm(16);
         &--sub {
             margin-top: rhythm(10);
         }
+        &--tile,
+        &--hero {
+          @include title-24px();
+        }
     }
     @include breakpoint($gt-medium-desktop) {
+        &--moderate {
+          @include title-30px();
+        }
         &--hero {
-          @include title-48px();
+        @include title-48px();
         }
     }
 }
