@@ -888,7 +888,6 @@ If(is_prod, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
-
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpsctaintListenerRule1",
@@ -928,7 +927,6 @@ If(is_prod, t.add_resource(
         Priority=70
     )
 ), Ref("AWS::NoValue"))
-
 
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
@@ -970,7 +968,6 @@ If(is_prod, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
-
 If(is_prod, t.add_resource(
     elasticloadbalancingv2.ListenerRule(
         "HttpssporeListenerRule1",
@@ -1010,6 +1007,78 @@ If(is_prod, t.add_resource(
         Priority=90
     )
 ), Ref("AWS::NoValue"))
+
+elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=93
+)
+
+elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=94
+)
+
+elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule3",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=95
+)
+
+elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule4",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=96
+)
 
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
