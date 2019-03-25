@@ -1008,7 +1008,7 @@ If(is_prod, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
-elasticloadbalancingv2.ListenerRule(
+t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpsyearinreviewListenerRule1",
     Actions=[
         elasticloadbalancingv2.Action(
@@ -1024,9 +1024,9 @@ elasticloadbalancingv2.ListenerRule(
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
     Priority=93
-)
+))
 
-elasticloadbalancingv2.ListenerRule(
+t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpsyearinreviewListenerRule2",
     Actions=[
         elasticloadbalancingv2.Action(
@@ -1042,9 +1042,9 @@ elasticloadbalancingv2.ListenerRule(
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=94
-)
+))
 
-elasticloadbalancingv2.ListenerRule(
+t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpsyearinreviewListenerRule3",
     Actions=[
         elasticloadbalancingv2.Action(
@@ -1060,9 +1060,9 @@ elasticloadbalancingv2.ListenerRule(
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
     Priority=95
-)
+))
 
-elasticloadbalancingv2.ListenerRule(
+t.add_resource(elasticloadbalancingv2.ListenerRule(
     "HttpsyearinreviewListenerRule4",
     Actions=[
         elasticloadbalancingv2.Action(
@@ -1078,7 +1078,7 @@ elasticloadbalancingv2.ListenerRule(
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=96
-)
+))
 
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
