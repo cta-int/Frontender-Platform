@@ -91,7 +91,7 @@ class EventsModel extends ScrModel
 
                 return $this->cachedAllProjects;
             }
-            
+
             public function events($config = [])
             {
                 if (!$this->cachedAllEvents) {
@@ -140,11 +140,11 @@ class EventsModel extends ScrModel
                 $config = array_merge([
                     'limit' => 20,
                     'label' => array_map(function ($label) {
-                            return $label['_id'];
-                        }, $this->event['label']),
+                        return $label['_id'];
+                    }, $this->event['label']),
                     'concept' => array_map(function ($concept) {
-                            return $concept['_id'];
-                        }, $this->event['analysis']['agrovoc']['concepts']),
+                        return $concept['_id'];
+                    }, $this->event['analysis']['agrovoc']['concepts']),
                     'geo' => array_map(function ($geo) {
                         return $geo['uri'];
                     }, $this->event['analysis']['geonames'] ?? []),
@@ -160,7 +160,7 @@ class EventsModel extends ScrModel
                     'language' => $this->state->language
                 ]);
 
-                if($projects) {
+                if ($projects) {
                     $model->setState([
                         'type' => 'event.Project',
                         'mustNot' => [
@@ -294,6 +294,10 @@ class EventsModel extends ScrModel
     public function getLabels(string $type = '', bool $first = false)
     {
         $_labels = $this['label'];
+
+        if (!$_labels) {
+            return false;
+        }
 
         if ($type != '') {
             foreach ($_labels as $key => $value) {
