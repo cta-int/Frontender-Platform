@@ -124,12 +124,17 @@
                 {% endif %}
 
                 {# Related events #}
-                {% set relatedEvents = model.similar.events({
-                    'label': [model.eventLabel._id is defined ? model.eventLabel._id : model.programmeLabel._id ],
-                    'geo': [],
-                    'concept': [],
-                    'limit': 5
-                }) %}
+                {% if model.eventLabel._id or model.eventLabel._id %}
+                    {% set relatedEvents = model.similar.events({
+                        'label': [model.eventLabel._id is defined ? model.eventLabel._id : model.programmeLabel._id ],
+                        'geo': [],
+                        'concept': [],
+                        'limit': 5
+                    }) %}
+                {% else %}
+                    {% set relatedEvents = [] %}
+                {% endif %}
+
                 {% if relatedEvents|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|i18n }}</h3>
                     <ul class="reset">
@@ -145,12 +150,17 @@
                 {% endif %}
 
                 {# Related projects #}
-                {% set relatedProjects = model.similar.projects({
-                    'label': [model.programmeLabel._id],
-                    'geo': [],
-                    'concept': [],
-                    'limit': 5
-                }) %}
+                {% if model.programmeLabel._id %}
+                    {% set relatedProjects = model.similar.projects({
+                        'label': [model.programmeLabel._id],
+                        'geo': [],
+                        'concept': [],
+                        'limit': 5
+                    }) %}
+                    {% else %}
+                        {% set relatedProjects = [] %}
+                    {% endif %}
+
                 {% if relatedProjects|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|i18n }}</h3>
                     <ul class="reset">
