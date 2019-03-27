@@ -33,8 +33,8 @@
                 <p class="meta">{{ location_1.street|t(locales) }}</p>
                 <p class="meta">{{ location_1.postal|t(locales) }}</p>
                 <p class="meta  |  trailer--small">{{ location_1.country|t(locales) }}</p>
-                <p class="meta">Tel: {{ location_1.phone|t(locales) }}</p>
-                <p class="meta">Fax: {{ location_1.fax|t(locales) }}</p>
+                <p class="meta">Tel: <a class="is-heir" href="tel:{{ location_1.phone|t(locales) }}">{{ location_1.phone|t(locales) }}</a></p>
+                <p class="meta">Fax: <a class="is-heir" href="tel:{{ location_1.fax|t(locales) }}">{{ location_1.fax|t(locales) }}</a></p>
                 <a
                     class="block-link block-link--inverse  |  leader--normal"
                     href="{{ location_1.slug.page|t(locales) }}"
@@ -47,8 +47,8 @@
                 <p class="meta">{{ location_2.street|t(locales) }}</p>
                 <p class="meta">{{ location_2.postal|t(locales) }}</p>
                 <p class="meta  |  trailer--small">{{ location_2.country|t(locales) }}</p>
-                <p class="meta">Tel: {{ location_2.phone|t(locales) }}</p>
-                <p class="meta">Fax: {{ location_2.fax|t(locales) }}</p>
+                <p class="meta">Tel: <a class="is-heir" href="tel:{{ location_2.phone|t(locales) }}">{{ location_2.phone|t(locales) }}</a></p>
+                <p class="meta">Fax: <a class="is-heir" href="tel:{{ location_2.fax|t(locales) }}">{{ location_2.fax|t(locales) }}</a></p>
                 <a
                     class="block-link block-link--inverse  |  leader--normal"
                     href="{{ location_2.slug.page|t(locales) }}"
