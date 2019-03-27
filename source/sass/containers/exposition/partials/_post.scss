@@ -192,6 +192,25 @@
 	}
 }
 
+.post-header {
+	.title--headline {
+		font-size: 1.125em;
+		line-height: 1.3333;
+		@include breakpoint($gt-medium-handheld) {
+			font-size: 1.5em;
+			line-height: 1.125;
+		}
+		@include breakpoint($gt-small-desktop) {
+			font-size: 1.875em;
+			line-height: 1.1
+		}
+		@include breakpoint($gt-medium-desktop) {
+			font-size: 3em;
+			line-height: 1.0625;
+		}
+	}
+}
+
 .post-footer {
 	position: relative;
 	bottom: rhythm(15) * -1;

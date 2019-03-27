@@ -26,6 +26,9 @@
                 <div class="social__share  |  trailer">
                     {{ share.bar_article_linkedin(model, true) }}
                 </div>
+                {% if model.about %}
+                    <p class="paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                {% endif %}
                 {% for i, contentBlock in model.contentBlocks %}
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endfor %}
