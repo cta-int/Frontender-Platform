@@ -198,9 +198,9 @@
                             {{ image.person(auth, 50) }}
                         </div>
                         <div class="media__body  |  gutter--right  |  body--whisper">
-                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            <p class="meta--bold  |  trailer--tiny" itemprop="name">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             {% if auth.description %}
-                                <p itemprop="description" class="">{{ auth.description }}</p>
+                                <p itemprop="description">{{ auth.description }}</p>
                             {% endif %}
                         </div>
                     </div>
@@ -211,9 +211,9 @@
         {% if model.link.organization.sourceOrganization|filterCTA(false)|length > 0 %}
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
-                    <aside class="trailer--hero">
-                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} {{ organization.name|t(locales) }}</h1>
-                        <p class="body--whisper  |  gutters">
+                    <aside class="trailer--hero" itemscope itemtype="https://schema.org/sourceOrganization">
+                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} <span itemtype="http://schema.org/Organization">{{ organization.name|t(locales) }}</span></h1>
+                        <p class="body--whisper  |  gutters" itemprop="description">
                             {{ organization.description|t(locales) }}
                         </p>
                     </aside>
