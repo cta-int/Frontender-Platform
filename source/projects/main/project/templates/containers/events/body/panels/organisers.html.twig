@@ -1,6 +1,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<section class="panel  |  wing--right" id="organisers">
+<section class="panel  |  wing--right" id="organisers" itemscope itemprop="organizer">
     <h2 class="title">
           <a class="panel__trigger  |  gutters  |  is-heir" href="#organisers">{{ 'Organisers'|i18n }}</a>
     </h2>
@@ -8,19 +8,19 @@
         <ul class="reset">
             {% for organizer in model.organizer %}
                 <li class="leader  |  trailer">
-                    <article class="organisation-profile  |  wing--right">
+                    <article class="organisation-profile  |  wing--right" itemscope itemtype="https://schema.org/Organization">
                         {% if(organizer.avatar) %}
                             <div class="organisation-profile__brand  |  gutters">
-                                <img class="image" src="{{ organizer.avatar }}" alt=""/>
+                                <img class="image" src="{{ organizer.avatar }}" alt="" itemprop="logo"/>
                             </div>
                         {% endif %}
                         <div class="organisation-profile__name  |  gutters">
-                            <h3 class="title  |  leader  |  trailer--small">{{ organizer.name }}</h3>
-                            <p>{{ organizer.description }}</p>
+                            <h3 class="title  |  leader  |  trailer--small" itemprop="name">{{ organizer.name }}</h3>
+                            <p itemprop="description">{{ organizer.description }}</p>
 
                             {% if organizer.website %}
                                 <p class="leader--small">
-                                    <a class="block-link" href="{{ organizer.website }}" target="_blank">{{ 'visit official website'|i18n }}</a>
+                                    <a class="block-link" href="{{ organizer.website }}" target="_blank" itemprop="url">{{ 'visit official website'|i18n }}</a>
                                 </p>
                             {% endif %}
                         </div>

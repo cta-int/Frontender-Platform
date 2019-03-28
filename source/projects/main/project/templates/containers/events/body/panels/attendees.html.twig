@@ -12,15 +12,15 @@
                     <div class="trailer">
                         <div class="letter">{{ character }}</div>
                     </div>
-                    <ul class="reset">
+                    <ul class="reset" itemscope itemtype="https://schema.org/attendees">
                         {% for person in group %}
-                            <li class="trailer--large">
-                                <p class="heading heading--alternate heading--sub">
+                            <li class="trailer--large" itemscope itemprop="Person" itemtype="https://schema.org/Person">
+                                <p class="heading heading--alternate heading--sub" itemprop="name">
                                     {{ person.name }}
                                 </p>
                                 {% if person.worksFor|first %}
                                     {% if person.worksFor|first.name or person.worksFor|first.alternateName %}
-                                        <p class="body--whisper">
+                                        <p class="body--whisper" itemprop="worksFor">
                                             {{ person.worksFor|first.alternateName ? person.worksFor|first.alternateName|t(locales) : person.worksFor|first.name|t(locales) }}
                                             {% if person.worksFor|first.alternateName %}
                                                 ({{ person.worksFor|first.name|t(locales) }})
@@ -28,7 +28,7 @@
                                         </p>
                                     {% endif %}
                                     {% if person.worksFor|first.location %}
-                                        <p class="body--whisper">
+                                        <p class="body--whisper" itemprop="workLocation">
                                             {{ location.country(person.worksFor|first.location) }}
                                         </p>
                                     {% endif %}

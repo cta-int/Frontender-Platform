@@ -19,7 +19,7 @@
                     </div>
                     <div class="stack__unit  |  stack stack--stacked">
                         <div class="stack__unit">
-                            <h1 class="heading heading--focus  |  leader-inside  |  gutters gutter-hero--left">
+                            <h1 class="heading heading--focus  |  leader-inside  |  gutters gutter-hero--left" itemprop="name">
                                 {{ model.name }}
                             </h1>
                             <p class="gutters gutter-hero--left">
@@ -29,7 +29,7 @@
                             </p>
                         </div>
                         <div class="pin-box  |  stack__unit  |  stack  |  leader">
-                            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
+                            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left" itemprop="location" itemscope itemtype="http://schema.org/Place">
                                 {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
                             </div>
                             <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="wing--right">
-            <h1 class="article-headline__title  |  heading heading--hero  |  leader">
+            <h1 class="article-headline__title  |  heading heading--hero  |  leader" itemprop="name">
                 {{ model.name }}
             </h1>
             <p class="article-headline__byline  |  trailer">
