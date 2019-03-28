@@ -53,11 +53,11 @@ class EventsModel extends ScrModel
     {
         return new class ($this->getState(), $this->container, $this->data)
         {
-            private $cachedEvents = null;
             private $cachedUpcomingEvents = null;
             private $cachedPastEvents = null;
             private $cachedAllProjects = null;
             private $cachedArticles = null;
+            private $cachedAllEvents = null;
             private $container;
             private $state;
 
@@ -159,6 +159,13 @@ class EventsModel extends ScrModel
                     'geo' => $config['geo'],
                     'language' => $this->state->language
                 ]);
+
+                if (isset($config['from']) && isset($config['to'])) {
+                    $model->setState([
+                        'from' => $config['from'],
+                        'to' => $config['to']
+                    ]);
+                }
 
                 if ($projects) {
                     $model->setState([
