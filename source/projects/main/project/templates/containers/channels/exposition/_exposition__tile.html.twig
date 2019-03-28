@@ -2,7 +2,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="{{ tile_class }}  |  shade">
-    <a class="article-image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('{{ model.link.mediaObject|first.metadata.previewUrl }}');" data-modal="modal-{{ model._id }}">
+    <a class="article-image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('https://res.cloudinary.com/cta/image/upload/w_500,ar_2:3,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}');" data-modal="modal-{{ model._id }}">
         <div class="article-caption article-title">{{ model.headline }}</div>
         <div class="article__triangle"></div>
     </a>
@@ -13,7 +13,7 @@
         <div class="standout standout--post  |  fx">
             <header class="post-header">
                 <figure class="post-hero">
-                    <img src="{{ model.link.mediaObject|first.metadata.previewUrl }}" alt="{{ model.headline }}">
+                    <img src="https://res.cloudinary.com/cta/image/upload/w_1000,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.headline }}">
                     <figcaption class="image-caption">{{ model.link.mediaObject|first.credit }}</figcaption>
                 </figure>
                 <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
