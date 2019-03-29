@@ -132,8 +132,14 @@
 	@include breakpoint($gt-large-handheld) {
 		font-size: to-unit(56px);
 	}
+    @include breakpoint($gt-small-desktop) {
+        font-size: to-unit(40px);
+    }
+    @include breakpoint($gt-medium-desktop) {
+        font-size: to-unit(45px);
+    }
 	@include breakpoint($gt-large-desktop) {
-		font-size: to-unit(65px);
+		font-size: to-unit(50px);
 		border-bottom-width: 8px;
 	}
 	&--s {
