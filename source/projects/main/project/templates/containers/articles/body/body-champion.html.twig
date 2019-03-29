@@ -175,8 +175,8 @@
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
-                <div class="mini-map__map">
-                    <div id="map" style="height: 250px;"></div>
+                <div class="mini-map__map" itemprop="hasMap">
+                    <div id="map" style="height: 250px;" itemprop="map" itemtype="https://schema.org/Map"></div>
                     {{ location.map(model.analysis.geoname.geonames|locationSpecific, "#map") }}
                 </div>
                 <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
