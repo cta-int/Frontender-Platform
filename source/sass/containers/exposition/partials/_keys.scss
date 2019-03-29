@@ -83,6 +83,15 @@
 	}
 	@include breakpoint($gt-medium-desktop) {
 		&-row {
+			width: 3.5 / 18 * 100vw;
+			&:nth-child(even) {
+				width: 3.5 / 18 * 100vw;
+				padding-top: rhythm(40);
+			}
+		}
+	}
+	@include breakpoint($gt-large-desktop) {
+		&-row {
 			width: 3 / 18 * 100vw;
 			&:nth-child(even) {
 				width: 4 / 18 * 100vw;
