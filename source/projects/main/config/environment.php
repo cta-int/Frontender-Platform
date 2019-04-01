@@ -6,37 +6,38 @@
  */
 
 return [
-	/* Cache */
-	'caching' => 1,
-	'cachetime' => 1800, // In seconds
+    /* Cache */
+    'caching' => 1,
+    'cachetime' => 1800, // In seconds
 
-	/* Debug */
-	'debug' => 0,
-	'translation_debug' => 0,
+    /* Debug */
+    'debug' => 0,
+    'translation_debug' => 0,
 
-	/* Maintanance */
-	'offline' => 0,
+    /* Maintanance */
+    'offline' => 0,
 
-	/* Slim settings */
-	'determineRouteBeforeAppMiddleware' => true,
+    /* Slim settings */
+    'determineRouteBeforeAppMiddleware' => true,
 
-	/* ID separator */
-	'id_separator' => '-sid0',
+    /* ID separator */
+    'id_separator' => '-sid0',
 
-	'project' => [
-		'path' => ROOT_PATH . '/project'
-	],
+    'project' => [
+        'path' => ROOT_PATH . '/project'
+    ],
 
-	'core' => [
-		'path' => ROOT_PATH . '/core'
-	],
+    'core' => [
+        'path' => ROOT_PATH . '/core'
+    ],
 
-	'template' => [
-		'path' => ROOT_PATH . '/project/templates',
-		'cache' => [
-			'path' => ROOT_PATH . '/cache/twig'
-		],
-		'debug' => true,
-		'auto_reload' => true
-	]
+    'template' => [
+        'path' => ROOT_PATH . '/project/templates',
+        'cache' => [
+            'path' => ROOT_PATH . '/cache/twig'
+        ],
+        'debug' => true,
+        'auto_reload' => true
+    ],
+    'fem_host' => getenv('FEM_HOST', 'http://manager.getfrontender.com')
 ];
