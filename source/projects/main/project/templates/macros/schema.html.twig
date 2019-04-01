@@ -1,5 +1,5 @@
 {% macro _(model) %}
-{% if model|getSchema('context') %}
- itemtype="{{ model|getSchema('context') }}/{{ model|getSchema('type') }}" itemscope
-{% endif %}
+    {% if model|getSchema('context') %}
+        itemtype="{{ model|getSchema('context') }}/{{ model|getSchema('type') }}" itemscope
+    {% endif %}
 {% endmacro %}
