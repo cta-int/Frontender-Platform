@@ -12,7 +12,7 @@
 {% set class = helper.class(config)|trim %}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    
+
     {# Header is image from first article and content from label #}
     <header class="trailer--normal">
         <div class="ie9-hero">
@@ -66,5 +66,5 @@
         </article>
     {% endfor %}
     </div>
-    
+
 </{{ config.container_tag|default('div') }}>
