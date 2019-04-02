@@ -1,14 +1,14 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<figure class="gutters  |  leader leader-inside--small  |  trailer trailer-inside--small">
-    <img class="image image--stretch" src="{{ contentBlock.url }}" alt="{{ contentBlock.about|t(locales)|default(article.headline) }}" />
+<figure class="gutters  |  leader leader-inside--small  |  trailer trailer-inside--small" itemtype="https://schema.org/ImageObject" itemscope>
+    <img class="image image--stretch" src="{{ contentBlock.url }}" alt="{{ contentBlock.about|t(locales)|default(article.headline) }}" itemprop="image" />
     {% if contentBlock.about|t(locales) or contentBlock.credit|t(locales) %}
         <figcaption class="well well--padded well--neutral  |  leader-inside--small  |  trailer-inside--small">
             {% if contentBlock.about %}
-                <p class="caption">{{ contentBlock.about|t(locales) }}</p>
+                <p class="caption" itemprop="about">{{ contentBlock.about|t(locales) }}</p>
             {% endif %}
             {% if contentBlock.credit %}
-                <p class="credit">&copy; {{ contentBlock.credit|t(locales) }}</p>
+                <p class="credit" itemprop="copyrightHolder">&copy; {{ contentBlock.credit|t(locales) }}</p>
             {% endif %}
         </figcaption>
     {% endif %}
