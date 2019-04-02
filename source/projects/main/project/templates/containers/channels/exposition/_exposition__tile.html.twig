@@ -10,24 +10,24 @@
 <div class="fx modal" id="modal-{{ model._id }}">
     <div class="post  |  fx  |  {{ "theme--" ~ config.colour_theme }}">
         <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
-        <div class="standout standout--post  |  fx">
+        <div class="standout standout--post  |  fx" itemtype="https://schema.org/Article">
             <header class="post-header">
                 <figure class="post-hero">
-                    <img src="https://res.cloudinary.com/cta/image/upload/w_1000,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.headline }}">
+                    <img src="https://res.cloudinary.com/cta/image/upload/w_1000,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.headline }}" itemprop="image">
                     <figcaption class="image-caption">{{ model.link.mediaObject|first.credit }}</figcaption>
                 </figure>
                 <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
-                    <h1 class="title title--headline">{{ model.headline }}</h1>
+                    <h1 class="title title--headline" itemprop="headline">{{ model.headline }}</h1>
                 </div>
             </header>
 
 
-            <article class="post-body  |  gutters  |  wings  |  leader--hero">
+            <article class="post-body  |  gutters  |  wings  |  leader--hero" itemprop="articleBody">
                 <div class="social__share  |  trailer">
                     {{ share.bar_article_linkedin(model, true) }}
                 </div>
                 {% if model.about %}
-                    <p class="paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                    <p class="paragraph--lead" itemprop="description">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
                 {% endif %}
                 {% for i, contentBlock in model.contentBlocks %}
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}

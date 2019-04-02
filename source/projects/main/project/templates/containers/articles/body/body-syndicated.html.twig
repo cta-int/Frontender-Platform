@@ -32,15 +32,17 @@
 
                     {# render the content blocks - if the first block is a list,
                     we treat it as the article takeaways #}
-                    {% for i, contentBlock in model.contentBlocks %}
-                        {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
-                            <div class="gutters  |  leader leader-inside--tiny  |  trailer">
-                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
-                            </div>
-                        {% else %}
-                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
-                        {% endif %}
-                    {% endfor %}
+                    <div itemprop="articleBody">
+                        {% for i, contentBlock in model.contentBlocks %}
+                            {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                                <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                                </div>
+                            {% else %}
+                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
 
                 {% if model.analysis.agrovoc.concepts %}
