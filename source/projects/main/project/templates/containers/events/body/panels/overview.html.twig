@@ -40,7 +40,7 @@
                 <div class="mini-map  |  well--neutral  |  gutters-outside">
                     {% if model.location %}
                         <div class="mini-map__map" itemprop="hasMap">
-                            <div id="map" style="height: 250px;" itemprop="map" itemtype="https://schema.org/Map"></div>
+                            <div id="map" style="height: 250px;" itemprop="map"></div>
                             {{ location.map(model.location, "#map", 'geo') }}
                         </div>
                         <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">

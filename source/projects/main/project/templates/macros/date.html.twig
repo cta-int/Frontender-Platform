@@ -1,16 +1,16 @@
 {% macro event_short(start_date, end_date, timezone = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-    <time class="meta" datetime="{{ start_date }}" itemprop="startDate" itemtype="http://schema.org/Date">{{ start_date|tdate('%e %b %Y', timezone) }}</time>
+    <time class="meta" datetime="{{ start_date }}" itemprop="startDate">{{ start_date|tdate('%e %b %Y', timezone) }}</time>
     {% if end_date is defined and start_date|tdate('%Y-%m%d', timezone) != end_date|tdate('%Y-%m%d', timezone) %}
-        <time class="meta" datetime="{{ end_date }}" itemprop="endDate" itemtype="http://schema.org/Date">{{ end_date|tdate(' – %e %b %Y', timezone) }}</time>
+        <time class="meta" datetime="{{ end_date }}" itemprop="endDate">{{ end_date|tdate(' – %e %b %Y', timezone) }}</time>
     {% endif %}
 {% endmacro %}
 
 {% macro event_long(start_date, end_date, timezone = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-    <time class="meta" datetime="{{ start_date }}" itemprop="startDate" itemtype="http://schema.org/Date">{{ start_date|tdate('%A, %e %B %Y', timezone) }}</time>
+    <time class="meta" datetime="{{ start_date }}" itemprop="startDate">{{ start_date|tdate('%A, %e %B %Y', timezone) }}</time>
     {% if end_date is defined and start_date|tdate('%Y-%m%d', timezone) != end_date|tdate('%Y-%m%d', timezone) %}
-        <time class="meta" datetime="{{ end_date }}" itemprop="endDate" itemtype="http://schema.org/Date">{{ end_date|tdate(' – %A, %e %B %Y', timezone) }}</time>
+        <time class="meta" datetime="{{ end_date }}" itemprop="endDate">{{ end_date|tdate(' – %A, %e %B %Y', timezone) }}</time>
     {% endif %}
 {% endmacro %}
 

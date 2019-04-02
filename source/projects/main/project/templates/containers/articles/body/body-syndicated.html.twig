@@ -103,7 +103,7 @@
                     {% if model.isbn %}
                         <dl class="meta  |  trailer--hero  |  gutters">
                             <dt><strong>{{ 'ISBN'|t(locales) }}:</strong></dt>
-                            <dl itemprop="identifier" itemtype="https://schema.org/Text">{{ model.isbn }}</dl>
+                            <dl itemprop="identifier">{{ model.isbn }}</dl>
 
                             {% if model.link.organization.sourceOrganization|length > 0 %}
                                 <dt class="leader--small leader-inside--tiny"><strong>{{ 'Publisher'|t(locales) }}:</strong></dt>
@@ -164,7 +164,7 @@
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
                 <div class="mini-map__map" itemprop="hasMap">
-                    <div id="map" style="height: 250px;" itemprop="map" itemtype="https://schema.org/Map"></div>
+                    <div id="map" style="height: 250px;" itemprop="map"></div>
                     {{ location.map(model.analysis.geoname.geonames | locationSpecific, "#map") }}
                 </div>
                 <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
@@ -199,7 +199,7 @@
 
         {% if model.import.sourceSite|length > 0 %}
             <div class="gutters  |  trailer">
-                <p class="meta">{{ 'Link to the' }} <a href="{{ model.import.sourceSite }}" target="_blank" itemprop="sameAs" itemtype="https://schema.org/URL">{{ 'original article' }}</a></p>
+                <p class="meta">{{ 'Link to the' }} <a href="{{ model.import.sourceSite }}" target="_blank" itemprop="sameAs">{{ 'original article' }}</a></p>
             </div>
         {% endif %}
 

@@ -3,13 +3,13 @@
 
 <div class="tile  |  well well--neutral  |  leader--small">
     <div class="tile__head">
-        <a class="tile__head  |  anchor anchor--shy" href="{{ file.metadata.url }}" itemprop="image" itemtype="https://schema.org/URL">
+        <a class="tile__head  |  anchor anchor--shy" href="{{ file.metadata.url }}" itemprop="image">
             {{ image.post_hero(file) }}
         </a>
     </div>
     <div class="tile__body  |  gutters  |  leader--small  |  trailer--small">
         <h2 class="title title--filter">
-            <a class="is-heir" href="{{ file.metadata.url }}" itemtype="https://schema.org/URL">
+            <a class="is-heir" href="{{ file.metadata.url }}">
                 <span itemprop="description">{{ file.description|default(file.type)|t(locales) }}</span>
             </a>
         </h2>
