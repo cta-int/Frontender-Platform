@@ -17,7 +17,7 @@
 {% macro article(date, timezone = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
     {% if date %}
-        <time class="meta" datetime="{{ date }}">{{ date|tdate('%e %B %Y', timezone) }}</time>
+        <time class="meta" datetime="{{ date }}" itemprop="datePublished">{{ date|tdate('%e %B %Y', timezone) }}</time>
     {% endif %}
 {% endmacro %}
 

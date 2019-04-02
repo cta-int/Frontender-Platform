@@ -112,10 +112,10 @@
                 {# Related articles #}
                 {% if model.related.articles|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for model in model.related.articles %}
-                            <li class="leader--small  |  leader--small">
-                                <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" itemprop="name">
                                     {{ model.headline|t(locales) }}
                                 </a>
                             </li>
@@ -141,11 +141,11 @@
 
                 {% if relatedEvents|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {# Show everything except the projects. #}
                         {% for event in relatedEvents %}
-                            <li class="leader--small  |  leader--small">
-                                <a href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify, 'id': event._id}) }}">
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify, 'id': event._id}) }}" itemprop="name">
                                     {{ event.name|t(locales) }}
                                 </a>
                             </li>
@@ -167,10 +167,10 @@
 
                 {% if relatedProjects|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for project in relatedProjects %}
-                            <li class="leader--normal  |  trailer--normal">
-                                <a href="{{ route({'page': project.path, 'slug': project.name|t(locales)|slugify, 'id': project._id}) }}">
+                            <li class="leader--normal  |  trailer--normal" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': project.path, 'slug': project.name|t(locales)|slugify, 'id': project._id}) }}" itemprop="name">
                                     {{ project.name|t(locales) }}
                                 </a>
                             </li>

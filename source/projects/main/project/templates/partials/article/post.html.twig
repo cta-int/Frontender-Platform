@@ -7,7 +7,7 @@
 
 {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
-<div class="post">
+<div class="post" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
     {% if config.show_lead_image %}
         <div class="post__media">
             <a class="anchor anchor--shy" href="{{ article_link }}">
@@ -23,7 +23,7 @@
             {% endif %}
 
             {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-                <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
+                <span class="meta" itemprop="isPartOf">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
             {% endif %}
 
             {% if config.show_type|default(1) %}
@@ -32,19 +32,19 @@
         </p>
 
         <h3 class="heading  |  anchor--reset">
-            <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
+            <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}" itemprop="headline">
                 {{ article.headline }}
             </a>
         </h3>
 
         {% if config.show_author_name and article.link.person.author | length > 0 %}
-            <p class="post__author  |  author">
+            <p class="post__author  |  author" itemprop="author">
                 {{ author.long(article.link.person.author) }}
             </p>
         {% endif %}
 
         {% if config.show_stand_first %}
-            <p class="is-gt-small-desktop  |  post__intro">{{ article.about|raw }}</p>
+            <p class="is-gt-small-desktop  |  post__intro" itemprop="description">{{ article.about|raw }}</p>
         {% endif %}
 
         {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
@@ -56,7 +56,7 @@
         {% endif %}
 
         {% if config.show_read_more %}
-            <a class="read-more  |  is-gt-small-desktop" href="{{ article_link }}">{{ 'Read more'|i18n }}</a>
+            <a class="read-more  |  is-gt-small-desktop" href="{{ article_link }}" itemprop="url">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
 </div>

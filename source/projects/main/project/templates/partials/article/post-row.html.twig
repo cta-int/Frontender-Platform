@@ -5,7 +5,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}">
+<div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
     <div class="post__content media__body  |  gutter">
         {% if config.show_publication_date|default(1) %}
             {{ date.article(article.datePublished) }}
@@ -20,7 +20,7 @@
         {% endif %}
 
         <h3 class="heading  |  anchor--reset">
-            <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+            <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}" itemprop="headline">
                 {{ article.headline }}
             </a>
   	    </h3>
@@ -32,7 +32,7 @@
         {% endif %}
 
         {% if config.show_stand_first|default(1) %}
-           <p class="post__intro">{{ article.about|raw }}</p>
+           <p class="post__intro" itemprop="description">{{ article.about|raw }}</p>
         {% endif %}
 
         {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
@@ -44,7 +44,7 @@
         {% endif %}
 
         {% if config.show_read_more|default(1) %}
-           <a class="read-more" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">{{ 'Read more'|i18n }}</a>
+           <a class="read-more" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}" itemprop="url">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
     {% if config.show_lead_image|default(1) and article.link.mediaObject|lead %}
