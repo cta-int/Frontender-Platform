@@ -13,7 +13,7 @@
                 <span class="icon icon-open-book"></span>
                 <div>
                     <p class="label--s">application/pdf</p>
-                    {% if labels.download_link|t(locales)|getFileSize %}
+                    {% if labels.download_link|t(locales) %}
                         <p class="label--xs">{{ labels.download_link|t(locales)|getFileSize }}</p>
                     {% endif %}
                 </div>

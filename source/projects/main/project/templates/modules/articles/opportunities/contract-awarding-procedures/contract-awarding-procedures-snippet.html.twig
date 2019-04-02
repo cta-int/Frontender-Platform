@@ -14,7 +14,7 @@
                         <a class="block-link  |  download-size" href="{{ download.url }}" target="_blank">
                             {{ download.name }}
                         </a>
-                        {% if download.url|getFileSize %}
+                        {% if download.url %}
                             <span class="download-size">{{ download.url|getFileSize }}</span>
                         {% endif %}
                     </div>
