@@ -20,8 +20,8 @@
         {% endif %}
 
         <h3 class="heading  |  anchor--reset">
-            <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}" itemprop="headline">
-                {{ article.headline }}
+            <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+                <span itemprop="headline">{{ article.headline }}</span>
             </a>
   	    </h3>
 
