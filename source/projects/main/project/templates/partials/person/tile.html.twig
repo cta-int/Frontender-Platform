@@ -10,13 +10,11 @@
         {% if person.honorificPrefix %}
             <h4 class="profile__name  |  title  |  trailer--small">
                 <span itemprop="honorificPrefix">{{ person.honorificPrefix }}</span>
-                <span itemprop="givenName">{{ person.givenName }}</span>
-                <span itemprop="familyName">{{ person.familyName }}</span>
+                <span itemprop="name">{{ (person.givenName ~ ' ' ~ person.familyName)|trim }}</span>
             </h4>
         {% else %}
-            <h4 class="profile__name  |  title  |  trailer--small">
-                <span itemprop="givenName">{{ person.givenName }}</span>
-                <span itemprop="familyName">{{ person.familyName }}</span>
+            <h4 class="profile__name  |  title  |  trailer--small" itemprop="givenName">
+                {{ person.givenName ~ ' ' ~ person.familyName }}
             </h4>
         {% endif %}
 
