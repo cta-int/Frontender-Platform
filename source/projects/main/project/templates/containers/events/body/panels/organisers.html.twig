@@ -1,6 +1,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<section class="panel  |  wing--right" id="organisers" itemscope itemprop="organizer">
+<section class="panel  |  wing--right" id="organisers">
     <h2 class="title">
           <a class="panel__trigger  |  gutters  |  is-heir" href="#organisers">{{ 'Organisers'|i18n }}</a>
     </h2>
@@ -8,7 +8,7 @@
         <ul class="reset">
             {% for organizer in model.organizer %}
                 <li class="leader  |  trailer">
-                    <article class="organisation-profile  |  wing--right" itemscope itemtype="https://schema.org/Organization">
+                    <article class="organisation-profile  |  wing--right" itemprop="organizer" itemscope itemtype="https://schema.org/Organization">
                         {% if(organizer.avatar) %}
                             <div class="organisation-profile__brand  |  gutters">
                                 <img class="image" src="{{ organizer.avatar }}" alt="" itemprop="logo"/>

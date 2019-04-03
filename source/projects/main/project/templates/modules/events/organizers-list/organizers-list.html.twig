@@ -6,10 +6,10 @@
     {% endif %}
         {% if model.sponsor | length > 0 %}
             <h4 class="title  |  meta  |  trailer--normal">{{ labels.sponsor_title|t(locales) }}</h4>
-            <ul class="reset" itemscope itemprop="sponsor">
+            <ul class="reset">
                 {% for sponsor in model.sponsor %}
                     {% set sponsorDisplayname = sponsor.alternateName|t(locales) != '' ? sponsor.alternateName|t(locales) : sponsor.name|t(locales) %}
-                    <li itemscope itemtype="https://schema.org/Organization">
+                    <li itemprop="sponsor" itemscope itemtype="https://schema.org/Organization">
                         {% if sponsor.website|length > 0 %}
                             <a href="{{ sponsor.website }}" target="_blank" itemprop="url">
                                 <span itemprop="name">{{ sponsorDisplayname }}</span>
@@ -23,10 +23,10 @@
         {% endif %}
         {% if model.organizer | length > 0 %}
             <h4 class="title  |  meta  |  trailer--normal  |  leader">{{ labels.partner_title|t(locales) }}</h4>
-            <ul class="reset" itemscope itemprop="organizer">
+            <ul class="reset">
             {% for organizer in model.organizer %}
                 {% set organizerDisplayname = organizer.alternateName|t(locales) != '' ? organizer.alternateName|t(locales) : organizer.name|t(locales) %}
-                <li itemscope itemtype="https://schema.org/Organization">
+                <li itemprop="organizer" itemscope itemtype="https://schema.org/Organization">
                     {% if organizer.website|length > 0 %}
                         <a href="{{ organizer.website }}" target="_blank" itemprop="url">
                             <span itemprop="name">{{ organizerDisplayname }}</span>

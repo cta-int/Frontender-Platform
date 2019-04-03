@@ -12,7 +12,7 @@
                 <h3 class="trailer  |  gutters">{{ 'Chairs'|t(locales) }}</h3>
                 <div class="grid  grid--teletubbies">
                     {% for chair in model.chair %}
-                        <div class="grid__cell  |  gutters  |  trailer" itemprop="performer" itemscope itemtype="http://schema.org/performer">
+                        <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
                             {% include 'partials/person/tile.html.twig' with {person: chair} %}
                         </div>
                     {% endfor %}
@@ -25,7 +25,7 @@
 
                 <div class="grid  grid--teletubbies">
                     {% for keynote in event.keynote %}
-                        <div class="grid__cell  |  gutters  |  trailer" itemprop="performer" itemscope itemtype="http://schema.org/performer">
+                        <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
                             {% include 'partials/person/tile.html.twig' with {person: keynote} %}
                         </div>
                     {% endfor %}
@@ -36,10 +36,10 @@
         {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'translator'] %}
             {% if attribute(model, type) | length > 0 %}
                 <div class="profile__list  |  trailer--hero">
-                    <h3 class="trailer  |  gutters">{{ ('event_' ~ type)|t(locales) }}</h3>
+                    <h3 class="trailer  |  gutters">{{ ('event_' ~ type)|i18n }}</h3>
                     <div class="grid  grid--teletubbies">
                         {% for person in attribute(model, type) %}
-                            <div class="grid__cell  |  gutters  |  trailer" itemprop="performer" itemscope itemtype="http://schema.org/performer">
+                            <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
                                 {% include 'partials/person/tile.html.twig' %}
                             </div>
                         {% endfor %}
