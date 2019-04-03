@@ -183,7 +183,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
         width="{{ size }}"
         height="{{ size }}"
-        alt="{{ (person.honorificPrefix ~ person.givenName ~ person.familyName)|trim }}"
+        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName)|trim }}"
         itemprop="image"
     />
 {% endmacro %}
@@ -199,7 +199,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 
     <img
         src="{{ person.avatar|default(fallback) }}"
-        alt="{{ (person.honorificPrefix ~ person.givenName ~ person.familyName)|trim }}"
+        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName)|trim }}"
         itemprop="image"
     />
 {% endmacro %}
