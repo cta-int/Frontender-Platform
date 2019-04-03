@@ -4,7 +4,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-
+{% set articleRoute = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 <div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}" itemscope itemtype="https://schema.org/Article">
     <div class="post__content media__body  |  gutter">
         {% if config.show_publication_date|default(1) %}
@@ -22,7 +22,7 @@
         {% endif %}
 
         <h3 class="heading  |  anchor--reset">
-            <a class="anchor anchor--shy  |  is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+            <a class="anchor anchor--shy  |  is-heir" itemprop="url" href="{{ articleRoute }}">
                 <span itemprop="headline">{{ article.headline }}</span>
             </a>
   	    </h3>
@@ -46,12 +46,12 @@
         {% endif %}
 
         {% if config.show_read_more|default(1) %}
-           <a class="read-more" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}" itemprop="url">{{ 'Read more'|i18n }}</a>
+           <a class="read-more" itemprop="url" href="{{ articleRoute }}" itemprop="url">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
     {% if config.show_lead_image|default(1) and article.link.mediaObject|lead %}
         <div class="post__image media__figure  |  trailer--tiny">
-            <a class="anchor anchor--shy" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}">
+            <a class="anchor anchor--shy" itemprop="url" href="{{ articleRoute }}">
                 {{ image.post(article.link.mediaObject|lead) }}
             </a>
         </div>

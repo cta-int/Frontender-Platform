@@ -134,14 +134,16 @@
                 </div>
             {% endif %}
         </div>
-        <div class="layout__cell layout__cell--aside  |  wings">
+        <div class="layout__cell layout__cell--aside  |  wings" itemscope itemtype="https://schema.org/ItemList">
             <aside class="gutters">
-                <p class="title title--section wing--right trailer"><strong>{{ model.opinion.label.display_name|t  }}</strong></p>
-                <h1 class="paragraph paragraph--theorem wing--right">{{ model.opinion.issue.headline|t }}</h1>
-                <p class="paragraph paragraph--lead wing--right">{{ model.opinion.issue.about|t }}</p>
-                <ul class="reset leader--normal" itemtype="https://schema.org/ItemList" itemscope>
+                <p itemprop="alternateName" class="title title--section wing--right trailer"><strong>{{ model.opinion.label.display_name|t  }}</strong></p>
+                <h1 itemprop="name" class="paragraph paragraph--theorem wing--right">{{ model.opinion.issue.headline|t }}</h1>
+                <p itemprop="description" class="paragraph paragraph--lead wing--right">{{ model.opinion.issue.about|t }}</p>
+                <ul class="reset leader--normal">
                     {% for i, article in model.opinion.issue.similar.articles %}
-                        <li class="divider divider--bottom leader-inside trailer-inside" itemprop="itemListElement" itemprop="position" order="{{ i }}">
+                        <li class="divider divider--bottom leader-inside trailer-inside" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <meta itemprop="position" content="{{ i }}"/>
+                            <meta itemprop="url" content="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}"/>
                             {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
                                 'show_publication_date': 0,
                                 'show_publication': 0,
