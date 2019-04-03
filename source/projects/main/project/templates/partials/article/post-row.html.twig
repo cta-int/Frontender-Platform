@@ -28,7 +28,7 @@
   	    </h3>
 
         {% if article.link.person.author|length %}
-            <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-hidden'}}">
+            <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
                 {{ author.long(article.link.person.author) }}
             </p>
         {% endif %}

@@ -37,8 +37,8 @@
             </a>
         </h3>
 
-        {% if config.show_author_name and article.link.person.author | length > 0 %}
-            <p class="post__author  |  author" itemprop="author">
+        {% if article.link.person.author|length %}
+            <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
                 {{ author.long(article.link.person.author) }}
             </p>
         {% endif %}
