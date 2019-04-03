@@ -65,8 +65,10 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-                    {{ share.bar_article(model) }}
+                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+                    <div class="gutters">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
@@ -165,9 +167,6 @@
                         {% endfor %}
                     </section>
                 {% endif %}
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
-                    {{ share.bar_article(article) }}
-                </div>
             </div>
         </div>
     </div>
@@ -198,7 +197,7 @@
                             {{ image.person(auth, 50) }}
                         </div>
                         <div class="media__body  |  gutter--right  |  body--whisper">
-                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             {% if auth.description %}
                                 <p itemprop="description" class="">{{ auth.description }}</p>
                             {% endif %}
