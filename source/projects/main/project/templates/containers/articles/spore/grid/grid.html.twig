@@ -5,20 +5,16 @@
 <div class="grid grid--posts" itemtype="https://schema.org/ItemList" itemscope>
 
     {% if event.similar.articles %}
-        {% for i, article in event.similar.articles|slice(0,4) %}
-            <div class="grid__cell  |  trailer  |  gutters" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <meta itemprop="position" content="{{ i }}"/>
-                <meta itemprop="url" content="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}"/>
+        {% for article in event.similar.articles|slice(0,4) %}
+            <div class="grid__cell  |  trailer  |  gutters">
                 {% include "partials/article/post.html.twig" %}
             </div>
         {% endfor %}
     {% endif %}
 
     {% if article.similar.publicationArticles %}
-        {% for i, article in article.similar.publicationArticles|slice(0,4) %}
-            <div class="grid__cell  |  trailer  |  gutters" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <meta itemprop="position" content="{{ i }}"/>
-                <meta itemprop="url" content="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}"/>
+        {% for article in article.similar.publicationArticles|slice(0,4) %}
+            <div class="grid__cell  |  trailer  |  gutters">
                 {% include "partials/article/post.html.twig" %}
             </div>
         {% endfor %}
