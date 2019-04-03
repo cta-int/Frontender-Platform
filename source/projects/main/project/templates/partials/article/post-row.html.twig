@@ -5,10 +5,12 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
+<div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}" itemscope itemtype="https://schema.org/Article">
     <div class="post__content media__body  |  gutter">
         {% if config.show_publication_date|default(1) %}
             {{ date.article(article.datePublished) }}
+        {% else %}
+            <span class="is-hidden">{{ date.article(article.datePublished) }}</span>
         {% endif %}
 
         {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
@@ -25,8 +27,8 @@
             </a>
   	    </h3>
 
-        {% if config.show_author_name and article.link.person.author|length %}
-            <p class="post__author  |  author">
+        {% if article.link.person.author|length %}
+            <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-hidden'}}">
                 {{ author.long(article.link.person.author) }}
             </p>
         {% endif %}
