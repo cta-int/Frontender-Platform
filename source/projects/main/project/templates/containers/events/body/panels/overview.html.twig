@@ -43,9 +43,16 @@
                             <div id="map" style="height: 250px;" itemprop="map"></div>
                             {{ location.map(model.location, "#map", 'geo') }}
                         </div>
-                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
-                            {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                        {% if model.location.name %}
+                        <div class="mini-map__asset  |  gutters  |  trailer-inside--small  |  leader-inside--small" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                            <span itemprop="address">{{ model.location.name }}</span>
                         </div>
+                        {% endif %}
+                        {% if model.analysis.geoname.geonames | length %}
+                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                            {% include "partials/location.html.twig" with {'location': model.analysis.geoname.geonames|locationSpecific} %}
+                        </div>
+                        {% endif %}
                     {% endif %}
                     {% if model.url %}
                         <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
@@ -72,7 +79,7 @@
                             <div class="media  |  trailer--small" itemscope itemtype="http://schema.org/Organization">
                                 <div class="media__figure">
                                     {% if (organisation.avatar) %}
-                                        <a href="#organisers" target="_blank" itemprop="url">
+                                        <a href="#organisers" target="_blank">
                                             <img class="image" height="50" width="50" src="{{ organisation.avatar }}" alt="" itemprop="logo"/>
                                         </a>
                                     {% endif %}
@@ -81,7 +88,7 @@
                                     <div class="is-center  |  media__body  |  gutters" itemprop="name">{{ organisation.name }}</div>
                                 {% else %}
                                     <div class="media__body">
-                                        <a href="#organisers" target="_blank" itemprop="url">
+                                        <a href="#organisers" target="_blank">
                                             <span class="is-lt-small-desktop" itemprop="name">
                                                 {{ organisation.name }}
                                             </span>
@@ -112,9 +119,9 @@
                 {# Related articles #}
                 {% if model.related.articles|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for model in model.related.articles %}
-                            <li class="leader--small  |  leader--small" itemtype="https://schema.org/Article" itemscope>
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
                                 <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" itemprop="name">
                                     {{ model.headline|t(locales) }}
                                 </a>
@@ -141,17 +148,13 @@
 
                 {% if relatedEvents|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {# Show everything except the projects. #}
                         {% for event in relatedEvents %}
-                            <li class="leader--small  |  leader--small" itemtype="https://schema.org/Event" itemscope>
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
                                 <a href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify, 'id': event._id}) }}" itemprop="name">
                                     {{ event.name|t(locales) }}
                                 </a>
-                                <span itemprop="location" itemscope itemtype="https://schema.org/Place">
-                                    <meta itemprop="address" content="{{ event.location.address.addressLocality|t(locales) }}"/>
-                                </span>
-                                <meta itemprop="startDate" content="{{ event.startDate }}"/>
                             </li>
                         {% endfor %}
                     </ul>
@@ -171,16 +174,12 @@
 
                 {% if relatedProjects|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for project in relatedProjects %}
-                            <li class="leader--normal  |  trailer--normal" itemtype="https://schema.org/Event" itemscope>
+                            <li class="leader--normal  |  trailer--normal" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
                                 <a href="{{ route({'page': project.path, 'slug': project.name|t(locales)|slugify, 'id': project._id}) }}" itemprop="name">
                                     {{ project.name|t(locales) }}
                                 </a>
-                                <span itemprop="location" itemscope itemtype="https://schema.org/Place">
-                                    <meta itemprop="address" content="{{ project.location.address.addressLocality|t(locales) }}"/>
-                                </span>
-                                <meta itemprop="startDate" content="{{ project.startDate }}"/>
                             </li>
                         {% endfor %}
                     </ul>

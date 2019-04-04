@@ -29,18 +29,22 @@
                             </p>
                         </div>
                         <div class="pin-box  |  stack__unit  |  stack  |  leader">
-                            <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left" itemprop="location" itemscope itemtype="http://schema.org/Place">
-                                {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                            
+                            {% if model.analysis.geoname.geonames | length %}
+                            <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                                {% include "partials/location.html.twig" with {'location': model.analysis.geoname.geonames|locationSpecific} %}
                             </div>
+                            {% endif %}
+                            
+                            {% if model.analysis.agrovoc.concepts | length %}
                             <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
-                                {% if model.analysis.agrovoc.concepts | length > 0 %}
-                                    <ul class="reset  |  label-list  |  list--inline">
-                                        {% for label in model.analysis.agrovoc.concepts | slice(0, 5) %}
-                                            <li>{{ concept.label(label, locale) }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
+                                <ul class="reset  |  label-list  |  list--inline">
+                                    {% for label in model.analysis.agrovoc.concepts | slice(0, 5) %}
+                                        <li>{{ concept.label(label, locale) }}</li>
+                                    {% endfor %}
+                                </ul>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
