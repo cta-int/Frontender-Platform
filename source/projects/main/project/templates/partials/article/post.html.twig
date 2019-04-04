@@ -22,6 +22,8 @@
         <p class="post__meta  |  trailer--tiny">
             {% if config.show_publication_date|default(1) %}
                 {{ date.article(article.datePublished) }}
+            {% else %}
+                <meta itemprop="datePublished" content="{{ article.datePublished }}">
             {% endif %}
 
             {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
