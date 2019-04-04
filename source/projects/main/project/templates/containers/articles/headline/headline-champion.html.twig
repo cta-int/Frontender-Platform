@@ -6,7 +6,7 @@
 {% set class = helper.class(config)|trim %}
 
 
-<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class]|join('  |  ') }}">
+<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class|t(locales)]|join('  |  ') }}">
     <div class="ie9-hero">
         {% if model.link.mediaObject|lead %}
             {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}

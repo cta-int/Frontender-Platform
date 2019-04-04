@@ -1,7 +1,7 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{["post-tile", config.container_class]|join('  |  ') }}">
+<div class="{{["post-tile", config.container_class|t(locales)]|join('  |  ') }}">
     <a class="is-heir" href="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, 'id': article._id}) }}">
         {{ image.post_tile(article.link.mediaObject|lead) }}
     </a>
