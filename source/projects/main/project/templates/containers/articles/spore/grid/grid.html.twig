@@ -2,7 +2,7 @@
 {% set container_class = helper.class(config)|trim %}
 
 <{{ config.container_tag|default('div') }} class="{{[container_class]|join('  |  ') }}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
-<div class="grid grid--posts" itemtype="https://schema.org/ItemList" itemscope>
+<div class="grid grid--posts">
 
     {% if event.similar.articles %}
         {% for article in event.similar.articles|slice(0,4) %}

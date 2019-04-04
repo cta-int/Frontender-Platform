@@ -34,7 +34,7 @@ All post settings have a vaue of 0, 1 or 2
 } %}
 
 {% import "macros/template.html.twig" as helper %}
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} itemtype="https://schema.org/ItemList" itemscope>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% include(config.template) with {'article': model.articles|first, 'config': hero_config} %}
     {% for article in model.articles|slice(1) %}
         <hr class="reset  |  divider divider--top  |  leader-inside--tiny leader--small  |  trailer-inside--tiny trailer--small"/>

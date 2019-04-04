@@ -7,7 +7,7 @@
 
 {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
-<div class="post" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
+<div class="post" itemscope itemtype="https://schema.org/Article">
     {% if config.show_lead_image %}
         <div class="post__media">
             <a class="anchor anchor--shy" href="{{ article_link }}">
