@@ -27,6 +27,10 @@
                     <div class="media__content  |  body--whisper  |  leader--tiny">
                         {{ author.long(model.link.person.author) }}
                     </div>
+                {% else %}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                    </span>
                 {% endif %}
             </footer>
 

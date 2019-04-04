@@ -14,6 +14,8 @@
                 {{ image.post(article.link.mediaObject|lead) }}
             </a>
         </div>
+    {% else %}
+        <meta itemprop="image" content="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ article.link.mediaObject|lead.metadata.id }}">
     {% endif %}
     <div class="post__content  |  leader-inside">
 
@@ -41,6 +43,10 @@
             <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
                 {{ author.long(article.link.person.author) }}
             </p>
+        {% else %}
+            <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+            </span>
         {% endif %}
 
         {% if config.show_stand_first %}
