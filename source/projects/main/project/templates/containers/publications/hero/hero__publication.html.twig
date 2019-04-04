@@ -33,12 +33,13 @@
                     {% endif %}
                 </dl>
                 {% if model.externalLink|length > 0 %}
-                    <div class="leader">
+                    <div class="leader-inside">
                         {% for link in model.externalLink %}
+                            {% set fileSize = link.url|getFileSize %}
                             <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
                                 <span class="publication-download__item">{{ link.name }}</span>
-                                {% if link.url %}
-                                    <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                {% if fileSize %}
+                                    <span class="publication-download__item">{{ fileSize }}</span>
                                 {% endif %}
                             </a>
                         {% endfor %}
