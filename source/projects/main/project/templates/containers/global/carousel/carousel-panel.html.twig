@@ -5,7 +5,7 @@
 {% set panel_link = route({ 'page': links.section_link.page }) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/Article">
+<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme }}" itemscope itemtype="https://schema.org/Article">
 	<div class="hero hero--carousel">
 	    <a class="anchor anchor--shy is-heir" href="{{ panel_link }}">
 	      {{ image.carousel(model, "hero__figure  |  image image--stretch") }}
