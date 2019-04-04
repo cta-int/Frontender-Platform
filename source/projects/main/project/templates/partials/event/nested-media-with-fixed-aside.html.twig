@@ -2,7 +2,7 @@
 {% import "macros/concept.html.twig" as concept %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<article class="{{['media  |  trailer',class]|join('  |  ')}}">
+<article class="{{['media  |  trailer',class]|join('  |  ')}}" itemscope itemtype="https://schema.org/Event">
     <div class="media__figure  |  gutters gutter-mobile--right">
         {{ date.tile(model.startDate) }}
     </div>
@@ -10,7 +10,7 @@
         <div class="media media--unfold">
             <div class="media__body  |  gutters  |  trailer">
                 <a class="anchor--reset anchor--shy  |  stack" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify , id: model._id}) }}">
-                    <h2 class="heading heading--focus">{{ model.name }}</h2>
+                    <h2 class="heading heading--focus" itemprop="name">{{ model.name }}</h2>
                 </a>
                 <div class="leader--small">
                     {{ date.event_long(model.startDate, model.endDate) }}
@@ -27,6 +27,9 @@
                 <div class="gutters">
                     {% if model.location %}
                         {% include "partials/location.html.twig" with {"location": model.location} %}
+                        <span itemprop="location" itemscope itemtype="https://schema.org/Place">
+                            <meta itemprop="address" content="{{ event.location.address.addressLocality|t(locales) }}"/>
+                        </span>
                     {% endif %}
                     <div class="leader">
                         <ul class="reset label-list reset list--inline">
