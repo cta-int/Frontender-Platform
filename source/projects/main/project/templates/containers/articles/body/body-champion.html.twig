@@ -8,7 +8,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
+<div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">
         <div class="layout">
             <div class="layout__cell layout__cell--main  |  trailer--hero">
@@ -28,6 +28,10 @@
                         <div class="media__content  |  body--whisper  |  leader--tiny">
                             {{ author.long(model.link.person.author) }}
                         </div>
+                    {% else %}
+                        <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                        </span>
                     {% endif %}
                 </footer>
 
@@ -132,7 +136,7 @@
                         <h2 class="title title--apropos">{{ 'Partners'|i18n(locales) }}</h2>
                         <ul class="reset">
                             {% for organization in model.link.organization.partnerOrganization %}
-                                <li itemcope itemtype="organization" class="leader--small">{{ organization.alternateName ? organization.alternateName|t(locales) : organization.name|t(locales) }}</li>
+                                <li itemscope itemtype="https://schema.org/Organization" class="leader--small">{{ organization.alternateName ? organization.alternateName|t(locales) : organization.name|t(locales) }}</li>
                             {% endfor %}
                         </ul>
                     </section>
@@ -175,8 +179,8 @@
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
-                <div class="mini-map__map">
-                    <div id="map" style="height: 250px;"></div>
+                <div class="mini-map__map" itemprop="hasMap">
+                    <div id="map" style="height: 250px;" itemprop="map"></div>
                     {{ location.map(model.analysis.geoname.geonames|locationSpecific, "#map") }}
                 </div>
                 <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
@@ -198,9 +202,9 @@
                             {{ image.person(auth, 50) }}
                         </div>
                         <div class="media__body  |  gutter--right  |  body--whisper">
-                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            <p class="meta--bold  |  trailer--tiny" itemprop="name">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             {% if auth.description %}
-                                <p itemprop="description" class="">{{ auth.description }}</p>
+                                <p itemprop="description">{{ auth.description }}</p>
                             {% endif %}
                         </div>
                     </div>
@@ -211,9 +215,9 @@
         {% if model.link.organization.sourceOrganization|filterCTA(false)|length > 0 %}
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
-                    <aside class="trailer--hero">
-                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} {{ organization.name|t(locales) }}</h1>
-                        <p class="body--whisper  |  gutters">
+                    <aside class="trailer--hero" itemscope itemtype="https://schema.org/sourceOrganization">
+                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} <span itemtype="http://schema.org/Organization">{{ organization.name|t(locales) }}</span></h1>
+                        <p class="body--whisper  |  gutters" itemprop="description">
                             {{ organization.description|t(locales) }}
                         </p>
                     </aside>

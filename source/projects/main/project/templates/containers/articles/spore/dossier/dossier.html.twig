@@ -27,9 +27,13 @@
                     <div class="media__content  |  body--whisper  |  leader--tiny">
                         {{ author.long(model.link.person.author) }}
                     </div>
+                {% else %}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                    </span>
                 {% endif %}
             </footer>
-            
+
             {% if model.alternativeHeadline %}
                 <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
@@ -89,8 +93,10 @@
                 </div>
             {% endif %}
 
-            <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-                {{ share.bar_article(model) }}
+            <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+                <div class="gutters">
+                    {{ share.bar_article(model) }}
+                </div>
             </div>
 
             {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
@@ -135,13 +141,15 @@
             {% endif %}
         </div>
         <div class="layout__cell layout__cell--aside  |  wings">
-            <aside class="gutters">
-                <p class="title title--section wing--right trailer"><strong>{{ model.dossier.label.display_name|t  }}</strong></p>
-                <h1 class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
-                <p class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.about|t }}</p>
+            <aside class="gutters" itemtype="https://schema.org/ItemList" itemscope>
+                <p itemprop="alternateName"  class="title title--section wing--right trailer"><strong>{{ model.dossier.label.display_name|t  }}</strong></p>
+                <h1 itemprop="name" class="heading heading--tile wing--right">{{ model.dossier.issue.headline|t }}</h1>
+                <p itemprop="description" class="paragraph paragraph--lead wing--right">{{ model.dossier.issue.about|t }}</p>
                 <ul class="reset leader--normal">
-                    {% for article in model.dossier.issue.similar.articles %}
-                        <li class="divider divider--bottom leader-inside trailer-inside">
+                    {% for i, article in model.dossier.issue.similar.articles %}
+                        <li class="divider divider--bottom leader-inside trailer-inside" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <meta itemprop="position" content="{{ i }}"/>
+                            <meta itemprop="url" content="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}"/>
                             {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
                                 'show_publication_date': 0,
                                 'show_publication': 0,

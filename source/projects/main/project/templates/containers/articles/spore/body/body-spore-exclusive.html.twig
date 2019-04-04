@@ -29,6 +29,10 @@
                 <div class="media__content  |  body--whisper  |  leader--tiny">
                     {{ author.long(model.link.person.author) }}
                 </div>
+            {% else %}
+                <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                </span>
             {% endif %}
         </footer>
 
@@ -79,7 +83,7 @@
                             {{ image.person(auth, 50) }}
                         </div>
                         <div class="media__body  |  gutter--right  |  body--whisper">
-                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName }}</p>
                             {% if auth.description %}
                                 <p itemprop="description" class="">{{ auth.description }}</p>
                             {% endif %}
@@ -89,8 +93,10 @@
             </aside>
         {% endif %}
 
-        <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-            {{ share.bar_article(model) }}
+        <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+            <div class="gutters">
+                {{ share.bar_article(model) }}
+            </div>
         </div>
 
         {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}

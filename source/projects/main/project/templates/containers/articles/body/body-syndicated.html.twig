@@ -16,7 +16,10 @@
 
                 <footer class="gutters  |  trailer--hero">
                     {# todo link to view with all similar article.articleTypes #}
-                    <p class="meta">{{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.publication %}{{ 'in'|i18n }} <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.publication|t(locales) }}</a>.{% endif %}</p>
+                    <p class="meta">
+                        <span itemprop="datePublished">{{ model.datePublished|tdate('%A, %e %B %Y') }}</span>
+                        {% if model.publication %}{{ 'in'|i18n }} <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.publication|t(locales) }}</a>.{% endif %}
+                    </p>
                     <div class="media__content  |  body--whisper  |  leader--tiny">
                         {{ author.long(model.link.person.author) }}
                     </div>
@@ -24,20 +27,22 @@
 
                 <div class="post-anchor  |  clear">
                     {% if model.about %}
-                        <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                        <p class="gutters  |  paragraph--lead" itemprop="about">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
                     {% endif %}
 
                     {# render the content blocks - if the first block is a list,
                     we treat it as the article takeaways #}
-                    {% for i, contentBlock in model.contentBlocks %}
-                        {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
-                            <div class="gutters  |  leader leader-inside--tiny  |  trailer">
-                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
-                            </div>
-                        {% else %}
-                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
-                        {% endif %}
-                    {% endfor %}
+                    <div itemprop="articleBody">
+                        {% for i, contentBlock in model.contentBlocks %}
+                            {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                                <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                                </div>
+                            {% else %}
+                                {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
 
                 {% if model.analysis.agrovoc.concepts %}
@@ -56,11 +61,11 @@
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
                 {% if ctaOrg %}
-                    <aside class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
-                        <h2 class="title title--apropos  |  leader--small  |  trailer--small  |  gutters">{{ 'About'|t(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
+                    <aside class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal" itemprop="sourceOrganization" itemtype="https://schema.org/Organization" itemscope>
+                        <h2 class="title title--apropos  |  leader--small  |  trailer--small  |  gutters" itemprop="name">{{ 'About'|t(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
 
                         {% if ctaOrg.description %}
-                            <p class="body--whisper  |  trailer--small  |  gutters">{{ ctaOrg.description|t(locales) }}</p>
+                            <p class="body--whisper  |  trailer--small  |  gutters" itemprop="description">{{ ctaOrg.description|t(locales) }}</p>
                         {% endif %}
                     </aside>
                 {% endif %}
@@ -100,7 +105,7 @@
                     {% if model.isbn %}
                         <dl class="meta  |  trailer--hero  |  gutters">
                             <dt><strong>{{ 'ISBN'|t(locales) }}:</strong></dt>
-                            <dl>{{ model.isbn }}</dl>
+                            <dl itemprop="identifier">{{ model.isbn }}</dl>
 
                             {% if model.link.organization.sourceOrganization|length > 0 %}
                                 <dt class="leader--small leader-inside--tiny"><strong>{{ 'Publisher'|t(locales) }}:</strong></dt>
@@ -160,8 +165,8 @@
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
-                <div class="mini-map__map">
-                    <div id="map" style="height: 250px;"></div>
+                <div class="mini-map__map" itemprop="hasMap">
+                    <div id="map" style="height: 250px;" itemprop="map"></div>
                     {{ location.map(model.analysis.geoname.geonames | locationSpecific, "#map") }}
                 </div>
                 <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
@@ -184,28 +189,35 @@
                             {{ image.person(auth, 50) }}
                         </div>
                         <div class="media__body  |  gutter--right  |  body--whisper">
-                            <p class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
+                            <p class="meta--bold  |  trailer--tiny" itemprop="name">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             {% if auth.description %}
-                                <p class="">{{ auth.description }}</p>
+                                <p itemprop="description">{{ auth.description }}</p>
                             {% endif %}
                         </div>
                     </div>
                 {% endfor %}
             </aside>
+        {% else %}
+            <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+            </span>
         {% endif %}
 
         {% if model.import.sourceSite|length > 0 %}
             <div class="gutters  |  trailer">
-                <p class="meta">{{ 'Link to the' }} <a href="{{ model.import.sourceSite }}" target="_blank">{{ 'original article' }}</a></p>
+                <p class="meta">{{ 'Link to the' }} <a href="{{ model.import.sourceSite }}" target="_blank" itemprop="sameAs">{{ 'original article' }}</a></p>
             </div>
         {% endif %}
 
         {% if model.link.organization.sourceOrganization|filterCTA(false)|length > 0 %}
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
-                    <aside class="trailer--hero">
-                        <h1 class="title title--apropos  |  trailer--small  |  gutters">{{ 'About'|i18n }} {{ organization.name|t(locales) }}</h1>
-                        <p class="body--whisper  |  gutters">
+                    <aside class="trailer--hero" itemprop="sourceOrganization" itemtype="https://schema.org/Organization" itemscope>
+                        <h1 class="title title--apropos  |  trailer--small  |  gutters">
+                            {{ 'About'|i18n }}
+                            <span itemprop="name">{{ organization.name|t(locales) }}</span>
+                        </h1>
+                        <p class="body--whisper  |  gutters" itemprop="description">
                             {{ organization.description|t(locales) }}
                         </p>
                     </aside>

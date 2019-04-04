@@ -1,14 +1,27 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set imagebasename = contentBlock.url|getFileBaseName() %}
+{% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_320,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
 
-<figure class="gutters  |  leader leader-inside--small  |  trailer trailer-inside--small">
-    <img class="image image--stretch" src="{{ contentBlock.url }}" alt="{{ contentBlock.about|t(locales)|default(article.headline) }}" />
+<figure class="gutters  |  leader leader-inside--small  |  trailer trailer-inside--small" itemtype="https://schema.org/ImageObject" itemscope>
+    
+    <img
+        class="image image--stretch"
+        src="https://res.cloudinary.com/cta/image/upload/w_320,c_limit,f_auto,q_auto/{{ imagebasename }}"
+        srcset="https://res.cloudinary.com/cta/image/upload/w_840,c_limit,f_auto,q_auto/{{ imagebasename }} 768w,https://res.cloudinary.com/cta/image/upload/w_480,c_limit,f_auto,q_auto/{{ imagebasename }} 480w,https://res.cloudinary.com/cta/image/upload/w_320,c_limit,f_auto,q_auto/{{ imagebasename }} 320w"
+        sizes="100vw, (min-width: 768px) 55vw"
+        width="{{ imagedimensions['width'] }}"
+        height="{{ imagedimensions['height'] }}"
+        alt="{{ contentBlock.about|t(locales)|default('')}}"
+        itemprop="image"
+        />
+
     {% if contentBlock.about|t(locales) or contentBlock.credit|t(locales) %}
         <figcaption class="well well--padded well--neutral  |  leader-inside--small  |  trailer-inside--small">
             {% if contentBlock.about %}
-                <p class="caption">{{ contentBlock.about|t(locales) }}</p>
+                <p class="caption" itemprop="about">{{ contentBlock.about|t(locales) }}</p>
             {% endif %}
             {% if contentBlock.credit %}
-                <p class="credit">&copy; {{ contentBlock.credit|t(locales) }}</p>
+                <p class="credit" itemprop="copyrightHolder">&copy; {{ contentBlock.credit|t(locales) }}</p>
             {% endif %}
         </figcaption>
     {% endif %}

@@ -20,7 +20,7 @@
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ prefix ? 'by'|i18n ~ ' ' : '' }}{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ prefix ? 'by'|i18n ~ ' ' : '' }}<span itemprop="author">{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}</span>
     {% elseif authors|length > 1 %}
         {{ prefix ? 'by'|i18n ~ ' ' : '' }}
         {% for author in authors %}
@@ -30,7 +30,7 @@
                 {{ 'and'|i18n }}
             {% endif %}
 
-            {{ '%s %s'|format(author.givenName, author.familyName) }}
+            <span itemprop="author">{{ '%s %s'|format(author.givenName, author.familyName) }}</span>
         {% endfor %}
     {% endif %}
 {% endmacro %}
