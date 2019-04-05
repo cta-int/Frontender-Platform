@@ -9,14 +9,14 @@
 
         <header class="trailer--hero">
             {# todo link to view with all similar article.articleTypes #}
-            <p class="meta gutters">{{ model.datePublished|tdate('%A, %e %B %Y') }}</p>
-            <h1 class="title title--section gutters">
+            <p class="meta gutters" itemprop="datePublished">{{ model.datePublished|tdate('%A, %e %B %Y') }}</p>
+            <h1 class="title title--section gutters" itemprop="headline">
                 {{ model.headline }}
             </h1>
         </header>
         <div class="post-anchor clear">
             {% if model.about %}
-                <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                <p class="gutters  |  paragraph--lead" itemprop="about">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
             {% endif %}
 
             {# render the content blocks - if the first block is a list,
@@ -53,9 +53,9 @@
                     {{ 'Related media'|i18n }}
                 </h1>
 
-                <div class="grid grid--even">
+                <div class="grid grid--even" itemprop="associatedMedia">
                     {% for file in model.link.mediaObject|findType('image') %}
-                        <div class="grid__cell gutters leader">
+                        <div class="grid__cell gutters leader" itemscope itemtype="https://schema.org/MediaObject">
                             {% include 'partials/article/post-tile/media-download.html.twig' with {file: file, model: model} %}
                         </div>
                     {% endfor %}

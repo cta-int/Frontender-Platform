@@ -17,7 +17,7 @@
             </div>
             <div class="article-headline well well--full  | layout layout--break-early-even">
                 <div class="layout__cell layout__cell--aside layout__cell--divider-outside  |  wing--left">
-            
+
                     {# Publication cover #}
                     <article class="publication-tile publication-tile--hero media trailer-inside">
                         <div class="publication-tile__cover media__figure gutters">
@@ -34,7 +34,7 @@
                                 </p>
                             {% endif %}
                             {% if model.datePublished %}
-                                <p>
+                                <p itemprop="datePublished">
                                     {{ date.issue_date(model.datePublished) }}
                                 </p>
                             {% endif %}
@@ -52,17 +52,17 @@
                             {% endif %}
                         </div>
                     </article>
-            
+
                 </div>
                 <div class="layout__cell layout__cell--main  |  leader-inside trailer-inside  |  wings">
                     {% if model.publicationLabel %}
                         <p class="title  |  trailer--normal  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
                     {% endif %}
-                    <h1 class="article-headline__title  |  heading heading--moderate  |  gutters">
+                    <h1 class="article-headline__title  |  heading heading--moderate  |  gutters" itemprop="headline">
                         {{ model.headline }}
                     </h1>
                     {% if model.alternativeHeadline %}
-                        <p class="article-headline__byline  |  leader  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                        <p class="article-headline__byline  |  leader  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
                     {% endif %}
                 </div>
                 <div class="layout__cell layout__cell--aside  |  leader-inside trailer-inside  |  wings">
@@ -70,7 +70,7 @@
                         <p class="caption  |  gutters" data-prefix="{{ 'Image'|i18n }}: ">{{ heroimage.about|t(locales) }}</p>
                     {% endif %}
                     {% if heroimage.credit|t(locales)|length > 0 %}
-                        <p class="credit  |  gutters">&copy; {{ heroimage.credit|t(locales) }}</p>
+                        <p class="credit  |  gutters" itemprop="copyrightHolder">&copy; {{ heroimage.credit|t(locales) }}</p>
                     {% endif %}
                 </div>
             </div>
@@ -84,5 +84,3 @@
     {% endif %}
 
 {% endif %}
-
-

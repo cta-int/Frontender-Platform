@@ -9,7 +9,7 @@
 <header {{ helper.class_attribute(config, 'trailer--hero')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="article-headline  |  well well--full  |  layout  |  leader-inside--giant trailer-inside--hero">
         <div class="layout__cell layout__cell--main  |  wings">
-            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters" itemprop="headline">
                 {{ model.headline }}
             </h1>
             {% if model.publicationLabel %}

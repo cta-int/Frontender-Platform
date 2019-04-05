@@ -69,9 +69,9 @@
         <div class="layout layout__cell layout__cell--main  |  leader-inside  |  trailer-inside">
             <div class="layout__cell layout__cell--main  |  gutters">
                 <div class="leader-inside  |  trailer">
-                    <h1 class="article-headline__title  |  heading heading--hero">{{ model.headline }}</h1>
+                    <h1 class="article-headline__title  |  heading heading--hero" itemprop="headline">{{ model.headline }}</h1>
                     {% if model.alternativeHeadline %}
-                        <p class="article-headline__byline  |  meta   |  leader"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                        <p class="article-headline__byline  |  meta   |  leader" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
                     {% endif %}
                 </div>
             </div>
@@ -82,7 +82,7 @@
                             <p class="caption  |  gutters">{{ model.link.mediaObject|lead.about }}</p>
                         {% endif %}
                         {% if model.link.mediaObject|lead.credit %}
-                            <p class="credit  |  gutters">{{ model.link.mediaObject|lead.credit }}</p>
+                            <p class="credit  |  gutters" itemprop="copyrightHolder">{{ model.link.mediaObject|lead.credit }}</p>
                         {% endif %}
                     </div>
                 {% else %}

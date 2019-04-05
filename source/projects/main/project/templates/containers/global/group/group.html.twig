@@ -1,6 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
+{% import "macros/schema.html.twig" as schema %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>
     {% for loopContainer in containers %}
         {% include loopContainer.template with loopContainer %}
     {% endfor %}

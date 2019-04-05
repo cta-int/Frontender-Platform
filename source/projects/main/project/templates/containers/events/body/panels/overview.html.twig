@@ -13,7 +13,7 @@
             <a class="panel__trigger  |  gutters  |  is-heir" href="#overview">{{ 'Event overview'|i18n }}</a>
         </h2>
         <div class="panel__body">
-            <div class="post-body  |  paragraph--lead  |  gutters">
+            <div class="post-body  |  paragraph--lead  |  gutters" itemprop="description">
                 {{ model.description | appendBlankTarget | clearEmptyTags | clearInlineStyles | raw }}
             </div>
 
@@ -39,13 +39,20 @@
         <div class="panel__body">
                 <div class="mini-map  |  well--neutral  |  gutters-outside">
                     {% if model.location %}
-                        <div class="mini-map__map">
-                            <div id="map" style="height: 250px;"></div>
+                        <div class="mini-map__map" itemprop="hasMap">
+                            <div id="map" style="height: 250px;" itemprop="map"></div>
                             {{ location.map(model.location, "#map", 'geo') }}
                         </div>
-                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
-                            {% include "partials/location.html.twig" with {location: model.analysis.geoname.geonames|locationSpecific} %}
+                        {% if model.location.name %}
+                        <div class="mini-map__asset  |  gutters  |  trailer-inside--small  |  leader-inside--small" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                            <span itemprop="address">{{ model.location.name }}</span>
                         </div>
+                        {% endif %}
+                        {% if model.analysis.geoname.geonames | length %}
+                        <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
+                            {% include "partials/location.html.twig" with {'location': model.analysis.geoname.geonames|locationSpecific} %}
+                        </div>
+                        {% endif %}
                     {% endif %}
                     {% if model.url %}
                         <div class="mini-map__asset  |  divider divider--inverse divider--top  |  gutters  |  trailer-inside--small  |  leader-inside--small">
@@ -66,26 +73,26 @@
             <aside class="gutters">
                 {% if model.organizer|filterArray('avatar')|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Organisers'|i18n }}</h3>
-                    <div class="leader-inside--small  |  trailer--small">
+                    <div class="leader-inside--small  |  trailer--small" itemprop="organizer">
 
                         {% for organisation in model.organizer|filterArray('avatar') %}
-                            <div class="media  |  trailer--small">
+                            <div class="media  |  trailer--small" itemscope itemtype="http://schema.org/Organization">
                                 <div class="media__figure">
                                     {% if (organisation.avatar) %}
                                         <a href="#organisers" target="_blank">
-                                        <img class="image" height="50" width="50" src="{{ organisation.avatar }}" alt=""/>
+                                            <img class="image" height="50" width="50" src="{{ organisation.avatar }}" alt="" itemprop="logo"/>
                                         </a>
                                     {% endif %}
                                 </div>
                                 {% if (organisation.avatar) %}
-                                    <div class="is-center  |  media__body  |  gutters">{{ organisation.name }}</div>
+                                    <div class="is-center  |  media__body  |  gutters" itemprop="name">{{ organisation.name }}</div>
                                 {% else %}
                                     <div class="media__body">
                                         <a href="#organisers" target="_blank">
-                                            <span class="is-lt-small-desktop">
+                                            <span class="is-lt-small-desktop" itemprop="name">
                                                 {{ organisation.name }}
                                             </span>
-                                            <span class="is-gt-small-desktop">
+                                            <span class="is-gt-small-desktop" itemprop="alternateName">
                                                 {{ organisation.alternateName ? organisation.alternateName : organisation.name }}
                                             </span>
                                         </a>
@@ -112,10 +119,10 @@
                 {# Related articles #}
                 {% if model.related.articles|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related articles'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for model in model.related.articles %}
-                            <li class="leader--small  |  leader--small">
-                                <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" itemprop="name">
                                     {{ model.headline|t(locales) }}
                                 </a>
                             </li>
@@ -141,11 +148,11 @@
 
                 {% if relatedEvents|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related events'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {# Show everything except the projects. #}
                         {% for event in relatedEvents %}
-                            <li class="leader--small  |  leader--small">
-                                <a href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify, 'id': event._id}) }}">
+                            <li class="leader--small  |  leader--small" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify, 'id': event._id}) }}" itemprop="name">
                                     {{ event.name|t(locales) }}
                                 </a>
                             </li>
@@ -167,10 +174,10 @@
 
                 {% if relatedProjects|length > 0 %}
                     <h3 class="title  |  leader  |  trailer--small">{{ 'Related Projects'|i18n }}</h3>
-                    <ul class="reset">
+                    <ul class="reset" itemtype="https://schema.org/ItemList" itemscope>
                         {% for project in relatedProjects %}
-                            <li class="leader--normal  |  trailer--normal">
-                                <a href="{{ route({'page': project.path, 'slug': project.name|t(locales)|slugify, 'id': project._id}) }}">
+                            <li class="leader--normal  |  trailer--normal" itemprop="itemListElement" itemtype="https://schema.org/Article" itemscope>
+                                <a href="{{ route({'page': project.path, 'slug': project.name|t(locales)|slugify, 'id': project._id}) }}" itemprop="name">
                                     {{ project.name|t(locales) }}
                                 </a>
                             </li>
