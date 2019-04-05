@@ -33,7 +33,8 @@ Styleguide 3.21
     @include meta-10px;
     font-weight: 600;
   }
-  &--lowercase {
+  &--lowercase,
+  &--lc {
     text-transform: none;
   }
   &--regular {
