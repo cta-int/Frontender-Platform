@@ -61,7 +61,7 @@
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
                 {% if ctaOrg %}
-                    <aside class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal" itemprop="sourceOrganization" itemtype="https://schema.org/Organization" itemscope>
+                    <aside class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal" itemprop="publisher" itemtype="https://schema.org/Organization" itemscope>
                         <h2 class="title title--apropos  |  leader--small  |  trailer--small  |  gutters" itemprop="name">{{ 'About'|t(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
 
                         {% if ctaOrg.description %}
@@ -212,7 +212,7 @@
         {% if model.link.organization.sourceOrganization|filterCTA(false)|length > 0 %}
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
-                    <aside class="trailer--hero" itemprop="sourceOrganization" itemtype="https://schema.org/Organization" itemscope>
+                    <aside class="trailer--hero" itemprop="publisher" itemtype="https://schema.org/Organization" itemscope>
                         <h1 class="title title--apropos  |  trailer--small  |  gutters">
                             {{ 'About'|i18n }}
                             <span itemprop="name">{{ organization.name|t(locales) }}</span>
@@ -220,7 +220,14 @@
                         <p class="body--whisper  |  gutters" itemprop="description">
                             {{ organization.description|t(locales) }}
                         </p>
+                        <meta itemprop="logo" content="{{ organization.avatar }}">
                     </aside>
+                {% else %}
+                    <span itemprop="publisher" itemtype="https://schema.org/Organization" itemscope>
+                        <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}">
+                        <!-- <meta itemprop="description" content=""> -->
+                        <meta itemprop="logo" content="/assets/images/logos/brands/logo-ictupdate.png">
+                    </span>
                 {% endif %}
             {% endfor %}
         {% endif %}

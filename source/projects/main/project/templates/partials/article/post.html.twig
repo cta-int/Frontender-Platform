@@ -45,9 +45,17 @@
             <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
                 {{ author.long(article.link.person.author) }}
             </p>
+            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+            </span>
         {% else %}
             <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
                 <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+            </span>
+            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
             </span>
         {% endif %}
 
