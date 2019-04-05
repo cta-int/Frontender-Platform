@@ -1,0 +1,102 @@
+.publication-hero {
+    & .title {
+        padding-top: rhythm(7);
+        padding-bottom: rhythm(7);
+    }
+    &__body .heading {
+        @include title-20px();
+    }
+    @include breakpoint($lt-medium-handheld) {
+        &__media {
+            padding-bottom: 0;
+        }
+    }
+    @include breakpoint($gt-medium-handheld) {
+        position: relative;
+        & .title,
+        &__body,
+        &__media {
+            position: relative;
+            z-index: 1;
+        }
+        .layout {
+            flex-direction: row-reverse;
+        }
+        .publication-tile__cover {
+            flex-direction: column;
+            width: 50%;
+        }
+        &__body .heading {
+            @include title-24px();
+        }
+        &::after{ 
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: percentage(7/12);
+            z-index: 0;
+            background: rgba(0,0,0,.26);
+        }
+    }
+    @include breakpoint($gt-large-handheld) {
+        & .title {
+            padding-top: rhythm(12);
+        }
+        .publication-tile {
+            align-items: flex-end;
+        }
+        &::after{ 
+            left: percentage(7/12);
+        }
+    }
+    @include breakpoint($gt-small-desktop) {
+        & .title {
+            padding-top: rhythm(14); 
+        }
+        &__body .heading {
+            @include title-30px();
+        }
+        &__media {
+            padding-left: percentage(1 / 18);
+            padding-left: 1 / 18 * 100vw;
+        }
+        .publication-tile__cover {
+            width: percentage(4 / 18);
+            width: 4 / 18 * 100vw;
+        }
+        &::after { 
+            left: percentage(12 / 18);
+            left: 11 / 18 * 100vw;
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        & .title {
+            padding-top: rhythm(17); 
+        }
+        &__body .heading {
+            @include title-40px();
+        }
+        &__body {
+            flex: 1 percentage(8 / 18);
+            flex: 1 (9 / 18 * 100vw);
+        }
+        &__media {
+            flex: 1 percentage(10 / 18);
+            flex: 1 (11 / 18 * 100vw);
+        }
+        &__body,&__media {
+            flex: 1 50%;
+        }
+        .publication-tile__cover {
+            width: percentage(3 / 18);
+            width: 3 / 18 * 100vw;
+        }
+        &::after { 
+            left: percentage(11 / 18);
+            left: 11 / 18 * 100vw;
+        }
+    }
+}
