@@ -8,12 +8,14 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set class = helper.class(config)|trim %}
 
+
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'publication-hero well well--full')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <h1 class="title title--container wings">
         <span class="gutters">{{ config.title|t }}</span>
     </h1>
     <article class="layout layout--even">
         <div class="publication-hero__media layout__cell layout__cell--aside leader-inside--hero trailer-inside--hero  wings">
+            {% if model.articleType == 'issue' %}
             <div class="publication-tile media">
                 <div class="publication-tile__cover media__figure gutters">
                     <figure class="publication-cover">
@@ -52,6 +54,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endif %}
         </div>
         <div class="publication-hero__body layout__cell layout__cell--main leader-inside--hero trailer-inside--hero wing--left">
             <h1 class="heading heading--hero gutters">{{ model.headline|t(locales) }}</h1>
