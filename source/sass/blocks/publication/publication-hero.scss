@@ -40,6 +40,9 @@
             z-index: 0;
             background: rgba(0,0,0,.26);
         }
+        .no-flexbox .layout--even &__media.layout__cell--aside {
+            float: right;
+        }
     }
     @include breakpoint($gt-large-handheld) {
         & .title {
@@ -98,11 +101,5 @@
             left: percentage(11 / 18);
             left: 11 / 18 * 100vw;
         }
-    }
-}
-
-@include breakpoint($gt-medium-handheld) {
-    .no-flexbox .layout--even .publication-hero__media.layout__cell--aside {
-        float: right;
     }
 }
