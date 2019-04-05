@@ -101,13 +101,18 @@
 
         {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
         {% if ctaOrg %}
-            <aside itemprop="sourceOrganization" itemscope itemtype="https://schema.org/Organization" class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
+            <aside itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
                 <h2 itemprop="name" class="title title--apropos  |  leader--small  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
 
                 {% if ctaOrg.description %}
                     <p itemprop="description" class="body--whisper  |  trailer--small  |  gutters">{{ ctaOrg.description|t(locales) }}</p>
                 {% endif %}
             </aside>
+        {% else %}
+            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+            </span>
         {% endif %}
 
         <aside class="gutters-outside  |  divider divider--top  |  leader--hero leader-inside--small">
