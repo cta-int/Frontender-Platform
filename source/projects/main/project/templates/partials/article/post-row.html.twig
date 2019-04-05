@@ -5,7 +5,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{ ['media  |  post post--row', config.container_class]|join('  |  ') }}">
+<div class="{{ ['media  |  post post--row', config.container_class|t(locales)]|join('  |  ') }}">
     <div class="post__content media__body  |  gutter">
         {% if config.show_publication_date|default(1) %}
             {{ date.article(article.datePublished) }}

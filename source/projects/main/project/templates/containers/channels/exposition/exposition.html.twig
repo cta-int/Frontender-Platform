@@ -11,7 +11,7 @@
 {% endif %}
 
 {% if numArticles >= 3 %}
-    <section id="section-{{ model._id }}" class="wings  |  trailer--section  |  gutters  |  is-root  |  exposition-wrapper  exposition--{{ numArticles }}  |  theme-slider {{ ["theme--" ~ config.alignment, "theme--" ~ config.colour_theme, container_class]|join("  |  ") }}   {% if query.fromFrontender %} is-visible{% endif %}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <section id="section-{{ model._id }}" class="wings  |  trailer--section  |  gutters  |  is-root  |  exposition-wrapper  exposition--{{ numArticles }}  |  theme-slider {{ ["theme--" ~ config.alignment, "theme--" ~ config.colour_theme|t(locales), container_class]|join("  |  ") }}   {% if query.fromFrontender %} is-visible{% endif %}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
         <div class="exposition  |  is-root{% if query.fromFrontender %} exposition-visible{% endif %}">
             <div class="exposition__section" id="{{ model._id }}">
                 <div class="section">
