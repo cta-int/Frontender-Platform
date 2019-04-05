@@ -94,9 +94,15 @@
             width: percentage(3 / 18);
             width: 3 / 18 * 100vw;
         }
-        &::after { 
+        &::after {
             left: percentage(11 / 18);
             left: 11 / 18 * 100vw;
         }
+    }
+}
+
+@include breakpoint($gt-medium-handheld) {
+    .no-flexbox .layout--even .publication-hero__media.layout__cell--aside {
+        float: right;
     }
 }
