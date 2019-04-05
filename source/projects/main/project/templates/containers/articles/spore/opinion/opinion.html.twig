@@ -27,6 +27,10 @@
                     <div class="media__content  |  body--whisper  |  leader--tiny">
                         {{ author.long(model.link.person.author) }}
                     </div>
+                {% else %}
+                    <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                    </span>
                 {% endif %}
             </footer>
 
@@ -48,7 +52,7 @@
                                     {{ image.person(auth, 50) }}
                                 </div>
                                 <div class="media__body  |  gutter--right  |  body--whisper">
-                                    <p class=""><span class="meta--bold">{{ auth.givenName ~ ' ' ~ auth.familyName}}</span>{% if auth.jobTitle %}<span>, {{ auth.jobTitle }}</span>{% endif %}</p>
+                                    <p class=""><span class="meta--bold" itemprop="name">{{ auth.givenName ~ ' ' ~ auth.familyName}}</span>{% if auth.jobTitle %}<span>, {{ auth.jobTitle }}</span>{% endif %}</p>
                                     {% if auth.biography %}
                                         <p itemprop="description" class="leader--tiny">{{ auth.biography }}</p>
                                     {% endif %}
@@ -134,14 +138,16 @@
                 </div>
             {% endif %}
         </div>
-        <div class="layout__cell layout__cell--aside  |  wings">
+        <div class="layout__cell layout__cell--aside  |  wings" itemscope itemtype="https://schema.org/ItemList">
             <aside class="gutters">
-                <p class="title title--section wing--right trailer"><strong>{{ model.opinion.label.display_name|t  }}</strong></p>
-                <h1 class="paragraph paragraph--theorem wing--right">{{ model.opinion.issue.headline|t }}</h1>
-                <p class="paragraph paragraph--lead wing--right">{{ model.opinion.issue.about|t }}</p>
+                <p itemprop="alternateName" class="title title--section wing--right trailer"><strong>{{ model.opinion.label.display_name|t  }}</strong></p>
+                <h1 itemprop="name" class="paragraph paragraph--theorem wing--right">{{ model.opinion.issue.headline|t }}</h1>
+                <p itemprop="description" class="paragraph paragraph--lead wing--right">{{ model.opinion.issue.about|t }}</p>
                 <ul class="reset leader--normal">
-                    {% for article in model.opinion.issue.similar.articles %}
-                        <li class="divider divider--bottom leader-inside trailer-inside">
+                    {% for i, article in model.opinion.issue.similar.articles %}
+                        <li class="divider divider--bottom leader-inside trailer-inside" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <meta itemprop="position" content="{{ i }}"/>
+                            <meta itemprop="url" content="{{ route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) }}"/>
                             {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
                                 'show_publication_date': 0,
                                 'show_publication': 0,

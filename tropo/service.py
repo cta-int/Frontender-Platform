@@ -95,18 +95,25 @@ listener_priority2 = t.add_parameter(Parameter(
     Default="20"
 ))
 
+listener_priority3 = t.add_parameter(Parameter(
+    "ListenerPriority3",
+    Description="Listener Rule Priority, must be unique across listeners",
+    Type="Number",
+    Default="30"
+))
+
+listener_priority4 = t.add_parameter(Parameter(
+    "ListenerPriority4",
+    Description="Listener Rule Priority, must be unique across listeners",
+    Type="Number",
+    Default="40"
+))
+
 network_stack = t.add_parameter(Parameter(
     "NetworkStack",
     Type="String",
     Description="ECS network stack name",
     Default="network"
-))
-
-service_path = t.add_parameter(Parameter(
-    "ServicePath",
-    Type="String",
-    Description="Path portion of the service URL",
-    Default="/*"
 ))
 
 service_host = t.add_parameter(Parameter(
@@ -118,6 +125,16 @@ service_host = t.add_parameter(Parameter(
 
 service_host_condition = "ServiceHostCondition"
 t.add_condition(service_host_condition, Not(Equals("", Ref(service_host))))
+
+service_host2 = t.add_parameter(Parameter(
+    "ServiceHost2",
+    Type="String",
+    Description="Hostname for the listener (optional)",
+    Default=""
+))
+
+service_host2_condition = "ServiceHost2Condition"
+t.add_condition(service_host2_condition, Not(Equals("", Ref(service_host2))))
 
 autoscaling_max = t.add_parameter(Parameter(
     "AutoscalingMax",
@@ -160,8 +177,6 @@ stack_env = t.add_parameter(Parameter(
 ))
 is_prod = "IsProd"
 t.add_condition(is_prod, Equals("PROD", Ref(stack_env)))
-service_host_condition = "ServiceHostCondition"
-t.add_condition(service_host_condition, Not(Equals("", Ref(service_host))))
 
 is_UAT = "IsUAT"
 t.add_condition(is_UAT, Equals("UAT", Ref(stack_env)))
@@ -530,16 +545,9 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path)]
+            Field="host-header",
+            Values=[Ref(service_host)]
         ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Ref(service_host)]
-           ),
-           Ref("AWS::NoValue")
-           )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority)
@@ -555,19 +563,48 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     Conditions=[
         elasticloadbalancingv2.Condition(
-            Field="path-pattern",
-            Values=[Ref(service_path)]
-        ),
-        If(service_host_condition,
-           elasticloadbalancingv2.Condition(
-               Field="host-header",
-               Values=[Join("", ["www.", Ref(service_host)])]
-           ),
-           Ref("AWS::NoValue")
-           )
+            Field="host-header",
+            Values=[Join("", ["www.", Ref(service_host)])]
+        )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=Ref(listener_priority2)
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpListenerRule3",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        )
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=[Ref(service_host2)]
+        ),
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=Ref(listener_priority3)
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpListenerRule4",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        )
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=[Join("", ["www.", Ref(service_host2)])]
+        ),
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=Ref(listener_priority4)
 ))
 
 # Https listeners
@@ -608,6 +645,46 @@ If(service_host_condition, t.add_resource(
         ],
         ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
         Priority=Ref(listener_priority2)
+    )
+), Ref("AWS::NoValue"))
+
+If(service_host2_condition, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsListenerRule3",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=[Ref(service_host2)]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=Ref(listener_priority3)
+    )
+), Ref("AWS::NoValue"))
+
+If(service_host2_condition, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsListenerRule4",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=[Join("", ["www.", Ref(service_host2)])]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=Ref(listener_priority4)
     )
 ), Ref("AWS::NoValue"))
 
@@ -771,6 +848,238 @@ If(is_UAT, t.add_resource(
     )
 ), Ref("AWS::NoValue"))
 
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpctaintListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=60
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpctaintListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=70
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsctaintListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=60
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsctaintListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=70
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsporeListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=80
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpsporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+        Priority=90
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpssporeListenerRule1",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=80
+    )
+), Ref("AWS::NoValue"))
+
+If(is_prod, t.add_resource(
+    elasticloadbalancingv2.ListenerRule(
+        "HttpssporeListenerRule2",
+        Actions=[
+            elasticloadbalancingv2.Action(
+                TargetGroupArn=Ref(target_group),
+                Type="forward"
+            ),
+        ],
+        Conditions=[
+            elasticloadbalancingv2.Condition(
+                Field="host-header",
+                Values=["www.spore.cta.int"]
+            )
+        ],
+        ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+        Priority=90
+    )
+), Ref("AWS::NoValue"))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=93
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=94
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule3",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=95
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpsyearinreviewListenerRule4",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["a-year-in-review-2018.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=96
+))
+
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
 sg_alb_public_ingress_rules443 = {}
@@ -785,16 +1094,16 @@ for az in ["A", "B", "C"]:
             GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
         )
     )
-    sg_alb_public_ingress_rules443[az] = t.add_resource(
-        ec2.SecurityGroupIngress(
-            "CtaPlatformIngressRuleSsl" + az,
-            CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
-            IpProtocol="6",
-            FromPort=443,
-            ToPort=443,
-            GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
-        )
+sg_alb_public_ingress_rules443[az] = t.add_resource(
+    ec2.SecurityGroupIngress(
+        "CtaPlatformIngressRuleSsl" + az,
+        CidrIp=Join("/", [ImportValue(Sub("${NetworkStack}-NatIpPublic" + az)), "32"]),
+        IpProtocol="6",
+        FromPort=443,
+        ToPort=443,
+        GroupId=ImportValue(Sub("${EcsStack}-SgAlbPublicGroupId"))
     )
+)
 
 """
 Service definition
@@ -828,7 +1137,7 @@ service = t.add_resource(ecs.Service(
     DeploymentConfiguration=ecs.DeploymentConfiguration(
         MaximumPercent="100",
         MinimumHealthyPercent="50"
-    ),
+    )
 ))
 
 t.add_resource(ssm.Parameter(
