@@ -1,4 +1,5 @@
 {% import "macros/share.html.twig" as share %}
+{% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 <div class="{{ tile_class }}  |  shade">
@@ -13,7 +14,7 @@
         <div class="standout standout--post  |  fx" itemtype="https://schema.org/Article">
             <header class="post-header">
                 <figure class="post-hero">
-                    <img src="https://res.cloudinary.com/cta/image/upload/w_1000,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.headline }}" itemprop="image">
+                    {{ image.post_hero(model.link.mediaObject|lead) }}
                     <figcaption class="image-caption">{{ model.link.mediaObject|first.credit }}</figcaption>
                 </figure>
                 <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
