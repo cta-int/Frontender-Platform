@@ -1,5 +1,5 @@
 {% import "macros/image.html.twig" as image %}
-{% set is_crowned = 'is-crowned' in config.container_class %}
+{% set is_crowned = 'is-crowned' in config.container_class|t(locales) %}
 {% set resource_route = route({'page': model.path, 'slug': model.name|t(locales)|slugify, id: model._id}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
@@ -16,7 +16,7 @@
 
 
 
-<div class="{{ ["hero hero--tab-teaser", config.container_class]|join("  |  ") }}" id="tile-{{ model._id }}">
+<div class="{{ ["hero hero--tab-teaser", config.container_class|t(locales)]|join("  |  ") }}" id="tile-{{ model._id }}">
     <div class="ie9-hero">
         {{ image.hero(model.mediaObject|lead, is_crowned, "hero__figure  |  image image--stretch") }}
     </div>

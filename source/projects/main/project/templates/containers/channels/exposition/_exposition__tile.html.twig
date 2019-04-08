@@ -8,7 +8,7 @@
     </a>
 </div>
 <div class="fx modal" id="modal-{{ model._id }}">
-    <div class="post  |  fx  |  {{ "theme--" ~ config.colour_theme }}">
+    <div class="post  |  fx  |  {{ "theme--" ~ config.colour_theme|t(locales) }}">
         <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
         <div class="standout standout--post  |  fx" itemtype="https://schema.org/Article">
             <header class="post-header">

@@ -2,7 +2,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["layout", config.container_class]|join("  |  ") }}">
+<div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["layout", config.container_class|t(locales)]|join("  |  ") }}">
     <div class="layout__cell  layout__cell--main  |  gutters">
         <div class="gutter">
             <h1 class="lead lead--l  |  trailer">{{ 'CTA is at the forefront of the fight against poverty and sustainable food security in the African, Caribbean and Pacific Group of Stats. CTA\'s work focuses in particular on the areas of ICT for agriculture, women and youth entrepreneurship and climate smart agriculture'|t(locales) }}.</h1>

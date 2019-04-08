@@ -26,18 +26,18 @@
                     </figure>
                 </div>
                 <div class="publication-tile__body media__body gutters">
-                    <dl class="dlist{{ model.link.person.author|length > 2 ? ' dlist--grid'}} meta meta--s meta--dark is-clear">
+                    <dl class="dlist{{ model.link.person.author|length > 2 ? ' dlist--grid'}} is-clear">
                         {% if model.strategyLabel %}
-                            <dt class="dlist__label">{{ 'area' | i18n }}: </dt>
-                            <dd class="dlist__value"><strong>{{ model.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
+                            <dt class="dlist__label meta meta--s meta--dark">{{ 'area' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark"><strong>{{ model.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
                         {% endif %}
                         {% if model.link.person.author|length > 0 %}
-                            <dt class="dlist__label">{{ model.link.person.author|length > 1 ? 'authors' | i18n : 'author' | i18n }}: </dt>
-                            <dd class="dlist__value" itemprop="author">{{ author.long(model.link.person.author, false) }}</dd>
+                            <dt class="dlist__label meta meta--s meta--dark">{{ model.link.person.author|length > 1 ? 'authors' | i18n : 'author' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ author.long(model.link.person.author, false) }}</dd>
                         {% endif %}
                         {% if model.datePublished %}
-                            <dt class="dlist__label">{{ 'published' | i18n }}: </dt>
-                            <dd class="dlist__value" itemprop="datePublished">{{ date.issue_year(model.datePublished, null, ' ') }}</dd>
+                            <dt class="dlist__label meta meta--s meta--dark">{{ 'published' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ date.issue_year(model.datePublished, null, ' ') }}</dd>
                         {% endif %}
                     </dl>
                     {% if model.externalLink|length > 0 %}

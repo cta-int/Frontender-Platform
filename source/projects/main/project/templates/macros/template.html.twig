@@ -1,17 +1,17 @@
 {# Process any class variables from the config and return a single class string #}
 {% macro class_string(config) %}
     {{ [
-        config.crown ? config.crown,
-        config.body_class ? config.body_class,
-        config.container_class ? config.container_class,
-        config.divider ? config.divider,
-        config.wings ? config.wings,
-        config.leader ? config.leader,
-        config.leader_inside ? config.leader_inside,
-        config.trailer ? config.trailer,
-        config.trailer_inside ? config.trailer_inside,
-        config.colour_theme ? config.colour_theme,
-        config.colour_background ? config.colour_background
+        config.crown|t(locales) ? config.crown|t(locales),
+        config.body_class|t(locales) ? config.body_class|t(locales),
+        config.container_class|t(locales) ? config.container_class|t(locales),
+        config.divider|t(locales) ? config.divider|t(locales),
+        config.wings|t(locales) ? config.wings|t(locales),
+        config.leader|t(locales) ? config.leader|t(locales),
+        config.leader_inside|t(locales) ? config.leader_inside|t(locales),
+        config.trailer|t(locales) ? config.trailer|t(locales),
+        config.trailer_inside|t(locales) ? config.trailer_inside|t(locales),
+        config.colour_theme|t(locales) ? config.colour_theme|t(locales),
+        config.colour_background|t(locales) ? config.colour_background|t(locales)
     ]|join(' ')|trim }}
 {% endmacro %}
 
