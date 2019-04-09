@@ -1,7 +1,6 @@
 {
     "label": {
-        "en": "Find content: article",
-        "fr": "Find content: article"
+        "en-GB": "Article"
     },
     "map": {
         "id": "_id",
