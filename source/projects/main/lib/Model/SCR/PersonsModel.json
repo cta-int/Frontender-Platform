@@ -1,7 +1,7 @@
 {
     "label": {
-        "en-GB": "Persons",
-        "fr-FR": "Persons"
+        "en-GB": "Person",
+        "fr-FR": "Person"
     },
     "map": {
         "id": "_id",
