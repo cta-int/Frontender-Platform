@@ -6,22 +6,19 @@
     <div class="toggle-switch">
         <div class="toggle--menu" data-toggle=".toggle"></div>
         <ul class="toggle--language  |  shade  |  reset">
-            {% for language in ['en', 'fr', 'pt'] %}
-                <li class="fx">
-                    <a href="{{ translate_url(language) }}" class="anchor{{ locale is same as(language) ? '  |  is-active' }}">{{ language|upper }}</a>
-                </li>
-            {% endfor %}
+            <li class="fx"><a class="anchor{{ locale is same as('en-GB') ? '  |  is-active' }}" href="{{ translate_url('en') }}">{{ 'EN'|t(locales) }}</a></li>
+            <li class="fx"><a class="anchor{{ locale is same as('fr-FR') ? '  |  is-active' }}" href="{{ translate_url('fr') }}">{{ 'FR'|t(locales) }}</a></li>
         </ul>
     </div>
 
     <div class="menu  |  leader-inside--small  |  gutters">
         <div class="menu-list">
-            {% for container in _context.containers|slice(2) %}
-                {% if not loop.last %}
-                    {% if container.data.channel._id %}
+            {% for container in _context.containers %}
+                {% if container.name|t(locales) == 'Exposition well' %}
+                    {% if container.model._id %}
                         <div class="menu__item-ec">
                             <label class="menu__label">1</label>
-                            <a class="anchor--reset" href="#section-{{ container.data.channel._id }}">{{ container.data.channel.name|t(locales) }}</a>
+                            <a class="anchor--reset" href="#section-{{ container.model._id }}">{{ container.model.name|t(locales) }}</a>
                         </div>
                     {% endif %}
                 {% endif %}

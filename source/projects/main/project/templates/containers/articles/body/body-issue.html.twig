@@ -12,9 +12,9 @@
     <div class="post-body layout__cell layout__cell--main wings leader-inside--hero trailer-inside--hero layout__cell--divider-outside">
 
         {% if model.about %}
-            <p class="gutters  |  paragraph--lead">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
+            <p class="gutters  |  paragraph--lead" itemprop="about">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
         {% endif %}
-        
+
         {# render the content blocks - if the first block is a list, we treat it as the article takeaways #}
         {% for i, contentBlock in model.contentBlocks %}
             {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}

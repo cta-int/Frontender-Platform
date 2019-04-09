@@ -1,11 +1,11 @@
 <div class="article-group--row">
-  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article}{
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
       model: model[0],
       tile_class: "article",
       next: model[1],
       prev: model[4]
   } %}
-  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article}{
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
       model: model[1],
       tile_class: "article",
       next: model[2],
@@ -15,13 +15,13 @@
 
 
 <div class="article-group--row">
-  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article}{
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
       model: model[2],
       tile_class: "article",
       next: model[3],
       prev: model[1]
   } %}
-  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article}{
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
       model: model[3],
       tile_class: "article",
       next: model[4],
@@ -30,7 +30,7 @@
 </div>
 
 <div class="article-group--row">
-  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {model: article}{
+  {% include "containers/channels/exposition/_exposition__tile.html.twig" with {
       model: model[4],
       tile_class: "article",
       next: model[0],

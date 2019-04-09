@@ -5,14 +5,14 @@
 {% set panel_link = route({ 'page': links.section_link.page }) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme }}">
+<{{ config.container_tag|default('div') }} {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="carousel--article gutters{{ class ? ' ' ~ class }} theme theme--{{ config.colour_theme|t(locales) }}">
 	<div class="hero hero--carousel">
 	    <a class="anchor anchor--shy is-heir" href="{{ panel_link }}">
-	      {{ image.carousel(model, "hero__figure  |  image image--stretch") }}
+	      	{{ image.carousel(model, "hero__figure  |  image image--stretch") }}
 	        <div class="topic-teaser  |  teaser  |  gutter">
-	          <h2 class="topic-teaser__title  |  title">{{ labels.title|t(locales) }}</h2>
-	          <p class="is-gt-large-handheld  |  leader--normal  |  trailer--normal">{{ labels.body|t(locales) }}</p>
-	          <span class="block-link block-link--inverse is-gt-large-handheld" href="{{ page_link }}">{{ links.section_link.label|t(locales) }}</span>
+		        <h2 class="topic-teaser__title  |  title">{{ labels.title|t(locales) }}</h2>
+		        <p class="is-gt-large-handheld  |  leader--normal  |  trailer--normal">{{ labels.body|t(locales) }}</p>
+		        <span class="block-link block-link--inverse is-gt-large-handheld">{{ links.section_link.label|t(locales) }}</span>
 	        </div>
 		</a>
 		{% if links.article_link.page %}

@@ -44,16 +44,21 @@ class Media extends \Twig_Extension
     public function getSize($path)
     {
         $size = 0;
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'HEAD'
+            ]
+        ]);
 
-        foreach (get_headers($path) as $header) {
+        foreach (get_headers($path, 0, $context) as $header) {
             if (strpos($header, 'Content-Length') !== false) {
                 $size = trim(str_replace('Content-Length:', '', $header));
             }
         }
 
-        $size = $size ? : 0;
+        $size = $size ?: 0;
 
-        if(!$size) {
+        if (!$size) {
             return false;
         }
 

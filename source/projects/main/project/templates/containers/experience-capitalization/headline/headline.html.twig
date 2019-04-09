@@ -7,11 +7,11 @@
 
 <article class="inset" {% if query.fromFrontender %} style="margin-top: 0; height: auto; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="gutters">
-        <div class="standout  |  gutters  |  wings  |  leader-inside--hero">
+        <div class="standout  |  gutters  |  wings  |  leader-inside--hero  |  trailer-inside--hero">
             <div class="gutters">
                 <h2 class="category  |  trailer" id="section0">{{ model.headline|t(locales) }}</h2>
                 <div class="director">
-                    <img src="{{ model.link.mediaObject|lead.metadata.previewUrl }}" alt="{{ model.link.mediaObject|lead.metadata.title|t(locales) }}">
+                    <img src="https://res.cloudinary.com/cta/image/upload/w_500,ar_2:3,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.link.mediaObject|lead.metadata.title|t(locales) }}">
                     {% if model.link.mediaObject|first.description %}
                         <p class="quote  |  gutters  |  leader  |  trailer">{{ model.link.mediaObject|first.description|t(locales) }}</p>
                     {% endif %}

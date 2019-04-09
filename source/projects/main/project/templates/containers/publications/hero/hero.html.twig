@@ -1,16 +1,69 @@
-{% import "macros/image.html.twig" as image %}
 {% import "macros/template.html.twig" as helper %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/label.html.twig" as label %}
+
 {% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set class = helper.class(config)|trim %}
 
-<{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    <div class="ie9-hero">
-        {{ image.hero(model, is_crowned, "article-header__image  |  image image--stretch") }}
-    </div>
-    {% for c in containers %}
-        {% if c.template_id  == 'publication' %}
-            {% include c.template with c|merge({ 'heroimage':  model }) %}
-        {% endif %}
-    {% endfor %}
-</{{ config.container_tag|default('header') }}>
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'publication-hero well well--full')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <h1 class="title title--container wings">
+        <span class="gutters">{{ config.title|t }}</span>
+    </h1>
+    <article class="layout layout--even">
+        <div class="publication-hero__media layout__cell layout__cell--aside leader-inside--hero trailer-inside--hero  wings">
+            {% if model.articleType == 'issue' %}
+            <div class="publication-tile media">
+                <div class="publication-tile__cover media__figure gutters">
+                    <figure class="publication-cover">
+                        <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
+                            {{ image.contentBlock_cover(model|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        </a>
+                    </figure>
+                </div>
+                <div class="publication-tile__body media__body leader-inside trailer-inside--tiny gutters">
+                    <dl class="dlist{{ model.link.person.author|length > 2 ? ' dlist--grid'}}">
+                        {% if model.strategyLabel %}
+                            <dt class="dlist__label meta meta--s meta--dark">{{ 'area' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark"><strong>{{ model.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
+                            {% endif %}
+                        {% if model.link.person.author|length > 0 %}
+                            <dt class="dlist__label meta meta--s meta--dark">{{ model.link.person.author|length > 1 ? 'authors' | i18n : 'author' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ author.long(model.link.person.author, false) }}</dd>
+                        {% endif %}
+                        {% if model.datePublished %}
+                            <dt class="dlist__label meta meta--s meta--dark">{{ 'published' | i18n }}: </dt>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ date.issue_year(model.datePublished, null, ' ') }}</dd>
+                        {% endif %}
+                    </dl>
+                    {% if model.externalLink %}
+                        <div class="leader-inside trailer-inside--tiny">
+                            {% for link in model.externalLink %}
+                            {% set fileSize = link.url|getFileSize %}
+                                <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                    <span class="publication-download__item">{{ link.name }}</span>
+                                    {% if fileSize %}
+                                        <span class="publication-download__item">{{ fileSize }}</span>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="publication-hero__body layout__cell layout__cell--main leader-inside--hero trailer-inside--hero wing--left">
+            <h1 class="heading heading--hero gutters">{{ model.headline|t(locales) }}</h1>
+            {% if model.alternativeHeadline|t(locales)|length %}
+                <p class="title leader--normal gutters">{{ model.alternativeHeadline|t(locales) }}</p>
+            {% endif %}
+            {% if model.about|t(locales)|length %}
+                <p class="leader gutters">{{ model.about|t(locales) }}</p>
+            {% endif %}
+        </div>
+    </article>
+</{{ config.container_tag|default('div') }}>

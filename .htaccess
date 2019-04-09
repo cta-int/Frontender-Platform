@@ -10,12 +10,12 @@ RewriteRule ^images(.*)$ /assets/images$1 [L]
 RewriteCond %{REQUEST_URI} ^/index\.php/(.+) [NC]
 RewriteRule ^ /%1 [NE,L,R=301]
 
-RewriteCond %{HTTP_HOST} !^(www|uat|spore) [NC]
+RewriteCond %{HTTP_HOST} !^(www|uat|spore|a-year-in-review-2018) [NC]
 RewriteCond %{REQUEST_FILENAME} !health.php
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !health.php
-RewriteCond %{HTTP_HOST} ^www\.(spore\..+) [NC]
+RewriteCond %{HTTP_HOST} ^www\.(spore\.|a-year-in-review-2018\..+) [NC]
 RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d

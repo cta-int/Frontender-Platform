@@ -117,6 +117,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         width="160"
         height="240"
         alt=""
+        itemprop="image"
         />
 {% endmacro %}
 
@@ -131,6 +132,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         width="360"
         height="240"
         alt=""
+        itemprop="image"
         />
 {% endmacro %}
 
@@ -145,6 +147,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         width="360"
         height="240"
         alt=""
+        itemprop="image"
         />
 {% endmacro %}
 
@@ -181,7 +184,8 @@ $landscape - Breakpoint for landscape oriented viewports.
         src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
         width="{{ size }}"
         height="{{ size }}"
-        alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
+        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName)|trim }}"
+        itemprop="image"
     />
 {% endmacro %}
 
@@ -196,7 +200,8 @@ $landscape - Breakpoint for landscape oriented viewports.
 
     <img
         src="{{ person.avatar|default(fallback) }}"
-        alt="{{ person.honorificPrefix }} {{ person.givenName }} {{ person.familyName }}"
+        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName)|trim }}"
+        itemprop="image"
     />
 {% endmacro %}
 
@@ -274,6 +279,7 @@ $landscape - Breakpoint for landscape oriented viewports.
             srcset="https://res.cloudinary.com/cta/image/upload/w_960,ar_1:1,g_faces:center,f_auto,c_fill/{{ image.metadata.id }} 960w,https://res.cloudinary.com/cta/image/upload/w_480,ar_1:1,g_faces:center,f_auto,c_fill/{{ image.metadata.id }} 480w"
             sizes="100vw"
             alt="{{ image.metadata.title|t(locales)|default("Leading image") }}"
+            itemprop="image"
             />
     </picture>
     {% else %}
@@ -341,6 +347,7 @@ $landscape - Breakpoint for landscape oriented viewports.
             srcset="https://res.cloudinary.com/cta/image/upload/w_960,ar_1:1,g_faces:center,f_auto,c_fill/{{ image.metadata.id }} 960w,https://res.cloudinary.com/cta/image/upload/w_480,ar_1:1,g_faces:center,f_auto,c_fill/{{ image.metadata.id }} 480w"
             sizes="100vw"
             alt="{{ image.metadata.title|t(locales)|default("Leading image") }}"
+            itemprop="image"
             />
     </picture>
     {% endif %}
@@ -534,7 +541,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 
     {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
     {% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_240,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
-    
+
     <img
         class="{{ class }}"
         src="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }}"
@@ -542,7 +549,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         sizes="100vw, (min-width: 480px) 480px"
         alt="{{ contentBlock|first.about|t(locales)|default('') }}"
         />
-        
+
 {% endmacro %}
 
 {% macro card(image, class = '', wide = false) %}

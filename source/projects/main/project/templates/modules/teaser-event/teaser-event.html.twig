@@ -2,14 +2,14 @@
 {% import "macros/concept.html.twig" as concept %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="event-teaser  |  teaser  |  stack">
+<div class="event-teaser  |  teaser  |  stack" itemscope itemtype="https://schema.org/Event">
     <div class="event-teaser__date  |  stack__unit stack__pin">
         {{ date.tile(model.startDate) }}
     </div>
     <div class="stack__unit  |  stack stack--stacked">
         <div class="stack__unit">
                 <h2 class="anchor  |  heading heading--focus  |  gutters gutter-hero--left  |  leader">
-                    <a href="{{ route({'page': model.path, 'id': model._id, 'slug': model.name|t(locales)|slugify}) }}">
+                    <a href="{{ route({'page': model.path, 'id': model._id, 'slug': model.name|t(locales)|slugify}) }}" itemprop="name">
                         {{ model.name }}
                     </a>
                 </h2>
@@ -20,6 +20,9 @@
         <div class="pin-box  |  stack__unit  |  stack  |  leader">
             <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
                 {% include "partials/location.html.twig" with {"location": model.location} %}
+                <span itemprop="location" itemscope itemtype="https://schema.org/Place">
+                    <meta itemprop="address" content="{{ model.location.address.addressLocality|t(locales) }}"/>
+                </span>
             </div>
             <div class="pin-box__cell  |  stack__unit  |  leader-inside  |  trailer-inside  |  gutters gutter-hero--left">
                 <ul class="reset  |  label-list  |  list--inline">

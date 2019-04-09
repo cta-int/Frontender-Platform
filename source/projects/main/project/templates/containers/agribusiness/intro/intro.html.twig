@@ -1,6 +1,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="{{ ["layout", config.container_class]|join("  |  ") }}">
+<div class="{{ ["layout", config.container_class|t(locales)]|join("  |  ") }}">
     <div class="layout__cell  layout__cell--main  |  gutters">
         <div class="gutter">
             <p class="lead  |  trailer  |  gutter">{{ labels.lead|t(locales) }}</p>

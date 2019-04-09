@@ -7,15 +7,18 @@
   <div class="panel__body">
     <ul class="grid grid--musketeers  |  reset">
     	{% for download in model.mediaObject | findType('document') %}
-        <li class="grid__cell  |  leader--normal  |  trailer--normal  |  gutters">
-			<h2 class="title title--apropos"><a href="{{ download.metadata.url }}" target="_blank">{{ download.description }}</a></h2>
+        <li class="grid__cell  |  leader--normal  |  trailer--normal  |  gutters" itemscope itemtype="https://schema.org/MediaObject">
+			<h2 class="title title--apropos" itemprop="about"><a href="{{ download.metadata.url }}" target="_blank">{{ download.description }}</a></h2>
 			<div class="media  |  leader--small">
 				<div class="media__figure">
 					<a class="icon icon--download" href="{{ download.metadata.url }}" target="_blank"></a>
 				</div>
 				<div class="media__body  |  gutters">
-					<a class="block-link  |  download-size" href="{{ download.metadata.url }}" target="_blank">{{ download.name|default(download.description) }}</a>
-					<p class="download-size">{{ 'format'|i18n }} {{ download.contentType|extension }}, {{ download.metadata.url|getFileSize }}</p>
+					<a class="block-link  |  download-size" href="{{ download.metadata.url }}" target="_blank" itemprop="contentUrl">{{ download.name|default(download.description) }}</a>
+					<p class="download-size">{{ 'format'|i18n }}
+                        <span itemprop="encodingFormat">{{ download.contentType|extension }}</span>,
+                        <span itemprop="contentSize">{{ download.metadata.url|getFileSize }}</span>
+                    </p>
 				</div>
 			</div>
 	      </li>
