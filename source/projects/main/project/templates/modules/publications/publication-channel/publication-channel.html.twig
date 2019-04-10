@@ -10,7 +10,7 @@
     {# Lead issue #}
     <article class="publication-channel-hero">
         <p class="is-gt-large-handheld publication-channel-hero__title title leader-inside--normal trailer-inside--normal">
-            <strong>{{ 'Channel'|t }}</strong>
+            <strong>{{ labels.title|t|default(model.name|t) }}</strong>
         </p>
         <div class="bubble bubble--down">
             <div class="publication-tile publication-tile--fold media media--cover well leader-inside--normal trailer-inside--normal">
