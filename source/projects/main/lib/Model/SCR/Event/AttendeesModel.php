@@ -19,11 +19,11 @@ class AttendeesModel extends ScrModel
 
         $this->getState()
             ->insert('id', null)
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip');
     }
 
-    public function getModelName() : string
+    public function getModelName(): string
     {
         $name = parent::getModelName();
 

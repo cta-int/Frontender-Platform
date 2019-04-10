@@ -14,6 +14,8 @@ class LabelsModel extends ScrModel
 
         $this->getState()
             ->insert('id', null, true)
+            ->insert('limit', 20)
+            ->insert('skip')
             ->insert('articleLimit', 20);
     }
 

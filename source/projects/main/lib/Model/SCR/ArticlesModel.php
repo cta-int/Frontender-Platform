@@ -29,7 +29,7 @@ class ArticlesModel extends ScrModel
 
         $this->getState()
             ->insert('id', null, true)
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip')
             ->insert('language', $this->container->language->get())
             ->insert('analysis')
