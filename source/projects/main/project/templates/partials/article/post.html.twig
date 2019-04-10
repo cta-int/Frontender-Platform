@@ -60,7 +60,7 @@
         {% endif %}
 
         {% if config.show_stand_first %}
-            <p class="is-gt-small-desktop  |  post__intro" itemprop="description">{{ article.about|raw }}</p>
+            <p class="post__intro" itemprop="description">{{ article.about|raw }}</p>
         {% endif %}
 
         {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}

@@ -19,13 +19,10 @@ class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
         $this->getState()
             ->insert('id', null)
             ->insert('bookmarked', 'false')
-            ->insert('explain', 'false')
-            ->insert('language', $this->container->language->get())
-            ->insert('limit')
-            ->insert('skip');
+            ->insert('explain', 'false');
     }
 
-    public function getModelName() : string
+    public function getModelName(): string
     {
         $name = parent::getModelName();
 

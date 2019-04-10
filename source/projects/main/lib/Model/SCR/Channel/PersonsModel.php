@@ -18,7 +18,7 @@ class PersonsModel extends \Prototype\Model\SCR\PersonsModel
 
         $this->getState()
             ->insert('id', null)
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip');
     }
 

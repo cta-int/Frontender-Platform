@@ -21,11 +21,11 @@ class EventsModel extends ScrModel
             ->insert('id', null)
             ->insert('explain', 'false')
             ->insert('language', $this->container->language->get())
-            ->insert('limit')
+            ->insert('limit', 20)
             ->insert('skip');
     }
 
-    public function getModelName() : string
+    public function getModelName(): string
     {
         $name = parent::getModelName();
 

@@ -14,7 +14,9 @@ class LabelsModel extends ScrModel
 
         $this->getState()
             ->insert('id', null, true)
-            ->insert('articleLimit');
+            ->insert('limit', 20)
+            ->insert('skip')
+            ->insert('articleLimit', 20);
     }
 
     public function getPropertyTheme()
