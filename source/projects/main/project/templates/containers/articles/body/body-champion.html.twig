@@ -1,5 +1,6 @@
 {% import "macros/share.html.twig" as share %}
 {% import "macros/concept.html.twig" as concept %}
+{% import "macros/date.html.twig" as date %}
 {% import "macros/author.html.twig" as author %}
 {% import "macros/location.html.twig" as location %}
 {% import "macros/image.html.twig" as image %}
@@ -7,6 +8,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set similar_issues = model.similar.issues({'limit': config.publication_limit|default(2), 'label': 'strategy'}) %}
 
 <div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">
@@ -69,8 +71,10 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-                    {{ share.bar_article(model) }}
+                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+                    <div class="gutters">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
@@ -158,7 +162,7 @@
 
                 {% if show_external_links|default(1) and model.externalLink|length > 0  %}
                     <section class="trailer--hero  |  gutters">
-                        <h2 class="title title--apropos  |  trailer--small">{{ 'External links'|i18n(locales) }}</h2>
+                        <h2 class="title title--apropos  |  trailer--normal">{{ 'External links'|i18n(locales) }}</h2>
                         {% for link in model.externalLink %}
                             {% include 'partials/icon-link.html.twig' with {link: link} %}
                         {% endfor %}
@@ -174,13 +178,64 @@
                         {% endfor %}
                     </section>
                 {% endif %}
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
-                    {{ share.bar_article(article) }}
+                <div class="well  |  leader  |  trailer  |  is-lt-small-desktop">
+                    <div class="gutters trailer">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="layout__cell layout__cell--aside  |  wings">
+
+        {% if similar_issues|length > 0 %}
+            <aside class="trailer">
+                <h2 class="title trailer-inside--normal gutters">{{ content.related_headline|t(locales)|default('related_publications'|i18n) }}</h2>
+                {% for issue in similar_issues %}
+                    {% set issue_route = route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) %}
+                    <article>
+                        <div class="publication-tile media leader--normal trailer--normal">
+                            <div class="publication-tile__cover media__figure gutters">
+                                <figure class="publication-cover">
+                                    <a href="{{ issue_route }}">
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="media__body">
+                                {% if config.show_publication_date|default(1) %}
+                                    <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                                {% endif %}
+                                <h2 class="heading heading--apropos heading--trump">
+                                    <a class="is-heir" href="{{ issue_route }}">
+                                        {{ issue.headline|t(locales) }}
+                                    </a>
+                                </h2>
+                                {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                                    <p class="author leader--tiny">
+                                        {{ author.long(issue.link.person.author) }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if issue.externalLink|length > 0 %}
+                            <div class="trailer  |  gutters" itemprop="associatedMedia">
+                                {% for link in issue.externalLink %}
+                                    <div>
+                                        <a class="publication-download publication-download--theme publication-download--s trailer--tiny" href="{{ link.url }}" itemscope itemprop="url" itemtype="https://schema.org/MediaObject">
+                                            <span class="publication-download__item" itemprop="name">{{ link.name }}</span>
+                                            {% if link.url|getFileSize %}
+                                                <span class="publication-download__item" itemprop="contentSize">{{ link.url|getFileSize }}</span>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </aside>
+        {% endif %}
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
             <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
@@ -229,5 +284,7 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
+
+        
     </div>
 </div>

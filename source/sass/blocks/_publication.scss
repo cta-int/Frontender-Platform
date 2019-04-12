@@ -196,26 +196,29 @@ Styleguide 4.40
 
 .publication-download {
 	display: inline-flex;
-	border: 1px solid rgba($black, .26);
-
+	border: 1px solid;
+	@include theme-color();
 	&__item {
 		@extend %meta-text;
 		padding: rhythm(3) rhythm(5);
 		font-weight: 400;
+		border-right: 1px solid;
 	}
 	&--s &__item {
 		font-size: to-unit(14px);
 		padding: rhythm(1) rhythm(3);
 	}
-	.well & {
+	&__item:last-child {
+		border: 0;
+	}
+	&__item + &__item {
+		color: rgba($black, .54);
+	}
+	.well &,
+	.well &__item {
 		border-color: $white;
 	}
 	.well--full & {
 		color: $white;
-	}
-	&__item + &__item {
-		border: inherit;
-		border-width: 0 0 0 1px;
-		color: rgba($black, .54);
 	}
 }

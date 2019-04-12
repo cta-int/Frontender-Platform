@@ -167,3 +167,10 @@
         }
     }
 }
+
+html {
+    @include breakpoint("#{$gt-small-desktop} and #{$lt-large-desktop}") {
+        font-size: to-unit(14px);
+    }
+}
+

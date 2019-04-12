@@ -36,11 +36,14 @@
 				border-color: $color-burgundy;
 			}
 		}
-		h2, h3, h4, h5, h6 {
-			margin-top: rhythm(10);
-			font-family: $font-family--meta;
-			font-size: to-unit(18px);
-			font-weight: 600;
+		h2.heading, h3.heading, h4, h5, h6 {
+			&,
+			&:not(.trump) {
+				margin-top: rhythm(10);
+				font-family: $font-family--meta;
+				font-size: to-unit(18px);
+				font-weight: 600;
+			}
 		}
 		ol {
 			padding-left: 0;
