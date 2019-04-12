@@ -178,8 +178,10 @@
                         {% endfor %}
                     </section>
                 {% endif %}
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
-                    {{ share.bar_article(article) }}
+                <div class="well  |  leader  |  trailer  |  is-lt-small-desktop">
+                    <div class="gutters trailer">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
             </div>
         </div>
