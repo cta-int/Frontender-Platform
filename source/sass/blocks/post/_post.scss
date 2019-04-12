@@ -93,6 +93,7 @@
     &-body {
       .publication-tile .publication-tile__cover {
         width: percentage(5 / 10);
+        max-width: 2 / 18 * 100vw;
       }
     }
   }
