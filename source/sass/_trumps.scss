@@ -174,10 +174,3 @@ html {
     }
 }
 
-.post-body .publication-tile .heading {
-    @include title-14px();
-    margin-top: 0;
-    @include breakpoint($gt-large-handheld) {
-        font-size: to-unit(16px);
-    }
-}
