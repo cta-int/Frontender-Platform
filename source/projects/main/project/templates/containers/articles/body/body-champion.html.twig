@@ -69,8 +69,10 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-                    {{ share.bar_article(model) }}
+                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+                    <div class="gutters">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
