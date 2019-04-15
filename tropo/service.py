@@ -1080,6 +1080,79 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Priority=96
 ))
 
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpspublicationListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.publication.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=97
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpspublicationListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.publication.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=98
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttppublicationListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["publication.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=99
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttppublicationListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["publication.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=101
+))
+
 # Allow NAT instances to access Public ALB
 sg_alb_public_ingress_rules80 = {}
 sg_alb_public_ingress_rules443 = {}
