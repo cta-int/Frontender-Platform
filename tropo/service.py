@@ -1092,7 +1092,7 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Conditions=[
         elasticloadbalancingv2.Condition(
             Field="host-header",
-            Values=["www.publication.cta.int"]
+            Values=["www.publications.cta.int"]
         )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
@@ -1110,7 +1110,7 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Conditions=[
         elasticloadbalancingv2.Condition(
             Field="host-header",
-            Values=["www.publication.cta.int"]
+            Values=["www.publications.cta.int"]
         )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
@@ -1128,7 +1128,7 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Conditions=[
         elasticloadbalancingv2.Condition(
             Field="host-header",
-            Values=["publication.cta.int"]
+            Values=["publications.cta.int"]
         )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
@@ -1146,7 +1146,7 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     Conditions=[
         elasticloadbalancingv2.Condition(
             Field="host-header",
-            Values=["publication.cta.int"]
+            Values=["publications.cta.int"]
         )
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
