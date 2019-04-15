@@ -27,6 +27,9 @@ Styleguide 3.44
     .post-body .heading + & {
         margin-top: rhythm(8);
     }
+    .post-body & + .heading {
+        margin-top: rhythm(16);
+    }
     strong {
         font-weight: 600;
     }

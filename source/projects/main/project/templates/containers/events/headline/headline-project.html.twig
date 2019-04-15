@@ -6,6 +6,8 @@
 
 {% import "macros/template.html.twig" as helper %}
 <{{ config.container_tag|default('header') }}{{ helper.class_attribute(config, 'trailer--hero')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <meta itemprop="startDate" content="{{ model.startDate }}">
+    <meta itemprop="endDate" content="{{ model.endDate }}">
     {% if model.mediaObject|lead %}
         <div class="ie9-hero">
             {{ image.hero(model.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
@@ -13,7 +15,7 @@
     {% endif %}
     <div class="article-headline  |  well well--full  |  layout  |  leader-inside--hero trailer-inside--hero">
         <div class="layout__cell layout__cell--main  |  wings">
-            <h1 class="heading heading--hero  |  trailer  |  gutters">
+            <h1 class="heading heading--hero  |  trailer  |  gutters" itemprop="name">
                 {{ model.name }}
             </h1>
             <p class="title title--section  |  gutters"><strong class="reset">{{ model.type }}</strong></p>
@@ -21,10 +23,10 @@
         <div class="layout__cell layout__cell--aside  |  wings">
             {% if model.mediaObject|lead %}
                 {% if model.mediaObject|lead.about %}
-                    <p class="caption  |  gutters">{{ model.mediaObject|lead.about }}</p>
+                    <p class="caption  |  gutters" itemprop="about">{{ model.mediaObject|lead.about }}</p>
                 {% endif %}
                 {% if model.mediaObject|lead.credit %}
-                    <p class="credit  |  gutters">{{ model.mediaObject|lead.credit }}</p>
+                    <p class="credit  |  gutters" itemprop="copyrightHolder">{{ model.mediaObject|lead.credit }}</p>
                 {% endif %}
             {% else %}
                 <span class="is-silent">&nbsp;</span>

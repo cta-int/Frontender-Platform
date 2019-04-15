@@ -8,13 +8,13 @@
             <div class="trailer--small">
                 <div class="media  |  leader--small">
                     <div class="media__figure">
-                        <a class="icon icon--download" href="{{ download.metadata.url }}" target="_blank"></a>
+                        <a class="icon icon--download" href="{{ download.url }}" target="_blank"></a>
                     </div>
                     <div class="media__body  |  gutters">
-                        <a class="block-link  |  download-size" href="{{ download.metadata.url }}" target="_blank">
+                        <a class="block-link  |  download-size" href="{{ download.url }}" target="_blank">
                             {{ download.name }}
                         </a>
-                        {% if download.url|getFileSize %}
+                        {% if download.url %}
                             <span class="download-size">{{ download.url|getFileSize }}</span>
                         {% endif %}
                     </div>

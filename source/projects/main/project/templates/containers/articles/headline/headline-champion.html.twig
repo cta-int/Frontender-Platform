@@ -6,7 +6,7 @@
 {% set class = helper.class(config)|trim %}
 
 
-<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class]|join('  |  ') }}">
+<header {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ['trailer--hero', config.container_class|t(locales)]|join('  |  ') }}">
     <div class="ie9-hero">
         {% if model.link.mediaObject|lead %}
             {{ image.hero(model.link.mediaObject|lead, is_crowned, "article-header__image  |  image image--stretch") }}
@@ -18,13 +18,13 @@
         <div class="article-headline  |  well well--full  |  layout  |  leader-inside--giant trailer-inside--hero">
     {% endif %}
         <div class="layout__cell layout__cell--main  |  wings">
-            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters" itemprop="headline">
                 {{ model.headline }}
             </h1>
             {% if model.alternativeHeadline %}
-                <p class="article-headline__byline  |  meta  |  trailer  |  gutters"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                <p class="article-headline__byline  |  meta  |  trailer  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
-            <p class="title title--section  |  gutters"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
+            <p class="title title--section  |  gutters" itemscope itemprop="articleSection"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
         </div>
         <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
             {% if model.link.mediaObject|lead %}
@@ -32,7 +32,7 @@
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about|t(locales) }}</p>
                 {% endif %}
                 {% if model.link.mediaObject|lead.credit %}
-                    <p class="credit  |  gutters  |  trailer">&copy; {{ model.link.mediaObject|lead.credit|t(locales) }}</p>
+                    <p class="credit  |  gutters  |  trailer" itemprop="copyrightHolder">&copy; {{ model.link.mediaObject|lead.credit|t(locales) }}</p>
                 {% endif %}
             {% else %}
                 <span class="is-silent">&nbsp;</span>

@@ -10,25 +10,25 @@
     {# Lead issue #}
     <article class="publication-channel-hero">
         <p class="is-gt-large-handheld publication-channel-hero__title title leader-inside--normal trailer-inside--normal">
-            <strong>{{ 'Channel'|t }}</strong>
+            <strong>{{ labels.title|t|default(model.name|t) }}</strong>
         </p>
         <div class="bubble bubble--down">
             <div class="publication-tile publication-tile--fold media media--cover well leader-inside--normal trailer-inside--normal">
                 <div class="publication-tile__cover media__figure gutters">
                     <figure class="publication-cover publication-cover--pull-top publication-cover--gutter-right">
-                        <a href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
-                            {{ image.contentBlock_cover(model|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        <a href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, 'id': model.articles|first._id}) }}">
+                            {{ image.contentBlock_cover(model.articles|first.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
                         </a>
                     </figure>
                 </div>
                 <div class="publication-tile__body media__body gutters">
                     <h2 class="heading">
-                        <a class="is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, 'id': model|first._id}) }}">
-                            {{ model|first.headline|t(locales) }}
+                        <a class="is-heir" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, 'id': model.articles|first._id}) }}">
+                            {{ model.articles|first.headline|t(locales) }}
                         </a>
                     </h2>
                     {% if config.show_publication|default(1) %}
-                        <p class="leader-inside--normal">{{ date.issue_date(model|first.datePublished) }}</p>
+                        <p class="leader-inside--normal">{{ date.issue_date(model.articles|first.datePublished) }}</p>
                     {% endif %}
                 </div>
             </div>
@@ -38,9 +38,9 @@
     
 
     {# Remaining issues #}
-    {% if model|slice(1)|length > 0 %}
+    {% if model.articles|slice(1)|length > 0 %}
         <h2 class="title title--apropos leader trailer--normal">{{ labels.list_title|t(locales) }}</h2>
-        {% for issue in model|slice(1) %}
+        {% for issue in model.articles|slice(1) %}
             <article class="publication-tile publication-tile--s media trailer leader--normal trailer--normal">
                 <div class="publication-tile__cover media__figure gutter">
                     <figure class="publication-cover publication-cover--s">

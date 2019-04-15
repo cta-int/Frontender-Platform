@@ -2,7 +2,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["well well--padded well--darker", "leader-inside", "trailer-inside", config.container_class]|join("  |  ") }} {{ config.colour_theme }}">
+<div {{ helper.container_id_attribute(frontender, "frontender")|raw }} class="{{ ["well well--padded well--darker", "leader-inside", "trailer-inside", config.container_class|t(locales)]|join("  |  ") }} {{ config.colour_theme|t(locales) }}">
     <div class="layout">
         <div class="layout__cell layout__cell--aside  |  wing--left">
             <div class="gutters">
