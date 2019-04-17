@@ -216,7 +216,7 @@
                         {% if organization.avatar %}
                             <div class="media">
                                 <div class="media__figure  |  gutters">
-                                    <img src="{{ 'https://res.cloudinary.com/cta/image/upload/w_50,f_auto,g_faces:center,c_fill/' ~ organization.avatar|getFileBaseName() }}" alt="{{ organization.name|t(locales) }}">
+                                    <img src="{{ 'https://res.cloudinary.com/cta/image/upload/w_50,f_auto,g_faces:center,c_fill/' ~ organization.avatar|getFileBaseName() }}" alt="{{ organization.name|t(locales) }}" itemprop="logo">
                                 </div>
                                 <div class="media__body  |  gutter--right">
                                     <h1 class="title title--apropos  |  trailer--small">
