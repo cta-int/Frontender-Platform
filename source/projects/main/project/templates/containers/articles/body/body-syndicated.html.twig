@@ -216,7 +216,7 @@
                         {% if organization.avatar %}
                             <div class="media">
                                 <div class="media__figure  |  gutters">
-                                    <img src="{{ organization.avatar }}" width="50" height="50" alt="{{ organization.name|t(locales) }}" itemprop="logo">
+                                    {{ image.person(organization, 50) }}
                                 </div>
                                 <div class="media__body  |  gutter--right">
                                     <h1 class="title title--apropos  |  trailer--small">
