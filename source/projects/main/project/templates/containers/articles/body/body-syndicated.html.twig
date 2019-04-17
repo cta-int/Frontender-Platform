@@ -213,19 +213,34 @@
             {% for organization in model.link.organization.sourceOrganization|filterCTA(false) %}
                 {% if organization.description %}
                     <aside class="trailer--hero" itemprop="publisher" itemtype="https://schema.org/Organization" itemscope>
-                        <h1 class="title title--apropos  |  trailer--small  |  gutters">
-                            {{ 'About'|i18n }}
-                            <span itemprop="name">{{ organization.name|t(locales) }}</span>
-                        </h1>
-                        <p class="body--whisper  |  gutters" itemprop="description">
-                            {{ organization.description|t(locales) }}
-                        </p>
-                        <meta itemprop="logo" content="{{ organization.avatar }}">
+                        {% if organization.avatar %}
+                            <div class="media">
+                                <div class="media__figure  |  gutters">
+                                    <img src="{{ organization.avatar }}" width="50" height="50" alt="{{ organization.name|t(locales) }}" itemprop="logo">
+                                </div>
+                                <div class="media__body  |  gutter--right">
+                                    <h1 class="title title--apropos  |  trailer--small">
+                                        {{ 'About'|i18n }}
+                                        <span itemprop="name">{{ organization.name|t(locales) }}</span>
+                                    </h1>
+                                    <p class="body--whisper" itemprop="description">
+                                        {{ organization.description|t(locales) }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% else %}
+                            <h1 class="title title--apropos  |  trailer--small  |  gutters">
+                                {{ 'About'|i18n }}
+                                <span itemprop="name">{{ organization.name|t(locales) }}</span>
+                            </h1>
+                            <p class="body--whisper  |  gutters" itemprop="description">
+                                {{ organization.description|t(locales) }}
+                            </p>
+                        {% endif %}
                     </aside>
                 {% else %}
                     <span itemprop="publisher" itemtype="https://schema.org/Organization" itemscope>
                         <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}">
-                        <!-- <meta itemprop="description" content=""> -->
                         <meta itemprop="logo" content="/assets/images/logos/brands/logo-ictupdate.png">
                     </span>
                 {% endif %}
