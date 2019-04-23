@@ -539,21 +539,29 @@ $landscape - Breakpoint for landscape oriented viewports.
 
 {% macro contentBlock_cover(contentBlock, class) %}
 
-    {% if contentBlock|first.url is defined %}
-        {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
-    {% else %}
-        {% set imagebasename = contentBlock|first.id %}
-    {% endif %}
-    
-    {% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_240,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
+    {% if contentBlock %}
 
-    <img
-        class="{{ class }}"
-        src="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }}"
-        srcset="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }} 480w,https://res.cloudinary.com/cta/image/upload/w_320/{{ imagebasename }} 320w,https://res.cloudinary.com/cta/image/upload/w_240/{{ imagebasename }} 240w"
-        sizes="100vw, (min-width: 480px) 480px"
-        alt="{{ contentBlock|first.about|t(locales)|default('') }}"
-        />
+        {% if contentBlock|first.url is defined %}
+            {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
+        {% else %}
+            {% set imagebasename = contentBlock|first.id %}
+        {% endif %}
+
+        {% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_240,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
+
+        {% if imagedimensions.width %}
+            <img
+                class="{{ class }}"
+                src="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }}"
+                srcset="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }} 480w,https://res.cloudinary.com/cta/image/upload/w_320/{{ imagebasename }} 320w,https://res.cloudinary.com/cta/image/upload/w_240/{{ imagebasename }} 240w"
+                sizes="100vw, (min-width: 480px) 480px"
+                alt="{{ contentBlock|first.about|t(locales)|default('') }}"
+                />
+        {% endif %}
+
+    {% else %}
+
+    {% endif %}
 
 {% endmacro %}
 
