@@ -539,7 +539,12 @@ $landscape - Breakpoint for landscape oriented viewports.
 
 {% macro contentBlock_cover(contentBlock, class) %}
 
-    {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
+    {% if contentBlock|first.url is defined %}
+        {% set imagebasename = contentBlock|first.url|getFileBaseName() %}
+    {% else %}
+        {% set imagebasename = contentBlock|first.id %}
+    {% endif %}
+    
     {% set imagedimensions = ('https://res.cloudinary.com/cta/image/upload/w_240,c_limit,f_auto,q_auto/' ~ imagebasename)|getImageDimensions() %}
 
     <img
