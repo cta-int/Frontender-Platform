@@ -5,24 +5,29 @@
         color: mix($color-green, $white, 26%);
     }
     @each $color_name, $color_value in $colours {
-        .theme--#{$color_name} & {
+        .theme--#{$color_name} &,
+        .theme .theme--#{$color_name} & {
             background-color: mix($color_value, $white, 26%);
         }
-        .theme--#{$color_name} &::after {
+        .theme--#{$color_name} &::after,
+        .theme .theme--#{$color_name} &::after {
             color: mix($color_value, $white, 26%);
         }
-        .theme--#{$color_name} &--heavy {
+        .theme--#{$color_name} &--heavy,
+        .theme .theme--#{$color_name} &--heavy {
             background-color: mix($color_value, $white, 100%);
             color: $white;
         }
-        .theme--#{$color_name} &--heavy::after {
+        .theme--#{$color_name} &--heavy::after,
+        .theme .theme--#{$color_name} &--heavy::after {
             color: mix($color_value, $white, 100%);
         }
-        .theme &--clear {
-            background: $white;
-            &::after {
-                color: $white;
-            }
+    }
+    .theme &--clear,
+    .theme .theme &--clear {
+        background: $white;
+        &::after {
+            color: $white;
         }
     }
     &--up::after,

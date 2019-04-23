@@ -11,7 +11,7 @@
                     {% for modelItem in group %}
                         {% set link = route({'page': modelItem.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ link }}">
+                            <a class="anchor--shy  |  is-heir" href="{{ link }}">
                                 {{ modelItem.name|t(locales) }}
                             </a>
                         </li>
@@ -20,7 +20,7 @@
                     {% for modelItem in group|slice(0, config.show_max) %}
                         {% set link = route({'page': modelItem.path, 'slug': modelItem.name|t(locales)|slugify, id: modelItem._id}) %}
                         <li class="trailer--large">
-                            <a class="anchor--shy" href="{{ link }}">
+                            <a class="anchor--shy  |  is-heir" href="{{ link }}">
                                 {{ modelItem.name|t(locales) }}
                             </a>
                         </li>

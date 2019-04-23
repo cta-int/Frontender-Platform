@@ -368,70 +368,71 @@ Styleguide 5.50.3.2
 */
 
 // scss-lint:disable NestingDepth
-.post-body {
-    h2, h3, h4, h5, h6 {
-        margin-top: rhythm(10);
-        font-family: $font-family--meta;
-        font-size: to-unit(18px);
-        font-weight: 600;
-    }
-  p,
-  ul,
-  ol,
-  figure {
-    overflow: hidden;
-  }
-  ul {
-    ul {
-      margin: 0;
-    }
-    li {
-    }
-  }
-  .share--list,
-  .share-list {
-    li {
-      margin: 0;
-    }
-  }
-  img {
-    margin: 0 rhythm(10) 0 0;
-    max-width: 100%;
-    height: auto;
-  }
-  [itemprop="author"] img {
-    margin-right: 0;
-  }
-  .wp-caption-text {
-    font-size: to-unit(14px);
-    font-style: italic;
-  }
-  blockquote {
-    padding: 0 rhythm(10);
-    border-top: 1px solid $color-border;
-    border-bottom: 1px solid $color-border;
-    color: mix($color-shadow, $white, 26%);
-    text-align: center;
-    font-style: italic;
-    font-size: rhythm(5);
-    p {
-      margin: rhythm(5) 0;
-    }
-  }
-  .size-large,
-  .size-full {
-    @extend .image--stretch;
-  }
-  .alignright {
-    float: right;
-    margin-left: rhythm(5);
-  }
-  .alignleft {
-    float: left;
-  }
-  .aligncenter {
-    display: block;
-    margin: 0 auto;
-  }
-}
+// .post-body {
+    
+//     h2, h3, h4, h5, h6 {
+//         margin-top: rhythm(10);
+//         font-family: $font-family--meta;
+//         font-size: to-unit(18px);
+//         font-weight: 600;
+//     }
+//   p,
+//   ul,
+//   ol,
+//   figure {
+//     overflow: hidden;
+//   }
+//   ul {
+//     ul {
+//       margin: 0;
+//     }
+//     li {
+//     }
+//   }
+//   .share--list,
+//   .share-list {
+//     li {
+//       margin: 0;
+//     }
+//   }
+//   img {
+//     margin: 0 rhythm(10) 0 0;
+//     max-width: 100%;
+//     height: auto;
+//   }
+//   [itemprop="author"] img {
+//     margin-right: 0;
+//   }
+//   .wp-caption-text {
+//     font-size: to-unit(14px);
+//     font-style: italic;
+//   }
+//   blockquote {
+//     padding: 0 rhythm(10);
+//     border-top: 1px solid $color-border;
+//     border-bottom: 1px solid $color-border;
+//     color: mix($color-shadow, $white, 26%);
+//     text-align: center;
+//     font-style: italic;
+//     font-size: rhythm(5);
+//     p {
+//       margin: rhythm(5) 0;
+//     }
+//   }
+//   .size-large,
+//   .size-full {
+//     @extend .image--stretch;
+//   }
+//   .alignright {
+//     float: right;
+//     margin-left: rhythm(5);
+//   }
+//   .alignleft {
+//     float: left;
+//   }
+//   .aligncenter {
+//     display: block;
+//     margin: 0 auto;
+//   }
+// }
 // scss-lint:enable NestingDepth

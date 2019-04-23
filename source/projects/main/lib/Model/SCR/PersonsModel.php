@@ -19,6 +19,8 @@ class PersonsModel extends ScrModel
 
         $this->getState()
             ->insert('id', null, true)
-            ->insert('language', $this->container->language->get());
+            ->insert('language', $this->container->language->get())
+            ->insert('limit', 20)
+            ->insert('skip');
     }
 }

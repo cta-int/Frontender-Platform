@@ -90,6 +90,12 @@
       margin-top: rhythm(4);
       margin-bottom: rhythm(2);
     }
+    &-body {
+      .publication-tile__cover {
+        width: percentage(5 / 10);
+        max-width: 2 / 18 * 100vw;
+      }
+    }
   }
 }
 

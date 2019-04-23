@@ -44,6 +44,7 @@ a,
   }
   &:hover,
   .theme &,
+  .theme .theme &,
   &.is-heir,
   &:hover .is-heir {
     &,
@@ -55,6 +56,7 @@ a,
   &--shy {
       &,
       &:visited,
+      .theme .theme &,
       .theme & {
           color: inherit;
       }
