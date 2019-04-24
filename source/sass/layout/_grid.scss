@@ -83,8 +83,6 @@ Styleguide 2.7
         }
     }
 
-    &--rows {}
-
     @include breakpoint("(min-width: #{to-unit(600px)})") {
         &--tiles &__cell,
         &--teletubbies &__cell {
@@ -93,6 +91,20 @@ Styleguide 2.7
 
             .no-flexbox & {
                 width: percentage(2 / 4);
+            }
+        }
+
+        &--rows &__cell {
+            flex-basis: percentage(1 / 2);
+            max-width: percentage(1 / 2);
+            .no-flexbox & {
+                width: percentage(1 / 2);
+            }
+            .post {
+            flex-direction: column-reverse;
+            .media__figure {
+                width: 100%;
+            }
             }
         }
     }
