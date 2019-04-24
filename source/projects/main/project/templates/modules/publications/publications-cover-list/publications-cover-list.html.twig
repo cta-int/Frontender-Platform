@@ -1,0 +1,44 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="grid grid--rows">
+        {% for issue in model.articles %}
+            <article class="grid__cell gutters publication-tile publication-tile--s media trailer leader--normal trailer--normal">
+                <div class="publication-tile__cover media__figure gutter">
+                    <figure class="publication-cover publication-cover--s">
+                        <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                        </a>
+                    </figure>
+                </div>
+                <div class="media__body">
+                    {% if config.show_publication|default(1) %}
+                        <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                    {% endif %}
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                            {{ issue.headline|t(locales) }}
+                        </a>
+                    </h2>
+                    {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                        <p class="author">
+                            {{ author.long(issue.link.person.author) }}
+                        </p>
+                    {% endif %}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+
+    {% if labels.link.label|length and labels.link.page|length %}
+    <div class="body--align-center | leader-inside--hero  |  trailer trailer-inside">
+
+        {% include 'partials/menu-link.html.twig' with {link: labels.link, config: {anchor_class: 'button'}} %}
+    </div>
+    {% endif %}
+</{{ config.container_tag|default('div') }}>
