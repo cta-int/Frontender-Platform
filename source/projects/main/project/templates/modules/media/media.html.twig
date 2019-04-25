@@ -1,0 +1,16 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/image.html.twig" as image %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'media')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="media__figure  |  gutter">
+        {{ image.post(model) }}
+    </div>
+    <div class="media__body">
+        <h3 class="heading">{{ content.title|t(locales) }}</h3>
+        {% if content.description %}
+            <p class="post__intro">{{ content.description|t(locales) }}</p>
+        {% endif %}
+        <a class="read-more" href="{{ content.button.page|t(locales) }}">{{ content.button.label|t(locales) }}</a>
+    </div>
+</{{ config.container_tag|default('div') }}>

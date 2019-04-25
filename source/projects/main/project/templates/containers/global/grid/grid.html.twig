@@ -2,7 +2,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, config.grid|default('grid grid--posts'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% for loopContainer in containers %}
-        <div class="grid__cell">
+        <div class="grid__cell {{ config.cell_class|t(locales) }}">
             {% include loopContainer.template with loopContainer %}
         </div>
     {% endfor %}
