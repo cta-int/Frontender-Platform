@@ -1,17 +1,9 @@
 {% import "macros/template.html.twig" as helper %}
-{% import "macros/schema.html.twig" as schema %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, config.grid|default('grid grid--posts'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, config.grid|default('grid grid--posts'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% for loopContainer in containers %}
         <div class="grid__cell">
             {% include loopContainer.template with loopContainer %}
         </div>
     {% endfor %}
-</{{ config.container_tag|default('div') }}>
-
-
-
-
-<{{ config.container_tag|default('div') }} class="{{[container_class]|join('  |  ') }}">
-
 </{{ config.container_tag|default('div') }}>
