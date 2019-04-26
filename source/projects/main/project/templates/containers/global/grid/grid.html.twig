@@ -1,10 +1,9 @@
+{% import "macros/template.html.twig" as helper %}
 
-<{{ config.container_tag|default('div') }} class="{{[container_class]|join('  |  ') }}">
-<div class="grid grid--posts  |  gutters">
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, config.grid|default('grid grid--posts'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     {% for loopContainer in containers %}
-        <div class="grid__cell">
+        <div class="grid__cell {{ config.cell_class|t(locales) }}">
             {% include loopContainer.template with loopContainer %}
         </div>
     {% endfor %}
-</div>
 </{{ config.container_tag|default('div') }}>
