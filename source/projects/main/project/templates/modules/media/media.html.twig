@@ -11,6 +11,9 @@
         {% if content.description %}
             <p class="post__intro">{{ content.description|t(locales) }}</p>
         {% endif %}
-        <a class="read-more" href="{{ content.button.page|t(locales) }}" target="_blank">{{ content.button.label|t(locales) }}</a>
+        <a class="button  |  gutter-outside" href="{{ content.button.page|t(locales) }}" target="_blank">{{ content.button.label|t(locales) }}</a>
+        {% if content.link.label|t(locales) %}
+            <a class="read-more" href="{{ content.link.page|t(locales) }}">{{ content.link.label|t(locales) }}</a>
+        {% endif %}
     </div>
 </{{ config.container_tag|default('div') }}>
