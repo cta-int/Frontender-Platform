@@ -113,6 +113,23 @@
 							},
 							"control": "core/textarea"
 						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
 						"button": {
 							"value": {
 								"label": {
@@ -209,6 +226,23 @@
 								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
 							},
 							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
 						},
 						"button": {
 							"value": {
@@ -307,6 +341,23 @@
 							},
 							"control": "core/textarea"
 						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
 						"button": {
 							"value": {
 								"label": {
@@ -403,6 +454,23 @@
 								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
 							},
 							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
 						},
 						"button": {
 							"value": {
@@ -501,6 +569,23 @@
 							},
 							"control": "core/textarea"
 						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
 						"button": {
 							"value": {
 								"label": {
@@ -597,6 +682,23 @@
 								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
 							},
 							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
 						},
 						"button": {
 							"value": {
