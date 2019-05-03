@@ -291,7 +291,8 @@ Styleguide 2.1
                 }
                 &.well:not(.well--full),
                 .well:not(.well--full) & {
-                    .theme &::after {
+                    .theme &::after,
+                    &::after {
                         background-color: $white;
                     }
                 }
