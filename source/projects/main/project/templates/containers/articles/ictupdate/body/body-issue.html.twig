@@ -41,17 +41,13 @@
                 </div>
             {% endif %}
 
-            <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                <div class="gutters">
-                    {{ share.bar_article(model) }}
-                </div>
+            <div class="trailer  |  leader  |  gutters">
+                {{ share.bar_article(model) }}
             </div>
 
             {% if issue_articles|length %}
                 <p class="title title--section leader--hero trailer--hero"><span class="gutters">{{ 'in this issue'|i18n }}</span></p>
-            {% endif %}
 
-            {% if issue_articles|length %}
                 {% for article in issue_articles|slice(0,1) %}
                     <div class="post post--hero  |  layout layout--even">
                         <div class="post__media  |  layout__cell  |  gutters">
@@ -98,9 +94,6 @@
                         </div>
                     </div>
                 {% endfor %}
-            {% endif %}
-
-            {% if issue_articles|length %}
                 <div class="grid grid--rows">
                     {% for article in issue_articles|slice(1) %}
                         <article class="grid__cell  |  leader  |  gutters">
