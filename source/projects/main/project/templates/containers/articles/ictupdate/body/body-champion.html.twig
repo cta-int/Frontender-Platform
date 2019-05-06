@@ -19,7 +19,6 @@
                 </div>
 
                 <footer class="gutters  |  trailer--hero">
-                    {# todo link to view with all similar article.articleTypes #}
                     {% if model.datePublished %}
                         <p class="meta" itemprop="datePublished">
                             {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }}
@@ -45,8 +44,6 @@
                         <p class="gutters  |  paragraph--lead" itemprop="about">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
                     {% endif %}
 
-                    {# render the content blocks - if the first block is a list,
-                    we treat it as the article takeaways #}
                     <div itemprop="articleBody">
                         {% for i, contentBlock in model.contentBlocks %}
                             {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
@@ -191,7 +188,7 @@
                             <div class="publication-tile__cover media__figure gutters">
                                 <figure class="publication-cover">
                                     <a href="{{ issue_route }}">
-                                        {{ image.contentBlock_cover(issue.contentBlocks|t(locales)|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
                                     </a>
                                 </figure>
                             </div>
