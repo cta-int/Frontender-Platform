@@ -1,0 +1,23 @@
+{% import "macros/image.html.twig" as image %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/label.html.twig" as label %}
+{% set is_crowned = 'is-crowned' in helper.class_string(config, '')|raw %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% set class = helper.class(config)|trim %}
+
+<header {{ helper.class_attribute(config, 'trailer--hero')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <div class="article-headline  |  well well--full  |  layout  |  leader-inside--giant trailer-inside--hero">
+        <div class="layout__cell layout__cell--main  |  wings">
+            <h1 class="article-headline__title  |  heading heading--hero  |  trailer  |  gutters" itemprop="headline">
+                {{ model.headline }}
+            </h1>
+            {% if model.publicationLabel %}
+                <p class="title title--section  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
+            {% endif %}
+        </div>
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+            <span class="is-silent">&nbsp;</span>
+        </div>
+    </div>
+</header>

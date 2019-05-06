@@ -1,0 +1,178 @@
+{% import "macros/share.html.twig" as share %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/location.html.twig" as location %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/label.html.twig" as label %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+
+{% set layout = [config.layout|default('layout layout--split')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
+<{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--main wings layout__cell--divider">
+
+        <div class="social__share  |  trailer  |  gutters">
+            {{ share.bar_article(model, true) }}
+        </div>
+
+        <footer class="gutters  |  trailer--hero">
+            {# todo link to view with all similar article.articleTypes #}
+            {% if model.datePublished %}
+                <p class="meta" itemprop="datePublished">
+                    {{ model.datePublished|tdate('%A, %e %B %Y') }} {% if model.issue %}{{ 'in'|i18n(locales) }}
+                    <a href="{{ route({'page': model.path, 'id': model.issue._id}) }}">{{ model.issue.headline|t(locales) }}</a>.{% endif %}</p>
+            {% endif %}
+            {% if model.link.person.author %}
+                <div class="media__content  |  body--whisper  |  leader--tiny">
+                    {{ author.long(model.link.person.author) }}
+                </div>
+            {% else %}
+                <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                </span>
+            {% endif %}
+        </footer>
+
+        {% if model.alternativeHeadline %}
+            <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ model.alternativeHeadline|t(locales) }}</strong></p>
+        {% endif %}
+
+        <div class="post-anchor  |  clear">
+            {% if model.about %}
+                <p class="gutters  |  paragraph--lead" itemprop="about">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+            {% endif %}
+
+            {# render the content blocks - if the first block is a list,
+            we treat it as the article takeaways #}
+            <div itemprop="articleBody">
+                {% for i, contentBlock in model.contentBlocks %}
+                    {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
+                        <div class="gutters  |  leader leader-inside--tiny  |  trailer">
+                            {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-takeaways.html.twig' with {'content': contentBlock} %}
+                        </div>
+                    {% else %}
+                        {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if model.analysis.agrovoc.concepts %}
+            <div class="gutters  |  trailer  |  leader">
+                <ul class="reset  |  tag-list  |  list--inline">
+                    {% for label in model.analysis.agrovoc.concepts|slice(0, 20) %}
+                        <li>{{ concept.tag(label, locale) }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if model.link.person.author|filterArray('description', null)|length > 0 %}
+            <aside class="trailer--hero">
+                {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'authors'|i18n(locales) }}</h2>
+                {% else %}
+                    <h2 class="title  |  trailer--normal  |  gutters">{{ 'author'|i18n(locales) }}</h2>
+                {% endif %}
+                {% for auth in model.link.person.author|filterArray('familyName', null) %}
+                    <div itemprop="author" itemscope itemtype="https://schema.org/Person" class="media  |  leader--normal  |  trailer--normal">
+                        <div class="media__figure  |  gutters">
+                            {{ image.person(auth, 50) }}
+                        </div>
+                        <div class="media__body  |  gutter--right  |  body--whisper">
+                            <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName }}</p>
+                            {% if auth.description %}
+                                <p itemprop="description" class="">{{ auth.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </aside>
+        {% endif %}
+
+        <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+            <div class="gutters">
+                {{ share.bar_article(model) }}
+            </div>
+        </div>
+
+        {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
+        {% if ctaOrg %}
+            <aside itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
+                <h2 itemprop="name" class="title title--apropos  |  leader--small  |  trailer--small  |  gutters">{{ 'About'|i18n(locales) }} {{ ctaOrg.name|t(locales) }}</h2>
+
+                {% if ctaOrg.description %}
+                    <p itemprop="description" class="body--whisper  |  trailer--small  |  gutters">{{ ctaOrg.description|t(locales) }}</p>
+                {% endif %}
+            </aside>
+        {% else %}
+            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+            </span>
+        {% endif %}
+
+        <aside class="gutters-outside  |  divider divider--top  |  leader--hero leader-inside--small">
+            <h2 class="title title--sub-section  |  leader--small  |  trailer--small">{{ 'disclaimer'|i18n(locales) }}</h2>
+            <p class="body--quiet">{{ 'disclaimer_text'|i18n(locales) }}</p>
+        </aside>
+
+        {% if model.bibliographicalReferences|t(locales)|length > 0 or model.footnotes|length > 0 %}
+            <div class="media  |  leader--hero">
+
+
+                {% if model.bibliographicalReferences|length > 0 %}
+                    <section class="media__body  |  gutters">
+                        <h2 class="title title--sub-section">{{ 'bibliographical references'|i18n(locales) }}</h2>
+                        {% for reference in model.bibliographicalReferences %}
+                            <div class="leader  |  trailer">
+                                <p class="meta meta--lowercase">{{ reference.name }}</p>
+                                <a href="{{ reference.url }}" class="body--quiet" target="_blank">{{ 'view_reference'|i18n(locales) }}</a>
+                            </div>
+                        {% endfor %}
+                    </section>
+                {% endif %}
+                {% if model.footnotes|length > 0 %}
+                    <section class="media__body  |  gutters">
+                        <h2 class="title title--sub-section  |  trailer">{{ 'footnotes'|i18n(locales) }}</h2>
+
+                        {{ model.footnotes.content|raw }}
+                    </section>
+                {% endif %}
+            </div>
+        {% endif %}
+
+    </div>
+    <div class="layout__cell layout__cell--aside wings">
+
+        <aside class="wing--right">
+            <h1 class="title title--section wing--right gutters">{{ labels.see_others_title|t(locales) }}</h1>
+            <ul class="reset leader--normal gutters">
+                {% for article in model.similar.articles|slice(0,3) %}
+                    <li class="divider divider--bottom leader-inside trailer-inside">
+                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                            'show_publication_date': 0,
+                            'show_publication': 0,
+                            'show_type': 0,
+                            'show_author_name': 0,
+                            'show_stand_first': 1,
+                            'show_topic': 0,
+                            'show_read_more': 1,
+                            'show_lead_image': 1
+                        } } %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if link.link is defined %}
+            <div class="leader trailer button-bar button-bar--center">
+                <a href="{{ route({'page': link.link.page|t }) }}" class="is-heir"><span class="button button--slim">{{ link.link.label|t }}</span></a>
+            </div>
+            {% endif %}
+        </aside>
+
+
+    </div>
+</{{ config.container_tag|default('article') }}>
