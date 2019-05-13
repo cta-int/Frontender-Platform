@@ -22,11 +22,10 @@ phases:
       - apt-add-repository -y ppa:rael-gc/rvm
       - apt-get update
       - apt-get install -y rvm
-      - source /usr/share/rvm/scripts/rvm
       # Need this for Ruby 2.0
 #      - apt-add-repository ppa:brightbox/ruby-ng-experimental
 #      - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
-      - rvm install 2.0.0
+      - bash /usr/share/rvm/scripts/rvm install 2.0.0
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base python-software-properties
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
