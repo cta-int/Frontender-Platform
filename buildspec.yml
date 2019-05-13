@@ -2,6 +2,8 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      docker: 18
     commands:
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
@@ -11,13 +13,10 @@ phases:
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       - apt-get install -y ruby2.0=2.0.0.484-1ubuntu2 libruby2.0=2.0.0.484-1ubuntu2 ruby2.0-dev=2.0.0.484-1ubuntu2   curl  git build-essential curl  nodejs language-pack-en-base software-properties-common python-software-properties
-#      - apt-get update && apt-get install -y ruby2.0-dev ruby2.0=2.0.0.484-1ubuntu2.9  curl  git build-essential curl  nodejs language-pack-en-base software-properties-common python-software-properties
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
       - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
       - curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-     # - gem2.0 install scss_lint -v 0.56.0
-     # - /usr/local/bin/composer global require "naderman/composer-aws:~0.2"
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
       - bash --version
   pre_build:
