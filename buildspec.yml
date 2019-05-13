@@ -35,7 +35,7 @@ phases:
       - update-alternatives --set php /usr/bin/php7.2
       - rm /usr/bin/php
       - ln -s /usr/bin/php7.2 /usr/bin/php
-      - apt purge -y php7.3
+      - apt purge -y php7.3-common php7.3-xml
       - php -m
       - php --version
       - php -i
