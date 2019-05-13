@@ -36,7 +36,6 @@ phases:
       - ls /usr/local/etc/php
       - update-alternatives --set php /usr/bin/php7.2
       - ls /usr/local/etc/php
-      - php -i | grep mongo
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
