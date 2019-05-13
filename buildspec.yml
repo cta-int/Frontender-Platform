@@ -32,6 +32,7 @@ phases:
       - apt-get update
       - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
       - sudo a2dismod php7.3
+      - sudo a2enmod php7.2
 #      - apt-get install php-pear
 #      - pecl install mongodb
       - ls /usr/local/etc/php
