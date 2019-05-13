@@ -31,10 +31,9 @@ phases:
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
       - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
+      - apt-get install -y php7.3-common php7.3-cli php7.3-curl php7.3-mongodb php7.3-dev libpcre3
       - ls /usr/local/etc/php
       - update-alternatives --set php /usr/bin/php7.2
-      - rm /usr/bin/php
-      - ln -s /usr/bin/php7.2 /usr/bin/php
       - php -m
       - php --version
       - php -i
@@ -60,7 +59,7 @@ phases:
       - cp aws-start.sh build
       - cp .htaccess build
       - cd build/main
-      - /usr/local/bin/composer install
+      - composer install
       - cd ..
       - echo Building the Docker image...
       - IMAGE_TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION |cut -c 1-7)--$(echo $CODEBUILD_BUILD_ID |sed 's/.*://')"
