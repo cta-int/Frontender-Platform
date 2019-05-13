@@ -30,17 +30,14 @@ phases:
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-cli php7.2-curl php7.3-mongodb php7.2-dev libpcre3
-      - update-alternatives --set php /usr/bin/php7.2
-      - update-alternatives --set phar /usr/bin/phar7.2
-      - update-alternatives --set phar.phar /usr/bin/phar.phar7.2
-      - update-alternatives --set phpize /usr/bin/phpize7.2
-      - update-alternatives --set php-config /usr/bin/php-config7.2
-#      - apt-get install php-pear
-#      - pecl install mongodb
+      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
       - ls /usr/local/etc/php
-      - php --ini
+      - a2dismod php7.3
+      - a2enmod php7.2
+      - update-alternatives --set php /usr/bin/php7.2
+      - php -m
       - php --version
+      - php -i
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
