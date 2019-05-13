@@ -30,7 +30,7 @@ phases:
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
+#      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
       - apt-get install -y php7.3-common php7.3-cli php7.3-curl php7.3-mongodb php7.3-dev libpcre3
       - ls /usr/local/etc/php
       - update-alternatives --set php /usr/bin/php7.2
