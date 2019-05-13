@@ -95,7 +95,7 @@ class Media extends \Twig_Extension
 
     public function getImageDimensions($filename)
     {
-        list($width, $height, $type, $attr) = getimagesize($filename);
+        list($width, $height, $type, $attr) = @getimagesize($filename);
 
         return [
             'width' => $width,

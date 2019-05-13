@@ -57,6 +57,10 @@ class ArticlesModel extends ScrModel
         $state = $this->getState();
         $container = $this->container;
 
+        $issues = array_filter($related['articles'], function($article) {
+            return $article['articleType'] == 'issue';
+        });
+
         return [
             'events' => array_map(function ($event) use ($state, $container) {
                 $model = new EventsModel($container);
@@ -75,7 +79,13 @@ class ArticlesModel extends ScrModel
                 return $model
                     ->setState($state->getValues())
                     ->setData($person);
-            }, $related['persons'])
+            }, $related['persons']),
+            'issues' => array_map(function($issue) use ($state, $container) {
+                $model = new ArticlesModel($container);
+                return $model
+                    ->setState($state->getValues())
+                    ->setData($issue);
+            }, $issues)
         ];
     }
 

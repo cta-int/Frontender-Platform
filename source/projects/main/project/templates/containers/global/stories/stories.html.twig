@@ -26,8 +26,10 @@
             <div class="story-line  |  grid grid--teletubbies grid--align-end  |  leader--small">
                 {% for container in containers %}
                     <picture class="story story--{{ container.template_config.content.story|t(locales)|lower }}  |  grid__cell  |  gutters">
+                        {% if container.content.story|t(locales)|length %}
                         <source type="image/svg+xml" srcset="/images/stories/{{ container.template_config.content.story|lower }}.svg">
                         <img src="/images/stories/{{ container.template_config.content.story|lower }}.png" alt="{{ container.template_config.content.figure|t(locales) }} {{ container.template_config.content.caption|t(locales) }}">
+                        {% endif %}
                     </picture>
                 {% endfor %}
             </div>

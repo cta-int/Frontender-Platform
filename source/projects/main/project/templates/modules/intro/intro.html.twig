@@ -2,5 +2,5 @@
 
 <p class="{{ config.large_lead ? 'lead lead--l' : 'lead'}}  |  trailer  |  gutters">{{ labels.lead|t(locales) }}</p>
 {% for paragraph in labels.body %}
-<p class="trailer  |  gutters">{{ paragraph|t(locales)|raw }}</p>
+    <div class="trailer  |  gutters">{{ paragraph|t(locales)|markdown|raw }}</div>
 {% endfor %}

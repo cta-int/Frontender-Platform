@@ -1,0 +1,751 @@
+{
+	"name": {
+		"en-GB": "Media"
+	},
+	"description": {
+		"en-GB": "Media"
+	},
+	"template": "containers/global/grid/grid.html.twig",
+	"template_config": {
+		"config": {
+			"label": {
+				"en-GB": "Settings"
+			},
+			"controls": {
+				"grid": {
+					"value": "grid grid--rows",
+					"control": "core/text",
+					"label": {
+						"en-GB": "Grid type"
+					}
+				},
+				"cell_class": {
+					"value": "gutters",
+					"control": "project/container_class",
+					"label": {
+						"en-GB": "Container cell class"
+					}
+				},
+				"container_tag": {
+					"value": "section",
+					"control": "project/container_tag"
+				},
+				"wings": {
+					"value": "wings",
+					"control": "project/wings"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"divider": {
+					"value": "",
+					"control": "project/divider"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				}
+			}
+		}
+	},
+	"containers": [
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "spore-newsletter-1556194881591"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "Newsletter title.",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186643"
+		},
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "publishing-newsletter-1556194868832"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "Newsletter title.",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186644"
+		},
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "ictupdate-newsletter-1556194855204"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "ICT Update",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186645"
+		},
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "ctaflash-newsletter-1556194839055"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "CTA Flash",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186646"
+		},
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "cta-events-newsletter-1556194813529"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "CTA Events",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186647"
+		},
+		{
+			"name": {
+				"en-GB": "Newsletter module"
+			},
+			"description": {
+				"en-GB": "Newsletter module"
+			},
+			"template": "modules/media/media.html.twig",
+			"template_config": {
+				"model": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"data": {
+							"control": "project/model/media",
+							"value": {
+								"adapter": "SCR",
+								"model": "Media\\Search",
+								"id": {
+									"en-GB": "brusselsnews-newsletter-1556194794943"
+								}
+							}
+						}
+					}
+				},
+				"content": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"title": {
+							"label": {
+								"en-GB": "Newsletter title"
+							},
+							"value": {
+								"en-GB": "Brussels News",
+								"fr-FR": "Newsletter title."
+							},
+							"control": "core/text"
+						},
+						"description": {
+							"label": {
+								"en-GB": "Description"
+							},
+							"value": {
+								"en-GB": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs.",
+								"fr-FR": "Newsletter description - Agriculture presents extraordinary opportunities for young African entrepreneurs."
+							},
+							"control": "core/textarea"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "View newsletter",
+									"fr-FR": "View newsletter"
+								},
+								"page": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						},
+						"button": {
+							"value": {
+								"label": {
+									"en-GB": "Subscribe now",
+									"fr-FR": "Subscribe now"
+								},
+								"page": {
+									"en-GB": "http://eepurl.com/ck0var",
+									"fr-FR": "http://eepurl.com/ck0var"
+								},
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Button link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"container_tag": {
+							"value": "div",
+							"control": "project/container_tag"
+						},
+						"leader": {
+							"value": "",
+							"control": "project/leader"
+						},
+						"trailer": {
+							"value": "trailer",
+							"control": "project/trailer"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						}
+					}
+				}
+			},
+			"containers": [],
+			"frontender": "1556186648"
+		}
+	],
+	"frontender": "1556191525"
+}

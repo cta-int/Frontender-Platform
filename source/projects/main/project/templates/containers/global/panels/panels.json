@@ -1,7 +1,7 @@
 {
     "config": {
         "label": {
-            "en": "Settings"
+            "en-GB": "Settings"
         },
         "controls": {
             "leader": {
@@ -39,7 +39,7 @@
             "layout": {
                 "value": "layout",
                 "label": {
-                    "en": "Layout"
+                    "en-GB": "Layout"
                 },
                 "control": "project/layout/layout"
             },
@@ -63,7 +63,7 @@
     },
     "tab_config": {
         "label": {
-            "en": "Tab settings"
+            "en-GB": "Tab settings"
         },
         "controls": {
             "selector": {
@@ -98,16 +98,16 @@
                 "model": {},
                 "labels": {
                     "label": {
-                        "en": "Labels"
+                        "en-GB": "Labels"
                     },
                     "controls": {
                         "panel_title": {
                             "value": {
-                                "en": "Impact Stories",
-                                "fr": "Article d'impact"
+                                "en-GB": "Impact Stories",
+                                "fr-FR": "Article d'impact"
                             },
                             "label": {
-                                "en": "Title"
+                                "en-GB": "Title"
                             },
                             "control": "core/text"
                         }
@@ -118,21 +118,21 @@
                         "active": {
                             "value": 1,
                             "label": {
-                                "en": "Open tab"
+                                "en-GB": "Open tab"
                             },
                             "control": "project/show"
                         },
                         "tab_class": {
                             "value": "",
                             "label": {
-                                "en": "Tab class"
+                                "en-GB": "Tab class"
                             },
                             "control": "project/container_class"
                         },
                         "panel_class": {
                             "value": "",
                             "label": {
-                                "en": "Panel class"
+                                "en-GB": "Panel class"
                             },
                             "control": "project/container_class"
                         }
