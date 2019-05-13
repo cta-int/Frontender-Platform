@@ -30,7 +30,8 @@ phases:
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-#      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
+      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3 libpcre3-dev php-pear
+      - pecl install mongodb
       - apt-get install -y php7.3-common php7.3-cli php7.3-curl php7.3-mongodb php7.3-dev libpcre3
       - ls /usr/local/etc/php
       - update-alternatives --set php /usr/bin/php7.2
@@ -40,7 +41,8 @@ phases:
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
-#      - echo "extension=mongodb.so" >> /ect/php/5.6/cli/php.ini
+      - echo "extension=mongodb.so" >> /ect/php/7.2/cli/php.ini
+      - echo "extension=mongodb.so" >> /ect/php/7.3/cli/php.ini
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
