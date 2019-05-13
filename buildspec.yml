@@ -46,6 +46,7 @@ phases:
       - cp source/projects/main/composer-aws.json source/projects/main/composer.json
       - npm install
       - npm install gulp-cli -g
+      - npm install natives@1.1.6
       - gulp test --main
       - gulp production --main
       - cp Dockerfile build
