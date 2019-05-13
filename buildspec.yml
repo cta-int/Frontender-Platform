@@ -40,7 +40,8 @@ phases:
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
-      - echo "extension=mongodb.so" >> /usr/local/etc/php/php.ini
+      - ls /etc/php
+      - echo "extension=mongodb.so" >> /etc/php/7.3/cli/php.ini
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
