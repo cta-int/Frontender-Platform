@@ -32,8 +32,6 @@ phases:
       - apt-get update
       - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
       - ls /usr/local/etc/php
-      - a2dismod php7.3
-      - a2enmod php7.2
       - update-alternatives --set php /usr/bin/php7.2
       - php -m
       - php --version
