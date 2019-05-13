@@ -23,14 +23,17 @@ phases:
 #      - apt-get update
 #      - apt-get install -y rvm
       # Need this for Ruby 2.0
-      - apt-add-repository ppa:brightbox/ruby-ng-experimental
-      - apt-get install -y ruby2.3 libruby2.3 ruby2.3-dev
-      - ruby --version
+#      - apt-add-repository ppa:brightbox/ruby-ng-experimental
+#      - apt-get install -y ruby2.3 libruby2.3 ruby2.3-dev
+#      - ruby --version
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
+      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb php7.2-dev libpcre3
+      - apt-get install php-pear
+      - pecl install mongodb
+      - ls /etc/
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
