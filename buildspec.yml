@@ -7,13 +7,16 @@ phases:
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
       - ls /tmp/php-lib-scr
       - ls /tmp/frontender.platform-core
+      # Enable universe repository
+      - apt-get install software-properties-common
+      - apt-add-repository universe
+      - apt-get update
       # Install python and pip
       - apt-get install -y python python-pip
       - pip install --upgrade pip
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       # Need this for Ruby 2.0
-      - apt -y install software-properties-common
       - apt-add-repository ppa:brightbox/ruby-ng-experimental
       - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
       # Install php 7.2
