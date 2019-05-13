@@ -30,14 +30,10 @@ phases:
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
       - bash --version
   pre_build:
-    runtime-versions:
-      docker: 18
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
   build:
-    runtime-versions:
-      docker: 18
     commands:
       - echo Build started on `date`
       - ls /tmp/php-lib-scr
