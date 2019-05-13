@@ -8,20 +8,18 @@ phases:
       - ls /tmp/php-lib-scr
       - ls /tmp/frontender.platform-core
       # Install python and pip
-      - yum install -y python
-      - curl -O https://bootstrap.pypa.io/get-pip.py
-      - python get-pip.py --user
+      - apt-get install -y python python-pip
       - pip install --upgrade pip
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
-      - yum -y install epel-release
       # Need this for Ruby 2.0
-      - yum install -y software-properties-common
-      - yum install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
+      - apt -y install software-properties-common
+      - apt-add-repository ppa:brightbox/ruby-ng-experimental
+      - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
       # Install php 7.2
-      - yum-config-manager --enable remi-php72
-      - yum update
-      - yum install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
+      - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+      - apt-get update
+      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
       - amazon-linux-extras install php7.2 php7.2-cli php7.2-curl php7.2-mongodb libpcre3
       - curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
