@@ -2,8 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      docker: 18
     commands:
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
@@ -14,8 +12,8 @@ phases:
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       # Need this for Ruby 2.0
       - apt -y install software-properties-common
-      - apt-add-repository ppa:johnleach/ppa
-      - apt-get install -y ruby2.0=2.0.0.484-1ubuntu2 libruby2.0=2.0.0.484-1ubuntu2 ruby2.0-dev=2.0.0.484-1ubuntu2   curl  git build-essential curl  nodejs language-pack-en-base python-software-properties
+      - apt-add-repository ppa:brightbox/ruby-ng-experimental
+      - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
