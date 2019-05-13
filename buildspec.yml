@@ -14,7 +14,7 @@ phases:
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       # Need this for Ruby 2.0
       - apt -y install software-properties-common
-      - sudo apt-add-repository ppa:brightbox/ruby-ng
+      - apt-add-repository ppa:brightbox/ruby-ng
       - apt-get install -y ruby2.0=2.0.0.484-1ubuntu2 libruby2.0=2.0.0.484-1ubuntu2 ruby2.0-dev=2.0.0.484-1ubuntu2   curl  git build-essential curl  nodejs language-pack-en-base python-software-properties
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
