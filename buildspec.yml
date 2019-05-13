@@ -24,7 +24,6 @@ phases:
 #      - apt-get install -y rvm
       # Need this for Ruby 2.0
       - apt-add-repository ppa:brightbox/ruby-ng-experimental
-      - apt purge libssl-dev && sudo apt install libssl1.0-dev
       - apt-get install -y ruby2.3 libruby2.3 ruby2.3-dev
       - ruby --version
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
