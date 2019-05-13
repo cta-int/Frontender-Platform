@@ -22,6 +22,7 @@ phases:
       - apt-add-repository -y ppa:rael-gc/rvm
       - apt-get update
       - apt-get install -y rvm
+      - source /usr/share/rvm/scripts/rvm
       # Need this for Ruby 2.0
 #      - apt-add-repository ppa:brightbox/ruby-ng-experimental
 #      - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
