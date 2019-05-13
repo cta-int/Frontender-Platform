@@ -19,13 +19,11 @@ phases:
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       # Install rvm needed for Ruby
-      - apt-add-repository -y ppa:rael-gc/rvm
-      - apt-get update
-      - apt-get install -y rvm
+      - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+      - curl -sSL https://get.rvm.io | bash -s stable
       # Need this for Ruby 2.0
 #      - apt-add-repository ppa:brightbox/ruby-ng-experimental
 #      - apt-get install -y ruby2.0 libruby2.0 ruby2.0-dev curl git build-essential curl nodejs language-pack-en-base python-software-properties
-      - . /usr/share/rvm/scripts/rvm install 2.0.0
       - rvm install 2.0.0
       - ruby --version
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
