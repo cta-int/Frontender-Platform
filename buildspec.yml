@@ -9,7 +9,9 @@ phases:
       - npm -v
       - npm install -g npm@1.3.10
       # Local issuer cert failing
-      - npm config set strict-ssl false
+#      - npm config set strict-ssl false
+      - npm install -g node-gyp
+      - node-gyp configure
       - npm -v
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
