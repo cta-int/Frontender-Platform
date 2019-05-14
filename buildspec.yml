@@ -7,11 +7,19 @@ phases:
     commands:
       # Install correct version of NPM
       - npm -v
-      - npm install -g npm@1.3.10
-      # Local issuer cert failing
-      - npm config set strict-ssl false
-      - npm install -g node-gyp
+      - apt-get -y remove nodejs npm
+      - rm -rf /usr/local/lib/node*
+      - rm -rf /usr/local/include/node*
+      - rm -rf /usr/local/bin/node*
+      - curl -sL https://deb.nodesource.com/setup_6.x | bash -
+      - apt install nodejs
       - npm -v
+      - node -v
+#      - npm install -g npm@1.3.10
+      # Local issuer cert failing
+#      - npm config set strict-ssl false
+#      - npm install -g node-gyp
+#      - npm -v
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
@@ -31,8 +39,7 @@ phases:
       - apt-get install -y python3.6 python3-pip
       - pip install --upgrade pip
       - pip install -r requirements.txt
-      - curl -sL https://deb.nodesource.com/setup_6.x | bash -
-      - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
+      - apt-get install -y curl git build-essential language-pack-en-base
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
@@ -52,7 +59,7 @@ phases:
       - cp source/projects/main/composer-aws.json source/projects/main/composer.json
       - npm install
       - npm install gulp-cli -g
-      - npm install natives@1.1.6
+#      - npm install natives@1.1.6
       - gulp test --main
       - gulp production --main
       - cp Dockerfile build
