@@ -5,8 +5,9 @@ phases:
     runtime-versions:
       docker: 18
     commands:
+      # Install correct version of NPM
       - npm -v
-      - nodejs -v
+      - npm install -g npm@1.3.10
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
