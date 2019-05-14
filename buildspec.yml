@@ -12,6 +12,11 @@ phases:
       - apt-get remove -y --purge "php*"
       - apt-get purge -y php-cli
       - apt-get purge -y --auto-remove php-cli
+      - rm -rf /usr/local/bin/php
+      - rm -rf /usr/local/etc/php
+      - rm -rf /usr/local/lib/php
+      - rm -rf /usr/local/php
+      - php -i
       # Enable universe repository
       - apt-get install software-properties-common
       - apt-add-repository universe
