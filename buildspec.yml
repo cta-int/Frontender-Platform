@@ -7,7 +7,7 @@ phases:
     commands:
       # Remove php 7.3
       - php -i
-      - wheris php
+      - whereis php
       - apt-get remove -y "php*"
       - apt-get remove -y --purge "php*"
       - apt-get purge -y php-cli
