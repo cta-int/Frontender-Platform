@@ -5,6 +5,13 @@ phases:
     runtime-versions:
       docker: 18
     commands:
+      # Remove php 7.3
+      - apt list --installed | grep php
+      - php -i
+      - apt-get remove -y "php*"
+      - apt-get remove -y --purge "php*"
+      - apt-get purge -y php-cli
+      - apt-get purge -y --auto-remove php-cli
       # Enable universe repository
       - apt-get install software-properties-common
       - apt-add-repository universe
@@ -15,8 +22,6 @@ phases:
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
-      # Remove php 7.3
-      - apt-get remove -y --purge "php*"
       # Install php 7.2
       - php --version
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
