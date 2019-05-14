@@ -11,7 +11,6 @@ phases:
       # Local issuer cert failing
       - npm config set strict-ssl false
       - npm install -g node-gyp
-      - node-gyp configure
       - npm -v
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
