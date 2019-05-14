@@ -5,11 +5,13 @@ phases:
     runtime-versions:
       docker: 18
     commands:
+      # Prep files
+      - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
+      - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
+      - ls /tmp/php-lib-scr
+      - ls /tmp/frontender.platform-core
       # Remove php 7.3
-      - apt-get remove -y "php*"
       - apt-get remove -y --purge "php*"
-      - apt-get purge -y php-cli
-      - apt-get purge -y --auto-remove php-cli
       - rm -rf /usr/local/bin/php
       - rm -rf /usr/local/etc/php
       - rm -rf /usr/local/lib/php
@@ -32,12 +34,6 @@ phases:
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
-#      - echo "extension=mongodb.so" >> /etc/php/7.3/cli/php.ini
-      # Prep files
-      - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
-      - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
-      - ls /tmp/php-lib-scr
-      - ls /tmp/frontender.platform-core
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
