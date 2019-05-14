@@ -28,8 +28,6 @@ phases:
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
       - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php-mongodb php7.2-dev libpcre3 libpcre3-dev php-pear php7.3-common- php7.3-xml-
-      - php -i
-#      - pecl install mongodb
       # Install PHP composer
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
@@ -61,6 +59,7 @@ phases:
       - composer install
       - cd ..
       - echo Building the Docker image...
+      - ls -a /var/run/
       - IMAGE_TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION |cut -c 1-7)--$(echo $CODEBUILD_BUILD_ID |sed 's/.*://')"
       - echo Tagging with $IMAGE_TAG
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
