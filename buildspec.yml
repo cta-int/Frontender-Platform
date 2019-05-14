@@ -23,6 +23,8 @@ phases:
 #      - apt-get install -y ruby2.3 libruby2.3 ruby2.3-dev
 #      - ruby --version
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
+      # Remove php 7.3
+      - apt-get purge -y php7.*
       # Install php 7.2
       - php --version
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
