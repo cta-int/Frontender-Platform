@@ -16,7 +16,7 @@ phases:
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
       # Remove php 7.3
-      - apt-get purge -y php7.*
+      - apt-get remove -y --purge "php*"
       # Install php 7.2
       - php --version
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
