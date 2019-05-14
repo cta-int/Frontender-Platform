@@ -6,8 +6,8 @@ phases:
       docker: 18
     commands:
       # Remove php 7.3
-      - apt list --installed | grep php
       - php -i
+      - wheris php
       - apt-get remove -y "php*"
       - apt-get remove -y --purge "php*"
       - apt-get purge -y php-cli
