@@ -5,6 +5,8 @@ phases:
     runtime-versions:
       docker: 18
     commands:
+      - npm -v
+      - nodejs -v
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
