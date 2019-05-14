@@ -14,14 +14,6 @@ phases:
       - pip install --upgrade pip
       - pip install -r requirements.txt
       - curl -sL https://deb.nodesource.com/setup_6.x | bash -
-      # Install rvm needed for Ruby
-#      - apt-add-repository -y ppa:rael-gc/rvm
-#      - apt-get update
-#      - apt-get install -y rvm
-      # Need this for Ruby 2.0
-#      - apt-add-repository ppa:brightbox/ruby-ng-experimental
-#      - apt-get install -y ruby2.3 libruby2.3 ruby2.3-dev
-#      - ruby --version
       - apt-get install -y curl git build-essential curl nodejs language-pack-en-base
       # Remove php 7.3
       - apt-get purge -y php7.*
@@ -31,14 +23,11 @@ phases:
       - apt-get update
       - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php-mongodb php7.2-dev libpcre3 libpcre3-dev php-pear php7.3-common- php7.3-xml-
       - pecl install mongodb
-      - ls /usr/local/etc/php
-      - update-alternatives --set php /usr/bin/php7.2
       # Install PHP composer
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
-      - ls /etc/php
-      - echo "extension=mongodb.so" >> /etc/php/7.3/cli/php.ini
+#      - echo "extension=mongodb.so" >> /etc/php/7.3/cli/php.ini
       # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
