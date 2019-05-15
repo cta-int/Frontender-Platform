@@ -2,24 +2,44 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      docker: 18
     commands:
+      # Prep files
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
       - ls /tmp/php-lib-scr
       - ls /tmp/frontender.platform-core
+      # Remove and Install correct version of NPM
+      - npm -v
+      - npm install -g npm@3.10.10
+      - curl -sL https://deb.nodesource.com/setup_6.x | bash -
+      - apt-get install -y nodejs
+      - apt-get install -y gcc g++ make
+      - apt-get install -y build-essential
+      # Remove php 7.3
+      - apt-get remove -y --purge "php*"
+      - rm -rf /usr/local/bin/php
+      - rm -rf /usr/local/etc/php
+      - rm -rf /usr/local/lib/php
+      - rm -rf /usr/local/php
+      # Enable universe repository
+      - apt-get install software-properties-common
+      - apt-add-repository universe
+      - apt-get update
+      # Install python and pip
+      - apt-get install -y python3.6 python3-pip
       - pip install --upgrade pip
       - pip install -r requirements.txt
-      - curl -sL https://deb.nodesource.com/setup_6.x | bash -
-      - apt-get install -y ruby2.0=2.0.0.484-1ubuntu2 libruby2.0=2.0.0.484-1ubuntu2 ruby2.0-dev=2.0.0.484-1ubuntu2   curl  git build-essential curl  nodejs language-pack-en-base software-properties-common python-software-properties
-#      - apt-get update && apt-get install -y ruby2.0-dev ruby2.0=2.0.0.484-1ubuntu2.9  curl  git build-essential curl  nodejs language-pack-en-base software-properties-common python-software-properties
+      - apt-get install -y curl git language-pack-en-base
+      # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-cli php7.2-curl php7.2-mongodb libpcre3
-      - curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-     # - gem2.0 install scss_lint -v 0.56.0
-     # - /usr/local/bin/composer global require "naderman/composer-aws:~0.2"
+      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-mongodb php-mongodb php7.2-dev libpcre3 libpcre3-dev php-pear php7.3-common- php7.3-xml-
+      # Install PHP composer
+      - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+      - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
       - echo Debug $AWS_DEFAULT_REGION $IMAGE_REPO_NAME $AWS_ACCOUNT_ID
-      - bash --version
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -37,9 +57,10 @@ phases:
       - cp aws-start.sh build
       - cp .htaccess build
       - cd build/main
-      - /usr/local/bin/composer install
+      - composer install
       - cd ..
       - echo Building the Docker image...
+      - ls -a /var/run/
       - IMAGE_TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION |cut -c 1-7)--$(echo $CODEBUILD_BUILD_ID |sed 's/.*://')"
       - echo Tagging with $IMAGE_TAG
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
