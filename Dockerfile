@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 ADD aws-start.sh /aws-start.sh
 RUN apt-get update && apt-get -y install locales libpcre3-dev python-pip libssl-dev && pip install awscli --upgrade && apt-get clean
 RUN pecl install mongodb
