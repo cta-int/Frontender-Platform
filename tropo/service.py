@@ -493,7 +493,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                 ),
                 ecs.Environment(
                     Name="ENV",
-                    Value="staging"
+                    Value="development"
                 ),
                 ecs.Environment(
                     Name="HTTP_HOSTNAME",
