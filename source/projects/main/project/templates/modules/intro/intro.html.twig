@@ -1,6 +1,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<p class="{{ config.large_lead ? 'lead lead--l' : 'lead'}}  |  trailer  |  gutters">{{ labels.lead|t(locales) }}</p>
+<div class="{{ config.large_lead ? 'lead lead--l' : 'lead'}}  |  trailer  |  gutters">
+    {{ labels.lead|t(locales)|markdown|raw }}
+</div>
 {% for paragraph in labels.body %}
     <div class="trailer  |  gutters">{{ paragraph|t(locales)|markdown|raw }}</div>
 {% endfor %}
