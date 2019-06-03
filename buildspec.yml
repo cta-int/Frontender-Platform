@@ -24,7 +24,7 @@ phases:
       - rm -rf /usr/local/lib/php
       - rm -rf /usr/local/php
       # Enable universe repository
-      - apt-get install software-properties-common
+      - apt-get install -y software-properties-common
       - apt-add-repository universe
       - apt-get update
       # Install python and pip
