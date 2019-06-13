@@ -473,7 +473,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                 Ref(image_tag)
             ]),
             Cpu=200,
-            MemoryReservation=1500,
+            MemoryReservation=2500,
             Environment=[
                 ecs.Environment(
                     Name="REALENTRYPOINT",
