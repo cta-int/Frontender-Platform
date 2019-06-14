@@ -16,6 +16,7 @@
             {% endif %}
         </div>
         <div class="layout__cell layout__cell--aside  |  leader-inside--hero trailer-inside--hero  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+
             <article class="publication-tile publication-tile--hero media">
                 <div class="publication-tile__cover media__figure gutters">
                     <figure class="publication-cover publication-cover--pull-bottom">
@@ -41,18 +42,18 @@
                     </dl>
                     {% if model.externalLink|length > 0 %}
                         <div class="leader" itemprop="associatedMedia">
-                            {% if model.externalLink|length > 0 %}
-                                <div class="leader-inside--normal">
-                                    {% for link in model.externalLink %}
-                                        <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
-                                            <span class="publication-download__item">{{ link.name }}</span>
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                            {% for link in model.externalLink %}
+                                <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}" itemscope itemprop="url" itemtype="https://schema.org/MediaObject">
+                                    <span class="publication-download__item" itemprop="name">{{ link.name }}</span>
+                                    {% if link.url %}
+                                        <span class="publication-download__item" itemprop="contentSize">{{ link.url|getFileSize }}</span>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
                         </div>
                     {% endif %}
                 </div>
             </article>
+
         </div>
 </{{ config.container_tag|default('header') }}>
