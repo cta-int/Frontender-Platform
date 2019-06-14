@@ -26,7 +26,7 @@
                                 {% for link in issue.externalLink %}
                                     <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
                                         <span class="publication-download__item">{{ link.name }}</span>
-                                        {% if link.url %}
+                                        {% if link.url|getFileSize %}
                                             <span class="publication-download__item">{{ link.url|getFileSize }}</span>
                                         {% endif %}
                                     </a>
