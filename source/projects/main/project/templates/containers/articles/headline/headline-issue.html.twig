@@ -45,7 +45,7 @@
                             {% for link in model.externalLink %}
                                 <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}" itemscope itemprop="url" itemtype="https://schema.org/MediaObject">
                                     <span class="publication-download__item" itemprop="name">{{ link.name }}</span>
-                                    {% if link.url %}
+                                    {% if link.url|getFileSize %}
                                         <span class="publication-download__item" itemprop="contentSize">{{ link.url|getFileSize }}</span>
                                     {% endif %}
                                 </a>

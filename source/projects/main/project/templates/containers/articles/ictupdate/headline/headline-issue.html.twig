@@ -41,9 +41,9 @@
                             {% if model.externalLink|length > 0 %}
                                 <div class="leader-inside--normal">
                                     {% for link in model.externalLink %}
-                                        <a class="publication-download publication-download--s trailer--tiny" href="{{ link.url }}">
+                                        <a class="publication-download publication-download--s trailer--tiny" href="{{link.url}}">
                                             <span class="publication-download__item">{{ link.name }}</span>
-                                            {% if link.url %}
+                                            {% if link.url|getFileSize %}
                                                 <span class="publication-download__item">{{ link.url|getFileSize }}</span>
                                             {% endif %}
                                         </a>
@@ -62,7 +62,7 @@
                         {{ model.headline }}
                     </h1>
                     {% if model.alternativeHeadline %}
-                        <p class="article-headline__byline  |  leader  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
+                        <p class="article-headline__byline  |  meta  |  leader  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
                     {% endif %}
                 </div>
                 <div class="layout__cell layout__cell--aside  |  leader-inside trailer-inside  |  wings">

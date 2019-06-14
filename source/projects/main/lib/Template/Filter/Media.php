@@ -43,6 +43,9 @@ class Media extends \Twig_Extension
 
     public function getSize($path)
     {
+        // Bypass this request, it's causing a lot of overhead
+        return false;
+        
         $size = 0;
         $context = stream_context_create([
             'http' => [
