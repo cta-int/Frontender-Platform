@@ -2,6 +2,8 @@
     {% include 'containers/articles/body/body-issue.html.twig' %}
 {% else %}
 
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
     {% import "macros/share.html.twig" as share %}
     {% import "macros/concept.html.twig" as concept %}
     {% import "macros/date.html.twig" as date %}
@@ -10,16 +12,17 @@
     {% import "macros/image.html.twig" as image %}
     {% import "macros/template.html.twig" as helper %}
     {% import "macros/label.html.twig" as label %}
-    {% set issue_articles = model.issue.articles({'limit': 20}) %}
-    {#% set other_issues = model.issue.issues({'limit': 4}) %#}
-    {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
-    {% set class = helper.class(config)|trim %}
-    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+    {# Get data #}
+    {% set issue_articles = model.issue.articles({'limit': 14}) %}
+    {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
+
+    {% set class = helper.class(config)|trim %}
     <div {{ helper.class_attribute(config, 'layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
-        <div class="layout__cell layout__cell--main wing--right">
+        <div class="layout__cell layout__cell--main wings">
 
             {# render the content blocks - if the first block is a list, we treat it as the article takeaways #}
+            <div class="wing--right">
             {% for i, contentBlock in model.contentBlocks %}
                 {% if show_take_aways|default(1) and i == 0  and contentBlock.type == 'list'%}
                     <div class="gutters  |  leader leader-inside--tiny  |  trailer">
@@ -30,6 +33,7 @@
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'contentBlock': contentBlock} %}
                 {% endif %}
             {% endfor %}
+            </div>
 
             {% if model.analysis.agrovoc.concepts %}
                 <div class="gutters  |  trailer  |  leader">
@@ -110,9 +114,9 @@
             {% endif %}
 
         </div>
-        <div class="layout__cell layout__cell--aside  |  leader-inside--hero  |  trailer-inside--hero  |  wings">
+        <div class="layout__cell layout__cell--aside  |  trailer-inside--hero  |  wing--left">
             {% if model.about %}
-                <p class="gutters  |  paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
+                <p class="gutters  |  paragraph paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}
             {% if similar_issues|length > 0 %}
                 <aside class="trailer">
