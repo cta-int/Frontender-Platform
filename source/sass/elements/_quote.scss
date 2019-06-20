@@ -32,11 +32,6 @@ Styleguide 3.30
     .well--full & {
         color: rgba($black, .26);
     }
-    html:lang(fr) & {
-      font-size: 1.75em;
-      left: rhythm(2) * -1;
-      top: -.5em;
-    }
   }
   &:after {
     content: no-close-quote;
@@ -46,12 +41,6 @@ Styleguide 3.30
     .theme--#{$color_name} &:before,
     .theme .theme--#{$color_name} &:before {
       color: $color_value;
-    }
-  }
-  &--hero:before {
-    html:lang(fr) & {
-      font-size: 6em;
-      left: rhythm(9) * -1;
     }
   }
   &__meta {
