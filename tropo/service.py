@@ -453,7 +453,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                     "awslogs-stream-prefix": Ref(container_name)
                 }
             ),
-            Memory=1536,
+            Memory=3072,
             PortMappings=[
                 ecs.PortMapping(
                     HostPort=0,
@@ -473,7 +473,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                 Ref(image_tag)
             ]),
             Cpu=200,
-            MemoryReservation=500,
+            MemoryReservation=2500,
             Environment=[
                 ecs.Environment(
                     Name="REALENTRYPOINT",
