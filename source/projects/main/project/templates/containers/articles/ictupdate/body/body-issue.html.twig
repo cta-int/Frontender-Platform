@@ -118,6 +118,15 @@
             {% if model.about %}
                 <p class="gutters  |  paragraph paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}
+
+            {% if containers|first.content.button.page|t %}
+                {% for loopContainer in containers %}
+                    <div class="grid__cell {{ config.cell_class|t(locales) }}">
+                        {% include loopContainer.template with loopContainer %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% if similar_issues|length > 0 %}
                 <aside class="trailer">
                     <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
