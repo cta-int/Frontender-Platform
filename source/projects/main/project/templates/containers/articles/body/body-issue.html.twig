@@ -44,35 +44,54 @@
     <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wings">
         {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
         {% if similar_issues|length > 0 %}
-        <aside class="trailer">
-            <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
-            {% for issue in similar_issues %}
-                <article class="publication-tile publication-tile--s media leader--normal trailer--normal">
-                    <div class="publication-tile__cover media__figure gutters">
-                        <figure class="publication-cover publication-cover--s">
-                            <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
-                                {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
-                            </a>
-                        </figure>
-                    </div>
-                    <div class="media__body  gutters">
-                        {% if config.show_publication|default(1) %}
-                            <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+            <aside class="trailer">
+                <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
+                {% for issue in similar_issues %}
+                    <article class="publication-tile publication-tile--s media leader--normal trailer--normal">
+                        <div class="publication-tile__cover media__figure gutters">
+                            <figure class="publication-cover publication-cover--s">
+                                <a href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="media__body  gutters">
+                            {% if config.show_publication|default(1) %}
+                                <p class="trailer-inside--tiny">{{ date.issue_date(issue.datePublished) }}</p>
+                            {% endif %}
+                            <h2 class="heading">
+                                <a class="is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
+                                    {{ issue.headline|t(locales) }}
+                                </a>
+                            </h2>
+                            {% if config.show_author_name|default(1) and issue.link.person.author|length %}
+                                <p class="author leader--tiny">
+                                    {{ author.long(issue.link.person.author) }}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </aside>
+        {% elseif model.related.articles|length > 0 %}
+            <aside class="trailer">
+                <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
+                <div class="grid gutters">
+                    {% for article in model.related.articles %}
+                        {% if article.headline|t(locales) %}
+                            <article class="leader">
+                                {% include 'partials/article/post-row.html.twig' with {model: article, config: {
+                                    show_stand_first: 1,
+                                    show_read_more: 1,
+                                    show_type: 0,
+                                    show_lead_image: 1,
+                                    show_publication: 0
+                                }} %}
+                            </article>
                         {% endif %}
-                        <h2 class="heading">
-                            <a class="is-heir" href="{{ route({'page': issue.path, 'slug': issue.headline|t(locales)|slugify, 'id': issue._id}) }}">
-                                {{ issue.headline|t(locales) }}
-                            </a>
-                        </h2>
-                        {% if config.show_author_name|default(1) and issue.link.person.author|length %}
-                            <p class="author leader--tiny">
-                                {{ author.long(issue.link.person.author) }}
-                            </p>
-                        {% endif %}
-                    </div>
-                </article>
-            {% endfor %}
-        </aside>
+            		{% endfor %}
+                </div>
+            </aside>
         {% endif %}
     </div>
 </{{ config.container_tag|default('div') }}>
