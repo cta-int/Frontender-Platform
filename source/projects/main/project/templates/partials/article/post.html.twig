@@ -37,7 +37,7 @@
 
         <h3 class="heading  |  anchor--reset">
             <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
-                <span itemprop="headline">{{ article.headline }}</span>
+                <span itemprop="headline">{{ article.headline|t(locales) }}</span>
             </a>
         </h3>
 
@@ -60,7 +60,7 @@
         {% endif %}
 
         {% if config.show_stand_first %}
-            <p class="post__intro" itemprop="description">{{ article.about|raw }}</p>
+            <p class="post__intro" itemprop="description">{{ article.about|t(locales)|raw }}</p>
         {% endif %}
 
         {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
