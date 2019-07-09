@@ -69,7 +69,7 @@
                                     <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
                                 {% endif %}
 
-                                {% if config.show_type|default(1) %}
+                                {% if config.show_type|default(0) %}
                                     <a class="meta  |  anchor anchor--shy  |  is-heir" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">
                                         {{ ('content_type_category_' ~ article.articleType)|i18n }}
                                     </a>
@@ -104,7 +104,7 @@
                             {% include 'partials/article/post-row.html.twig' with {model: article, config: {
                                 show_stand_first: 1,
                                 show_read_more: 0,
-                                show_type: 1,
+                                show_type: 0,
                                 show_lead_image: 1,
                                 show_publication: 0
                             }} %}
@@ -118,6 +118,15 @@
             {% if model.about %}
                 <p class="gutters  |  paragraph paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}
+
+            {% if containers|first.content.button.page|t %}
+                {% for loopContainer in containers %}
+                    <div class="grid__cell {{ config.cell_class|t(locales) }}">
+                        {% include loopContainer.template with loopContainer %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
             {% if similar_issues|length > 0 %}
                 <aside class="trailer">
                     <h2 class="title trailer-inside--normal gutters">{{ 'related_publications'|i18n }}</h2>
