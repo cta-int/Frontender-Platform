@@ -122,7 +122,7 @@
             <div class="layout__cell layout__cell--aside  |  wings">
                 {% if model.issue.articles|length > 0 %}
                     <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
-                    <div class="grid gutters">
+                    <div class="grid gutters trailer">
                         {% for article in model.issue.articles %}
                             {% if article.headline|t(locales) %}
                                 <article class="leader">
@@ -130,7 +130,7 @@
                                         show_stand_first: 1,
                                         show_read_more: 1,
                                         show_type: 0,
-                                        show_lead_image: 1,
+                                        show_lead_image: 0,
                                         show_publication: 0
                                     }} %}
                                 </article>
