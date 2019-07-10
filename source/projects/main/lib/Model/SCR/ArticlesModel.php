@@ -259,14 +259,14 @@ class ArticlesModel extends ScrModel
 
             private function getArticleIssue($article)
             {
-                if (is_null($this->issueLabel) || is_null($this->issueNumberLabel)) {
+                if (is_null($this->issueNumberLabel)) {
                     // This is not an issue
                     return false;
                 }
 
                 $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
                 $articles->setState([
-                    'label' => [$this->issueLabel['_id'], $this->issueNumberLabel['_id']],
+                    'label' => array_filter([$this->issueLabel['_id'] ?? false, $this->issueNumberLabel['_id'] ?? false]),
                     'limit' => 1,
                     'language' => $this->state->language ?? 'en',
                     'articleType' => 'article.issue'
@@ -589,7 +589,7 @@ class ArticlesModel extends ScrModel
     {
         $name = Inflector::singularize($this->getModelName());
 
-        if ($this['issue']) {
+        if ($this['issue'] && $this['issue']->isIssue($this)) {
             $name = 'issue';
         } elseif ($this['articleType'] == 'issue') {
             $name = 'issue';

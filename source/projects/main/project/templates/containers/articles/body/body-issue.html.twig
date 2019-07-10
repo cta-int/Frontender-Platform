@@ -77,7 +77,7 @@
             <aside class="trailer">
                 <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
                 <div class="grid gutters">
-                    {% for article in model.related.articles %}
+                    {% for article in model.issue.articles %}
                         {% if article.headline|t(locales) %}
                             <article class="leader">
                                 {% include 'partials/article/post-row.html.twig' with {model: article, config: {

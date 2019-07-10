@@ -120,17 +120,17 @@
                 {% endif %}
             </div>
             <div class="layout__cell layout__cell--aside  |  wings">
-                {% if model.related.articles|length > 0 %}
+                {% if model.issue.articles|length > 0 %}
                     <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
-                    <div class="grid gutters">
-                        {% for article in model.related.articles %}
+                    <div class="grid gutters trailer">
+                        {% for article in model.issue.articles %}
                             {% if article.headline|t(locales) %}
                                 <article class="leader">
                                     {% include 'partials/article/post-row.html.twig' with {model: article, config: {
                                         show_stand_first: 1,
                                         show_read_more: 1,
                                         show_type: 0,
-                                        show_lead_image: 1,
+                                        show_lead_image: 0,
                                         show_publication: 0
                                     }} %}
                                 </article>
