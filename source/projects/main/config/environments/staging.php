@@ -12,4 +12,7 @@ ini_set('display_errors', 0);
 return [
     'debug' => 0,
     'caching' => 0,
+    'request' => [
+        'logging' => true
+    ]
 ];
