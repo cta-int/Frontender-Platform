@@ -12,18 +12,14 @@ namespace Prototype\Model\SCR;
 
 use Teemr\Scr\Client\ScrClient;
 use Teemr\Scr\Client\ScrClientFactory;
-
 use GuzzleHttp\HandlerStack;
-
 use Kevinrob\GuzzleCache\CacheMiddleware;
 use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Kevinrob\GuzzleCache\Storage\FlysystemStorage;
-
 use League\Flysystem\Adapter\Local;
-
 use Slim\Container;
-
 use Doctrine\Common\Inflector\Inflector;
+use Frontender\Core\DB\Adapter;
 
 class ScrModel extends AbstractModel
 {
@@ -56,6 +52,33 @@ class ScrModel extends AbstractModel
                 );
             }
         }
+
+        $model = $this;
+        $stack->push(function(callable $handler) use ($model) {
+            return function ($request, $options) use ($handler, $model) {
+                $loggingID = $model->startLog([
+                    'page' => [
+                        'route' => $model->container->request->getUri()->__toString()
+                    ],
+                    'request' => [
+                        'uri' => $request->getUri()->__toString(),
+                        'body' => $request->getBody()->getContents()
+                    ]
+                ]);
+                
+                $promise = $handler($request, $options);
+
+                $promise->then(function($response) use ($model, $loggingID) {
+                    $model->endLog($loggingID, [
+                        'response' => [
+                            'size' => $response->getHeader('Content-Length')[0]
+                        ]
+                    ]);
+                });
+
+                return $promise;
+            };
+        });
 
         $config = [
             'headers' => [

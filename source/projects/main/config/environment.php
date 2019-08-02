@@ -19,6 +19,9 @@ return [
 
     /* Slim settings */
     'determineRouteBeforeAppMiddleware' => true,
+    'request' => [
+        'logging' => false
+    ],
 
     /* ID separator */
     'id_separator' => '-sid0',

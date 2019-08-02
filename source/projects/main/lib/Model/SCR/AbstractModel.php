@@ -14,6 +14,8 @@ use Frontender\Core\Object\ObjectArray;
 use Prototype\Model\Traits\Translatable;
 use Pimple\Container;
 use Doctrine\Common\Inflector\Inflector;
+use Frontender\Core\DB\Adapter;
+use MongoDB\BSON\ObjectId;
 
 abstract class AbstractModel implements \ArrayAccess
 {
@@ -135,6 +137,60 @@ abstract class AbstractModel implements \ArrayAccess
         if ($this->offsetExists($offset)) {
             unset($this->data[$offset]);
         }
+    }
+
+    public function startLog($args = [])
+    {
+        /**
+         * Enable toggle,
+         * csv export must be able to be returned from a url.
+         */
+
+        // If the loggins is disabled. return false.
+        if(!isset($this->container->config->request['logging']) || !$this->container->config->request['logging']) {
+            return false;
+        }
+
+        [$microsecs, $secs] = explode(' ', microtime());
+
+        $response = Adapter::getInstance()->collection('log')->insertOne(array_merge([
+            'model' => [
+                'name' => get_class($this),
+                'state' => $this->getState()->getValues()
+            ],
+            'user_session_id' => session_id(),
+            'timings' => [
+                'start' => $secs+$microsecs
+            ]
+        ], $args));
+
+        return $response->getInsertedId();
+    }
+
+    public function endLog($loggingID, $data = [])
+    {
+        if(!$loggingID) {
+            return false;
+        }
+
+        if(!($loggingID instanceof ObjectId)) {
+            $loggingID = new ObjectId($loggingID);
+        }
+
+        [$microsecs, $secs] = explode(' ', microtime());
+        $logCollection = Adapter::getInstance()->collection('log');
+        $original = $logCollection->findOne([
+            '_id' => $loggingID
+        ]);
+
+        $logCollection->findOneAndUpdate([
+            '_id' => $loggingID,
+        ], [
+            '$set' => array_merge([
+                'timings.end' => $secs+$microsecs,
+                'timings.duration' => ($secs+$microsecs) - $original->timings->start
+            ], $data)
+        ]);
     }
 
     public function getPropertyPath() : string

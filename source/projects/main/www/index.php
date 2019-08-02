@@ -8,6 +8,9 @@
 
 defined('ROOT_PATH') || define('ROOT_PATH', dirname(__DIR__));
 
+session_start();
+session_regenerate_id();
+
 require '../vendor/autoload.php';
 
 if (in_array($_SERVER['REQUEST_URI'], ['/edd2018', '/edd18']) !== false) {
