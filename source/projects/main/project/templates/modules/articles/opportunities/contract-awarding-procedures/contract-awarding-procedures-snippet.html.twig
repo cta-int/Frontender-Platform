@@ -2,7 +2,7 @@
 
 {% if model.externalLink %}
     <aside class="trailer--hero  |  gutters" {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-        <h2 class="title title--apropos"><a href="{{ route({'page': model.path, 'id': model._id}) }}">{{ model.headline }}</a></h2>
+        <h2 class="title title--apropos">{{ model.headline }}</h2>
         <p class="body--whisper  |  divider divider--bottom  |  leader-inside--small  |  trailer-inside--normal">{{ model.editorialComment }}</p>
         {% for download in model.externalLink %}
             <div class="trailer--small">
