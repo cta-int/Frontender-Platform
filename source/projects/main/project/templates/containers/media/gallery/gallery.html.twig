@@ -1,0 +1,49 @@
+<!-- Events with related media:
+     54867cc1-60f2-4bac-bd91-5b973b270469 (1 img)
+     992792a3-c870-47b9-a73e-e2ad80912bf4 (1 img)
+     467831c3-9e05-4f44-b2cf-9fe3b727c030 (1 img + 1 file)
+     750a9958-8b9c-491e-b314-b9b292763df1 (2 files)
+ -->
+
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'grid grid--teletubbies')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    {% for related in model.mediaObject %}
+        <div class="grid__cell  |  trailer  |  gutters">
+            {% if related.metadata.previewUrl %}
+                <a class="is-root" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
+                    {{ image.post(related) }}
+
+                    {% if related.type|t(locales) == 'file' %}
+                        <span class="av">
+                            <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                        </span>
+                    {% elseif related.type|t(locales) == 'image' %}
+                        <span class="av">
+                            <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                        </span>
+                    {% elseif related.type|t(locales) == 'video' %}
+                        <span class="av">
+                            <span class="icon icon--play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                        </span>
+                    {% endif %}
+                </a>
+            {% endif %}
+
+            {% if related.type|t(locales) %}
+                <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
+            {% endif %}
+
+            {% if related.title|t(locales) %}
+                <h2 class="heading">
+                    <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
+                        {{ related.title|t(locales) }}
+                    </a>
+                </h2>
+            {% endif %}
+        </div>
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>
