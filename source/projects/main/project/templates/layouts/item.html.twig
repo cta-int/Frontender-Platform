@@ -63,7 +63,11 @@
         {% elseif model.alternativeHeadline|t(locales) is not empty %}
             <meta property="og:title" content="{{ model.alternativeHeadline|t(locales) }}" />
         {% endif %}
-        <meta property="og:url" content="" />
+        {% if model.headline|t(locales) %}
+            <meta property="og:url" content="{{ route({'page': model.path, id: model._id, 'slug': model.headline|t(locales)|slugify }) }}" />
+        {% elseif model.name|t(locales) %}
+            <meta property="og:url" content="{{ route({'page': model.path, id: model._id, 'slug': model.name|t(locales)|slugify }) }}" />
+        {% endif %}
         {% if model.about|t(locales) is not empty %}
             <meta property="og:description" content="{{ model.about|t(locales)|striptags|clearInlineStyles }}" />
         {% endif %}
