@@ -58,8 +58,8 @@
 				"data": {
 					"value": {
 						"adapter": "SCR",
-						"model": "Event\\Search",
-						"id": "{id}"
+						"model": "Article\\Search",
+						"id": "80dd6ee6-271f-4d7b-825a-8c4a2b3d3f52"
 					},
 					"control": "project/model/article_channel_event"
 				},
