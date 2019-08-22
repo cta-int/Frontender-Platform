@@ -49,6 +49,29 @@
 					"control": "project/container_class"
 				}
 			}
+		},
+		"model": {
+			"label": {
+				"en": "Resource"
+			},
+			"controls": {
+				"data": {
+					"value": {
+						"adapter": "SCR",
+						"model": "Event\\Search",
+						"id": "{id}"
+					},
+					"control": "project/model/article_channel_event"
+				},
+				"analysis": {
+					"value": 1,
+					"control": "project/model/analysis"
+				},
+				"includeRelated": {
+					"value": 1,
+					"control": "project/model/include_related"
+				}
+			}
 		}
 	},
 	"containers": [
