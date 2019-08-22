@@ -30,7 +30,7 @@ Styleguide 3.23
   font-size: .75em;
   color: $white;
   &,
-  & .icon--controller-play {
+  & .icon {
     /* Icon was slightly off-center, added same line-height as parent to ensure that the icon is centered */
     line-height: rhythm(9);
   }
