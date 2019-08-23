@@ -9,12 +9,17 @@
 namespace Prototype\Model\SCR;
 
 use Slim\Container;
+use Frontender\Core\Template\Filter\Translate;
 
 class TwitterModel extends ScrModel
 {
+    private $translator;
+
     public function __construct(Container $container)
     {
         parent::__construct($container);
+
+        $this->translator = new Translate($container);
 
         $this->getState()
             ->insert('hashtag')
@@ -34,10 +39,10 @@ class TwitterModel extends ScrModel
 
             try {
                 $endpoint = 'https://api.twitter.com/1.1/';
-                $url = $endpoint . 'statuses/user_timeline.json?screen_name=' . $this->getState()->username;
+                $url = $endpoint . 'statuses/user_timeline.json?screen_name=' . $this->translator->translate($this->getState()->username);
 
                 if ($this->getState()->hashtag) {
-                    $url = $endpoint . 'search/tweets.json?q=' . $this->getState()->hashtag . '&tweet_mode=extended';
+                    $url = $endpoint . 'search/tweets.json?q=' . $this->translator->translate($this->getState()->hashtag) . '&tweet_mode=extended';
                 }
 
                 $oauthc->fetch($url . '&count=' . $this->getState()->limit, null, OAUTH_HTTP_METHOD_GET, array("User-Agent" => "pecl/oauth"));
