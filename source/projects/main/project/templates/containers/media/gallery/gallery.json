@@ -1,0 +1,293 @@
+{
+	"template": "containers/global/group/group.html.twig",
+	"name": {
+		"en-GB": "Gallery of related media items"
+	},
+	"description": {
+		"en-GB": "Gallery of related media items"
+	},
+	"template_config": {
+		"config": {
+			"label": {
+				"en-GB": "Settings"
+			},
+			"controls": {
+				"container_tag": {
+					"value": "section",
+					"control": "project/container_tag"
+				},
+				"wings": {
+					"value": "",
+					"control": "project/wings"
+				},
+				"leader": {
+					"value": "",
+					"control": "project/leader"
+				},
+				"leader_inside": {
+					"value": "",
+					"control": "project/leader_inside"
+				},
+				"trailer": {
+					"value": "",
+					"control": "project/trailer"
+				},
+				"trailer_inside": {
+					"value": "",
+					"control": "project/trailer_inside"
+				},
+				"divider": {
+					"value": "",
+					"control": "project/divider"
+				},
+				"crown": {
+					"value": "",
+					"control": "project/crown"
+				},
+				"container_class": {
+					"value": "",
+					"control": "project/container_class"
+				}
+			}
+		},
+		"model": {
+			"label": {
+				"en": "Resource"
+			},
+			"controls": {
+				"data": {
+					"value": {
+						"adapter": "SCR",
+						"model": "Article\\Search",
+						"id": "80dd6ee6-271f-4d7b-825a-8c4a2b3d3f52"
+					},
+					"control": "project/model/article_channel_event"
+				},
+				"analysis": {
+					"value": 1,
+					"control": "project/model/analysis"
+				},
+				"includeRelated": {
+					"value": 1,
+					"control": "project/model/include_related"
+				}
+			}
+		}
+	},
+	"containers": [
+		{
+			"name": {
+				"en-GB": "Container header"
+			},
+			"description": {
+				"en-GB": "Container-header"
+			},
+			"template": "containers/global/container-header/container-header.html.twig",
+			"template_config": {
+				"labels": {
+					"label": {
+						"en-GB": "Content"
+					},
+					"controls": {
+						"container_title": {
+							"value": {
+								"en-GB": "Related media",
+								"fr-FR": "Related media"
+							},
+							"label": {
+								"en-GB": "Container title"
+							},
+							"control": "core/text"
+						},
+						"link": {
+							"value": {
+								"label": {
+									"en-GB": "",
+									"fr-FR": ""
+								},
+								"page": "",
+								"id": ""
+							},
+							"label": {
+								"en-GB": "Link"
+							},
+							"control": "core/route"
+						}
+					}
+				},
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"wings": {
+							"value": "wings",
+							"control": "project/wings"
+						},
+						"show_margins": {
+							"value": "",
+							"control": "project/layout/show_margins"
+						},
+						"show_smaller_title": {
+							"value": 0,
+							"label": {
+								"en-GB": "Show small title"
+							},
+							"control": "core/boolean"
+						},
+						"show_link": {
+							"value": "",
+							"label": {
+								"en-GB": "Show link"
+							},
+							"control": "core/list",
+							"options": [
+								{
+									"value": "",
+									"label": {
+										"en-GB": "None"
+									}
+								},
+								{
+									"value": "events",
+									"label": {
+										"en-GB": "All events"
+									}
+								},
+								{
+									"value": "articles",
+									"label": {
+										"en-GB": "All articles"
+									}
+								}
+							]
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						},
+						"container_tag": {
+							"value": "header",
+							"control": "project/container_tag"
+						}
+					}
+				}
+			},
+			"frontender": "1564999696"
+		},
+		{
+			"template": "containers/global/layout/layout.html.twig",
+			"name": {
+				"en-GB": "Layout"
+			},
+			"description": {
+				"en-GB": "Generic container to wrap content in layout instructions"
+			},
+			"template_config": {
+				"config": {
+					"label": {
+						"en-GB": "Settings"
+					},
+					"controls": {
+						"divider": {
+							"value": "",
+							"control": "project/divider"
+						},
+						"container_tag": {
+							"value": "article",
+							"control": "project/container_tag"
+						},
+						"container_class": {
+							"value": "",
+							"control": "project/container_class"
+						},
+						"show_divider": {
+							"value": 0,
+							"control": "project/layout/show_divider"
+						}
+					}
+				}
+			},
+			"containers": [
+				{
+					"name": {
+						"en-GB": "Gallery"
+					},
+					"description": {
+						"en-GB": "Gallery"
+					},
+					"template": "containers/media/gallery/gallery.html.twig",
+					"template_config": {
+						"config": {
+							"label": {
+								"en-GB": "Settings"
+							},
+							"controls": {
+								"container_tag": {
+									"value": "div",
+									"control": "project/container_tag"
+								},
+								"container_class": {
+									"value": "",
+									"control": "project/container_class"
+								}
+							}
+						}
+					},
+					"containers": [],
+					"frontender": "1564999695"
+				},
+				{
+					"name": {
+						"en-GB": "Newsletter signup"
+					},
+					"description": {
+						"en-GB": "Newsletter signup"
+					},
+					"template": "modules/newsletter-signup/newsletter-signup.html.twig",
+					"template_config": {
+						"config": {
+							"label": {
+								"en-GB": "Settings"
+							},
+							"controls": {
+								"container_tag": {
+									"value": "section",
+									"control": "project/container_tag"
+								},
+								"container_class": {
+									"value": "leader trailer",
+									"control": "project/container_class"
+								}
+							}
+						},
+						"labels": {
+							"label": {
+								"en-GB": "Labels"
+							},
+							"controls": {
+								"title": {
+									"value": {
+										"en-GB": "Be sure you don't miss our latest updates.",
+										"fr-FR": "Ne pas manquer l'opportunité de travailler avec CTA. Abbonez-vous maintenant!"
+									},
+									"control": "core/text"
+								},
+								"button": {
+									"value": {
+										"en-GB": "Subscribe",
+										"fr-FR": "Souscrire"
+									},
+									"control": "core/text"
+								}
+							}
+						}
+					},
+					"frontender": "1564999694"
+				}
+			],
+			"frontender": "1564999693"
+		}
+	],
+	"frontender": "1564999692"
+}
