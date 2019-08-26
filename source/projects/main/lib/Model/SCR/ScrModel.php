@@ -20,6 +20,8 @@ use League\Flysystem\Adapter\Local;
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
 use Frontender\Core\DB\Adapter;
+use Prototype\Model\Cache\Storage;
+use Prototype\Model\Cache\Strategy;
 
 class ScrModel extends AbstractModel
 {
@@ -36,22 +38,18 @@ class ScrModel extends AbstractModel
     public function getClient() : ScrClient
     {
         $stack = HandlerStack::create();
+        $cacheMiddleware = new CacheMiddleware(
+            new Strategy(
+                new Storage(),
+                1800 // This is a faux value as the request is cache in-memory for this request.
+            )
+        );
 
-        if ($this->container['settings']->has('caching')) {
-            if ($this->container['settings']->get('caching')) {
-                $stack->push(
-                    new CacheMiddleware(
-                        new GreedyCacheStrategy(
-                            new FlysystemStorage(
-                                new Local(ROOT_PATH . '/cache/guzzle')
-                            ),
-                            $this->container['settings']->has('cachetime') ? $this->container['settings']->get('cachetime') : 1800
-                        )
-                    ),
-                    'cache'
-                );
-            }
-        }
+        // In the current setup of the SCR we can cache everything.
+        $cacheMiddleware->setHttpMethods([
+            'GET' => 'GET',
+            'POST' => 'POST'
+        ]);
 
         $model = $this;
         $stack->push(function(callable $handler) use ($model) {
@@ -65,12 +63,15 @@ class ScrModel extends AbstractModel
                         'body' => $request->getBody()->getContents()
                     ]
                 ]);
-                
+
+                $request->getBody()->rewind();
+
                 $promise = $handler($request, $options);
 
                 $promise->then(function($response) use ($model, $loggingID) {
                     $model->endLog($loggingID, [
                         'response' => [
+                            'cached' => $response->getHeader('X-Kevinrob-Cache')[0],
                             'size' => $response->getHeader('Content-Length')[0]
                         ]
                     ]);
@@ -79,6 +80,7 @@ class ScrModel extends AbstractModel
                 return $promise;
             };
         });
+        $stack->push($cacheMiddleware, 'cache');
 
         $config = [
             'headers' => [
