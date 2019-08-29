@@ -48,7 +48,7 @@
                         </li>
                     {% endif %}
 
-                    {% if model.mediaObject | findType('document') | length > 0 %}
+                    {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
                         <li>
                             <a class="title title--tab" href="#downloads">{{ 'Downloads'|i18n }}</a>
                         </li>
@@ -81,7 +81,7 @@
                 {% include "containers/events/body/panels/sponsors.html.twig" %}
             {% endif %}
 
-            {% if model.mediaObject | findType('document') | length > 0 %}
+            {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
                 {% include "containers/events/body/panels/downloads.html.twig" %}
             {% endif %}
         </div>
