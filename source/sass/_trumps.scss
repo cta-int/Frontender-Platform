@@ -103,6 +103,18 @@
     }
 }
 
+.post-body {
+    .heading {
+        margin-top: rhythm(8);
+    }
+    h2.heading {
+        @include title-20px();
+    }
+    h3.heading {
+        @include title-18px();
+    }
+}
+
 .markdown {
     p {
         @extend .paragraph;
@@ -156,4 +168,3 @@ html {
         font-size: to-unit(14px);
     }
 }
-
