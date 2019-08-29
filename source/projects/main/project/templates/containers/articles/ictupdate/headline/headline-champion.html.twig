@@ -30,6 +30,8 @@
             {% if model.link.mediaObject|lead %}
                 {% if model.link.mediaObject|lead.about %}
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about|t(locales) }}</p>
+                {% elseif model.link.mediaObject|lead.description %}
+                    <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.description|t(locales) }}</p>
                 {% endif %}
                 {% if model.link.mediaObject|lead.credit %}
                     <p class="credit  |  gutters  |  trailer" itemprop="copyrightHolder">&copy; {{ model.link.mediaObject|lead.credit|t(locales) }}</p>
