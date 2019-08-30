@@ -437,7 +437,7 @@
             "uri": "/media/search",
             "responseModel": "json",
             "parameters": {
-                "q": {
+                "searchQuery": {
                     "location": "json",
                     "type": "string"
                 },
@@ -488,7 +488,7 @@
             "uri": "/media/search",
             "responseModel": "json",
             "parameters": {
-                "q": {
+                "searchQuery": {
                     "location": "json",
                     "type": "string"
                 },

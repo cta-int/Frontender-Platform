@@ -14,11 +14,34 @@ use Slim\Container;
 
 class SearchModel extends ScrModel
 {
-    use Searchable;
+    use Searchable {
+        __construct as public traitConstruct;
+        setState as public traitSetState;
+    }
+
+    public function __construct(\Slim\Container $container)
+    {
+        $this->traitConstruct($container);
+
+        $this->getState()
+            ->insert('searchQuery');
+    }
 
     public function getModelName() : string
     {
         $name = parent::getModelName();
         return 'Media' . ucfirst($name);
+    }
+
+    public function setState(array $values)
+    {
+        if(isset($values['q'])) {
+            $values['searchQuery'] = $values['q'];
+            unset($values['q']);
+        }
+
+        $this->traitSetState($values);
+
+        return $this;
     }
 }

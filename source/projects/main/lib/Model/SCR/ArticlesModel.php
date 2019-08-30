@@ -505,17 +505,23 @@ class ArticlesModel extends ScrModel
 
         $contentBlocks = array_map(function ($block) use ($article, $mediaModel) {
             if ((isset($block['subtype']) && $block['subtype'] === 'image') || (isset($block['type']) && $block['type'] === 'video')) {
-                $item = $mediaModel->setState([
-                    'id' => $block['id']
-                ])->fetch();
+                try {
+                    $item = $mediaModel->setState([
+                        'id' => $block['id']
+                    ])->fetch();
 
-                if (count($item) > 0) {
-                    $item = array_shift($item);
+                    if (count($item) > 0) {
+                        $item = array_shift($item);
 
-                    $block['about'] = $item['about'] ?? '';
-                    $block['name'] = $item['name'] ?? '';
-                    $block['credit'] = $item['credit'] ?? '';
-                    $block['url'] = $item['metadata']['url'] ?? '';
+                        $block['about'] = $item['about'] ?? '';
+                        $block['name'] = $item['name'] ?? '';
+                        $block['credit'] = $item['credit'] ?? '';
+                        $block['url'] = $item['metadata']['url'] ?? '';
+                    }
+                } catch(\Exception $e) {
+                    // NOOP
+                } catch(\Error $e) {
+                    // NOOP
                 }
             }
 
