@@ -93,8 +93,15 @@
                 </div>
             {% endif %}
 
-            <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-gt-small-desktop">
-                {{ share.bar_article(model) }}
+            <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
+                <div class="gutters leader-inside">
+                    {{ share.bar_article(model) }}
+                </div>
+            </div>
+
+            <div class="leader trailer gutters" data-vendor="commento">
+                <div id="commento"></div>
+                <script src="https://cdn.commento.io/js/commento.js"></script>
             </div>
 
             {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
