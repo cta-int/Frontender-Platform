@@ -7,5 +7,46 @@
         "id": "_id",
         "title": "originalFilename",
         "thumbnail": "metadata.thumbnailUrl"
+    },
+    "filters": {
+        "type": {
+            "label": {
+                "en-GB": "Event Type"
+            },
+            "icon": "funnel",
+            "visualType": "icon",
+            "options": [
+                {
+                    "label": {
+                        "en-GB": "Image"
+                    },
+                    "value": "image"
+                },
+                {
+                    "label": {
+                        "en-GB": "Video"
+                    },
+                    "value": "video"
+                },
+                {
+                    "label": {
+                        "en-GB": "Presentation"
+                    },
+                    "value": "presentation"
+                },
+                {
+                    "label": {
+                        "en-GB": "Google Spreadsheet"
+                    },
+                    "value": "google_spreadsheet"
+                },
+                {
+                    "label": {
+                        "en-GB": "Other files"
+                    },
+                    "value": "file"
+                }
+            ]
+        }
     }
 }

@@ -24,7 +24,8 @@ class SearchModel extends ScrModel
         $this->traitConstruct($container);
 
         $this->getState()
-            ->insert('searchQuery');
+            ->insert('searchQuery')
+            ->insert('type');
     }
 
     public function getModelName() : string
