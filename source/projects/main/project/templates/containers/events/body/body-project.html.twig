@@ -33,8 +33,11 @@
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype | default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endif %}
             {% endfor %}
-            <div class="well  |  gutters-outside  |  leader  |  trailer">
-                {{ share.bar_article(model) }}
+            
+            <div class="well  |  leader  |  trailer">
+                <div class="gutters">
+                    {{ share.bar_article(model) }}
+                </div>
             </div>
 
             {% if model.analysis.agrovoc.concepts %}
