@@ -168,3 +168,24 @@ html {
         font-size: to-unit(14px);
     }
 }
+
+
+/*
+ * Overrides for commento styling
+ */
+
+[data-vendor="commento"] {
+    .commento-root textarea,
+    .commento-button.commento-submit-button {
+        border-radius: 0;
+    }
+    .commento-root textarea {
+        @include theme-border(26%);
+    }
+    .commento-button.commento-submit-button {
+        @extend .button !optional;
+        box-shadow: none;
+        // margin-left: 0;
+        // margin-right: 0;
+    }
+}
