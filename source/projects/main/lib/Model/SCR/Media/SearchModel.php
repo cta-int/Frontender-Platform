@@ -10,6 +10,7 @@ namespace Prototype\Model\SCR\Media;
 
 use Prototype\Model\SCR\ScrModel;
 use Prototype\Model\Traits\Searchable;
+use Prototype\Model\Traits\Translatable;
 use Slim\Container;
 
 class SearchModel extends ScrModel
@@ -18,6 +19,7 @@ class SearchModel extends ScrModel
         __construct as public traitConstruct;
         setState as public traitSetState;
     }
+    use Translatable;
 
     public function __construct(\Slim\Container $container)
     {
@@ -44,5 +46,18 @@ class SearchModel extends ScrModel
         $this->traitSetState($values);
 
         return $this;
+    }
+
+    public function fetch($raw = false)
+    {
+        $items = parent::fetch($raw);
+
+        foreach ($items as $item) {
+            if (isset($item['title'])) {
+                $item['title'] = $this->translate($item['title']);
+            }
+        }
+
+        return $items;
     }
 }

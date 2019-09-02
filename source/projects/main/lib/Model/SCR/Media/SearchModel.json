@@ -5,8 +5,11 @@
     },
     "map": {
         "id": "_id",
-        "title": "originalFilename",
-        "thumbnail": "metadata.thumbnailUrl"
+        "title": "title",
+        "description": "originalFilename",
+        "thumbnail": "metadata.thumbnailUrl",
+        "datePublished": "dateUploaded",
+        "dateModified": "dateModified"
     },
     "filters": {
         "type": {
