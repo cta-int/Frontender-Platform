@@ -27,7 +27,8 @@ class SearchModel extends ScrModel
 
         $this->getState()
             ->insert('searchQuery')
-            ->insert('type');
+            ->insert('type')
+            ->insert('limit', 10);
     }
 
     public function getModelName() : string
