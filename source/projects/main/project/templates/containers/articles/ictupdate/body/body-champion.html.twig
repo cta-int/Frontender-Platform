@@ -73,6 +73,13 @@
                     </div>
                 </div>
 
+                {% if model.articleType == "blog" %}
+                <div class="leader trailer gutters" data-vendor="commento">
+                    <div id="commento"></div>
+                    <script src="https://cdn.commento.io/js/commento.js" defer="defer"></script>
+                </div>
+                {% endif %}
+
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
                 {% if ctaOrg %}
                     <aside itemprop="publisher" itemscope itemtype="https://schema.org/Organization" class="well well--neutral  |  gutters-outside  |  leader leader-inside--normal  |   trailer trailer-inside--normal">
