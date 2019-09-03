@@ -437,7 +437,7 @@
             "uri": "/media/search",
             "responseModel": "json",
             "parameters": {
-                "q": {
+                "searchQuery": {
                     "location": "json",
                     "type": "string"
                 },
@@ -478,6 +478,10 @@
                     "type": "string"
                 },
                 "to": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "type": {
                     "location": "json",
                     "type": "string"
                 }
@@ -488,7 +492,7 @@
             "uri": "/media/search",
             "responseModel": "json",
             "parameters": {
-                "q": {
+                "searchQuery": {
                     "location": "json",
                     "type": "string"
                 },
@@ -529,6 +533,10 @@
                     "type": "string"
                 },
                 "to": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "type": {
                     "location": "json",
                     "type": "string"
                 }

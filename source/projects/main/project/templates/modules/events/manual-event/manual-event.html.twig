@@ -1,0 +1,36 @@
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'wings')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+
+    {% if labels.title %}
+        <h2 class="title title--section  |  trailer  |  gutters">{{ labels.title|t(locales) }}</h2>
+    {% endif %}
+
+    <article class="{{['media  |  trailer',class]|join('  |  ')}}">
+        <div class="media__figure  |  gutters gutter-mobile--right">
+            {{ date.tile(model.startDate) }}
+        </div>
+        <div class="media__content">
+            <div class="">
+                <div class="media__body  |  gutters">
+                    <a class="anchor--reset anchor--shy  |  stack" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify , id: model._id}) }}">
+                        <h2 class="heading heading--focus">{{ model.name }}</h2>
+                    </a>
+                    <div class="leader--tiny">
+                        {{ date.event_short(model.startDate, model.endDate) }}
+                    </div>
+                </div>
+                <div class="media__figure  media__aside">
+                    <div class="gutters">
+                        {% if model.location.address.addressLocality %}
+                            <div class="body--whisper">{{ model.location.address.addressLocality|t(locales) }}, {{ model.location.address.addressCountry|t(locales) }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</{{ config.container_tag|default('div') }}>

@@ -33,8 +33,11 @@
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype | default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endif %}
             {% endfor %}
-            <div class="well  |  gutters-outside  |  leader  |  trailer">
-                {{ share.bar_article(model) }}
+            
+            <div class="well  |  leader  |  trailer">
+                <div class="gutters">
+                    {{ share.bar_article(model) }}
+                </div>
             </div>
 
             {% if model.analysis.agrovoc.concepts %}
@@ -73,7 +76,9 @@
             {% if c.template_id  == 'project_updates' %}
                 {% include c.template with c|merge({ 'model':  model.updates|slice(0, 4) }) %}
             {% elseif c.template_id  == "project_downloads" %}
-                {% include c.template with c|merge({ 'model':  model.mediaObject|filterArray('type', 'document') }) %}
+                {% include c.template with c|merge({ 'model':  model.mediaObject}) %}
+            {% elseif c.template_id == "external_links" %}
+                {% include c.template with c|merge({ 'model':  model}) %}
             {% else %}
                 {% include c.template with c %}
             {% endif %}
