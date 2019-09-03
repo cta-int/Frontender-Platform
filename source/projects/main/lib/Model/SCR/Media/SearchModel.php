@@ -40,8 +40,7 @@ class SearchModel extends ScrModel
     public function setState(array $values)
     {
         if(isset($values['q'])) {
-            $values['searchQuery'] = $values['q'];
-            unset($values['q']);
+            $values['searchQuery'] = $values['q'] . '*';
         }
 
         $this->traitSetState($values);
