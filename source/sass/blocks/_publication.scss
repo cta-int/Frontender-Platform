@@ -218,7 +218,8 @@ Styleguide 4.40
 	.well &__item {
 		border-color: $white;
 	}
-	.well--full & {
+	.well--full &,
+	.well--full &:visited {
 		color: $white;
 	}
 }

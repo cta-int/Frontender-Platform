@@ -60,11 +60,12 @@
     {% import _self as share %}
 
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
-
+    
     {{ share.bar({
         light: light|default(false),
         facebook: {
-            caption: article.headline
+            caption: article.headline,
+            app_id: '485838208862116'
         },
         ictupdate: {
             number: article.issue.number,

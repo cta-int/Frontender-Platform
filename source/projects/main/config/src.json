@@ -480,6 +480,10 @@
                 "to": {
                     "location": "json",
                     "type": "string"
+                },
+                "type": {
+                    "location": "json",
+                    "type": "string"
                 }
             }
         },
@@ -529,6 +533,10 @@
                     "type": "string"
                 },
                 "to": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "type": {
                     "location": "json",
                     "type": "string"
                 }
