@@ -39,7 +39,7 @@ class SearchModel extends ScrModel
 
     public function setState(array $values)
     {
-        if(isset($values['q'])) {
+        if(isset($values['q']) && !empty($values['q'])) {
             $values['searchQuery'] = $values['q'] . '*';
         }
 
