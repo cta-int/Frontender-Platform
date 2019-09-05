@@ -5,7 +5,7 @@
 
 {% if config.section_link.page %}
     <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero hero--slogan slogan--large'))|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-        <a href="{{ config.section_link.page|t(locales) }}">
+        <a href="{{ route({'page': config.section_link.page|t(locales) }) }}">
             {{ image.hero_twitter(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
             <figcaption class="hero__headline">
                 {% for loopContainer in containers %}
@@ -14,7 +14,6 @@
             </figcaption>
         </a>
     </{{ config.container_tag|default('figure') }}>
-
 {% else %}
     <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero hero--slogan slogan--large'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         {{ image.hero_twitter(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
