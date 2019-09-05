@@ -10,13 +10,14 @@ Styleguide 3.11
 */
 
 .slogan {
-    &,
     .slogan--large & {
         @include breakpoint($lt-large-handheld) {
             height: auto;
         }
     }
-    height: rhythm(116);
+    @include breakpoint($gt-large-handheld) {
+        height: rhythm(116);
+    }
     &--backdrop {
         background: rgba(0, 0 ,0 ,.2);
     }
