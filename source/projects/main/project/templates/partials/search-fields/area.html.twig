@@ -1,0 +1,18 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__area')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="fld">
+        <label for="ctx-item__area" class="fld-label">{{ labels.field_label|t(locales)|default('Area'|i18n) }}</label>
+        <select id="ctx-item__area" name="area" class="placeholder-visible">
+            <option value="">{{ 'Any'|i18n }}</option>
+            
+            <option value="youth"{% if query.area == 'youth' %} selected="selected" {% endif %}>{{ 'Youth'|i18n }}</option>
+            <option value="gender"{% if query.area == 'gender' %} selected="selected" {% endif %}>{{ 'Gender'|i18n }}</option>
+            <option value="knowledge-management"{% if query.area == 'knowledge-management' %} selected="selected" {% endif %}>{{ 'Knowledge management'|i18n }}</option>
+            <option value="nutrition"{% if query.area == 'nutrition' %} selected="selected" {% endif %}>{{ 'Nutrition'|i18n }}</option>
+            <option value="digitalisation"{% if query.area == 'digitalisation' %} selected="selected" {% endif %}>{{ 'Digitalisation'|i18n }}</option>
+            <option value="climate"{% if query.area == 'climate' %} selected="selected" {% endif %}>{{ 'Climate'|i18n }}</option>
+        </select>
+    </div>
+</{{ config.container_tag|default('div') }}>
