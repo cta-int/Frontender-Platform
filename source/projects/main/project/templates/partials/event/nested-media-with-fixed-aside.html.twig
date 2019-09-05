@@ -38,6 +38,11 @@
                                     <li>{{ concept.label(label, locale) }}</li>
                                 {% endfor %}
                             {% endif %}
+                            {% if model.theme %}
+                                <li class="{{ model.theme.selector }}">
+                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ model.theme._id }}">{{ model.theme.name }}</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>

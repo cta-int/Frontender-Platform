@@ -643,6 +643,28 @@ class ArticlesModel extends ScrModel
         return $this->getLabels('publication', true);
     }
 
+    public function getPropertyStrategy()
+    {
+        $_label = $this->getLabels('strategy', true);
+
+        $_theme = [
+            'selector' => '',
+            'label' => ''
+        ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+        }
+
+        return $_label;
+    }
+
     public function getPropertyTheme()
     {
         $_label = $this->getLabels('strategy', true);

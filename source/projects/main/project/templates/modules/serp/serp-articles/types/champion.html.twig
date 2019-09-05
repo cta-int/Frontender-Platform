@@ -22,6 +22,12 @@
                             {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
                                 <li>{{ concept.tag(label, locale) }}</li>
                             {% endfor %}
+
+                            {% if article.strategy %}
+                                <li class="{{ article.strategy.selector }}">
+                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ article.strategy._id }}">{{ article.strategy.name }}</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     {% endif %}
                 </div>
@@ -34,7 +40,9 @@
                     {% if article.link.person.author|length > 0 %}
                         <p class="meta meta--lowercase">{{ author.long(article.link.person.author) }}</p>
                     {% endif %}
-                    <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                    {% if article.analysis.geoname.geonames %}
+                        <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                    {% endif %}
                 </div>
             </div>
         </div>
