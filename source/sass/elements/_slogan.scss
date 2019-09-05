@@ -10,6 +10,7 @@ Styleguide 3.11
 */
 
 .slogan {
+    &,
     .slogan--large & {
         @include breakpoint($lt-large-handheld) {
             height: auto;
