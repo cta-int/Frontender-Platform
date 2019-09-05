@@ -6,21 +6,10 @@
         <label for="ctx-item__theme" class="fld-label">{{ labels.field_label|t(locales)|default('Theme'|i18n) }}</label>
         <select id="ctx-item__theme" name="theme" class="placeholder-visible">
             <option value="">{{ 'Any'|i18n }}</option>
-            <option value="cooperatives"{% if query.theme == 'cooperatives' %} selected="selected" {% endif %}>{{ 'Cooperatives'|i18n }}</option>
-            <option value="market-access"{% if query.theme == 'market-access' %} selected="selected" {% endif %}>{{ 'Market access'|i18n }}</option>
-            <option value="digitalisation"{% if query.theme == 'digitalisation' %} selected="selected" {% endif %}>{{ 'Digitalisation'|i18n }}</option>
-            <option value="environment"{% if query.theme == 'environment' %} selected="selected" {% endif %}>{{ 'Environment'|i18n }}</option>
-            <option value="climate-adaptation"{% if query.theme == 'climate-adaptation' %} selected="selected" {% endif %}>{{ 'Climate adaptation'|i18n }}</option>
-            <option value="food-policy"{% if query.theme == 'food-policy' %} selected="selected" {% endif %}>{{ 'Food Policy'|i18n }}</option>
-            <option value="food-security"{% if query.theme == 'food-security' %} selected="selected" {% endif %}>{{ 'Food security'|i18n }}</option>
-            <option value="agritourism"{% if query.theme == 'agritourism' %} selected="selected" {% endif %}>{{ 'Agritourism'|i18n }}</option>
-            <option value="fisheries"{% if query.theme == 'fisheries' %} selected="selected" {% endif %}>{{ 'Fisheries'|i18n }}</option>
-            <option value="value-chains"{% if query.theme == 'value-chains' %} selected="selected" {% endif %}>{{ 'Value chains'|i18n }}</option>
-            <option value="trade"{% if query.theme == 'trade' %} selected="selected" {% endif %}>{{ 'Trade'|i18n }}</option>
-            <option value="climate-change"{% if query.theme == 'climate-change' %} selected="selected" {% endif %}>{{ 'Climate change'|i18n }}</option>
-            <option value="agribusiness"{% if query.theme == 'agribusiness' %} selected="selected" {% endif %}>{{ 'Agribusiness'|i18n }}</option>
-            <option value="innovation"{% if query.theme == 'innovation' %} selected="selected" {% endif %}>{{ 'Innovation'|i18n }}</option>
-            <option value="employment"{% if query.theme == 'employment' %} selected="selected" {% endif %}>{{ 'Employment'|i18n }}</option>
+
+            {% for theme in model.theme %}
+                <option value="{{theme.slug}}"{% if query.theme == theme.slug or query.theme == theme.id %} selected="selected" {% endif %}>{{ theme.title|i18n }}</option>
+            {% endfor %}
         </select>
     </div>
 </{{ config.container_tag|default('div') }}>
