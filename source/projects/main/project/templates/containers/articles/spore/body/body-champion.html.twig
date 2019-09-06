@@ -61,8 +61,7 @@
                     {% if model.editorialComment|t(locales) %}
                         <div class="gutters  |  leader  |  trailer">
                             <div class="well well--neutral  |  gutters  |  leader-inside--small  |  trailer-inside--normal">
-                                <p class="paragraph"><em>{{ {en: 'Editorial comment', fr: 'Commentaire éditorial'}|t(locales) }}</em></p>
-                                <p class="paragraph">{{ model.editorialComment|t(locales) }}</p>
+                                <div class="paragraph paragraph--editorial">{{ model.editorialComment|t(locales)|markdown|raw }}</div>
                             </div>
                         </div>
                     {% endif %}
