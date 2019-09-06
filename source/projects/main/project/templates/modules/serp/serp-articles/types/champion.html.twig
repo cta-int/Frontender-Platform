@@ -1,5 +1,6 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
 
 {% set resource_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
@@ -8,6 +9,11 @@
     <div class="media__content">
         <div class="media media--unfold">
             <div class="media__body  |  gutters">
+                {% if article.publicationLabel %}
+                    <p class="meta  |  trailer--small">{{ label.publication_to_string(article.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</p>
+                {% elseif article.link.label|first.name|t(locales) %}
+                    <p class="meta  |  trailer--small">{{ article.link.label|first.name|t(locales)|split('/')|last}}</p>
+                {% endif %}
                 <a class="anchor--reset anchor--shy  |  stack" href="{{ resource_route }}">
                     <h2 class="title title--tile">
                         {{ article.headline|highlightText(query.q, 'highlight')|t(locales)|raw }}
