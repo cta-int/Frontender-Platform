@@ -6,11 +6,11 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Event;
+namespace Frontender\Platform\Model\SCR\Event;
 
 use Slim\Container;
 
-class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
+class ArticlesModel extends \Frontender\Platform\Model\SCR\ArticlesModel
 {
     public function __construct(Container $container)
     {

@@ -6,12 +6,12 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\State\State;
+use Frontender\Platform\Model\State\State;
 
 use Frontender\Core\Object\ObjectArray;
-use Prototype\Model\Traits\Translatable;
+use Frontender\Platform\Model\Traits\Translatable;
 use Pimple\Container;
 use Doctrine\Common\Inflector\Inflector;
 use Frontender\Core\DB\Adapter;

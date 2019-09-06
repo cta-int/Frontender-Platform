@@ -6,12 +6,12 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Article;
+namespace Frontender\Platform\Model\SCR\Article;
 
-use Prototype\Model\Traits\Searchable;
+use Frontender\Platform\Model\Traits\Searchable;
 use Slim\Container;
-use Prototype\Model\SCR\ArticlesModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\ArticlesModel;
+use Frontender\Platform\Model\Utils\Sorting;
 
 class SearchModel extends ArticlesModel
 {

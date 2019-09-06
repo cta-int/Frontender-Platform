@@ -6,7 +6,7 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\State;
+namespace Frontender\Platform\Model\State;
 
 class State
 {

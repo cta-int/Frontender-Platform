@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Model\Traits;
+namespace Frontender\Platform\Model\Traits;
 
 trait Searchable
 {
