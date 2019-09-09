@@ -25,7 +25,7 @@
                 <div class="leader">
                     {% if article.analysis.agrovoc.concepts|length > 0 %}
                         <ul class="reset label-list clear list--inline">
-                            {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                            {% for label in article.analysis.agrovoc.concepts|slice(0, 3) %}
                                 <li>{{ concept.tag(label, locale) }}</li>
                             {% endfor %}
 

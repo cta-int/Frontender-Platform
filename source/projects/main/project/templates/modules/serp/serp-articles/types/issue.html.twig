@@ -53,12 +53,12 @@
                         {% if article.strategyLabel or article.datePublished %}
                             <dl class="dlist">
                                 {% if article.strategyLabel %}
-                                    <dt class="dlist__label meta meta--s meta--dark">{{ 'area' | i18n }}: </dt>
-                                    <dd class="dlist__value meta meta--s meta--lc meta--dark"><strong>{{ article.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
+                                    <dt class="dlist__label meta meta--s">{{ 'area' | i18n }}: </dt>
+                                    <dd class="dlist__value meta meta--s meta--lc"><strong>{{ article.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
                                 {% endif %}
                                 {% if article.datePublished %}
-                                    <dt class="dlist__label meta meta--s meta--dark">{{ 'published' | i18n }}: </dt>
-                                    <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ date.issue_year(article.datePublished, null, ' ') }}</dd>
+                                    <dt class="dlist__label meta meta--s">{{ 'published' | i18n }}: </dt>
+                                    <dd class="dlist__value meta meta--s meta--lc">{{ date.issue_year(article.datePublished, null, ' ') }}</dd>
                                 {% endif %}
                             </dl>
                         {% endif %}
