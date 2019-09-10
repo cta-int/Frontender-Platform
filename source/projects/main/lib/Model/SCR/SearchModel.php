@@ -432,6 +432,48 @@ class SearchModel extends ScrModel
         return $this->searchFilters['theme'];
     }
 
+    public function getPropertySporeIssues()
+    {
+        $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+        $model->setState([
+            'type' => 'issue',
+            'label' => [
+                'da4459e6-9cc2-4f47-8b7c-b79b8ff88f3d'
+            ],
+            'language' => $this->getState()->language,
+            'limit' => 20
+        ]);
+        $articles = $model->fetch();
+        return array_filter($articles, function($article) {
+            if($article['issue'] && $article['issue']->issueNumberLabel && $article['number']) {
+                return true;
+            }
+
+            return false;
+        });
+    }
+
+    public function getPropertyIctupdateIssues() 
+    {
+        $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+        $model->setState([
+            'type' => 'issue',
+            'label' => [
+                '1dde377b-5712-4d1b-91fe-bedd80f76e28'
+            ],
+            'language' => $this->getState()->language,
+            'limit' => 20
+        ]);
+        $articles = $model->fetch();
+        return array_filter($articles, function($article) {
+            if($article['issue'] && $article['issue']->issueNumberLabel && $article['number']) {
+                return true;
+            }
+
+            return false;
+        });
+    }
+
     public function fetch($raw = false)
     {
         return [$this];

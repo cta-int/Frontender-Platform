@@ -231,7 +231,7 @@ class ArticlesModel extends ScrModel
             private $container;
             private $state;
             private $issueLabel = null;
-            private $issueNumberLabel = null;
+            public $issueNumberLabel = null;
 
             public function __construct($article, $state, $container)
             {
