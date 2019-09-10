@@ -4,6 +4,10 @@
    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept._id }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
+{% macro search_string(label) %}
+   <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ label }}">{{ label }}</a>
+{% endmacro %}
+
 {% macro label_large(concept, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
