@@ -5,7 +5,7 @@
     <div class="fld">
         <label for="ctx-item__date" class="fld-label">{{ labels.field_label|t(locales)|default('Region'|i18n) }}</label>
         <select id="ctx-item__date" name="scope" class="placeholder-visible">
-            <option value="">{{ 'All'|i18n }}</option>
+            <option value="">{{ 'Any'|i18n }}</option>
             <option value="cta"{% if query.scope == 'cta' %} selected="selected" {% endif %}>{{ 'CTA'|i18n }}</option>
             <option value="spore"{% if query.scope == 'spore' %} selected="selected" {% endif %}>{{ 'Spore'|i18n }}</option>
             <option value="ictupdate"{% if query.scope == 'ictupdate' %} selected="selected" {% endif %}>{{ 'ICT Update'|i18n }}</option>
