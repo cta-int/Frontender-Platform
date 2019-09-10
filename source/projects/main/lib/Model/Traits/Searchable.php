@@ -78,6 +78,7 @@ trait Searchable
         }
 
         $values['must'] = array_unique($values['must'], SORT_REGULAR);
+        $values['should'] = array_unique($values['should'], SORT_REGULAR);
 
         return parent::setState($values);
     }

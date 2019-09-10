@@ -326,6 +326,13 @@ class SearchModel extends ScrModel
         // Add mapping for the new search properties.
         if(isset($values['q']) && !empty($values['q'])) {
             $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $values['q']);
+
+            if(isset($values['concepts']) && !empty($values['concepts'])) {
+                foreach($values['concepts'] as $concept) {
+                    $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $concept);
+                }
+                unset($values['concepts']);
+            }
         }
 
         foreach(['strategy', 'scope', 'theme'] as $filter) {
