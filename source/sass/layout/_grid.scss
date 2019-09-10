@@ -75,14 +75,6 @@ Styleguide 2.7
         align-items: flex-end;
     }
 
-    &--contextual {
-        .ctx-form__item {
-            @include breakpoint($gt-large-handheld) {
-                flex: 1 0 percentage(1 / 4);
-            }
-        }
-    }
-
     @include breakpoint("(min-width: #{to-unit(600px)})") {
         &--tiles &__cell,
         &--teletubbies &__cell {
@@ -117,6 +109,9 @@ Styleguide 2.7
             .no-flexbox & {
                 width: percentage(1 / 4);
             }
+        }
+        &--ctx &__cell {
+            flex: 1 0 percentage(1 / 3);
         }
     }
 

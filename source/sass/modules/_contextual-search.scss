@@ -117,7 +117,7 @@ Styleguide 5.10
       font-size: to-unit(10px);
     }
     @include breakpoint($gt-large-handheld) {
-      max-width: percentage(1 / 4);
+      max-width: percentage(1 / 3);
     }
   }
 }
