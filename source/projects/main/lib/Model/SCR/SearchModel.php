@@ -313,7 +313,8 @@ class SearchModel extends ScrModel
         $this->getState()
             ->insert('strategy')
             ->insert('scope')
-            ->insert('theme');
+            ->insert('theme')
+            ->insert('issue');
     }
 
     public function setState(array $values)
@@ -353,6 +354,10 @@ class SearchModel extends ScrModel
                     }
                 }
             }
+        }
+
+        if(isset($values['issue'])) {
+            $values['must'][] = $this->addTerm('label', $values['issue']);
         }
 
         parent::setState($values);
