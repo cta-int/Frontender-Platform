@@ -58,6 +58,13 @@
                             {% endif %}
                         {% endfor %}
                     </div>
+                    {% if model.editorialComment|t(locales) %}
+                        <div class="gutters  |  leader  |  trailer">
+                            <div class="well well--neutral  |  gutters  |  leader-inside--small  |  trailer-inside--normal">
+                                <div class="paragraph paragraph--editorial">{{ model.editorialComment|t(locales)|markdown|raw }}</div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
 
                 {% if model.analysis.agrovoc.concepts %}

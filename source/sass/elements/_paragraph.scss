@@ -33,6 +33,14 @@ Styleguide 3.44
     strong {
         font-weight: 600;
     }
+    &--editorial {
+        p:first-of-type {
+            font-style: italic;
+        }
+        p + p {
+            margin-top: rhythm(8);
+        }
+    }
     &--theorem {
         @include breakpoint($gt-small-desktop) {
             font-size: to-unit(24px);

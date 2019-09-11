@@ -15,7 +15,9 @@ Styleguide 3.11
             height: auto;
         }
     }
-    height: rhythm(116);
+    @include breakpoint($gt-large-handheld) {
+        height: rhythm(116);
+    }
     &--backdrop {
         background: rgba(0, 0 ,0 ,.2);
     }
