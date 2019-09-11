@@ -9,6 +9,9 @@
             <option value="cta"{% if query.scope == 'cta' %} selected="selected" {% endif %}>{{ 'CTA'|i18n }}</option>
             <option value="spore"{% if query.scope == 'spore' %} selected="selected" {% endif %}>{{ 'Spore'|i18n }}</option>
             <option value="ictupdate"{% if query.scope == 'ictupdate' %} selected="selected" {% endif %}>{{ 'ICT Update'|i18n }}</option>
+            {# <option value="publications"{% if query.scope == 'publications' %} selected="selected" {% endif %}>{{ 'Publications'|i18n }}</option>
+            <option value="events"{% if query.scope == 'events' %} selected="selected" {% endif %}>{{ 'Events'|i18n }}</option>
+            <option value="projects"{% if query.scope == 'projects' %} selected="selected" {% endif %}>{{ 'Projects'|i18n }}</option> #}
         </select>
     </div>
 </{{ config.container_tag|default('div') }}>
