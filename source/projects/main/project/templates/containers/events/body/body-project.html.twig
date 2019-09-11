@@ -76,7 +76,7 @@
             {% if c.template_id  == 'project_updates' %}
                 {% include c.template with c|merge({ 'model':  model.updates|slice(0, 4) }) %}
             {% elseif c.template_id  == "project_downloads" %}
-                {% include c.template with c|merge({ 'model':  model.mediaObject}) %}
+                {% include c.template with c|merge({ 'model':  model.mediaObject|filterArray('type', 'image', true)}) %}
             {% elseif c.template_id == "external_links" %}
                 {% include c.template with c|merge({ 'model':  model}) %}
             {% else %}

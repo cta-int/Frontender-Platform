@@ -41,6 +41,8 @@ class SearchModel extends ScrModel
     {
         if(isset($values['q']) && !empty($values['q'])) {
             $values['searchQuery'] = $values['q'] . '*';
+        } else {
+            unset($values['searchQuery']);
         }
 
         $this->traitSetState($values);
