@@ -16,7 +16,7 @@
                 {% endif %}
                 <a class="anchor--reset anchor--shy  |  stack" href="{{ resource_route }}">
                     <h2 class="title title--tile">
-                        {{ article.headline|highlightText(query.q, 'highlight')|t(locales)|raw }}
+                        {{ article.headline|highlightText(query.q, 'highlight')|raw }}
                     </h2>
                 </a>
                 <div class="body--whisper  |  leader--small">

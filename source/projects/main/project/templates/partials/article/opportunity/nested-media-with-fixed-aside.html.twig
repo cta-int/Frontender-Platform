@@ -18,7 +18,7 @@
                     </p>
                 {% endif %}
 
-                <p>{{ model.about }}</p>
+                <p>{{ model.about|highlightText(query.q, 'highlight')|raw }}</p>
 
                 <a class="read-more  |  leader--small" href="{{ resource_route }}">{{ 'Read more'|i18n }}</a>
             </div>

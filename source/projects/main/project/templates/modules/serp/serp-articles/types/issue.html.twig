@@ -24,11 +24,11 @@
                         <div class="media__body  gutters">
                             <h2 class="heading">
                                 <a class="is-heir" href="{{ issue_route }}">
-                                    {{ article.headline|t(locales) }}
+                                    {{ article.headline|t(locales)|highlightText(query.q, 'highlight')|raw }}
                                 </a>
                             </h2>
                             {% if article.about|t(locales) %}
-                                <p>{{ article.about|t(locales) }}</p>
+                                <p>{{ article.about|t(locales)|highlightText(query.q, 'highlight')|raw }}</p>
                             {% endif %}
                             <div class="leader">
                                 {% if article.analysis.agrovoc.concepts|length > 0 %}

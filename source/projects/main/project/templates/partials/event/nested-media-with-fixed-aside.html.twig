@@ -13,7 +13,11 @@
                     <p class="meta  |  trailer--small">{{ model.type|t(locales) }}</p>
                 {% endif %}
                 <a class="anchor--reset anchor--shy  |  stack" href="{{ route({'page': model.path, 'slug': model.name|t(locales)|slugify , id: model._id}) }}">
-                    <h2 class="heading heading--focus" itemprop="name">{{ model.name }}</h2>
+                    {% if highlight %}
+                        <h2 class="heading heading--focus" itemprop="name">{{ model.name|highlightText(query.q|default(''), 'highlight')|raw }}</h2>
+                    {% else %}
+                        <h2 class="heading heading--focus" itemprop="name">{{ model.name }}</h2>
+                    {% endif %}
                 </a>
                 <div class="leader--small">
                     {{ date.event_long(model.startDate, model.endDate) }}
