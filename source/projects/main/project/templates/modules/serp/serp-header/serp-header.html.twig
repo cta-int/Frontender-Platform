@@ -15,5 +15,20 @@
         <div class="fld fld--l  |  leader">
             <input class="extended-search" id="ctx-item__search" placeholder="{{ labels.placeholder|t(locales) }}" name="q" value="{{ query.q }}" class="placeholder-visible"/>
         </div>
+        {% if query.concepts %}
+            <div class="leader  |  media media--middle">
+                <p class="meta">{{ 'Active topics'|t(locales) }}:</p>
+                <ul class="media__body  |  gutters  |  reset  |  label-list  |  clear  |  list--inline">
+                    {% for concept in query.concepts %}
+                        <li>
+                            <a href="javascript:void(0)" class="label label--dark label--s">
+                                <span>{{ concept|t(locales) }}</span>
+                                <i class="icon icon--cross"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </form>
 </div>

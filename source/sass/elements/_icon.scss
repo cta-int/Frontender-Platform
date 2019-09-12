@@ -132,6 +132,10 @@ $icon-users: "\ea46";
   &--theme {
     color: $color-theme;
   }
+  .label & {
+      vertical-align: middle;
+      margin-left: .5em;
+  }
   &--dark {
     color: mix($color-theme, $color-body, 60%);
     .theme--blue & {
