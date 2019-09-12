@@ -39,7 +39,75 @@ class SearchModel extends ScrModel
                     'type' => 'label',
                     'id' => 'bab132fd-314e-4874-8f91-780ece3eab7b'
                 ]]
-            ]
+            ],
+            // 'publications' => [
+            //     'must' => [[
+            //         'type' => 'label',
+            //         'id' => 'f47307e1-8703-4759-9b99-1f0c46cadc63'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'articleType',
+            //         'value' => 'issue'
+            //     ]]
+            // ],
+            // 'events' => [
+            //     'should' => [[
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Conference'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Workshop'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Seminar'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Training (online)'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Training'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Briefing'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Meeting'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Hackathon'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Forum'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Field visit'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Project'
+            //     ], [
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Other'
+            //     ]]
+            // ],
+            // 'projects' => [
+            //     'must' => [[
+            //         'type' => 'field',
+            //         'id' => 'type',
+            //         'value' => 'Project'
+            //     ]]
+            // ]
         ],
         'strategy' => [
             [
@@ -278,12 +346,6 @@ class SearchModel extends ScrModel
         ]
     ];
 
-    private $_scopes = [
-        'cta' => null,
-        'spore' => '',
-        'ictupdate' => ''
-    ];
-
     public function __construct(Container $container)
     {
         parent::__construct($container);
@@ -326,13 +388,6 @@ class SearchModel extends ScrModel
         // Add mapping for the new search properties.
         if(isset($values['q']) && !empty($values['q'])) {
             $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $values['q']);
-
-            if(isset($values['concepts']) && !empty($values['concepts'])) {
-                foreach($values['concepts'] as $concept) {
-                    $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $concept);
-                }
-                unset($values['concepts']);
-            }
         }
 
         foreach(['strategy', 'scope', 'theme'] as $filter) {
@@ -345,13 +400,17 @@ class SearchModel extends ScrModel
                 } else {
                     $value = $values[$filter];
                     $items = array_filter($this->searchFilters[$filter], function($item) use ($value) {
+                        if(!isset($item['id']) || !isset($item['slug'])) {
+                            return false;
+                        }
+                        
                         return $item['id'] == $value || $item['slug'] == $value;
                     });
 
                     if(count($items)) {
                         $item = array_shift($items);
                         $values = array_merge_recursive($values, $item['query']);
-                    } else {
+                    } else if(strlen($value) == 32 || strlen($value) == 36) {
                         $values = array_merge_recursive($values, [
                             'must' => [[
                                 'type' => 'label',
