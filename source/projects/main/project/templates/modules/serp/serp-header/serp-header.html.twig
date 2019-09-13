@@ -29,7 +29,7 @@
             $mainForm.find('input[name=' + name + ']').val($(this).val());
         });
 
-        $('[data-search-attributes]').on('submif', function(event) {
+        $('[data-search-attributes]').on('submit', function(event) {
             event.preventDefault();
 
             if($mainForm.length) {
