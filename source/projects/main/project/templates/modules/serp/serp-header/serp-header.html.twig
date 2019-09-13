@@ -1,5 +1,28 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+<script>
+    jQuery(function($) {
+        $('[data-topic-value]').on('click', function(event) {
+            event.preventDefault();
+
+            var $element = $(this),
+                $form = $(this).parents('form');
+
+            $('input[value="' + $element.data('topic-value') + '"]').remove();
+            $element.remove();
+
+            if(!$('[data-topic-value]').length) {
+                $('[data-topics-list]').remove();
+            }
+
+            if($form.length) {
+                debugger;
+                $form.first().get(0).submit();
+            }
+        })
+    });
+</script>
+
 <div class="leader-inside--hero">
     <h1 class="title  |  gutters">{{ labels.title|t(locales)|default('Your search'|i18n) }}</h1>
     <form class="ctx-item__search  |  gutters" method="get" action="">
@@ -16,12 +39,12 @@
             <input class="extended-search" id="ctx-item__search" placeholder="{{ labels.placeholder|t(locales) }}" name="q" value="{{ query.q }}" class="placeholder-visible"/>
         </div>
         {% if query.concepts %}
-            <div class="leader  |  media media--middle">
+            <div class="leader  |  media media--middle" data-topics-list>
                 <p class="meta">{{ 'Active topics'|t(locales) }}:</p>
                 <ul class="media__body  |  gutters  |  reset  |  label-list  |  clear  |  list--inline">
                     {% for concept in query.concepts %}
                         <li>
-                            <a href="javascript:void(0)" class="label label--dark label--s">
+                            <a href="javascript:void(0)" data-topic-value="{{concept}}" class="label label--dark label--s">
                                 <span>{{ concept|t(locales) }}</span>
                                 <i class="icon icon--cross"></i>
                             </a>
