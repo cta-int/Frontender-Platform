@@ -13,7 +13,7 @@
                     {{ file.description|default(file.metadata.url)|t(locales) }}
                 {% endif %}
             </a>
-            <p class="download-size">{{ 'format'|i18n }} {{ file.contentType|extension }}, {{ file.metadata.url|getFileSize }}</p>
+            <p class="download-size">{{ 'format'|i18n }} {{ file.contentType|extension }}{% if file.metadata.url|getFileSize %}, {{ file.metadata.url|getFileSize }}{% endif %}</p>
         </div>
     </div>
 </div>

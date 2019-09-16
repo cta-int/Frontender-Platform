@@ -20,6 +20,43 @@
     {% if page_config.seo.controls.meta_keywords.value|t(locales) is not empty %}
         <meta name="keywords" content="{{ page_config.seo.controls.meta_keywords.value|t(locales) }}">
     {% endif %}
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary" />
+    {% if page_config.share.controls.title.value|t(locales) is not empty %}
+        <meta name="twitter:title" content="{{ page_config.share.controls.title.value|t(locales) }}" />
+    {% elseif page_config.seo.controls.title.value|t(locales) is not empty %}
+        <meta name="twitter:title" content="{{ page_config.seo.controls.title.value|t(locales) }}" />
+    {% endif %}
+    {% if page_config.share.controls.description.value|t(locales) is not empty %}
+        <meta name="twitter:description" content="{{ page_config.share.controls.description.value|t(locales) }}" />
+    {% elseif page_config.seo.controls.meta_description.value|t(locales) is not empty %}
+        <meta name="twitter:description" content="{{ page_config.seo.controls.meta_description.value|t(locales) }}" />
+    {% endif %}
+    {% if page_config.share.controls.media.value|t(locales) is not empty %}
+        <meta property="twitter:image" content="{{ page_config.share.controls.media.value|t(locales) }}" />
+    {% else %}
+        <meta property="twitter:image" content="/assets/images/logos/cta-logo@3x.png" />
+    {% endif %}
+
+    <!-- Facebook card -->
+    <meta property="og:type" content="article" />
+    {% if page_config.share.controls.title.value|t(locales) is not empty %}
+        <meta property="og:title" content="{{ page_config.share.controls.title.value|t(locales) }}" />
+    {% elseif page_config.seo.controls.title.value|t(locales) is not empty %}
+        <meta property="og:title" content="{{ page_config.seo.controls.title.value|t(locales) }}" />
+    {% endif %}
+    <meta property="og:url" content="{{ route({'page': model.path, id: model._id, 'slug': model.headline|t(locales)|slugify }) }}" />
+    {% if page_config.share.controls.description.value|t(locales) is not empty %}
+        <meta property="og:description" content="{{ page_config.share.controls.description.value|t(locales) }}" />
+    {% elseif page_config.seo.controls.meta_description.value|t(locales) is not empty %}
+        <meta property="og:description" content="{{ page_config.seo.controls.meta_description.value|t(locales) }}" />
+    {% endif %}
+    {% if page_config.share.controls.media.value|t(locales) is not empty %}
+        <meta property="og:image" content="{{ page_config.share.controls.media.value|t(locales) }}" />
+    {% else %}
+        <meta property="og:image" content="/assets/images/logos/cta-logo@3x.png" />
+    {% endif %}
 {% endblock %}
 
 {% block link %}
