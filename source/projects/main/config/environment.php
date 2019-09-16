@@ -45,7 +45,7 @@ return [
     'fem_host' => getenv('FEM_HOST') ?: 'http://manager.getfrontender.com',
     'mongodb' => [
         'collections' => [
-            'settings' => getenv('FEP_SETTINGS_COLLECTION') ?: 'settings'
+            'settings' => getenv('FEP_SETTINGS_COLLECTION') ?: 'settings-v2'
         ]
     ]
 ];
