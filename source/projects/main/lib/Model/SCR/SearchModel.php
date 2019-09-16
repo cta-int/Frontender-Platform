@@ -584,7 +584,7 @@ class SearchModel extends ScrModel
             }
         }
 
-        if(isset($values['issue'])) {
+        if(isset($values['issue']) && !empty($values['issue'])) {
             $values['must'][] = $this->addTerm('label', $values['issue']);
         }
 
