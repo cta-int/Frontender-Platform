@@ -667,7 +667,7 @@ class SearchModel extends ScrModel
 
     public function getPropertySporeIssues()
     {
-        $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+        $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
         $model->setState([
             'type' => 'issue',
             'label' => [
@@ -688,7 +688,7 @@ class SearchModel extends ScrModel
 
     public function getPropertyIctupdateIssues()
     {
-        $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+        $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
         $model->setState([
             'type' => 'issue',
             'label' => [
