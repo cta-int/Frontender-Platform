@@ -1,5 +1,5 @@
 <div class="grid grid--ctx ctx-form">
-    {# Add Programme field #}
+    {% include 'partials/search-fields/programme.html.twig' with {config: {container_class: 'grid__cell gutters ctx-form__item'}} %}
     {% include 'partials/search-fields/area.html.twig' with {config: {container_class: 'grid__cell gutters ctx-form__item'}} %}
     {% include 'partials/search-fields/period.html.twig' with {config: {container_class: 'grid__cell gutters ctx-form__item'}} %}
 </div>

@@ -53,13 +53,24 @@ class SearchModel extends ScrModel
         ],
         'strategy' => [
             [
-                'slug' => 'youth',
-                'title' => 'Youth',
-                'id' => '6e7d45e3-fc9f-4010-952c-a336d01bb03d',
+                'slug' => 'climate',
+                'title' => 'Climate',
+                'id' => '9d206e7f-c883-4798-9bf4-89d3f0f47228',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '6e7d45e3-fc9f-4010-952c-a336d01bb03d'
+                        'id' => '9d206e7f-c883-4798-9bf4-89d3f0f47228'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'digitalisation',
+                'title' => 'Digitalisation',
+                'id' => '6567e105-820e-484c-b82e-728b8474e1c9',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '6567e105-820e-484c-b82e-728b8474e1c9'
                     ]]
                 ]
             ],
@@ -97,37 +108,37 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'digitalisation',
-                'title' => 'Digitalisation',
-                'id' => '6567e105-820e-484c-b82e-728b8474e1c9',
+                'slug' => 'youth',
+                'title' => 'Youth',
+                'id' => '6e7d45e3-fc9f-4010-952c-a336d01bb03d',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '6567e105-820e-484c-b82e-728b8474e1c9'
+                        'id' => '6e7d45e3-fc9f-4010-952c-a336d01bb03d'
                     ]]
                 ]
-            ],
-            [
-                'slug' => 'climate',
-                'title' => 'Climate',
-                'id' => '9d206e7f-c883-4798-9bf4-89d3f0f47228',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '9d206e7f-c883-4798-9bf4-89d3f0f47228'
-                    ]]
-                ]
-            ],
+            ]
         ],
         'programme' => [
             [
-                'slug' => 'farmers-hub',
-                'title' => 'Farmers\' Hub',
-                'id' => '95995a37-66f5-4abe-9eb9-c47be18dc92a',
+                'slug' => 'afsi',
+                'title' => 'AFSI',
+                'id' => '8263d2be-bda5-469a-b60a-62b3bddec6a6',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '95995a37-66f5-4abe-9eb9-c47be18dc92a'
+                        'id' => '8263d2be-bda5-469a-b60a-62b3bddec6a6'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'apps4ag',
+                'title' => 'Apps4Ag',
+                'id' => 'a640e427-a2b0-43f3-b3eb-82f408666f9d',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => 'a640e427-a2b0-43f3-b3eb-82f408666f9d'
                     ]]
                 ]
             ],
@@ -143,46 +154,24 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'spore',
-                'title' => 'Spore',
-                'id' => '7f3d1ca0-8ee8-44fb-946d-bd93e20ae94b',
+                'slug' => 'brussels-briefings',
+                'title' => 'Brussels Briefings',
+                'id' => 'd1b7836b-3724-43a8-b7ee-f975737b1cf1',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '7f3d1ca0-8ee8-44fb-946d-bd93e20ae94b'
+                        'id' => 'd1b7836b-3724-43a8-b7ee-f975737b1cf1'
                     ]]
                 ]
             ],
             [
-                'slug' => 'diary profit',
-                'title' => 'Diary profit',
-                'id' => 'b2603120-8f05-43f8-95d8-15cbfa0b568a',
+                'slug' => 'cassava-value-chain',
+                'title' => 'Cassava value chain',
+                'id' => '0f2ac206-f01e-44ec-b901-83b4212e35f8',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => 'b2603120-8f05-43f8-95d8-15cbfa0b568a'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'vijabiz',
-                'title' => 'Vijabiz',
-                'id' => '189b26d4-51e9-4fee-b659-5705f4429e81',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '189b26d4-51e9-4fee-b659-5705f4429e81'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'edc',
-                'title' => 'EDC',
-                'id' => '8ece89cd-1c8f-499e-9f39-5d2de2d48ffb',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '8ece89cd-1c8f-499e-9f39-5d2de2d48ffb'
+                        'id' => '0f2ac206-f01e-44ec-b901-83b4212e35f8'
                     ]]
                 ]
             ],
@@ -209,90 +198,46 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'nutrition-in-the-pacific-islands',
-                'title' => 'Nutrition in the Pacific islands',
-                'id' => '0cfcb73a-794a-4da7-9255-f5ac504677af',
+                'slug' => 'dapp-zambia',
+                'title' => 'DAPP Zambia',
+                'id' => '516c9c24-7428-4d6b-8d8d-43b452765644',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '0cfcb73a-794a-4da7-9255-f5ac504677af'
+                        'id' => '516c9c24-7428-4d6b-8d8d-43b452765644'
                     ]]
                 ]
             ],
             [
-                'slug' => 'apps4ag',
-                'title' => 'Apps4Ag',
-                'id' => 'a640e427-a2b0-43f3-b3eb-82f408666f9d',
+                'slug' => 'data4ag',
+                'title' => 'Data4Ag',
+                'id' => '1d3e0bbe-b79a-4ecc-a525-9b894c4d9913',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => 'a640e427-a2b0-43f3-b3eb-82f408666f9d'
+                        'id' => '1d3e0bbe-b79a-4ecc-a525-9b894c4d9913'
                     ]]
                 ]
             ],
             [
-                'slug' => 'cassava-value-chain',
-                'title' => 'Cassava value chain',
-                'id' => '0f2ac206-f01e-44ec-b901-83b4212e35f8',
+                'slug' => 'diary profit',
+                'title' => 'Diary profit',
+                'id' => 'b2603120-8f05-43f8-95d8-15cbfa0b568a',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '0f2ac206-f01e-44ec-b901-83b4212e35f8'
+                        'id' => 'b2603120-8f05-43f8-95d8-15cbfa0b568a'
                     ]]
                 ]
             ],
             [
-                'slug' => 'afsi',
-                'title' => 'AFSI',
-                'id' => '8263d2be-bda5-469a-b60a-62b3bddec6a6',
+                'slug' => 'edc',
+                'title' => 'EDC',
+                'id' => '8ece89cd-1c8f-499e-9f39-5d2de2d48ffb',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '8263d2be-bda5-469a-b60a-62b3bddec6a6'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'fisheries-value-chains',
-                'title' => 'Fisheries value chains',
-                'id' => '82facba7-52d3-4632-97ca-2aa92559c09b',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '82facba7-52d3-4632-97ca-2aa92559c09b'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'sids',
-                'title' => 'SIDS',
-                'id' => 'be8e38ba-dc36-45c5-bd9f-56f979e81492',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => 'be8e38ba-dc36-45c5-bd9f-56f979e81492'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'rongead',
-                'title' => 'RONGEAD',
-                'id' => '24b634de-12f9-43d1-aab4-43dfb5dbe759',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '24b634de-12f9-43d1-aab4-43dfb5dbe759'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'jaden-lakou',
-                'title' => 'Jaden lakou',
-                'id' => 'b041fd02-a2d0-4a59-adca-4b28cefe0af2',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => 'b041fd02-a2d0-4a59-adca-4b28cefe0af2'
+                        'id' => '8ece89cd-1c8f-499e-9f39-5d2de2d48ffb'
                     ]]
                 ]
             ],
@@ -308,28 +253,6 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'pejeriz',
-                'title' => 'PEJERIZ',
-                'id' => '2e25e156-7b3d-4fcc-b1d4-ad7135ea54e1',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '2e25e156-7b3d-4fcc-b1d4-ad7135ea54e1'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'uptake-of-csa',
-                'title' => 'Uptake of CSA',
-                'id' => '1fff51df-dbdf-4c92-bad6-cee2f85ec612',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '1fff51df-dbdf-4c92-bad6-cee2f85ec612'
-                    ]]
-                ]
-            ],
-            [
                 'slug' => 'eyes-in-the-sky',
                 'title' => 'Eyes in the sky',
                 'id' => '3b5d608a-f768-4d75-921a-12ebc7e9b72e',
@@ -341,35 +264,35 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'brussels-briefings',
-                'title' => 'Brussels Briefings',
-                'id' => 'd1b7836b-3724-43a8-b7ee-f975737b1cf1',
+                'slug' => 'farmers-hub',
+                'title' => 'Farmers\' Hub',
+                'id' => '95995a37-66f5-4abe-9eb9-c47be18dc92a',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => 'd1b7836b-3724-43a8-b7ee-f975737b1cf1'
+                        'id' => '95995a37-66f5-4abe-9eb9-c47be18dc92a'
                     ]]
                 ]
             ],
             [
-                'slug' => 'muiis',
-                'title' => 'MUIIS',
-                'id' => '21b25d44-b1e0-4da7-89d7-900303865601',
+                'slug' => 'fin4ag',
+                'title' => 'Fin4ag',
+                'id' => '40eebb23-6bf0-44e7-a535-f33bf6f5ad4d',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '21b25d44-b1e0-4da7-89d7-900303865601'
+                        'id' => '40eebb23-6bf0-44e7-a535-f33bf6f5ad4d'
                     ]]
                 ]
             ],
             [
-                'slug' => 'pitch-agriHack',
-                'title' => 'Pitch AgriHack',
-                'id' => '9c2331fc-22b6-4748-a69c-fe713e3784eb',
+                'slug' => 'fisheries-value-chains',
+                'title' => 'Fisheries value chains',
+                'id' => '82facba7-52d3-4632-97ca-2aa92559c09b',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '9c2331fc-22b6-4748-a69c-fe713e3784eb'
+                        'id' => '82facba7-52d3-4632-97ca-2aa92559c09b'
                     ]]
                 ]
             ],
@@ -396,13 +319,13 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'ideal-burkina',
-                'title' => 'iDEAL Burkina',
-                'id' => 'b454576c-581b-441a-992f-3a9c2c3e9bfc',
+                'slug' => 'grainhubs',
+                'title' => 'GRAINHUBs',
+                'id' => '07fcbb14-6326-4e19-93bd-d5b2c6f53337',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => 'b454576c-581b-441a-992f-3a9c2c3e9bfc'
+                        'id' => '07fcbb14-6326-4e19-93bd-d5b2c6f53337'
                     ]]
                 ]
             ],
@@ -418,24 +341,35 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'grainhubs',
-                'title' => 'GRAINHUBs',
-                'id' => '07fcbb14-6326-4e19-93bd-d5b2c6f53337',
+                'slug' => 'ideal',
+                'title' => 'iDEAL',
+                'id' => 'f109a9c7-2db6-4a9d-9ffa-4a26bb87db33',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '07fcbb14-6326-4e19-93bd-d5b2c6f53337'
+                        'id' => 'f109a9c7-2db6-4a9d-9ffa-4a26bb87db33'
                     ]]
                 ]
             ],
             [
-                'slug' => 'value4her',
-                'title' => 'VALUE4HER',
-                'id' => '90cb575e-a5a0-4d1f-85d2-000d677b5b3f',
+                'slug' => 'ideal-burkina',
+                'title' => 'iDEAL Burkina',
+                'id' => 'b454576c-581b-441a-992f-3a9c2c3e9bfc',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '90cb575e-a5a0-4d1f-85d2-000d677b5b3f'
+                        'id' => 'b454576c-581b-441a-992f-3a9c2c3e9bfc'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'jaden-lakou',
+                'title' => 'Jaden lakou',
+                'id' => 'b041fd02-a2d0-4a59-adca-4b28cefe0af2',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => 'b041fd02-a2d0-4a59-adca-4b28cefe0af2'
                     ]]
                 ]
             ],
@@ -451,46 +385,35 @@ class SearchModel extends ScrModel
                 ]
             ],
             [
-                'slug' => 'ideal',
-                'title' => 'iDEAL',
-                'id' => 'f109a9c7-2db6-4a9d-9ffa-4a26bb87db33',
+                'slug' => 'muiis',
+                'title' => 'MUIIS',
+                'id' => '21b25d44-b1e0-4da7-89d7-900303865601',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => 'f109a9c7-2db6-4a9d-9ffa-4a26bb87db33'
+                        'id' => '21b25d44-b1e0-4da7-89d7-900303865601'
                     ]]
                 ]
             ],
             [
-                'slug' => 'data4ag',
-                'title' => 'Data4Ag',
-                'id' => '1d3e0bbe-b79a-4ecc-a525-9b894c4d9913',
+                'slug' => 'nutrition-in-the-pacific-islands',
+                'title' => 'Nutrition in the Pacific islands',
+                'id' => '0cfcb73a-794a-4da7-9255-f5ac504677af',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '1d3e0bbe-b79a-4ecc-a525-9b894c4d9913'
+                        'id' => '0cfcb73a-794a-4da7-9255-f5ac504677af'
                     ]]
                 ]
             ],
             [
-                'slug' => 'dapp-zambia',
-                'title' => 'DAPP Zambia',
-                'id' => '516c9c24-7428-4d6b-8d8d-43b452765644',
+                'slug' => 'pejeriz',
+                'title' => 'PEJERIZ',
+                'id' => '2e25e156-7b3d-4fcc-b1d4-ad7135ea54e1',
                 'query' => [
                     'must' => [[
                         'type' => 'label',
-                        'id' => '516c9c24-7428-4d6b-8d8d-43b452765644'
-                    ]]
-                ]
-            ],
-            [
-                'slug' => 'fin4ag',
-                'title' => 'Fin4ag',
-                'id' => '40eebb23-6bf0-44e7-a535-f33bf6f5ad4d',
-                'query' => [
-                    'must' => [[
-                        'type' => 'label',
-                        'id' => '40eebb23-6bf0-44e7-a535-f33bf6f5ad4d'
+                        'id' => '2e25e156-7b3d-4fcc-b1d4-ad7135ea54e1'
                     ]]
                 ]
             ],
@@ -502,6 +425,83 @@ class SearchModel extends ScrModel
                     'must' => [[
                         'type' => 'label',
                         'id' => '08832ad0-a322-4d0f-8ef6-ae51957ef03d'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'pitch-agriHack',
+                'title' => 'Pitch AgriHack',
+                'id' => '9c2331fc-22b6-4748-a69c-fe713e3784eb',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '9c2331fc-22b6-4748-a69c-fe713e3784eb'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'rongead',
+                'title' => 'RONGEAD',
+                'id' => '24b634de-12f9-43d1-aab4-43dfb5dbe759',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '24b634de-12f9-43d1-aab4-43dfb5dbe759'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'sids',
+                'title' => 'SIDS',
+                'id' => 'be8e38ba-dc36-45c5-bd9f-56f979e81492',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => 'be8e38ba-dc36-45c5-bd9f-56f979e81492'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'spore',
+                'title' => 'Spore',
+                'id' => '7f3d1ca0-8ee8-44fb-946d-bd93e20ae94b',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '7f3d1ca0-8ee8-44fb-946d-bd93e20ae94b'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'uptake-of-csa',
+                'title' => 'Uptake of CSA',
+                'id' => '1fff51df-dbdf-4c92-bad6-cee2f85ec612',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '1fff51df-dbdf-4c92-bad6-cee2f85ec612'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'value4her',
+                'title' => 'VALUE4HER',
+                'id' => '90cb575e-a5a0-4d1f-85d2-000d677b5b3f',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '90cb575e-a5a0-4d1f-85d2-000d677b5b3f'
+                    ]]
+                ]
+            ],
+            [
+                'slug' => 'vijabiz',
+                'title' => 'Vijabiz',
+                'id' => '189b26d4-51e9-4fee-b659-5705f4429e81',
+                'query' => [
+                    'must' => [[
+                        'type' => 'label',
+                        'id' => '189b26d4-51e9-4fee-b659-5705f4429e81'
                     ]]
                 ]
             ],
@@ -584,7 +584,7 @@ class SearchModel extends ScrModel
             }
         }
 
-        if(isset($values['issue'])) {
+        if(isset($values['issue']) && !empty($values['issue'])) {
             $values['must'][] = $this->addTerm('label', $values['issue']);
         }
 
