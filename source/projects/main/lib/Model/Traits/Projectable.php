@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Model\Traits;
+namespace Frontender\Platform\Model\Traits;
 
 trait Projectable
 {
@@ -107,7 +107,7 @@ trait Projectable
     public function bindIssue($labels)
     {
 		// We only come here if we have labels.
-        $searchModel = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+        $searchModel = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
         $review = $searchModel->setState([
             'type' => 'article.issue',
             'label' => array_map(function ($label) {

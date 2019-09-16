@@ -6,7 +6,7 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Template\Filter;
+namespace Frontender\Platform\Template\Filter;
 
 use Slim\Container;
 

@@ -6,39 +6,15 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\State\State;
-
-use Frontender\Core\Object\ObjectArray;
-use Prototype\Model\Traits\Translatable;
-use Pimple\Container;
-use Doctrine\Common\Inflector\Inflector;
+use Frontender\Platform\Model\Traits\Translatable;
 use Frontender\Core\DB\Adapter;
 use MongoDB\BSON\ObjectId;
 
-abstract class AbstractModel implements \ArrayAccess
+abstract class AbstractModel extends \Frontender\Core\Model\AbstractModel
 {
     use Translatable;
-
-    protected $name;
-    protected $container;
-
-    private $state;
-    protected $data = [];
-    protected $cached = [];
-
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
-    }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * If no name has been set extract it from the class name.
@@ -55,88 +31,6 @@ abstract class AbstractModel implements \ArrayAccess
         }
 
         return $this->name;
-    }
-
-    public function setState(array $values)
-    {
-        $this->getState()->setValues($values);
-
-        return $this;
-    }
-
-    public function getState() : State
-    {
-        if (!$this->state instanceof State) {
-            $this->state = new State($this->container);
-        }
-
-        return $this->state;
-    }
-
-    public function fetch($raw = false)
-    {
-        // This should never be called.
-
-        return false;
-    }
-
-    public function setData($data = [])
-    {
-        $this->data = $data;
-
-        return $this;
-    }
-
-    public function offsetGet($offset)
-    {
-        if (!$this->offsetExists($offset)) {
-            return false;
-        }
-
-        $method = 'getProperty' . ucfirst($offset);
-        if (is_callable([$this, $method])) {
-            if (isset($this->cached[$offset])) {
-                return $this->cached[$offset];
-            }
-
-            $this->cached[$offset] = $this->{$method}();
-
-            return $this->cached[$offset];
-        } else if (isset($this->data[$offset])) {
-            return $this->data[$offset];
-        }
-
-        return false;
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        // Check if we have a set method.
-        $method = 'setProperty' . ucfirst($offset);
-        if (is_callable([$this, $method])) {
-            $this->{$method}($value);
-        } else if ($this->offsetExists($offset)) {
-            $this->data[$offset] = $value;
-        }
-    }
-
-    public function offsetExists($offset)
-    {
-        $method = 'getProperty' . ucfirst($offset);
-        if (is_callable([$this, $method])) {
-            return true;
-        } else if (isset($this->data[$offset])) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function offsetUnset($offset)
-    {
-        if ($this->offsetExists($offset)) {
-            unset($this->data[$offset]);
-        }
     }
 
     public function startLog($args = [])
@@ -191,17 +85,5 @@ abstract class AbstractModel implements \ArrayAccess
                 'timings.duration' => ($secs+$microsecs) - $original->timings->start
             ], $data)
         ]);
-    }
-
-    public function getPropertyPath() : string
-    {
-        $name = Inflector::singularize($this->getModelName());
-        $parts = preg_split('/(?=[A-Z])/', $name);
-
-        // Split on capitals.
-        // And return the last.
-
-        // By default we will return the simple model name itself.
-        return strtolower(end($parts));
     }
 }

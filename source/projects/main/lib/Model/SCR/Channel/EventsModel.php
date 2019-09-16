@@ -6,10 +6,10 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Channel;
+namespace Frontender\Platform\Model\SCR\Channel;
 
-use Prototype\Model\SCR\ChannelsModel;
-use Prototype\Model\SCR\LinksModel;
+use Frontender\Platform\Model\SCR\ChannelsModel;
+use Frontender\Platform\Model\SCR\LinksModel;
 use Slim\Container;
 
 class EventsModel extends AbstractModel
@@ -79,7 +79,7 @@ class EventsModel extends AbstractModel
         $container = $this->container;
         $state = $this->getState()->getValues();
         return array_map(function ($event) use ($container, $state) {
-            $eventsModel = new \Prototype\Model\SCR\EventsModel($container);
+            $eventsModel = new \Frontender\Platform\Model\SCR\EventsModel($container);
             $eventsModel->setData($event);
             $eventsModel->setState(array_merge($state, [
                 'id' => $event['_id']

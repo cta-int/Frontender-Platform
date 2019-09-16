@@ -6,11 +6,11 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Media;
+namespace Frontender\Platform\Model\SCR\Media;
 
-use Prototype\Model\SCR\ScrModel;
-use Prototype\Model\Traits\Searchable;
-use Prototype\Model\Traits\Translatable;
+use Frontender\Platform\Model\SCR\ScrModel;
+use Frontender\Platform\Model\Traits\Searchable;
+use Frontender\Platform\Model\Traits\Translatable;
 use Slim\Container;
 
 class SearchModel extends ScrModel
@@ -41,6 +41,8 @@ class SearchModel extends ScrModel
     {
         if(isset($values['q']) && !empty($values['q'])) {
             $values['searchQuery'] = $values['q'] . '*';
+        } else {
+            unset($values['searchQuery']);
         }
 
         $this->traitSetState($values);

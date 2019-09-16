@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Template\Helper;
+namespace Frontender\Platform\Template\Helper;
 
 use Frontender\Core\Template\Helper;
 use Frontender\Core\Template\Filter\Translate;

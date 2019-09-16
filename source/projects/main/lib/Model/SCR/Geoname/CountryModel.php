@@ -6,9 +6,9 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Geoname;
+namespace Frontender\Platform\Model\SCR\Geoname;
 
-use Prototype\Model\SCR\ScrModel;
+use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
 

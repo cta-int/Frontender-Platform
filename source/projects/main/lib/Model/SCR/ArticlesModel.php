@@ -6,16 +6,16 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\Traits\Projectable;
+use Frontender\Platform\Model\Traits\Projectable;
 use Slim\Container;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\SCR\MediaModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\SCR\MediaModel;
 use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
-use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\Utils\Sorting;
 use Doctrine\Common\Inflector\Inflector;
 
 class ArticlesModel extends ScrModel
@@ -123,7 +123,7 @@ class ArticlesModel extends ScrModel
                         return false;
                     }
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -159,7 +159,7 @@ class ArticlesModel extends ScrModel
                         return $label['type'] === 'publication';
                     });
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -192,7 +192,7 @@ class ArticlesModel extends ScrModel
                         return false;
                     }
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -264,7 +264,7 @@ class ArticlesModel extends ScrModel
                     return false;
                 }
 
-                $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                 $articles->setState([
                     'label' => array_filter([$this->issueLabel['_id'] ?? false, $this->issueNumberLabel['_id'] ?? false]),
                     'limit' => 1,
@@ -342,7 +342,7 @@ class ArticlesModel extends ScrModel
 
                 if (!$this->cachedIssueArticles) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueNumberLabel['_id']],
                         'limit' => $config['limit'],
@@ -382,7 +382,7 @@ class ArticlesModel extends ScrModel
             {
                 if (!$this->cachedIssueInterview) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueNumberLabel['_id']],
                         'limit' => 1,
@@ -406,7 +406,7 @@ class ArticlesModel extends ScrModel
 
                 if (!$this->cachedIssues) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueLabel['_id']],
                         'limit' => $config['limit'],

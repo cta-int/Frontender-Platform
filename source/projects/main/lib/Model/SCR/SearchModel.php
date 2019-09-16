@@ -6,11 +6,11 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
-use Prototype\Model\SCR\Channel\AbstractModel;
+use Frontender\Platform\Model\SCR\Channel\AbstractModel;
 
 class SearchModel extends ScrModel
 {
@@ -44,7 +44,7 @@ class SearchModel extends ScrModel
         $types = explode(',', $state->types);
 
         if (in_array('article', $types)) {
-            $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+            $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
             $model->setState($this->getState()->getValues());
 
             return $model->fetch();
@@ -59,7 +59,7 @@ class SearchModel extends ScrModel
         $types = explode(',', $state->types);
 
         if (in_array('article', $types)) {
-            $model = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+            $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
             $model->setState($this->getState()->getValues());
 
             $response = $model->fetch(true);
@@ -76,7 +76,7 @@ class SearchModel extends ScrModel
         $types = explode(',', $state->types);
 
         if (in_array('event', $types)) {
-            $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+            $model = new \Frontender\Platform\Model\SCR\Event\SearchModel($this->container);
             $model->setState($this->getState()->getValues());
 
             return $model->fetch();
@@ -91,7 +91,7 @@ class SearchModel extends ScrModel
         $types = explode(',', $state->types);
 
         if (in_array('event', $types)) {
-            $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+            $model = new \Frontender\Platform\Model\SCR\Event\SearchModel($this->container);
             $model->setState($this->getState()->getValues());
 
             $response = $model->fetch(true);

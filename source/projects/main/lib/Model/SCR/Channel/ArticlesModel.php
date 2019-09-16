@@ -6,13 +6,13 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Channel;
+namespace Frontender\Platform\Model\SCR\Channel;
 
-use Prototype\Model\SCR\ChannelsModel;
-use Prototype\Model\SCR\MediaModel;
+use Frontender\Platform\Model\SCR\ChannelsModel;
+use Frontender\Platform\Model\SCR\MediaModel;
 use Slim\Container;
 
-class ArticlesModel extends \Prototype\Model\SCR\ArticlesModel
+class ArticlesModel extends \Frontender\Platform\Model\SCR\ArticlesModel
 {
     public function __construct(Container $container)
     {
