@@ -1,29 +1,29 @@
 {% macro label(concept, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-   <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower }}">{{ concept.label|t(locales) }}</a>
+   <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower|url_encode }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro search_string(label) %}
-   <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ label|lower }}">{{ label }}</a>
+   <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ label|lower|url_encode }}">{{ label }}</a>
 {% endmacro %}
 
 {% macro label_large(concept, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-    <a class="label  |  trailer--tiny" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower }}">{{ concept.label|t(locales) }}</a>
+    <a class="label  |  trailer--tiny" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower|url_encode }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro tag(concept, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower }}">{{ concept.label|t(locales) }}</a>
+    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.label|t(locales)|lower|url_encode }}">{{ concept.label|t(locales) }}</a>
 {% endmacro %}
 
 {% macro tag_name(concept, locale) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.name|t(locales)|lower }}">{{ concept.name|t(locales) }}</a>
+    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?concepts[]=' }}{{ concept.name|t(locales)|lower|url_encode }}">{{ concept.name|t(locales) }}</a>
 {% endmacro %}
 
 {% macro concepts_to_string(concepts, locale) %}
