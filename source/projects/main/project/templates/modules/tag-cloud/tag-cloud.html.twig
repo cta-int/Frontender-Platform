@@ -7,9 +7,9 @@
         <h3 class="title title--lead trailer  |  gutters">{{ labels.container_title|t(locales) }}</h3>
     {% endif %}
     <ul class="label-list reset list--inline  |  gutters">
-        {% for loopContainer in containers %}
+        {% for tag in labels.tags %}
             <li>
-                {{ concept.label(loopContainer.model, locale) }}
+                {{ concept.search_string(tag|t(locales)) }}
             </li>
         {% endfor %}
     </ul>
