@@ -538,7 +538,8 @@ class SearchModel extends ScrModel
             ->insert('strategy')
             ->insert('scope')
             ->insert('programme')
-            ->insert('issue');
+            ->insert('issue')
+            ->insert('articleTypes');
     }
 
     public function setState(array $values)
@@ -727,25 +728,25 @@ class SearchModel extends ScrModel
             foreach($opportunityArticleTypes as $type) {
                 $values['mustNot'][] = $this->addTerm('field', 'articleType', $type);
             }
-        } else if($values['scope'] === 'opportunities' && (!isset($values['articleType']) || empty($values['articleType']))) {
+        } else if($values['scope'] === 'opportunities' && (!isset($values['articleTypes']) || empty($values['articleTypes']))) {
             $values['should'] = $values['mustNot'] ?? [];
 
             foreach($opportunityArticleTypes as $type) {
                 $values['should'][] = $this->addTerm('field', 'articleType', $type);
             }
-        } else if($values['scope'] === 'opportunities' && isset($values['articleType'])) {
+        } else if($values['scope'] === 'opportunities' && isset($values['articleTypes'])) {
             // We now have opportunities and article types we want to show.
             $values['should'] = $values['should'] ?? [];
 
-            if(!is_array($values['articleType'])) {
-                $values['articleType'] = [$values['articleType']];
+            if(!is_array($values['articleTypes'])) {
+                $values['articleTypes'] = [$values['articleTypes']];
             }
 
-            foreach($values['articleType'] as $articleType) {
+            foreach($values['articleTypes'] as $articleType) {
                 $values['should'][] = $this->addTerm('field', 'articleType', $articleType);
             }
         }
-
+        
         return $values;
     }
 }
