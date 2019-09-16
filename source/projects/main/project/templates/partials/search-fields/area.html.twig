@@ -2,7 +2,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__area')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="fld">
-        <label for="ctx-item__area" class="fld-label">{{ labels.field_label|t(locales)|default('Area'|i18n) }}</label>
+        <label for="ctx-item__area" class="fld-label">{{ labels.field_label|t(locales)|default('intervention_area'|i18n) }}</label>
         <select id="ctx-item__area" name="strategy" class="placeholder-visible">
             <option value="">{{ 'Any'|i18n }}</option>
             
