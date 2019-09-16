@@ -57,7 +57,7 @@
         {% if query.concepts %}
             <div class="leader  |  media media--middle" data-topics-list>
                 <p class="meta">{{ 'Active topics'|t(locales) }}:</p>
-                <ul class="media__body  |  gutters  |  reset  |  label-list  |  clear  |  list--inline">
+                <ul class="media__body  |  gutters  |  reset  |  label-list  |  clear  |  list--inline list--concept">
                     {% for concept in query.concepts %}
                         <li>
                             <a href="javascript:void(0)" data-topic-value="{{concept}}" class="label label--dark label--s">
