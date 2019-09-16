@@ -47,7 +47,8 @@ Styleguide 3.9
   &.headline__tax {
     box-shadow: none;
   }
-  &--symbol {
+  &--dark {
+    background: $color-primary;
   }
   &--stretch {
     width: 100%;

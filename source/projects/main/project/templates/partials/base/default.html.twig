@@ -97,14 +97,11 @@
                 /*$("body").append($("<button class=\"button\" style=\"position: fixed; right: 30px; bottom: 30px;\">Show/Hide Grid</button>").on("click", function(el){
                   $("body").toggleClass("debug-grid");
                 }));*/
-                $('#ctx-item__location, #ctx-item__article, #ctx-item__country, #ctx-item__theme, #ctx-item__area, #ctx-item__scope').selectize({
+                $('#ctx-item__location, #ctx-item__article, #ctx-item__country, #ctx-item__theme, #ctx-item__area, #ctx-item__scope, #ctx-item__date').selectize({
                     allowEmptyOption: true
                 });
                 $('#ctx-item__topic').selectize({
                     maxItems: 3,
-                    allowEmptyOption: true
-                });
-                $('#ctx-item__date').selectize({
                     allowEmptyOption: true
                 });
                 $(document).on('click', 'a[href]', function(model) {
