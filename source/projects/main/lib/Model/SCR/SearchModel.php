@@ -598,7 +598,9 @@ class SearchModel extends ScrModel
 
         if (in_array('article', $types)) {
             $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
-            $model->setState($this->getState()->getValues());
+            $model->setState(
+                $this->filterArticleTypes($state->getValues())
+            );
 
             return $model->fetch();
         }
@@ -613,7 +615,9 @@ class SearchModel extends ScrModel
 
         if (in_array('article', $types)) {
             $model = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
-            $model->setState($this->getState()->getValues());
+            $model->setState(
+                $this->filterArticleTypes($state->getValues())
+            );
 
             $response = $model->fetch(true);
 
@@ -710,5 +714,38 @@ class SearchModel extends ScrModel
     public function fetch($raw = false)
     {
         return [$this];
+    }
+
+    private function filterArticleTypes(array $values) : array
+    {
+        $opportunityArticleTypes = ['vacancy','internship','call_for_external_expert','call_for_tender','call_for_proposal','partnership','tender_award_notice','tender_highlight'];
+
+        if(!isset($values['scope']) || $values['scope'] !== 'opportunities') {
+            // Filter out all the opportunities here.
+            $values['mustNot'] = $values['mustNot'] ?? [];
+
+            foreach($opportunityArticleTypes as $type) {
+                $values['mustNot'][] = $this->addTerm('field', 'articleType', $type);
+            }
+        } else if($values['scope'] === 'opportunities' && (!isset($values['articleType']) || empty($values['articleType']))) {
+            $values['should'] = $values['mustNot'] ?? [];
+
+            foreach($opportunityArticleTypes as $type) {
+                $values['should'][] = $this->addTerm('field', 'articleType', $type);
+            }
+        } else if($values['scope'] === 'opportunities' && isset($values['articleType'])) {
+            // We now have opportunities and article types we want to show.
+            $values['should'] = $values['should'] ?? [];
+
+            if(!is_array($values['articleType'])) {
+                $values['articleType'] = [$values['articleType']];
+            }
+
+            foreach($values['articleType'] as $articleType) {
+                $values['should'][] = $this->addTerm('field', 'articleType', $articleType);
+            }
+        }
+
+        return $values;
     }
 }
