@@ -6,15 +6,15 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Project;
+namespace Frontender\Platform\Model\SCR\Project;
 
-use Prototype\Model\SCR\ScrModel;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\Traits\Searchable;
+use Frontender\Platform\Model\SCR\ScrModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\Traits\Searchable;
 use Slim\Container;
-use Prototype\Model\SCR\ProjectsModel;
+use Frontender\Platform\Model\SCR\ProjectsModel;
 
-class SearchModel extends \Prototype\Model\SCR\Event\SearchModel
+class SearchModel extends \Frontender\Platform\Model\SCR\Event\SearchModel
 {
     public function __construct(\Slim\Container $container)
     {

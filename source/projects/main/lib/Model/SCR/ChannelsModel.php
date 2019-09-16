@@ -6,13 +6,13 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
-use Prototype\Model\SCR\Channel\ArticlesModel;
-use Prototype\Model\SCR\Channel\EventsModel;
-use Prototype\Model\SCR\Channel\PersonsModel;
-use Prototype\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\SCR\Channel\ArticlesModel;
+use Frontender\Platform\Model\SCR\Channel\EventsModel;
+use Frontender\Platform\Model\SCR\Channel\PersonsModel;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
 
 class ChannelsModel extends ScrModel
 {

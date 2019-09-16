@@ -48,5 +48,4 @@ return [
             'settings' => getenv('FEP_SETTINGS_COLLECTION') ?: 'settings-v2'
         ]
     ]
-
 ];

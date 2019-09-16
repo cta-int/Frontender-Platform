@@ -6,11 +6,11 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Channel;
+namespace Frontender\Platform\Model\SCR\Channel;
 
 use Slim\Container;
 
-class PersonsModel extends \Prototype\Model\SCR\PersonsModel
+class PersonsModel extends \Frontender\Platform\Model\SCR\PersonsModel
 {
     public function __construct(Container $container)
     {

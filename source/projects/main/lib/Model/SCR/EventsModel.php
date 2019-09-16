@@ -6,13 +6,13 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
-use Prototype\Model\SCR\Event\AttendeesModel;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\Event\AttendeesModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\Utils\Sorting;
 
 class EventsModel extends ScrModel
 {
@@ -71,7 +71,7 @@ class EventsModel extends ScrModel
             public function articles()
             {
                 if (!$this->cachedArticles) {
-                    $related_articles = new \Prototype\Model\SCR\Event\ArticlesModel($this->container);
+                    $related_articles = new \Frontender\Platform\Model\SCR\Event\ArticlesModel($this->container);
                     $this->cachedArticles = $related_articles->setState([
                         'id' => $this->state->id,
                         'limit' => 8,
@@ -151,7 +151,7 @@ class EventsModel extends ScrModel
                     'language' => $this->state->language
                 ], $config);
 
-                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+                $model = new \Frontender\Platform\Model\SCR\Event\SearchModel($this->container);
                 $model->setState([
                     'limit' => $config['limit'],
                     'label' => $config['label'],

@@ -1,11 +1,11 @@
 <?php
 
-namespace Prototype\Model\SCR\Label;
+namespace Frontender\Platform\Model\SCR\Label;
 
-use Prototype\Model\SCR\ScrModel;
-use Prototype\Model\Traits\Searchable;
-use Prototype\Model\SCR\LabelsModel;
-use Prototype\Model\Traits\Translatable;
+use Frontender\Platform\Model\SCR\ScrModel;
+use Frontender\Platform\Model\Traits\Searchable;
+use Frontender\Platform\Model\SCR\LabelsModel;
+use Frontender\Platform\Model\Traits\Translatable;
 use Slim\Container;
 
 class SearchModel extends ScrModel

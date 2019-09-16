@@ -6,7 +6,7 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Template\Helper;
+namespace Frontender\Platform\Template\Helper;
 
 use Slim\Container;
 

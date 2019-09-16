@@ -6,9 +6,9 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\State\State;
+use Frontender\Platform\Model\State\State;
 
 interface ModelInterface
 {

@@ -5,11 +5,11 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Template\Filter;
+namespace Frontender\Platform\Template\Filter;
 
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
-use Prototype\Model\Traits\Projectable;
+use Frontender\Platform\Model\Traits\Projectable;
 
 class Route extends \Twig_Extension
 {
