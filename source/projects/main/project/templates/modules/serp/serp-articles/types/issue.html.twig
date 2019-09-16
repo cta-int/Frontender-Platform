@@ -31,7 +31,7 @@
                                 <p>{{ article.about|t(locales)|highlightText(query.q, 'highlight')|raw }}</p>
                             {% endif %}
                             <div class="leader">
-                                {% if article.analysis.agrovoc.concepts|length > 0 %}
+                                {% if article.analysis.agrovoc.concepts|length > 0 or article.strategy|length > 0 %}
                                     <ul class="reset label-list clear list--inline">
                                         {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
                                             <li>{{ concept.tag(label, locale) }}</li>
