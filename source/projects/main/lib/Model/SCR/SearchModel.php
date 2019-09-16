@@ -516,10 +516,8 @@ class SearchModel extends ScrModel
             ->insert('types') // Can be an array or a string.
             ->insert('q')
             ->insert('language', $this->container->language->get())
-//            ->insert('must', 'raw', []) // Can be an object
-//            ->insert('should', 'raw', [])  // Can be an object
-//            ->insert('mustNot', 'raw', [])
             ->insert('limit', 20)
+            ->insert('skip')
             ->insert('time')
             ->insert('concepts', [])
             ->insert('to')

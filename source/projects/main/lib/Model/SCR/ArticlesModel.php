@@ -588,7 +588,7 @@ class ArticlesModel extends ScrModel
             $prefix = $filter->translate($prefix['route']);
         }
 
-        return $this->getPageRoute($prefix);
+        return $this->getPageRoute($prefix ?? '');
     }
 
     private function getPageRoute($prefix = '')
