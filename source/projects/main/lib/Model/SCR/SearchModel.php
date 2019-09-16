@@ -528,8 +528,7 @@ class SearchModel extends ScrModel
             ->insert('must', [])
             ->insert('mustNot', [])
             ->insert('should', [])
-            ->insert('type')
-            ->insert('skip');  // Can be an object
+            ->insert('type');  // Can be an object
 
         /**
          * New states for this model, added for the new search.
@@ -538,8 +537,7 @@ class SearchModel extends ScrModel
             ->insert('strategy')
             ->insert('scope')
             ->insert('programme')
-            ->insert('issue')
-            ->insert('articleTypes');
+            ->insert('issue');
     }
 
     public function setState(array $values)
@@ -724,29 +722,33 @@ class SearchModel extends ScrModel
         if(!isset($values['scope']) || $values['scope'] !== 'opportunities') {
             // Filter out all the opportunities here.
             $values['mustNot'] = $values['mustNot'] ?? [];
+            unset($values['type']);
 
             foreach($opportunityArticleTypes as $type) {
                 $values['mustNot'][] = $this->addTerm('field', 'articleType', $type);
             }
-        } else if($values['scope'] === 'opportunities' && (!isset($values['articleTypes']) || empty($values['articleTypes']))) {
+        } else if($values['scope'] === 'opportunities' && (!isset($values['type']) || empty($values['type']))) {
             $values['should'] = $values['mustNot'] ?? [];
+            unset($values['type']);
 
             foreach($opportunityArticleTypes as $type) {
                 $values['should'][] = $this->addTerm('field', 'articleType', $type);
             }
-        } else if($values['scope'] === 'opportunities' && isset($values['articleTypes'])) {
+        } else if($values['scope'] === 'opportunities' && isset($values['type'])) {
             // We now have opportunities and article types we want to show.
             $values['should'] = $values['should'] ?? [];
 
-            if(!is_array($values['articleTypes'])) {
-                $values['articleTypes'] = [$values['articleTypes']];
+            if(!is_array($values['type'])) {
+                $values['type'] = [$values['type']];
             }
 
-            foreach($values['articleTypes'] as $articleType) {
-                $values['should'][] = $this->addTerm('field', 'articleType', $articleType);
+            foreach($values['type'] as $articleType) {
+                $values['should'][] = $this->addTerm('field', 'articleType', str_replace('article.', '', $articleType));
             }
+
+            unset($values['type']);
         }
-        
+
         return $values;
     }
 }

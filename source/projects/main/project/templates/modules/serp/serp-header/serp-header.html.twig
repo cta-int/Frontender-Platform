@@ -46,6 +46,8 @@
         <input type="hidden" name="scope" value="{{ query.scope }}">
         <input type="hidden" name="programme" value="{{ query.programme }}">
         <input type="hidden" name="strategy" value="{{ query.strategy }}">
+        <input type="hidden" name="type" value="{{ query.type }}">
+        <input type="hidden" name="period" value="{{ query.period }}">
 
         {% for concept in query.concepts %}
             <input type="hidden" name="concepts[]" value="{{ concept }}">
