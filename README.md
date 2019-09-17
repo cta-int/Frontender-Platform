@@ -2,4 +2,4 @@
 
 ## Frontender Desktop
 
-The current version of Frontender is [1.0.0]
+The current version of Frontender is [1.3.2]
