@@ -56,8 +56,8 @@
         <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96">
         <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
 
-        <link href="{{ hashedPath('/assets/css/screen.css') }}" type="text/css" rel="stylesheet" />
-        <link href="{{ hashedPath('/assets/javascript/slick.css') }}" type="text/css" rel="stylesheet" />
+        <link href="/assets/css/screen.css" type="text/css" rel="stylesheet" />
+        <link href="/assets/javascript/slick.css" type="text/css" rel="stylesheet" />
 
         {{ renderAssets('link')|raw }}
         {{ renderAssets('styles')|raw }}
@@ -65,22 +65,22 @@
         {% block stylesheets %} {% endblock %}
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="{{ hashedPath('/assets/javascript/modernizr-custom.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/picturefill.min.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/srcset.min.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/jquery.modules.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/jquery.plugins.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/tabs.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/fonts.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/menu.js') }}"></script>
+        <script src="/assets/javascript/modernizr-custom.js"></script>
+        <script src="/assets/javascript/picturefill.min.js"></script>
+        <script src="/assets/javascript/srcset.min.js"></script>
+        <script src="/assets/javascript/jquery.modules.js"></script>
+        <script src="/assets/javascript/jquery.plugins.js"></script>
+        <script src="/assets/javascript/tabs.js"></script>
+        <script src="/assets/javascript/fonts.js"></script>
+        <script src="/assets/javascript/menu.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBapliRZ4fGbMlwkMDdNmMr_aIMOItshA" type="text/javascript"></script>
-        <script src="{{ hashedPath('/assets/javascript/gmaps.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/matchmedia.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/resize.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/srcset.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/selectize.min.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/actionable.js') }}"></script>
-        <script src="{{ hashedPath('/assets/javascript/slick.min.js') }}"></script>
+        <script src="/assets/javascript/gmaps.js"></script>
+        <script src="/assets/javascript/matchmedia.js"></script>
+        <script src="/assets/javascript/resize.js"></script>
+        <script src="/assets/javascript/srcset.js"></script>
+        <script src="/assets/javascript/selectize.min.js"></script>
+        <script src="/assets/javascript/actionable.js"></script>
+        <script src="/assets/javascript/slick.min.js"></script>
         <script type="text/javascript">
             jQuery(function($) {
                 $('.hero').srcset('> img');
@@ -184,6 +184,15 @@
           insertBefore(d,q)}(window,document,'script','_gs');
 
           _gs('GSN-309811-I');
+        </script>
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
         </script>
     </head>
 
