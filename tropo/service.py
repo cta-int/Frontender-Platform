@@ -453,7 +453,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                     "awslogs-stream-prefix": Ref(container_name)
                 }
             ),
-            Memory=1536,
+            Memory=3072,
             PortMappings=[
                 ecs.PortMapping(
                     HostPort=0,
@@ -473,7 +473,7 @@ task_definition = t.add_resource(ecs.TaskDefinition(
                 Ref(image_tag)
             ]),
             Cpu=200,
-            MemoryReservation=500,
+            MemoryReservation=2500,
             Environment=[
                 ecs.Environment(
                     Name="REALENTRYPOINT",
@@ -1078,6 +1078,79 @@ t.add_resource(elasticloadbalancingv2.ListenerRule(
     ],
     ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
     Priority=96
+))
+
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpspublicationListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.publications.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=97
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttpspublicationListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["www.publications.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=98
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttppublicationListenerRule1",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["publications.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic443")),
+    Priority=99
+))
+
+t.add_resource(elasticloadbalancingv2.ListenerRule(
+    "HttppublicationListenerRule2",
+    Actions=[
+        elasticloadbalancingv2.Action(
+            TargetGroupArn=Ref(target_group),
+            Type="forward"
+        ),
+    ],
+    Conditions=[
+        elasticloadbalancingv2.Condition(
+            Field="host-header",
+            Values=["publications.cta.int"]
+        )
+    ],
+    ListenerArn=ImportValue(Sub("${EcsStack}-AppLbListenerPublic80a")),
+    Priority=101
 ))
 
 # Allow NAT instances to access Public ALB
