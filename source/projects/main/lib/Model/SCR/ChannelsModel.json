@@ -7,16 +7,5 @@
     "map": {
         "id": "_id",
         "title": "name"
-    },
-    "display_options": {
-        "thumbnail": {
-            "en": "Show image",
-            "fr": "Show image"
-        },
-        "description": {
-            "en": "Show description",
-            "fr": "Show description"
-        }
-    },
-    "display_attributes": ["description", "thumbnail", "datePublished"]
+    }
 }
