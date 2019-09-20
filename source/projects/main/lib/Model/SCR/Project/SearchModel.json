@@ -1,7 +1,7 @@
 {
     "label": {
-        "en": "Find content: event",
-        "fr": "Find content: event"
+        "en-GB": "Project",
+        "fr-FR": "Projet"
     },
     "map": {
         "id": "_id",
