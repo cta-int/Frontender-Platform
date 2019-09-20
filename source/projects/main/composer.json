@@ -13,7 +13,7 @@
     ],
     "require": {
         "cta-int/php-lib-src": "0.2.0@dev",
-        "frontender/platform-core": "dev-release/2.0.0"
+        "frontender/platform-core": "dev-feature/2.0.0/preview-lookup"
     },
     "autoload": {
         "psr-4": {
