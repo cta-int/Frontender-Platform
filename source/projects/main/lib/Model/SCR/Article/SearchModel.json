@@ -14,7 +14,7 @@
     "filters": {
         "type": {
             "label": {
-                "en-GB": "Article Type"
+                "en-GB": "Article type"
             },
             "multiple": true,
             "show_label": true,
@@ -150,7 +150,7 @@
         },
         "order": {
             "label": {
-                "en-GB": "Sort Direction"
+                "en-GB": "Sort direction"
             },
             "icon": "sort-ascending",
             "options": [
