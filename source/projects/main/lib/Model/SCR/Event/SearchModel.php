@@ -42,6 +42,18 @@ class SearchModel extends ScrModel
             }
         }
 
+        // If type is an array we will modify it into a must query.
+        if(isset($values['type']) && is_array($values['type'])) {
+            $types = $values['type'];
+            unset($values['type']);
+
+            foreach($types as $type) {
+                $values['should'] = $values['should'] ?? [];
+
+                $values['should'][] = $this->addTerm('field', 'type', str_replace('event.', '', $type));
+            }
+        }
+
         return $this->parentSetState($values);
     }
 

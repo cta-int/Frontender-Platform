@@ -50,6 +50,12 @@
                     "value": "file"
                 }
             ]
+        },
+        "q": {
+            "label": {
+                "en-GB": "Search term"
+            },
+            "type": "search"
         }
     }
 }

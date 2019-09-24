@@ -21,7 +21,9 @@ trait Searchable
             ->insert('terms')
             ->insert('type')
             ->insert('id')
-            ->insert('label');
+            ->insert('label')
+            ->insert('time')
+            ->insert('order');
     }
 
     public function setState(array $values)
