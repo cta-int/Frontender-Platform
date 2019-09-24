@@ -125,7 +125,7 @@ class ProjectsModel extends EventsModel
         };
     }
 
-    public function getPropertyPath()
+    public function getPropertyPath(): string
     {
         return 'project';
     }
