@@ -4,6 +4,12 @@ workbox.setConfig({
     debug: true
 });
 
+addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        skipWaiting();
+    }
+});
+
 workbox.googleAnalytics.initialize();
 // End of basic Workbox configuration
 
