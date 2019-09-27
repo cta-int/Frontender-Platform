@@ -545,9 +545,10 @@ class SearchModel extends ScrModel
         $values['mustNot'] = isset($values['mustNot']) && is_array($values['mustNot']) ? $values['mustNot'] : $this->getState()->mustNot;
 
         // Add mapping for the new search properties.
-        if(isset($values['q']) && !empty($values['q'])) {
-            $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $values['q']);
-        }
+        // TODO: Reenable this when the comprehend has more information.
+        // if(isset($values['q']) && !empty($values['q'])) {
+        //     $values['should'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $values['q']);
+        // }
 
         foreach(['strategy', 'scope', 'programme'] as $filter) {
             if(isset($values[$filter]) && !empty($values[$filter]) && isset($this->searchFilters[$filter])) {
