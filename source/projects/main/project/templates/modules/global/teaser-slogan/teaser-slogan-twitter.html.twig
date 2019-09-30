@@ -12,7 +12,7 @@
             {% endfor %}
         </div>
     {% endif %}
-{% else %}
+{% elseif slogan.alt is empty %}
     {% if model.metadata.id %}
         <img class="{{ slogan.backdrop ? 'slogan slogan--backdrop' : 'slogan' }}" src="https://res.cloudinary.com/cta/image/upload/h_420,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.metadata.id }}" alt="{{ model.metadata.title|t(locales) ? model.metadata.title|t(locales) : slogan.alt|t(locales)|default("Illustration") }}">
 
