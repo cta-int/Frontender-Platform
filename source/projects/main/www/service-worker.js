@@ -32,7 +32,12 @@ workbox.routing.registerRoute(
     /\.js.*$/,
     new workbox.strategies.NetworkFirst({
         cacheName: 'script-cache',
-        ignoreURLParametersMatching: [/.*/]
+        ignoreURLParametersMatching: [/.*/],
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 30
+            })
+        ]
     })
 );
 
@@ -40,7 +45,12 @@ workbox.routing.registerRoute(
     /\.css.*$/,
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'css-cache',
-        ignoreURLParametersMatching: [/.*/]
+        ignoreURLParametersMatching: [/.*/],
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 10
+            })
+        ]
     })
 );
 
