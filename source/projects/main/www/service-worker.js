@@ -21,7 +21,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
     // Custom `matchCallback` function to cache the page document
-    ({event}) => event.request.destination === 'document',
+    ({ event }) => event.request.destination === 'document',
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'document-cache'
     })
@@ -29,27 +29,26 @@ workbox.routing.registerRoute(
 
 // Caching strategies for assets
 workbox.routing.registerRoute(
-    /\.js$/,
+    /\.js.*$/,
     new workbox.strategies.NetworkFirst({
         cacheName: 'script-cache',
-        ignoreURLParametersMatching: [\\?(.*)]
+        ignoreURLParametersMatching: [/.*/]
     })
 );
 
 workbox.routing.registerRoute(
-    /\.css$/,
+    /\.css.*$/,
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'css-cache',
-        ignoreURLParametersMatching: [\\?(.*)]
+        ignoreURLParametersMatching: [/.*/]
     })
 );
 
 workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif|ico)$/,
+    /\.(?:png|jpg|jpeg|svg|gif|ico).*$/,
     // Use the cache if it's available.
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
-        ignoreURLParametersMatching: [\\?(.*)],
         plugins: [
             new workbox.expiration.Plugin({
                 // Cache only 20 images.
@@ -73,7 +72,7 @@ workbox.precaching.precacheAndRoute([
 
 // This "catch" handler is triggered when any of the other routes fail to
 // generate a response.
-workbox.routing.setCatchHandler(({event}) => {
+workbox.routing.setCatchHandler(({ event }) => {
     // The FALLBACK_URL entries must be added to the cache ahead of time, either via runtime
     // or precaching.
     // If they are precached, then call workbox.precaching.getCacheKeyForURL(FALLBACK_URL)
@@ -85,7 +84,7 @@ workbox.routing.setCatchHandler(({event}) => {
     switch (event.request.destination) {
         case 'document':
             return caches.match('/en/offline');
-        break;
+            break;
 
         default:
             // If we don't have a fallback, just return an error response.
