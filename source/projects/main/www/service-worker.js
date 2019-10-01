@@ -31,14 +31,16 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
     /\.js$/,
     new workbox.strategies.NetworkFirst({
-        cacheName: 'script-cache'
+        cacheName: 'script-cache',
+        ignoreURLParametersMatching: [\\?(.*)]
     })
 );
 
 workbox.routing.registerRoute(
     /\.css$/,
     new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'css-cache'
+        cacheName: 'css-cache',
+        ignoreURLParametersMatching: [\\?(.*)]
     })
 );
 
@@ -47,6 +49,7 @@ workbox.routing.registerRoute(
     // Use the cache if it's available.
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
+        ignoreURLParametersMatching: [\\?(.*)],
         plugins: [
             new workbox.expiration.Plugin({
                 // Cache only 20 images.
