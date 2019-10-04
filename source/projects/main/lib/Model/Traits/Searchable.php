@@ -61,7 +61,7 @@ trait Searchable
 
         if (array_key_exists('concepts', $values)) {
             foreach ($values['concepts'] as $term) {
-                $values['must'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $term);
+                $values['must'][] = $this->addTerm('keyphrase', $term);
             }
         }
 
