@@ -1,0 +1,188 @@
+{
+    "name": {
+        "en-GB": "Search"
+    },
+    "description": {
+        "en-GB": "Contextual search container"
+    },
+    "template": "containers/global/contextual-search/contextual-search.html.twig",
+    "template_config": {
+        "main": {
+            "label": {
+                "en-GB": "Main"
+            },
+            "controls": {
+                "container_title": {
+                    "value": {
+                        "en-GB": "Title",
+                        "fr-FR": "Tître"
+                    },
+                    "label": {
+                        "en-GB": "Title"
+                    },
+                    "control": "core/text"
+                },
+                "context": {
+                    "value": "events",
+                    "control": "core/list",
+                    "label": {
+                        "en-GB": "Search context"
+                    },
+                    "options": [
+                        {
+                            "value": "articles",
+                            "label": {
+                                "en-GB": "Articles"
+                            }
+                        },
+                        {
+                            "value": "articles",
+                            "label": {
+                                "en-GB": "Articles"
+                            }
+                        },
+                        {
+                            "value": "events",
+                            "label": {
+                                "en-GB": "Events"
+                            }
+                        },
+                        {
+                            "value": "spore",
+                            "label": {
+                                "en-GB": "Spore"
+                            }
+                        },
+                        {
+                            "value": "ictupdate",
+                            "label": {
+                                "en-GB": "ICT UPdate"
+                            }
+                        },
+                        {
+                            "value": "publications",
+                            "label": {
+                                "en-GB": "Publications"
+                            }
+                        },
+                        {
+                            "value": "opportunities",
+                            "label": {
+                                "en-GB": "Opportunities"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "aside": {
+            "label": {
+                "en-GB": "Sidebar"
+            },
+            "controls": {
+                "container_title": {
+                    "label": {
+                        "en-GB": "Title"
+                    },
+                    "control": "core/text",
+                    "value": {
+                        "en-GB": "Title",
+                        "fr-FR": "Tître"
+                    }
+                },
+                "tags": {
+                    "label": {
+                        "en-GB": "Tags"
+                    },
+                    "value": [
+                        {
+                            "en-GB": "cassava"
+                        },
+                        {
+                            "en-GB": "blockchain"
+                        },
+                        {
+                            "en-GB": "drones"
+                        }
+                    ],
+                    "control": "core/text",
+                    "repeatable": true
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en-GB": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "div",
+                    "control": "project/container_tag"
+                },
+                "show_story": {
+                    "value": 1,
+                    "label": {
+                        "en-GB": "Show story"
+                    },
+                    "control": "core/boolean"
+                },
+                "leader": {
+                    "value": "",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "",
+                    "control": "project/trailer"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        },
+        "model": {
+            "label": {
+                "en-GB": "Search settings"
+            },
+            "controls": {
+                "types": {
+                    "value": "article,event",
+                    "control": "core/hidden"
+                },
+                "limit": {
+                    "value": "20",
+                    "control": "project/model/limit"
+                },
+                "q": {
+                    "value": "{ query.q }",
+                    "control": "core/hidden"
+                },
+                "time": {
+                    "value": "{ query.time }",
+                    "control": "core/hidden"
+                },
+                "concepts": {
+                    "value": "{ query.concepts }",
+                    "control": "core/hidden"
+                },
+                "location": {
+                    "value": "{ query.location }",
+                    "control": "core/hidden"
+                },
+                "type": {
+                    "value": "{ query.type }",
+                    "control": "core/hidden"
+                },
+                "data": {
+                    "value": {
+                        "adapter": "SCR",
+                        "model": "search"
+                    },
+                    "control": "core/hidden"
+                }
+            }
+        }
+    },
+    "frontender": "59543850881c683672c79ec344387b87",
+    "blueprint": "5ba8a8f5fe220b483e2803be"
+}

@@ -5,7 +5,7 @@
     <div class="fld">
         <label for="ctx-item__article" class="fld-label">{{ labels.field_label|t(locales)|default('Type'|i18n) }}</label>
         <select id="ctx-item__article" name="type" class="placeholder-visible">
-            <option value="">{{ 'All'|i18n }}</option>
+            <option value="">{{ 'Any'|i18n }}</option>
             <optgroup label="{{ 'Articles'|i18n }}">
                 {% include 'partials/search-fields/article-type__options.html.twig'%}
             </optgroup>

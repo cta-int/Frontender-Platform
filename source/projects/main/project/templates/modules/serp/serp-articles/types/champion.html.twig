@@ -1,5 +1,6 @@
 {% import "macros/concept.html.twig" as concept %}
 {% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
 
 {% set resource_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
@@ -8,9 +9,14 @@
     <div class="media__content">
         <div class="media media--unfold">
             <div class="media__body  |  gutters">
+                {% if article.publicationLabel %}
+                    <p class="meta  |  trailer--small">{{ label.publication_to_string(article.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</p>
+                {% elseif article.link.label|first.name|t(locales) %}
+                    <p class="meta  |  trailer--small">{{ article.link.label|first.name|t(locales)|split('/')|last}}</p>
+                {% endif %}
                 <a class="anchor--reset anchor--shy  |  stack" href="{{ resource_route }}">
                     <h2 class="title title--tile">
-                        {{ article.headline|highlightText(query.q, 'highlight')|t(locales)|raw }}
+                        {{ article.headline|highlightText(query.q, 'highlight')|raw }}
                     </h2>
                 </a>
                 <div class="body--whisper  |  leader--small">
@@ -19,9 +25,15 @@
                 <div class="leader">
                     {% if article.analysis.agrovoc.concepts|length > 0 %}
                         <ul class="reset label-list clear list--inline">
-                            {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                            {% for label in article.analysis.agrovoc.concepts|slice(0, 3) %}
                                 <li>{{ concept.tag(label, locale) }}</li>
                             {% endfor %}
+
+                            {% if article.strategy %}
+                                <li class="{{ article.strategy.selector }}">
+                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ article.strategy._id }}">{{ article.strategy.name|split('/')|last }}</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     {% endif %}
                 </div>
@@ -34,7 +46,9 @@
                     {% if article.link.person.author|length > 0 %}
                         <p class="meta meta--lowercase">{{ author.long(article.link.person.author) }}</p>
                     {% endif %}
-                    <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                    {% if article.analysis.geoname.geonames %}
+                        <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                    {% endif %}
                 </div>
             </div>
         </div>

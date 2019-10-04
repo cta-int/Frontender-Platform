@@ -231,7 +231,7 @@ class ArticlesModel extends ScrModel
             private $container;
             private $state;
             private $issueLabel = null;
-            private $issueNumberLabel = null;
+            public $issueNumberLabel = null;
 
             public function __construct($article, $state, $container)
             {
@@ -588,7 +588,7 @@ class ArticlesModel extends ScrModel
             $prefix = $filter->translate($prefix['route']);
         }
 
-        return $this->getPageRoute($prefix);
+        return $this->getPageRoute($prefix ?? '');
     }
 
     private function getPageRoute($prefix = '')
@@ -641,6 +641,28 @@ class ArticlesModel extends ScrModel
     public function getPropertyPublicationLabel()
     {
         return $this->getLabels('publication', true);
+    }
+
+    public function getPropertyStrategy()
+    {
+        $_label = $this->getLabels('strategy', true);
+
+        $_theme = [
+            'selector' => '',
+            'label' => ''
+        ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+        }
+
+        return $_label;
     }
 
     public function getPropertyTheme()

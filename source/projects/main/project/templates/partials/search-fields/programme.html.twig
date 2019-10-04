@@ -1,0 +1,16 @@
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__theme')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="fld">
+        <label for="ctx-item__theme" class="fld-label">{{ labels.field_label|t(locales)|default('Programme'|i18n) }}</label>
+        
+        <select id="ctx-item__theme" name="programme" class="placeholder-visible">
+            <option value="">{{ 'Any'|i18n }}</option>
+
+            {% for programme in model.programme %}
+                <option value="{{programme.slug}}"{% if query.programme == programme.slug or query.programme == programme.id %} selected="selected" {% endif %}>{{ programme.title|i18n }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</{{ config.container_tag|default('div') }}>

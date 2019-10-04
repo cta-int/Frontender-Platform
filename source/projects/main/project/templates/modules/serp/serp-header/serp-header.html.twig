@@ -1,11 +1,53 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+<script>
+    jQuery(function($) {
+        var $mainForm = $('form[data-item-search]');
+
+        $('[data-topic-value]').on('click', function(event) {
+            event.preventDefault();
+
+            var $element = $(this);
+
+            $('input[value="' + $element.data('topic-value') + '"]').remove();
+            $element.remove();
+
+            if(!$('[data-topic-value]').length) {
+                $('[data-topics-list]').remove();
+            }
+
+            if($mainForm.length) {
+                $mainForm.get(0).submit();
+            }
+        });
+
+        // Bind the events of the sidebar form.
+        $('[data-search-attributes] input,select').on('change', function(event) {
+            // Set the value on the hidden items in the current form.
+            var name = $(this).attr('name');
+
+            $mainForm.find('input[name=' + name + ']').val($(this).val());
+        });
+
+        $('[data-search-attributes]').on('submit', function(event) {
+            event.preventDefault();
+
+            if($mainForm.length) {
+                $mainForm.get(0).submit();
+            }
+        });
+    });
+</script>
+
 <div class="leader-inside--hero">
     <h1 class="title  |  gutters">{{ labels.title|t(locales)|default('Your search'|i18n) }}</h1>
-    <form class="ctx-item__search  |  gutters" method="get" action="">
-        <input type="hidden" name="location" value="{{ query.location }}">
+    <form class="ctx-item__search  |  gutters" method="get" action="" data-item-search>
         <input type="hidden" name="time" value="{{ query.time }}">
+        <input type="hidden" name="scope" value="{{ query.scope }}">
+        <input type="hidden" name="programme" value="{{ query.programme }}">
+        <input type="hidden" name="strategy" value="{{ query.strategy }}">
         <input type="hidden" name="type" value="{{ query.type }}">
+        <input type="hidden" name="period" value="{{ query.period }}">
 
         {% for concept in query.concepts %}
             <input type="hidden" name="concepts[]" value="{{ concept }}">
@@ -14,5 +56,20 @@
         <div class="fld fld--l  |  leader">
             <input class="extended-search" id="ctx-item__search" placeholder="{{ labels.placeholder|t(locales) }}" name="q" value="{{ query.q }}" class="placeholder-visible"/>
         </div>
+        {% if query.concepts %}
+            <div class="leader  |  media media--middle" data-topics-list>
+                <p class="meta">{{ 'Active topics'|t(locales) }}:</p>
+                <ul class="media__body  |  gutters  |  reset  |  label-list  |  clear  |  list--inline list--concept">
+                    {% for concept in query.concepts %}
+                        <li>
+                            <a href="javascript:void(0)" data-topic-value="{{concept}}" class="label label--dark label--s">
+                                <span>{{ concept|t(locales) }}</span>
+                                <i class="icon icon--cross"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </form>
 </div>

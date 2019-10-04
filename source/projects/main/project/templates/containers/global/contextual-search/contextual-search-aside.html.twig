@@ -1,0 +1,18 @@
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/template.html.twig" as helper %}
+
+<div class="stack stack--stacked">
+
+    {% if aside.container_title %}
+        <h3 class="title title--lead trailer trailer-inside--small |  gutters  |  stack__unit">{{ aside.container_title|t(locales) }}</h3>
+    {% endif %}
+
+    <ul class="reset label-list list--inline  |  gutters  |  stack__unit">
+        {% for tag in aside.tags %}
+        <li>
+            {{ concept.search_string(tag|t(locales)) }}
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
