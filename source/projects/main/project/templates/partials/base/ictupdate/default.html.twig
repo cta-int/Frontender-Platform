@@ -185,6 +185,14 @@
 
             _gs('GSN-309811-I');
         </script>
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </head>
 
     <body{{ helper.class_attribute(config, model.theme.selector|default(''))|raw }}>
