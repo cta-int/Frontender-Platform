@@ -1,0 +1,46 @@
+{% import "macros/template.html.twig" as helper %}
+
+{#
+    Contexts:
+
+    1. CTA Articles
+    2. CTA Events
+    3. Spore
+    4. ICT Update
+    5. Publications
+    6. Working with CTA
+#}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, ['well', config.show_story|default(1)?'is-illustrated is-root trailer--normal':'' ]|join(' '))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout">
+        <div class="reset  layout__cell--aside layout__cell--divider  |  wings leader-inside {{ config.show_story|default(1)?'trailer-inside--hero':'trailer-inside' }}">
+            {% if aside.tags|length %}
+            {% include 'containers/global/contextual-search/contextual-search-aside.html.twig' with aside %}
+            {% endif %}
+        </div>
+        <div class="layout__cell  |  leader-inside {{ config.show_story|default(1)?'trailer-inside--hero':'trailer-inside' }}">
+            <h3 class="title title--lead trailer  |  gutters">{{ main.container_title|t(locales) }}</h3>
+            {% if main.target|t(locales) is not empty %}
+                <form class="layout layout--align-end" method="get" action="{{ route({'page': main.target|t(locales) }) }}">
+            {% else %}
+                <form class="layout layout--align-end" method="get" action="{{ route({'page': 'search'}) }}">
+            {% endif %}
+                <div class="layout__cell layout__cell--main">
+                    {% include 'partials/search-fields/keyword.html.twig' with {config: {container_class: 'gutters'}} %}
+                    {% include 'containers/global/contextual-search/contextual-search-'~ main.context|default('articles') ~ '.html.twig' %}
+                </div>
+                <div class="layout__cell layout__cell--aside  |  wings">
+                    {% include 'partials/search-fields/submit-button.html.twig' with {config: {container_class: 'leader--small gutters'}} %}
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if config.show_story|default(1) %}
+    <figure class="search__illustrations-set">
+        <span class="search__illustration illustration illustration--fish-barn"></span>
+        <span class="search__illustration illustration illustration--fishing-shore"></span>
+        <span class="search__illustration illustration illustration--fishing-boat"></span>
+        <span class="water-illustration"></span>
+    </figure>
+    {% endif %}
+</{{ config.container_tag|default('div') }}>

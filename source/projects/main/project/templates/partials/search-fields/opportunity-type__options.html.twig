@@ -1,8 +1,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<option {% if config.selected == 'article.vacancy' or query.type == 'article.vacancy' %}selected="selected" {% endif %} value="article.vacancy">{{ 'Vacancies'|i18n }}</option>
-<option {% if config.selected == 'article.internship' or query.type == 'article.internship' %}selected="selected" {% endif %} value="article.internship">{{ 'Internships'|i18n }}</option>
 <option {% if config.selected == 'article.call_for_external_expert' or query.type == 'article.call_for_external_expert' %}selected="selected" {% endif %} value="article.call_for_external_expert">{{ 'Calls for external experts'|i18n }}</option>
-<option {% if config.selected == 'article.call_for_tender' or query.type == 'article.call_for_tender' %}selected="selected" {% endif %} value="article.call_for_tender">{{ 'Calls for tenders'|i18n }}</option>
 <option {% if config.selected == 'article.call_for_proposal' or query.type == 'article.call_for_proposal' %}selected="selected" {% endif %} value="article.call_for_proposal">{{ 'Calls for proposals'|i18n }}</option>
+<option {% if config.selected == 'article.call_for_tender' or query.type == 'article.call_for_tender' %}selected="selected" {% endif %} value="article.call_for_tender">{{ 'Calls for tenders'|i18n }}</option>
+<option {% if config.selected == 'article.internship' or query.type == 'article.internship' %}selected="selected" {% endif %} value="article.internship">{{ 'Internships'|i18n }}</option>
 <option {% if config.selected == 'article.partnership' or query.type == 'article.partnership' %}selected="selected" {% endif %} value="article.partnership">{{ 'Partnership'|i18n }}</option>
+<option {% if config.selected == 'article.vacancy' or query.type == 'article.vacancy' %}selected="selected" {% endif %} value="article.vacancy">{{ 'Vacancies'|i18n }}</option>

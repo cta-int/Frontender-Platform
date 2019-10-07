@@ -27,7 +27,8 @@ Styleguide 3.39
     padding: 4px 0 0 2px;
     line-height: 1;
   }
-  &--expiring {
+  &--expiring,
+  &--closing {
     background-color: $color-orange;
   }
   &--closed,
