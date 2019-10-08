@@ -6,6 +6,15 @@
 }) }}
 
 {% set panelData = {} %}
+
+{{dump(model.search.articles("{
+    'must': [{
+        'type': 'label',
+        'id': '6567e105-820e-484c-b82e-728b8474e1c9'
+    }],
+    'limit': '2'
+}")|length)}}
+
 {% for c in containers %}
     
     {# article.blog #}

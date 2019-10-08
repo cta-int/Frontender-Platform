@@ -12,7 +12,8 @@ use Slim\Container;
 use Frontender\Platform\Model\SCR\Channel\ArticlesModel;
 use Frontender\Platform\Model\SCR\Channel\EventsModel;
 use Frontender\Platform\Model\SCR\Channel\PersonsModel;
-use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\SCR\Article\SearchModel as ArticleSearchModel;
+use Frontender\Platform\Model\SCR\Event\SearchModel as EventSearchModel;
 
 class ChannelsModel extends ScrModel
 {
@@ -61,6 +62,57 @@ class ChannelsModel extends ScrModel
         $personsModel->setState($state);
 
         return $personsModel->fetch();
+    }
+
+    public function getPropertySearch() {
+        return new class ($this, $this->container) {
+            private $_channel;
+            private $_container;
+
+            public function __construct($channel, $container) {
+                $this->_channel = $channel;
+                $this->_container = $container;
+            }
+
+            public function articles($filter = []) {
+                // We will now get the filter from the channel and extend it with the config provided.
+                $channelFilter = $this->_channel['query'];
+                $filter = array_merge_recursive($channelFilter, $this->parseJSON($filter));
+
+                if(!isset($filter['limit'])) {
+                    $filter['limit'] = $this->_channel->getState()->limit;
+                }
+
+                $model = new ArticleSearchModel($this->_container);
+                $model->setState($filter);
+
+                return $model->fetch();
+            }
+
+            public function events($filter = []) {
+                $channelFilter = $this->_channel['query'];
+                $filter = array_merge_recursive($channelFilter, $this->parseJSON($filter));
+
+                if(!isset($filter['limit'])) {
+                    $filter['limit'] = $this->_channel->getState()->limit;
+                }
+
+                $model = new EventSearchModel($this->_container);
+                $model->setState($filter);
+
+                return $model->fetch();
+            }
+
+            private function parseJSON($json) {
+                // Check if the input isn't an object already.
+                if(!is_string($json)) {
+                    return $json;
+                }
+
+                $json = json_decode($json)
+                return $json ?? [];
+            }
+        };
     }
 
     public function fetch($raw = false)
