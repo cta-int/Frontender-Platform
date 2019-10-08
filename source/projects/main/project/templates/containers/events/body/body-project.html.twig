@@ -33,6 +33,27 @@
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype | default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endif %}
             {% endfor %}
+
+            {% if model.experts|length %}
+                <footer class="gutters leader--hero trailer--hero">
+                    <div class="well leader-inside--normal trailer-inside--normal">
+                        <h3 class="title title--apropos gutters">{{ model.experts|length > 1 ? "Meet the experts"|i18n : "Meet the expert"|i18n }}</h3>
+                        {% for expert in model.experts %}
+                            <div class="media  |  leader--normal  |  trailer--normal" itemscope itemtype="https://schema.org/Person">
+                                <div class="media__figure  |  gutters">
+                                    {{ image.person(expert, 50) }}
+                                </div>
+                                <div class="media__body  |  gutter--right  |  body--whisper">
+                                    <p class=""><span class="meta--bold" itemprop="name">{{ expert.givenName ~ ' ' ~ expert.familyName}}</span>{% if expert.jobTitle %}<span>, {{ expert.jobTitle }}</span>{% endif %}</p>
+                                    {% if expert.description %}
+                                        <p itemprop="description" class="leader--tiny">{{ expert.description }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </footer>
+            {% endif %}
             
             <div class="well  |  leader  |  trailer">
                 <div class="gutters">
