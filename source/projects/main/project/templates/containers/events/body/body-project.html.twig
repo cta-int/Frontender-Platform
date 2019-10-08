@@ -85,6 +85,6 @@
         {% endfor %}
 
         Contact the expert
-        {{model.expert.givenName}}
+        {{model.experts|first.givenName}}
     </div>
 </{{ config.container_tag|default('div') }}>
