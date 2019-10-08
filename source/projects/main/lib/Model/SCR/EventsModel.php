@@ -428,7 +428,7 @@ class EventsModel extends ScrModel
         $self = $this;
         $people = array_map(function($key) use ($self) {
             return $self[$key];
-        }, ['officer', 'chair', 'speaker']);
+        }, ['officer', 'assistant', 'keynote', 'speaker', 'chair', 'panellist', 'moderator', 'facilitateur', 'press_officer', 'rapporteur', 'social_reporter', 'translator']);
         $people = array_filter($people);
         $people = array_merge([], ...$people);
 
