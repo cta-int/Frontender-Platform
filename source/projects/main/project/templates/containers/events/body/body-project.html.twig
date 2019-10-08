@@ -55,8 +55,8 @@
                 </footer>
             {% endif %}
             
-            <div class="well  |  leader  |  trailer">
-                <div class="gutters">
+            <div class="gutters  |  leader  |  trailer">
+                <div class="well">
                     {{ share.bar_article(model) }}
                 </div>
             </div>
@@ -71,6 +71,7 @@
                 </div>
             {% endif %}
         </div>
+
         {% if model.link.person.author %}
             <div class="gutters  |  leader  |  trailer">
                 <h2 class="title title--apropos">Contact details</h2>
@@ -92,6 +93,7 @@
         {% endif %}
 
     </div>
+
     <div class="layout__cell layout__cell--aside  |  wings">
         {% for c in containers %}
             {% if c.template_id  == 'project_updates' %}
@@ -104,8 +106,6 @@
                 {% include c.template with c %}
             {% endif %}
         {% endfor %}
-
-        Contact the expert
-        {{model.experts|first.givenName}}
     </div>
+
 </{{ config.container_tag|default('div') }}>
