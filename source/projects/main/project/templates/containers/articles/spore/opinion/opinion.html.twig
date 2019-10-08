@@ -7,6 +7,7 @@
 {% import "macros/label.html.twig" as label %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+{{ 'partials/base/print.html.twig'|addStyle('styles') }}
 
 <{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} itemscope itemtype="https://schema.org/Article">
     {% include 'containers/articles/spore/headline/headline-' ~ model.articleType|lower|replace({' ': '-'})|default('champion') ~ '.html.twig' %}
