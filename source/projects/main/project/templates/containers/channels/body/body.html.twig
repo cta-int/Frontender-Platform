@@ -7,13 +7,13 @@
 
 {% set panelData = {} %}
 
-{{dump(model.search.articles("{
+{# {{dump(model.search.articles("{
     'must': [{
         'type': 'label',
         'id': '6567e105-820e-484c-b82e-728b8474e1c9'
     }],
     'limit': '2'
-}")|length)}}
+}")|length)}} #}
 
 {% for c in containers %}
     
@@ -23,6 +23,8 @@
 
     {# article.impact #}
     {% elseif c.content.type == 'article.impact' %}
+        {# Channel example #}
+        {# {{dump(model.search.articles(c.content.filter)|length)}} #}
         {% set panelData = panelData|merge({ 'article.impact': model.impactArticles }) %}
 
     {# article.article.corporate_news #}

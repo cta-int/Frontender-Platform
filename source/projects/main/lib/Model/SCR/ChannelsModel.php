@@ -109,7 +109,7 @@ class ChannelsModel extends ScrModel
                     return $json;
                 }
 
-                $json = json_decode($json)
+                $json = json_decode($json, true);
                 return $json ?? [];
             }
         };
