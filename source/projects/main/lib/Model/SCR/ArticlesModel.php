@@ -82,9 +82,16 @@ class ArticlesModel extends ScrModel
             }, $related['persons']),
             'issues' => array_map(function($issue) use ($state, $container) {
                 $model = new ArticlesModel($container);
-                return $model
-                    ->setState($state->getValues())
-                    ->setData($issue);
+                $state = array_merge($state->getValues(), [
+                    'id' => $issue['_id']
+                ]);
+
+                $issue = $model
+                    ->setState($state)
+                    ->setData($issue)
+                    ->fetch();
+
+                return count($issue) ? array_shift($issue) : false;
             }, $issues)
         ];
     }
