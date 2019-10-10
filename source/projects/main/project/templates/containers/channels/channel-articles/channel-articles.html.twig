@@ -49,22 +49,6 @@
     </header>
 
     {# Article list #}
-    <div class="layout layout--even wings">
-    {% for article in model.articles %}
-        <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
-        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
-            'container_class': 'post--wide',
-            'show_publication_date': 1,
-            'show_publication': 0,
-            'show_type': 0,
-            'show_author_name': 0,
-            'show_stand_first': 1,
-            'show_topic': 0,
-            'show_read_more': 1,
-            'show_lead_image': 1
-        } } %}
-        </article>
-    {% endfor %}
-    </div>
+    {% include 'containers/channels/channel-articles/channel-articles-list.html.twig' %}
 
 </{{ config.container_tag|default('div') }}>
