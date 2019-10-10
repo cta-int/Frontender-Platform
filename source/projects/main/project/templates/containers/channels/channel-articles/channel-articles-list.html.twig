@@ -18,7 +18,7 @@
         </article>
     {% endfor %}
 
-    <div class="leader">
+    <div class="leader" style="width: 100%;" data-pagination-parent>
         {{ pagination.extend(model.articles, model.articlesTotal, {
             model_name: 'Labels',
             adapter: 'SCR',
