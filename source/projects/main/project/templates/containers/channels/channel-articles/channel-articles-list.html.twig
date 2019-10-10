@@ -18,12 +18,14 @@
         </article>
     {% endfor %}
 
-    <div class="leader" style="width: 100%;" data-pagination-parent>
-        {{ pagination.extend(model.articles, model.articlesTotal, {
-            model_name: 'Labels',
-            adapter: 'SCR',
-            target: "#" ~ pagination_id,
-            layout: "containers/channels/channel-articles/channel-articles-list.html.twig",
-        }, model|first) }}
-    </div>
+    {% if config.show_pagination %}
+        <div class="leader" style="width: 100%;" data-pagination-parent>
+            {{ pagination.extend(model.articles, model.articlesTotal, {
+                model_name: 'Labels',
+                adapter: 'SCR',
+                target: "#" ~ pagination_id,
+                layout: "containers/channels/channel-articles/channel-articles-list.html.twig",
+            }, model|first) }}
+        </div>
+    {% endif %}
 </div>
