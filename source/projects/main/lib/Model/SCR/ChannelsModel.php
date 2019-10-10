@@ -14,6 +14,7 @@ use Frontender\Platform\Model\SCR\Channel\EventsModel;
 use Frontender\Platform\Model\SCR\Channel\PersonsModel;
 use Frontender\Platform\Model\SCR\Article\SearchModel as ArticleSearchModel;
 use Frontender\Platform\Model\SCR\Event\SearchModel as EventSearchModel;
+use Frontender\Core\Template\Filter\Translate;
 
 class ChannelsModel extends ScrModel
 {
@@ -72,12 +73,18 @@ class ChannelsModel extends ScrModel
             public function __construct($channel, $container) {
                 $this->_channel = $channel;
                 $this->_container = $container;
+                $this->_translate = new Translate($container);
             }
 
             public function articles($filter = []) {
-                // We will now get the filter from the channel and extend it with the config provided.
                 $channelFilter = $this->_channel['query'];
-                $filter = array_merge_recursive($channelFilter, $this->parseJSON($filter));
+
+                if(!empty($filter)) {
+                    $filter = $this->_translate->translate($this->parseJSON($filter), [], true);
+                    $filter = array_merge_recursive($channelFilter, $filter);
+                } else {
+                    $filter = $channelFilter;
+                }
 
                 if(!isset($filter['limit'])) {
                     $filter['limit'] = $this->_channel->getState()->limit;
@@ -91,7 +98,13 @@ class ChannelsModel extends ScrModel
 
             public function events($filter = []) {
                 $channelFilter = $this->_channel['query'];
-                $filter = array_merge_recursive($channelFilter, $this->parseJSON($filter));
+                
+                if(!empty($filter)) {
+                    $filter = $this->_translate->translate($this->parseJSON($filter), [], true);
+                    $filter = array_merge_recursive($channelFilter, $filter);
+                } else {
+                    $filter = $channelFilter;
+                }
 
                 if(!isset($filter['limit'])) {
                     $filter['limit'] = $this->_channel->getState()->limit;
