@@ -12,7 +12,7 @@
     {% endfor %}
 </ul>
 
-{% if not config.hide_pagination|default(false) %}
+{% if config.show_pagination %}
     {{ pagination.extend(model, model.totalEvents, {
         model_name: 'Channels',
         adapter: 'SCR',
