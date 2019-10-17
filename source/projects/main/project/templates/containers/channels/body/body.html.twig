@@ -120,7 +120,7 @@
         {% set panelData = panelData|merge({ 'event.Training': model.trainingEvents }) %}
 
     {# Briefing #}
-    {% elseif articleType == 'event.Briefing' %}
+    {% elseif c.content.type == 'event.Briefing' %}
         {% set panelData = panelData|merge({ 'event.Briefing': model.briefingEvents }) %}
 
     {# Meeting #}
