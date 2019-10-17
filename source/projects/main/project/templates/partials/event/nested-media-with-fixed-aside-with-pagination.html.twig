@@ -12,14 +12,16 @@
     {% endfor %}
 </ul>
 
-{{ pagination.extend(model, model.totalEvents, {
-    model_name: 'Channels',
-    adapter: 'SCR',
-    target: '#' ~ config.id|t(locales) ~ ' > ul:last-of-type',
-    layout: "partials/event/nested-media-with-fixed-aside-with-pagination.html.twig",
-    config: {
+{% if not config.hide_pagination|default(false) %}
+    {{ pagination.extend(model, model.totalEvents, {
+        model_name: 'Channels',
+        adapter: 'SCR',
+        target: '#' ~ config.id|t(locales) ~ ' > ul:last-of-type',
+        layout: "partials/event/nested-media-with-fixed-aside-with-pagination.html.twig",
         config: {
-            id: config.id
+            config: {
+                id: config.id
+            }
         }
-    }
-}) }}
+    }) }}
+{% endif %}
