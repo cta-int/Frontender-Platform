@@ -59,7 +59,7 @@
             {% endif %}
             {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'translator'] %}
                 {% if attribute(model, type) | length > 0 %}
-                    <div class="profile__list  |  trailer">
+                    <div class="profile__list  |  trailer  |  is-screen">
                         <h3 class="trailer--small  |  gutters">{{ ('event_' ~ type)|i18n }}</h3>
                         <div class="grid  grid--teletubbies">
                             {% for person in attribute(model, type) %}
@@ -75,7 +75,7 @@
     </div>
     {# MAIN COLUMN:END #}
     {# SECONDARY COLUMN:START #}
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
         <div class="panel__body">
                 <div class="mini-map  |  well--neutral  |  gutters-outside">
                     {% if model.location %}
