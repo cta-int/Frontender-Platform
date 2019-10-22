@@ -81,10 +81,10 @@
     <div class="stage" id="stage">
         <div class="stage__cue">
             <div id="center-stage"></div>
-            <button class="stage__prev" id="prev">Previous</button>
-            <button class="stage__next" id="next">Next</button>
+            <button data-previous class="stage__prev" id="prev">Previous</button>
+            <button data-next class="stage__next" id="next">Next</button>
         </div>
-        <button class="stage__trigger">x</button>
+        <button data-close class="stage__trigger">x</button>
     </div>
 </div>
 <style>
@@ -111,16 +111,25 @@
         display: table-cell;
     }
 </style>
+
+<script src="/assets/javascript/gallery.js"></script>
 <script>
+
+
     $(document).ready(function() {
+        $('.cloak').gallery({
+            children: $('[data-modal]'),
+            stage: $('#center-stage')
+        });
+
         
-        $('[data-modal]').on('click', function(e) {
+        /*$('[data-modal]').on('click', function(e) {
 
             /*
              * 1. Create modal
              * 2. Insert content
              * 3. Determine next and previous
-             */
+            
             var el = $(this),
                 content = el.data('modal'),
                 next = el.next('[data-modal]'),
@@ -167,6 +176,6 @@
                 });
                 
 
-        });
+        });*/
     });
 </script>
