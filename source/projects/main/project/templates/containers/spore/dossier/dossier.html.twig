@@ -2,6 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/image.html.twig" as image %}
 {{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
+{{ 'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
 
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set resource_link = route({'page': model.similar.articles|first.path,'slug': model.similar.articles|first.headline|t(locales)|slugify,'id': model.similar.articles|first._id}) %}
@@ -21,7 +22,7 @@
             <a class="read-more  |  leader--normal  |  gutters" href="{{ resource_link }}">{{ 'Read more'|i18n }}</a>
         </div>
     </div>
-    <div class="layout__cell ">
+    <div class="layout__cell">
         <div class="layout layout--split dossier">
             <div class="layout__cell  |  gutters-outside  |  dossier__gallery">
                 {# Switch image based on active article #}
