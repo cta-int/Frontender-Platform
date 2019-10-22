@@ -1,1 +1,59 @@
-{% include "modules/serp/serp-articles/types/champion.html.twig" %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+
+{% set resource_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<article class="media">
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters">
+                {% if article.link.label|first.name|t(locales) %}
+                    <p class="meta  |  trailer--small">{{ article.link.label|first.name|t(locales)|split('/')|last}}</p>
+                {% endif %}
+                <a class="anchor--reset anchor--shy  |  stack" href="{{ resource_route }}">
+                    <h2 class="title title--tile">
+                        <q>{{ article.headline|highlightText(query.q, 'highlight')|t(locales)|raw }}</q>
+                    </h2>
+                </a>
+                <div class="body--whisper  |  leader--small">
+                    {{ article.about|truncate(250)|highlightText(query.q, 'highlight')|raw }}
+                </div>
+                <div class="leader">
+                    {% if article.analysis.agrovoc.concepts|length > 0 %}
+                        <ul class="reset label-list clear list--inline">
+                            {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+
+                            {% if article.strategy %}
+                                <li class="{{ article.strategy.selector }}">
+                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ article.strategy._id }}">{{ article.strategy.name|split('/')|last }}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="media__figure  media__aside  |  wings">
+                <div class="gutters">
+                    <p>
+                        <time class="meta" datetime="{{ article.datePublished }}">{{ article.datePublished|tdate('%e %B %Y') }}</time>
+                        {% if article.link.label|filterArray('type', 'publication')|length %}
+                            <span class="meta">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
+                        {% endif %}
+                    </p>
+                    {% if article.link.person.author|length > 0 %}
+                        <p class="meta meta--lowercase">{{ author.long(article.link.person.author) }}</p>
+                    {% endif %}
+                    <div class="leader trailer--small">{% include "partials/location.html.twig" with {location: article.analysis.geoname.geonames|locationSpecific} %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% if not loop.last %}
+    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+{% endif %}

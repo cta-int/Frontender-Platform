@@ -97,14 +97,11 @@
                 /*$("body").append($("<button class=\"button\" style=\"position: fixed; right: 30px; bottom: 30px;\">Show/Hide Grid</button>").on("click", function(el){
                   $("body").toggleClass("debug-grid");
                 }));*/
-                $('#ctx-item__location, #ctx-item__article, #ctx-item__country').selectize({
+                $('#ctx-item__location, #ctx-item__article, #ctx-item__country, #ctx-item__theme, #ctx-item__area, #ctx-item__scope, #ctx-item__date').selectize({
                     allowEmptyOption: true
                 });
                 $('#ctx-item__topic').selectize({
                     maxItems: 3,
-                    allowEmptyOption: true
-                });
-                $('#ctx-item__date').selectize({
                     allowEmptyOption: true
                 });
                 $(document).on('click', 'a[href]', function(model) {
@@ -178,12 +175,56 @@
         </script>
 
         <script>
-          !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
-          arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
-          d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
-          insertBefore(d,q)}(window,document,'script','_gs');
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
 
-          _gs('GSN-309811-I');
+        <script type="module">
+            import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-window.prod.mjs';
+
+            if ('serviceWorker' in navigator) {
+              const wb = new Workbox('/service-worker.js');
+
+              // Add an event listener to detect when the registered
+              // service worker has installed but is waiting to activate.
+              wb.addEventListener('waiting', (event) => {
+                // `event.wasWaitingBeforeRegister` will be false if this is
+                // the first time the updated service worker is waiting.
+                // When `event.wasWaitingBeforeRegister` is true, a previously
+                // updated same service worker is still waiting.
+                // You may want to customize the UI prompt accordingly.
+
+                // Assumes your app has some sort of prompt UI element
+                // that a user can either accept or reject.
+                const prompt = createUIPrompt({
+                  onAccept: async () => {
+                    // Assuming the user accepted the update, set up a listener
+                    // that will reload the page as soon as the previously waiting
+                    // service worker has taken control.
+                    wb.addEventListener('controlling', (event) => {
+                      window.location.reload();
+                    });
+
+                    // Send a message telling the service worker to skip waiting.
+                    // This will trigger the `controlling` event handler above.
+                    // Note: for this to work, you have to add a message
+                    // listener in your service worker. See below.
+                    wb.messageSW({type: 'SKIP_WAITING'});
+                  },
+
+                  onReject: () => {
+                    prompt.dismiss();
+                  }
+                })
+              });
+
+              wb.register();
+            }
         </script>
     </head>
 

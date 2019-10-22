@@ -5,7 +5,7 @@
     <div class="fld">
         <label for="ctx-item__date" class="fld-label">{{ labels.field_label|t(locales)|default('Region'|i18n) }}</label>
         <select id="ctx-item__date" name="upcoming" class="placeholder-visible">
-            <option value="">{{ 'All'|i18n }}</option>
+            <option value="">{{ 'Any'|i18n }}</option>
             <option value="true" {% if config.selected == true or query.upcoming == "true" %}selected="selected" {% endif %}>{{ 'Upcoming'|i18n }}</option>
             <option value="false" {% if config.selected == false or query.upcoming == "false" %}selected="selected" {% endif %}>{{ 'Passed'|i18n }}</option>
         </select>

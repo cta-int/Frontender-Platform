@@ -7,7 +7,7 @@
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         <div class="post post--hero  |  layout layout--even">
             <div class="post__media  |  layout__cell  |  gutters">
-                <a class="is-heir" href="{{ route({'page': model.article|first.path, 'slug': model.articl|first.headline|t(locales)|slugify, id: model|first._id}) }}">
+                <a class="is-heir" href="{{ route({'page': model|first.path, 'slug': model|first.headline|t(locales)|slugify, id: model|first._id}) }}">
                     {{ image.post(model|first.link.mediaObject|lead) }}
                 </a>
             </div>

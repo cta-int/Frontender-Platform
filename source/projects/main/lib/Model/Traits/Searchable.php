@@ -32,6 +32,11 @@ trait Searchable
         $values['should'] = array_key_exists('should', $values) && is_array($values['should']) ? $values['should'] : $this->getState()->should;
         $values['mustNot'] = array_key_exists('mustNot', $values) && is_array($values['mustNot']) ? $values['mustNot'] : $this->getState()->mustNot;
 
+        if (isset($values['time']) && !empty($values['time'])) {
+            $values['from'] = date('c', strtotime($values['time'], strtotime('now')));
+            $values['to'] = date('c', strtotime('now'));
+        }
+
         if (isset($values['location']) && !empty($values['location'])) {
             $values['must'][] = $this->addTerm('geo', 'http://sws.geonames.org/' . $values['location'] . '/');
         }
@@ -56,7 +61,7 @@ trait Searchable
 
         if (array_key_exists('concepts', $values)) {
             foreach ($values['concepts'] as $term) {
-                $values['must'][] = $this->addTerm('concept', 'http://aims.fao.org/aos/agrovoc/' . $term);
+                $values['must'][] = $this->addTerm('keyphrase', $term);
             }
         }
 
@@ -80,6 +85,7 @@ trait Searchable
         }
 
         $values['must'] = array_unique($values['must'], SORT_REGULAR);
+        $values['should'] = array_unique($values['should'], SORT_REGULAR);
 
         return parent::setState($values);
     }

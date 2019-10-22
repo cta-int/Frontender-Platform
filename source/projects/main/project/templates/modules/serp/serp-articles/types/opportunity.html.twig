@@ -1,0 +1,73 @@
+{% import "macros/concept.html.twig" as concept %}
+{% set resource_route = route({'page': article.articleType|replace({'_': '-'}), id: article._id, 'slug': article.headline|t(locales)|slugify}) %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+<div class="media">
+    <div class="media__figure  |  gutters gutter-mobile--right">
+        <span class="stamp stamp--{{ article.procurementStatus }}">
+            <span class="stamp__body">{{ article.procurementStatus|t(locales) }}</span>
+        </span>
+    </div>
+    <div class="media__content">
+        <div class="media media--unfold">
+            <div class="media__body  |  gutters  |  trailer">
+                <h1 class="title title--section"><a class="is-heir  anchor--shy" href="{{ resource_route }}">{{ article.headline }}</a></h1>
+                <p>{{ article.about|highlightText(query.q, 'highlight')|raw }}</p>
+                {% if article.analysis.agrovoc.concepts|length > 0 or article.strategy|length > 0 %}
+                    <div class="leader">
+                        <ul class="reset  |  label-list  |  clear  |  list--inline">
+                            {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                                <li>{{ concept.tag(label, locale) }}</li>
+                            {% endfor %}
+
+                            {% if article.strategy %}
+                                <li class="{{ article.strategy.selector }}">
+                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ article.strategy._id }}">{{ article.strategy.name|split('/')|last }}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="media__figure  media__aside  |  wings  |  trailer">
+                <dl class="meta  |  trailer--normal trailer-inside--tiny  |  gutters">
+                    {% if article.datePublished %}
+                        <dt><strong>{{ 'published on'|i18n }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ article.datePublished|tdate('%e %B %Y') }}
+                        </dd>
+                    {% endif %}
+                    {% if article.procurementStartDate and not article.articleType in ['vacancy'] %}
+                        <dt><strong>{{ labels.procurementStartDate|default('indicative starting date')|i18n }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {{ article.procurementStartDate|tdate('%e %B %Y') }} {{ article.procurementStartDisplay|t(locales) }}
+                        </dd>
+                    {% endif %}
+                    {% if article.procurementEndDate or article.procurementEndDisplay|t(locales) %}
+                        <dt><strong>{{ labels.procurementEndDate|default('Closing date for application')|i18n }}:</strong></dt>
+                        <dd class="trailer--small">
+                            {% if article.procurementEndDisplay|t(locales) %}
+                                {{ article.procurementEndDisplay|t(locales) }}
+                            {% else %}
+                                {{ article.procurementEndDate|tdate('%e %B %Y') }}
+                            {% endif %}
+                        </dd>
+                    {% endif %}
+                    {% if article.procurementType|t(locales) %}
+                        <dt><strong>{{ labels.procurementType|default('type of contract')|i18n }}:</strong></dt>
+                        <dd class="trailer--small">{{ article.procurementType|t(locales) }}</dd>
+                    {% endif %}
+                </dl>
+                {% if article.link.organization.sourceOrganization|length > 0 %}
+                    <div class="gutters">
+                        {% include "partials/location.html.twig" with {"location": {name: article.link.organization.sourceOrganization|first.location.address.addressLocality ~ ', ' ~ article.link.organization.sourceOrganization|first.location.address.addressCountry}} %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if not loop.last %}
+    <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+{% endif %}

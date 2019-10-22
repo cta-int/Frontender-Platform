@@ -1,1 +1,88 @@
-{% include "modules/serp/serp-articles/types/champion.html.twig" %}
+{% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as author %}
+{% import "macros/label.html.twig" as label %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/date.html.twig" as date %}
+
+<!-- Check if publication -->
+{% if article.publicationLabel %}
+    {% set issue_route = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, 'id': article._id}) %}
+    <article class="media">
+        <div class="media__content">
+            <div class="media media--unfold">
+                <div class="media__body  |  gutters">
+                    <div class="publication-tile publication-tile--s media leader--normal trailer--normal">
+                        {% if article.contentBlocks|filterArray('subtype', 'image') %}
+                            <div class="publication-tile__cover media__figure gutter--right">
+                                <figure class="publication-cover publication-cover--s">
+                                    <a href="{{ issue_route }}">
+                                        {{ image.contentBlock_cover(article.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                    </a>
+                                </figure>
+                            </div>
+                        {% endif %}
+                        <div class="media__body  gutters">
+                            <h2 class="heading">
+                                <a class="is-heir" href="{{ issue_route }}">
+                                    {{ article.headline|t(locales)|highlightText(query.q, 'highlight')|raw }}
+                                </a>
+                            </h2>
+                            {% if article.about|t(locales) %}
+                                <p>{{ article.about|t(locales)|highlightText(query.q, 'highlight')|raw }}</p>
+                            {% endif %}
+                            <div class="leader">
+                                {% if article.analysis.agrovoc.concepts|length > 0 or article.strategy|length > 0 %}
+                                    <ul class="reset label-list clear list--inline">
+                                        {% for label in article.analysis.agrovoc.concepts|slice(0, 10) %}
+                                            <li>{{ concept.tag(label, locale) }}</li>
+                                        {% endfor %}
+
+                                        {% if article.strategy %}
+                                            <li class="{{ article.strategy.selector }}">
+                                                <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ article.strategy._id }}">{{ article.strategy.name|split('/')|last }}</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media__figure  media__aside  |  wings">
+                    <div class="gutters">
+                        {% if article.strategyLabel or article.datePublished %}
+                            <dl class="dlist">
+                                {% if article.strategyLabel %}
+                                    <dt class="dlist__label meta meta--s">{{ 'area' | i18n }}: </dt>
+                                    <dd class="dlist__value meta meta--s meta--lc"><strong>{{ article.strategyLabel.name|t(locales)|replace({'Strategy/':''}) }}</strong></dd>
+                                {% endif %}
+                                {% if article.datePublished %}
+                                    <dt class="dlist__label meta meta--s">{{ 'published' | i18n }}: </dt>
+                                    <dd class="dlist__value meta meta--s meta--lc">{{ date.issue_year(article.datePublished, null, ' ') }}</dd>
+                                {% endif %}
+                            </dl>
+                        {% endif %}
+                        {% if article.externalLink|length > 0 %}
+                            <div>
+                                {% for link in article.externalLink %}
+                                    <a class="publication-download publication-download--s  |  trailer--tiny  |  leader--small" href="{{ link.url }}">
+                                        <span class="publication-download__item">{{ link.name }}</span>
+                                        {% if link.url|getFileSize %}
+                                            <span class="publication-download__item">{{ link.url|getFileSize }}</span>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    {% if not loop.last %}
+        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
+    {% endif %}
+{% else %}
+    {% include "modules/serp/serp-articles/types/champion.html.twig" %}
+{% endif %}
