@@ -17,6 +17,8 @@
     {% set issue_articles = model.issue.articles({'limit': 14}) %}
     {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
 
+    {{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+
     {% set class = helper.class(config)|trim %}
     <div {{ helper.class_attribute(config, 'layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
         <div class="layout__cell layout__cell--main wings">
@@ -114,7 +116,7 @@
             {% endif %}
 
         </div>
-        <div class="layout__cell layout__cell--aside  |  trailer-inside--hero  |  wing--left">
+        <div class="layout__cell layout__cell--aside  |  trailer-inside--hero  |  wing--left  |  is-screen">
             {% if model.about %}
                 <p class="gutters  |  paragraph paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}
