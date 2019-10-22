@@ -10,6 +10,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set related_issues = model.related.issues %}
 
+{{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+
 <div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">
         <div class="layout">
@@ -130,7 +132,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
                 {% if show_digital_identifier|default(1) or show_publisher|default(1) %}
                     {% if model.isbn %}
                         <dl class="meta  |  trailer--hero  |  gutters">
@@ -193,7 +195,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
 
         {% if related_issues|length > 0 %}
             <aside class="trailer">

@@ -5,6 +5,8 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+
 <div class="layout layout--reverse post-body">
     <div class="layout__cell layout__cell--main">
         <div class="layout">
@@ -113,7 +115,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
 
         {% if model.articleType == "review" %}
             {# Add image with type of product here #}

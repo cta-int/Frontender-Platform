@@ -5,6 +5,8 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+
 <div class="layout layout--reverse post-body">
     <div class="layout__cell layout__cell--main">
         <div class="layout">
@@ -150,7 +152,7 @@
                 {% endif %}
 
                 {% if show_downloads|default(1) and model.link.mediaObject|findType('file')|length > 0 %}
-                    <section class="trailer--hero  |  gutters">
+                    <section class="trailer--hero  |  gutters  |  is-screen">
                         <h2 class="title title--apropos  |  trailer--small">{{ 'Downloads'|i18n }}</h2>
 
                         {% for file in model.link.mediaObject|findType('file') %}
@@ -164,10 +166,10 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings ">
 
         {% if model.analysis.geoname.geonames|locationSpecific %}
-            <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero">
+            <div class="mini-map  |  well well--neutral  |  gutters-outside  |  trailer--hero |  is-screen">
                 <div class="mini-map__map" itemprop="hasMap">
                     <div id="map" style="height: 250px;" itemprop="map"></div>
                     {{ location.map(model.analysis.geoname.geonames | locationSpecific, "#map") }}
@@ -179,7 +181,7 @@
         {% endif %}
 
         {% if model.link.person.author|filterArray('description', null)|length > 0 %}
-            <aside class="trailer--hero">
+            <aside class="trailer--hero |  is-screen">
                 {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
                     <h2 class="title  |  trailer--normal  |  gutters">{{ 'authors'|t(locales) }}</h2>
                 {% else %}
@@ -201,7 +203,7 @@
                 {% endfor %}
             </aside>
         {% else %}
-            <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+            <span class="is-screen" itemprop="author" itemscope itemtype="https://schema.org/Organization">
                 <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
             </span>
         {% endif %}

@@ -1,6 +1,8 @@
 {% import "macros/share.html.twig" as share %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+
 <div class="layout layout--reverse post-body">
     <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="layout">
@@ -67,7 +69,7 @@
                 </dl>
 
                 {% if model.link.mediaObject|findType('file')|length > 0 %}
-                    <section class="trailer trailer-inside--small  |  gutters">
+                    <section class="trailer trailer-inside--small  |  gutters |  is-screen">
                         <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|i18n }}</h2>
 
                         {% for file in model.link.mediaObject|findType('file') %}
@@ -85,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  leader-inside--hero  |  trailer-inside--hero">
+    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  leader-inside--hero  |  trailer-inside--hero |  is-screen">
 
         <aside>
             {% for loopContainer in containers %}

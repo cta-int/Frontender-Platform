@@ -7,6 +7,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+{{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout layout--split article--issue')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="post-body layout__cell layout__cell--main wings leader-inside--hero trailer-inside--hero layout__cell--divider-outside">
@@ -41,7 +42,7 @@
             {{ share.bar_article(model) }}
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wings">
+    <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wings is-screen">
         {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
         {% if similar_issues|length > 0 %}
             <aside class="trailer">
