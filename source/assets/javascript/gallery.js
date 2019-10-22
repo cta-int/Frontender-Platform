@@ -5,6 +5,7 @@
         this.config = config;
         this.index = 0;
         this.length = config.children.length - 1;
+        this.stage = this.$element.find('[data-stage]');
 
         this.closeModal();
         this.bindEvents();
@@ -91,12 +92,12 @@
             method = 'get' + (type[0].toUpperCase() + type.slice(1).toLowerCase()) + 'Template';
 
         // If no data is defined we will close the modal again.
-        if (!modalData || !type || !method || !this[method] || !this.config.stage) {
+        if (!modalData || !type || !method || !this[method] || !this.stage) {
             return false;
         }
 
         // Get the type of the item.
-        this.config.stage.html(
+        this.stage.html(
             this[method](modalData)
         );
 

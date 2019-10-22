@@ -80,7 +80,7 @@
 <div class="cloak">
     <div class="stage" id="stage">
         <div class="stage__cue">
-            <div id="center-stage"></div>
+            <div data-stage id="center-stage"></div>
             <button data-previous class="stage__prev" id="prev">Previous</button>
             <button data-next class="stage__next" id="next">Next</button>
         </div>
@@ -118,8 +118,7 @@
 
     $(document).ready(function() {
         $('.cloak').gallery({
-            children: $('[data-modal]'),
-            stage: $('#center-stage')
+            children: $('[data-modal]')
         });
 
         
