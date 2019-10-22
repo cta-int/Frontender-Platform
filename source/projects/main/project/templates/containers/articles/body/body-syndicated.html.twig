@@ -123,7 +123,7 @@
                 {% endif %}
 
                 {% if show_partners|default(1) and model.link.organization.partnerOrganization|length > 0 %}
-                    <section class="trailer--hero  |  gutters">
+                    <section class="trailer--hero  |  gutters  |  is-screen">
                         <h2 class="title title--apropos">{{ 'Partners'|t(locales) }}</h2>
                         <ul class="reset">
                             {% for organization in model.link.organization.partnerOrganization %}
@@ -134,7 +134,7 @@
                 {% endif %}
 
                 {% if show_internal_links|default(1) and model.internalLink|length > 0 %}
-                    <section class="trailer--hero  |  gutters">
+                    <section class="trailer--hero  |  gutters  |  is-screen">
                         <h2 class="title title--apropos  |  trailer--small">{{ 'Internal links'|t(locales) }}</h2>
                         {% for link in model.internalLink %}
                             <a href="{{ link.url }}">{{ link.name }}</a>
@@ -143,7 +143,7 @@
                 {% endif %}
 
                 {% if show_external_links|default(1) and model.externalLink|length > 0  %}
-                    <section class="trailer--hero  |  gutters">
+                    <section class="trailer--hero  |  gutters  |  is-screen">
                         <h2 class="title title--apropos  |  trailer--small">{{ 'External links'|i18n }}</h2>
                         {% for link in model.externalLink %}
                             {% include 'partials/icon-link.html.twig' with {link: link} %}

@@ -6,6 +6,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set resource_link = route({'page': model.similar.articles|first.path,'slug': model.similar.articles|first.headline|t(locales)|slugify,'id': model.similar.articles|first._id}) %}
 
+
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout trailer-inside--small')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="layout__cell layout__cell--aside  |  wing--left">
         <div class="trailer  |  post post--hero  |  gutter--right">
