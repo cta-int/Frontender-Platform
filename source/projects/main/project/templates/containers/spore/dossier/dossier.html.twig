@@ -2,7 +2,7 @@
 {% import "macros/author.html.twig" as author %}
 {% import "macros/image.html.twig" as image %}
 {{ 'containers/spore/dossier/dossier.js.twig'|addScript('beforeBodyEnd') }}
-{{ 'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+{{ 'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set resource_link = route({'page': model.similar.articles|first.path,'slug': model.similar.articles|first.headline|t(locales)|slugify,'id': model.similar.articles|first._id}) %}

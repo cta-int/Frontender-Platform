@@ -9,7 +9,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set related_issues = model.related.issues %}
 
-{{ 'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+{{ 'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
 <div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">

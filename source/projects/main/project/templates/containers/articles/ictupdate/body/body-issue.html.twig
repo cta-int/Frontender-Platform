@@ -17,7 +17,7 @@
     {% set issue_articles = model.issue.articles({'limit': 14}) %}
     {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
 
-    {{'containers/articles/body/print/champion.html.twig'|addStyle('styles') }}
+    {{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
     {% set class = helper.class(config)|trim %}
     <div {{ helper.class_attribute(config, 'layout layout--reverse')|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} itemscope itemtype="https://schema.org/Article">
