@@ -7,7 +7,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
-{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout layout--split article--issue')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="post-body layout__cell layout__cell--main wings leader-inside--hero trailer-inside--hero layout__cell--divider-outside">
@@ -40,7 +39,7 @@
 
         <div class="gutters  |  is-screen">
             <div class="well  |  leader  |  trailer">
-                {{ share.bar_article(model) }}
+                {{ share.bar_issue(model) }}
             </div>
         </div>
 
