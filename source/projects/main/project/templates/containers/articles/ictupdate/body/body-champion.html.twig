@@ -9,6 +9,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set related_issues = model.related.issues %}
 
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
+
 <div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">
         <div class="layout">
@@ -67,8 +69,8 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                    <div class="gutters">
+                <div class="gutters  |  is-screen">
+                    <div class="well  |  leader  |  trailer">
                         {{ share.bar_ictupdate_article(model) }}
                     </div>
                 </div>
@@ -126,7 +128,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
                 {% if model.issue.articles|length > 0 %}
                     <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
                     <div class="grid gutters trailer">
@@ -202,7 +204,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
         {% if related_issues|length > 0 %}
             <aside class="trailer">
                 <h2 class="title trailer-inside--normal gutters">{{ content.related_headline|t(locales)|default('related_publications'|i18n) }}</h2>

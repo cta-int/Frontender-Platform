@@ -9,6 +9,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
 {% set layout = [config.layout|default('layout layout--split')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
 <{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
@@ -93,8 +94,8 @@
             </aside>
         {% endif %}
 
-        <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-            <div class="gutters">
+        <div class="gutters  |  is-screen">
+            <div class="well  |  leader  |  trailer">
                 {{ share.bar_ictupdate_article(model) }}
             </div>
         </div>
@@ -146,7 +147,7 @@
         {% endif %}
 
     </div>
-    <div class="layout__cell layout__cell--aside wings">
+    <div class="layout__cell layout__cell--aside wings is-screen">
 
         <aside class="wing--right">
             <h1 class="title title--section wing--right gutters">{{ labels.see_others_title|t(locales) }}</h1>

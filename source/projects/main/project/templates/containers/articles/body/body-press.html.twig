@@ -2,6 +2,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ hashedPath('/assets/css/press.css')|addStyle('styles') }}
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
 
 {% set layout = [config.layout|default('layout layout--split divider divider--top')|trim, config.vertical_alignment ? config.vertical_alignment|trim, config.show_secondary_first ? 'layout--reverse', config.show_narrow ? 'layout--narrow']|join(' ')|trim %}
 <{{ config.container_tag|default('article') }}{{ helper.class_attribute(config, layout)|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

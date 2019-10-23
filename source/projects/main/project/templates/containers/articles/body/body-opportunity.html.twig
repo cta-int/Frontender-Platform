@@ -1,6 +1,8 @@
 {% import "macros/share.html.twig" as share %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
+
 <div class="layout layout--reverse post-body">
     <div class="layout__cell layout__cell--main  |  leader-inside--hero  |  trailer-inside--hero">
         <div class="layout">
@@ -24,11 +26,11 @@
                     {% endfor %}
                 </div>
 
-                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                    <div class="gutters">
+                <div class="gutters  |  is-screen  |  is-gt-small-desktop">
+                    <div class="well  |  leader  |  trailer">
                         {{ share.bar_article_linkedin(model) }}
                     </div>
-                </div>
+                </div> 
 
             </div>
             <div class="layout__cell layout__cell--aside  |  wings">
@@ -89,7 +91,7 @@
                 {% endif %}
 
                 {% if model.link.mediaObject|findType('file')|length > 0 %}
-                    <section class="trailer trailer-inside--small  |  gutters">
+                    <section class="trailer trailer-inside--small  |  gutters  |  is-screen">
                         <h2 class="title title--apropos  |  trailer--normal">{{ 'Downloads'|i18n }}</h2>
 
                         {% for file in model.link.mediaObject|findType('file') %}
@@ -98,9 +100,9 @@
                     </section>
                 {% endif %}
 
-                 <div class="well  |  leader  |  trailer  |  is-lt-small-desktop">
-                    <div class="gutters">
-                            {{ share.bar_article_linkedin(model) }}
+                <div class="gutters  |  is-screen  |  is-lt-small-desktop">
+                    <div class="well  |  leader  |  trailer">
+                        {{ share.bar_article_linkedin(model) }}
                     </div>
                 </div>
 
@@ -108,9 +110,9 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  leader-inside--hero  |  trailer-inside--hero">
+    <div class="layout__cell layout__cell--aside layout__cell--divider  |  wings  |  leader-inside--hero  |  trailer-inside--hero  | is-screen">
         <aside>
-            {% for loopContainer in containers %}
+            {% for loopContainer in containers|default(null) %}
                 {% include loopContainer.template with loopContainer %}
             {% endfor %}
         </aside>

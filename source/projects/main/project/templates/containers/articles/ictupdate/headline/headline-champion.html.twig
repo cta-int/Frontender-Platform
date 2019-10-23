@@ -26,7 +26,7 @@
                 <p class="title title--section  |  gutters"><strong class="reset">{{ label.publication_to_string(model.link.label|filterArray('type', 'publication'), false)|replace({'Spore/': ''}) }}</strong></p>
             {% endif %}
         </div>
-        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  |  wings  |  is-screen  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
             {% if model.link.mediaObject|lead %}
                 {% if model.link.mediaObject|lead.about %}
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about|t(locales) }}</p>

@@ -37,11 +37,14 @@
             </div>
         {% endif %}
 
-        <div class="well  |  gutters-outside  |  leader  |  trailer  |  is-lt-small-desktop">
-            {{ share.bar_article(model) }}
+        <div class="gutters  |  is-screen">
+            <div class="well  |  leader  |  trailer">
+                {{ share.bar_issue(model) }}
+            </div>
         </div>
+
     </div>
-    <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wings">
+    <div class="layout__cell layout__cell--aside  leader-inside--hero trailer-inside--hero wings is-screen">
         {% set similar_issues = model.similar.issues({'limit': 4, 'label': 'strategy'}) %}
         {% if similar_issues|length > 0 %}
             <aside class="trailer">
