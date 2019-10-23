@@ -28,8 +28,10 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <div class="well  |  gutters-outside  |  leader  |  trailer">
-                {{ share.bar_article(model) }}
+            <div class="gutters-outside  |  is-screen">
+                <div class="well  |  leader  |  trailer">
+                    {{ share.bar_article(model) }}
+                </div>
             </div>
 
             {% if model.chair | length > 0 %}
