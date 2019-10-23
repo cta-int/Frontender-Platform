@@ -208,7 +208,7 @@
                             <div class="publication-tile__cover media__figure gutters">
                                 <figure class="publication-cover">
                                     <a href="{{ issue_route }}">
-                                        {{ image.contentBlock_cover(issue.contentBlocks|t(locales)|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
                                     </a>
                                 </figure>
                             </div>
