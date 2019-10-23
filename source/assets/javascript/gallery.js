@@ -48,18 +48,13 @@
     }
 
     Gallery.prototype.getVideoTemplate = function (content) {
-        var media = '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
-
         if (content.metadata.url.match(/youtube.com/g)) {
-            media = '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            return '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         } else if (content.metadata.url.match(/vimeo.com/g)) {
-            media = '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
+            return '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
         }
 
-        return {
-            media: media,
-            meta: false
-        };
+        return '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
     }
 
     Gallery.prototype.showNext = function () {
@@ -106,6 +101,13 @@
         }
 
         var output = this[method](modalData);
+
+        if (typeof output === 'string') {
+            output = {
+                media: output,
+                meta: false
+            };
+        }
 
         // Get the type of the item.
         this.mediaStage.html(output.media);
