@@ -3,14 +3,20 @@
         body {
                 padding: 2cm 1.5cm 1.5cm 2cm;
         }
-        [itemtype="http://schema.org/Article"] + [data-frontender],
-        .is-screen,
+        [data-frontender],
         .masthead,
         .site-footer,
         .share-list,
-        [data-vendor~="commento"],
+        [data-vendor*="commento"],
         #commento {
                 display: none;
+        }
+        .is-screen {
+                display: none !important;
+        }
+        [itemtype*="schema.org/Article"],
+        [itemtype*="schema.org/Article"] [data-frontender] {
+                display: block;
         }
         .well,
         .article-headline {

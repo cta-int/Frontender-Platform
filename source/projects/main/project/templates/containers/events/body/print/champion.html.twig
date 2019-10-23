@@ -45,15 +45,20 @@
                 background: none !important;
                 color: inherit;
         }
-
-        [itemtype="http://schema.org/Event"] + [data-frontender],
-        .is-screen,
+        [data-frontender],
         .masthead,
         .site-footer,
         .share-list,
-        [data-vendor~="commento"],
+        [data-vendor*="commento"],
         #commento {
                 display: none;
+        }
+        .is-screen {
+                display: none !important;
+        }
+        [itemtype*="schema.org/Event"],
+        [itemtype*="schema.org/Event"] [data-frontender] {
+                display: block;
         }
         .well,
         .article-headline {
