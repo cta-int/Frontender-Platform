@@ -40,18 +40,18 @@
     };
 
     Gallery.prototype.getImageTemplate = function (content) {
-        return '<img src="' + content.metadata.url + '" width="800" height="500">';
+        return '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">';
     }
 
     Gallery.prototype.getVideoTemplate = function (content) {
         if (content.metadata.url.match(/youtube.com/g)) {
-            return '<iframe width="800" height="500" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            return '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         } else if (content.metadata.url.match(/vimeo.com/g)) {
-            return '<iframe width="800" height="500" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
+            return '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
         }
 
         // If not wrap the cover in an anchor tag
-        return '<a href="' + content.metadata.url + '"><img src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
+        return '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
     }
 
     Gallery.prototype.showNext = function () {
@@ -80,7 +80,8 @@
     }
 
     Gallery.prototype.openModal = function () {
-        this.$element.css('visibility', 'visible');
+        // this.$element.css('visibility', 'visible');
+        this.$element.addClass('gallery--active');
     }
 
     Gallery.prototype.activateSlide = function (slide) {
@@ -105,7 +106,8 @@
     }
 
     Gallery.prototype.closeModal = function () {
-        this.$element.css('visibility', 'hidden');
+        // this.$element.css('visibility', 'hidden');
+        this.$element.removeClass('gallery--active');
     }
 
     $.fn.gallery = function (config) {

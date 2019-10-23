@@ -1,180 +1,110 @@
-{% import "macros/image.html.twig" as image %}
-{% import "macros/template.html.twig" as helper %}
-{{ '/assets/javascript/gallery.js'|addScript('beforeBodyEnd') }}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'grid grid--teletubbies')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-    {# {% for related in model.mediaObject %}
-        <div class="grid__cell  |  trailer  |  gutters">
-            {% if related.metadata.previewUrl %}
-                <a class="is-root" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                    {{ image.post(related) }}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
 
-                    {% if related.type|t(locales) == 'file' %}
-                        <span class="av">
-                            <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% elseif related.type|t(locales) == 'image' %}
-                        <span class="av">
-                            <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% elseif related.type|t(locales) == 'video' %}
-                        <span class="av">
-                            <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% endif %}
-                </a>
-            {% endif %}
+{{ '/assets/javascript/gallery.js'|addScript('beforeBodyEnd') }}
+{{ 'containers/media/gallery/gallery.js.twig'|addAsset('beforeBodyEnd') }}
+{{ 'containers/media/gallery/gallery.css.twig'|addAsset('styles') }}
 
-            {% if related.type|t(locales) %}
-                <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
-            {% endif %}
-
-            {% if related.title|t(locales) %}
-                <h2 class="heading">
-                    <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                        {{ related.title|t(locales) }}
-                    </a>
-                </h2>
-            {% endif %}
-        </div>
-    {% endfor %} #}
-
-    {% for related in model.link.mediaObject %}
-        <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
-            {% if related.metadata.previewUrl %}
-                    {{ image.post(related) }}
-
-                    {% if related.type|t(locales) == 'file' %}
-                        <span class="av" id="this-content">
-                            <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% elseif related.type|t(locales) == 'image' %}
-                        <span class="av">
-                            <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% elseif related.type|t(locales) == 'video' %}
-                        <span class="av">
-                            <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                        </span>
-                    {% endif %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="grid grid--teletubbies">
+        {# {% for related in model.mediaObject %}
+            <div class="grid__cell  |  trailer  |  gutters">
+                {% if related.metadata.previewUrl %}
                     <a class="is-root" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                        </a>
-            {% endif %}
+                        {{ image.post(related) }}
 
-            {% if related.type|t(locales) %}
-                <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
-            {% endif %}
-
-            {% if related.title|t(locales) %}
-                <h2 class="heading">
-                    <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                        {{ related.title|t(locales) }}
+                        {% if related.type|t(locales) == 'file' %}
+                            <span class="av">
+                                <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif related.type|t(locales) == 'image' %}
+                            <span class="av">
+                                <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif related.type|t(locales) == 'video' %}
+                            <span class="av">
+                                <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% endif %}
                     </a>
-                </h2>
-            {% endif %}
-        </div>
-    {% endfor %}
-</{{ config.container_tag|default('div') }}>
-<div class="cloak">
-    <div class="stage" id="stage">
-        <div class="stage__cue">
-            <div data-stage id="center-stage"></div>
-            <button data-previous class="stage__prev" id="prev">Previous</button>
-            <button data-next class="stage__next" id="next">Next</button>
-        </div>
-        <button data-close class="stage__trigger">x</button>
+                {% endif %}
+
+                {% if related.type|t(locales) %}
+                    <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
+                {% endif %}
+
+                {% if related.title|t(locales) %}
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
+                            {{ related.title|t(locales) }}
+                        </a>
+                    </h2>
+                {% endif %}
+            </div>
+        {% endfor %} #}
+
+        {% for related in model.link.mediaObject %}
+            <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
+                {% if related.metadata.previewUrl %}
+                        {{ image.post(related) }}
+
+                        {% if related.type|t(locales) == 'file' %}
+                            <span class="av" id="this-content">
+                                <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif related.type|t(locales) == 'image' %}
+                            <span class="av">
+                                <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif related.type|t(locales) == 'video' %}
+                            <span class="av">
+                                <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% endif %}
+                        <a class="is-root" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
+                            </a>
+                {% endif %}
+
+                {% if related.type|t(locales) %}
+                    <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
+                {% endif %}
+
+                {% if related.title|t(locales) %}
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
+                            {{ related.title|t(locales) }}
+                        </a>
+                    </h2>
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
-</div>
-<style>
-    .cloak {
-        position: fixed;
-        top: 0; right: 0; bottom: 0; left: 0;
-        background: rgba(0,0,0,0);
-        z-index: -1;
-    }
-    .cloak--active {
-        background: rgba(0,0,0.64);
-        z-index: 0;
-    }
-    .stage {
-        display: table;
-        width: 100%;
-        height: 100%;
-    }
-    .stage__cue {
-        width: 800px;
-        padding: 20px;
-        vertical-align: middle;
-        text-align: center;
-        display: table-cell;
-    }
-</style>
+    <div class="gallery">
+        <div class="stage" id="stage">
+            <div class="stage__toggle leader-inside trailer-inside">
+                <button data-close class="button">{{ labels.bttn_close|default({'en-GB': 'Close', 'fr-FR': 'Fermer'})|t }}</button>
+            </div>
+            <div class="stage__cue">
 
-<script src="/assets/javascript/gallery.js"></script>
-<script>
-
-
-    $(document).ready(function() {
-        $('.cloak').gallery({
-            children: $('[data-modal]')
-        });
-
-        
-        /*$('[data-modal]').on('click', function(e) {
-
-            /*
-             * 1. Create modal
-             * 2. Insert content
-             * 3. Determine next and previous
-            
-            var el = $(this),
-                content = el.data('modal'),
-                next = el.next('[data-modal]'),
-                prev = el.prev('[data-modal]'),
-                first = el.parent().find('[data-modal]').first(),
-                last = el.parent().find('[data-modal]').last();
-
-                $('.cloak').css('visibility', 'visible');
-
-                var html = '';
-
-                switch(content.metadata.type) {
-                    case 'image':
-                        html = '<img src="'+content.metadata.url+'" width="800" height="500">';
-                        break;
-                    case 'video':
-                        // Is this a YT or Vimeo video?
-                        if (content.metadata.url.match(/youtube.com/g)) {
-                            html = '<iframe width="800" height="500" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-                        } else if (content.metadata.url.match(/vimeo.com/g)) {
-                            html = '<iframe width="800" height="500" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
-                        } else {
-                            // If not wrap the cover in an anchor tag
-                            html = '<a href="'+content.metadata.url+'"><img src="'+content.metadata.previewUrl+'" width="800" height="500"></a>';
-                        }
-                        html = '<a href="'+content.metadata.url+'" target="_blank"><img src="'+content.metadata.previewUrl+'" width="800" height="500"></a>';
-                        break;
-                    case 'file':
-                    default:
-                        html = '<div>Smack that '+content.metadata.type+' in here.</div>';
-                }
-
-                $('#center-stage').html(html);
-
-                $('.stage__trigger').on('click', function(){
-                    $('.cloak').hide().css('visibility', 'hidden').show();
-                });
-
-                $('#prev').on('click', function(){
-                    prev.trigger('click');
-                });
-                $('#next').on('click', function(){
-                    next.trigger('click');
-                });
+                <figure class="actor">
+                    <div class="actor__media-wrapper loading" data-stage id="center-stage"></div>
+                    <figcaption class="actor__meta well well--padded well--neutral gutters">
+                        <p class="caption">Maïmouna Sidibe Coulibaly’s company Faso Kaba sells seeds of maize, peanut, rice and sorghum that are adapted to the Sahelian climate</p>
+                        <p class="credit">© Abdoulaye Mahamadou</p>
+                    </figcaption>
+                </figure>
                 
+                <div class="stage__controls leader-inside trailer-inside">
+                    <button data-previous class="stage__prev button" id="prev">{{ labels.bttn_close|default({'en-GB': 'Previous', 'fr-FR': 'Précédent'})|t }}</button>
+                    <button data-next class="stage__next button" id="next">{{ labels.bttn_close|default({'en-GB': 'Next', 'fr-FR': 'Prochain'})|t }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="gallery__cloak"></div>
+    </div>
+</{{ config.container_tag|default('div') }}>
 
-        });*/
-    });
-</script>
+
