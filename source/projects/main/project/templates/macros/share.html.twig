@@ -38,6 +38,23 @@
     }, context) }}
 {% endmacro %}
 
+{% macro bar_issue(article, light, context = null) %}
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {% import _self as share %}
+
+    {{ share.bar({
+        light: light|default(false),
+        facebook: {
+            caption: article.headline
+        },
+        linkedin: false,
+        twitter: true,
+        print: false,
+        mail: false
+    }, context) }}
+{% endmacro %}
+
 {% macro press_article(article, light, context = null) %}
     {% import _self as share %}
     {% set url = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
@@ -78,6 +95,28 @@
             subject: article.headline,
             content: current_url()
         }
+    }, context) }}
+{% endmacro %}
+
+{% macro bar_ictupdate_issue(article, light, context = null) %}
+    {% import _self as share %}
+
+    {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+    
+    {{ share.bar({
+        light: light|default(false),
+        facebook: {
+            caption: article.headline,
+            app_id: '485838208862116'
+        },
+        ictupdate: {
+            number: article.issue.number,
+            issue: article.issue._id
+        },
+        linkedin: false,
+        twitter: true,
+        print: false,
+        mail: false
     }, context) }}
 {% endmacro %}
 
