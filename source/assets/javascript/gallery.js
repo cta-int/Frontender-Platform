@@ -41,9 +41,23 @@
     };
 
     Gallery.prototype.getImageTemplate = function (content) {
+        meta = false;
+
+        if (content.description) {
+            meta = '<p class="caption">' + content.description + '</p>';
+        }
+
+        if (content.credit) {
+            if (!meta) {
+                meta = '';
+            }
+
+            meta = meta + '<p class="credit">© ' + content.credit + '</p>';
+        }
+
         return {
             media: '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">',
-            meta: '<p class="caption">Maïmouna Sidibe Coulibaly’s company Faso Kaba sells seeds of maize, peanut, rice and sorghum that are adapted to the Sahelian climate</p><p class="credit">© Abdoulaye Mahamadou</p>'
+            meta: meta
         };
     }
 
