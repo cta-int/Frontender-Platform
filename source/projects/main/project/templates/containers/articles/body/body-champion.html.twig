@@ -73,11 +73,11 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                    <div class="gutters">
-                        {{ share.bar_article(model) }}
+                    <div class="gutters  |  is-screen  |  is-gt-small-desktop">
+                        <div class="well  |  leader  |  trailer">
+                            {{ share.bar_article(model) }}
+                        </div>
                     </div>
-                </div>
 
                 {% if model.articleType == "blog" %}
                 <div class="leader trailer gutters" data-vendor="commento">
@@ -187,8 +187,9 @@
                         {% endfor %}
                     </section>
                 {% endif %}
-                <div class="well  |  leader  |  trailer  |  is-lt-small-desktop">
-                    <div class="gutters trailer">
+
+                <div class="gutters  |  is-screen  |  is-lt-small-desktop">
+                    <div class="well  |  leader  |  trailer">
                         {{ share.bar_article(model) }}
                     </div>
                 </div>

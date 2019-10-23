@@ -45,11 +45,12 @@
                 </div>
             {% endif %}
         
-            <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                <div class="gutters">
+            <div class="gutters  |  is-screen">
+                <div class="well  |  leader  |  trailer">
                     {{ share.bar_article(model) }}
                 </div>
             </div>
+            
 
             {% if issue_interview|length or issue_articles|length %}
                 <p class="title title--section leader--hero trailer--hero"><span class="gutters">{{ 'in this issue'|i18n }}</span></p>
