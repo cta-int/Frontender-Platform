@@ -5,7 +5,8 @@
         this.config = config;
         this.index = 0;
         this.length = config.children.length - 1;
-        this.stage = this.$element.find('[data-stage]');
+        this.mediaStage = this.$element.find('[data-stage=media]');
+        this.metaStage = this.$element.find('[data-stage=meta]');
 
         this.closeModal();
         this.bindEvents();
@@ -40,18 +41,25 @@
     };
 
     Gallery.prototype.getImageTemplate = function (content) {
-        return '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">';
+        return {
+            media: '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">',
+            meta: '<p class="caption">Maïmouna Sidibe Coulibaly’s company Faso Kaba sells seeds of maize, peanut, rice and sorghum that are adapted to the Sahelian climate</p><p class="credit">© Abdoulaye Mahamadou</p>'
+        };
     }
 
     Gallery.prototype.getVideoTemplate = function (content) {
+        var media = '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
+
         if (content.metadata.url.match(/youtube.com/g)) {
-            return '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            media = '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         } else if (content.metadata.url.match(/vimeo.com/g)) {
-            return '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
+            media = '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
         }
 
-        // If not wrap the cover in an anchor tag
-        return '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
+        return {
+            media: media,
+            meta: false
+        };
     }
 
     Gallery.prototype.showNext = function () {
@@ -93,14 +101,21 @@
             method = 'get' + (type[0].toUpperCase() + type.slice(1).toLowerCase()) + 'Template';
 
         // If no data is defined we will close the modal again.
-        if (!modalData || !type || !method || !this[method] || !this.stage) {
+        if (!modalData || !type || !method || !this[method] || !this.mediaStage) {
             return false;
         }
 
+        var output = this[method](modalData);
+
         // Get the type of the item.
-        this.stage.html(
-            this[method](modalData)
-        );
+        this.mediaStage.html(output.media);
+
+        if (output.meta) {
+            this.metaStage.html(output.meta);
+            this.metaStage.show();
+        } else {
+            this.metaStage.hide();
+        }
 
         return true;
     }
