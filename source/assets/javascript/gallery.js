@@ -71,19 +71,29 @@
         return '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
     }
 
-    Gallery.prototype.showNext = function () {
+    Gallery.prototype.getNextSlide = function (reset) {
+        var currentIndex = this.index,
+            slide = null;
+
         ++this.index;
 
         if (this.index > this.length) {
             this.index = 0;
         }
 
-        this.activateSlide(
-            this.config.children[this.index]
-        );
+        slide = this.config.children[this.index];
+
+        if (reset) {
+            this.index = currentIndex;
+        }
+
+        return slide;
     }
 
-    Gallery.prototype.showPrevious = function () {
+    Gallery.prototype.getPreviousSlide = function (reset) {
+        var currentIndex = this.index,
+            slide = null;
+
         --this.index;
 
         if (this.index < 0) {
@@ -91,8 +101,24 @@
             this.index = this.length;
         }
 
+        slide = this.config.children[this.index];
+
+        if (reset) {
+            this.index = currentIndex;
+        }
+
+        return slide;
+    }
+
+    Gallery.prototype.showNext = function () {
         this.activateSlide(
-            this.config.children[this.index]
+            this.getNextSlide()
+        );
+    }
+
+    Gallery.prototype.showPrevious = function () {
+        this.activateSlide(
+            this.getPreviousSlide()
         );
     }
 
@@ -114,7 +140,13 @@
             return false;
         }
 
-        var output = this[method](modalData);
+        var output = this[method](modalData),
+            previousButton = this.$element.find('[data-previous]'),
+            nextButton = this.$element.find('[data-next]'),
+            previousData = $(this.getPreviousSlide(true)).data('modal'),
+            nextData = $(this.getNextSlide(true)).data('modal');
+
+        console.log(previousData, nextData);
 
         if (typeof output === 'string') {
             output = {
@@ -125,6 +157,9 @@
 
         // Get the type of the item.
         this.mediaStage.html(output.media);
+
+        nextButton.text(nextData.type + ': ' + nextData.title);
+        previousButton.text(previousData.type + ': ' + previousData.title);
 
         if (output.meta) {
             this.metaStage.html(output.meta);
