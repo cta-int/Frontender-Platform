@@ -85,7 +85,7 @@
     <div class="gallery">
         <div class="stage" id="stage">
             <div class="stage__toggle leader-inside trailer-inside">
-                <button data-close class="button">{{ labels.bttn_close|default({'en-GB': 'Close', 'fr-FR': 'Fermer'})|t }}</button>
+                <button data-close class="button button--inverse">{{ labels.bttn_close|default({'en-GB': 'Close', 'fr-FR': 'Fermer'})|t }}</button>
             </div>
             <div class="stage__cue">
 
@@ -94,10 +94,25 @@
                     <figcaption data-stage="meta" class="actor__meta well well--padded well--neutral gutters"></figcaption>
                 </figure>
                 
-                <div class="stage__controls leader-inside trailer-inside">
-                    <button data-previous class="stage__prev button" id="prev">{{ labels.bttn_close|default({'en-GB': 'Previous', 'fr-FR': 'Précédent'})|t }}</button>
-                    <button data-next class="stage__next button" id="next">{{ labels.bttn_close|default({'en-GB': 'Next', 'fr-FR': 'Prochain'})|t }}</button>
+                <div class="stage__controls leader-inside leader trailer-inside">
+                    <div class="stage__prev gutter-right">
+                        <button class="teleport teleport--inverse teleport--reverse  |  media  |  title" data-previous id="prev">
+                            <span class="teleport__trigger  |  media__image  |  icon icon--thin-arrow"></span>
+                            <span class="teleport__label  |  media__content media__stretcher  |  gutter-left  |  is-heir is-gt-large-handheld">
+                                {{ {'en-GB': 'Mediatype: Title previous media thing here'}|t(locales) }}
+                            </span>
+                        </button>
+                    </div>
+                    <div class="stage__next gutter-left">
+                        <button class="teleport teleport--inverse  |  media  |  title" data-next id="next">
+                            <span class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir is-gt-large-handheld">
+                                    {{ {'en-GB': 'Mediatype: Title next media thing here'}|t(locales) }}
+                            </span>
+                            <span class="teleport__trigger  |  media__image  |  icon icon--thin-arrow"></span>
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="gallery__cloak"></div>
