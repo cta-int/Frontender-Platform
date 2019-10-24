@@ -37,11 +37,33 @@
         text-align: right;
         flex: 0 0;
     }
-    .stage__controls .button:first-child {
-        float: left;
+
+    .stage__controls {
+       display: table;
     }
-    .stage__controls .button:last-child {
-        float: right;
+
+    .stage__controls .stage__prev,
+    .stage__controls .stage__next {
+        display: table-cell;
+        vertical-align: top;
+        width: 50%;
+    }
+    .stage__controls .stage__prev {
+        text-align: left;
+    }
+    .stage__controls .stage__next {
+        text-align: right;
+    }
+
+    .teleport {
+        text-align: inherit;
+        font-size: .85em;
+    }
+    .teleport__trigger:before {
+        font-size: 3em;
+    }
+    .teleport__label.teleport__label {
+        display: inline-block;
     }
 
     .actor {

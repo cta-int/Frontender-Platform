@@ -22,7 +22,13 @@ Styleguide 2.2
 */
 
 .gutter {
-  padding-right: gutter(1);
+  &,
+  &-right {
+    padding-right: gutter(1);
+  }
+  &-left {
+    padding-left: gutter(1);
+  }
   &-outside {
     margin-right: gutter(1);
   }

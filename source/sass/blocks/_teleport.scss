@@ -22,7 +22,7 @@ Styleguide 4.16
 	}
 	&__trigger:before {
 		position: relative;
-    top: 0.08em;
+    	top: 0.08em;
 		// font-size: 13px;
 		font-size: 2em;
 		@include theme-color;
@@ -31,5 +31,13 @@ Styleguide 4.16
 		.no-flexbox & {
 			width: percentage(3 / 4);
 		}
+	}
+	&--inverse,
+	&--inverse &__trigger:before {
+		color: $white;
+	}
+	&--reverse &__trigger {
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
 	}
 }
