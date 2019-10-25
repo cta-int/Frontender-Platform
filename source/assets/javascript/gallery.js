@@ -41,30 +41,24 @@
     };
 
     Gallery.prototype.getImageTemplate = function (content) {
-        meta = false;
-
-        if (content.title) {
-            meta = '<p class="caption">' + content.title + '</p>';
-        }
-
-        if (content.credit) {
-            if (!meta) {
-                meta = '';
-            }
-
-            meta = meta + '<p class="credit">© ' + content.credit + '</p>';
-        }
-
         return {
             media: '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">',
-            meta: meta
+            meta: this._createMeta({
+                title: 'title',
+                caption: 'description',
+                credit: 'credit'
+            }, content)
         };
     }
 
     Gallery.prototype.getVideoTemplate = function (content) {
         var media = {
             media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
-            meta: '<p class="caption">' + content.title + '</p>'
+            meta: this._createMeta({
+                title: 'title',
+                caption: 'description',
+                credit: 'credit'
+            }, content)
         };
 
         if (content.metadata.url.match(/youtube.com/g)) {
@@ -179,6 +173,44 @@
     Gallery.prototype.closeModal = function () {
         // this.$element.css('visibility', 'hidden');
         this.$element.removeClass('gallery--active');
+    }
+
+    /**
+     * This method will create a string used in the meta box.
+     */
+    Gallery.prototype._createMeta = function (information, data) {
+        var meta = false;
+
+        for (var index in information) {
+            if (information.hasOwnProperty(index)) {
+                var metaValue = getDataValue(information[index]);
+
+                if (!metaValue) {
+                    continue;
+                }
+
+                if (index == 'credit') {
+                    metaValue = '© ' + metaValue;
+                }
+
+                meta = meta || '';
+                meta += '<p class="' + index + '">' + metaValue + '</p>'
+            }
+        }
+
+        function getDataValue(key) {
+            var parts = key.split('.');
+
+            return parts.reduce(function (carry, part) {
+                if (!carry.hasOwnProperty(part) || !carry[part] || !carry) {
+                    return false;
+                }
+
+                return carry[part];
+            }, data);
+        }
+
+        return meta;
     }
 
     $.fn.gallery = function (config) {
