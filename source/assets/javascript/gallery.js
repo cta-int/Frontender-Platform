@@ -158,8 +158,8 @@
         // Get the type of the item.
         this.mediaStage.html(output.media);
 
-        nextButton.text(nextData.type + ': ' + nextData.title);
-        previousButton.text(previousData.type + ': ' + previousData.title);
+        nextButton.find('.teleport__label').text(nextData.type + ': ' + nextData.title);
+        previousButton.find('.teleport__label').text(previousData.type + ': ' + previousData.title);
 
         if (output.meta) {
             this.metaStage.html(output.meta);
