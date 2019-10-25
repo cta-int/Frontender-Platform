@@ -145,8 +145,6 @@
             previousData = $(this.getPreviousSlide(true)).data('modal'),
             nextData = $(this.getNextSlide(true)).data('modal');
 
-        console.log(previousData, nextData);
-
         if (typeof output === 'string') {
             output = {
                 media: output,
@@ -157,8 +155,8 @@
         // Get the type of the item.
         this.mediaStage.html(output.media);
 
-        nextButton.find('.teleport__label').text(nextData.type + ': ' + nextData.title);
-        previousButton.find('.teleport__label').text(previousData.type + ': ' + previousData.title);
+        nextButton.find('.teleport__label').text(nextData.title);
+        previousButton.find('.teleport__label').text(previousData.title);
 
         if (output.meta) {
             this.metaStage.html(output.meta);
