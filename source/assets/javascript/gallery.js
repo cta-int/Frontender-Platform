@@ -43,8 +43,8 @@
     Gallery.prototype.getImageTemplate = function (content) {
         meta = false;
 
-        if (content.description) {
-            meta = '<p class="caption">' + content.description + '</p>';
+        if (content.title) {
+            meta = '<p class="caption">' + content.title + '</p>';
         }
 
         if (content.credit) {
@@ -62,13 +62,20 @@
     }
 
     Gallery.prototype.getVideoTemplate = function (content) {
+        var media = {
+            media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
+            meta: '<p class="caption">' + content.title + '</p>'
+        };
+
         if (content.metadata.url.match(/youtube.com/g)) {
-            return '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            media.media = '<iframe class="actor__media" src="' + content.metadata.url.replace('watch?v=', 'embed/') + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         } else if (content.metadata.url.match(/vimeo.com/g)) {
-            return '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
+            media.media = '<iframe class="actor__media" src="https://player.vimeo.com/video/' + content.metadata.url.replace('https://vimeo.com/', '') + '?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>' + '<script src="https://player.vimeo.com/api/player.js"/>';
         }
 
-        return '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>';
+        console.log(media);
+
+        return media;
     }
 
     Gallery.prototype.getNextSlide = function (reset) {
