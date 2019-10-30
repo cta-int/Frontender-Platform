@@ -8,6 +8,14 @@
         this.mediaStage = this.$element.find('[data-stage=media]');
         this.metaStage = this.$element.find('[data-stage=meta]');
 
+        if (config.children.length === 1) {
+            // Hide the previous and next button.
+            this.$element.find('[data-next]').hide();
+            this.$element.find('[data-previous]').hide();
+        } if (config.children.length === 2) {
+            this.$element.find('[data-previous]').hide();
+        }
+
         this.closeModal();
         this.bindEvents();
     }
