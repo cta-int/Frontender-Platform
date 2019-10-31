@@ -48,6 +48,18 @@
                                     {% if expert.description %}
                                         <p itemprop="description" class="leader--tiny">{{ expert.description }}</p>
                                     {% endif %}
+
+                                    {% if expert.linkedInProfile is defined %}
+                                        <div class="media  |  leader--small">
+                                            <div class="anchor  |  media__figure">
+                                                <a class="is-heir  |  icon icon--linkedin icon--drop" href="{{ expert.linkedInProfile }}" target="_blank"></a>
+                                            </div>
+                                            <div class="anchor  |  media__body  |  gutters">
+                                                <a class="is-heir  |  body--whisper" href="{{ expert.linkedInProfile }}" target="_blank">{{ expert.linkedInProfile }}</a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
                                 </div>
                             </div>
                         {% endfor %}
