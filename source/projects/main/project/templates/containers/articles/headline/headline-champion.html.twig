@@ -24,9 +24,9 @@
             {% if model.alternativeHeadline %}
                 <p class="article-headline__byline  |  meta  |  trailer  |  gutters" itemprop="alternativeHeadline"><strong class="reset">{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
-            <p class="title title--section  |  gutters" itemscope itemprop="articleSection"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
+            <p class="title title--section  |  gutters  |  is-screen" itemscope itemprop="articleSection"><strong class="reset">{{ model.articleType|i18n }}</strong></p>
         </div>
-        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
+        <div class="layout__cell layout__cell--aside  |  leader--ie-l  | wings  |  is-screen  {% if not model.link.mediaObject %}is-gt-small-desktop{% endif %}">
             {% if model.link.mediaObject|lead %}
                 {% if model.link.mediaObject|lead.about %}
                     <p class="caption  |  gutters  |  trailer">{{ model.link.mediaObject|lead.about|t(locales) }}</p>

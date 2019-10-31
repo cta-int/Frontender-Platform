@@ -1,0 +1,31 @@
+{% set pagination_id = random() %}
+{% import "macros/pagination.html.twig" as pagination %}
+
+<div class="layout layout--even" id="{{ pagination_id }}">
+    {% for article in model.articles %}
+        <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
+            {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                'container_class': 'post--wide',
+                'show_publication_date': 1,
+                'show_publication': 0,
+                'show_type': 0,
+                'show_author_name': 0,
+                'show_stand_first': 1,
+                'show_topic': 0,
+                'show_read_more': 1,
+                'show_lead_image': 1
+            } } %}
+        </article>
+    {% endfor %}
+
+    {% if config.show_pagination %}
+        <div class="leader" style="width: 100%;" data-pagination-parent>
+            {{ pagination.extend(model.articles, model.articlesTotal, {
+                model_name: 'Labels',
+                adapter: 'SCR',
+                target: "#" ~ pagination_id,
+                layout: "containers/channels/channel-articles/channel-articles-list.html.twig",
+            }, model|first) }}
+        </div>
+    {% endif %}
+</div>
