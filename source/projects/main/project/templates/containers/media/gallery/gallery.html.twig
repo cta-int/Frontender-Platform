@@ -10,42 +10,6 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="grid grid--teletubbies">
-        {# {% for related in model.mediaObject %}
-            <div class="grid__cell  |  trailer  |  gutters">
-                {% if related.metadata.previewUrl %}
-                    <a class="is-root" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                        {{ image.post(related) }}
-
-                        {% if related.type|t(locales) == 'file' %}
-                            <span class="av">
-                                <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                            </span>
-                        {% elseif related.type|t(locales) == 'image' %}
-                            <span class="av">
-                                <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                            </span>
-                        {% elseif related.type|t(locales) == 'video' %}
-                            <span class="av">
-                                <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                            </span>
-                        {% endif %}
-                    </a>
-                {% endif %}
-
-                {% if related.type|t(locales) %}
-                    <p class="meta meta--theme  |  leader--small">{{ related.type|t(locales) }}</p>
-                {% endif %}
-
-                {% if related.title|t(locales) %}
-                    <h2 class="heading">
-                        <a class="is-heir" href="{{ related.metadata.url }}" target="_blank" rel="nofollow">
-                            {{ related.title|t(locales) }}
-                        </a>
-                    </h2>
-                {% endif %}
-            </div>
-        {% endfor %} #}
-
         {% for related in model.link.mediaObject %}
             <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
                 {% if related.metadata.previewUrl %}
@@ -94,7 +58,7 @@
                     <figcaption data-stage="meta" class="actor__meta well well--padded well--neutral gutters"></figcaption>
                 </figure>
                 
-                <div class="stage__controls leader-inside leader trailer-inside">
+                <div class="stage__controls leader trailer">
                     <div class="stage__prev gutter-right">
                         <button class="teleport teleport--inverse teleport--reverse  |  media  |  title" data-previous id="prev">
                             <span class="teleport__trigger  |  media__image  |  icon icon--thin-arrow"></span>
