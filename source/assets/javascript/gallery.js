@@ -10,10 +10,10 @@
 
         if (config.children.length === 1) {
             // remove the previous and next button.
-            this.$element.find('[data-next]').remove();
-            this.$element.find('[data-previous]').remove();
+            this.$element.find('[data-next]').parent().remove();
+            this.$element.find('[data-previous]').parent().remove();
         } if (config.children.length === 2) {
-            this.$element.find('[data-previous]').remove();
+            this.$element.find('[data-previous]').parent().remove();
         }
 
         this.closeModal();
