@@ -37,29 +37,53 @@
             {% if model.experts|length %}
                 <footer class="gutters leader--hero trailer--hero">
                     <div class="well leader-inside--normal trailer-inside--normal">
-                        <h3 class="title title--apropos gutters">{{ model.experts|length > 1 ? "Meet the experts"|i18n : "Meet the expert"|i18n }}</h3>
+                        <h3 class="title gutters trailer trailer-inside--tiny">{{ model.experts|length > 1 ? "Meet the experts"|i18n : "Meet the expert"|i18n }}</h3>
                         {% for expert in model.experts %}
-                            <div class="media  |  leader--normal  |  trailer--normal" itemscope itemtype="https://schema.org/Person">
+                            <div class="media  |  leader  |  trailer--normal" itemscope itemtype="https://schema.org/Person">
                                 <div class="media__figure  |  gutters">
                                     {{ image.person(expert, 50) }}
                                 </div>
-                                <div class="media__body  |  gutter--right  |  body--whisper">
+                                <div class="media__body  |  gutter--right">
                                     <p class=""><span class="meta--bold" itemprop="name">{{ expert.givenName ~ ' ' ~ expert.familyName}}</span>{% if expert.jobTitle %}<span>, {{ expert.jobTitle }}</span>{% endif %}</p>
                                     {% if expert.description %}
                                         <p itemprop="description" class="leader--tiny">{{ expert.description }}</p>
                                     {% endif %}
 
-                                    {% if expert.linkedInProfile is defined %}
-                                        <div class="media  |  leader--small">
-                                            <div class="anchor  |  media__figure">
-                                                <a class="is-heir  |  icon icon--linkedin icon--drop" href="{{ expert.linkedInProfile }}" target="_blank"></a>
-                                            </div>
-                                            <div class="anchor  |  media__body  |  gutters">
-                                                <a class="is-heir  |  body--whisper" href="{{ expert.linkedInProfile }}" target="_blank">{{ expert.linkedInProfile }}</a>
-                                            </div>
+                                    {% if expert.twitterHandle or expert.linkedInProfile or expert.facebookPage %}
+                                        <div class="leader--normal">
+                                            {% if expert.twitterHandle %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--twitter  |  is-heir" href="{{ '//twitter.com/' ~ expert.twitterHandle }}" target="_blank"><span class="is-narrative">{{ "Twitter"|i18n }}</a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ '//twitter.com/' ~ expert.twitterHandle }}" target="_blank">{{ expert.twitterHandle }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
+                                            {% if expert.linkedInProfile %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--linkedin  |  is-heir" href="{{ expert.linkedInProfile }}" target="_blank"><span class="is-narrative">{{ "LinkedIn"|i18n }}</span></a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ expert.linkedInProfile }}" target="_blank">{{ expert.linkedInProfile }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
+                                            {% if expert.facebookPage %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--facebook  |  is-heir" href="{{ expert.facebookPage }}" target="_blank"><span class="is-narrative">{{ "Facebook"|i18n }}</a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ expert.facebookPage }}" target="_blank">{{ expert.facebookPage }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
                                         </div>
                                     {% endif %}
-
+                                    
                                 </div>
                             </div>
                         {% endfor %}
