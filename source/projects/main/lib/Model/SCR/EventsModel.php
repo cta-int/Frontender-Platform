@@ -417,8 +417,8 @@ class EventsModel extends ScrModel
 
     public function getPropertyExperts()
     {
-        // No organizer no expert.
-        if(!count($this['organizer']) || !count($this['officer'])) {
+        // Check if the event contains an organizer or expert attribute.
+        if( !(isset($this['organizer']) && is_array($this['organizer']) && count($this['organizer'])) || !(isset($this['officer']) && is_array($this['officer']) && count($this['officer'])) ) {
             return false;
         }
 
