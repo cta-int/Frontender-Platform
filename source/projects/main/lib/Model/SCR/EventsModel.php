@@ -414,4 +414,18 @@ class EventsModel extends ScrModel
     {
         return isset($this['analysis']['agrovoc']) ? $this['analysis']['agrovoc'] : [];
     }
+
+    public function getPropertyExperts()
+    {
+        // Check if the event contains an organizer or expert attribute.
+        if( !(isset($this['organizer']) && is_array($this['organizer']) && count($this['organizer'])) || !(isset($this['officer']) && is_array($this['officer']) && count($this['officer'])) ) {
+            return false;
+        }
+
+        $organizerIDs = array_column($this['organizer'], '_id');
+        return array_filter($this['officer'], function($person) use ($organizerIDs) {
+            // Get the companies the person works for.
+            return array_intersect($organizerIDs, array_column($person['worksFor'], '_id'));
+        });
+    }
 }
