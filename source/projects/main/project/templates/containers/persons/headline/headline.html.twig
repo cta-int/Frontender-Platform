@@ -1,6 +1,7 @@
 {% import "macros/template.html.twig" as helper %}
 {% import "macros/image.html.twig" as image %}
 {% import "macros/schema.html.twig" as schema %}
+{{ hashedPath('/assets/css/person.css')|addStyle('styles') }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'person layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>   
     <div class="person__headline layout__cell">
