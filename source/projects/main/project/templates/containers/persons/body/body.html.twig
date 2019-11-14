@@ -132,10 +132,10 @@
                                                                 <strong>{{ item.type|t(locales) }}</strong>
                                                             </dd>
                                                         {% endif %}
-                                                        {% if item.type %}
+                                                        {% if model.event.role(item) %}
                                                             <dt class="dlist__label meta meta--s meta--dark">{{ 'Role'|i18n }}: </dt>
                                                             <dd class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong>{{ item.type|t(locales) }}</strong>
+                                                                <strong>{{ model.event.role(item)|i18n }}</strong>
                                                             </dd>
                                                         {% endif %}
                                                     </dl>
