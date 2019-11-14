@@ -1,0 +1,56 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/schema.html.twig" as schema %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'layout layout--even well')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>   
+    <div class="layout__cell wings">
+        <h1 class="title title--section gutters trailer">{{ model.name }}</h1>
+        <p class="title gutters">{{ model.jobTitle }}</p>
+    </div>
+    <div class="layout__cell layout__cell--ph wings">
+        &nbsp;
+    </div>
+    <div class="layout__cell wings">
+        <div class="gutters">{{ model.description }}</div>
+        <img class="avatar--offset" src="https://www.gravatar.com/avatar/{{ model.gravatarHash }}?s=250" />
+        {% if model.twitterHandle or model.linkedInProfile or model.facebookPage %}
+            <div class="leader--normal">
+                {% if model.twitterHandle %}
+                    <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                        <dt class="media__figure">
+                            <a class="icon icon--twitter  |  is-heir" href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank"><span class="is-narrative">{{ "Twitter"|i18n }}</a>
+                        </dt>
+                        <dd class="media__body  |  gutters">
+                            <a href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank">{{ model.twitterHandle }}</a>
+                        </dd>
+                    </dl>
+                {% endif %}
+                {% if model.linkedInProfile %}
+                    <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                        <dt class="media__figure">
+                            <a class="icon icon--linkedin  |  is-heir" href="{{ model.linkedInProfile }}" target="_blank"><span class="is-narrative">{{ "LinkedIn"|i18n }}</span></a>
+                        </dt>
+                        <dd class="media__body  |  gutters">
+                            <a href="{{ model.linkedInProfile }}" target="_blank">{{ model.linkedInProfile }}</a>
+                        </dd>
+                    </dl>
+                {% endif %}
+                {% if model.facebookPage %}
+                    <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                        <dt class="media__figure">
+                            <a class="icon icon--facebook  |  is-heir" href="{{ model.facebookPage }}" target="_blank"><span class="is-narrative">{{ "Facebook"|i18n }}</a>
+                        </dt>
+                        <dd class="media__body  |  gutters">
+                            <a href="{{ model.facebookPage }}" target="_blank">{{ model.facebookPage }}</a>
+                        </dd>
+                    </dl>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="layout__cell wings">
+        <div class="paragraph gutters" style="white-space: pre;">{{ model.biography }}</div>
+    </div>
+{% for loopContainer in containers %}
+        {% include loopContainer.template with loopContainer %}
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>
