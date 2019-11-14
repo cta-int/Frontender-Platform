@@ -1,0 +1,62 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/schema.html.twig" as schema %}
+{{ hashedPath('/assets/css/person.css')|addStyle('styles') }}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}> 
+    
+    {# Publications and events #}
+    {% if model.publications|length or model.events|length %}
+        <div class="layout layout--even  leader--hero  trailer--hero">
+            <section class="layout__cell layout__cell--aside wings">
+                <h2 class="title title--section gutters leader trailer">{{ labels.publications|default({"en-GB": "Publications", "fr-FR": "Publications"})|t }}</h2>
+                {% if model.publications|length %}
+                    Publications list
+                {% else %}
+                    <p>{{ labels.no_events|default({"en-GB": "No publications were found", "fr-FR": "No publications were found"})|t }}</p>
+                {% endif %}
+            </section>
+            <section class="layout__cell layout__cell--main wings">
+                <h2 class="title title--section gutters leader trailer">{{ labels.publications|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}</h2>
+                {% if model.publeventsications|length %}
+                    Events list
+                {% else %}
+                    <p>{{ labels.no_events|default({"en-GB": "No events were found", "fr-FR": "No events were found"})|t }}</p>
+                {% endif %}
+            </section>
+        </div>
+    {% endif %}
+
+    {# Articles #}
+    {% if model.articles|length %}
+        <section class="leader--hero trailer--hero wings">
+            <h2 class="title title--section gutters">{{ labels.publications|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}</h2>
+            <div class="layout layout--even">
+                {% for article in model.articles|slice(0, 4) %}
+                    <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
+                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                            'container_class': 'post--wide',
+                            'show_publication_date': 1,
+                            'show_publication': 0,
+                            'show_type': 0,
+                            'show_author_name': 0,
+                            'show_stand_first': 1,
+                            'show_topic': 0,
+                            'show_read_more': 1,
+                            'show_lead_image': 1
+                        } } %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    {# Media #}
+    {% if model.mediaObject|length %}
+        <section class="leader--hero  trailer--hero wings">
+            <h2 class="title title--section gutters leader trailer">{{ labels.publications|default({"en-GB": "Media", "fr-FR": "Media"})|t }}</h2>
+            {% include 'containers/media/gallery/gallery.html.twig' with { model: { link: { mediaObject: model.mediaObject } } } %}
+        </section>
+    {% endif %}
+    
+</{{ config.container_tag|default('main') }}>
