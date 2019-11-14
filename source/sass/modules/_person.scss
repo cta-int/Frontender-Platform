@@ -56,6 +56,7 @@
 
     @include breakpoint($gt-small-desktop) {
         position: relative;
+        padding-top: rhythm(20);
         padding-bottom: rhythm(12);
         &::after {
             content: "";
