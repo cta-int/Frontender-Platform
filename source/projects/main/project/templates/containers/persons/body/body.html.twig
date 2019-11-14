@@ -43,14 +43,14 @@
                                     {% if config.show_publication|default(1) %}
                                         <p class="trailer-inside--tiny">{{ date.issue_date(item.datePublished) }}</p>
                                     {% endif %}
-                                    <h2 class="heading">
+                                    <h2 class="heading heading--focus">
                                         <a class="is-heir" href="{{ route({'page': item.path, 'slug': item.headline|t(locales)|slugify, 'id': item._id}) }}">
                                             {{ item.headline|t(locales) }}
                                         </a>
                                     </h2>
                                     {% if config.standfirst|default(1) %}
-                                        <p>
-                                            {{ item.standfirst|t(locales) }}
+                                        <p class="leader--tiny">
+                                            {{ item.about|t(locales) }}
                                         </p>
                                     {% endif %}
                                     {% if config.show_author_name|default(1) and item.link.person.author|length %}
