@@ -54,3 +54,11 @@
         {% include loopContainer.template with loopContainer %}
     {% endfor %}
 </{{ config.container_tag|default('div') }}>
+
+{{ dump(model.events|length) }}
+{{ dump(model.articles|length) }}
+{{ dump(model.publications|length) }}
+
+{{ dump(model.eventsTotal) }}
+{{ dump(model.articlesTotal) }}
+{{ dump(model.publicationsTotal) }}

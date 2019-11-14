@@ -24,7 +24,7 @@ class PersonsModel extends ScrModel {
 		     ->insert( 'skip' );
 	}
 
-	public function getPropertyEvents() {
+	public function getPropertyEvents($raw = false) {
 		$model = new \Frontender\Platform\Model\SCR\Event\SearchModel( $this->container );
 		$model->setState( [
 			'must'  => [
@@ -36,10 +36,16 @@ class PersonsModel extends ScrModel {
 			'limit' => $this->getState()->eventLimit
 		] );
 
-		return $model->fetch();
+		return $model->fetch($raw);
 	}
 
-	public function getPropertyArticles() {
+	public function getPropertyEventsTotal() {
+		$response = $this->getPropertyEvents(true);
+
+		return $response['total'] ?? 0;
+	}
+
+	public function getPropertyArticles($raw = false) {
 		$model = new \Frontender\Platform\Model\SCR\Article\SearchModel( $this->container );
 		$model->setState( [
 			'must'    => [
@@ -48,17 +54,23 @@ class PersonsModel extends ScrModel {
 					'id'   => $this['_id']
 				]
 			],
-			'mustNot' => [
+			'mustNot' => [[
 				'type' => 'label',
 				'id'   => 'f47307e1-8703-4759-9b99-1f0c46cadc63'
-			],
+			]],
 			'limit'   => $this->getState()->articleLimit
 		] );
 
-		return $model->fetch();
+		return $model->fetch($raw);
 	}
 
-	public function getPropertyPublications() {
+	public function getPropertyArticlesTotal() {
+		$response = $this->getPropertyArticles(true);
+
+		return $response['total'] ?? 0;
+	}
+
+	public function getPropertyPublications($raw = false) {
 		$model = new \Frontender\Platform\Model\SCR\Article\SearchModel( $this->container );
 		$model->setState( [
 			'must' => [
@@ -78,6 +90,12 @@ class PersonsModel extends ScrModel {
 			]
 		] );
 
-		return $model->fetch();
+		return $model->fetch($raw);
+	}
+
+	public function getPropertyPublicationsTotal() {
+		$response = $this->getPropertyPublications(true);
+
+		return $response['total'] ?? 0;
 	}
 }

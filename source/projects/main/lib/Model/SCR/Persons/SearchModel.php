@@ -39,9 +39,17 @@ class SearchModel extends ScrModel {
 		}
 
 		return array_map( function ( $person ) use ( $state, $container ) {
-			$person['jobTitle'] = $this->translate( $person['jobTitle'] );
-			$person['biography'] = $this->translate( $person['biography'] );
-			$person['description'] = $this->translate( $person['description'] );
+			if ( isset( $person['jobTitle'] ) && ! empty( $person['jobTitle'] ) ) {
+				$person['jobTitle'] = $this->translate( $person['jobTitle'] );
+			}
+
+			if ( isset( $person['biography'] ) && ! empty( $person['biography'] ) ) {
+				$person['biography'] = $this->translate( $person['biography'] );
+			}
+
+			if ( isset( $person['description'] ) && ! empty( $person['description'] ) ) {
+				$person['description'] = $this->translate( $person['description'] );
+			}
 
 			$item = new PersonsModel( $container );
 			$item->setState( array_merge( $state, [
