@@ -103,9 +103,9 @@
                                                 </div>
                                                 <div class="body--whisper trailer--normal">
                                                     {% if highlight %}
-                                                        {{ item.description|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
+                                                        {{ item.description|t(locales)|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
                                                     {% else %}
-                                                        {{ item.description|truncate(length|default(400))|raw }}
+                                                        {{ item.description|t(locales)|truncate(length|default(400))|raw }}
                                                     {% endif %}
                                                 </div>
                                                 <div class="leader--small">
