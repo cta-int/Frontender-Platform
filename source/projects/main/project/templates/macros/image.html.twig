@@ -106,13 +106,24 @@ $landscape - Breakpoint for landscape oriented viewports.
     </picture>
 {% endmacro %}
 
-{% macro post(image) %}
+{% macro post(mediaObject) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+    {#  This is testing for an image on Cloudinary but the logic is shakey at best. 
+        We should test if the image actually exist by requesting a header but this macro 
+        is used often on a page so that would be a big performance hit. Assuming the 
+        object is recently updated instead. #}
+
+    {% if mediaObject.originalFilename is defined %}
+        {% set imageId = mediaObject.originalFilename|default('wwewgktde0mnowuzrvmi') %}
+    {% else %}
+        {% set imageId = mediaObject.metadata.id|default(mediaObject.external.data.public_id)|default('wwewgktde0mnowuzrvmi') %}
+    {% endif %}
 
     <img
         class="image image--stretch"
-        src="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }}"
-        srcset="https://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 500w,https://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 320w,https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 240w,https://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/{{ image.metadata.id|default(image.external.data.public_id)|default('wwewgktde0mnowuzrvmi') }} 160w"
+        src="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ imageId }}"
+        srcset="https://res.cloudinary.com/cta/image/upload/w_500,ar_3:2,f_auto,c_fill/{{ imageId }} 500w,https://res.cloudinary.com/cta/image/upload/w_320,ar_3:2,f_auto,c_fill/{{ imageId }} 320w,https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ imageId }} 240w,https://res.cloudinary.com/cta/image/upload/w_160,ar_3:2,f_auto,c_fill/{{ imageId }} 160w"
         sizes="(min-width: 1024px) 17vw, (min-width: 768px) 50vw"
         width="160"
         height="240"
