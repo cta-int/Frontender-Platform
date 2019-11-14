@@ -1,0 +1,22 @@
+{
+    "has_preview": true,
+    "label": {
+        "en-GB": "Person"
+    },
+    "map": {
+        "id": "_id",
+        "title": "name",
+        "description": "jobTitle",
+        "thumbnail": "avatar",
+        "datePublished": "dateCreated",
+        "dateModified": "dateModified"
+    },
+    "filters": {
+        "q": {
+            "label": {
+                "en-GB": "Search term"
+            },
+            "type": "search"
+        }
+    }
+}
