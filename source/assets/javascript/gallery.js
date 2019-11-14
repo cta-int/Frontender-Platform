@@ -7,6 +7,7 @@
         this.length = config.children.length - 1;
         this.mediaStage = this.$element.find('[data-stage=media]');
         this.metaStage = this.$element.find('[data-stage=meta]');
+        this.locales = this.config.locales ? JSON.parse(this.config.locales) : {};
 
         if (config.children.length === 1) {
             // remove the previous and next button.
@@ -57,9 +58,11 @@
                 credit: 'credit'
             }, content)
         };
-    }
+    };
 
     Gallery.prototype.getVideoTemplate = function (content) {
+        console.log(content);
+
         var media = {
             media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
             meta: this._createMeta({
@@ -76,7 +79,7 @@
         }
 
         return media;
-    }
+    };
 
     Gallery.prototype.getNextSlide = function (reset) {
         var currentIndex = this.index,
@@ -115,31 +118,31 @@
         }
 
         return slide;
-    }
+    };
 
     Gallery.prototype.showNext = function () {
         this.activateSlide(
             this.getNextSlide()
         );
-    }
+    };
 
     Gallery.prototype.showPrevious = function () {
         this.activateSlide(
             this.getPreviousSlide()
         );
-    }
+    };
 
     Gallery.prototype.openModal = function () {
         // this.$element.css('visibility', 'visible');
         this.$element.addClass('gallery--active');
-    }
+    };
 
     Gallery.prototype.activateSlide = function (slide) {
         this.index = this.config.children.index(slide);
 
         var $slide = $(slide),
             modalData = $slide.data('modal'),
-            type = modalData && modalData.metadata && modalData.metadata.type,
+            type = this._getType(modalData),
             method = 'get' + (type[0].toUpperCase() + type.slice(1).toLowerCase()) + 'Template';
 
         // If no data is defined we will close the modal again.
@@ -174,12 +177,12 @@
         }
 
         return true;
-    }
+    };
 
     Gallery.prototype.closeModal = function () {
         // this.$element.css('visibility', 'hidden');
         this.$element.removeClass('gallery--active');
-    }
+    };
 
     /**
      * This method will create a string used in the meta box.
@@ -196,11 +199,11 @@
                 }
 
                 if (index == 'credit') {
-                    metaValue = '© ' + metaValue;
+                    metaValue = '© ' + this._translate(metaValue);
                 }
 
                 meta = meta || '';
-                meta += '<p class="' + index + '">' + metaValue + '</p>'
+                meta += '<p class="' + index + '">' + this._translate(metaValue) + '</p>'
             }
         }
 
@@ -217,7 +220,42 @@
         }
 
         return meta;
-    }
+    };
+
+    Gallery.prototype._getType = function(data) {
+        if(!data) {
+            return false;
+        }
+
+        if(data.type) {
+            return data.type;
+        }
+
+        return data.metadata && data.metadata.type ? data.metadata.type : false;
+    };
+
+    Gallery.prototype._translate = function(item) {
+        if(typeof item === 'string') {
+            return item;
+        }
+
+        if(item.hasOwnProperty(this.config.currentLocale)) {
+            return item[this.config.currentLocale];
+        }
+
+        // Map the item and translate again.
+        for(let key in this.locales) {
+            if(this.locales.hasOwnProperty(key)) {
+                let shortLocale = this.locales[key];
+
+                if(item.hasOwnProperty(shortLocale)) {
+                    item[key] = item[shortLocale];
+                }
+            }
+        }
+
+        return this._translate(item);
+    };
 
     $.fn.gallery = function (config) {
         $(this).each(function () {
