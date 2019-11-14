@@ -40,6 +40,8 @@ class SearchModel extends ScrModel {
 
 		return array_map( function ( $person ) use ( $state, $container ) {
 			$person['jobTitle'] = $this->translate( $person['jobTitle'] );
+			$person['biography'] = $this->translate( $person['biography'] );
+			$person['description'] = $this->translate( $person['description'] );
 
 			$item = new PersonsModel( $container );
 			$item->setState( array_merge( $state, [
