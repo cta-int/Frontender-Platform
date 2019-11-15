@@ -216,3 +216,17 @@ about_the_authors: About the authors
 
 # ICT Update
 ictupdate_issue_no: ICT Update N.
+
+# Role translations
+officer: Officer
+assistant: Assistant
+keynote: Keynote
+speaker: Speaker
+chair: Chair
+panellist: Panellist
+moderator: Moderator
+facilitateur: Facilitateur
+press-officer: Press officer
+rapporteur: Rapporteur
+social-reporter: Social reporter
+translator: Translator
