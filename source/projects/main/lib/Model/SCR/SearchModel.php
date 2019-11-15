@@ -799,6 +799,28 @@ class SearchModel extends ScrModel {
 		} );
 	}
 
+	public function getPropertyPerson() {
+		$states = $this->getState()->getValues();
+
+		if(!isset($states['person']) || empty($states['person'])) {
+			return false;
+		}
+
+		try {
+			$model = new PersonsModel( $this->container );
+			$model->setState( [
+				'id' => $states['person']
+			] );
+			$result = $model->fetch();
+
+			return array_shift($result);
+		} catch(\Exception $e) {
+			return false;
+		} catch(\Error $e) {
+			return false;
+		}
+	}
+
 	public function fetch( $raw = false ) {
 		return [ $this ];
 	}

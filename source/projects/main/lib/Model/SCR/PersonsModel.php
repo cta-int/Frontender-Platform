@@ -93,6 +93,32 @@ class PersonsModel extends ScrModel {
 		return $model->fetch($raw);
 	}
 
+	public function getPropertyEvent() {
+		return new class($this) {
+			public function __construct($person) {
+				$this->person = $person;
+			}
+
+			public function role($event) {
+				// Check the roles and if he has this role, return it as a string.
+				// This is to become translatable.
+				$roles = ['officer', 'assistant', 'keynote', 'speaker', 'chair', 'panellist', 'moderator', 'facilitateur', 'press-officer', 'rapporteur', 'social-reporter', 'translator'];
+
+				foreach($roles as $role) {
+					if(isset($event[$role]) && is_array($event[$role])) {
+						$ids = array_column($event[$role], '_id');
+
+						if(in_array($this->person['_id'], $ids)) {
+							return ucfirst($role);
+						}
+					}
+				}
+
+				return false;
+			}
+		};
+	}
+
 	public function getPropertyPublicationsTotal() {
 		$response = $this->getPropertyPublications(true);
 
