@@ -9,11 +9,11 @@
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'person layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>   
     <div class="person__headline layout__cell">
         <h1 class="heading heading--hero gutters">{{ (model.honorificPrefix ~ ' ' ~ model.givenName ~ ' ' ~ model.familyName)|trim }}</h1>
-        <p class="title title--apropos gutters">{{ model.jobTitle }}</p>
+        <p class="title title--apropos gutters">{{ model.jobTitle|t(locales) }}</p>
     </div>
     <div class="person__summary layout__cell layout">
         <div class="person__standfirst layout__cell">
-            <div class="gutters">{{ model.description }}</div>
+            <div class="gutters">{{ model.description|t(locales) }}</div>
             {% if model.twitterHandle or model.linkedInProfile or model.facebookPage %}
                 <div class="gutters leader--normal">
                     {% if model.twitterHandle %} 
@@ -55,7 +55,7 @@
     </div>
     <div class="person__biography layout__cell">
         <h2 class="title gutters trailer--normal">{{ labels.biography|default({"en-GB": "Biography", "fr-FR": "Biographie"})|t}}</h2>
-        <p class="gutters">{{ model.biography|nl2br }}</p>
+        <p class="gutters">{{ model.biography|t(locales)|nl2br }}</p>
     </div>
 {% for loopContainer in containers %}
         {% include loopContainer.template with loopContainer %}

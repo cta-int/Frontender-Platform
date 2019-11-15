@@ -64,7 +64,7 @@
                     {% endfor %}
                     </ol>
                 {% else %}
-                    <p>{{ labels.no_events|default({"en-GB": "No publications were found", "fr-FR": "No publications were found"})|t }}</p>
+                    <p>{{ labels.no_publications|default({"en-GB": "No publications were found", "fr-FR": "No publications were found"})|t }}</p>
                 {% endif %}
             </section>
             
@@ -72,7 +72,7 @@
             <section class="layout__cell layout__cell--main wings">
                 <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
                     <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
-                        {{ labels.publications|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}
+                        {{ labels.events|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}
                     </h2>
                     <div class="container-header__filter  |  gutters">
                         <a class="title title--filter  |  anchor  |  is-heir" href="https://www.cta.int/en/blog/all">
