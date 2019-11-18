@@ -11,22 +11,19 @@ namespace Frontender\Platform\Model\SCR\Channel;
 use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 
-class AbstractModel extends ScrModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+class AbstractModel extends ScrModel {
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('id', null)
-            ->insert('limit', 20)
-            ->insert('skip', 0);
-    }
+		$this->getState()
+		     ->insert( 'id', null )
+		     ->insert( 'limit', 20 )
+		     ->insert( 'skip', 0 );
+	}
 
-    public function getModelName() : string
-    {
-        $name = parent::getModelName();
+	public function getModelName(): string {
+		$name = parent::getModelName();
 
-        return 'Channel' . ucfirst($name);
-    }
+		return 'Channel' . ucfirst( $name );
+	}
 }

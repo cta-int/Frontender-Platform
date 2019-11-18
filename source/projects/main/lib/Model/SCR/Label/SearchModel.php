@@ -8,64 +8,63 @@ use Frontender\Platform\Model\SCR\LabelsModel;
 use Frontender\Platform\Model\Traits\Translatable;
 use Slim\Container;
 
-class SearchModel extends ScrModel
-{
-    use Searchable {
-        __construct as public traitConstruct;
-    }
-    use Translatable;
+class SearchModel extends ScrModel {
+	use Searchable {
+		__construct as public traitConstruct;
+	}
+	use Translatable;
 
-    public function __construct(Container $container) {
-        $this->traitConstruct($container);
+	public function __construct( Container $container ) {
+		$this->traitConstruct( $container );
 
-        $this->getState()
-            ->insert('articleLimit');
-    }
+		$this->getState()
+		     ->insert( 'articleLimit' );
+	}
 
-    public function getModelName() : string
-    {
-        $name = parent::getModelName();
-        return 'Label' . ucfirst($name);
-    }
+	public function getModelName(): string {
+		$name = parent::getModelName();
 
-    public function fetch($raw = false)
-    {
-        $container = $this->container;
-        $state = $this->getState()->getValues();
-        $response = parent::fetch(true);
-        $fields = [];
+		return 'Label' . ucfirst( $name );
+	}
 
-        // Check if we have an id in the must fields.
-        if (isset($state['must']) && is_array($state['must'])) {
-            $fields = array_filter($state['must'], function ($state) {
-                return $state['id'] == '_id';
-            });
-        }
+	public function fetch( $raw = false ) {
+		$container = $this->container;
+		$state     = $this->getState()->getValues();
+		$response  = parent::fetch( true );
+		$fields    = [];
 
-        if (count($fields)) {
-            $id = array_column($fields, 'value');
+		// Check if we have an id in the must fields.
+		if ( isset( $state['must'] ) && is_array( $state['must'] ) ) {
+			$fields = array_filter( $state['must'], function ( $state ) {
+				return $state['id'] == '_id';
+			} );
+		}
 
-            $label = new LabelsModel($container);
-            $label->setState([
-                'id' => array_shift($id),
-                'articleLimit' => $state['articleLimit'] ?? false
-            ]);
-            return $label->fetch($raw);
-        }
+		if ( count( $fields ) ) {
+			$id = array_column( $fields, 'value' );
 
-        if ($raw) {
-            return $response;
-        }
+			$label = new LabelsModel( $container );
+			$label->setState( [
+				'id'           => array_shift( $id ),
+				'articleLimit' => $state['articleLimit'] ?? false
+			] );
 
-        return array_map(function ($item) use ($container, $state) {
-            $label = new LabelsModel($container);
-            $label->setState($state);
+			return $label->fetch( $raw );
+		}
 
-            $item['name'] = $this->translate($item['name']);
+		if ( $raw ) {
+			return $response;
+		}
 
-            $label->setData($item);
+		return array_map( function ( $item ) use ( $container, $state ) {
+			$label = new LabelsModel( $container );
+			$label->setState( $state );
 
-            return $label;
-        }, $response['items']);
-    }
+			$item['name'] = $this->translate( $item['name'] );
+
+			$label->setData( $item );
+
+			return $label;
+		}, $response['items'] );
+	}
 }

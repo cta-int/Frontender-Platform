@@ -9,48 +9,59 @@
 namespace Frontender\Platform\Model\SCR\Channel;
 
 use Frontender\Platform\Model\SCR\ChannelsModel;
-use Frontender\Platform\Model\SCR\MediaModel;
 use Slim\Container;
 
-class ArticlesModel extends \Frontender\Platform\Model\SCR\ArticlesModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+class ArticlesModel extends AbstractModel {
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('id', null, false)
-            ->insert('language', $this->container->language->get())
-            ->insert('format', 'scr')
-            ->insert('sortDirection', 'desc')
-            ->insert('sortProperty', 'datePublished')
-            ->insert('articleType')
-            ->insert('imageWeight')
-            ->insert('includeRelated', false);
-    }
+		$this->getState()
+		     ->insert( 'language', $this->container->language->get() )
+		     ->insert( 'format', 'scr' )
+		     ->insert( 'sortDirection', 'desc' )
+		     ->insert( 'sortProperty', 'datePublished' )
+		     ->insert( 'articleType' )
+		     ->insert( 'imageWeight' )
+		     ->insert( 'includeRelated', false );
+	}
 
-    public function setState(array $values)
-    {
-        if (isset($values['articleType'])) {
-            $values['articleType'] = str_replace('article.', '', $values['articleType']);
-        }
+	public function setState( array $values ) {
+		if ( isset( $values['articleType'] ) ) {
+			$values['articleType'] = str_replace( 'article.', '', $values['articleType'] );
+		}
 
-        return parent::setState($values);
-    }
+		return parent::setState( $values );
+	}
 
-    public function getPropertyChannel()
-    {
-        $channelModel = new ChannelsModel($this->container);
-        $channelModel->setState([
-            'id' => $this->getState()->id
-        ]);
-        $channel = $channelModel->fetch();
+	public function fetch( $raw = false ) {
+		$result = parent::fetch( true );
 
-        return $channel[0];
-    }
+		if ( $raw ) {
+			return $result;
+		}
 
-    public function getModelName() : string
-    {
-        return 'Channel' . ucfirst(parent::getModelName());
-    }
+		return array_map( function ( $item ) {
+			$model = new \Frontender\Platform\Model\SCR\ArticlesModel( $this->container );
+			$model->setState( [
+				'id' => $item['_id']
+			] );
+			$model->setData( $item );
+
+			return $model;
+		}, $result['items'] ?? [] );
+	}
+
+	public function getPropertyChannel() {
+		$channelModel = new ChannelsModel( $this->container );
+		$channelModel->setState( [
+			'id' => $this->getState()->id
+		] );
+		$channel = $channelModel->fetch();
+
+		return $channel[0];
+	}
+
+	public function getModelName(): string {
+		return 'ChannelArticles';
+	}
 }

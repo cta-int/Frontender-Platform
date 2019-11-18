@@ -11,22 +11,19 @@ namespace Frontender\Platform\Model\SCR\Event;
 use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 
-class AttendeesModel extends ScrModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+class AttendeesModel extends ScrModel {
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('id', null)
-            ->insert('limit', 20)
-            ->insert('skip');
-    }
+		$this->getState()
+		     ->insert( 'id', null )
+		     ->insert( 'limit', 20 )
+		     ->insert( 'skip' );
+	}
 
-    public function getModelName(): string
-    {
-        $name = parent::getModelName();
+	public function getModelName(): string {
+		$name = parent::getModelName();
 
-        return 'Event' . ucfirst($name);
-    }
+		return 'Event' . ucfirst( $name );
+	}
 }

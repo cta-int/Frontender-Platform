@@ -11,28 +11,25 @@ namespace Frontender\Platform\Model\SCR;
 use Slim\Container;
 use Frontender\Platform\Model\Traits\Translatable;
 
-class TermsModel extends ScrModel
-{
-    use Translatable;
+class TermsModel extends ScrModel {
+	use Translatable;
 
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('id', null, true);
-    }
+		$this->getState()
+		     ->insert( 'id', null, true );
+	}
 
-    public function fetch($raw = false)
-    {
-        $result = parent::fetch($raw);
+	public function fetch( $raw = false ) {
+		$result = parent::fetch( $raw );
 
-        foreach ($result as $item) {
-            if (isset($item['label'])) {
-                $item['label'] = $this->translate($item['label']);
-            }
-        }
+		foreach ( $result as $item ) {
+			if ( isset( $item['label'] ) ) {
+				$item['label'] = $this->translate( $item['label'] );
+			}
+		}
 
-        return $result;
-    }
+		return $result;
+	}
 }

@@ -1,6 +1,6 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% if event.sponsor|filterArray('website')|filterArray('avatar')|length > 0 %}
+{% if model.sponsor|filterArray('website')|filterArray('avatar')|length > 0 %}
     <section class="panel  |  wing--right" id="sponsors" itemscope itemprop="sponsor">
         <h2 class="title">
             <a class="panel__trigger  |  gutters  |  is-heir" href="#sponsors">{{ 'Sponsors'|i18n }}</a>
@@ -8,7 +8,7 @@
         <div class="panel__body  |  gutters">
             <div>
                 <div class="trellis  |  wing--right">
-                    {% for sponsor in event.sponsor|filterArray('website')|filterArray('avatar') %}
+                    {% for sponsor in model.sponsor|filterArray('website')|filterArray('avatar') %}
                         <div class="trellis__cell  |  gutters  |  trailer" itemscope itemtype="https://schema.org/Organization">
                             <a href="{{ sponsor.website }}" target="_blank" itemprop="url">
                                 {% if sponsor.avatar %}
