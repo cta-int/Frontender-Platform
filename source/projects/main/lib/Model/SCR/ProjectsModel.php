@@ -6,13 +6,13 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\SCR\ScrModel;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\Traits\Searchable;
+use Frontender\Platform\Model\SCR\ScrModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\Traits\Searchable;
 use Slim\Container;
-use Prototype\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
 
 class ProjectsModel extends EventsModel
 {
@@ -40,7 +40,7 @@ class ProjectsModel extends EventsModel
             public function articles()
             {
                 if (!$this->cachedArticles) {
-                    $related_articles = new \Prototype\Model\SCR\Event\ArticlesModel($this->container);
+                    $related_articles = new \Frontender\Platform\Model\SCR\Event\ArticlesModel($this->container);
                     $this->cachedArticles = $related_articles->setState([
                         'id' => $this->state->id,
                         'limit' => 8,
@@ -100,7 +100,7 @@ class ProjectsModel extends EventsModel
                     return $label['type'] === 'programme';
                 });
 
-                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+                $model = new \Frontender\Platform\Model\SCR\Event\SearchModel($this->container);
                 $model->setState(array_merge([
                     'limit' => 5,
                     'label' => array_map(function ($label) {
@@ -125,7 +125,7 @@ class ProjectsModel extends EventsModel
         };
     }
 
-    public function getPropertyPath()
+    public function getPropertyPath(): string
     {
         return 'project';
     }

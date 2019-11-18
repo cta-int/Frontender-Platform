@@ -1,0 +1,67 @@
+<style type="text/css" media="print">
+
+        body {
+                padding: 2cm 1.5cm 1.5cm 2cm;
+        }
+        [data-frontender],
+        .masthead,
+        .site-footer,
+        .share-list,
+        [data-vendor*="commento"],
+        #commento {
+                display: none;
+        }
+        .is-screen {
+                display: none !important;
+        }
+        [itemtype*="schema.org/Article"],
+        [itemtype*="schema.org/Article"] [data-frontender] {
+                display: block;
+        }
+        .well,
+        .article-headline {
+                background-color: transparent !important;
+                background: none !important;
+                color: inherit;
+                border: thin solid;
+        }
+        .well--full {
+                border: 0;
+        }
+        .heading {
+                font-size: 2em;
+        }
+        .paragraph + .heading,
+        .figure + .heading {
+                margin-top: 1em;
+        }
+        .heading,
+        .title,
+        .paragraph {
+                page-break-before: avoid;
+                page-break-after: avoid;
+        }
+        .divider--right,
+        .divider--left {
+                border: none;   
+        }
+        .article-header__image img,
+        .article-header__image picture {
+                margin-bottom: 2em;
+                padding: 0 15px;
+        }
+        .article-header__image:after,
+        .hero__figure:after {
+                display: none;
+        }
+        .picture,
+        .img {
+                min-width: auto;
+                max-width: auto;
+                display: inline-block;
+                padding: 10pt 0;
+                margin: 10pt auto;
+                border-top: .25pt;
+                border-bottom: .25pt;
+        }
+</style>

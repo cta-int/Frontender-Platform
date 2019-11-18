@@ -33,8 +33,68 @@
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype | default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endif %}
             {% endfor %}
-            <div class="well  |  gutters-outside  |  leader  |  trailer">
-                {{ share.bar_article(model) }}
+
+            {% if model.experts|length %}
+                <footer class="gutters leader--hero trailer--hero">
+                    <div class="well leader-inside--normal trailer-inside--normal">
+                        <h3 class="title gutters trailer trailer-inside--tiny">{{ model.experts|length > 1 ? "Meet the experts"|i18n : "Meet the expert"|i18n }}</h3>
+                        {% for expert in model.experts %}
+                            <div class="media  |  leader  |  trailer--normal" itemscope itemtype="https://schema.org/Person">
+                                <div class="media__figure  |  gutters">
+                                    {{ image.person(expert, 50) }}
+                                </div>
+                                <div class="media__body  |  gutter--right">
+                                    <p class=""><span class="meta--bold" itemprop="name">{{ expert.givenName ~ ' ' ~ expert.familyName}}</span>{% if expert.jobTitle %}<span>, {{ expert.jobTitle }}</span>{% endif %}</p>
+                                    {% if expert.description %}
+                                        <p itemprop="description" class="leader--tiny">{{ expert.description }}</p>
+                                    {% endif %}
+
+                                    {% if expert.twitterHandle or expert.linkedInProfile or expert.facebookPage %}
+                                        <div class="leader--normal">
+                                            {% if expert.twitterHandle %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--twitter  |  is-heir" href="{{ '//twitter.com/' ~ expert.twitterHandle }}" target="_blank"><span class="is-narrative">{{ "Twitter"|i18n }}</a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ '//twitter.com/' ~ expert.twitterHandle }}" target="_blank">{{ expert.twitterHandle }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
+                                            {% if expert.linkedInProfile %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--linkedin  |  is-heir" href="{{ expert.linkedInProfile }}" target="_blank"><span class="is-narrative">{{ "LinkedIn"|i18n }}</span></a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ expert.linkedInProfile }}" target="_blank">{{ expert.linkedInProfile }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
+                                            {% if expert.facebookPage %}
+                                                <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                                                    <dt class="media__figure">
+                                                        <a class="icon icon--facebook  |  is-heir" href="{{ expert.facebookPage }}" target="_blank"><span class="is-narrative">{{ "Facebook"|i18n }}</a>
+                                                    </dt>
+                                                    <dd class="media__body  |  gutters">
+                                                        <a href="{{ expert.facebookPage }}" target="_blank">{{ expert.facebookPage }}</a>
+                                                    </dd>
+                                                </dl>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </footer>
+            {% endif %}
+
+            <div class="gutters  |  is-screen">
+                <div class="well  |  leader  |  trailer">
+                    {{ share.bar_article(model) }}
+                </div>
             </div>
 
             {% if model.analysis.agrovoc.concepts %}
@@ -47,6 +107,7 @@
                 </div>
             {% endif %}
         </div>
+
         {% if model.link.person.author %}
             <div class="gutters  |  leader  |  trailer">
                 <h2 class="title title--apropos">Contact details</h2>
@@ -68,67 +129,19 @@
         {% endif %}
 
     </div>
+
     <div class="layout__cell layout__cell--aside  |  wings">
         {% for c in containers %}
             {% if c.template_id  == 'project_updates' %}
                 {% include c.template with c|merge({ 'model':  model.updates|slice(0, 4) }) %}
             {% elseif c.template_id  == "project_downloads" %}
-                {% include c.template with c|merge({ 'model':  model.mediaObject|filterArray('type', 'document') }) %}
+                {% include c.template with c|merge({ 'model':  model.mediaObject|filterArray('type', 'image', true)}) %}
+            {% elseif c.template_id == "external_links" %}
+                {% include c.template with c|merge({ 'model':  model}) %}
             {% else %}
                 {% include c.template with c %}
             {% endif %}
         {% endfor %}
     </div>
+
 </{{ config.container_tag|default('div') }}>
-
-{# Project Title #}
-    {# model.name #}
-
-    {# Description #}
-    {# model.description #}
-
-    {# Project Keywords #}
-    {# none existing #}
-
-    {# Cononical URL #}
-    {# route({'page': model.path, 'slug': model.name|sligify, 'id': model.id}) #}
-
-    {# Event Theme color #}
-    {# model.theme.color #}
-
-    {# Lead image #}
-    {# model.leadImage.metadata.url #}
-
-    {# Lead image description #}
-    {# model.leadImage.description #}
-
-    {# Lead image about #}
-    {# model.leadImage.about #}
-
-    {# Lead image credit #}
-    {# model.leadImage.credit #}
-
-    {# Theme label #}
-    {# model.theme.label #}
-
-    {# Content type #}
-    {# model.type #}
-
-    {# Takeaways #}
-    {# model.takeaways #}
-
-    {# Event Content (as array) #}
-    {# model.contentBlocks #}
-
-    {# Agrovoc labels (as array) #}
-    {# model.analysis.agrovoc #}
-
-    {# External links (as array) #}
-    {# model.externalLink #}
-
-    {# Project updates #}
-    {# model.updates #}
-
-    {# @Babs this is an example as an alias, located in the EventsModel #}
-    {# Concepts #}
-    {# model.concepts #}

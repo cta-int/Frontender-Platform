@@ -46,7 +46,7 @@
             {% endif %}
 
             <div class="trailer  |  leader  |  gutters">
-                {{ share.bar_article(model) }}
+                {{ share.bar_ictupdate_issue(model) }}
             </div>
 
             {% if issue_articles|length %}
@@ -114,7 +114,7 @@
             {% endif %}
 
         </div>
-        <div class="layout__cell layout__cell--aside  |  trailer-inside--hero  |  wing--left">
+        <div class="layout__cell layout__cell--aside  |  trailer-inside--hero  |  wing--left  |  is-screen">
             {% if model.about %}
                 <p class="gutters  |  paragraph paragraph--lead  |   trailer--hero">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}</p>
             {% endif %}

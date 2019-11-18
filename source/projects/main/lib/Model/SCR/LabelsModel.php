@@ -1,10 +1,10 @@
 <?php
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
-use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\Utils\Sorting;
 
 class LabelsModel extends ScrModel
 {
@@ -62,12 +62,26 @@ class LabelsModel extends ScrModel
         $search = new SearchModel($this->container);
         $search->setState([
             'label' => [$this['_id']],
-            'limit' => $this->getState()->articleLimit ?? false
+            'limit' => $this->getState()->articleLimit ?? false,
+            'skip' => $this->getState()->skip
         ]);
 
         $result = $search->fetch();
 
         return Sorting::sortBy($result, 'datePublished', Sorting::$DIRECTION_DESC);
+    }
+
+    public function getPropertyArticlesTotal()
+    {
+        $search = new SearchModel($this->container);
+        $search->setState([
+            'label' => [$this['_id']],
+            'limit' => 1
+        ]);
+
+        $result = $search->fetch(true);
+
+        return $result['total'];
     }
 
     public function fetch($raw = false)

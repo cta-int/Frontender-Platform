@@ -9,13 +9,15 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 {% set related_issues = model.related.issues %}
 
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
+
 <div class="layout layout--reverse post-body" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="layout__cell layout__cell--main">
         <div class="layout">
             <div class="layout__cell layout__cell--main  |  trailer--hero">
 
                 <div class="social__share  |  trailer  |  gutters">
-                    {{ share.bar_article(model, true) }}
+                    {{ share.bar_ictupdate_article(model, true) }}
                 </div>
 
                 <footer class="gutters  |  trailer--hero">
@@ -67,11 +69,18 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  leader  |  trailer  |  is-gt-small-desktop">
-                    <div class="gutters">
-                        {{ share.bar_article(model) }}
+                <div class="gutters  |  is-screen">
+                    <div class="well  |  leader  |  trailer">
+                        {{ share.bar_ictupdate_article(model) }}
                     </div>
                 </div>
+
+                {% if model.articleType == "blog" %}
+                <div class="leader trailer gutters" data-vendor="commento">
+                    <div id="commento"></div>
+                    <script src="https://cdn.commento.io/js/commento.js" defer="defer"></script>
+                </div>
+                {% endif %}
 
                 {% set ctaOrg = model.link.organization.sourceOrganization|filterCTA %}
                 {% if ctaOrg %}
@@ -119,7 +128,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="layout__cell layout__cell--aside  |  wings">
+            <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
                 {% if model.issue.articles|length > 0 %}
                     <h2 class="title trailer-inside--normal gutters">{{ 'read more'|i18n }}</h2>
                     <div class="grid gutters trailer">
@@ -195,7 +204,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
         {% if related_issues|length > 0 %}
             <aside class="trailer">
                 <h2 class="title trailer-inside--normal gutters">{{ content.related_headline|t(locales)|default('related_publications'|i18n) }}</h2>
@@ -206,7 +215,7 @@
                             <div class="publication-tile__cover media__figure gutters">
                                 <figure class="publication-cover">
                                     <a href="{{ issue_route }}">
-                                        {{ image.contentBlock_cover(issue.contentBlocks|t(locales)|filterArray('subtype', 'image'), "publication-cover__image") }}
+                                        {{ image.contentBlock_cover(issue.contentBlocks|filterArray('subtype', 'image'), "publication-cover__image") }}
                                     </a>
                                 </figure>
                             </div>

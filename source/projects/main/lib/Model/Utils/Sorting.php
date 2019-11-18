@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Model\Utils;
+namespace Frontender\Platform\Model\Utils;
 
 class Sorting
 {

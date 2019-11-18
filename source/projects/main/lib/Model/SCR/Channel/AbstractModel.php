@@ -6,9 +6,9 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Channel;
+namespace Frontender\Platform\Model\SCR\Channel;
 
-use Prototype\Model\SCR\ScrModel;
+use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 
 class AbstractModel extends ScrModel

@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Template\Helper;
+namespace Frontender\Platform\Template\Helper;
 
 use Frontender\Core\Template\Helper;
 use Frontender\Core\Template\Filter\Translate;
@@ -36,7 +36,8 @@ class Url extends Helper\Url
             // $params['page'] .= !empty($query) ? '?' . $query : '';
         }
 
-        return $router->route($params);
+        return $router->route($params)
+            ->withQuery($this->container['request']->getUri()->getQuery());
     }
 
     public function getTranslatedSlug($data, $locale)

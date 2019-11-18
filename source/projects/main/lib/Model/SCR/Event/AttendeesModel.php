@@ -6,9 +6,9 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Event;
+namespace Frontender\Platform\Model\SCR\Event;
 
-use Prototype\Model\SCR\ScrModel;
+use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 
 class AttendeesModel extends ScrModel

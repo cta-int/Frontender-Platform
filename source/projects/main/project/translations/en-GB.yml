@@ -65,6 +65,7 @@ find events: Find events
 find projects: Find projects
 all topics: All topics
 all: All
+any: Any
 type keywords: Type Keywords
 read more: Read More
 by: by
@@ -91,6 +92,8 @@ awards notice: Awards notice
 expiring: closing soon
 related_publications: Related publications
 area: Area
+intervention_area: Intervention area
+scope: Scope
 
 # Issues
 in this issue: In this issue
@@ -141,6 +144,7 @@ disclaimer: Disclaimer
 about the author: About the author
 author: Author
 authors: Authors
+editorial comment: Editorial comment
 
 # Event
 speakers: Speakers

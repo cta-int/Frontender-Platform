@@ -6,12 +6,12 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR\Article;
+namespace Frontender\Platform\Model\SCR\Article;
 
-use Prototype\Model\Traits\Searchable;
+use Frontender\Platform\Model\Traits\Searchable;
 use Slim\Container;
-use Prototype\Model\SCR\ArticlesModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\ArticlesModel;
+use Frontender\Platform\Model\Utils\Sorting;
 
 class SearchModel extends ArticlesModel
 {
@@ -33,6 +33,18 @@ class SearchModel extends ArticlesModel
         if (isset($values['articleType'])) {
             $values['type'] = $values['articleType'];
             unset($values['articleType']);
+        }
+
+        // If type is an array we will modify it into a must query.
+        if(isset($values['type']) && is_array($values['type'])) {
+            $types = $values['type'];
+            unset($values['type']);
+
+            foreach($types as $type) {
+                $values['should'] = $values['should'] ?? [];
+
+                $values['should'][] = $this->addTerm('field', 'articleType', str_replace('article.', '', $type));
+            }
         }
 
         $this->traitSetState($values);

@@ -4,4 +4,8 @@
     {% include 'partials/slogan/' ~ slogan.brand|t(locales) %}
 {% elseif slogan.image %}
     {% include 'partials/slogan/' ~ slogan.image|t(locales) %}
+{% elseif slogan.alt is empty %}
+    {% if model.metadata.id %}
+        <img class="{{ slogan.backdrop ? 'slogan slogan--backdrop' : 'slogan' }}" src="https://res.cloudinary.com/cta/image/upload/h_348,ar_3:2,g_faces:center,f_auto,c_fill/{{ model.metadata.id }}" alt="{{ model.metadata.title|t(locales) ? model.metadata.title|t(locales) : slogan.alt|t(locales)|default("Illustration") }}">
+    {% endif %}
 {% endif %}

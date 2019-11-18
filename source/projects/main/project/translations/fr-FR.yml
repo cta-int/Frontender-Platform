@@ -251,6 +251,9 @@ updated on: Mis à jour le
 follow us on twitter: Suivez-nous sur Twitter
 related_publications: Publications liés
 area: Domaine
+intervention_area: Domaine d’intervention
+scope: Scope
+all: Tous
 
 # Issues
 issue: numéro
@@ -273,6 +276,7 @@ author: Auteur
 authors: Auteurs
 articles: articles
 in: dans
+editorial comment: Commentaire éditorial
 
 # Article types
 all article types: Tous les types d'articles

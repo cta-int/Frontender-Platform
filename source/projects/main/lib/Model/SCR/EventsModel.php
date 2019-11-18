@@ -6,13 +6,13 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
-use Prototype\Model\SCR\Event\AttendeesModel;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\Event\AttendeesModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\Utils\Sorting;
 
 class EventsModel extends ScrModel
 {
@@ -71,7 +71,7 @@ class EventsModel extends ScrModel
             public function articles()
             {
                 if (!$this->cachedArticles) {
-                    $related_articles = new \Prototype\Model\SCR\Event\ArticlesModel($this->container);
+                    $related_articles = new \Frontender\Platform\Model\SCR\Event\ArticlesModel($this->container);
                     $this->cachedArticles = $related_articles->setState([
                         'id' => $this->state->id,
                         'limit' => 8,
@@ -151,7 +151,7 @@ class EventsModel extends ScrModel
                     'language' => $this->state->language
                 ], $config);
 
-                $model = new \Prototype\Model\SCR\Event\SearchModel($this->container);
+                $model = new \Frontender\Platform\Model\SCR\Event\SearchModel($this->container);
                 $model->setState([
                     'limit' => $config['limit'],
                     'label' => $config['label'],
@@ -413,5 +413,19 @@ class EventsModel extends ScrModel
     public function getPropertyConcepts()
     {
         return isset($this['analysis']['agrovoc']) ? $this['analysis']['agrovoc'] : [];
+    }
+
+    public function getPropertyExperts()
+    {
+        // Check if the event contains an organizer or expert attribute.
+        if( !(isset($this['organizer']) && is_array($this['organizer']) && count($this['organizer'])) || !(isset($this['officer']) && is_array($this['officer']) && count($this['officer'])) ) {
+            return false;
+        }
+
+        $organizerIDs = array_column($this['organizer'], '_id');
+        return array_filter($this['officer'], function($person) use ($organizerIDs) {
+            // Get the companies the person works for.
+            return array_intersect($organizerIDs, array_column($person['worksFor'], '_id'));
+        });
     }
 }

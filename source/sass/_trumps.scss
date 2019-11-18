@@ -59,7 +59,7 @@
 
 .extended-search {
     font-family: $font-family--meta;
-    color: mix($color-body, $white, 26%);
+    // color: mix($color-body, $white, 26%);
     font-size: to-unit(27px);
     font-weight: 600;
     border: 0;
@@ -100,6 +100,18 @@
         .post .media__figure {
             width: auto;
         }
+    }
+}
+
+.post-body {
+    .heading {
+        margin-top: rhythm(8);
+    }
+    h2.heading {
+        @include title-20px();
+    }
+    h3.heading {
+        @include title-18px();
     }
 }
 
@@ -157,3 +169,23 @@ html {
     }
 }
 
+
+/*
+ * Overrides for commento styling
+ */
+
+[data-vendor="commento"] {
+    .commento-root textarea,
+    .commento-button.commento-submit-button {
+        border-radius: 0;
+    }
+    .commento-root textarea {
+        @include theme-border(26%);
+    }
+    .commento-button.commento-submit-button {
+        @extend .button !optional;
+        box-shadow: none;
+        // margin-left: 0;
+        // margin-right: 0;
+    }
+}

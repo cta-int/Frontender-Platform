@@ -6,10 +6,10 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
 use Slim\Container;
-use Prototype\Model\Traits\Translatable;
+use Frontender\Platform\Model\Traits\Translatable;
 
 class TermsModel extends ScrModel
 {

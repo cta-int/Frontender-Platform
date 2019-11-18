@@ -1,0 +1,98 @@
+<style type="text/css" media="screen">
+    .gallery {
+        visibility: hidden;
+        pointer-events: unset;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        min-height: 100vh;
+        z-index: 2;
+    }
+    .gallery--active {
+        visibility: visible;
+        pointer-events: unset;
+    }
+    .gallery__cloak {
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: rgba(0,0,0,.72);
+        z-index: -1;
+    }
+    .stage {
+        width: 80vw;
+        max-width: 800px;
+        margin: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .stage__cue {
+        flex: 1 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .stage__toggle {
+        text-align: right;
+        flex: 0 0;
+    }
+
+    .stage__controls {
+       display: table;
+    }
+
+    .stage__controls .stage__prev,
+    .stage__controls .stage__next {
+        display: table-cell;
+        vertical-align: top;
+        width: 50%;
+    }
+    .stage__controls .stage__prev {
+        text-align: left;
+    }
+    .stage__controls .stage__next {
+        text-align: right;
+    }
+
+    .teleport {
+        text-align: inherit;
+        font-size: .85em;
+    }
+    .teleport__trigger:before {
+        font-size: 3em;
+    }
+    .teleport__label.teleport__label {
+        display: inline-block;
+    }
+
+    .actor {
+        background: #000;
+        width: 80vw;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .actor__media-wrapper {
+        width: 80vw;
+        height: 50vw;
+        max-width: 800px;
+        max-height: 500px;
+    }
+    .actor__media {
+        display: block;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+    }
+    .actor__meta {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .actor .title {
+        text-transform: none;
+        margin-bottom: .5em;
+    }
+</style>

@@ -6,10 +6,26 @@
 }) }}
 
 {% set panelData = {} %}
+
+{# {{dump(model.search.articles("{
+    'must': [{
+        'type': 'label',
+        'id': '6567e105-820e-484c-b82e-728b8474e1c9'
+    }],
+    'limit': '2'
+}")|length)}} #}
+
 {% for c in containers %}
     
     {# article.blog #}
-    {% if c.content.type == 'article.blog' %}
+    {% if 'article.' in c.content.type and c.content.filter %}
+        {% set key = c.content.type %}
+        {% set panelData = panelData|merge({ (key): model.search.articles(c.content.filter) }) %}
+    {# article.impact #}
+    {% elseif 'event.' in c.content.type and c.content.filter %}
+        {% set key = c.content.type %}
+        {% set panelData = panelData|merge({ (key): model.search.events(c.content.filter) }) %}
+    {% elseif c.content.type == 'article.blog' %}
         {% set panelData = panelData|merge({ 'article.blog': model.blogArticles }) %}
 
     {# article.impact #}
@@ -88,14 +104,11 @@
     {% elseif c.content.type == 'article.speech' %}
         {% set panelData = panelData|merge({ 'article.speech': model.speechArticles }) %}
 
-    {% endif %}
-
-    {# Conference #}
-    {% if c.content.type == 'event.Conference' %}
+    {% elseif c.content.type == 'event.Conference' %}
         {% set panelData = panelData|merge({ 'event.Conference': model.conferenceEvents }) %}
 
     {# Workshop #}
-    {% elseif c.content.type == 'Workshop' %}
+    {% elseif c.content.type == 'event.Workshop' %}
         {% set panelData = panelData|merge({ 'event.Workshop': model.workshopEvents }) %}
 
     {# Training (online) #}
@@ -107,7 +120,7 @@
         {% set panelData = panelData|merge({ 'event.Training': model.trainingEvents }) %}
 
     {# Briefing #}
-    {% elseif articleType == 'event.Briefing' %}
+    {% elseif c.content.type == 'event.Briefing' %}
         {% set panelData = panelData|merge({ 'event.Briefing': model.briefingEvents }) %}
 
     {# Meeting #}
@@ -131,7 +144,6 @@
         {% set panelData = panelData|merge({ 'event.Other': model.otherEvents }) %}
 
     {% endif %}
-    
 {% endfor %}
 
 {% import "macros/template.html.twig" as helper %}

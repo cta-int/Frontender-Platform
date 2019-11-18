@@ -5,6 +5,8 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{{'containers/articles/body/print/champion.html.twig'|addAsset('styles') }}
+
 <div class="layout layout--reverse post-body">
     <div class="layout__cell layout__cell--main">
         <div class="layout">
@@ -44,8 +46,10 @@
                     </div>
                 {% endif %}
 
-                <div class="well  |  gutters-outside  |  leader  |  trailer">
-                    {{ share.bar_article(model) }}
+                <div class="gutters  |  is-screen">
+                    <div class="well  |  leader  |  trailer">
+                        {{ share.bar_article(model) }}
+                    </div>
                 </div>
 
                 <aside class="gutters-outside  |  divider divider--top  |  leader--hero leader-inside--small">
@@ -111,7 +115,7 @@
             </div>
         </div>
     </div>
-    <div class="layout__cell layout__cell--aside  |  wings">
+    <div class="layout__cell layout__cell--aside  |  wings  |  is-screen">
 
         {% if model.articleType == "review" %}
             {# Add image with type of product here #}

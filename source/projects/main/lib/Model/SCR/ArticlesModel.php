@@ -6,16 +6,16 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-use Prototype\Model\Traits\Projectable;
+use Frontender\Platform\Model\Traits\Projectable;
 use Slim\Container;
-use Prototype\Model\Traits\Imagable;
-use Prototype\Model\SCR\MediaModel;
+use Frontender\Platform\Model\Traits\Imagable;
+use Frontender\Platform\Model\SCR\MediaModel;
 use Frontender\Core\DB\Adapter;
 use Frontender\Core\Template\Filter\Translate;
-use Prototype\Model\SCR\Article\SearchModel;
-use Prototype\Model\Utils\Sorting;
+use Frontender\Platform\Model\SCR\Article\SearchModel;
+use Frontender\Platform\Model\Utils\Sorting;
 use Doctrine\Common\Inflector\Inflector;
 
 class ArticlesModel extends ScrModel
@@ -82,9 +82,16 @@ class ArticlesModel extends ScrModel
             }, $related['persons']),
             'issues' => array_map(function($issue) use ($state, $container) {
                 $model = new ArticlesModel($container);
-                return $model
-                    ->setState($state->getValues())
-                    ->setData($issue);
+                $state = array_merge($state->getValues(), [
+                    'id' => $issue['_id']
+                ]);
+
+                $issue = $model
+                    ->setState($state)
+                    ->setData($issue)
+                    ->fetch();
+
+                return count($issue) ? array_shift($issue) : false;
             }, $issues)
         ];
     }
@@ -123,7 +130,7 @@ class ArticlesModel extends ScrModel
                         return false;
                     }
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -159,7 +166,7 @@ class ArticlesModel extends ScrModel
                         return $label['type'] === 'publication';
                     });
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -192,7 +199,7 @@ class ArticlesModel extends ScrModel
                         return false;
                     }
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => array_map(function ($label) {
                             return $label['_id'];
@@ -231,7 +238,7 @@ class ArticlesModel extends ScrModel
             private $container;
             private $state;
             private $issueLabel = null;
-            private $issueNumberLabel = null;
+            public $issueNumberLabel = null;
 
             public function __construct($article, $state, $container)
             {
@@ -264,7 +271,7 @@ class ArticlesModel extends ScrModel
                     return false;
                 }
 
-                $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                 $articles->setState([
                     'label' => array_filter([$this->issueLabel['_id'] ?? false, $this->issueNumberLabel['_id'] ?? false]),
                     'limit' => 1,
@@ -342,7 +349,7 @@ class ArticlesModel extends ScrModel
 
                 if (!$this->cachedIssueArticles) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueNumberLabel['_id']],
                         'limit' => $config['limit'],
@@ -382,7 +389,7 @@ class ArticlesModel extends ScrModel
             {
                 if (!$this->cachedIssueInterview) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueNumberLabel['_id']],
                         'limit' => 1,
@@ -406,7 +413,7 @@ class ArticlesModel extends ScrModel
 
                 if (!$this->cachedIssues) {
 
-                    $articles = new \Prototype\Model\SCR\Article\SearchModel($this->container);
+                    $articles = new \Frontender\Platform\Model\SCR\Article\SearchModel($this->container);
                     $articles->setState([
                         'label' => [$this->issueLabel['_id']],
                         'limit' => $config['limit'],
@@ -505,17 +512,23 @@ class ArticlesModel extends ScrModel
 
         $contentBlocks = array_map(function ($block) use ($article, $mediaModel) {
             if ((isset($block['subtype']) && $block['subtype'] === 'image') || (isset($block['type']) && $block['type'] === 'video')) {
-                $item = $mediaModel->setState([
-                    'id' => $block['id']
-                ])->fetch();
+                try {
+                    $item = $mediaModel->setState([
+                        'id' => $block['id']
+                    ])->fetch();
 
-                if (count($item) > 0) {
-                    $item = array_shift($item);
+                    if (count($item) > 0) {
+                        $item = array_shift($item);
 
-                    $block['about'] = $item['about'] ?? '';
-                    $block['name'] = $item['name'] ?? '';
-                    $block['credit'] = $item['credit'] ?? '';
-                    $block['url'] = $item['metadata']['url'] ?? '';
+                        $block['about'] = $item['about'] ?? '';
+                        $block['name'] = $item['name'] ?? '';
+                        $block['credit'] = $item['credit'] ?? '';
+                        $block['url'] = $item['metadata']['url'] ?? '';
+                    }
+                } catch(\Exception $e) {
+                    // NOOP
+                } catch(\Error $e) {
+                    // NOOP
                 }
             }
 
@@ -582,7 +595,7 @@ class ArticlesModel extends ScrModel
             $prefix = $filter->translate($prefix['route']);
         }
 
-        return $this->getPageRoute($prefix);
+        return $this->getPageRoute($prefix ?? '');
     }
 
     private function getPageRoute($prefix = '')
@@ -635,6 +648,28 @@ class ArticlesModel extends ScrModel
     public function getPropertyPublicationLabel()
     {
         return $this->getLabels('publication', true);
+    }
+
+    public function getPropertyStrategy()
+    {
+        $_label = $this->getLabels('strategy', true);
+
+        $_theme = [
+            'selector' => '',
+            'label' => ''
+        ];
+
+        if (!isset($this->container['theme-color'])) {
+            $_config = $this->container['theme-color'] = json_decode(file_get_contents(__DIR__ . '/Label/SearchModel.json'), true);
+        } else {
+            $_config = $this->container['theme-color'];
+        }
+
+        if (isset($_config[$_label['type']]['theme-color'][$_label['_id']])) {
+            $_label['selector'] = $_config[$_label['type']]['theme-color'][$_label['_id']];
+        }
+
+        return $_label;
     }
 
     public function getPropertyTheme()

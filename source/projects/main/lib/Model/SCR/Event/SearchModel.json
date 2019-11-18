@@ -1,4 +1,5 @@
 {
+    "has_preview": true,
     "label": {
         "en-GB": "Event"
     },
@@ -15,7 +16,7 @@
                 "en-GB": "Event Type"
             },
             "icon": "funnel",
-            "visualType": "icon",
+            "multiple": true,
             "options": [
                 {
                     "label": {
@@ -64,23 +65,69 @@
                 }
             ]
         },
-        "upcoming": {
+        "order": {
             "label": {
-                "en-GB": "Upcoming",
-                "fr-FR": "Upcoming"
+                "en-GB": "Sort Direction"
             },
-            "control": "core/text",
-            "visualType": "icon",
-            "icon": "calendar",
+            "icon": "sort-ascending",
             "options": [
                 {
+                    "value": "asc",
                     "label": {
-                        "en-GB": "Past Events"
-                    },
-                    "value": "false"
+                        "en-GB": "Ascending"
+                    }
                 },
-                { "label": { "en-GB": "Upcoming Events" }, "value": "true" }
+                {
+                    "value": "desc",
+                    "label": {
+                        "en-GB": "Descending"
+                    }
+                }
             ]
+        },
+        "time": {
+            "label": {
+                "en-GB": "Period"
+            },
+            "icon": "clock",
+            "options": [
+                {
+                    "value": "-1 hour",
+                    "label": {
+                        "en-GB": "Last hour"
+                    }
+                },
+                {
+                    "value": "-24 hours",
+                    "label": {
+                        "en-GB": "Last 24 hours"
+                    }
+                },
+                {
+                    "value": "-1 week",
+                    "label": {
+                        "en-GB": "Last week"
+                    }
+                },
+                {
+                    "value": "-1 month",
+                    "label": {
+                        "en-GB": "Last month"
+                    }
+                },
+                {
+                    "value": "-1 year",
+                    "label": {
+                        "en-GB": "Last year"
+                    }
+                }
+            ]
+        },
+        "q": {
+            "label": {
+                "en-GB": "Search term"
+            },
+            "type": "search"
         }
     }
 }

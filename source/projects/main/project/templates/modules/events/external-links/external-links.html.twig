@@ -1,0 +1,9 @@
+{% if model.externalLink|length %}
+    {% import "macros/template.html.twig" as helper %}
+    <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <h2 class="title title--section  |  grid">{{ labels.title|t(locales) }}</h2>
+        {% for link in model.externalLink %}
+            {% include 'partials/icon-link.html.twig' with {link: link} %}
+        {% endfor %}
+    </{{ config.container_tag|default('div') }}>
+{% endif %}

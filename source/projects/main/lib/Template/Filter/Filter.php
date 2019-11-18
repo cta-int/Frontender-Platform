@@ -5,7 +5,7 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Template\Filter;
+namespace Frontender\Platform\Template\Filter;
 
 class Filter extends \Twig_Extension
 {

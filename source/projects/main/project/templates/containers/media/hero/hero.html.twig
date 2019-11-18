@@ -4,8 +4,8 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if config.section_link.page %}
-        <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero'))|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
-        <a href="{{ config.section_link.page|t(locales) }}">
+    <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero'))|raw }} {{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+        <a href="{{ route({'page': config.section_link.page|t(locales) }) }}">
             {{ image.hero(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}
             <figcaption class="hero__headline">
                 {% for loopContainer in containers %}
@@ -13,8 +13,7 @@
                 {% endfor %}
             </figcaption>
         </a>
-        </{{ config.container_tag|default('figure') }}>
-
+    </{{ config.container_tag|default('figure') }}>
 {% else %}
     <{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, hero_class|default('ie9-hero hero'))|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         {{ image.hero(model, is_crowned|default(0), "hero__figure  |  image image--stretch") }}

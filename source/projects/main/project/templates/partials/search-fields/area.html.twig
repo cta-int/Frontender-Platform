@@ -1,0 +1,14 @@
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__area')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="fld">
+        <label for="ctx-item__area" class="fld-label">{{ labels.field_label|t(locales)|default('intervention_area'|i18n) }}</label>
+        <select id="ctx-item__area" name="strategy" class="placeholder-visible">
+            <option value="">{{ 'Any'|i18n }}</option>
+            
+            {% for strategy in model.strategy %}
+                <option value="{{strategy.slug}}"{% if query.strategy == strategy.slug or query.strategy == strategy.id %} selected="selected" {% endif %}>{{ strategy.title|i18n }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</{{ config.container_tag|default('div') }}>

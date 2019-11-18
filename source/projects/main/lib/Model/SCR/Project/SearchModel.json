@@ -1,7 +1,8 @@
 {
+    "has_preview": true,
     "label": {
-        "en": "Find content: event",
-        "fr": "Find content: event"
+        "en-GB": "Project",
+        "fr-FR": "Projet"
     },
     "map": {
         "id": "_id",
@@ -11,60 +12,6 @@
         "to": "endDateUTC"
     },
     "filters": {
-        "type": {
-            "label": {
-                "en-GB": "Event Type"
-            },
-            "icon": "funnel",
-            "visualType": "icon",
-            "options": [
-                {
-                    "label": {
-                        "en-GB": "Conference"
-                    },
-                    "value": "event.Conference"
-                },
-                { "label": { "en-GB": "Workshop" }, "value": "event.Workshop" },
-                { "label": { "en-GB": "Seminar" }, "value": "event.Seminar" },
-                {
-                    "label": { "en-GB": "Training (online)" },
-                    "value": "event.Training (online)"
-                },
-                { "label": { "en-GB": "Training" }, "value": "event.Training" },
-                { "label": { "en-GB": "Briefing" }, "value": "event.Briefing" },
-                { "label": { "en-GB": "Meeting" }, "value": "event.Meeting" },
-                {
-                    "label": {
-                        "en-GB": "Hackathon"
-                    },
-                    "value": "event.Hackathon"
-                },
-                {
-                    "label": {
-                        "en-GB": "Forum"
-                    },
-                    "value": "event.Forum"
-                },
-                {
-                    "label": {
-                        "en-GB": "Field visit"
-                    },
-                    "value": "event.Field visit"
-                },
-                {
-                    "label": {
-                        "en-GB": "Project"
-                    },
-                    "value": "event.Project"
-                },
-                {
-                    "label": {
-                        "en-GB": "Other"
-                    },
-                    "value": "event.Other"
-                }
-            ]
-        },
         "upcoming": {
             "label": {
                 "en-GB": "Upcoming",
@@ -82,6 +29,12 @@
                 },
                 { "label": { "en-GB": "Upcoming Events" }, "value": "true" }
             ]
+        },
+        "q": {
+            "label": {
+                "en-GB": "Search term"
+            },
+            "type": "search"
         }
     }
 }

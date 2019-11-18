@@ -6,9 +6,9 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\SCR;
+namespace Frontender\Platform\Model\SCR;
 
-//use Prototype\Object\ObjectArray;
+//use Frontender\Platform\Object\ObjectArray;
 
 use Teemr\Scr\Client\ScrClient;
 use Teemr\Scr\Client\ScrClientFactory;
