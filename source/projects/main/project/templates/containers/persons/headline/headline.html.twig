@@ -8,43 +8,52 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'person layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>   
     <div class="person__headline layout__cell">
-        <h1 class="heading heading--hero gutters">{{ (model.honorificPrefix ~ ' ' ~ model.givenName ~ ' ' ~ model.familyName)|trim }}</h1>
-        <p class="title title--apropos gutters">{{ model.jobTitle|t(locales) }}</p>
+        <h1 class="heading heading--hero gutters">
+            {% if model.honorificPrefix %}<span itemprop="honorificPrefix">{{ model.honorificPrefix }}</span>{% endif %}
+            <span itemprop="name">{{ (model.givenName ~ ' ' ~ model.familyName)|trim }}</span> 
+            {% if model.honorificSuffix %}<span itemprop="honorificSuffix">{{ model.honorificSuffix }}</span>{% endif %}
+        </h1>
+        <p itemprop="jobTitle" class="title title--apropos gutters">{{ model.jobTitle|t(locales) }}</p>
     </div>
     <div class="person__summary layout__cell layout">
         <div class="person__standfirst layout__cell">
             <div class="body--whisper gutters">{{ model.description|t(locales) }}</div>
             {% if model.twitterHandle or model.linkedInProfile or model.facebookPage %}
+                {% set urlSet = false %}
                 <div class="gutters leader--normal">
-                    {% if model.twitterHandle %} 
-                        <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
-                            <dt class="media__figure">
-                                <a class="icon icon--twitter  |  is-heir" href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank"><span class="is-narrative">{{ "Twitter"|i18n }}</a>
-                            </dt>
-                            <dd class="media__body  |  gutters">
-                                <a href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank">{{ model.twitterHandle }}</a>
-                            </dd>
-                        </dl>
-                    {% endif %}
                     {% if model.linkedInProfile %}
                         <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
                             <dt class="media__figure">
                                 <a class="icon icon--linkedin  |  is-heir" href="{{ model.linkedInProfile }}" target="_blank"><span class="is-narrative">{{ "LinkedIn"|i18n }}</span></a>
                             </dt>
                             <dd class="media__body  |  gutters">
-                                <a href="{{ model.linkedInProfile }}" target="_blank">{{ model.linkedInProfile }}</a>
+                                <a itemprop="url" href="{{ model.linkedInProfile }}" target="_blank">{{ model.linkedInProfile }}</a>
                             </dd>
                         </dl>
+                        {% set urlSet = true %}
                     {% endif %}
-                    {% if model.facebookPage %}
+                    {% if model.twitterHandle %} 
                         <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
                             <dt class="media__figure">
-                                <a class="icon icon--facebook  |  is-heir" href="{{ model.facebookPage }}" target="_blank"><span class="is-narrative">{{ "Facebook"|i18n }}</a>
+                                <a class="icon icon--twitter  |  is-heir" href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank"><span class="is-narrative">{{ "Twitter"|i18n }}</span></a>
                             </dt>
                             <dd class="media__body  |  gutters">
-                                <a href="{{ model.facebookPage }}" target="_blank">{{ model.facebookPage }}</a>
+                                <a itemprop="{{ urlSet ? 'sameAs' : 'url' }}" href="{{ '//twitter.com/' ~ model.twitterHandle }}" target="_blank">{{ model.twitterHandle }}</a>
                             </dd>
                         </dl>
+                        {% set urlSet = true %}
+                    {% endif %}
+                    {% if model.facebookPage %}
+                    {% set urlSet = true %}
+                        <dl class="media  |  body--whisper  |  leader--tiny leader-inside--tiny">
+                            <dt class="media__figure">
+                                <a class="icon icon--facebook  |  is-heir" href="{{ model.facebookPage }}" target="_blank"><span class="is-narrative">{{ "Facebook"|i18n }}</span></a>
+                            </dt>
+                            <dd class="media__body  |  gutters">
+                                <a itemprop="{{ urlSet ? 'sameAs' : 'url' }}" href="{{ model.facebookPage }}" target="_blank">{{ model.facebookPage }}</a>
+                            </dd>
+                        </dl>
+                        {% set urlSet = true %}
                     {% endif %}
                 </div>
             {% endif %}
@@ -55,7 +64,7 @@
     </div>
     <div class="person__biography layout__cell">
         <h2 class="title gutters trailer--normal">{{ labels.biography|default({"en-GB": "Biography", "fr-FR": "Biographie"})|t}}</h2>
-        <p class="gutters">{{ model.biography|t(locales)|nl2br }}</p>
+        <p itemprop="description" class="gutters">{{ model.biography|t(locales)|nl2br }}</p>
     </div>
 {% for loopContainer in containers %}
         {% include loopContainer.template with loopContainer %}

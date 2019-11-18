@@ -17,7 +17,7 @@
 
             {# Publications #}
             <section class="layout__cell layout__cell--aside layout__cell--divider wings">
-                <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
+                <header class="container-header container-header--slim-fit gutter--right" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
                     <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
                         {{ labels.publications|default({"en-GB": "Publications", "fr-FR": "Publications"})|t }}
                     </h2>
@@ -31,7 +31,7 @@
                     <ol class="reset leader--hero">
                     {% for item in model.publications %}
                         <li>
-                            <article class="publication-tile publication-tile--s media trailer leader--normal trailer--normal gutters">
+                            <article class="publication-tile publication-tile--s media trailer leader--normal trailer--normal gutters" itemscope itemtype="http://schema.org/Book" itemid="{{ route({'page': item.path, 'slug': item.headline|t(locales)|slugify, 'id': item._id}) }}">
                                 <div class="publication-tile__cover media__figure gutter">
                                     <figure class="publication-cover publication-cover--s">
                                         <a href="{{ route({'page': item.path, 'slug': item.headline|t(locales)|slugify, 'id': item._id}) }}">
@@ -39,24 +39,28 @@
                                         </a>
                                     </figure>
                                 </div>
-                                <div class="media__body">
+                                <div class="media__body gutter--right">
                                     {% if config.show_publication|default(1) %}
-                                        <p class="trailer-inside--tiny">{{ date.issue_date(item.datePublished) }}</p>
+                                        <p itemprop="datePublished" class="trailer-inside--tiny">{{ date.issue_date(item.datePublished) }}</p>
                                     {% endif %}
                                     <h2 class="heading heading--focus">
                                         <a class="is-heir" href="{{ route({'page': item.path, 'slug': item.headline|t(locales)|slugify, 'id': item._id}) }}">
-                                            {{ item.headline|t(locales) }}
+                                            <span itemprop="name">{{ item.headline|t(locales) }}</span>
                                         </a>
                                     </h2>
                                     {% if config.standfirst|default(1) %}
-                                        <p class="body--whisper leader--tiny">
+                                        <p itemprop="about" class="body--whisper leader--tiny">
                                             {{ item.about|t(locales) }}
                                         </p>
                                     {% endif %}
                                     {% if config.show_author_name|default(1) and item.link.person.author|length %}
-                                        <p class="author">
+                                        <p itemprop="author" class="author">
                                             {{ author.long(item.link.person.author) }}
                                         </p>
+                                    {% else %}
+                                        <span itemprop="author" class="is-narrative">
+                                            {{ author.long(item.link.person.author) }}
+                                        </span>
                                     {% endif %}
                                 </div>
                             </article>
@@ -83,8 +87,8 @@
                 {% if model.events|length %}
                     <ol class="reset leader--hero">
                         {% for item in model.events|slice(0,4) %}
-                            <li>
-                                <article class="{{['media',class]|join(' ')}}" itemscope itemtype="https://schema.org/Event">
+                            <li itemprop="performerIn" itemscope="" itemtype="https://schema.org/Event">
+                                <article class="{{['media',class]|join(' ')}}">
                                     <div class="media__figure gutters gutter-mobile--right">
                                         {{ date.tile(item.startDate) }}
                                     </div>
@@ -101,7 +105,7 @@
                                                 <div class="trailer--small">
                                                     {{ date.event_long(item.startDate, item.endDate) }}
                                                 </div>
-                                                <div class="body--whisper trailer--normal">
+                                                <div itemprop="description" class="body--whisper trailer--normal">
                                                     {% if highlight %}
                                                         {{ item.description|t(locales)|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
                                                     {% else %}
@@ -129,13 +133,14 @@
                                                         {% if item.type %}
                                                             <dt class="dlist__label meta meta--s meta--dark">{{ 'Type'|i18n }}: </dt>
                                                             <dd class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong>{{ item.type|t(locales) }}</strong>
+                                                                <strong itemprop="additionalType">{{ item.type|t(locales) }}</strong>
                                                             </dd>
                                                         {% endif %}
                                                         {% if model.event.role(item) %}
                                                             <dt class="dlist__label meta meta--s meta--dark">{{ 'Role'|i18n }}: </dt>
-                                                            <dd class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong>{{ model.event.role(item)|i18n }}</strong>
+                                                            <dd itemprop="performer" class="dlist__value meta meta--s meta--lc meta--dark">
+                                                                <strong><span class="is-narrative">{{ (model.givenName ~ ' ' ~ model.familyName)|trim }}</span>
+                                                                {{ model.event.role(item)|i18n }}</strong>
                                                             </dd>
                                                         {% endif %}
                                                     </dl>
