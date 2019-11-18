@@ -68,7 +68,7 @@
                     {% endfor %}
                     </ol>
                 {% else %}
-                    <p>{{ labels.no_publications|default({"en-GB": "No publications were found", "fr-FR": "No publications were found"})|t }}</p>
+                    <p class="meta gutters leader--hero">{{ labels.no_publications|default({"en-GB": "No publications were found", "fr-FR": "No publications were found"})|t }}</p>
                 {% endif %}
             </section>
             
@@ -165,7 +165,7 @@
                         {% endfor %}
                     </ol>                  
                 {% else %}
-                    <p>{{ labels.no_events|default({"en-GB": "No events were found", "fr-FR": "No events were found"})|t }}</p>
+                    <p class="meta gutters leader--hero">{{ labels.no_events|default({"en-GB": "No events were found", "fr-FR": "No events were found"})|t }}</p>
                 {% endif %}
             </section>
         </div>

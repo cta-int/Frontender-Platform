@@ -33,7 +33,7 @@
                         {% endif %}
                         {% if model.link.person.author|length > 0 %}
                             <dt class="dlist__label meta meta--s meta--dark">{{ model.link.person.author|length > 1 ? 'authors' | i18n : 'author' | i18n }}: </dt>
-                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ author.long(model.link.person.author, false) }}</dd>
+                            <dd class="dlist__value meta meta--s meta--lc meta--dark">{{ author.long(model.link.person.author, false, 'is-heir') }}</dd>
                         {% endif %}
                         {% if model.datePublished %}
                             <dt class="dlist__label meta meta--s meta--dark">{{ 'published' | i18n }}: </dt>

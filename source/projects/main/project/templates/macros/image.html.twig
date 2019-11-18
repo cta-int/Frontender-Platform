@@ -190,7 +190,7 @@ $landscape - Breakpoint for landscape oriented viewports.
     {% endif %}
 
     {% set imagebasename = avatar|getFileBaseName() %}
-
+    
     <img
         src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
         width="{{ size }}"
