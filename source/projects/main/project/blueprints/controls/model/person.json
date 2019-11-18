@@ -1,0 +1,21 @@
+{
+    "label": {
+        "en-GB": "Person"
+    },
+    "adapters": [
+        {
+            "value": "SCR",
+            "label": "SCR",
+            "models": [
+                {
+                    "value": "Persons\\Search",
+                    "label": {
+                        "en-GB": "Person"
+                    }
+                }
+            ]
+        }
+    ],
+    "control": "core/lookup",
+    "frontender": "1101444a74dec80d1e906ae1ffb76be2"
+}
