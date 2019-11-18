@@ -195,7 +195,7 @@ $landscape - Breakpoint for landscape oriented viewports.
         src="{{ 'https://res.cloudinary.com/cta/image/upload/w_' ~ size ~ ',h_' ~ size ~ ',f_auto,g_faces:center,c_fill/' ~ imagebasename|default(fallback) }}"
         width="{{ size }}"
         height="{{ size }}"
-        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName)|trim }}"
+        alt="{{ (person.honorificPrefix ~ ' ' ~ person.givenName ~ ' ' ~ person.familyName ~ ' ' ~ person.honorificSuffix)|trim }}"
         itemprop="image"
     />
 {% endmacro %}
@@ -562,6 +562,7 @@ $landscape - Breakpoint for landscape oriented viewports.
 
         {% if imagedimensions.width %}
             <img
+                itemprop="image"
                 class="{{ class }}"
                 src="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }}"
                 srcset="https://res.cloudinary.com/cta/image/upload/w_480/{{ imagebasename }} 480w,https://res.cloudinary.com/cta/image/upload/w_320/{{ imagebasename }} 320w,https://res.cloudinary.com/cta/image/upload/w_240/{{ imagebasename }} 240w"
