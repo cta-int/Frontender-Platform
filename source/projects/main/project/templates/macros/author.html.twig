@@ -1,26 +1,26 @@
-{% macro single(authors) %}
+{% macro single(authors, class = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length) %}
-        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ 'by'|i18n }} <a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': authors|first.path|default('profile'), 'slug': (authors|first.givenName ~ ' ' ~ authors|first.familyName)|slugify, id: person._id}) }}" itemprop="author">{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}</a>
     {% endif %}
 {% endmacro %}
 
-{% macro all(authors) %}
+{% macro all(authors, class = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|i18n }} {{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}
+        {{ 'by'|i18n }} <a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': authors|first.path|default('profile'), 'slug': (authors|first.givenName ~ ' ' ~ authors|first.familyName)|slugify, id: authors|first._id}) }}" itemprop="author">{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}</a>
     {% elseif authors|length > 1 %}
         {{ 'by'|i18n }} {{ 'Multiple authors'|t(locales) }}
     {% endif %}
 {% endmacro %}
 
-{% macro long(authors, prefix = true) %}
+{% macro long(authors, prefix = true, class = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ prefix ? 'by'|i18n ~ ' ' : '' }}<span itemprop="author">{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}</span>
+        {{ prefix ? 'by'|i18n ~ ' ' : '' }}<a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': authors|first.path|default('profile'), 'slug': (authors|first.givenName ~ ' ' ~ authors|first.familyName)|slugify, id: authors|first._id}) }}" itemprop="author">{{ '%s %s'|format(authors|first.givenName, authors|first.familyName) }}</a>
     {% elseif authors|length > 1 %}
         {{ prefix ? 'by'|i18n ~ ' ' : '' }}
         {% for author in authors %}
@@ -30,16 +30,16 @@
                 {{ 'and'|i18n }}
             {% endif %}
 
-            <span itemprop="author">{{ '%s %s'|format(author.givenName, author.familyName) }}</span>
+            <a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': author.path|default('profile'), 'slug': (author.givenName ~ ' ' ~ author.familyName)|slugify, id: author._id}) }}" itemprop="author">{{ '%s %s'|format(author.givenName, author.familyName) }}</a>
         {% endfor %}
     {% endif %}
 {% endmacro %}
 
-{% macro job(authors) %}
+{% macro job(authors, class = null) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {% if(authors|length == 1) %}
-        {{ 'by'|i18n }} {{ authors|first.givenName ~ ' ' ~ authors|first.familyName|default(authors|first.givenName ~ ' ' ~ authors|first.familyName) ~ ' - ' ~ authors|first.jobTitle }}
+        {{ 'by'|i18n }} <a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': authors|first.path|default('profile'), 'slug': (authors|first.givenName ~ ' ' ~ authors|first.familyName)|slugify, id: authors|first._id}) }}" itemprop="author">{{ authors|first.givenName ~ ' ' ~ authors|first.familyName|default(authors|first.givenName ~ ' ' ~ authors|first.familyName) ~ ' - ' ~ authors|first.jobTitle }}</a>
     {% elseif authors|length > 1 %}
         {{ 'by'|i18n }}
         {% for author in authors %}
@@ -48,7 +48,7 @@
             {% elseif not loop.first and loop.last %}
                 {{ 'and'|i18n }}
             {% endif %}
-            {{ '%s %s - %s'|format(author.givenName, author.familyName, author.jobTitle) }}
+            <a class="{{ class ? class : 'anchor' }}" href="{{ route({'page': author.path|default('profile'), 'slug': (author.givenName ~ ' ' ~ author.familyName)|slugify, id: author._id}) }}" itemprop="author"></a>{{ '%s %s - %s'|format(author.givenName, author.familyName, author.jobTitle) }}</a>
         {% endfor %}
     {% endif %}
 {% endmacro %}
