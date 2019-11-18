@@ -918,6 +918,30 @@
                 }
             }
         },
+        "getPersonsSearch": {
+            "httpMethod": "POST",
+            "uri": "/persons/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string",
+                    "default": ""
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
         "getLabel": {
             "httpMethod": "GET",
             "uri": "/labels/{id}",

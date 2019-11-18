@@ -5,7 +5,7 @@
 {% import "macros/template.html.twig" as helper %}
 
 {{ '/assets/javascript/gallery.js'|addScript('beforeBodyEnd') }}
-{{ 'containers/media/gallery/gallery.js.twig'|addAsset('beforeBodyEnd') }}
+{{ 'containers/media/gallery/gallery.js.twig'|addAsset('beforeBodyEnd', {locales: locales}) }}
 {{ 'containers/media/gallery/gallery.css.twig'|addAsset('styles') }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>

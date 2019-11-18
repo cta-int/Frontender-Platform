@@ -616,6 +616,7 @@ class SearchModel extends ScrModel {
 		     ->insert( 'must', [] )
 		     ->insert( 'mustNot', [] )
 		     ->insert( 'should', [] )
+		     ->insert( 'person' )
 		     ->insert( 'type' );  // Can be an object
 
 		/**
@@ -671,6 +672,10 @@ class SearchModel extends ScrModel {
 					}
 				}
 			}
+		}
+
+		if ( isset( $values['person'] ) && ! empty( $values['person'] ) ) {
+			$values['must'][] = $this->addTerm( 'person', $values['person'] );
 		}
 
 		if ( isset( $values['issue'] ) && ! empty( $values['issue'] ) ) {
@@ -792,6 +797,28 @@ class SearchModel extends ScrModel {
 
 			return false;
 		} );
+	}
+
+	public function getPropertyPerson() {
+		$states = $this->getState()->getValues();
+
+		if(!isset($states['person']) || empty($states['person'])) {
+			return false;
+		}
+
+		try {
+			$model = new PersonsModel( $this->container );
+			$model->setState( [
+				'id' => $states['person']
+			] );
+			$result = $model->fetch();
+
+			return array_shift($result);
+		} catch(\Exception $e) {
+			return false;
+		} catch(\Error $e) {
+			return false;
+		}
 	}
 
 	public function fetch( $raw = false ) {

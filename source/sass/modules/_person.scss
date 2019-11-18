@@ -1,0 +1,102 @@
+/*
+ * 1. Extends .layout
+ */
+.person /* 1 */ {
+    @include theme-transparent-background(26%);
+    padding-top: rhythm(12);
+    flex-wrap: wrap;
+    .heading {
+        margin-bottom: rhythm(4);
+    }
+    &__headline {
+        flex-shrink: 0;
+        
+        margin-bottom: rhythm(4);
+    }
+    &__headline,
+    &__summary /* 1 */ {
+        padding-bottom: rhythm(8);
+    }
+    &__avatar {
+        margin-top: rhythm(4);
+        img {
+            display: block;
+            width: auto;
+            height: auto;
+        }
+    }
+    &__biography {
+        padding-top: rhythm(8);
+        padding-bottom: rhythm(8);
+        @include theme-background();
+        color: $white;
+    }
+
+    @include breakpoint($lt-small-handheld) {
+        .heading {
+            font-size: 1.25em;
+        }
+    }
+
+    @include breakpoint($gt-small-handheld) {
+        &__summary {
+            min-height: percentage(4/6)
+        }
+        &__standfirst {
+            max-width: percentage(4/6);
+        }
+        &__avatar {
+            margin-top: 0;
+            max-width: percentage(2/6);
+        }
+    }
+
+    @include breakpoint($gt-large-handheld) {
+    }
+
+    @include breakpoint($gt-small-desktop) {
+        position: relative;
+        padding-top: rhythm(20);
+        padding-bottom: rhythm(12);
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: percentage(8/18);
+            margin-left: gutter(-1/2);
+            @include theme-background();
+            z-index: -1;
+        }
+        &__summary,
+        &__biography {
+            max-width: percentage(9/18);
+        }
+        &__headline {
+            padding-left: percentage(1/18);
+            padding-right: percentage(11/18);
+
+        }
+        &__summary {
+        }
+        &__biography {
+            padding-top: 0;
+            padding-left: percentage(1/18);
+            padding-right: percentage(1/18);
+            padding-bottom: 0;
+            background: transparent;
+        }
+        &__standfirst {
+            max-width: percentage(6/9);
+            padding-left: percentage(1/9);
+            padding-right: percentage(1/9);
+        }
+        &__summary {
+        }
+        &__avatar {
+            max-width: percentage(3/9);
+        }
+    }
+}

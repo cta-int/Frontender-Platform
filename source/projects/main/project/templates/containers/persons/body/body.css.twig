@@ -1,0 +1,18 @@
+<style type="text/css" media="screen">
+    @media only screen and (min-width: 64em) {
+        .profile-event__meta {
+            max-width: {{ (2/7*100) }}%;
+        }
+        .layout--split .layout__cell--divider::after {
+            right: 15px;
+        }
+    }
+    @media only screen and (min-width: 90em) {
+        .layout--split .layout__cell--divider::after {
+            right: 0;
+        }
+        .profile-event__meta {
+            max-width: {{ (2/7*100) }}%;
+        }
+    }
+</style>
