@@ -10,7 +10,7 @@
         {% if config.show_publication_date|default(1) %}
             {{ date.article(article.datePublished) }}
         {% else %}
-            <span class="is-hidden">{{ date.article(article.datePublished) }}</span>
+            <span itemprop="datePublished" class="is-narrative">{{ date.article(article.datePublished) }}</span>
         {% endif %}
 
         {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
@@ -33,7 +33,7 @@
             </p>
             <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                 <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
-                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png" />
             </span>
         {% endif %}
 
@@ -50,7 +50,7 @@
         {% endif %}
 
         {% if config.show_read_more|default(1) %}
-           <a class="read-more" itemprop="url" href="{{ articleRoute }}" itemprop="url">{{ 'Read more'|i18n }}</a>
+           <a class="read-more" itemprop="url" href="{{ articleRoute }}">{{ 'Read more'|i18n }}</a>
         {% endif %}
     </div>
     {% if config.show_lead_image|default(1) and article.link.mediaObject|lead %}
