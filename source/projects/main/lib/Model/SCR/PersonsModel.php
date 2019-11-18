@@ -93,6 +93,10 @@ class PersonsModel extends ScrModel {
 		return $model->fetch($raw);
 	}
 
+	public function getPropertyPath(): string {
+		return 'profile';
+	}
+
 	public function getPropertyEvent() {
 		return new class($this) {
 			public function __construct($person) {
