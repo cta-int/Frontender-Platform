@@ -10,16 +10,13 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="grid grid--teletubbies">
-        {% for related in model.link.mediaObject|filterArray("type", "file", true) %}
+        {% for related in model.link.mediaObject %}
+
             <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
                 {% if related.metadata.previewUrl %}
                         {{ image.post(related) }}
 
-                        {% if related.type|t(locales) == 'file' %}
-                            <span class="av" id="this-content">
-                                <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
-                            </span>
-                        {% elseif related.type|t(locales) == 'image' %}
+                        {% if related.type|t(locales) == 'image' %}
                             <span class="av">
                                 <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
