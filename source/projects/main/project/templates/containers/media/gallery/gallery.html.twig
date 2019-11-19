@@ -10,7 +10,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="grid grid--teletubbies">
-        {% for related in model.link.mediaObject %}
+        {% for related in model.link.mediaObject|filterArray("type", "file", true) %}
             <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
                 {% if related.metadata.previewUrl %}
                         {{ image.post(related) }}
