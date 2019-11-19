@@ -18,7 +18,7 @@ class SearchModel extends ScrModel {
 		$this->traitConstruct( $container );
 
 		$this->getState()
-		     ->insert( 'articleLimit' );
+		     ->insert( 'articleLimit', 20 );
 	}
 
 	public function getModelName(): string {

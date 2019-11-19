@@ -259,6 +259,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -314,6 +318,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -366,6 +374,14 @@
                 "to": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -418,6 +434,14 @@
                 "to": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -473,6 +497,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -548,6 +576,14 @@
                 "type": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -603,6 +639,14 @@
                 "type": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },

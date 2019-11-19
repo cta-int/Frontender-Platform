@@ -2,106 +2,111 @@
 
 namespace Frontender\Platform\Model\Traits;
 
-trait Searchable
-{
-    public function __construct($container)
-    {
-        parent::__construct($container);
+trait Searchable {
+	public function __construct( $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('q')
-            ->insert('language', $container->language->get())
-            ->insert('limit', 20)
-            ->insert('must', [])
-            ->insert('mustNot', [])
-            ->insert('should', [])
-            ->insert('skip')
-            ->insert('to')
-            ->insert('from')
-            ->insert('terms')
-            ->insert('type')
-            ->insert('id')
-            ->insert('label')
-            ->insert('time')
-            ->insert('order');
-    }
+		$this->getState()
+		     ->insert( 'q' )
+		     ->insert( 'language', $container->language->get() )
+		     ->insert( 'limit', 20 )
+		     ->insert( 'must', [] )
+		     ->insert( 'mustNot', [] )
+		     ->insert( 'should', [] )
+		     ->insert( 'skip' )
+		     ->insert( 'to' )
+		     ->insert( 'from' )
+		     ->insert( 'terms' )
+		     ->insert( 'type' )
+		     ->insert( 'id' )
+		     ->insert( 'label' )
+		     ->insert( 'time' )
+		     ->insert( 'order' )
+//		     ->insert( 'direction' ) // Here for documentation purposes. // Search models have a sort and direction, if set, the will be moved to the sort state and forwarded to the SCR.
+		     ->insert( 'sort' );
+	}
 
-    public function setState(array $values)
-    {
-        $values['must'] = array_key_exists('must', $values) && is_array($values['must']) ? $values['must'] : $this->getState()->must;
-        $values['should'] = array_key_exists('should', $values) && is_array($values['should']) ? $values['should'] : $this->getState()->should;
-        $values['mustNot'] = array_key_exists('mustNot', $values) && is_array($values['mustNot']) ? $values['mustNot'] : $this->getState()->mustNot;
+	public function setState( array $values ) {
+		$values['must']    = array_key_exists( 'must', $values ) && is_array( $values['must'] ) ? $values['must'] : $this->getState()->must;
+		$values['should']  = array_key_exists( 'should', $values ) && is_array( $values['should'] ) ? $values['should'] : $this->getState()->should;
+		$values['mustNot'] = array_key_exists( 'mustNot', $values ) && is_array( $values['mustNot'] ) ? $values['mustNot'] : $this->getState()->mustNot;
 
-        if (isset($values['time']) && !empty($values['time'])) {
-            $values['from'] = date('c', strtotime($values['time'], strtotime('now')));
-            $values['to'] = date('c', strtotime('now'));
-        }
+		if ( isset( $values['time'] ) && ! empty( $values['time'] ) ) {
+			$values['from'] = date( 'c', strtotime( $values['time'], strtotime( 'now' ) ) );
+			$values['to']   = date( 'c', strtotime( 'now' ) );
+		}
 
-        if (isset($values['location']) && !empty($values['location'])) {
-            $values['must'][] = $this->addTerm('geo', 'http://sws.geonames.org/' . $values['location'] . '/');
-        }
+		if ( isset( $values['location'] ) && ! empty( $values['location'] ) ) {
+			$values['must'][] = $this->addTerm( 'geo', 'http://sws.geonames.org/' . $values['location'] . '/' );
+		}
 
-        if (isset($values['type']) && !empty($values['type'])) {
-            if (strpos($values['type'], 'article.') !== false) {
-                if (!in_array('articleType', array_column($values['must'], 'id'))) {
-                    $values['must'][] = $this->addTerm('field', 'articleType', str_replace('article.', '', $values['type']));
-                }
-            } else if (strpos($values['type'], 'event.') !== false) {
-                if (!in_array('type', array_column($values['must'], 'id'))) {
-                    $values['must'][] = $this->addTerm('field', 'type', str_replace('event.', '', $values['type']));
-                }
-            }
-        }
+		if ( isset( $values['type'] ) && ! empty( $values['type'] ) ) {
+			if ( strpos( $values['type'], 'article.' ) !== false ) {
+				if ( ! in_array( 'articleType', array_column( $values['must'], 'id' ) ) ) {
+					$values['must'][] = $this->addTerm( 'field', 'articleType', str_replace( 'article.', '', $values['type'] ) );
+				}
+			} else if ( strpos( $values['type'], 'event.' ) !== false ) {
+				if ( ! in_array( 'type', array_column( $values['must'], 'id' ) ) ) {
+					$values['must'][] = $this->addTerm( 'field', 'type', str_replace( 'event.', '', $values['type'] ) );
+				}
+			}
+		}
 
-        if (isset($values['label'])) {
-            foreach ($values['label'] as $label) {
-                $values['must'][] = $this->addTerm('label', $label);
-            }
-        }
+		if ( isset( $values['label'] ) ) {
+			foreach ( $values['label'] as $label ) {
+				$values['must'][] = $this->addTerm( 'label', $label );
+			}
+		}
 
-        if (array_key_exists('concepts', $values)) {
-            foreach ($values['concepts'] as $term) {
-                $values['must'][] = $this->addTerm('keyphrase', $term);
-            }
-        }
+		if ( array_key_exists( 'concepts', $values ) ) {
+			foreach ( $values['concepts'] as $term ) {
+				$values['must'][] = $this->addTerm( 'keyphrase', $term );
+			}
+		}
 
-        if (isset($values['geo']) && !empty($values['geo'])) {
-            foreach ($values['geo'] as $term) {
-                $values['must'][] = $this->addTerm('geo', $term);
-            }
-        }
+		if ( isset( $values['geo'] ) && ! empty( $values['geo'] ) ) {
+			foreach ( $values['geo'] as $term ) {
+				$values['must'][] = $this->addTerm( 'geo', $term );
+			}
+		}
 
-        if (isset($values['id'])) {
-            $values['must'][] = $this->addTerm('field', '_id', $values['id']);
-            unset($values['id']);
-        }
+		if ( isset( $values['id'] ) ) {
+			$values['must'][] = $this->addTerm( 'field', '_id', $values['id'] );
+			unset( $values['id'] );
+		}
 
-        if (isset($values['to'])) {
-            $values['to'] = str_replace(' ', '+', $values['to']);
-        }
+		if ( isset( $values['to'] ) ) {
+			$values['to'] = str_replace( ' ', '+', $values['to'] );
+		}
 
-        if (isset($values['from'])) {
-            $values['from'] = str_replace(' ', '+', $values['from']);
-        }
+		if ( isset( $values['from'] ) ) {
+			$values['from'] = str_replace( ' ', '+', $values['from'] );
+		}
 
-        $values['must'] = array_unique($values['must'], SORT_REGULAR);
-        $values['should'] = array_unique($values['should'], SORT_REGULAR);
+		if(isset($values['order']) && !empty($values['order']) && isset($values['direction']) && !empty($values['direction'])) {
+			$values['sort'] = ['id' => $values['order'], 'order' => $values['direction']];
 
-        return parent::setState($values);
-    }
+			unset($values['order']);
+			unset($values['direction']);
+		}
 
-    private function addTerm($type, $field, $value = false)
-    {
-        $term = [
-            'type' => $type,
-            'id' => $field
-        ];
+		$values['must']   = array_unique( $values['must'], SORT_REGULAR );
+		$values['should'] = array_unique( $values['should'], SORT_REGULAR );
 
-        if ($value) {
-            $term['value'] = $value;
-        }
+		return parent::setState( $values );
+	}
+
+	private function addTerm( $type, $field, $value = false ) {
+		$term = [
+			'type' => $type,
+			'id'   => $field
+		];
+
+		if ( $value ) {
+			$term['value'] = $value;
+		}
 
 
-        return $term;
-    }
+		return $term;
+	}
 }
