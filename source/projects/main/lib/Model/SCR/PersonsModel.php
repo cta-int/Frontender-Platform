@@ -128,4 +128,8 @@ class PersonsModel extends ScrModel {
 
 		return $response['total'] ?? 0;
 	}
+
+	public function getPropertyFullname() {
+		return implode(' ', [$this['givenName'], $this['familyName']]);
+	}
 }
