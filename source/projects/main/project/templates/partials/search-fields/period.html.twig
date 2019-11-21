@@ -3,7 +3,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__date')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="fld">
-        <label for="ctx-item__date" class="fld-label">{{ labels.field_label|t(locales)|default('Period'|t(locales)) }}</label>
+        <label for="ctx-item__date" class="fld-label">{{ labels.field_label|t(locales)|default('Period'|i18n) }}</label>
         <select id="ctx-item__date" name="time" class="placeholder-visible">
             <option value="">{{ 'Any'|i18n }}</option>
             <option value="-1 hour" {% if query.time == '-1 hour' %}selected="selected" {% endif %}>{{ 'Last hour'|i18n }}</option>
