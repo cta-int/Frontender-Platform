@@ -39,7 +39,7 @@
                 <p class="title title--section  |  gutters  |  leader leader-inside--tiny  |  trailer"><strong>{{ model.alternativeHeadline|t(locales) }}</strong></p>
             {% endif %}
 
-            {% if config.show_author|default(1) and model.link.person.author|filterArray('description', null)|length > 0 %}
+            {% if config.show_author|default(1) and model.link.person.author|length > 0 %}
                 <aside class="gutters leader trailer">
                     <div class="well">
                         {% if model.link.person.author|filterArray('familyName', null)|length > 1 %}
@@ -56,7 +56,9 @@
                                     <a href="{{ route({'page': auth.path|default('profile'), 'slug': (auth.givenName ~ ' ' ~ auth.familyName)|slugify, id: auth._id}) }}">
                                         <p class=""><span class="meta--bold" itemprop="name">{{ auth.givenName ~ ' ' ~ auth.familyName}}</span>{% if auth.jobTitle %}<span>, {{ auth.jobTitle }}</span>{% endif %}</p>
                                     </a>
-                                    {% if auth.biography %}
+                                    {% if auth.description %}
+                                        <p itemprop="description" class="leader--tiny">{{ auth.description }}</p>
+                                    {% elseif auth.biography %}
                                         <p itemprop="description" class="leader--tiny">{{ auth.biography }}</p>
                                     {% endif %}
                                 </div>
