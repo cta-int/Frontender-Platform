@@ -46,12 +46,12 @@
                     </div>
                 </div>
             {% endif %}
-            {% if event.keynote | length > 0 %}
+            {% if model.keynote | length > 0 %}
                 <div class="profile__list  |  trailer">
                     <h3 class="trailer--small  |  gutters">{{ 'Keynote speakers'|t(locales) }}</h3>
 
                     <div class="grid  grid--teletubbies">
-                        {% for keynote in event.keynote %}
+                        {% for keynote in model.keynote %}
                             <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
                                 {% include 'partials/person/tile.html.twig' with {person: keynote} %}
                             </div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             {% endif %}
-            {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'translator'] %}
+            {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'pressOfficer', 'translator'] %}
                 {% if attribute(model, type) | length > 0 %}
                     <div class="profile__list  |  trailer  |  is-screen">
                         <h3 class="trailer--small  |  gutters">{{ ('event_' ~ type)|i18n }}</h3>
