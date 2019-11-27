@@ -82,7 +82,7 @@ date (newer-older): Date (plus récente-ancienne)
 date (older-newer): Date (plus ancien plus récent)
 alphabetical order (a-z): Ordre alphabétique (A-Z)
 alphabetical order (z-a): Ordre alphabétique (Z-A)
-type: Sorte
+type: Type
 all types: Tous les types
 type a keyword: Tapez un mot-clé
 topic: Sujet
@@ -367,7 +367,7 @@ ictupdate_issue_no: ICT Update N°
 officer: Agent
 assistant: Assistant
 keynote: Conférencier d'honneur
-speaker: Conférencier
+speaker: Intervenant
 chair: Président
 panellist: Panéliste
 moderator: Modérateur
