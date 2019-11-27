@@ -58,7 +58,7 @@
                                     <a href="{{ route({'page': auth.path|default('profile'), 'slug': (auth.givenName ~ ' ' ~ auth.familyName)|slugify, id: auth._id}) }}">{{ image.person(auth, 50) }}</a>
                                 </div>
                                 <p class="media__body  |  body--whisper  |  gutters">
-                                    {{ auth.biography }}
+                                    {{ auth.biography|md|raw }}
                                 </p>
                             </div>
                         </div>
