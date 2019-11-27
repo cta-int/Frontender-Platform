@@ -18,7 +18,7 @@
                         <a class="title title--tab" href="#overview">{{ 'Event Overview'|i18n }}</a>
                     </li>
 
-                    {% for type in ['keynote', 'chair', 'speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'press_officer', 'pressOfficer', 'translator'] %}
+                    {% for type in ['keynote', 'chair', 'speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'socialReporter', 'press_officer', 'pressOfficer', 'translator'] %}
                         {% if model[type]|length > 0 %}
                             {% set has_speakers = true %}
                         {% endif %}
