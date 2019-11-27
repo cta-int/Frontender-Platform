@@ -160,17 +160,19 @@ external links: Liens externes
 related projects: Projets liés
 keynotes: Notes clés
 visit official website: Visitez le site officiel
-event_panellist: Panellists
-event_speaker: Speakers
-event_chair: Chairs
-event_moderator: Moderators
-event_rapporteur: Reporters
-event_facilitator: Facilitators
-event_social_reporter: Social Reporters
-event_press_officer: Press Officers
-event_pressofficer: Press Officers
-event_translator: Translators
-event_officer: Officers
+
+event_panellist: Panéliste
+event_speaker: Intervenant(e)
+event_chair: Président(e) d’assemblée
+event_moderator: Modérateur, -trice
+event_rapporteur: Rapporteur
+event_facilitator: Facilitateur, -trice
+event_social_reporter: En charge des réseaux sociaux
+event_socialreporter: En charge des réseaux sociaux
+event_press_officer: Attaché(e) de presse
+event_pressofficer: Attaché(e) de presse
+event_translator: Traducteur, -trice
+event_officer: En charge du projet
 
 # Project translations
 project: Projet
