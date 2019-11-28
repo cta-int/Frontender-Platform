@@ -106,20 +106,111 @@
             </section>
             
             {# Events #}
-            <section class="layout__cell layout__cell--main wings">
-                <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
-                    <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
-                        {{ labels.events|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}
-                    </h2>
-                    <div class="container-header__filter  |  gutters">
-                        <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=events&person={{ model._id }}">
-                            {{ 'View all'|i18n }}
-                        </a>
-                    </div>
-                </header>
-                {% if model.events|length %}
+            <div class="layout__cell layout__cell--main wings">
+                <section>
+                    <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
+                        <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                            {{ labels.events|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}
+                        </h2>
+                        <div class="container-header__filter  |  gutters">
+                            <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=events&person={{ model._id }}">
+                                {{ 'View all'|i18n }}
+                            </a>
+                        </div>
+                    </header>
+                    {% if model.events|length %}
+                        <ol class="reset leader--hero">
+                            {% for event in model.events|slice(0,4) %}
+                                <li itemprop="performerIn" itemscope="" itemtype="https://schema.org/Event">
+                                    <article class="{{['media',class]|join(' ')}}">
+                                        <div class="media__figure gutters gutter-mobile--right">
+                                            {{ date.tile(item.startDate) }}
+                                        </div>
+                                        <div class="media__content">
+                                            <div class="profile-event media media--unfold">
+                                                <div class="profile-event__body media__body gutters trailer">
+                                                    <a class="anchor--reset anchor--shy stack" href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify , id: event._id}) }}">
+                                                        {% if highlight %}
+                                                            <h2 class="heading heading--focus" itemprop="name">{{ event.name|highlightText(query.q|default(''), 'highlight')|raw }}</h2>
+                                                        {% else %}
+                                                            <h2 class="heading heading--focus" itemprop="name">{{ event.name }}</h2>
+                                                        {% endif %}
+                                                    </a>
+                                                    <div class="trailer--small">
+                                                        {{ date.event_long(event.startDate, event.endDate) }}
+                                                    </div>
+                                                    <div itemprop="description" class="body--whisper trailer--normal">
+                                                        {% if highlight %}
+                                                            {{ event.description|t(locales)|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
+                                                        {% else %}
+                                                            {{ event.description|t(locales)|truncate(length|default(400))|raw }}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="leader--small">
+                                                        <ul class="reset label-list reset list--inline">
+                                                            {% if item.analysis.agrovoc.concepts | length > 1 %}
+                                                                {% for label in item.analysis.agrovoc.concepts | slice(0, 3) %}
+                                                                    <li>{{ concept.label(label, locale) }}</li>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            {% if item.theme %}
+                                                                <li class="{{ item.theme.selector }}">
+                                                                    <a class="label label--s" href="{{ route({'page': 'search'}) ~ '?strategy=' }}{{ item.theme._id }}">{{ item.theme.name|split('/')|last }}</a>
+                                                                </li>
+                                                            {% endif %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="profile-event__meta media__figure  media__aside trailer">
+                                                    <div class="gutters">
+                                                        <dl class="dlist clear">
+                                                            {% if event.type %}
+                                                                <dt class="dlist__label meta meta--s meta--dark">{{ 'Type'|i18n }}: </dt>
+                                                                <dd class="dlist__value meta meta--s meta--lc meta--dark">
+                                                                    <strong itemprop="additionalType">{{ event.type|t(locales) }}</strong>
+                                                                </dd>
+                                                            {% endif %}
+                                                            {% if model.event.roles(event)|length %}
+                                                                <dt class="dlist__label meta meta--s meta--dark">{{ model.event.roles(event)|length > 1 ? 'Roles'|i18n : 'Role'|i18n }}: </dt>
+                                                                <dd itemprop="performer" class="dlist__value meta meta--s meta--lc meta--dark">
+                                                                    <strong>{{ person.roles_to_string(model.event.roles(event), model) }}</strong>
+                                                                </dd>
+                                                            {% endif %}
+                                                        </dl>
+    
+                                                        {% if item.location %}
+                                                            <div class="leader">
+                                                                {% include "partials/location.html.twig" with {"location": item.location} %}
+                                                                <span itemprop="location" itemscope itemtype="https://schema.org/Place">
+                                                                    <meta itemprop="address" content="{{ event.location.address.addressLocality|t(locales) }}"/>
+                                                                </span>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    {% if not loop.last %}
+                                        <div class="gutters divider divider--top trailer"></div>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>                  
+                    {% else %}
+                        <p class="meta gutters leader--hero">{{ labels.no_events|default({"en-GB": "No events were found", "fr-FR": "No events were found"})|t }}</p>
+                    {% endif %}            
+                </section>
+
+                {% if model.projects|length %}
+                <section class="leader leader-inside divider divider-top">
+                    <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
+                        <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                            {{ labels.projects|default({"en-GB": "Projects", "fr-FR": "Projets"})|t }}
+                        </h2>
+                    </header>
                     <ol class="reset leader--hero">
-                        {% for event in model.events|slice(0,4) %}
+                        {% for event in model.projects|slice(0,4) %}
                             <li itemprop="performerIn" itemscope="" itemtype="https://schema.org/Event">
                                 <article class="{{['media',class]|join(' ')}}">
                                     <div class="media__figure gutters gutter-mobile--right">
@@ -160,33 +251,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="profile-event__meta media__figure  media__aside trailer">
-                                                <div class="gutters">
-                                                    <dl class="dlist clear">
-                                                        {% if event.type %}
-                                                            <dt class="dlist__label meta meta--s meta--dark">{{ 'Type'|i18n }}: </dt>
-                                                            <dd class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong itemprop="additionalType">{{ event.type|t(locales) }}</strong>
-                                                            </dd>
-                                                        {% endif %}
-                                                        {% if model.event.roles(event)|length %}
-                                                            <dt class="dlist__label meta meta--s meta--dark">{{ model.event.roles(event)|length > 1 ? 'Roles'|i18n : 'Role'|i18n }}: </dt>
-                                                            <dd itemprop="performer" class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong>{{ person.roles_to_string(model.event.roles(event), model) }}</strong>
-                                                            </dd>
-                                                        {% endif %}
-                                                    </dl>
-
-                                                    {% if item.location %}
-                                                        <div class="leader">
-                                                            {% include "partials/location.html.twig" with {"location": item.location} %}
-                                                            <span itemprop="location" itemscope itemtype="https://schema.org/Place">
-                                                                <meta itemprop="address" content="{{ event.location.address.addressLocality|t(locales) }}"/>
-                                                            </span>
-                                                        </div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
+                                            <div class="profile-event__meta media__figure  media__aside trailer">&nbsp;</div>
                                         </div>
                                     </div>
                                 </article>
@@ -195,11 +260,10 @@
                                 {% endif %}
                             </li>
                         {% endfor %}
-                    </ol>                  
-                {% else %}
-                    <p class="meta gutters leader--hero">{{ labels.no_events|default({"en-GB": "No events were found", "fr-FR": "No events were found"})|t }}</p>
+                    </ol>            
+                </section>
                 {% endif %}
-            </section>
+            </div>
         </div>
     {% endif %}
 
