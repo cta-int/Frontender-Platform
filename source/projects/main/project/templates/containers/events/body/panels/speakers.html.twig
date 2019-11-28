@@ -33,7 +33,7 @@
             </div>
         {% endif %}
 
-        {% for type in ['chair', 'keynote', 'speaker', 'panellist', 'moderator', 'facilitateur', 'pressofficer', 'socialreporter'] %}
+        {% for type in ['speaker', 'panellist', 'moderator', 'facilitateur', 'pressOfficer', 'socialReporter'] %}
             {% if attribute(model, type) | length > 0 %}
                 <div class="profile__list  |  trailer--hero">
                     <h3 class="trailer  |  gutters">{{ ('event_' ~ type)|i18n }}</h3>
