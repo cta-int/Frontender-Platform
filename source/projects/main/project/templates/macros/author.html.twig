@@ -52,3 +52,17 @@
         {% endfor %}
     {% endif %}
 {% endmacro %}
+
+{% macro roles_to_string(roles, person) %}
+    {% set roles_i18n = [] %}
+    {% if person.gender is defined %}
+        {% for role in roles %}
+            {% set roles_i18n = roles_i18n|merge([((role ~ "_" ~ (person.gender))|lower)|i18n])  %}
+        {% endfor %}
+    {% else %}
+        {% for role in roles %}
+            {% set roles_i18n = roles_i18n|merge([(role)|i18n])  %}
+        {% endfor %}
+    {% endif %}
+    {{ roles_i18n|join(", ") }}
+{% endmacro %}

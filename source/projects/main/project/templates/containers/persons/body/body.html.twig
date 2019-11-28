@@ -5,15 +5,48 @@
 {% import "macros/schema.html.twig" as schema %}
 {% import "macros/date.html.twig" as date %}
 {% import "macros/concept.html.twig" as concept %}
+{% import "macros/author.html.twig" as person %}
 
 {{ hashedPath('/assets/css/person.css')|addStyle('styles') }}
 {{ 'containers/persons/body/body.css.twig'|addAsset('styles') }}
-
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}> 
-    
+
+    {# Articles #}
+    {% if model.articles|length %}
+        <section class="leader--hero trailer--hero wings">
+            <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
+                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                    {{ labels.articles|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}
+                </h2>
+                <div class="container-header__filter  |  gutters">
+                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&person={{ model._id }}">
+                        {{ 'View all'|i18n }}
+                    </a>
+                </div>
+            </header>
+            <div class="layout layout--even leader--hero">
+                {% for article in model.articles|slice(0, 4) %}
+                    <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
+                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                            'container_class': 'post--wide',
+                            'show_publication_date': 1,
+                            'show_publication': 0,
+                            'show_type': 0,
+                            'show_author_name': 0,
+                            'show_stand_first': 1,
+                            'show_topic': 0,
+                            'show_read_more': 1,
+                            'show_lead_image': 1
+                        } } %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
     {# Publications and events #}
     {% if model.publications|length or model.events|length %}
-        <div class="layout layout--split leader--hero  trailer--hero">
+        <div class="layout layout--split leader--hero leader-inside  trailer--hero trailer-inside">
 
             {# Publications #}
             <section class="layout__cell layout__cell--aside layout__cell--divider wings">
@@ -86,7 +119,7 @@
                 </header>
                 {% if model.events|length %}
                     <ol class="reset leader--hero">
-                        {% for item in model.events|slice(0,4) %}
+                        {% for event in model.events|slice(0,4) %}
                             <li itemprop="performerIn" itemscope="" itemtype="https://schema.org/Event">
                                 <article class="{{['media',class]|join(' ')}}">
                                     <div class="media__figure gutters gutter-mobile--right">
@@ -95,21 +128,21 @@
                                     <div class="media__content">
                                         <div class="profile-event media media--unfold">
                                             <div class="profile-event__body media__body gutters trailer">
-                                                <a class="anchor--reset anchor--shy stack" href="{{ route({'page': item.path, 'slug': item.name|t(locales)|slugify , id: item._id}) }}">
+                                                <a class="anchor--reset anchor--shy stack" href="{{ route({'page': event.path, 'slug': event.name|t(locales)|slugify , id: event._id}) }}">
                                                     {% if highlight %}
-                                                        <h2 class="heading heading--focus" itemprop="name">{{ item.name|highlightText(query.q|default(''), 'highlight')|raw }}</h2>
+                                                        <h2 class="heading heading--focus" itemprop="name">{{ event.name|highlightText(query.q|default(''), 'highlight')|raw }}</h2>
                                                     {% else %}
-                                                        <h2 class="heading heading--focus" itemprop="name">{{ item.name }}</h2>
+                                                        <h2 class="heading heading--focus" itemprop="name">{{ event.name }}</h2>
                                                     {% endif %}
                                                 </a>
                                                 <div class="trailer--small">
-                                                    {{ date.event_long(item.startDate, item.endDate) }}
+                                                    {{ date.event_long(event.startDate, event.endDate) }}
                                                 </div>
                                                 <div itemprop="description" class="body--whisper trailer--normal">
                                                     {% if highlight %}
-                                                        {{ item.description|t(locales)|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
+                                                        {{ event.description|t(locales)|truncate(length|default(400))|highlightText(query.q|default(''), 'highlight')|raw }}
                                                     {% else %}
-                                                        {{ item.description|t(locales)|truncate(length|default(400))|raw }}
+                                                        {{ event.description|t(locales)|truncate(length|default(400))|raw }}
                                                     {% endif %}
                                                 </div>
                                                 <div class="leader--small">
@@ -130,17 +163,16 @@
                                             <div class="profile-event__meta media__figure  media__aside trailer">
                                                 <div class="gutters">
                                                     <dl class="dlist clear">
-                                                        {% if item.type %}
+                                                        {% if event.type %}
                                                             <dt class="dlist__label meta meta--s meta--dark">{{ 'Type'|i18n }}: </dt>
                                                             <dd class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong itemprop="additionalType">{{ item.type|t(locales) }}</strong>
+                                                                <strong itemprop="additionalType">{{ event.type|t(locales) }}</strong>
                                                             </dd>
                                                         {% endif %}
-                                                        {% if model.event.role(item) %}
-                                                            <dt class="dlist__label meta meta--s meta--dark">{{ 'Role'|i18n }}: </dt>
+                                                        {% if model.event.roles(event)|length %}
+                                                            <dt class="dlist__label meta meta--s meta--dark">{{ model.event.roles(event)|length > 1 ? 'Roles'|i18n : 'Role'|i18n }}: </dt>
                                                             <dd itemprop="performer" class="dlist__value meta meta--s meta--lc meta--dark">
-                                                                <strong><span class="is-narrative">{{ (model.givenName ~ ' ' ~ model.familyName)|trim }}</span>
-                                                                {{ model.event.role(item)|i18n }}</strong>
+                                                                <strong>{{ person.roles_to_string(model.event.roles(event), model) }}</strong>
                                                             </dd>
                                                         {% endif %}
                                                     </dl>
@@ -149,7 +181,7 @@
                                                         <div class="leader">
                                                             {% include "partials/location.html.twig" with {"location": item.location} %}
                                                             <span itemprop="location" itemscope itemtype="https://schema.org/Place">
-                                                                <meta itemprop="address" content="{{ item.location.address.addressLocality|t(locales) }}"/>
+                                                                <meta itemprop="address" content="{{ event.location.address.addressLocality|t(locales) }}"/>
                                                             </span>
                                                         </div>
                                                     {% endif %}
@@ -169,40 +201,6 @@
                 {% endif %}
             </section>
         </div>
-    {% endif %}
-
-    {# Articles #}
-    {% if model.articles|length %}
-        <section class="leader--hero trailer--hero wings">
-            <div class="gutters trailer-inside--hero divider divider--top"></div>
-            <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
-                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
-                    {{ labels.articles|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}
-                </h2>
-                <div class="container-header__filter  |  gutters">
-                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&person={{ model._id }}">
-                        {{ 'View all'|i18n }}
-                    </a>
-                </div>
-            </header>
-            <div class="layout layout--even leader--hero">
-                {% for article in model.articles|slice(0, 4) %}
-                    <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
-                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
-                            'container_class': 'post--wide',
-                            'show_publication_date': 1,
-                            'show_publication': 0,
-                            'show_type': 0,
-                            'show_author_name': 0,
-                            'show_stand_first': 1,
-                            'show_topic': 0,
-                            'show_read_more': 1,
-                            'show_lead_image': 1
-                        } } %}
-                    </article>
-                {% endfor %}
-            </div>
-        </section>
     {% endif %}
 
     {# Media #}

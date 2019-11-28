@@ -150,8 +150,6 @@ authors: Authors
 editorial comment: Editorial comment
 
 # Event
-speakers: Speakers
-keynotes: Keynote speakers
 visit official website: Visit the official website
 event_panellist: Panellists
 event_speaker: Speakers
@@ -159,12 +157,11 @@ event_chair: Chairs
 event_moderator: Moderators
 event_rapporteur: Reporters
 event_facilitator: Facilitators
-event_social_reporter: Social Reporters
 event_socialreporter: Social Reporters
 event_pressofficer: Press Officers
-event_press_officer: Press Officers
 event_translator: Translators
 event_officer: Officers
+event_keynote: Keynote speakers
 
 # Article content category mappings
 content_type_category_background: Analysis
@@ -223,14 +220,38 @@ ictupdate_issue_no: ICT Update N.
 
 # Role translations
 officer: Officer
+officer_male: Officer
+officer_female: Officer
 assistant: Assistant
+assistant_male: Assistant
+assistant_female: Assistant
 keynote: Keynote
+keynote_male: Keynote
+keynote_female: Keynote
 speaker: Speaker
+speaker_male: Speaker
+speaker_female: Speaker
 chair: Chair
+chair_male: Chair
+chair_female: Chair
 panellist: Panellist
+panellist_male: Panellist
+panellist_female: Panellist
 moderator: Moderator
+moderator_male: Moderator
+moderator_female: Moderator
 facilitateur: Facilitateur
-press-officer: Press officer
+facilitateur_male: Facilitateur
+facilitateur_female: Facilitateurer
+pressofficer: Press officer
+pressofficer_male: Press officer
+pressofficer_female: Press officer
 rapporteur: Rapporteur
-social-reporter: Social reporter
+rapporteur_male: Rapporteur
+rapporteur_female: Rapporteur
+socialreporter: Social reporter
+socialreporter_male: Social reporter
+socialreporter_female: Social reporter
 translator: Translator
+translator_male: Translator
+translator_female: Translator

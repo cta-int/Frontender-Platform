@@ -103,22 +103,23 @@ class PersonsModel extends ScrModel {
 				$this->person = $person;
 			}
 
-			public function role($event) {
-				// Check the roles and if he has this role, return it as a string.
-				// This is to become translatable.
-				$roles = ['officer', 'assistant', 'keynote', 'speaker', 'chair', 'panellist', 'moderator', 'facilitateur', 'press-officer', 'rapporteur', 'social-reporter', 'translator'];
+			public function roles($event) {
+				// Return this roles in an array of strings
+				// The author.roles_to_string macro will translate each
+				$roles = ['chair', 'keynote', 'speaker', 'panellist', 'moderator', 'facilitateur', 'pressofficer', 'socialreporter'];
+				$active_roles = array();
 
 				foreach($roles as $role) {
 					if(isset($event[$role]) && is_array($event[$role])) {
 						$ids = array_column($event[$role], '_id');
 
 						if(in_array($this->person['_id'], $ids)) {
-							return ucfirst($role);
+							array_push($active_roles, ucfirst($role));
 						}
 					}
 				}
 
-				return false;
+				return $active_roles;
 			}
 		};
 	}

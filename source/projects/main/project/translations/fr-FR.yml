@@ -82,7 +82,7 @@ date (newer-older): Date (plus récente-ancienne)
 date (older-newer): Date (plus ancien plus récent)
 alphabetical order (a-z): Ordre alphabétique (A-Z)
 alphabetical order (z-a): Ordre alphabétique (Z-A)
-type: Sorte
+type: Type
 all types: Tous les types
 type a keyword: Tapez un mot-clé
 topic: Sujet
@@ -161,18 +161,21 @@ related projects: Projets liés
 keynotes: Notes clés
 visit official website: Visitez le site officiel
 
+event_assistant: Assistant(e)
 event_panellist: Panéliste
 event_speaker: Intervenant(e)
 event_chair: Président(e) d’assemblée
 event_moderator: Modérateur, -trice
 event_rapporteur: Rapporteur
 event_facilitator: Facilitateur, -trice
-event_social_reporter: En charge des réseaux sociaux
 event_socialreporter: En charge des réseaux sociaux
-event_press_officer: Attaché(e) de presse
 event_pressofficer: Attaché(e) de presse
 event_translator: Traducteur, -trice
 event_officer: En charge du projet
+event_keynote: Intervenant(e) principal(e)
+
+role: Rôle
+roles: Rôles
 
 # Project translations
 project: Projet
@@ -364,15 +367,39 @@ about_the_authors: A propos des auteurs
 ictupdate_issue_no: ICT Update N°
 
 # Role translations
-officer: Agent
+keynote: Intervenant(e) principal(e)
+keynote_male: Intervenant principal
+keynote_female: Intervenante principale
 assistant: Assistant
-keynote: Conférencier d'honneur
-speaker: Conférencier
-chair: Président
+assistant_male:  Assistant
+assistant_female:  Assistante
 panellist: Panéliste
-moderator: Modérateur
-facilitateur: Animateur
-press-officer: Attaché de presse
+panellist_male: Panéliste
+panellist_female: Panéliste
+speaker: Intervenant(e)
+speaker_male: Intervenant
+speaker_female: Intervenante
+chair: Président(e) d’assemblée
+chair_male: Président d’assemblée
+chair_female: Présidente d’assemblée
+moderator: Modérateur, -trice
+moderator_male: Modérateur
+moderator_female: Modératrice
 rapporteur: Rapporteur
-social-reporter: Journaliste média sociaux
-translator: Traducteur
+rapporteur_male: Rapporteur
+rapporteur_female: Rapporteur
+facilitator: Facilitateur, -trice
+facilitator_male: Facilitateur
+facilitator_female: Facilitatrice
+socialreporter: En charge des réseaux sociaux
+socialreporter_male: En charge des réseaux sociaux
+socialreporter_female: En charge des réseaux sociaux
+pressofficer: Attaché(e) de presse
+pressofficer_male: Attaché de presse
+pressofficer_female: Attachée de presse
+translator: Traducteur, -trice
+translator_male: Traducteur
+translator_female: Traductrice
+officer: En charge du projet
+officer_male: En charge du projet
+officer_female: En charge du projet

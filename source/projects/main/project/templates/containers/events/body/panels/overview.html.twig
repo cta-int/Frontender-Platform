@@ -34,32 +34,7 @@
                 </div>
             </div>
 
-            {% if model.chair | length > 0 %}
-                <div class="profile__list  |  trailer">
-                    <h3 class="trailer--small  |  gutters">{{ 'Chairs'|t(locales) }}</h3>
-                    <div class="grid  grid--teletubbies">
-                        {% for chair in model.chair %}
-                            <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
-                                {% include 'partials/person/tile.html.twig' with {person: chair} %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
-            {% if model.keynote | length > 0 %}
-                <div class="profile__list  |  trailer">
-                    <h3 class="trailer--small  |  gutters">{{ 'Keynote speakers'|t(locales) }}</h3>
-
-                    <div class="grid  grid--teletubbies">
-                        {% for keynote in model.keynote %}
-                            <div class="grid__cell  |  gutters  |  trailer" itemprop="performer">
-                                {% include 'partials/person/tile.html.twig' with {person: keynote} %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
-            {% for type in ['speaker', 'panellist', 'moderator', 'rapporteur', 'facilitator', 'social_reporter', 'socialReporter', 'press_officer', 'pressOfficer', 'translator'] %}
+            {% for type in ['keynote', 'speaker', 'panellist', 'moderator', 'facilitateur', 'pressofficer', 'socialreporter'] %}
                 {% if attribute(model, type) | length > 0 %}
                     <div class="profile__list  |  trailer  |  is-screen">
                         <h3 class="trailer--small  |  gutters">{{ ('event_' ~ type)|i18n }}</h3>
