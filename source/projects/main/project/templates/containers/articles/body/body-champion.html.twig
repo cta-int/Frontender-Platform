@@ -275,8 +275,8 @@
                             <a href="{{ route({'page': auth.path|default('profile'), 'slug': (auth.givenName ~ ' ' ~ auth.familyName)|slugify, 'id': auth._id}) }}">
                                 <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             </a>
-                            {% if auth.description %}
-                                <div itemprop="description">{{ auth.description|md|raw }}</div>
+                            {% if auth.jobTitle %}
+                                <div itemprop="description">{{ auth.jobTitle|t(locales) }}</div>
                             {% endif %}
                         </div>
                     </div>
