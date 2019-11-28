@@ -10,10 +10,43 @@
 {{ 'containers/persons/body/body.css.twig'|addAsset('styles') }}
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}> 
-    
+
+    {# Articles #}
+    {% if model.articles|length %}
+        <section class="leader--hero trailer--hero wings">
+            <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
+                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
+                    {{ labels.articles|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}
+                </h2>
+                <div class="container-header__filter  |  gutters">
+                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&person={{ model._id }}">
+                        {{ 'View all'|i18n }}
+                    </a>
+                </div>
+            </header>
+            <div class="layout layout--even leader--hero">
+                {% for article in model.articles|slice(0, 4) %}
+                    <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
+                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
+                            'container_class': 'post--wide',
+                            'show_publication_date': 1,
+                            'show_publication': 0,
+                            'show_type': 0,
+                            'show_author_name': 0,
+                            'show_stand_first': 1,
+                            'show_topic': 0,
+                            'show_read_more': 1,
+                            'show_lead_image': 1
+                        } } %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
     {# Publications and events #}
     {% if model.publications|length or model.events|length %}
-        <div class="layout layout--split leader--hero  trailer--hero">
+        <div class="layout layout--split leader--hero leader-inside  trailer--hero trailer-inside">
 
             {# Publications #}
             <section class="layout__cell layout__cell--aside layout__cell--divider wings">
@@ -169,40 +202,6 @@
                 {% endif %}
             </section>
         </div>
-    {% endif %}
-
-    {# Articles #}
-    {% if model.articles|length %}
-        <section class="leader--hero trailer--hero wings">
-            <div class="gutters trailer-inside--hero divider divider--top"></div>
-            <header class="container-header container-header--slim-fit" data-frontender="9179a78afb3e34d649bfab3b34d9c0c9">
-                <h2 class="container-header__title  |  title title--container trailer-inside--tiny  |  gutters">
-                    {{ labels.articles|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}
-                </h2>
-                <div class="container-header__filter  |  gutters">
-                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&person={{ model._id }}">
-                        {{ 'View all'|i18n }}
-                    </a>
-                </div>
-            </header>
-            <div class="layout layout--even leader--hero">
-                {% for article in model.articles|slice(0, 4) %}
-                    <article class="layout__cell gutters divider divider--bottom leader-inside trailer-inside">
-                        {% include 'partials/article/post-row.html.twig' with { 'model': article, 'config': {
-                            'container_class': 'post--wide',
-                            'show_publication_date': 1,
-                            'show_publication': 0,
-                            'show_type': 0,
-                            'show_author_name': 0,
-                            'show_stand_first': 1,
-                            'show_topic': 0,
-                            'show_read_more': 1,
-                            'show_lead_image': 1
-                        } } %}
-                    </article>
-                {% endfor %}
-            </div>
-        </section>
     {% endif %}
 
     {# Media #}
