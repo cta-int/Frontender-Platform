@@ -1,0 +1,85 @@
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+
+{{ '/assets/javascript/gallery.js'|addScript('beforeBodyEnd') }}
+{{ 'containers/media/gallery/gallery.js.twig'|addAsset('beforeBodyEnd') }}
+{{ 'containers/media/gallery/gallery.css.twig'|addAsset('styles') }}
+
+<section class="panel  |  wing--right" id="{{ tab_config.tab_id|default("downloads") }}">
+  <h2 class="title">
+    <a class="panel__trigger  |  gutters  |  is-heir" href="#{{ tab_config.tab_id|default("downloads") }}">{{ tab_config.tab_label|default("Downloads")|i18n }}</a>
+  </h2>
+  <div class="panel__body">
+    <ul class="grid grid--musketeers  |  reset">
+    	{% for item in media %}
+            <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
+                {% if item.metadata.previewUrl %}
+                        {{ image.post(item) }}
+
+                        {% if item.type|t(locales) == 'file' %}
+                            <span class="av" id="this-content">
+                                <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif item.type|t(locales) == 'image' %}
+                            <span class="av">
+                                <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif item.type|t(locales) == 'video' %}
+                            <span class="av">
+                                <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% endif %}
+                        <a class="is-root" href="{{ item.metadata.url }}" target="_blank" rel="nofollow">
+                            </a>
+                {% endif %}
+
+                {% if item.type|t(locales) %}
+                    <p class="meta meta--theme  |  leader--small">{{ item.type|t(locales) }}</p>
+                {% endif %}
+
+                {% if item.title|t(locales) %}
+                    <h2 class="heading">
+                        <a class="is-heir" href="{{ item.metadata.url }}" target="_blank" rel="nofollow">
+                            {{ item.title|t(locales) }}
+                        </a>
+                    </h2>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </ul>
+  </div>
+  <div class="gallery">
+      <div class="stage" id="stage">
+          <div class="stage__toggle leader-inside trailer-inside">
+              <button data-close class="button button--inverse">{{ labels.bttn_close|default({'en-GB': 'Close', 'fr-FR': 'Fermer'})|t }}</button>
+          </div>
+          <div class="stage__cue">
+
+              <figure class="actor">
+                  <div class="actor__media-wrapper loading" data-stage="media" id="center-stage"></div>
+                  <figcaption data-stage="meta" class="actor__meta well well--padded well--neutral gutters"></figcaption>
+              </figure>
+              
+              <div class="stage__controls leader trailer">
+                  <div class="stage__prev gutter-right">
+                      <button class="teleport teleport--inverse teleport--reverse  |  media  |  title" data-previous id="prev">
+                          <span class="teleport__trigger  |  media__image  |  icon icon--thin-arrow"></span>
+                          <span class="teleport__label  |  media__content media__stretcher  |  gutter-left  |  is-heir is-gt-large-handheld"></span>
+                      </button>
+                  </div>
+                  <div class="stage__next gutter-left">
+                      <button class="teleport teleport--inverse  |  media  |  title" data-next id="next">
+                          <span class="teleport__label  |  media__content media__stretcher  |  gutter  |  is-heir is-gt-large-handheld"></span>
+                          <span class="teleport__trigger  |  media__image  |  icon icon--thin-arrow"></span>
+                      </button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+      <div class="gallery__cloak"></div>
+  </div>
+</section>
