@@ -90,7 +90,7 @@ class PhotosModel extends AbstractAdapter implements \JsonSerializable {
 			}
 
 			public function previewUrl() {
-				return $this->model['sizes']->get( 'thumbnail', true );
+				return $this->model['sizes']->get( 'medium', true );
 			}
 
 			public function url() {
