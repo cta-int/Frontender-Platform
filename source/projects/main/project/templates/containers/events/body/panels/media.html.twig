@@ -8,22 +8,27 @@
 {{ 'containers/media/gallery/gallery.js.twig'|addAsset('beforeBodyEnd') }}
 {{ 'containers/media/gallery/gallery.css.twig'|addAsset('styles') }}
 
-<section class="panel  |  wing--right" id="{{ tab_config.tab_id|default("downloads") }}">
+<section class="panel  |  wing--right" id="{{ c.id|default("media") }}">
   <h2 class="title">
-    <a class="panel__trigger  |  gutters  |  is-heir" href="#{{ tab_config.tab_id|default("downloads") }}">{{ tab_config.tab_label|default("Downloads")|i18n }}</a>
+    <a class="panel__trigger  |  gutters  |  is-heir" href="#{{ c.id|default("media") }}">{{ labels.panel_title|t|default("Media"|i18n) }}</a>
   </h2>
   <div class="panel__body">
     <ul class="grid grid--musketeers  |  reset">
-    	{% for item in media %}
-            <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ related|json_encode() }}">
-                {% if item.metadata.previewUrl %}
-                        {{ image.post(item) }}
+        {% for item in media %}
+            {% if (item.label|filterArray("_id", model._id|t(locales))|length) or (item.label|length == 0) %}
+                <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ item|json_encode() }}">
+                    {% if item.metadata.previewUrl %}
+                        {% if item.type|t(locales) == 'flickr' %}
+                            {{ image.flickr_post(item) }}
+                        {% else %}
+                            {{ image.post(item) }}
+                        {% endif %}
 
                         {% if item.type|t(locales) == 'file' %}
                             <span class="av" id="this-content">
                                 <span class="icon icon--archive"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
-                        {% elseif item.type|t(locales) == 'image' %}
+                        {% elseif item.type|t(locales) == 'image' or item.type|t(locales) == 'flickr' %}
                             <span class="av">
                                 <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
@@ -32,22 +37,21 @@
                                 <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
                         {% endif %}
-                        <a class="is-root" href="{{ item.metadata.url }}" target="_blank" rel="nofollow">
+                    {% endif %}
+
+                    {% if item.type|t(locales) %}
+                        <p class="meta meta--theme  |  leader--small">{{ item.type|t(locales) == 'flickr' ? 'Image'|i18n : item.type|t(locales) }}</p>
+                    {% endif %}
+
+                    {% if item.title|t(locales) %}
+                        <h2 class="heading">
+                            <a class="is-heir" href="{{ item.metadata.url }}" target="_blank" rel="nofollow">
+                                {{ item.title|t(locales) }}
                             </a>
-                {% endif %}
-
-                {% if item.type|t(locales) %}
-                    <p class="meta meta--theme  |  leader--small">{{ item.type|t(locales) }}</p>
-                {% endif %}
-
-                {% if item.title|t(locales) %}
-                    <h2 class="heading">
-                        <a class="is-heir" href="{{ item.metadata.url }}" target="_blank" rel="nofollow">
-                            {{ item.title|t(locales) }}
-                        </a>
-                    </h2>
-                {% endif %}
-            </div>
+                        </h2>
+                    {% endif %}
+                </div>
+            {% endif %}
         {% endfor %}
     </ul>
   </div>

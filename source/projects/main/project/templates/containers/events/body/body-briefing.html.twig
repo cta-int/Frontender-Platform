@@ -7,7 +7,7 @@
         selector: '.panel-group'
     }
 }) }}
-
+{% set mediaObject = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
 
 <section>
     <h1 class="is-narrative">{{ model.name }}</h1>
@@ -49,18 +49,17 @@
                         </li>
                     {% endif %}
 
-                    {% set mediaObject = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
-                    {% if mediaObject > 0 %}
-                        <li>
-                            <a class="title title--tab" href="#presentations">{{ 'Presentations'|i18n }}</a>
-                        </li>
-                    {% endif %}
-
                     {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
                         <li>
                             <a class="title title--tab" href="#downloads">{{ 'Downloads'|i18n }}</a>
                         </li>
                     {% endif %}
+
+                    {% for c in containers %}
+                        <li>
+                            <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
                 {% if model.eventbrite and model.eventbrite.managedBySCR %}
                     <p class="leader  |  trailer">
@@ -89,13 +88,18 @@
                 {% include "containers/events/body/panels/sponsors.html.twig" %}
             {% endif %}
 
-            {% if mediaObject > 0 %}
-                {% include "containers/events/body/panels/media.html.twig" with {media: mediaObject, tab_config: { tab_id: "presentations", tab_label: "Presentations"}}  %}
-            {% endif %}
-
             {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
                 {% include "containers/events/body/panels/downloads.html.twig" %}
             {% endif %}
+
+            {% for c in containers %}
+                {% if c.id == "presentations" %}
+                    {% include c.template with c|merge({ media: mediaObject }) %}
+                {% endif %}
+                {% if c.id == "flickr" %}
+                    {% include c.template with c %}
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </section>

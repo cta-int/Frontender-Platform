@@ -106,7 +106,7 @@ $landscape - Breakpoint for landscape oriented viewports.
     </picture>
 {% endmacro %}
 
-{% macro post(mediaObject) %}
+{% macro post(mediaObject ) %}
     {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
     {#  This is testing for an image on Cloudinary but the logic is shakey at best. 
@@ -594,4 +594,20 @@ $landscape - Breakpoint for landscape oriented viewports.
     {% else %}
         {{ me.post(image, class) }}
     {% endif %}
+{% endmacro %}
+
+
+
+
+{% macro flickr_post(mediaObject) %}
+    {% set imageId = mediaObject.metadata.previewUrl %}
+    
+    <img
+        class="image image--stretch"
+        src="{{ imageId }}"
+        width="160"
+        height="240"
+        alt=""
+        itemprop="image"
+        />
 {% endmacro %}
