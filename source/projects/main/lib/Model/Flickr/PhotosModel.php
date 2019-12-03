@@ -4,7 +4,7 @@ namespace Frontender\Platform\Model\Flickr;
 
 use Slim\Container;
 
-class PhotosModel extends AbstractAdapter {
+class PhotosModel extends AbstractAdapter implements \JsonSerializable {
 	public function __construct( Container $container ) {
 		parent::__construct( $container );
 
@@ -62,7 +62,7 @@ class PhotosModel extends AbstractAdapter {
 				'page'     => 1
 			] );
 
-			if(!isset($result['photos'])) {
+			if ( ! isset( $result['photos'] ) ) {
 				return 0;
 			}
 		} else {
@@ -74,7 +74,7 @@ class PhotosModel extends AbstractAdapter {
 			] );
 		}
 
-		return (int) isset($result['photos']['total']) ? $result['photos']['total'] : 0;
+		return (int) isset( $result['photos']['total'] ) ? $result['photos']['total'] : 0;
 	}
 
 	public function getPropertyMetadata() {
@@ -97,21 +97,20 @@ class PhotosModel extends AbstractAdapter {
 
 	public function getPropertySizes() {
 		return new class( $this ) implements \ArrayAccess {
-			private $model;
+			public $sizes;
 
 			public function __construct( PhotosModel $model ) {
-				$this->model = $model;
+				$this->sizes = [];
+
+				try {
+					$this->sizes = $model->getClient()->photos()->getSizes( $model['id'] );
+				} catch ( \Exception $e ) {
+					// NOOP
+				}
 			}
 
 			public function get( $size, $originalFallback = false ) {
-				$client = $this->model->getClient();
-				try {
-					$sizes = $client->photos()->getSizes( $this->model['id'] );
-				} catch(\Exception $e) {
-					return false;
-				}
-
-				$photos = array_filter( $sizes['size'], function ( $photoSize ) use ( $size ) {
+				$photos = array_filter( $this->sizes['size'], function ( $photoSize ) use ( $size ) {
 					return strtolower( $photoSize['label'] ) === $size;
 				} );
 
@@ -120,7 +119,7 @@ class PhotosModel extends AbstractAdapter {
 						return false;
 					}
 
-					$photos = array_filter( $sizes['size'], function ( $size ) {
+					$photos = array_filter( $this->sizes['size'], function ( $size ) {
 						return strtolower( $size['label'] ) === 'original';
 					} );
 
@@ -166,5 +165,18 @@ class PhotosModel extends AbstractAdapter {
 				return true;
 			}
 		};
+	}
+
+	public function jsonSerialize() {
+		$data    = $this->data;
+		$data['sizes'] = $this['sizes']->sizes;
+		$data['metadata'] = [
+			'previewUrl' => $this['metadata']['previewUrl'],
+			'url' => $this['metadata']['url'],
+			'id' => $this['metadata']['id']
+		];
+		$data['type'] = $this['type'];
+
+		return $data;
 	}
 }
