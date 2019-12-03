@@ -23,8 +23,9 @@ class AbstractAdapter extends \Frontender\Core\Model\AbstractModel {
 
 	protected function getClientOptions(): array {
 		return [
-			'apiKey' => $this->container->config->flickr_apikey,
-			'secret' => $this->container->config->flickr_secret
+			'apiKey' => $this->container->config->flickr_brusselsbriefings_apikey,
+			'secret' => $this->container->config->flickr_brusselsbriefings_secret,
+			'userID' => $this->container->config->flickr_brusselsbriefings_userid
 		];
 	}
 

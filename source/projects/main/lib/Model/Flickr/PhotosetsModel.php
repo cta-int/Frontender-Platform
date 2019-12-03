@@ -15,7 +15,8 @@ class PhotosetsModel extends AbstractAdapter {
 
 	public function fetch( $raw = false ): array {
 		$client = $this->getClient();
-		$userID = $this->container->config->flickr_userid;
+		$options = $this->getClientOptions();
+		$userID = $options['userID'];
 
 		if ( $this->getState()->id ) {
 			$photoset = $client->photosets()->getInfo( $this->getState()->id, $userID );
@@ -48,7 +49,8 @@ class PhotosetsModel extends AbstractAdapter {
 
 	public function getTotal(): int {
 		$client    = $this->getClient();
-		$userID    = $this->container->config->flickr_userid;
+		$options = $this->getClientOptions();
+		$userID = $options['userID'];
 		$photosets = $client->photosets()->getList( $userID );
 
 		return (int) isset( $photosets['total'] ) ? $photosets['total'] : 0;
@@ -56,7 +58,8 @@ class PhotosetsModel extends AbstractAdapter {
 
 	public function getPropertyPhotos() {
 		$client = $this->getClient();
-		$userID = $this->container->config->flickr_userid;
+		$options = $this->getClientOptions();
+		$userID = $options['userID'];
 		$photos = $client->photosets()->getPhotos( $this['id'], $userID, null, $this->getState()->photo_limit );
 
 		if(!isset($photos['photo'])) {
