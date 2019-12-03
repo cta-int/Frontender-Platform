@@ -60,6 +60,16 @@
         };
     };
 
+    Gallery.prototype.getFlickrTemplate = function (content) {
+        return {
+            media: '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">',
+            meta: this._createMeta({
+                title: 'title',
+                caption: 'description'
+            }, content)
+        };
+    };
+
     Gallery.prototype.getVideoTemplate = function (content) {
         console.log(content);
 
@@ -146,6 +156,7 @@
             method = 'get' + (type[0].toUpperCase() + type.slice(1).toLowerCase()) + 'Template';
 
         // If no data is defined we will close the modal again.
+        console.log(modalData, type, method, this.mediaStage);
         if (!modalData || !type || !method || !this[method] || !this.mediaStage) {
             return false;
         }
