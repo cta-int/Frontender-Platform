@@ -88,6 +88,14 @@ class PhotosModel extends AbstractAdapter {
 			public function id() {
 				return $this->model['sizes']->get( 'original' );
 			}
+
+			public function previewUrl() {
+				return $this->model['sizes']->get( 'thumb', true );
+			}
+
+			public function url() {
+				return $this->model['sizes']->get( 'original' );
+			}
 		};
 	}
 
