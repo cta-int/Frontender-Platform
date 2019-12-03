@@ -71,8 +71,6 @@
     };
 
     Gallery.prototype.getVideoTemplate = function (content) {
-        console.log(content);
-
         var media = {
             media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
             meta: this._createMeta({
@@ -156,7 +154,6 @@
             method = 'get' + (type[0].toUpperCase() + type.slice(1).toLowerCase()) + 'Template';
 
         // If no data is defined we will close the modal again.
-        console.log(modalData, type, method, this.mediaStage);
         if (!modalData || !type || !method || !this[method] || !this.mediaStage) {
             return false;
         }
