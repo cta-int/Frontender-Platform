@@ -61,8 +61,12 @@
     };
 
     Gallery.prototype.getFlickrTemplate = function (content) {
+        var target = content.sizes.find(function(size){
+            return size.label.toLowerCase() == 'original' || size.label.toLowerCase() == 'large';
+        });
+
         return {
-            media: '<img class="actor__media" src="' + content.metadata.url + '" width="800" height="500">',
+            media: '<img class="actor__media" src="' + target.source + '" width="' + target.width + '" height="' + target.height + '" style="width: auto;">',
             meta: this._createMeta({
                 title: 'title',
                 caption: 'description'
