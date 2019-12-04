@@ -7,7 +7,8 @@
         selector: '.panel-group'
     }
 }) }}
-{% set mediaObject = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
+{% set videos = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
+{% set presentations = model.mediaObject|filterArray("type", "file", true)|filterArray("type", "image", true)|filterArray("type", "video", true)|filterArray("weight", "featured", true) %}
 
 <section>
     <h1 class="is-narrative">{{ model.name }}</h1>
@@ -49,7 +50,7 @@
                         </li>
                     {% endif %}
 
-                    {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
+                    {% if model.videos | findType('file') | length > 0 or model.videos | findType('document') | length > 0  %}
                         <li>
                             <a class="title title--tab" href="#downloads">{{ 'Downloads'|i18n }}</a>
                         </li>
@@ -93,8 +94,11 @@
             {% endif %}
 
             {% for c in containers %}
+                {% if c.id == "videos" %}
+                    {% include c.template with c|merge({ media: videos }) %}
+                {% endif %}
                 {% if c.id == "presentations" %}
-                    {% include c.template with c|merge({ media: mediaObject }) %}
+                    {% include c.template with c|merge({ media: presentations }) %}
                 {% endif %}
                 {% if c.id == "flickr" %}
                     {% include c.template with c %}
