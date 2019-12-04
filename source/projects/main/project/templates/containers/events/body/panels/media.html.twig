@@ -13,10 +13,10 @@
     <a class="panel__trigger  |  gutters  |  is-heir" href="#{{ c.id|default("media") }}">{{ labels.panel_title|t|default("Media"|i18n) }}</a>
   </h2>
   <div class="panel__body">
-    <ul class="grid grid--musketeers  |  reset">
+    <ul class="{{ config.grid|default("grid grid--tiles") }}  |  reset">
         {% for item in media %}
             {% if (item.label|filterArray("_id", model._id|t(locales))|length) or (item.label|length == 0) %}
-                <div class="grid__cell  |  trailer  |  gutters" data-modal="{{ item|json_encode() }}">
+                <div class="grid__cell {{ "grid-decoration" in config.grid|default("grid grid--tiles") ? "gutters" : "trailer gutters" }}" data-modal="{{ item|json_encode() }}">
                     {% if item.metadata.previewUrl %}
                         {% if item.type|t(locales) == 'flickr' %}
                             {{ image.flickr_post(item) }}
@@ -33,6 +33,10 @@
                                 <span class="icon icon--image"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
                         {% elseif item.type|t(locales) == 'video' %}
+                            <span class="av">
+                                <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
+                            </span>
+                        {% elseif item.type|t(locales) == 'presentation' %}
                             <span class="av">
                                 <span class="icon icon--controller-play"><span class="is-narrative">{{ 'Play'|t(locales) }}</span></span>
                             </span>
