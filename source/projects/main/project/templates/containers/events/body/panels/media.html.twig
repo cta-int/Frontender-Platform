@@ -40,7 +40,7 @@
                     {% endif %}
 
                     {% if item.type|t(locales) %}
-                        <p class="meta meta--theme  |  leader--small">{{ item.type|t(locales) == 'flickr' ? 'Image'|i18n : item.type|t(locales) }}</p>
+                        <p class="meta meta--theme  |  leader--small">{{ item.type|t(locales) }}</p>
                     {% endif %}
 
                     {% if item.title|t(locales) %}
