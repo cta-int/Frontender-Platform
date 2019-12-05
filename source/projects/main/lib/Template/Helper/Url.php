@@ -46,7 +46,8 @@ class Url extends Helper\Url
         $slugs = [
             'events' => 'name',
             'articles' => 'headline',
-            'channels' => 'name'
+            'channels' => 'name',
+	        'persons' => 'fullname'
         ];
 
         if (isset($slugs[$data->current()->getModelName()])) {

@@ -51,7 +51,7 @@
                                             {{ expert.givenName ~ ' ' ~ expert.familyName}}</a>{% if expert.jobTitle %}<span>, {{ expert.jobTitle }}</span>{% endif %}
                                     </p>
                                     {% if expert.description %}
-                                        <p itemprop="description" class="leader--tiny">{{ expert.description }}</p>
+                                        <div itemprop="description" class="leader--tiny">{{ expert.description|md|raw }}</div>
                                     {% endif %}
 
                                     {% if expert.twitterHandle or expert.linkedInProfile or expert.facebookPage %}
@@ -123,9 +123,9 @@
                                 <div class="media__figure">
                                     <a href="{{ route({'page': auth.path|default('profile'), 'slug': (auth.givenName ~ ' ' ~ auth.familyName)|slugify, id: auth._id}) }}">{{ image.person(auth, 50) }}</a>
                                 </div>
-                                <p class="media__body  |  body--whisper  |  gutters">
-                                    {{ auth.biography }}
-                                </p>
+                                <div class="media__body  |  body--whisper  |  gutters">
+                                    {{ auth.biography|md|raw }}
+                                </div>
                             </div>
                         </div>
                     {% endfor %}

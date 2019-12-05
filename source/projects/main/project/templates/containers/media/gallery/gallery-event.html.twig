@@ -1,0 +1,12 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/schema.html.twig" as schema %}
+
+{% set mediaObject = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
+
+{% if mediaObject|length %}
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, '')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}>
+    {% for loopContainer in containers %}
+        {% include loopContainer.template with loopContainer|merge( { model: { link: { mediaObject: mediaObject } } } ) %}
+    {% endfor %}
+</{{ config.container_tag|default('div') }}>
+{% endif     %}

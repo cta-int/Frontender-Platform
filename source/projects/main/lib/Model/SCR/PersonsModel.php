@@ -19,8 +19,9 @@ class PersonsModel extends ScrModel {
 		     ->insert( 'id', null, true )
 		     ->insert( 'language', $this->container->language->get() )
 		     ->insert( 'limit', 20 )
-		     ->insert( 'eventLimit', 20 )
-		     ->insert( 'articleLimit', 20 )
+		     ->insert( 'eventLimit', 4 )
+		     ->insert( 'projectLimit', 4 )
+		     ->insert( 'articleLimit', 4 )
 		     ->insert( 'skip' );
 	}
 
@@ -33,6 +34,13 @@ class PersonsModel extends ScrModel {
 					'id'   => $this['_id']
 				]
 			],
+			'mustNot'  => [
+				[
+					'type' => 'field',
+					'id' => 'type',
+					'value' => 'Project'
+				]
+			],
 			'limit' => $this->getState()->eventLimit
 		] );
 
@@ -41,6 +49,32 @@ class PersonsModel extends ScrModel {
 
 	public function getPropertyEventsTotal() {
 		$response = $this->getPropertyEvents(true);
+
+		return $response['total'] ?? 0;
+	}
+
+	public function getPropertyProjects($raw = false) {
+		$model = new \Frontender\Platform\Model\SCR\Project\SearchModel( $this->container );
+		$model->setState( [
+			'must'  => [
+				[
+					'type' => 'person',
+					'id'   => $this['_id']
+				],
+				[
+					'type' => 'field',
+					'id' => 'type',
+					'value' => 'Project'
+				]
+			],
+			'limit' => $this->getState()->eventLimit
+		] );
+
+		return $model->fetch($raw);
+	}
+
+	public function getPropertyProjectsTotal() {
+		$response = $this->getPropertyProjects(true);
 
 		return $response['total'] ?? 0;
 	}
@@ -93,6 +127,12 @@ class PersonsModel extends ScrModel {
 		return $model->fetch($raw);
 	}
 
+	public function getPropertyPublicationsTotal() {
+		$response = $this->getPropertyPublications(true);
+
+		return $response['total'] ?? 0;
+	}
+
 	public function getPropertyPath(): string {
 		return 'profile';
 	}
@@ -103,29 +143,55 @@ class PersonsModel extends ScrModel {
 				$this->person = $person;
 			}
 
-			public function role($event) {
-				// Check the roles and if he has this role, return it as a string.
-				// This is to become translatable.
-				$roles = ['officer', 'assistant', 'keynote', 'speaker', 'chair', 'panellist', 'moderator', 'facilitateur', 'press-officer', 'rapporteur', 'social-reporter', 'translator'];
+			public function roles($event) {
+				// Return this roles in an array of strings
+				// The author.roles_to_string macro will translate each
+				$roles = ['chair', 'keynote', 'speaker', 'panellist', 'moderator', 'facilitateur', 'pressofficer', 'socialreporter'];
+				$active_roles = array();
 
 				foreach($roles as $role) {
 					if(isset($event[$role]) && is_array($event[$role])) {
 						$ids = array_column($event[$role], '_id');
 
 						if(in_array($this->person['_id'], $ids)) {
-							return ucfirst($role);
+							array_push($active_roles, ucfirst($role));
 						}
 					}
 				}
 
-				return false;
+				return $active_roles;
 			}
 		};
 	}
 
-	public function getPropertyPublicationsTotal() {
-		$response = $this->getPropertyPublications(true);
+	public function getPropertyProject() {
+		return new class($this) {
+			public function __construct($person) {
+				$this->person = $person;
+			}
 
-		return $response['total'] ?? 0;
+			public function roles($event) {
+				// Return this roles in an array of strings
+				// The author.roles_to_string macro will translate each
+				$roles = ['officer'];
+				$active_roles = array();
+
+				foreach($roles as $role) {
+					if(isset($event[$role]) && is_array($event[$role])) {
+						$ids = array_column($event[$role], '_id');
+
+						if(in_array($this->person['_id'], $ids)) {
+							array_push($active_roles, ucfirst($role));
+						}
+					}
+				}
+
+				return $active_roles;
+			}
+		};
+	}
+
+	public function getPropertyFullname() {
+		return implode(' ', [$this['givenName'], $this['familyName']]);
 	}
 }

@@ -3,7 +3,7 @@
 
 <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-form__item ctx-item__search')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
     <div class="fld">
-        <label for="ctx-item__search" class="fld-label">{{ labels.label|t(locales)|default('Keyword'|t(locales)) }}</label>
+        <label for="ctx-item__search" class="fld-label">{{ labels.label|t(locales)|default('Keyword'|i18n) }}</label>
         <input id="ctx-item__search" name="q" class="placeholder-visible" value="{{ query.q }}" />
     </div>
 </{{ config.container_tag|default('div') }}>
