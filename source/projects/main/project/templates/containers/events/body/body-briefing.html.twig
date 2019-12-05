@@ -9,6 +9,7 @@
 }) }}
 {% set videos = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "file", true)|filterArray("weight", "featured", true) %}
 {% set presentations = model.mediaObject|filterArray("type", "file", true)|filterArray("type", "image", true)|filterArray("type", "video", true)|filterArray("weight", "featured", true) %}
+{% set documents = model.mediaObject|filterArray("type", "presentation", true)|filterArray("type", "image", true)|filterArray("type", "video", true)|filterArray("type", "youtube", true)|filterArray("type", "vimeo", true) %}
 
 <section>
     <h1 class="is-narrative">{{ model.name }}</h1>
@@ -50,16 +51,27 @@
                         </li>
                     {% endif %}
 
-                    {% if model.videos | findType('file') | length > 0 or model.videos | findType('document') | length > 0  %}
-                        <li>
-                            <a class="title title--tab" href="#downloads">{{ 'Downloads'|i18n }}</a>
-                        </li>
-                    {% endif %}
-
                     {% for c in containers %}
-                        <li>
-                            <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
-                        </li>
+                        {% if c.id == "videos" and videos|length %}
+                            <li>
+                                <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
+                        {% if c.id == "presentations" and presentations|length %}
+                            <li>
+                                <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
+                        {% if c.id == "flickr" %}
+                            <li>
+                                <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
+                        {% if c.id == "documents" and documents|length %}
+                            <li>
+                                <a class="title title--tab" href="#{{c.id}}">{{ c.labels.panel_title|t(locales) }}</a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
                 {% if model.eventbrite and model.eventbrite.managedBySCR %}
@@ -89,10 +101,6 @@
                 {% include "containers/events/body/panels/sponsors.html.twig" %}
             {% endif %}
 
-            {% if model.mediaObject | findType('file') | length > 0 or model.mediaObject | findType('document') | length > 0  %}
-                {% include "containers/events/body/panels/downloads.html.twig" %}
-            {% endif %}
-
             {% for c in containers %}
                 {% if c.id == "videos" %}
                     {% include c.template with c|merge({ media: videos }) %}
@@ -102,6 +110,9 @@
                 {% endif %}
                 {% if c.id == "flickr" %}
                     {% include c.template with c %}
+                {% endif %}
+                {% if c.id == "documents" %}
+                    {% include c.template with c|merge({ media: documents}) %}
                 {% endif %}
             {% endfor %}
         </div>

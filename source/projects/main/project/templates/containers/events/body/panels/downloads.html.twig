@@ -1,12 +1,13 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<section class="panel  |  wing--right" id="downloads">
+<section class="panel  |  wing--right" id="{{ c.id|default("documents") }}">
   <h2 class="title">
-    <a class="panel__trigger  |  gutters  |  is-heir" href="#downloads">{{ 'Downloads'|i18n }}</a>
+    <a class="panel__trigger  |  gutters  |  is-heir" href="#{{ c.id|default("documents") }}">{{ labels.panel_title|t|default("Downloads"|i18n) }}</a>
   </h2>
   <div class="panel__body">
     <ul class="grid grid--musketeers  |  reset">
-    	{% for download in model.mediaObject|findType('file') %}
+		{% for download in media|findType('file') %}
+			{% if (download.label|filterArray("_id", model._id|t(locales))|length) or (download.label|length == 0) %}
             <li class="grid__cell  |  leader--normal  |  trailer--normal  |  gutters" itemscope itemtype="https://schema.org/MediaObject">
     			<h2 class="title title--apropos" itemprop="about"><a href="{{ download.metadata.url }}" target="_blank">{{ download.description }}</a></h2>
     			<div class="media  |  leader--small">
@@ -21,9 +22,11 @@
                         </p>
     				</div>
     			</div>
-    	    </li>
+			</li>
+			{% endif %}
         {% endfor %}
-        {% for download in model.mediaObject|findType('document') %}
+        {% for download in media|findType('document') %}
+			{% if (download.label|filterArray("_id", model._id|t(locales))|length) or (download.label|length == 0) %}
             <li class="grid__cell  |  leader--normal  |  trailer--normal  |  gutters" itemscope itemtype="https://schema.org/MediaObject">
     			<h2 class="title title--apropos" itemprop="about"><a href="{{ download.metadata.url }}" target="_blank">{{ download.description }}</a></h2>
     			<div class="media  |  leader--small">
@@ -39,6 +42,7 @@
     				</div>
     			</div>
     	    </li>
+			{% endif %}
         {% endfor %}
     </ul>
   </div>
