@@ -74,6 +74,15 @@
         };
     };
 
+    Gallery.prototype.getPresentationTemplate = function(content) {
+        return {
+            media: '<iframe src="' + content.metadata.url + '" / frameBorder="0" style="height: 100%; position: relative; z-index:5;">',
+            meta: this._createMeta({
+                title: 'title'
+            }, content)
+        };
+    };
+
     Gallery.prototype.getVideoTemplate = function (content) {
         var media = {
             media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
