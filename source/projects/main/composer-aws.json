@@ -13,7 +13,9 @@
     ],
     "require": {
         "cta-int/php-lib-src": "0.2.0@dev",
-        "frontender/platform-core": "dev-master"
+        "frontender/platform-core": "dev-master",
+        "samwilson/phpflickr": "4.12.0",
+        "symfony/cache": "5.0.1"
     },
     "autoload": {
         "psr-4": {
