@@ -1,0 +1,26 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/concept.html.twig" as concept %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+{% if 'person' in query.type or not query.type %}
+    <section class="trailer--giant">
+        <h2 class="title title--section  |  fld--label  |  leader  |  trailer  |  gutters">
+            {% if model.profileTotal == 1 %}
+                {{ model.profileTotal }} {{ 'Result in profiles'|i18n }}
+            {% else %}
+                {{ model.profileTotal }} {{ 'Results in profiles'|i18n }}
+            {% endif %}
+        </h2>
+        {% if model.profileTotal > 0 %}
+            <div data-serp-profiles>
+                {% include 'modules/serp/serp-profiles/serp-persons-list-with-load-more.html.twig'%}
+            </div>
+        {% else %}
+            {% if query.q %}
+                <p class="leader trailer gutters">{{ 'No profiles found for'|i18n }} &ldquo;{{ query.q }}&rdquo;</p>
+            {% else %}
+                <p class="leader trailer gutters">{{ 'No profiles found'|i18n }}</p>
+            {% endif %}
+        {% endif %}
+    </section>
+{% endif %}
