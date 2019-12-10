@@ -57,7 +57,7 @@
                                         <p><span class="meta--bold">{{ auth.givenName ~ ' ' ~ auth.familyName}}</span>{% if auth.jobTitle %}<span>, {{ auth.jobTitle }}</span>{% endif %}</p>
                                     </a>
                                     {% if auth.biography %}
-                                        <div itemprop="description" class="leader--tiny">{{ auth.biography|md|raw }}</div>
+                                        <div itemprop="description" class="markdown leader--tiny">{{ auth.biography|md|raw }}</div>
                                     {% endif %}
                                 </div>
                             </div>

@@ -275,7 +275,7 @@
                                 <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             </a>
                             {% if auth.description %}
-                                <div itemprop="description" class="">{{ auth.description|md|raw }}</div>
+                                <div itemprop="description" class="markdown">{{ auth.description|md|raw }}</div>
                             {% endif %}
                         </div>
                     </div>
