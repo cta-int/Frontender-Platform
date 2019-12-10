@@ -5,7 +5,7 @@
     <{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'ctx-item__scope')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
         <div class="fld">
             <label for="ctx-item__scope" class="fld-label">{{ labels.field_label|t(locales)|default('Person'|i18n) }}</label>
-            <select id="ctx-item__scope" name="person" class="placeholder-visible">
+            <select id="ctx-item__scope" name="profile" class="placeholder-visible">
                 <option value="">{{ 'Any'|i18n }}</option>
                 <option value="{{ model.person._id }}" selected>{{ model.person.name|t(locales) }}</option>
             </select>

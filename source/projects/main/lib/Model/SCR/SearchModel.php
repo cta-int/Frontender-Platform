@@ -616,7 +616,7 @@ class SearchModel extends ScrModel {
 		     ->insert( 'must', [] )
 		     ->insert( 'mustNot', [] )
 		     ->insert( 'should', [] )
-		     ->insert( 'person' )
+		     ->insert( 'profile' )
 		     ->insert( 'type' );  // Can be an object
 
 		/**
@@ -674,8 +674,8 @@ class SearchModel extends ScrModel {
 			}
 		}
 
-		if ( isset( $values['person'] ) && ! empty( $values['person'] ) ) {
-			$values['must'][] = $this->addTerm( 'person', $values['person'] );
+		if ( isset( $values['profile'] ) && ! empty( $values['profile'] ) ) {
+			$values['must'][] = $this->addTerm( 'person', $values['profile'] );
 		}
 
 		if ( isset( $values['issue'] ) && ! empty( $values['issue'] ) ) {
