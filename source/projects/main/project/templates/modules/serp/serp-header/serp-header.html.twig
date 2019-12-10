@@ -49,8 +49,8 @@
         <input type="hidden" name="type" value="{{ query.type }}">
         <input type="hidden" name="period" value="{{ query.period }}">
 
-        {% if query.person %}
-            <input type="hidden" name="person" value="{{ query.person }}">
+        {% if query.profile %}
+            <input type="hidden" name="profile" value="{{ query.profile }}">
         {% endif %}
 
         {% for concept in query.concepts %}
