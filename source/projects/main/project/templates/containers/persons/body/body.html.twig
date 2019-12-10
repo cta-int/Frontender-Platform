@@ -19,7 +19,7 @@
                     {{ labels.articles|default({"en-GB": "Articles", "fr-FR": "Articles"})|t }}
                 </h2>
                 <div class="container-header__filter  |  gutters">
-                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&profile={{ model._id }}">
+                    <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=articles&person={{ model._id }}">
                         {{ 'View all'|i18n }}
                     </a>
                 </div>
@@ -55,7 +55,7 @@
                         {{ labels.publications|default({"en-GB": "Publications", "fr-FR": "Publications"})|t }}
                     </h2>
                     <div class="container-header__filter  |  gutters">
-                        <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?scope=publications&profile={{ model._id }}">
+                        <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?scope=publications&person={{ model._id }}">
                             {{ 'View all'|i18n }}
                         </a>
                     </div>
@@ -113,7 +113,7 @@
                             {{ labels.events|default({"en-GB": "Events", "fr-FR": "Événements"})|t }}
                         </h2>
                         <div class="container-header__filter  |  gutters">
-                            <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=events&profile={{ model._id }}">
+                            <a class="title title--filter  |  anchor  |  is-heir" href="{{ route({page: 'search'}) }}?type=events&person={{ model._id }}">
                                 {{ 'View all'|i18n }}
                             </a>
                         </div>
