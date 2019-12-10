@@ -713,7 +713,37 @@ class SearchModel extends ScrModel {
 
 			$response = $model->fetch( true );
 
-			return $response['total'];
+			return $response['total'] ?? 0;
+		}
+
+		return 0;
+	}
+
+	public function getPropertyProfiles() {
+		$state = $this->getState();
+		$types = explode( ',', $state->types );
+
+		if ( in_array( 'profiles', $types ) ) {
+			$model = new \Frontender\Platform\Model\SCR\Persons\SearchModel( $this->container );
+			$model->setState($this->getState()->getValues());
+
+			return $model->fetch();
+		}
+
+		return [];
+	}
+
+	public function getPropertyProfilesTotal() {
+		$state = $this->getState();
+		$types = explode( ',', $state->types );
+
+		if ( in_array( 'profiles', $types ) ) {
+			$model = new \Frontender\Platform\Model\SCR\Persons\SearchModel( $this->container );
+			$model->setState($this->getState()->getValues());
+
+			$response = $model->fetch( true );
+
+			return $response['total'] ?? 0;
 		}
 
 		return 0;
@@ -743,7 +773,7 @@ class SearchModel extends ScrModel {
 
 			$response = $model->fetch( true );
 
-			return $response['total'];
+			return $response['total'] ?? 0;
 		}
 
 		return 0;
@@ -802,7 +832,7 @@ class SearchModel extends ScrModel {
 	public function getPropertyPerson() {
 		$states = $this->getState()->getValues();
 
-		if(!isset($states['person']) || empty($states['person'])) {
+		if ( ! isset( $states['person'] ) || empty( $states['person'] ) ) {
 			return false;
 		}
 
@@ -813,10 +843,10 @@ class SearchModel extends ScrModel {
 			] );
 			$result = $model->fetch();
 
-			return array_shift($result);
-		} catch(\Exception $e) {
+			return array_shift( $result );
+		} catch ( \Exception $e ) {
 			return false;
-		} catch(\Error $e) {
+		} catch ( \Error $e ) {
 			return false;
 		}
 	}
