@@ -719,7 +719,7 @@ class SearchModel extends ScrModel {
 		return 0;
 	}
 
-	public function getPropertyProfiles() {
+	public function getPropertyProfile() {
 		$state = $this->getState();
 		$types = explode( ',', $state->types );
 
@@ -733,7 +733,7 @@ class SearchModel extends ScrModel {
 		return [];
 	}
 
-	public function getPropertyProfilesTotal() {
+	public function getPropertyProfileTotal() {
 		$state = $this->getState();
 		$types = explode( ',', $state->types );
 

@@ -4,7 +4,7 @@
     <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
 {% endif %}
 
-{% for model in model.person %}
+{% for person in model.profile %}
     {% include 'partials/person/tile.html.twig' with {highlight: true} %}
 
     {% if not loop.last %}
@@ -17,7 +17,7 @@
         model_name: 'Search',
         adapter: 'SCR',
         target: "[data-serp-profiles]",
-        layout: "modules/serp/serp-profiles/serp-profiles-list-with-load-more.html.twig",
+        layout: "modules/serp/serp-persons/serp-persons-list-with-load-more.html.twig",
         config: {
             config: {
                 show_first_hr: 'true'
