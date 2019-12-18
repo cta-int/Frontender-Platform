@@ -2,12 +2,12 @@
 {% import "macros/location.html.twig" as location %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<div class="profile" itemscope itemtype="http://schema.org/Person">
-    <a href="{{ route({'page': person.path|default('profile'), 'slug': (person.givenName ~ ' ' ~ person.familyName)|slugify, id: person._id}) }}">
-        <div class="profile__image" itemprop="image">
-            {{ image.speaker(person) }}
-        </div>
-        <div class="profile__text">
+<div class="profile" itemscope itemtype="http://schema.org/Person" data-location="{{ route({'page': person.path|default('profile'), 'slug': (person.givenName ~ ' ' ~ person.familyName)|slugify, id: person._id}) }}">
+    <div class="profile__image" itemprop="image">
+        <a href="{{ route({'page': person.path|default('profile'), 'slug': (person.givenName ~ ' ' ~ person.familyName)|slugify, id: person._id}) }}">{{ image.speaker(person) }}
+    </div>
+    <div class="profile__text">
+        <a class="anchor--shy" href="{{ route({'page': person.path|default('profile'), 'slug': (person.givenName ~ ' ' ~ person.familyName)|slugify, id: person._id}) }}">
             {% if person.honorificPrefix %}
                 <h4 class="profile__name  |  title  |  trailer--small">
                     <span itemprop="honorificPrefix">{{ person.honorificPrefix }}</span>
@@ -18,29 +18,28 @@
                     {{ person.givenName ~ ' ' ~ person.familyName }}
                 </h4>
             {% endif %}
+        </a>
+        {% if person.jobTitle %}
+            <p class="body--whisper" itemprop="jobTitle">{{ person.jobTitle|t(locales) }}</p>
+        {% else %}
 
-            {% if person.jobTitle %}
-                <p class="body--whisper" itemprop="jobTitle">{{ person.jobTitle|t(locales) }}</p>
-            {% else %}
-
-                {% if person.worksFor|first %}
-                    {% if person.worksFor|first.name or person.worksFor|first.alternateName %}
-                        <p class="body--whisper" itemprop="worksFor">
-                            {{ person.worksFor|first.alternateName ? person.worksFor|first.alternateName : person.worksFor|first.name }}
-                            {% if person.worksFor|first.alternateName %}
-                                ({{ person.worksFor|first.name }})
-                            {% endif %}
-                        </p>
-                    {% endif %}
-                    {% if person.worksFor|first.location %}
-                        <p class="body--whisper" itemprop="workLocation">
-                            {{ location.country(person.worksFor|first.location) }}
-                        </p>
-                    {% endif %}
+            {% if person.worksFor|first %}
+                {% if person.worksFor|first.name or person.worksFor|first.alternateName %}
+                    <p class="body--whisper" itemprop="worksFor">
+                        {{ person.worksFor|first.alternateName ? person.worksFor|first.alternateName : person.worksFor|first.name }}
+                        {% if person.worksFor|first.alternateName %}
+                            ({{ person.worksFor|first.name }})
+                        {% endif %}
+                    </p>
                 {% endif %}
-
+                {% if person.worksFor|first.location %}
+                    <p class="body--whisper" itemprop="workLocation">
+                        {{ location.country(person.worksFor|first.location) }}
+                    </p>
+                {% endif %}
             {% endif %}
 
-        </div>
-    </a>
+        {% endif %}
+
+    </div>
 </div>
