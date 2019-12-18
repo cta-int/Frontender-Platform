@@ -6,25 +6,28 @@
 <html class="no-js" lang="{{ locale }}">
     <head>
         <meta charset="UTF-8">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-724238-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
 
-            gtag('config', 'UA-724238-2');
-        </script>
+        {% if (not isPreview()) and (not isFrontender()) %}
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-724238-2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),model:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TZ5C3Q');</script>
-        <!-- End Google Tag Manager -->
+                gtag('config', 'UA-724238-2');
+            </script>
 
-        <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+            <!-- Google Tag Manager -->
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),model:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TZ5C3Q');</script>
+            <!-- End Google Tag Manager -->
+
+            <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+        {% endif %}
 
         {% block title %} {% endblock %}
 
@@ -160,115 +163,120 @@
             });
         </script>
         {{ renderAssets('script')|raw }}
-        <!-- Hotjar Tracking Code for cta.int -->
-        <script>
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:10580,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
-        <!-- Heap Analytics tracking code -->
-        <script type="text/javascript">
-            window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
-            heap.load("1820974936");
-        </script>
+        {% if (not isPreview()) and (not isFrontender()) %}
+            <!-- Hotjar Tracking Code for cta.int -->
+            <script>
+                (function(h,o,t,j,a,r){
+                    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                    h._hjSettings={hjid:10580,hjsv:6};
+                    a=o.getElementsByTagName('head')[0];
+                    r=o.createElement('script');r.async=1;
+                    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                    a.appendChild(r);
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            </script>
+            <!-- Heap Analytics tracking code -->
+            <script type="text/javascript">
+                window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+                heap.load("1820974936");
+            </script>
 
-        <script>
-            // Check that service workers are supported
-            if ('serviceWorker' in navigator) {
-                // Use the window load event to keep the page load performant
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
-        </script>
-
-        <script type="module">
-            import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-window.prod.mjs';
-
-            if ('serviceWorker' in navigator) {
-              const wb = new Workbox('/service-worker.js');
-
-              // Add an event listener to detect when the registered
-              // service worker has installed but is waiting to activate.
-              wb.addEventListener('waiting', (event) => {
-                // `event.wasWaitingBeforeRegister` will be false if this is
-                // the first time the updated service worker is waiting.
-                // When `event.wasWaitingBeforeRegister` is true, a previously
-                // updated same service worker is still waiting.
-                // You may want to customize the UI prompt accordingly.
-
-                // Assumes your app has some sort of prompt UI element
-                // that a user can either accept or reject.
-                const prompt = createUIPrompt({
-                  onAccept: async () => {
-                    // Assuming the user accepted the update, set up a listener
-                    // that will reload the page as soon as the previously waiting
-                    // service worker has taken control.
-                    wb.addEventListener('controlling', (event) => {
-                      window.location.reload();
+            <script>
+                // Check that service workers are supported
+                if ('serviceWorker' in navigator) {
+                    // Use the window load event to keep the page load performant
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/service-worker.js');
                     });
+                }
+            </script>
 
-                    // Send a message telling the service worker to skip waiting.
-                    // This will trigger the `controlling` event handler above.
-                    // Note: for this to work, you have to add a message
-                    // listener in your service worker. See below.
-                    wb.messageSW({type: 'SKIP_WAITING'});
-                  },
+            <script type="module">
+                import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-window.prod.mjs';
 
-                  onReject: () => {
-                    prompt.dismiss();
-                  }
-                })
-              });
+                if ('serviceWorker' in navigator) {
+                  const wb = new Workbox('/service-worker.js');
 
-              wb.register();
-            }
-        </script>
+                  // Add an event listener to detect when the registered
+                  // service worker has installed but is waiting to activate.
+                  wb.addEventListener('waiting', (event) => {
+                    // `event.wasWaitingBeforeRegister` will be false if this is
+                    // the first time the updated service worker is waiting.
+                    // When `event.wasWaitingBeforeRegister` is true, a previously
+                    // updated same service worker is still waiting.
+                    // You may want to customize the UI prompt accordingly.
+
+                    // Assumes your app has some sort of prompt UI element
+                    // that a user can either accept or reject.
+                    const prompt = createUIPrompt({
+                      onAccept: async () => {
+                        // Assuming the user accepted the update, set up a listener
+                        // that will reload the page as soon as the previously waiting
+                        // service worker has taken control.
+                        wb.addEventListener('controlling', (event) => {
+                          window.location.reload();
+                        });
+
+                        // Send a message telling the service worker to skip waiting.
+                        // This will trigger the `controlling` event handler above.
+                        // Note: for this to work, you have to add a message
+                        // listener in your service worker. See below.
+                        wb.messageSW({type: 'SKIP_WAITING'});
+                      },
+
+                      onReject: () => {
+                        prompt.dismiss();
+                      }
+                    })
+                  });
+
+                  wb.register();
+                }
+            </script>
+        {% endif %}
     </head>
 
     <body{{ helper.class_attribute(config, model.theme.selector|default(''))|raw }}>
-
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ5C3Q"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
+        {% if (not isPreview()) and (not isFrontender()) %}
+            <!-- Google Tag Manager (noscript) -->
+            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ5C3Q"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End Google Tag Manager (noscript) -->
+        {% endif %}
 
         {{ block('body') }}
 
         {{ renderAssets('beforeBodyEnd')|raw }}
 
-        <!-- OneTrust Cookies Consent Notice start -->
-        <script src="https://cdn.cookielaw.org/langswitch/8b227c82-b470-448a-bfd4-e4238187e0d3.js" type="text/javascript"></script>
-        <script type='text/javascript'>
-            function OptanonWrapper() { }
-            var _sf_async_config={};
-            /** CONFIGURATION START **/
-            _sf_async_config.uid = 39651;
-            _sf_async_config.domain = 'cta.int';
-            _sf_async_config.useCanonical = true;
-            _sf_async_config.sections = 'events,projects,regions,topics,blogs,working-with-cta,press,youth,digitalisation,climate';  //CHANGE THIS
-            _sf_async_config.authors = 'Change this to your Author name';    //CHANGE THIS
-            /** CONFIGURATION END **/
-            (function(){
-              function loadChartbeat() {
-                window._sf_endpt=(new Date()).getTime();
-                var e = document.createElement('script');
-                e.setAttribute('language', 'javascript');
-                e.setAttribute('type', 'text/javascript');
-                e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
-                document.body.appendChild(e);
-              }
-              var oldonload = window.onload;
-              window.onload = (typeof window.onload != 'function') ?
-                 loadChartbeat : function() { oldonload(); loadChartbeat(); };
-            })();
-        </script>
-        <!-- OneTrust Cookies Consent Notice end -->
+        {% if (not isPreview()) and (not isFrontender()) %}
+            <!-- OneTrust Cookies Consent Notice start -->
+            <script src="https://cdn.cookielaw.org/langswitch/8b227c82-b470-448a-bfd4-e4238187e0d3.js" type="text/javascript"></script>
+            <script type='text/javascript'>
+                function OptanonWrapper() { }
+                var _sf_async_config={};
+                /** CONFIGURATION START **/
+                _sf_async_config.uid = 39651;
+                _sf_async_config.domain = 'cta.int';
+                _sf_async_config.useCanonical = true;
+                _sf_async_config.sections = 'events,projects,regions,topics,blogs,working-with-cta,press,youth,digitalisation,climate';  //CHANGE THIS
+                _sf_async_config.authors = 'Change this to your Author name';    //CHANGE THIS
+                /** CONFIGURATION END **/
+                (function(){
+                  function loadChartbeat() {
+                    window._sf_endpt=(new Date()).getTime();
+                    var e = document.createElement('script');
+                    e.setAttribute('language', 'javascript');
+                    e.setAttribute('type', 'text/javascript');
+                    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+                    document.body.appendChild(e);
+                  }
+                  var oldonload = window.onload;
+                  window.onload = (typeof window.onload != 'function') ?
+                     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+                })();
+            </script>
+            <!-- OneTrust Cookies Consent Notice end -->
+        {% endif %}
     </body>
 
 </html>
