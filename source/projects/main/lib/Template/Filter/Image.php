@@ -27,14 +27,14 @@ class Image extends \Twig_Extension
 
     public function getLeadMedia($array)
     {
-        if(count($array) == 0) {
+        if(!is_array($array) || !count($array)) {
             return false;
         }
 
         $images = array_filter($array, function($item) {
             return $item['type'] === 'image';
         });
-
+        
         // Check if a media object is an image.
         $featured = array_filter($images, function($item) {
             if(!array_key_exists('weight', $item)) {
