@@ -83,6 +83,9 @@
         <script src="{{ hashedPath('/assets/javascript/slick.min.js') }}"></script>
         <script type="text/javascript">
             jQuery(function($) {
+                $('[data-location]').on('click', function(event){
+                    window.location = $(this).data('location');
+                });
                 $('.hero').srcset('> img');
                 $('.tab-teaser').tabs({
                     children: '.tab-teaser__panel',
