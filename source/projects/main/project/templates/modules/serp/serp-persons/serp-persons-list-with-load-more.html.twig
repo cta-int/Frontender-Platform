@@ -4,13 +4,13 @@
     <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
 {% endif %}
 
-{% for person in model.profile %}
-    {% include 'partials/person/tile.html.twig' with {highlight: true} %}
-
-    {% if not loop.last %}
-        <hr class="reset  |  divider divider--bottom  |  gutters-outside  |  gutters-outside  |  leader  |  trailer"/>
-    {% endif %}
-{% endfor %}
+<div class="trellis trellis--l">
+    {% for person in model.profile %}
+        <div class="trellis__cell  |  gutters  |  trailer" itemprop="performer">
+            {% include 'partials/person/tile.html.twig' %}
+        </div>
+    {% endfor %}
+</div>
 
 <div class="leader--hero  |  trailer--hero" data-pagination-parent>
     {{ pagination.extend(model, model.profileTotal, {
