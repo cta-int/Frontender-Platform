@@ -1,0 +1,75 @@
+
+.media-quote {
+    cite {
+        font-style: inherit;
+    }
+    &__body {
+
+    }
+    &__quote {
+        padding-top: rhythm(15);
+        padding-bottom: rhythm(5);
+        vertical-align: top;
+        margin-right: percentage(1/6);
+    }
+    &__figure {
+        position: relative;
+        top: rhythm(25);
+        margin-top: rhythm(-25);
+    }
+    &__footer {
+        padding-top: rhythm(5);
+        padding-bottom: rhythm(5);
+    }
+    @include breakpoint($gt-large-handheld) {
+        &__quote,
+        &__figure {
+            display: inline-block;
+        }
+        &__quote,
+        &__figure,
+        &__footer {
+            width: percentage(6/12);
+        }
+        &__quote {
+            margin-right: 0;
+            padding-top: rhythm(25);
+            padding-bottom: rhythm(15);
+        }
+        
+        &__figure {
+            margin-top: 0;
+        }
+        &__footer {
+            
+        }
+    }
+    @include breakpoint($gt-small-desktop) {
+        &__quote {
+            padding-top: rhythm(40);
+            padding-bottom: rhythm(15);
+        }
+        &__quote,
+        &__footer {
+            width: percentage(6/18);
+            margin-right: percentage(1/18);
+        }
+        &__figure {
+            width: percentage(11/18);
+            top: rhythm(35);
+            margin-top: rhythm(-35);
+            padding-top: rhythm(15);
+        }
+    }
+    @include breakpoint($gt-medium-desktop) {
+        &__quote,
+        &__footer {
+            width: percentage(5/16);
+            margin-right: percentage(1/16);
+        }
+        &__figure {
+            width: percentage(10/16);
+            padding-top: rhythm(25);
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{% import "macros/date.html.twig" as date %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/image.html.twig" as image %}
+{% import "macros/template.html.twig" as helper %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+
+{{ hashedPath('/assets/css/media-quote.css')|addStyle('styles') }}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'media-quote is-clear')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="media-quote__body  well  wings">
+        <blockquote class="media-quote__quote gutters">
+            <div class="quote trailer">
+                    {{ content.quote|t(locales)|md|raw }}
+            </div>
+            <cite class="is-reset meta"><b>{{ content.quote_source|t(locales) }}</b></cite>
+        </blockquote><!--
+        --><figure class="gutters media-quote__figure">
+                {{ image.post_hero(model.link.mediaObject|lead) }}
+        </figure>
+    </div>
+    <div class="media-quote__footer  wings">
+        <div class="trailer--tiny gutters">{{ date.article(model.datePublished) }}</div>
+        <a class="anchor--shy" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}">
+            <h2 class="heading gutters">{{ model.headline }} {{ model.headline }} {{ model.headline }} {{ model.headline }}</h2>
+        </a>
+    </div>
+</{{ config.container_tag|default('div') }}>
