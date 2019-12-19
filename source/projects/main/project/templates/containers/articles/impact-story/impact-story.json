@@ -1,0 +1,84 @@
+{
+    "template": "containers/articles/impact-story/impact-story.html.twig",
+    "name": {
+        "en-GB": "Single Impact Story Banner"
+    },
+    "description": {
+        "en-GB": "Single Impact Story Banner"
+    },
+    "template_config": {
+        "model": {
+            "label": {
+                "en-GB": "Content"
+            },
+            "controls": {
+                "data": {
+                    "control": "project/model/article",
+                    "value": {
+                        "adapter": "SCR",
+                        "model": "Article\\Search",
+                        "id": "6630063a-5f24-4ae4-b1d3-df78a1959a3e"
+                    }
+                }
+            }
+        },
+        "content": {
+            "label": {
+                "en-GB": "Quote"
+            },
+            "controls": {
+                "quote": {
+                    "label": {
+                        "en-GB": "Quote"
+                    },
+                    "value": {
+                        "en-GB": "Agribusiness offers valuable opportunities to small island states as a path for improved livelihoods, job creation and economic growth, in particular for women.",
+                        "fr-FR": "Agribusiness offers valuable opportunities to small island states as a path for improved livelihoods, job creation and economic growth, in particular for women."
+                    },
+                    "control": "core/textarea"
+                },
+                "quote_source": {
+                    "label": {
+                        "en-GB": "Quote source"
+                    },
+                    "value": {
+                        "en-GB": "Mereia Volavola, CEO PIPSO",
+                        "fr-FR": "Mereia Volavola, CEO PIPSO"
+                    },
+                    "control": "core/text"
+                }
+            }
+        },
+        "config": {
+            "label": {
+                "en-GB": "Settings"
+            },
+            "controls": {
+                "container_tag": {
+                    "value": "section",
+                    "control": "project/container_tag"
+                },
+                "crown": {
+                    "value": "",
+                    "control": "project/crown"
+                },
+                "leader": {
+                    "value": "leader--hero",
+                    "control": "project/leader"
+                },
+                "trailer": {
+                    "value": "trailer--hero",
+                    "control": "project/trailer"
+                },
+                "divider": {
+                    "value": "",
+                    "control": "project/divider"
+                },
+                "container_class": {
+                    "value": "",
+                    "control": "project/container_class"
+                }
+            }
+        }
+    }
+}
