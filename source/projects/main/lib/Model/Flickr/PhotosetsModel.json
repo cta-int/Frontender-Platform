@@ -1,0 +1,13 @@
+{
+    "label": {
+        "en-GB": "Photosets",
+        "fr-FR": "Photosets"
+    },
+    "map": {
+        "id": "id",
+        "title": "title",
+        "description": "description",
+        "datePublished": "date_create",
+        "dateModified": "date_update"
+    }
+}

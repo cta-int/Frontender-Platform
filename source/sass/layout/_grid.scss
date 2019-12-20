@@ -9,7 +9,7 @@ If you require your columns to stretch to the full height of your container, use
 
 .grid - If flexbox is supported, all children will behave like flex items. If not, children are required to have a `.grid__cell class declared on them.
 .grid.grid--stories - When wide enough, the cells will be half the available width.
-.grid.grid--musketeers - Smaller containers
+.grid.grid--musketeers - Stacked on mobile, three on larger breakpoints
 .grid.grid--teletubbies - Smaller containers
 .grid.grid--posts - Two columns on mobile, four on larger breakpoints
 .grid.grid--even - Always 2 columns

@@ -1,9 +1,11 @@
 <script>
     $(document).ready(function() {
-        $('.gallery').gallery({
-            children: $('[data-modal]'),
-            locales: '{{ locales|json_encode|raw }}',
-            currentLocale: '{{ locale }}'
+        $('.gallery').each(function() {
+            $(this).gallery({
+                children: $(this).parent().find('[data-modal]'),
+                locales: '{{ locales|json_encode|raw }}',
+                currentLocale: '{{ locale }}'
+            });
         });
     });
 </script>

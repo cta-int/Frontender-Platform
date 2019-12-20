@@ -1,0 +1,73 @@
+{
+    "label": {
+        "en-GB": "Media",
+        "fr-FR": "Media"
+    },
+    "map": {
+        "id": "id",
+        "title": "title",
+        "description": "description",
+        "thumbnail": "sizes.thumb",
+        "datePublished": "dateuploaded",
+        "dateModified": "dates.lastupdate"
+    },
+    "filters": {
+        "type": {
+            "label": {
+                "en-GB": "Ordering"
+            },
+            "icon": "funnel",
+            "visualType": "icon",
+            "options": [
+                {
+                    "label": {
+                        "en-GB": "Date posted (asc)"
+                    },
+                    "value": "date-posted-asc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Date posted (desc)"
+                    },
+                    "value": "date-posted-desc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Date taken (asc)"
+                    },
+                    "value": "date-taken-asc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Date taken (desc)"
+                    },
+                    "value": "date-taken-desc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Interestingness (asc)"
+                    },
+                    "value": "interestingness-asc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Interestingness (desc)"
+                    },
+                    "value": "interestingness-desc"
+                },
+                {
+                    "label": {
+                        "en-GB": "Relevance"
+                    },
+                    "value": "relevance"
+                }
+            ]
+        },
+        "text": {
+            "label": {
+                "en-GB": "Search term"
+            },
+            "type": "search"
+        }
+    }
+}

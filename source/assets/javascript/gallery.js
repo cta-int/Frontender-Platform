@@ -60,9 +60,30 @@
         };
     };
 
-    Gallery.prototype.getVideoTemplate = function (content) {
-        console.log(content);
+    Gallery.prototype.getFlickrTemplate = function (content) {
+        var target = content.sizes.find(function(size){
+            return size.label.toLowerCase() == 'original' || size.label.toLowerCase() == 'large';
+        });
 
+        return {
+            media: '<img class="actor__media" src="' + target.source + '" width="' + target.width + '" height="' + target.height + '" style="width: auto;">',
+            meta: this._createMeta({
+                title: 'title',
+                caption: 'description'
+            }, content)
+        };
+    };
+
+    Gallery.prototype.getPresentationTemplate = function(content) {
+        return {
+            media: '<iframe src="' + content.metadata.url + '" / frameBorder="0" style="height: 100%; position: relative; z-index:5;">',
+            meta: this._createMeta({
+                title: 'title'
+            }, content)
+        };
+    };
+
+    Gallery.prototype.getVideoTemplate = function (content) {
         var media = {
             media: '<a href="' + content.metadata.url + '"><img class="actor__media" src="' + content.metadata.previewUrl + '" width="800" height="500"></a>',
             meta: this._createMeta({

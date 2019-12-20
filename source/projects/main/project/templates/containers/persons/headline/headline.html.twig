@@ -17,7 +17,7 @@
     </div>
     <div class="person__summary layout__cell layout">
         <div class="person__standfirst layout__cell">
-            <div class="body--whisper gutters">{{ model.description|t(locales)|md|raw }}</div>
+            <div class="body--whisper gutters markdown">{{ model.description|t(locales)|md|raw }}</div>
             {% if model.twitterHandle or model.linkedInProfile or model.facebookPage %}
                 {% set urlSet = false %}
                 <div class="gutters leader--normal">
@@ -64,7 +64,7 @@
     </div>
     <div class="person__biography layout__cell">
         <h2 class="title gutters trailer--normal">{{ labels.biography|default({"en-GB": "Biography", "fr-FR": "Biographie"})|t}}</h2>
-        <div itemprop="description" class="gutters">{{ model.biography|t(locales)|md|raw }}</div>
+        <div itemprop="description" class="gutters markdown">{{ model.biography|t(locales)|md|raw }}</div>
     </div>
 {% for loopContainer in containers %}
         {% include loopContainer.template with loopContainer %}
