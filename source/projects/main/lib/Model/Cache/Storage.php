@@ -6,7 +6,7 @@
  * @link        http://www.dipity.eu
  */
 
-namespace Prototype\Model\Cache;
+namespace Frontender\Platform\Model\Cache;
 
 use Kevinrob\GuzzleCache\Storage\CacheStorageInterface;
 use Kevinrob\GuzzleCache\CacheEntry;

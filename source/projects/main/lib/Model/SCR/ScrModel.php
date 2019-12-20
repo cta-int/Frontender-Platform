@@ -10,6 +10,8 @@ namespace Frontender\Platform\Model\SCR;
 
 //use Frontender\Platform\Object\ObjectArray;
 
+use Frontender\Platform\Model\Cache\Storage;
+use Frontender\Platform\Model\Cache\Strategy;
 use Teemr\Scr\Client\ScrClient;
 use Teemr\Scr\Client\ScrClientFactory;
 use GuzzleHttp\HandlerStack;
@@ -20,8 +22,6 @@ use League\Flysystem\Adapter\Local;
 use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
 use Frontender\Core\DB\Adapter;
-use Prototype\Model\Cache\Storage;
-use Prototype\Model\Cache\Strategy;
 
 class ScrModel extends AbstractModel {
 	public function __construct( Container $container ) {

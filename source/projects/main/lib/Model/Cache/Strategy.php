@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototype\Model\Cache;
+namespace Frontender\Platform\Model\Cache;
 
 use Kevinrob\GuzzleCache\Strategy\GreedyCacheStrategy;
 use Psr\Http\Message\RequestInterface;
