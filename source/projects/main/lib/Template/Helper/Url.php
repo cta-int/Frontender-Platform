@@ -43,12 +43,15 @@ class Url extends Helper\Url
     public function getTranslatedSlug($data, $locale)
     {
         // Get the item.
-        $slugs = [
-            'events' => 'name',
-            'articles' => 'headline',
-            'channels' => 'name',
-	        'persons' => 'fullname'
-        ];
+	    $slugs = [
+		    'events' => 'name',
+		    'EventsSearch' => 'headline',
+		    'articles' => 'headline',
+		    'ArticlesSearch' => 'headline',
+		    'channels' => 'name',
+		    'persons' => 'fullname',
+		    'PersonsSearch' => 'fullname'
+	    ];
 
         if (isset($slugs[$data->current()->getModelName()])) {
             $slug_key = $slugs[$data->current()->getModelName()];
