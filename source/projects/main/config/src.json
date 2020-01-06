@@ -259,6 +259,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -314,6 +318,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -366,6 +374,74 @@
                 "to": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
+                }
+            }
+        },
+        "getLabelSearches": {
+            "httpMethod": "POST",
+            "uri": "/labels/search",
+            "responseModel": "json",
+            "parameters": {
+                "q": {
+                    "location": "json",
+                    "type": "string",
+                    "default": ""
+                },
+                "must": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "should": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "mustNot": {
+                    "location": "json",
+                    "type": "array"
+                },
+                "language": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "location": {
+                    "location": "json",
+                    "type": "object"
+                },
+                "distance": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "skip": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "from": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "to": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -421,6 +497,10 @@
                 "order": {
                     "location": "json",
                     "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -496,6 +576,14 @@
                 "type": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },
@@ -551,6 +639,14 @@
                 "type": {
                     "location": "json",
                     "type": "string"
+                },
+                "order": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "sort": {
+                    "location": "json",
+                    "type": "object"
                 }
             }
         },

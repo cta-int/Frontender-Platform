@@ -14,73 +14,69 @@ use Frontender\Platform\Model\Traits\Imagable;
 use Frontender\Platform\Model\Traits\Searchable;
 use Slim\Container;
 
-class SearchModel extends ScrModel
-{
-    use Searchable {
-        __construct as parentConstruct;
-        setState as parentSetState;
-    }
-    use Imagable;
+class SearchModel extends ScrModel {
+	use Searchable {
+		__construct as parentConstruct;
+		setState as parentSetState;
+	}
+	use Imagable;
 
-    public function __construct(Container $container)
-    {
-        $this->parentConstruct($container);
+	public function __construct( Container $container ) {
+		$this->parentConstruct( $container );
 
-        $this->getState()
-            ->insert('upcoming');
-    }
+		$this->getState()
+		     ->insert( 'upcoming' );
+	}
 
-    public function setState(array $values)
-    {
-        if (isset($values['upcoming'])) {
-            if ($values['upcoming'] === 'true') {
-                $values['from'] = date('c');
-                $values['to'] = date('c', strtotime('+5 year'));
-            } else {
-                $values['from'] = date('c', strtotime('-5 year'));
-                $values['to'] = date('c');
-            }
-        }
+	public function setState( array $values ) {
+		if ( isset( $values['upcoming'] ) ) {
+			if ( $values['upcoming'] === 'true' ) {
+				$values['from'] = date( 'c' );
+				$values['to']   = date( 'c', strtotime( '+5 year' ) );
+			} else {
+				$values['from'] = date( 'c', strtotime( '-5 year' ) );
+				$values['to']   = date( 'c' );
+			}
+		}
 
-        // If type is an array we will modify it into a must query.
-        if(isset($values['type']) && is_array($values['type'])) {
-            $types = $values['type'];
-            unset($values['type']);
+		// If type is an array we will modify it into a must query.
+		if ( isset( $values['type'] ) && is_array( $values['type'] ) ) {
+			$types = $values['type'];
+			unset( $values['type'] );
 
-            foreach($types as $type) {
-                $values['should'] = $values['should'] ?? [];
+			foreach ( $types as $type ) {
+				$values['should'] = $values['should'] ?? [];
 
-                $values['should'][] = $this->addTerm('field', 'type', str_replace('event.', '', $type));
-            }
-        }
+				$values['should'][] = $this->addTerm( 'field', 'type', str_replace( 'event.', '', $type ) );
+			}
+		}
 
-        return $this->parentSetState($values);
-    }
+		return $this->parentSetState( $values );
+	}
 
-    public function getModelName() : string
-    {
-        $name = parent::getModelName();
-        return 'Events' . ucfirst($name);
-    }
+	public function getModelName(): string {
+		$name = parent::getModelName();
 
-    public function fetch($raw = false)
-    {
-        $container = $this->container;
-        $state = $this->getState()->getValues();
-        $response = parent::fetch(true);
+		return 'Events' . ucfirst( $name );
+	}
 
-        if ($raw) {
-            return $response;
-        }
+	public function fetch( $raw = false ) {
+		$container = $this->container;
+		$state     = $this->getState()->getValues();
+		$response  = parent::fetch( true );
 
-        return array_map(function ($item) use ($container, $state) {
-            $event = new EventsModel($container);
-            $event->setState(array_merge($state, [
-                'id' => $item['_id']
-            ]));
-            $event->setData($item);
+		if ( $raw ) {
+			return $response;
+		}
 
-            return $event;
-        }, $response['items']);
-    }
+		return array_map( function ( $item ) use ( $container, $state ) {
+			$event = new EventsModel( $container );
+			$event->setState( array_merge( $state, [
+				'id' => $item['_id']
+			] ) );
+			$event->setData( $item );
+
+			return $event;
+		}, $response['items'] );
+	}
 }

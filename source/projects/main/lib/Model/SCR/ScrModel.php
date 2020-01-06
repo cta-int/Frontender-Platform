@@ -10,6 +10,8 @@ namespace Frontender\Platform\Model\SCR;
 
 //use Frontender\Platform\Object\ObjectArray;
 
+use Frontender\Platform\Model\Cache\Storage;
+use Frontender\Platform\Model\Cache\Strategy;
 use Teemr\Scr\Client\ScrClient;
 use Teemr\Scr\Client\ScrClientFactory;
 use GuzzleHttp\HandlerStack;
@@ -21,154 +23,145 @@ use Slim\Container;
 use Doctrine\Common\Inflector\Inflector;
 use Frontender\Core\DB\Adapter;
 
-class ScrModel extends AbstractModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+class ScrModel extends AbstractModel {
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->adapter = $this->getClient();
+		$this->adapter = $this->getClient();
 
-        $this->getState()
-            ->insert('locale');
-    }
+		$this->getState()
+		     ->insert( 'locale' );
+	}
 
-    public function getClient() : ScrClient
-    {
-        $stack = HandlerStack::create();
+	public function getClient(): ScrClient {
+		$stack           = HandlerStack::create();
+		$cacheMiddleware = new CacheMiddleware(
+			new Strategy(
+				new Storage(),
+				1800 // This is a faux value as the request is cache in-memory for this request.
+			)
+		);
 
-        if ($this->container['settings']->has('caching')) {
-            if ($this->container['settings']->get('caching')) {
-                $stack->push(
-                    new CacheMiddleware(
-                        new GreedyCacheStrategy(
-                            new FlysystemStorage(
-                                new Local(ROOT_PATH . '/cache/guzzle')
-                            ),
-                            $this->container['settings']->has('cachetime') ? $this->container['settings']->get('cachetime') : 1800
-                        )
-                    ),
-                    'cache'
-                );
-            }
-        }
+		// In the current setup of the SCR we can cache everything.
+		$cacheMiddleware->setHttpMethods( [
+			'GET'  => 'GET',
+			'POST' => 'POST'
+		] );
 
-        $model = $this;
-        $stack->push(function(callable $handler) use ($model) {
-            return function ($request, $options) use ($handler, $model) {
-                $loggingID = $model->startLog([
-                    'page' => [
-                        'route' => $model->container->request->getUri()->__toString()
-                    ],
-                    'request' => [
-                        'uri' => $request->getUri()->__toString(),
-                        'body' => $request->getBody()->getContents()
-                    ]
-                ]);
-                
-                $promise = $handler($request, $options);
+		$model = $this;
+		$stack->push( function ( callable $handler ) use ( $model ) {
+			return function ( $request, $options ) use ( $handler, $model ) {
+				$loggingID = $model->startLog( [
+					'page'    => [
+						'route' => $model->container->request->getUri()->__toString()
+					],
+					'request' => [
+						'uri'  => $request->getUri()->__toString(),
+						'body' => $request->getBody()->getContents()
+					]
+				] );
 
-                $promise->then(function($response) use ($model, $loggingID) {
-                    $model->endLog($loggingID, [
-                        'response' => [
-                            'size' => $response->getHeader('Content-Length')[0]
-                        ]
-                    ]);
-                });
+				$request->getBody()->rewind();
 
-                return $promise;
-            };
-        });
+				$promise = $handler( $request, $options );
 
-        $config = [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->container['settings']['scr_token']
-            ],
-            'handler' => $stack
-        ];
+				$promise->then( function ( $response ) use ( $model, $loggingID ) {
+					$model->endLog( $loggingID, [
+						'response' => [
+							'cached' => $response->getHeader( 'X-Kevinrob-Cache' )[0],
+							'size'   => $response->getHeader( 'Content-Length' )[0]
+						]
+					] );
+				} );
 
-        $srcClient = (new ScrClientFactory())->getClient($config);
-        $srcClient->setDescription(ROOT_PATH . '/config/src.json');
+				return $promise;
+			};
+		} );
+		$stack->push( $cacheMiddleware, 'cache' );
 
-        return $srcClient;
-    }
+		$config = [
+			'headers' => [
+				'Authorization' => 'Bearer ' . $this->container['settings']['scr_token']
+			],
+			'handler' => $stack
+		];
 
-    public function getTotal()
-    {
-        $model = clone $this;
-        $state = $model->getState()->getValues();
+		$srcClient = ( new ScrClientFactory() )->getClient( $config );
+		$srcClient->setDescription( ROOT_PATH . '/config/src.json' );
 
-        $state['limit'] = 1;
-        $model->setState($state);
-        $result = $model->fetch(true);
+		return $srcClient;
+	}
 
-        if (isset($result['total'])) {
-            return $result['total'];
-        } else if (isset($result['items'])) {
-            return count($result['items']);
-        }
+	public function getTotal() {
+		$model = clone $this;
+		$state = $model->getState()->getValues();
 
-        return 0;
-    }
+		$state['limit'] = 1;
+		$model->setState( $state );
+		$result = $model->fetch( true );
 
-    public function fetch($raw = false)
-    {
-        $state = clone $this->getState();
-        $stateValues = $state->getValues();
-        $ids = [];
+		if ( isset( $result['total'] ) ) {
+			return $result['total'];
+		} else if ( isset( $result['items'] ) ) {
+			return count( $result['items'] );
+		}
 
-	    // Check the id if it is an array or not.
-        if (is_array($state->id)) {
-            $ids = $stateValues['id'];
-            $stateValues['id'] = null;
-            $stateValues['limit'] = 100;
+		return 0;
+	}
 
-            $name = Inflector::pluralize($this->getModelName());
-        } else {
-            $name = $state->isUnique() ? Inflector::singularize($this->getModelName()) : Inflector::pluralize($this->getModelName());
-        }
+	public function fetch( $raw = false ) {
+		$state       = clone $this->getState();
+		$stateValues = $state->getValues();
+		$ids         = [];
 
-        $method = 'get' . ucfirst($name);
+		// Check the id if it is an array or not.
+		if ( is_array( $state->id ) ) {
+			$ids                  = $stateValues['id'];
+			$stateValues['id']    = null;
+			$stateValues['limit'] = 100;
 
-        if (isset($stateValues['locale'])) {
-            $stateValues['language'] = $stateValues['locale'];
-        }
+			$name = Inflector::pluralize( $this->getModelName() );
+		} else {
+			$name = $state->isUnique() ? Inflector::singularize( $this->getModelName() ) : Inflector::pluralize( $this->getModelName() );
+		}
 
-        if (!isset($stateValues['language'])) {
-            $stateValues['language'] = $this->container->language->get();
-        }
+		$method = 'get' . ucfirst( $name );
 
-        if (isset($stateValues['language'])) {
-            $stateValues['language'] = substr($stateValues['language'], 0, 2);
-        }
+		if ( isset( $stateValues['locale'] ) ) {
+			$stateValues['language'] = $stateValues['locale'];
+		}
 
-        $response = call_user_func_array([$this->adapter, $method], [$stateValues]);
-        $items = isset($response['items']) ? $response['items'] : [$response->toArray()];
+		if ( ! isset( $stateValues['language'] ) ) {
+			$stateValues['language'] = $this->container->language->get();
+		}
 
-        if ($raw) {
-            return $response;
-        }
+		if ( isset( $stateValues['language'] ) ) {
+			$stateValues['language'] = substr( $stateValues['language'], 0, 2 );
+		}
 
-        if (count($ids) > 0) {
-            $items = array_values($this->_filterItems($items, $ids));
-        }
+		$response = call_user_func_array( [ $this->adapter, $method ], [ $stateValues ] );
+		$items    = isset( $response['items'] ) ? $response['items'] : [ $response->toArray() ];
 
-        $model = $this;
-        $container = $this->container;
+		if ( $raw ) {
+			return $response;
+		}
 
-        return array_map(function ($item) use ($model, $container, $state) {
-            $newItem = new $model($container);
-            $newItem->setData($item);
-            $newItem->setState($state->getValues());
+		if ( count( $ids ) > 0 ) {
+			$items = array_values( $this->_filterItems( $items, $ids ) );
+		}
 
-            return $newItem;
-        }, $items);
-    }
+		return array_map( function ( $item ) {
+			$newItem = new $this( $this->container );
+			$newItem->setData( $item );
+			$newItem->setState( $this->getState()->getValues() );
 
-    private function _filterItems($items, $ids)
-    {
-        return array_filter($items, function ($item) use ($ids) {
-            return in_array($item['_id'], $ids);
-        });
-    }
+			return $newItem;
+		}, $items );
+	}
+
+	private function _filterItems( $items, $ids ) {
+		return array_filter( $items, function ( $item ) use ( $ids ) {
+			return in_array( $item['_id'], $ids );
+		} );
+	}
 }

@@ -8,24 +8,40 @@
 
 namespace Frontender\Platform\Model\SCR\Event;
 
+use Frontender\Platform\Model\SCR\ScrModel;
 use Slim\Container;
 
-class ArticlesModel extends \Frontender\Platform\Model\SCR\ArticlesModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
+class ArticlesModel extends ScrModel {
+	public function __construct( Container $container ) {
+		parent::__construct( $container );
 
-        $this->getState()
-            ->insert('id', null)
-            ->insert('bookmarked', 'false')
-            ->insert('explain', 'false');
-    }
+		$this->getState()
+		     ->insert( 'id', null )
+		     ->insert( 'bookmarked', 'false' )
+		     ->insert( 'explain', 'false' );
+	}
 
-    public function getModelName(): string
-    {
-        $name = parent::getModelName();
+	public function fetch( $raw = false ) {
+		$result = parent::fetch( $raw );
 
-        return 'Event' . ucfirst($name);
-    }
+		if ( $raw ) {
+			return $result;
+		}
+
+		return array_map( function ( $item ) {
+			$model = new \Frontender\Platform\Model\SCR\ArticlesModel( $this->container );
+			$model->setState( [
+				'id' => $item['_id']
+			] );
+			$model->setData( $item );
+
+			return $model;
+		}, $result['items'] ?? [] );
+	}
+
+	public function getModelName(): string {
+		$name = parent::getModelName();
+
+		return 'Event' . ucfirst( $name );
+	}
 }

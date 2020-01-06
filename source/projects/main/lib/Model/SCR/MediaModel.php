@@ -8,17 +8,6 @@
 
 namespace Frontender\Platform\Model\SCR;
 
-use Slim\Container;
+class MediaModel extends \Frontender\Platform\Model\SCR\Media\SearchModel {
 
-class MediaModel extends ScrModel
-{
-    public function __construct(Container $container)
-    {
-        parent::__construct($container);
-
-        $this->getState()
-            ->insert('id', null, true)
-            ->insert('limit', 20)
-            ->insert('skip', 0);
-    }
 }
