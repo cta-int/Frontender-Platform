@@ -837,4 +837,8 @@ class ArticlesModel extends SearchModel {
 
 		return $foundLabel;
 	}
+
+	public function getModelName(): string {
+		return 'ArticlesSearch';
+	}
 }
