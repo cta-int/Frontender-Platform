@@ -62,6 +62,10 @@ Styleguide 3.27.1
   &__text {
     @include theme-opaque-background(100%);
     color: $white;
+    a,
+    a:visited {
+      color: inherit !important;
+    }
   }
   &__image {
     margin-bottom: -1px;
