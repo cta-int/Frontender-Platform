@@ -111,11 +111,17 @@
 	}
 	@include breakpoint($gt-medium-desktop) {
 		&__title {
+			padding-bottom: gutter(8);
 			padding-left: 4 / 18 * 100vw;
 			padding-right: 4 / 18 * 100vw;
 		}
 	}
 	@include breakpoint($gt-large-desktop) {
+		&__title {
+			padding-bottom: gutter(12);
+			padding-left: 4 / 18 * 100vw;
+			padding-right: 4 / 18 * 100vw;
+		}
 		&--cloudinary &-cover {
 			&::after {
 				background: rgba(0,0,0,.10);
@@ -158,5 +164,12 @@
 	@include breakpoint($gt-medium-desktop) {
 		padding-left: 4 / 18 * 100vw;
 		padding-right: 4 / 18 * 100vw;
+	}
+	@include breakpoint($gt-large-desktop) {
+		padding-left: 4 / 18 * 100vw;
+		padding-right: 4 / 18 * 100vw;
+		.header--cloudinary + & {
+			margin-top: 100vh; 
+		}
 	}
 }
