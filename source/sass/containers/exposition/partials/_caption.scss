@@ -7,14 +7,14 @@
 	font-size: to-unit(12px);
 	color: rgba(255, 255, 255, .6);
 	@include breakpoint($gt-small-desktop) {
-		bottom: rhythm(4);
-		right: $gutter-width;
+		// bottom: rhythm(4);
+		// right: $gutter-width;
 	}
 }
 
 .image-caption {
-	bottom: rhythm(4);
-	right: rhythm(3);
+	bottom: gutter(1/2);
+	right: gutter(1/2);
 }
 
 .caption {

@@ -50,7 +50,7 @@
 	}
 	@include breakpoint($gt-small-desktop) {
 		top: -80px; /* 50px + 30px added by leader */
-		width: 14 / 18 * 100vw;
+		// width: 14 / 18 * 100vw;
 		margin: 0 auto;
 		&:before,
 		&:after {
@@ -66,7 +66,7 @@
 		}
 	}
 	@include breakpoint($gt-medium-desktop) {
-		width: 10 / 18 * 100vw;
+		// width: 10 / 18 * 100vw;
 	}
 	&-content {
 		max-height: 75vh;

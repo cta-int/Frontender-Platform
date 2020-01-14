@@ -1,25 +1,38 @@
 {% import "macros/template.html.twig" as helper %}
+{% import "macros/video.html.twig" as video %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ '/assets/css/exposition.css'|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 
-<header class="header" {% if query.fromFrontender %} style="min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
-    <div class="header-cover" style="{% if query.fromFrontender %}position: absolute; bottom: auto; min-height: 56vw; height: 56vw; max-height: 56vw;{% endif %} background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ model.metadata.id }}');"></div>
-    <div class="header-overlay" {% if query.fromFrontender %} style="position: absolute; bottom: auto; min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %}>
-        <figcaption class="image-caption">©CTA</figcaption>
-    </div>
-    <div class="leader-inside--hero  |  wings">
-        <a href="/">
-            <figure class="brand--cta"><figcaption class="is-narrative">CTA Homepage</figcaption></figure>
-        </a>
-        <div class="header__title  |  gutters" {% if query.fromFrontender %} style="position: absolute;"{% endif %}>
-            <img src="/assets/images/cover-illustrations/year-symbol-2018.png" alt="A year in review 2018" width="114" height="114">
-            <h2 class="sub-heading">{{ labels.container_subtitle|t(locales) }}</h2>
-            <h1 class="heading">{{ labels.container_title|t(locales) }}</h1>
+<header class="header header--{{ model.metadata.type }}" {% if query.fromFrontender %} style="min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+
+    {% if model.metadata.type in ['cloudinary'] %}
+        <div class="header-cover">
+            {{ video.cover(model) }}
+        </div>
+    {% else %}
+        <div class="header-cover" style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ model.metadata.id }}'); {{ query.fromFrontender ? 'position: absolute; bottom: auto; min-height: 56vw; height: 56vw; max-height: 56vw;' : '' }} "></div>
+    {% endif %}
+
+    <div class="header-overlay">
+        <div class="header-title">
+            <div class="header__title" {% if query.fromFrontender %} style="position: absolute;"{% endif %}>
+                <img class="header__crest" src="/assets/images/cover-illustrations/year-symbol-2018.png" alt="A year in review 2018" width="114" height="114">
+                <h2 class="sub-heading  |  gutters-outside">{{ labels.container_subtitle|t(locales) }}</h2>
+                <h1 class="heading  |  gutters-outside">{{ labels.container_title|t(locales) }}</h1>
+            </div>
+            <div class="image-caption">©CTA</div>
         </div>
     </div>
+    
+    <div class="header-brand leader-inside--hero wings">
+        <a href="/">
+            <figure class="brand--cta"><figcaption class="is-narrative">CTA Homepage</figcaption></figure>
+         </a>
+    </div>
+
     {% if config.show_exposition_menu %}
         {% include("containers/experience-capitalization/menu/menu.html.twig") %}
     {% endif %}

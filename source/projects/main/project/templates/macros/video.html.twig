@@ -1,0 +1,16 @@
+{% macro cover(mediaObject) %}
+
+    {#  array (size=7)
+    'id' => string 'CTA-FB-header_ozsjd0' (length=20)
+    'type' => string 'cloudinary' (length=10)
+    'url' => string 'http://res.cloudinary.com/cta/video/upload/v1578566921/CTA-FB-header_ozsjd0.mp4' (length=79)
+    'secure_url' => string 'https://res.cloudinary.com/cta/video/upload/v1578566921/CTA-FB-header_ozsjd0.mp4' (length=80)
+    'thumbnailUrl' => string 'https://res.cloudinary.com/cta/video/upload/c_fit,h_130,w_240/CTA-FB-header_ozsjd0.jpg' (length=86)
+    'previewUrl' => string 'https://res.cloudinary.com/cta/video/upload/c_fit,h_500,w_800/CTA-FB-header_ozsjd0.jpg' (length=86)
+    'embeddableHtml' => string '<video controls poster='https://res.cloudinary.com/cta/video/upload/CTA-FB-header_ozsjd0.jpg'><source src='https://res.cloudinary.com/cta/video/upload/CTA-FB-header_ozsjd0.webm' type='video/webm'><source src='https://res.cloudinary.com/cta/video/upload/CTA-FB-header_ozsjd0.mp4' type='video/mp4'><source src='https://res.cloudinary.com/cta/video/upload/CTA-FB-header_ozsjd0.ogv' type='video/ogg'></video>' (length=404)
+    #}
+
+
+   {{ mediaObject.metadata.embeddableHtml|replace({'controls': 'playsinline="" autoplay="" muted="" loop=""'})|raw }}
+{% endmacro %}
+
