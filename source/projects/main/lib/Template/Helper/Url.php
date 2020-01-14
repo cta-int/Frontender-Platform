@@ -45,7 +45,7 @@ class Url extends Helper\Url
         // Get the item.
 	    $slugs = [
 		    'events' => 'name',
-		    'EventsSearch' => 'headline',
+		    'EventsSearch' => 'name',
 		    'articles' => 'headline',
 		    'ArticlesSearch' => 'headline',
 		    'channels' => 'name',

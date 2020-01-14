@@ -410,4 +410,8 @@ class EventsModel extends \Frontender\Platform\Model\SCR\Event\SearchModel {
 			return array_intersect( $organizerIDs, array_column( $person['worksFor'], '_id' ) );
 		} );
 	}
+
+	public function getModelName(): string {
+		return 'EventsSearch';
+	}
 }
