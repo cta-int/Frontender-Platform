@@ -1,21 +1,32 @@
 .header {
-	// position: relative;
-	&-cover,
-	&-overlay {
+	position: relative;
+	padding-bottom: 100vh;
+	&--file,
+	&--video {
+		padding-bottom: 56.2vw;
+	}
+	&-overlay,
+	&-cover {
 		position: fixed;
 		top: 0;
 		right: 0;
-		bottom: 0;
 		left: 0;
-	}
-	&-title {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
+		padding-bottom: inherit;
 	}
 	&-overlay {
 		background-size: cover;
 		background-image: linear-gradient(-180deg, rgba($black, 0) 0%, rgba($black, .6) 67%);
+	}
+	&-brand {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&-title {
+		position: absolute;
+		right: 0;
+		bottom: 30px; 
+		left: 0;
 	}
 	&__sponsor {
 		position: fixed;
@@ -23,28 +34,37 @@
 		left: $gutter-width / 2;
 		max-width: rhythm(50);
 	}
-	&-brand {
+	.image--spread {
 		position: absolute;
-		top: 0;
-		left: 0;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
 	}
 	&__title {
 		text-align: center;
-		padding-bottom: gutter(2);
+		height: 66vh;
+	}
+	&--file &__title,
+	&--video &__title {
+		height: 37vw;
 	}
 	&__crest {
 		height: to-unit(114px);
 		width: to-unit(114px);
 	}
-
-	.image-caption {
-		bottom: gutter(1);
+	&__caption {
+		text-align: right;
+		position: relative;
+		top: -1em;
 	}
-	&--cloudinary &-cover,
-	&--cloudinary &-overlay {
+	&--file &-cover,
+	&--file &-overlay,
+	&--video &-cover,
+	&--video &-overlay {
 		height: 56.2vw;
 	}
-	&--cloudinary &-cover {
+	&--file &-cover,
+	&--video &-cover {
 		&::after {
 			content: "";
 			display: block;
@@ -55,7 +75,8 @@
 			left: 0;
 		}
 	}
-	&--cloudinary video {
+	&--file video,
+	&--video video {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -64,46 +85,53 @@
 		width: 100vw;
 		height: 56.2vw;
 	}
-	&--cloudinary &-cover,
-	&--cloudinary &-overlay {
+	&--file &-cover,
+	&--file &-overlay,
+	&--video &-cover,
+	&--video &-overlay {
 		bottom: auto;
 		padding-bottom: 56.2vw;
 	}
+
+	@include breakpoint($portrait) {
+		.image--spread {
+			width: 100vw;
+			height: 4/3*100vw;
+		}
+	}
+	@include breakpoint($landscape) {
+		.image--spread {
+			width: 4/3*100vh;
+			height: 100vh;
+		}
+	}
+	@include breakpoint("(max-aspect-ratio: 3/4)") {
+		.image--spread {
+			width: 3/4*100vh;
+			height: 100vh;
+		}
+	}
+	@include breakpoint("(min-aspect-ratio: 4/3)") {
+		.image--spread {
+			width: 100vw;
+			height: 3/4*100vw;
+		}
+	}
 	@include breakpoint($gt-small-handheld) {
-		&-cover {
-			margin-right: -50%;
-		}
-		&--cloudinary &-cover {
-			margin-right: 0;
-		}
 		&__title {
 			padding-left: 1 / 6 * 100vw;
 			padding-right: 1 / 6 * 100vw;
 		}
 	}
-	@include breakpoint($gt-medium-handheld) {
-		&-cover {
-			margin-right: 0;
-		}
-	}
-	@include breakpoint($gt-large-handheld) {
-		&__title {
-			padding-bottom: gutter(4);
-		}
-		.image-caption {
-			bottom: gutter(2);
-		}
-	}
 	@include breakpoint($gt-small-desktop) {
-		&-cover {
-			background-size: cover;
+		&__caption {
+			top: 2em;
 		}
 		&__sponsor {
 			left: 1 / 18 * 100vw;
 			max-width: 100%;
 		}
 		&__title {
-			padding-bottom: gutter(7);
 			padding-left: 2 / 18 * 100vw;
 			padding-right: 2 / 18 * 100vw;
 		}
@@ -111,32 +139,24 @@
 	}
 	@include breakpoint($gt-medium-desktop) {
 		&__title {
-			padding-bottom: gutter(8);
 			padding-left: 4 / 18 * 100vw;
 			padding-right: 4 / 18 * 100vw;
 		}
 	}
 	@include breakpoint($gt-large-desktop) {
 		&__title {
-			padding-bottom: gutter(12);
 			padding-left: 4 / 18 * 100vw;
 			padding-right: 4 / 18 * 100vw;
 		}
-		&--cloudinary &-cover {
+		&--file &-cover,
+		&--video &-cover {
 			&::after {
 				background: rgba(0,0,0,.10);
 			}
 		}
 	}
-	@include breakpoint($lt-medium-desktop) {
-		overflow-x: hidden;
-		overflow-y: auto;
-		&-cover {
-			background-position: right;
-		}
-	}
 	@include breakpoint($lt-small-desktop) {
-		&--cloudinary &__title {
+		&__title {
 			font-size: 70%;
 		}
 	}
@@ -151,12 +171,7 @@
 .inset {
 	position: relative;
 	z-index: 3;
-	margin: 100vh 0 -30px 0;
-	height: auto;
 	background: $color-body;
-	.header--cloudinary + & {
-		margin-top: 56.2vw; 
-	}
 	@include breakpoint($gt-small-desktop) {
 		padding-left: 2 / 18 * 100vw;
 		padding-right: 2 / 18 * 100vw;
@@ -168,8 +183,5 @@
 	@include breakpoint($gt-large-desktop) {
 		padding-left: 4 / 18 * 100vw;
 		padding-right: 4 / 18 * 100vw;
-		.header--cloudinary + & {
-			margin-top: 100vh; 
-		}
 	}
 }

@@ -1,19 +1,28 @@
 {% import "macros/template.html.twig" as helper %}
 {% import "macros/video.html.twig" as video %}
+{% import "macros/image.html.twig" as image %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {{ '/assets/css/exposition.css'|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 
-<header class="header header--{{ model.metadata.type }}" {% if query.fromFrontender %} style="min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+{#
+{{ dump(model.type) }}
+{{ dump(model.metadata.type) }}
+{{ dump(model.metadata) }}
+#}
 
-    {% if model.metadata.type in ['cloudinary'] %}
+<header class="header header--{{ model.type }}" {% if query.fromFrontender %} style="min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+
+    {% if model.type in ['video', 'file'] %}
         <div class="header-cover">
-            {{ video.cover(model) }}
+            {{ video.hero(model) }}
         </div>
     {% else %}
-        <div class="header-cover" style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ model.metadata.id }}'); {{ query.fromFrontender ? 'position: absolute; bottom: auto; min-height: 56vw; height: 56vw; max-height: 56vw;' : '' }} "></div>
+        <div class="header-cover">
+            {{ image.spread(model, "image image--spread") }}
+        </div>
     {% endif %}
 
     <div class="header-overlay">
@@ -23,7 +32,9 @@
                 <h2 class="sub-heading  |  gutters-outside">{{ labels.container_subtitle|t(locales) }}</h2>
                 <h1 class="heading  |  gutters-outside">{{ labels.container_title|t(locales) }}</h1>
             </div>
-            <div class="image-caption">©CTA</div>
+            <div class="header__caption">
+                <span class="image-caption gutters">©CTA</span>
+            </div>
         </div>
     </div>
     

@@ -1,27 +1,27 @@
-.caption,
-.image-caption {
-	position: absolute;
-	z-index: 2;
-	bottom: rhythm(8);
-	right: $gutter-width / 2;
-	font-size: to-unit(12px);
-	color: rgba(255, 255, 255, .6);
-	@include breakpoint($gt-small-desktop) {
-		// bottom: rhythm(4);
-		// right: $gutter-width;
-	}
-}
+// .caption,
+// .image-caption {
+// 	position: absolute;
+// 	z-index: 2;
+// 	bottom: rhythm(8);
+// 	right: $gutter-width / 2;
+// 	font-size: to-unit(12px);
+// 	color: rgba(255, 255, 255, .6);
+// 	@include breakpoint($gt-small-desktop) {
+// 		// bottom: rhythm(4);
+// 		// right: $gutter-width;
+// 	}
+// }
 
-.image-caption {
-	bottom: gutter(1/2);
-	right: gutter(1/2);
-}
+// .image-caption {
+// 	bottom: gutter(1/2);
+// 	right: gutter(1/2);
+// }
 
-.caption {
-	header & {
-		position: fixed;
-	}
-}
+// .caption {
+// 	header & {
+// 		position: fixed;
+// 	}
+// }
 
 /*
 <figure class="is-root">
