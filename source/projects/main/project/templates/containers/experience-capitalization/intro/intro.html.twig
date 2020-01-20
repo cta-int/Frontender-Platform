@@ -13,7 +13,7 @@
 {{ dump(model.metadata) }}
 #}
 
-<header class="header header--{{ model.type }}" {% if query.fromFrontender %} style="min-height: 56vw; height: 56vw; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+<header class="header header--{{ model.type }}"{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
 
     {% if model.type in ['video', 'file'] %}
         <div class="header-cover">
