@@ -1,4 +1,4 @@
-{% macro hero(mediaObject) %}
+{% macro hero(mediaObject, classes) %}
 
     {#  array (size=7)
     'id' => string 'CTA-FB-header_ozsjd0' (length=20)
@@ -11,6 +11,6 @@
     #}
 
 
-   {{ mediaObject.metadata.embeddableHtml|replace({'controls': 'playsinline="" autoplay="" muted="" loop=""'})|raw }}
+   {{ mediaObject.metadata.embeddableHtml|replace({'controls': 'playsinline="" autoplay="" muted="" loop="" class="' ~ classes|default("") ~ '"'})|raw }}
 {% endmacro %}
 
