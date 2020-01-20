@@ -58,6 +58,10 @@
 		top: -1em;
 	}
 	&--file &-cover,
+	&--video &-cover {
+		background-color: $black;
+	}
+	&--file &-cover,
 	&--file &-overlay,
 	&--video &-cover,
 	&--video &-overlay {
