@@ -34,11 +34,16 @@
 		left: $gutter-width / 2;
 		max-width: rhythm(50);
 	}
+	.video--spread,
 	.image--spread {
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		transform: translateX(-50%) translateY(-50%);
+	}
+	.video--spread {
+		min-width: 100%;
+		min-height: 100%;
 	}
 	&__title {
 		text-align: center;
@@ -61,41 +66,41 @@
 	&--video &-cover {
 		background-color: $black;
 	}
-	&--file &-cover,
-	&--file &-overlay,
-	&--video &-cover,
-	&--video &-overlay {
-		height: 56.2vw;
-	}
-	&--file &-cover,
-	&--video &-cover {
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
-	}
-	&--file video,
-	&--video video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100vw;
-		height: 56.2vw;
-	}
-	&--file &-cover,
-	&--file &-overlay,
-	&--video &-cover,
-	&--video &-overlay {
-		bottom: auto;
-		padding-bottom: 56.2vw;
-	}
+	// &--file &-cover,
+	// &--file &-overlay,
+	// &--video &-cover,
+	// &--video &-overlay {
+	// 	height: 56.2vw;
+	// }
+	// &--file &-cover,
+	// &--video &-cover {
+	// 	&::after {
+	// 		content: "";
+	// 		display: block;
+	// 		position: absolute;
+	// 		top: 0;
+	// 		right: 0;
+	// 		bottom: 0;
+	// 		left: 0;
+	// 	}
+	// }
+	// &--file video,
+	// &--video video {
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	right: 0;
+	// 	bottom: 0;
+	// 	width: 100vw;
+	// 	height: 56.2vw;
+	// }
+	// &--file &-cover,
+	// &--file &-overlay,
+	// &--video &-cover,
+	// &--video &-overlay {
+	// 	bottom: auto;
+	// 	padding-bottom: 56.2vw;
+	// }
 
 	@include breakpoint($portrait) {
 		.image--spread {
@@ -139,7 +144,11 @@
 			padding-left: 2 / 18 * 100vw;
 			padding-right: 2 / 18 * 100vw;
 		}
-
+		
+		&--file,
+		&--video {
+			padding-bottom: 100vh;
+		}
 	}
 	@include breakpoint($gt-medium-desktop) {
 		&__title {
@@ -164,6 +173,25 @@
 			font-size: 70%;
 		}
 	}
+
+
+	// @include breakpoint("(max-aspect-ratio: 16/9)") {
+	// 	&--file &-cover,
+	// 	&--video &-cover,
+	// 	.video--spread {
+	// 		width: 100vw;
+	// 		height: 16/9*100vw;
+	// 		min-height: 100%;
+	// 	}
+	// }
+	// @include breakpoint("(min-aspect-ratio: 16/9)") {
+	// 	&--file &-cover,
+	// 	&--video &-cover,
+	// 	.video--spread {
+	// 		width: 16/9*100vh;
+	// 		height: 100vh;
+	// 	}
+	// }
 	
 }
 
