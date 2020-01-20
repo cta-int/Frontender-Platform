@@ -53,12 +53,17 @@
 				background: mix($color-body, $white, 80%);
 				color: $white;
 			}
-			a {
-				padding: rhythm(5);
+			.is-active {
+				color: $white;
 			}
-		}
-		.is-active {
-			color: $white;
+			.anchor,
+			.anchor:visited {
+				padding: rhythm(5);
+				color: rgba($white,.8);
+				&.is-active {
+					color: $white;
+				}
+			}
 		}
 	}
 }
