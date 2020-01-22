@@ -282,8 +282,8 @@
                             <a href="{{ route({'page': auth.path|default('profile'), 'slug': (auth.givenName ~ ' ' ~ auth.familyName)|slugify, id: auth._id}) }}">
                                 <p itemprop="name" class="meta--bold  |  trailer--tiny">{{ auth.givenName ~ ' ' ~ auth.familyName}}</p>
                             </a>
-                            {% if auth.description %}
-                                <div itemprop="description" class="markdown">{{ auth.description|md|raw }}</p>
+                            {% if auth.jobTitle %}
+                                <div itemprop="description" class="markdown">{{ auth.jobTitle|md|raw }}</div>
                             {% endif %}
                         </div>
                     </div>
