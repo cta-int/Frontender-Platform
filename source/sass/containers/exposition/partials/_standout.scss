@@ -3,6 +3,10 @@
 	top: rhythm(10) * -1;
 	background: $white;
 	z-index: 3;
+	&--clear {
+		float: left;
+		clear: both;
+	}
 	&:before,
 	&:after {
 		content: "";
