@@ -1,3 +1,3 @@
 <div class="gutters">
-    <blockquote class="pull-quote">{{ contentBlock.content|replace({'b>': 'strong>', 'i>': 'em>', 'u>': 'cite>'})|replace({'<cite>': '<cite class="author">'})|striptags('<strong><em><u><a><sub>sub><sup><cite>')|md|raw }}</blockquote>
+    <blockquote class="pull-quote">{{ contentBlock.content|replace({'b>': 'strong>', 'i>': 'em>', 'u>': 'cite>'})|replace({'<cite>': '<cite class="author">', '  ': ' '})|striptags('<strong><em><u><a><sub>sub><sup><cite>')|md|raw }}</blockquote>
 </div>

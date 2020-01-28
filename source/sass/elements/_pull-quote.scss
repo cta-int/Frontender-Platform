@@ -19,7 +19,7 @@ Styleguide 3.46
     cite {
         &::before {
             content: "—";
-            padding: 0 1ex;
+            padding: 0 1ex 0 0;
         }
     }
     &::before {
