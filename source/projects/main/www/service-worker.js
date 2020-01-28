@@ -3,10 +3,12 @@ workbox.setConfig({
     debug: false
 });
 
-addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        skipWaiting();
-    }
+addEventListener('install', function () {
+    skipWaiting();
+});
+
+addEventListener('activate', function (event) {
+    event.waitUntil(clients.claim());
 });
 
 workbox.googleAnalytics.initialize();
