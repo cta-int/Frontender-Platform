@@ -57,7 +57,25 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif|ico).*$/,
+    /(?:cloudinary)/,
+    new workbox.strategies.NetworkFirst({
+        cacheName: 'image-cache',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 30
+            })
+        ]
+    })
+);
+
+workbox.routing.registerRoute(
+    function(url) {
+        if(url.url.host.indexOf('cloudinary') > -1) {
+            return false;
+        }
+
+        return /\.(?:png|jpg|jpeg|svg|gif|ico).*$/.test(url.url.href);
+    },
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
         plugins: [
