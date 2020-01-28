@@ -16,6 +16,12 @@ Styleguide 3.46
     padding-left: rhythm(3);
     color: rgba(0,0,0,.54);
     font-size: 1.375em;
+    cite {
+        &::before {
+            content: "—";
+            padding: 0 1ex;
+        }
+    }
     &::before {
         content: "";
         position: absolute;
