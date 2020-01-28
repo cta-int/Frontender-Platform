@@ -174,63 +174,15 @@
                     r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                     a.appendChild(r);
                 })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-            </script>
-            <!-- Heap Analytics tracking code -->
-            <script type="text/javascript">
                 window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
                 heap.load("1820974936");
-            </script>
-
-            <script>
-                // Check that service workers are supported
                 if ('serviceWorker' in navigator) {
-                    // Use the window load event to keep the page load performant
                     window.addEventListener('load', () => {
-                        navigator.serviceWorker.register('/service-worker.js');
+                        var serviceWorkerRegistration = navigator.serviceWorker.register('/service-worker.js');
+                        if(serviceWorkerRegistration && serviceWorkerRegistration.update) {
+                            serviceWorkerRegistration.update();
+                        }
                     });
-                }
-            </script>
-
-            <script type="module">
-                import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-window.prod.mjs';
-
-                if ('serviceWorker' in navigator) {
-                  const wb = new Workbox('/service-worker.js');
-
-                  // Add an event listener to detect when the registered
-                  // service worker has installed but is waiting to activate.
-                  wb.addEventListener('waiting', (event) => {
-                    // `event.wasWaitingBeforeRegister` will be false if this is
-                    // the first time the updated service worker is waiting.
-                    // When `event.wasWaitingBeforeRegister` is true, a previously
-                    // updated same service worker is still waiting.
-                    // You may want to customize the UI prompt accordingly.
-
-                    // Assumes your app has some sort of prompt UI element
-                    // that a user can either accept or reject.
-                    const prompt = createUIPrompt({
-                      onAccept: async () => {
-                        // Assuming the user accepted the update, set up a listener
-                        // that will reload the page as soon as the previously waiting
-                        // service worker has taken control.
-                        wb.addEventListener('controlling', (event) => {
-                          window.location.reload();
-                        });
-
-                        // Send a message telling the service worker to skip waiting.
-                        // This will trigger the `controlling` event handler above.
-                        // Note: for this to work, you have to add a message
-                        // listener in your service worker. See below.
-                        wb.messageSW({type: 'SKIP_WAITING'});
-                      },
-
-                      onReject: () => {
-                        prompt.dismiss();
-                      }
-                    })
-                  });
-
-                  wb.register();
                 }
             </script>
         {% endif %}
