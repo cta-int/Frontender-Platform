@@ -31,9 +31,11 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#046a38"/>
         {% block meta %} {% endblock %}
         {% block link %} {% endblock %}
 
+        <link rel="manifest" href="/manifest/spore.json">
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/images/favicon/spore/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/images/favicon/spore/apple-touch-icon-114x114.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/images/favicon/spore/apple-touch-icon-72x72.png" />
@@ -221,6 +223,7 @@
                 })();
             </script>
         {% endif %}
+        <noscript>{{ "This website needs JavaScript for some functionality. Please enable JavaScript."|i18n }}</noscript>
     </body>
 
 </html>

@@ -1,0 +1,22 @@
+{
+    "short_name": "ICT Update",
+    "name": "ICT Update",
+    "theme_color": "#3D3D3D",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "Scope": "/en",
+    "start_url": "https://cta.int/en/offline",
+    "icons": [
+      {
+        "src": "/assets/images/favicon/ictupdate/favicon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/favicon/ictupdate/favicon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "splash_pages": null
+  }

@@ -31,9 +31,11 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#3D3D3D"/>
         {% block meta %} {% endblock %}
         {% block link %} {% endblock %}
 
+        <link rel="manifest" href="/manifest/ictupdate.json">
         <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png">
         <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon-precomposed.png">
         <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-touch-icon-57x57.png">
@@ -224,6 +226,7 @@
                 })();
             </script>
         {% endif %}
+        <noscript>{{ "This website needs JavaScript for some functionality. Please enable JavaScript."|i18n }}</noscript>
     </body>
 
 </html>
