@@ -4,8 +4,8 @@
     "theme_color": "#3D3D3D",
     "background_color": "#ffffff",
     "display": "fullscreen",
-    "Scope": "/en",
-    "start_url": "https://cta.int/en/offline",
+    "Scope": "/",
+    "start_url": "/en",
     "icons": [
       {
         "src": "/assets/images/favicon/ictupdate/favicon-192x192.png",

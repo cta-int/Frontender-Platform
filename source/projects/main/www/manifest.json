@@ -5,7 +5,7 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "https://cta.int/en/offline",
+  "start_url": "/en",
   "icons": [
     {
         "src": "/assets/images/favicon/favicon-192x192.png",

@@ -74,7 +74,7 @@ workbox.routing.registerRoute(
             return false;
         }
 
-        return /\.(?:png|jpg|jpeg|svg|gif|ico).*$/.test(url.url.href);
+        return /\.(?:png|jpg|jpeg|svg|gif|ico|woff|ttf).*$/.test(url.url.href);
     },
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
@@ -90,11 +90,16 @@ workbox.routing.registerRoute(
 const precacheController = new workbox.precaching.PrecacheController();
 precacheController.addToCacheList([
     '/assets/css/screen.css',
+    '/assets/fonts/cta-icons.woff',
+    '/assets/fonts/cta-illustrations.woff',
+    '/images/line-art/water.svg',
     '/images/logos/europe-logo.png',
     '/images/logos/acp-logo.png'
 ]);
 
 workbox.precaching.precacheAndRoute([
+    '/en',
+    '/fr',
     '/en/offline',
     '/fr/offline'
 ]);
