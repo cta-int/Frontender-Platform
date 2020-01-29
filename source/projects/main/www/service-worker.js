@@ -3,15 +3,37 @@ workbox.setConfig({
     debug: false
 });
 
-addEventListener('install', function () {
-    skipWaiting();
-});
-
-addEventListener('activate', function (event) {
-    event.waitUntil(clients.claim());
-});
+workbox.core.skipWaiting()
+workbox.core.clientsClaim()
 
 workbox.googleAnalytics.initialize();
+
+workbox.precaching.addPlugins([
+    new workbox.expiration.Plugin({
+        maxEntries: 30,
+        maxAgeSeconds: 60,
+    })
+]);
+
+workbox.precaching.precacheAndRoute([
+    // Pages
+    '/en',
+    '/fr',
+    '/en/offline',
+    '/fr/offline',
+
+    // Assets
+    '/assets/css/screen.css',
+    '/assets/fonts/cta-icons.woff',
+    '/assets/fonts/cta-icons.ttf',
+    '/assets/fonts/cta-illustrations/fonts/cta-illustrations.woff',
+    '/assets/fonts/cta-illustrations/fonts/cta-illustrations.ttf',
+    '/images/line-art/water.svg',
+    '/images/logos/europe-logo.png',
+    '/images/logos/acp-logo.png'
+], {
+    ignoreURLParametersMatching: [/.*/]
+});
 
 workbox.routing.registerRoute(
     /.*(?:googleapis|gstatic)\.com/,
@@ -57,18 +79,6 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    /(?:cloudinary)/,
-    new workbox.strategies.NetworkFirst({
-        cacheName: 'image-cache',
-        plugins: [
-            new workbox.expiration.Plugin({
-                maxEntries: 30
-            })
-        ]
-    })
-);
-
-workbox.routing.registerRoute(
     function(url) {
         if(url.url.host.indexOf('cloudinary') > -1) {
             return false;
@@ -78,6 +88,7 @@ workbox.routing.registerRoute(
     },
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
+        ignoreURLParametersMatching: [/.*/],
         plugins: [
             new workbox.expiration.Plugin({
                 maxEntries: 30,
@@ -86,23 +97,6 @@ workbox.routing.registerRoute(
         ]
     })
 );
-
-const precacheController = new workbox.precaching.PrecacheController();
-precacheController.addToCacheList([
-    '/assets/css/screen.css',
-    '/assets/fonts/cta-icons.woff',
-    '/assets/fonts/cta-illustrations.woff',
-    '/images/line-art/water.svg',
-    '/images/logos/europe-logo.png',
-    '/images/logos/acp-logo.png'
-]);
-
-workbox.precaching.precacheAndRoute([
-    '/en',
-    '/fr',
-    '/en/offline',
-    '/fr/offline'
-]);
 
 workbox.routing.setCatchHandler(({ event }) => {
     switch (event.request.destination) {
