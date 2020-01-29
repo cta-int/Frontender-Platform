@@ -10,8 +10,7 @@ workbox.googleAnalytics.initialize();
 
 workbox.precaching.addPlugins([
     new workbox.expiration.Plugin({
-        maxEntries: 30,
-        maxAgeSeconds: 60,
+        maxAgeSeconds: 24 * 60 * 60,
     })
 ]);
 
@@ -46,7 +45,8 @@ workbox.routing.registerRoute(
         cacheName: 'document-cache',
         plugins: [
             new workbox.expiration.Plugin({
-                maxEntries: 20
+                maxEntries: 20,
+                maxAgeSeconds: 24 * 60 * 60
             })
         ]
     })
