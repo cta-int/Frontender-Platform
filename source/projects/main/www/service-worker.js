@@ -3,8 +3,8 @@ workbox.setConfig({
     debug: false
 });
 
-workbox.core.skipWaiting()
-workbox.core.clientsClaim()
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 workbox.googleAnalytics.initialize();
 
