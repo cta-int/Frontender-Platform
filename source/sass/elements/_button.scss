@@ -55,6 +55,7 @@ Styleguide 3.5
     }
     &:visited {
       color: $color-theme;
+
       .theme--blue & {
         color: $color-blue;
       }
@@ -93,10 +94,11 @@ Styleguide 3.5
   .teaser &,
   .well--full &,
   &--inverse {
-    border-color: $white;
+    border-color: $white !important;
+    background: transparent !important;
     &,
     &:visited {
-        color: $white;
+        color: $white !important;
     }
   }
   &.is-disabled {

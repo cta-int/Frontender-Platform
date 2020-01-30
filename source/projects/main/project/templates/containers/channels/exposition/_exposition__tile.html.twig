@@ -2,12 +2,14 @@
 {% import "macros/image.html.twig" as image %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
+{% if not hide_tile|default(false) %}
 <div class="{{ tile_class }}  |  shade">
     <a class="article-image" href="{{ route({'page': model.path, 'slug': model.headline|t(locales)|slugify, 'id': model._id}) }}" style="background-image: url('https://res.cloudinary.com/cta/image/upload/w_500,ar_2:3,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}');" data-modal="modal-{{ model._id }}">
         <div class="article-caption article-title">{{ model.headline }}</div>
         <div class="article__triangle"></div>
     </a>
 </div>
+{% endif %}
 <div class="fx modal" id="modal-{{ model._id }}">
     <div class="post  |  fx  |  {{ "theme--" ~ config.colour_theme|t(locales) }}">
         <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
@@ -21,14 +23,12 @@
                     <h1 class="title title--headline" itemprop="headline">{{ model.headline }}</h1>
                 </div>
             </header>
-
-
-            <article class="post-body  |  gutters  |  wings  |  leader--hero" itemprop="articleBody">
+            <article class="post-body  |  gutters  |  wings  |  leader--hero  |  theme theme-{{ config.colour_theme|t(locales|default('green') )}}" itemprop="articleBody">
                 <div class="social__share  |  trailer">
                     {{ share.bar_article_linkedin(model, true) }}
                 </div>
                 {% if model.about %}
-                    <p class="paragraph--lead" itemprop="description">{{ model.about|striptags('<strong><em><u><a><sub><sup>')|raw }}
+                    <p class="paragraph--lead" itemprop="description">{{ model.about|striptags('<strong><em><u><a><sub><p>')|raw }}</p>
                 {% endif %}
                 {% for i, contentBlock in model.contentBlocks %}
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
@@ -37,8 +37,6 @@
                     {{ share.bar_article_linkedin(model) }}
                 </div>
             </article>
-
-
             {% if prev and next %}
                 <div class="wings">
                     <div class="post-footer  |  credit">
