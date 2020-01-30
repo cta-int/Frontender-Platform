@@ -1,0 +1,22 @@
+{
+    "short_name": "Spore",
+    "name": "Spore Magazine",
+    "theme_color": "#046a38",
+    "background_color": "#ffffff",
+    "display": "browser",
+    "Scope": "/",
+    "start_url": "/en",
+    "icons": [
+      {
+        "src": "/assets/images/favicon/spore/favicon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/images/favicon/spore/favicon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "splash_pages": null
+  }

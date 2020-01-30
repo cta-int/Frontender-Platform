@@ -31,10 +31,12 @@
 
         {% block title %} {% endblock %}
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block meta %} {% endblock %}
         {% block link %} {% endblock %}
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#67ab43"/>
+        <link rel="manifest" href="/manifest.json">
         <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png">
         <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon-precomposed.png">
         <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/favicon/apple-touch-icon-57x57.png">
@@ -46,18 +48,16 @@
         <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicon/apple-touch-icon-144x144.png">
         <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/favicon/apple-touch-icon-152x152.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon-180x180.png">
-
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="144x144">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="72x72">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="48x48">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png" sizes="36x36">
-
+        <link rel="icon" sizes="192x192" type="image/png" href="/assets/images/favicon/android-chrome-192x192.png">
+        <link rel="icon" sizes="144x144" type="image/png" href="/assets/images/favicon/android-chrome-144x144.png">
+        <link rel="icon" sizes="96x96" type="image/png" href="/assets/images/favicon/android-chrome-96x96.png">
+        <link rel="icon" sizes="72x72" type="image/png" href="/assets/images/favicon/android-chrome-72x72.png">
+        <link rel="icon" sizes="48x48" type="image/png" href="/assets/images/favicon/android-chrome-57x57.png">
+        <link rel="icon" sizes="36x36" type="image/png" href="/assets/images/favicon/android-chrome-57x57.png">
         <link rel="icon" type="image/png" href="/assets/images/favicon/favicon.ico">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png">
 
         <link href="{{ hashedPath('/assets/css/screen.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ hashedPath('/assets/javascript/slick.css') }}" type="text/css" rel="stylesheet" />
@@ -174,63 +174,15 @@
                     r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                     a.appendChild(r);
                 })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-            </script>
-            <!-- Heap Analytics tracking code -->
-            <script type="text/javascript">
                 window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
                 heap.load("1820974936");
-            </script>
-
-            <script>
-                // Check that service workers are supported
                 if ('serviceWorker' in navigator) {
-                    // Use the window load event to keep the page load performant
                     window.addEventListener('load', () => {
-                        navigator.serviceWorker.register('/service-worker.js');
+                        var serviceWorkerRegistration = navigator.serviceWorker.register('/service-worker.js');
+                        if(serviceWorkerRegistration && serviceWorkerRegistration.update) {
+                            serviceWorkerRegistration.update();
+                        }
                     });
-                }
-            </script>
-
-            <script type="module">
-                import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-window.prod.mjs';
-
-                if ('serviceWorker' in navigator) {
-                  const wb = new Workbox('/service-worker.js');
-
-                  // Add an event listener to detect when the registered
-                  // service worker has installed but is waiting to activate.
-                  wb.addEventListener('waiting', (event) => {
-                    // `event.wasWaitingBeforeRegister` will be false if this is
-                    // the first time the updated service worker is waiting.
-                    // When `event.wasWaitingBeforeRegister` is true, a previously
-                    // updated same service worker is still waiting.
-                    // You may want to customize the UI prompt accordingly.
-
-                    // Assumes your app has some sort of prompt UI element
-                    // that a user can either accept or reject.
-                    const prompt = createUIPrompt({
-                      onAccept: async () => {
-                        // Assuming the user accepted the update, set up a listener
-                        // that will reload the page as soon as the previously waiting
-                        // service worker has taken control.
-                        wb.addEventListener('controlling', (event) => {
-                          window.location.reload();
-                        });
-
-                        // Send a message telling the service worker to skip waiting.
-                        // This will trigger the `controlling` event handler above.
-                        // Note: for this to work, you have to add a message
-                        // listener in your service worker. See below.
-                        wb.messageSW({type: 'SKIP_WAITING'});
-                      },
-
-                      onReject: () => {
-                        prompt.dismiss();
-                      }
-                    })
-                  });
-
-                  wb.register();
                 }
             </script>
         {% endif %}
@@ -277,6 +229,7 @@
             </script>
             <!-- OneTrust Cookies Consent Notice end -->
         {% endif %}
+        <noscript>{{ "This website needs JavaScript for some functionality. Please enable JavaScript."|i18n }}</noscript>
     </body>
 
 </html>

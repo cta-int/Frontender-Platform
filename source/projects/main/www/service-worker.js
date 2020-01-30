@@ -1,36 +1,87 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
-// Basic Workbox configuration
+
 workbox.setConfig({
-    debug: true
+    debug: false
 });
 
-addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        skipWaiting();
-    }
-});
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 workbox.googleAnalytics.initialize();
-// End of basic Workbox configuration
 
-// Cache Google API urls
+const preCache = caches.open(
+    workbox.core._private.cacheNames.getPrecacheName()
+);
+
+self.addEventListener('fetch', function(event) {
+    if(!event || !event.request || !event.request.url) {
+        // No url found, bail.
+        return;
+    }
+
+    let cacheKey = new URL(event.request.url);
+
+    // We don't match query params.
+    for(let index of cacheKey.searchParams.keys()) {
+        cacheKey.searchParams.delete(index);
+    }
+
+    preCache.then(function(cache) {
+        // Check if there is a match in the precached results.
+        return cache.match(cacheKey.toString())
+            .then(function(requestMatch) {
+                // No match found, bail.
+                if(!requestMatch) {
+                    return true;
+                }
+
+                // Updating found match. This is effectively a StaleWhileRevalidate.
+                return cache.add(cacheKey);
+            });
+    });
+});
+
+workbox.precaching.precacheAndRoute([
+    // Pages
+    '/en',
+    '/fr',
+    '/en/offline',
+    '/fr/offline',
+
+    // Assets
+    '/assets/css/screen.css',
+    '/assets/fonts/cta-icons.woff',
+    '/assets/fonts/cta-icons.ttf',
+    '/assets/fonts/cta-illustrations/fonts/cta-illustrations.woff',
+    '/assets/fonts/cta-illustrations/fonts/cta-illustrations.ttf',
+    '/images/line-art/water.svg',
+    '/images/logos/europe-logo.png',
+    '/images/logos/acp-logo.png'
+], {
+    ignoreURLParametersMatching: [/.*/]
+});
+
 workbox.routing.registerRoute(
     /.*(?:googleapis|gstatic)\.com/,
     new workbox.strategies.StaleWhileRevalidate()
 );
 
 workbox.routing.registerRoute(
-    // Custom `matchCallback` function to cache the page document
     ({ event }) => event.request.destination === 'document',
     new workbox.strategies.StaleWhileRevalidate({
-        cacheName: 'document-cache'
+        cacheName: 'document-cache',
+        plugins: [
+            new workbox.expiration.Plugin({
+                maxEntries: 20,
+                maxAgeSeconds: 24 * 60 * 60
+            })
+        ]
     })
 );
 
-// Caching strategies for assets
 workbox.routing.registerRoute(
     /\.js.*$/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'script-cache',
         ignoreURLParametersMatching: [/.*/],
         plugins: [
@@ -55,49 +106,31 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|svg|gif|ico).*$/,
-    // Use the cache if it's available.
+    function(url) {
+        if(url.url.host.indexOf('cloudinary') > -1) {
+            return false;
+        }
+
+        return /\.(?:png|jpg|jpeg|svg|gif|ico|woff|ttf).*$/.test(url.url.href);
+    },
     new workbox.strategies.CacheFirst({
         cacheName: 'image-cache',
+        ignoreURLParametersMatching: [/.*/],
         plugins: [
             new workbox.expiration.Plugin({
-                // Cache only 20 images.
-                maxEntries: 20,
-                // Cache for a maximum of a week.
+                maxEntries: 30,
                 maxAgeSeconds: 7 * 24 * 60 * 60,
             })
         ]
     })
 );
 
-const precacheController = new workbox.precaching.PrecacheController();
-precacheController.addToCacheList([
-    '/assets/css/screen.css'
-]);
-
-workbox.precaching.precacheAndRoute([
-    '/en/offline',
-    '/fr/offline'
-]);
-
-// This "catch" handler is triggered when any of the other routes fail to
-// generate a response.
 workbox.routing.setCatchHandler(({ event }) => {
-    // The FALLBACK_URL entries must be added to the cache ahead of time, either via runtime
-    // or precaching.
-    // If they are precached, then call workbox.precaching.getCacheKeyForURL(FALLBACK_URL)
-    // to get the correct cache key to pass in to caches.match().
-    //
-    // Use event, request, and url to figure out how to respond.
-    // One approach would be to use request.destination, see
-    // https://medium.com/dev-channel/service-worker-caching-strategies-based-on-request-types-57411dd7652c
     switch (event.request.destination) {
         case 'document':
             return caches.match('/en/offline');
             break;
-
         default:
-            // If we don't have a fallback, just return an error response.
             return Response.error();
     }
 });
