@@ -2,7 +2,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ hashedPath('/assets/css/exposition.css')|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 <{{ config.container_tag|default('div') }} {{ helper.class_attribute(config, 'wings  |  no-overflow  |  keys-figures  |  exposition-wrapper')|raw }} id="section1" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="section section--hidden  |  gutter-outside--right">

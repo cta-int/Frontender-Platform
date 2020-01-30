@@ -1,4 +1,4 @@
-{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ hashedPath('/assets/css/exposition.css')|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 
 {% import "macros/template.html.twig" as helper %}

@@ -4,7 +4,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ hashedPath('/assets/css/exposition.css')|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 
 {#

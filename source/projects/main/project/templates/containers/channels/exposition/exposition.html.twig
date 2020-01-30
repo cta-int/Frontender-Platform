@@ -1,17 +1,18 @@
-{{ '/assets/css/exposition.css'|addStyle('styles') }}
+{{ hashedPath('/assets/css/exposition.css')|addStyle('styles') }}
 {{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
 
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% set numArticles = model.articles|length %}
+{% set numArticles = config.series_topic|default('0')=='1' ? (model.articles|length - 1) : model.articles|length %}
+
 {% if numArticles < 3 and numArticles > 0 %}
     {% set numArticles = 3 %}
 {% endif %}
 
 {% if numArticles >= 3 %}
-    <section id="section-{{ model._id }}" class="wings  |  trailer--section  |  gutters  |  is-root  |  exposition-wrapper  exposition--{{ numArticles }}  |  theme-slider {{ ["theme--" ~ config.alignment, "theme--" ~ config.colour_theme|t(locales), container_class]|join("  |  ") }}   {% if query.fromFrontender %} is-visible{% endif %}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+    <section id="section-{{ model._id }}" class="wings  |  trailer--section  |  gutters  |  is-clear  |  exposition-wrapper  exposition--{{ numArticles }}  |  theme-slider theme {{ ["theme--" ~ config.alignment, "theme--" ~ config.colour_theme|t(locales), container_class]|join("  |  ") }}   {% if query.fromFrontender %} is-visible{% endif %}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
         <div class="exposition  |  is-root{% if query.fromFrontender %} exposition-visible{% endif %}">
             <div class="exposition__section" id="{{ model._id }}">
                 <div class="section">
@@ -20,6 +21,12 @@
             </div>
             <div class="exposition-title  |  wings  |  gutters">
                 <h2 class="heading  |  section-heading">{{ model.name|t(locales) }}</h2>
+                {% if config.series_topic|default('0')=='1' %}
+                    <p class="exposition-lead leader--normal trailer--normal" itemprop="description">{{ model.articles|first.about|t(locales)|striptags('<strong><em><u><a><sub><p>')|raw }}</p>
+                    <a class="button button--inverse" href="{{ route({'page': model.articles|first.path, 'slug': model.articles|first.headline|t(locales)|slugify, 'id': model.articles|first._id}) }}" data-modal="modal-{{ model.articles|first._id }}">
+                        {{ "read more"|i18n }}
+                    </a>
+                {% endif %}
             </div>
             <div class="exposition__illustration">
                 <img src="/assets/images/cover-illustrations/{{ config.story }}.png" alt="{{ config.story }}">
@@ -27,7 +34,7 @@
         </div>
         <div class="article-group--wrapper">
             <div class="article-group">
-                {% include "containers/channels/exposition/_exposition--" ~ numArticles ~ "-tiles.html.twig" with {model: model.articles} %}
+                {% include "containers/channels/exposition/_exposition--" ~ numArticles ~ "-tiles.html.twig" with {model: model.articles, omit_first: (config.series_topic|default('0')=='1' ? true : false) } %}
             </div>
             <button class="article-switch" data-direction="left"><span class="cta-report-icon icon-chevron-left"></span></button>
             <button class="article-switch" data-direction="right"><span class="cta-report-icon icon-chevron-right"></span></button>
