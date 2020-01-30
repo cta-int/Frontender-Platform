@@ -22,7 +22,7 @@
   }
   @include breakpoint($gt-small-desktop) {
     .exposition-title {
-      text-align: right;
+      // text-align: right;
       margin-left: auto;
     }
   }
@@ -33,6 +33,7 @@
   .article-group {
     @include breakpoint($gt-small-desktop) {
       left: 1 / 18 * 100vw;
+      right: auto;
     }
   }
 }
