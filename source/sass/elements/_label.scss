@@ -35,7 +35,7 @@ Styleguide 3.9
   }
   &,
   &:hover {
-    color: $white;
+    color: $white !important;
   }
   &:hover {
     box-shadow: 2px 2px 8px rgba($color-black, .26);
@@ -48,7 +48,7 @@ Styleguide 3.9
     box-shadow: none;
   }
   &--dark {
-    background: $color-primary;
+    color: $white !important;
   }
   &--stretch {
     width: 100%;
