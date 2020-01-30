@@ -1,4 +1,5 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+
 workbox.setConfig({
     debug: false
 });
@@ -8,11 +9,37 @@ workbox.core.clientsClaim();
 
 workbox.googleAnalytics.initialize();
 
-workbox.precaching.addPlugins([
-    new workbox.expiration.Plugin({
-        maxAgeSeconds: 24 * 60 * 60,
-    })
-]);
+const preCache = caches.open(
+    workbox.core._private.cacheNames.getPrecacheName()
+);
+
+self.addEventListener('fetch', function(event) {
+    if(!event || !event.request || !event.request.url) {
+        // No url found, bail.
+        return;
+    }
+
+    let cacheKey = new URL(event.request.url);
+
+    // We don't match query params.
+    for(let index of cacheKey.searchParams.keys()) {
+        cacheKey.searchParams.delete(index);
+    }
+
+    preCache.then(function(cache) {
+        // Check if there is a match in the precached results.
+        return cache.match(cacheKey.toString())
+            .then(function(requestMatch) {
+                // No match found, bail.
+                if(!requestMatch) {
+                    return true;
+                }
+
+                // Updating found match. This is effectively a StaleWhileRevalidate.
+                return cache.add(cacheKey);
+            });
+    });
+});
 
 workbox.precaching.precacheAndRoute([
     // Pages
