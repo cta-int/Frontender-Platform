@@ -75,6 +75,9 @@
 	&-content {
 		max-height: 75vh;
 		overflow-y: scroll;
+		.inset & {
+			max-height: fit-content;
+		}
 		@include breakpoint($lt-medium-desktop) {
 			padding-left: $gutter-width / 2;
 			padding-right: $gutter-width / 2;

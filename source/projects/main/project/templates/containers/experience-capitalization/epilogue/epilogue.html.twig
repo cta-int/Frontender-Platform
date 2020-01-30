@@ -1,0 +1,33 @@
+{{ hashedPath('/assets/css/exposition.css')|addStyle('styles') }}
+{{ 'containers/channels/exposition/exposition.js.twig'|addScript('beforeBodyEnd') }}
+
+{% import "macros/template.html.twig" as helper %}
+{% set class = helper.class(config)|trim %}
+{% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
+
+<div class="inset  |  gutters" {{ helper.container_id_attribute(frontender, "frontender")|raw }} style="background-image: url('http://res.cloudinary.com/cta/image/upload/w_1920,ar_1:1,f_auto,c_fill/{{ config.credit_image }}');">
+    <div class="standout  |  leader-inside--hero  |  trailer-inside--hero">
+        <div class="standout-content  |  post-body  |  wings" {% if query.fromFrontender %} style="min-height: 45vw; height: 45vw; max-height: 100vw;"{% endif %}>
+            <div class="gutters">
+                <h2 class="category  |  trailer" id="section0">{{ model.headline|t(locales) }}</h2>
+                <div class="director">
+                    <img src="https://res.cloudinary.com/cta/image/upload/w_500,ar_2:3,g_faces:center,f_auto,c_fill/{{ model.link.mediaObject|lead.metadata.id }}" alt="{{ model.link.mediaObject|lead.metadata.title|t(locales) }}">
+                    {% if model.link.mediaObject|first.description %}
+                        <p class="quote  |  gutters  |  leader  |  trailer">{{ model.link.mediaObject|first.description|t(locales) }}</p>
+                    {% endif %}
+                </div>
+                {% for contentBlock in model.contentBlocks %}
+                    {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
+                {% endfor %}
+                {% if model.link.person.author|first.name %}
+                    <p class="signature">- {{ model.link.person.author|first.name|t(locales) }}{% if model.link.person.author|first.jobTitle %}, {{ model.link.person.author|first.jobTitle|t(locales) }}{% endif %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <p class="caption">©{{ config.credit_copyright|t(locales) }}</p>
+    <div class="header__sponsor" style="position: absolute;">
+        <!-- @TODO Replace with 3 sponsor icons, awaiting feedback from CTA -->
+        <img src="http://a-year-in-review-2016.cta.int/assets/images/header/europe-logo.png" alt="sponsors">
+    </div>
+</div>

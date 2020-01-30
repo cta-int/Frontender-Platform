@@ -11,6 +11,7 @@
     {% set numArticles = 3 %}
 {% endif %}
 
+
 {% if numArticles >= 3 %}
     <section id="section-{{ model._id }}" class="wings  |  trailer--section  |  gutters  |  is-clear  |  exposition-wrapper  exposition--{{ numArticles }}  |  theme-slider theme {{ ["theme--" ~ config.alignment, "theme--" ~ config.colour_theme|t(locales), container_class]|join("  |  ") }}   {% if query.fromFrontender %} is-visible{% endif %}" {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
         <div class="exposition  |  is-root{% if query.fromFrontender %} exposition-visible{% endif %}">

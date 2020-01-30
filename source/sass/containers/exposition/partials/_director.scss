@@ -9,6 +9,7 @@
 		width: 3 / 18 * 100vw;
 	}
 	.quote {
+		color: inherit;
 		padding-top: 0;
 		&::before {
 			left: -999em;
