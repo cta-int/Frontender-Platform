@@ -28,7 +28,7 @@
     <div class="header-overlay">
         <div class="header-title">
             <div class="header__title" {% if query.fromFrontender %} style="position: absolute;"{% endif %}>
-                <img class="header__crest" src="/assets/images/cover-illustrations/year-symbol-2018.png" alt="A year in review 2018" width="114" height="114">
+            	<div class="header__crest" style="background-image: url('{{ config.show_legacy_symbol|t(locales)|default("0") == "1" ? "/assets/images/cover-illustrations/legacy-symbol-1983-2020.png" : "/assets/images/cover-illustrations/year-symbol-2018.png" }}');">&nbsp;</div>
                 <h2 class="sub-heading  |  gutters-outside">{{ labels.container_subtitle|t(locales) }}</h2>
                 <h1 class="heading  |  gutters-outside">{{ labels.container_title|t(locales) }}</h1>
             </div>

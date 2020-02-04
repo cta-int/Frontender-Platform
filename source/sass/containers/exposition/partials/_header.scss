@@ -54,8 +54,10 @@
 		height: 37vw;
 	}
 	&__crest {
+		background-repeat: no-repeat;
+    	background-position: center;
+    	background-size: contain;
 		height: to-unit(114px);
-		width: to-unit(114px);
 	}
 	&__caption {
 		text-align: right;
