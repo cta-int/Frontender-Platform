@@ -16,6 +16,11 @@
                         <p class="quote  |  gutters  |  leader  |  trailer">{{ model.link.mediaObject|first.description|t(locales) }}</p>
                     {% endif %}
                 </div>
+                {% if config.show_about|default("0") == "1" and model.about %}
+                <div class="paragraph--lead">
+					{{ model.about|striptags('<strong><em><u><a><sub><sup>')|md|raw }}
+				</div>
+				{% endif %}
                 {% for contentBlock in model.contentBlocks %}
                     {% include 'partials/content-blocks/' ~ contentBlock.type ~ '-' ~ contentBlock.subtype|default('raw') ~ '.html.twig' with {'content': contentBlock} %}
                 {% endfor %}
