@@ -1,6 +1,6 @@
 .quote {
   color: mix($color-body, $white, 60%);
-  border-left: 10px solid $color-theme;
+  border-left: rhythm(2) solid $color-theme;
   font-size: to-unit(18px);
   line-height: 1.4em;
   @include breakpoint($gt-medium-desktop) {

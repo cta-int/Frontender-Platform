@@ -15,6 +15,7 @@ Styleguide 3.46
     margin-top: rhythm(6);
     padding-left: rhythm(3);  
     font-size: 1.375em;
+    color: $color-theme;
     @include theme-color;
     &__content {
         color: rgba(0,0,0,.54);

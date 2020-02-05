@@ -5,7 +5,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<article class="inset" {% if query.fromFrontender %} style="margin-top: 0; height: auto; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+<article {{ helper.class_attribute(config, 'inset  |  theme theme--green')|raw }} {% if query.fromFrontender %} style="margin-top: 0; height: auto; max-height: 56vw;"{% endif %} {{ helper.container_id_attribute(frontender, "frontender")|raw }}>
     <div class="gutters">
         <div class="standout standout--clear  |  gutters  |  wings  |  leader-inside--hero  |  trailer-inside--hero">
             <div class="gutters">
