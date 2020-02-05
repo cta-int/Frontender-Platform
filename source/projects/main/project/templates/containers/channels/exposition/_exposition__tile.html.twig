@@ -11,7 +11,7 @@
 </div>
 {% endif %}
 <div class="fx modal" id="modal-{{ model._id }}">
-    <div class="post  |  fx  |  theme theme--{{ config.colour_theme|t(locales|default('green') )}}  |  {{ config.colour_theme|t(locales|default('theme theme--green') }}">
+    <div class="post  |  fx  |  theme theme--{{ config.colour_theme|t(locales)|default("green") }}  |  {{ config.colour_theme|t(locales)|default("theme theme--green") }}">
         <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
         <div class="standout standout--post  |  fx" itemtype="https://schema.org/Article">
             <header class="post-header">
@@ -23,7 +23,7 @@
                     <h1 class="title title--headline" itemprop="headline">{{ model.headline }}</h1>
                 </div>
             </header>
-            <article class="post-body  |  gutters  |  wings  |  leader--hero  |  theme theme--{{ config.colour_theme|t(locales|default('green') )}}  |  {{ config.colour_theme|t(locales|default('theme theme--green')" itemprop="articleBody">
+            <article class="post-body  |  gutters  |  wings  |  leader--hero  |  theme theme--{{ config.colour_theme|t(locales)|default("green") }}  |  {{ config.colour_theme|t(locales)|default("theme theme--green") }}" itemprop="articleBody">
                 <div class="social__share  |  trailer">
                     {{ share.bar_article_linkedin(model, true) }}
                 </div>
