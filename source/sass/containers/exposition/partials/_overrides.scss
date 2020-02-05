@@ -78,10 +78,10 @@
   @include meta;
 	font-size: to-unit(12px);
 	font-weight: bold;
-	color: rgba(0, 0, 0, .4);
-	.theme--purple & {
-		color: rgba(0, 0, 0, .6); /* Text was too hard to read on purple background */
-	}
+	// color: rgba(0, 0, 0, .4);
+	// .theme--purple & {
+	// 	color: rgba(0, 0, 0, .6); /* Text was too hard to read on purple background */
+	// }
 	@include breakpoint($gt-large-handheld) {
 		font-size: to-unit(20px);
 		&--s {
