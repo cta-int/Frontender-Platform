@@ -4,7 +4,9 @@
 {% import "macros/template.html.twig" as helper %}
 {% set class = helper.class(config)|trim %}
 
-<div class="post  |  fx  |  theme--{{ page.theme }}">
+{{ dump(page.theme) }}
+
+<div class="post  |  fx  |  theme--{{ config.color_theme }}">
     <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
     <div class="standout standout--post  |  fx">
         <header class="post-header">
@@ -19,7 +21,7 @@
                     alt="{{ page.title }}">
                 <figcaption class="image-caption">{{ page.caption }}</figcaption>
             </figure>
-            <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
+            <div class="well well--full  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
                 <h2 class="category  |  trailer--small">{{ page.category }}</h2>
                 <h1 class="heading heading--hero">{{ page.title }}</h1>
             </div>

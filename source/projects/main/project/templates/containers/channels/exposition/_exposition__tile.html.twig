@@ -11,7 +11,7 @@
 </div>
 {% endif %}
 <div class="fx modal" id="modal-{{ model._id }}">
-    <div class="post  |  fx  |  {{ "theme--" ~ config.colour_theme|t(locales) }}">
+    <div class="post  |  fx  |  theme theme--{{ config.colour_theme|t(locales|default('green') )}}  |  {{ config.colour_theme|t(locales|default('theme theme--green') }}">
         <button class="post-close  |  fx  |  anchor--reset"><a class="icon icon-cross" href="{{ site.url }}"></a></button>
         <div class="standout standout--post  |  fx" itemtype="https://schema.org/Article">
             <header class="post-header">
@@ -19,11 +19,11 @@
                     {{ image.post_hero(model.link.mediaObject|lead) }}
                     <figcaption class="image-caption">{{ model.link.mediaObject|first.credit }}</figcaption>
                 </figure>
-                <div class="post-header__title  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
+                <div class="well well--full  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
                     <h1 class="title title--headline" itemprop="headline">{{ model.headline }}</h1>
                 </div>
             </header>
-            <article class="post-body  |  gutters  |  wings  |  leader--hero  |  theme theme-{{ config.colour_theme|t(locales|default('green') )}}" itemprop="articleBody">
+            <article class="post-body  |  gutters  |  wings  |  leader--hero  |  theme theme--{{ config.colour_theme|t(locales|default('green') )}}  |  {{ config.colour_theme|t(locales|default('theme theme--green')" itemprop="articleBody">
                 <div class="social__share  |  trailer">
                     {{ share.bar_article_linkedin(model, true) }}
                 </div>
@@ -39,7 +39,7 @@
             </article>
             {% if prev and next %}
                 <div class="wings">
-                    <div class="post-footer  |  credit">
+                    <div class="post-footer  |  well well--full  |  credit">
                         <a class="credit__cell  |  leader-inside  |  trailer-inside  |  gutters  |  anchor--reset" data-pagination="modal-{{ prev._id }}" href="{{ route({'page': prev.path, 'slug': prev.headline|t(locales)|slugify, 'id': prev._id}) }}">
                             <p class="category category--s  |  article-title">Previous article</p>
                             <p class="article-title  |  anchor--reset">{{ prev.headline }}</p>
