@@ -17,7 +17,11 @@
             <header class="post-header">
                 <figure class="post-hero">
                     {{ image.post_hero(model.link.mediaObject|lead) }}
-                    <figcaption class="image-caption">{{ model.link.mediaObject|first.credit }}</figcaption>
+                    <figcaption class="image-caption gutters leader-inside--normal trailer-inside--normal meta meta--inverse">
+                        <span>
+                            {{ model.link.mediaObject|lead.credit }}
+                        </span>
+                    </figcaption>
                 </figure>
                 <div class="well well--full  |  gutters  |  wings  |  leader-inside  |  trailer-inside">
                     <h1 class="title title--headline" itemprop="headline">{{ model.headline }}</h1>

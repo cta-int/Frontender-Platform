@@ -12,10 +12,15 @@
 // 	}
 // }
 
-// .image-caption {
-// 	bottom: gutter(1/2);
-// 	right: gutter(1/2);
-// }
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    span {
+        background: rgba(0,0,0,.54);
+        padding: 0 rhythm();
+    }
+}
 
 // .caption {
 // 	header & {
