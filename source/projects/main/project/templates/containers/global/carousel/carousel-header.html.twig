@@ -2,7 +2,7 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, ["wings", config.layout|default("layout"), config.show_narrow|default("layout--narrow"), config.text_alignment|default("body--align-center")]|join(" "))|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, [config.layout|default("layout"), config.show_narrow|default("layout--narrow"), config.text_alignment|default("body--align-center")]|join(" "))|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
 	<div class="layout__cell layout__cell--main">
 		{% if labels.title|t(locales) is not empty %}
 			<h2 class="{{ config.title_size|default("title title--section") }}  |  gutters leader">{{ labels.title|t(locales) }}</h2>
