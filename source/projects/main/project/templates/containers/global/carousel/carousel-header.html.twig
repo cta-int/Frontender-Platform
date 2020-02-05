@@ -2,13 +2,16 @@
 {% set class = helper.class(config)|trim %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-<{{ config.container_tag|default('div') }}{{ helper.container_id_attribute(frontender, "frontender")|raw }} class="layout layout--narrow{% if class %} {{ class }}{% endif %}">
-	<div class="layout__cell  |  wings  |  body--align-center">
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, ["wings", config.layout|default("layout"), config.show_narrow|default("layout--narrow"), config.text_alignment|default("body--align-center")]|join(" "))|raw }}{{ helper.container_id_attribute(frontender, "frontender")|raw }}>
+	<div class="layout__cell layout__cell--main">
 		{% if labels.title|t(locales) is not empty %}
-			<h2 class="title title--section  |  gutters">{{ labels.title|t(locales) }}</h2>
+			<h2 class="{{ config.title_size|default("title title--section") }}  |  gutters leader">{{ labels.title|t(locales) }}</h2>
 		{% endif %}
 		{% if labels.body|t(locales) is not empty %}
-			<p class="gutters">{{ labels.body|t(locales) }}</p>
+			<p class="{{ config.intro_size|default("") }} gutters leader">{{ labels.body|t(locales) }}</p>
 		{% endif %}
 	</div>
+	{% if config.text_alignment|default("body--align-center") != "body--align-center" %}
+		<div class="layout__cell layout__cell--aside">&nbsp;</div>
+	{% endif %}
 </{{ config.container_tag|default('div') }}>
