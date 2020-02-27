@@ -1,0 +1,27 @@
+.legacy-banner {
+  background: $color-green;
+  color: $white;
+  text-align: center;
+
+  &__wrapper {
+    width: 80vw;
+    margin: 0 auto;
+
+    @include breakpoint($gt-small-desktop) {
+      width: 40vw;
+    }
+  }
+
+  &__header {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  &__link {
+    background: $color-green;
+    color: $white;
+    border-color: $white;
+    // line-height: 1.25em; // Personally I like a 1.25em a little more, but lets keep with the original styling.
+  }
+}

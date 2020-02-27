@@ -1,0 +1,15 @@
+<div class="legacy-banner leader-inside trailer-inside">
+    <div class="legacy-banner__wrapper">
+        <h1 class="legacy-banner__header heading">
+            {{ labels.header|t }}
+        </h1>
+
+        <p class="body--whisper leader trailer--small">
+            {{ labels.body|t }}
+        </p>
+
+        <a href="{{ route({page: labels.link.page|t}) }}" class="button button--stretch legacy-banner__link">
+            {{ labels.link.label|t }}
+        </a>
+    </div>
+</div>
