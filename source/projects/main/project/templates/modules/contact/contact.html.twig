@@ -41,19 +41,21 @@
                     target="_blank">{{ location_1.slug.label|t(locales) }}</a>
             </div>
         </div>
-        <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
-            <div class="gutters">
-                <h2 class="title  |  trailer--normal">{{ location_2.title|t(locales) }}</h2>
-                <p class="meta">{{ location_2.street|t(locales) }}</p>
-                <p class="meta">{{ location_2.postal|t(locales) }}</p>
-                <p class="meta  |  trailer--small">{{ location_2.country|t(locales) }}</p>
-                <p class="meta">Tel: <a class="is-heir" href="tel:{{ location_2.phone|t(locales) }}">{{ location_2.phone|t(locales) }}</a></p>
-                <p class="meta">Fax: <a class="is-heir" href="tel:{{ location_2.fax|t(locales) }}">{{ location_2.fax|t(locales) }}</a></p>
-                <a
-                    class="block-link block-link--inverse  |  leader--normal"
-                    href="{{ location_2.slug.page|t(locales) }}"
-                    target="_blank">{{ location_2.slug.label|t(locales) }}</a>
+        {% if location_2 %}
+            <div class="contact__address  |  trailer trailer-inside  |  leader-inside">
+                <div class="gutters">
+                    <h2 class="title  |  trailer--normal">{{ location_2.title|t(locales) }}</h2>
+                    <p class="meta">{{ location_2.street|t(locales) }}</p>
+                    <p class="meta">{{ location_2.postal|t(locales) }}</p>
+                    <p class="meta  |  trailer--small">{{ location_2.country|t(locales) }}</p>
+                    <p class="meta">Tel: <a class="is-heir" href="tel:{{ location_2.phone|t(locales) }}">{{ location_2.phone|t(locales) }}</a></p>
+                    <p class="meta">Fax: <a class="is-heir" href="tel:{{ location_2.fax|t(locales) }}">{{ location_2.fax|t(locales) }}</a></p>
+                    <a
+                        class="block-link block-link--inverse  |  leader--normal"
+                        href="{{ location_2.slug.page|t(locales) }}"
+                        target="_blank">{{ location_2.slug.label|t(locales) }}</a>
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 </{{ config.container_tag|default('div') }}>
