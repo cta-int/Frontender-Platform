@@ -2,14 +2,17 @@
 	position: relative;
 	background: $color-theme;
 	padding: rhythm(6) 0;
+	&-wrapper {
+		background: $color-body;
+		width: 100%;
+	}
 	@include breakpoint($gt-small-desktop) {
 		position: absolute;
-		top: -90px;
+		top: -50px;
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: 2;
 		&-wrapper {
-			background: $color-body;
 			padding-left: 6 / 18 * 100vw;
 			padding-right: 6 / 18 * 100vw;
 		}

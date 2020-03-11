@@ -19,12 +19,16 @@
     }
   }
   .button:last-child {
-      padding: 12px 18px;
       margin-left: -2px;
       color: $white;
       font-size: 16px;
-      line-height: 23px;
       font-weight: 700;
+  }
+  .button {
+      line-height: 29px;
+  }
+  .icon {
+    line-height: inherit;
   }
   .icon-open-book {
     font-family: cta-report !important;
