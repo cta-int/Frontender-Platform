@@ -1,0 +1,5 @@
+{% import "macros/template.html.twig" as helper %}
+
+<{{ config.container_tag|default('div') }}{{ helper.class_attribute(config, 'network-navigation  |  media media--middle  |  closure  |  wings')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }} {{ config.schema|default(false) ? schema._(model) }}{{ config.attributes is defined ? config.attributes|raw : "" }}>
+    <a href="{{ route({'page': model.path, 'slug': model.issue.headline|t(locales)|slugify, 'id': model.issue._id}) }}" class="anchor anchor--shy meta gutters">{{ content.body|t|md|raw }}</a>
+</{{ config.container_tag|default('div') }}>
