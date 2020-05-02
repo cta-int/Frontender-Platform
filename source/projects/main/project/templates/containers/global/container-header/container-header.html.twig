@@ -27,13 +27,6 @@
                         <li><a class="filter__item  |  fx" href="?sortProperty=name&sortDirection=asc">{{ 'Alphabetical order (Z-A)'|i18n }}</a></li>
                       </ul>
                     </div>
-                    <div class="filter" id="event-filter-by2">
-                      <button class="filter__trigger  |  title" data-toggle="#event-filter-by2">{{ 'Filter by'|i18n }}</button>
-                      <ul class="filter__options  |  reset  |  fx">
-                        <li><a class="filter__item  |  fx filter__item--selected" href="?upcoming=true">{{ 'Upcoming'|i18n }}</a></li>
-                        <li><a class="filter__item  |  fx" href="?upcoming=false&sortProperty=startDateUTC&sortDirection=desc">{{ 'Passed'|i18n }}</a></li>
-                      </ul>
-                    </div>
 
                 {% elseif config.show_tools is same as('articles') %}
                 {% endif %}
