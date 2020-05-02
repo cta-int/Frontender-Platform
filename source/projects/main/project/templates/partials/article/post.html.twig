@@ -7,72 +7,80 @@
 
 {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
-<div class="post" itemscope itemtype="https://schema.org/Article">
-    {% if config.show_lead_image %}
-        <div class="post__media">
-            <a class="anchor anchor--shy" href="{{ article_link }}">
-                {{ image.post(article.link.mediaObject|lead) }}
-            </a>
-        </div>
-    {% else %}
-        <meta itemprop="image" content="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ article.link.mediaObject|lead.metadata.id }}">
-    {% endif %}
-    <div class="post__content  |  leader-inside">
+{% if not article is defined %}
+    {# Assume article is in model #}
+    {% set article = model %}
+{% endif %}
 
-        <p class="post__meta  |  trailer--tiny">
-            {% if config.show_publication_date|default(1) %}
-                {{ date.article(article.datePublished) }}
-            {% else %}
-                <meta itemprop="datePublished" content="{{ article.datePublished }}">
-            {% endif %}
-
-            {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
-                <span class="meta" itemprop="isPartOf">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
-            {% endif %}
-
-            {% if config.show_type|default(1) %}
-                <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
-            {% endif %}
-        </p>
-
-        <h3 class="heading  |  anchor--reset">
-            <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
-                <span itemprop="headline">{{ article.headline|t(locales) }}</span>
-            </a>
-        </h3>
-
-        {% if article.link.person.author|length %}
-            <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
-                {{ author.long(article.link.person.author) }}
-            </p>
-            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
-                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
-            </span>
+{# Prevent content render when there is no headline #}
+{% if article.headline %}
+    <div class="post" itemscope itemtype="https://schema.org/Article">
+        {% if config.show_lead_image %}
+            <div class="post__media">
+                <a class="anchor anchor--shy" href="{{ article_link }}">
+                    {{ image.post(article.link.mediaObject|lead) }}
+                </a>
+            </div>
         {% else %}
-            <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
-                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
-            </span>
-            <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
-                <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
-            </span>
+            <meta itemprop="image" content="https://res.cloudinary.com/cta/image/upload/w_240,ar_3:2,f_auto,c_fill/{{ article.link.mediaObject|lead.metadata.id }}">
         {% endif %}
+        <div class="post__content  |  leader-inside">
 
-        {% if config.show_stand_first %}
-            <p class="post__intro" itemprop="description">{{ article.about|t(locales)|raw }}</p>
-        {% endif %}
+            <p class="post__meta  |  trailer--tiny">
+                {% if config.show_publication_date|default(1) %}
+                    {{ date.article(article.datePublished) }}
+                {% else %}
+                    <meta itemprop="datePublished" content="{{ article.datePublished }}">
+                {% endif %}
 
-        {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
-          <ul class="reset  |  tag-list  |  list--inline trailer--small">
-              {% for label in article.analysis.agrovoc.concepts|slice(0, 2) %}
-                  <li>{{ concept.tag(label, locale) }}</li>
-              {% endfor %}
-          </ul>
-        {% endif %}
+                {% if config.show_publication|default(1) and article.link.label|filterArray('type', 'publication')|length %}
+                    <span class="meta" itemprop="isPartOf">{{ 'in'|i18n }} {{ label.publication(article.link.label|filterArray('type', 'publication'))}}</span>
+                {% endif %}
 
-        {% if config.show_read_more %}
-            <a class="read-more  |  is-gt-small-desktop" href="{{ article_link }}" itemprop="url">{{ 'Read more'|i18n }}</a>
-        {% endif %}
+                {% if config.show_type|default(1) %}
+                    <a class="meta" href="/search?q=&location=&time=&type=article.{{ article.articleType }}">{{ ('content_type_category_' ~ article.articleType)|i18n }}</a>
+                {% endif %}
+            </p>
+
+            <h3 class="heading  |  anchor--reset">
+                <a class="anchor anchor--shy  |  is-heir" href="{{ article_link }}">
+                    <span itemprop="headline">{{ article.headline|t(locales) }}</span>
+                </a>
+            </h3>
+
+            {% if article.link.person.author|length %}
+                <p class="{{ config.show_author_name ? 'post__author  |  author' : 'is-narrative'}}">
+                    {{ author.long(article.link.person.author) }}
+                </p>
+                <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                    <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+                </span>
+            {% else %}
+                <span itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                </span>
+                <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                    <meta itemprop="name" content="{{ {en: 'Technical Centre for Agricultural and Rural Cooperation', fr: 'Le Centre technique de coopération agricole et rurale'}|t(locales) }}" />
+                    <meta itemprop="logo" content="https://res.cloudinary.com/cta/image/upload/v1494444431/wa0ucd786gupcci4cxqx.png">
+                </span>
+            {% endif %}
+
+            {% if config.show_stand_first %}
+                <p class="post__intro" itemprop="description">{{ article.about|t(locales)|raw }}</p>
+            {% endif %}
+
+            {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
+            <ul class="reset  |  tag-list  |  list--inline trailer--small">
+                {% for label in article.analysis.agrovoc.concepts|slice(0, 2) %}
+                    <li>{{ concept.tag(label, locale) }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if config.show_read_more %}
+                <a class="read-more  |  is-gt-small-desktop" href="{{ article_link }}" itemprop="url">{{ 'Read more'|i18n }}</a>
+            {% endif %}
+        </div>
     </div>
-</div>
+{% endif %}
