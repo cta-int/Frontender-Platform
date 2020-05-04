@@ -1,0 +1,39 @@
+{% import "macros/template.html.twig" as helper %}
+{% import "macros/schema.html.twig" as schema %}
+
+{# Thia is  very simple container that expects a string as a url #}
+
+<{{ config.container_tag|default('figure') }}{{ helper.class_attribute(config, 'layout')|raw }}{{ helper.container_id_attribute(frontender, 'frontender')|raw }}>
+    <div class="layout__cell layout__cell--main {{labels.caption|t != "" ? 'wing--right' : 'wings'}} chart" data-chart="">
+        <div class="gutters">
+            <div class="chart__shallow">
+                <img src="{{ config.chart_shallow|t }}" alt="" />
+            </div>
+            {% if config.chart_deep|t != "" %}
+            <div class="chart__deep">
+                <img src="{{ config.chart_deep|t }}" alt="" />
+            </div>
+            {% endif %}
+            {% if labels.toggle|t != "" %}
+                <button class="meta meta--s leader--tiny chart__toggle">{{ labels.toggle|t }}<button>
+            {% endif %}
+        </div>
+    </div>
+    {% if labels.caption|t != "" %}
+        <figcaption class="layout__cell layout__cell--aside wings">
+            <div class="gutters meta">
+                {{ labels.caption|t|md|raw }}
+            </div>
+        </figcaption>
+    {% endif %}
+    <style>
+        .chart img {
+            display: block;
+        }
+    </style>
+    <script>
+        jQuery(function($){
+            $("[data-chart]").on("click", function(){if($(this).data("chart") == "collapsed") {$(this).data("chart", "expanded");$(this).find(".chart__deep").slideDown("slow");}else {$(this).data("chart", "collapsed");$(this).find(".chart__deep").slideUp("slow");}}).data("chart","collapsed").find(".chart__deep").slideUp(0);
+        });
+      </script>
+</{{ config.container_tag|default('figure') }}>
