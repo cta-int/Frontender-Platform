@@ -20,11 +20,12 @@ phases:
       - apt-get install -y build-essential
       # Remove php 7.3
       - apt-get remove -y --purge "php*"
-      - apt-get -y purge php7.* php7.3-cli
+      - apt-get -y purge php7.*
       - rm -rf /usr/local/bin/php
       - rm -rf /usr/local/etc/php
       - rm -rf /usr/local/lib/php
       - rm -rf /usr/local/php
+      - which php
       # Enable universe repository
       - apt-get install -y software-properties-common
       - apt-add-repository universe
@@ -37,8 +38,9 @@ phases:
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-zip php7.2-mongodb php-mongodb php7.2-dev libpcre3 libpcre3-dev php7.2-xml php-pear
+      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-zip php7.2-mongodb php7.2-dev libpcre3 libpcre3-dev php7.2-xml php7.2-pear
       - update-alternatives --set php /usr/bin/php7.2
+      - which php
       - php --version
       # Install PHP composer
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
