@@ -6,6 +6,8 @@ phases:
       docker: 18
     commands:
       # Prep files
+      - export PHP_VERSION="7.2.1"
+      # Old stuff
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
       - ls /tmp/php-lib-scr
@@ -25,14 +27,11 @@ phases:
       - rm -rf /usr/local/etc/php
       - rm -rf /usr/local/lib/php
       - rm -rf /usr/local/php
-      - export PHP_VERSION="7.2.1"
-      - phpenv list
-      - phpenv install 7.2.1
       # Enable universe repository
       - apt-get install -y software-properties-common
       - apt-add-repository universe
       - apt-get update
-      # Ipurgenstall python and pip
+      # Install python and pip
       - apt-get install -y python3.6 python3-pip
       - pip install --upgrade pip
       - pip install -r requirements.txt
