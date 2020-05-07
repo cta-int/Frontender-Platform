@@ -25,7 +25,9 @@ phases:
       - rm -rf /usr/local/etc/php
       - rm -rf /usr/local/lib/php
       - rm -rf /usr/local/php
-      - which php
+      - export PHP_VERSION="7.2.1"
+      - phpenv list
+      - phpenv install 7.2.1
       # Enable universe repository
       - apt-get install -y software-properties-common
       - apt-add-repository universe
