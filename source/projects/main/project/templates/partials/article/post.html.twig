@@ -5,12 +5,12 @@
 {% import "macros/label.html.twig" as label %}
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
-{% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
-
 {% if not article is defined %}
     {# Assume article is in model #}
     {% set article = model %}
 {% endif %}
+
+{% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
 {# Prevent content render when there is no headline #}
 {% if article.headline %}
