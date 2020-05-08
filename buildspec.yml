@@ -5,11 +5,13 @@ phases:
     runtime-versions:
       docker: 18
     commands:
-      # Prep files
+      # Prep files and pipeline
+      - export PHP_VERSION="7.2.1"
       - aws s3 sync s3://brixon-code/php-lib-scr /tmp/php-lib-scr
       - aws s3 sync s3://brixon-code/frontender.platform-core.v1 /tmp/frontender.platform-core
       - ls /tmp/php-lib-scr
       - ls /tmp/frontender.platform-core
+      - apt-get update
       # Remove and Install correct version of NPM
       - npm -v
       - npm install -g npm@3.10.10
@@ -19,10 +21,12 @@ phases:
       - apt-get install -y build-essential
       # Remove php 7.3
       - apt-get remove -y --purge "php*"
+      - apt-get -y purge php7.*
       - rm -rf /usr/local/bin/php
       - rm -rf /usr/local/etc/php
       - rm -rf /usr/local/lib/php
       - rm -rf /usr/local/php
+      - rm -rf /root/.phpenv
       # Enable universe repository
       - apt-get install -y software-properties-common
       - apt-add-repository universe
@@ -35,7 +39,9 @@ phases:
       # Install php 7.2
       - LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
       - apt-get update
-      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-zip php7.2-mongodb php-mongodb php7.2-dev libpcre3 libpcre3-dev php7.2-xml php-pear php7.3-common- php7.3-xml-
+      - apt-get install -y php7.2-common php7.2-cli php7.2-curl php7.2-zip php7.2-mongodb php7.2-dev libpcre3 libpcre3-dev php7.2-xml php-pear
+      - which php
+      - php --version
       # Install PHP composer
       - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
