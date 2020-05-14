@@ -1,7 +1,7 @@
 {% set locales = {'en-GB': 'en', 'fr-FR': 'fr', 'es-ES': 'es', 'pt-PT': 'pt'} %}
 
 {% if labels.slug.page %}
-    <a class="{{ ["topic-teaser  |  teaser", container_class]|join(" | ") }}" href="{{ route({'page': labels.slug.page }) }}">
+    <a class="{{ ["topic-teaser  |  teaser", container_class]|join(" | ") }}" href="{{ "http" in labels.slug.page|t(locales) ? labels.slug.page|t(locales) : route({'page': labels.slug.paget(locales) }) }}">
         {% if labels.label %}
             <div class="topic-teaser__label  |  meta meta--inverse">
               {{ labels.label|t(locales) }}
@@ -32,9 +32,16 @@
         {% endif %}
         {% if labels.slug.label|t(locales)|length > 1 %}
             <div class="leader leader-inside--normal">
-                <a class="button button--inverse" href="{{ route({'page': labels.slug.page }) }}">
-                  {{ labels.slug.label|t(locales) }}
-                </a>
+                {% if 'http' in link.page|t(locales) %}
+                    <a class="button button--inverse" href="{{ labels.slug.page|t(locales) }}">
+                        {{ labels.slug.label|t(locales) }}
+                    </a>
+                {% else %}
+                    <a class="button button--inverse" href="{{ route({'page': labels.slug.paget(locales) }) }}">
+                        {{ labels.slug.label|t(locales) }}
+                    </a>
+                {% endif %}
+                
             </div>
         {% endif %}
     </div>
