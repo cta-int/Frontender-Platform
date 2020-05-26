@@ -12,6 +12,25 @@
 
 {% set article_link = route({'page': article.path, 'slug': article.headline|t(locales)|slugify, id: article._id}) %}
 
+{# 
+    We are repurposing this partial for manually configured posts. This means that this partial 
+    may be configured with a media object from the SCR. We'll check if the container config contains
+    a separate media object and if so, injects it into the article object so the template can
+    process the data as it expects it (mimicking an article object). 
+#}
+{% if model.type == "image" %}
+    {% set article = article.data|merge({"link": {
+        "mediaObject" : [{
+            "metadata": model.metadata,
+            "_id": model._id,
+            "weight":"featured",
+            "originalFilename": model.originalFilename,
+            "type": model.type
+        }]
+    }}) %}
+    {% set article_link = article.url|t(locales) %}
+{% endif %}
+
 {# Prevent content render when there is no headline #}
 {% if article.headline %}
     <div class="post" itemscope itemtype="https://schema.org/Article">
@@ -67,7 +86,7 @@
             {% endif %}
 
             {% if config.show_stand_first %}
-                <p class="post__intro" itemprop="description">{{ article.about|t(locales)|raw }}</p>
+                <p class="post__intro" itemprop="description">{{ article.about|t(locales)|md|raw }}</p>
             {% endif %}
 
             {% if config.show_topic|default(0) and article.analysis.agrovoc.concepts|length > 0 %}
