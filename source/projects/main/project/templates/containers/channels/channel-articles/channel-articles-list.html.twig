@@ -18,7 +18,7 @@
         </article>
     {% endfor %}
 
-    {% if config.show_pagination %}
+    {% if config.show_pagination|default(1) %}
         <div class="leader" style="width: 100%;" data-pagination-parent>
             {{ pagination.extend(model.articles, model.articlesTotal, {
                 model_name: 'Labels',
