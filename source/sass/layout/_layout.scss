@@ -79,7 +79,7 @@ Styleguide 2.1
     }
     @include breakpoint($gt-medium-handheld) {
         &--even {
-            flex-wrap: nowrap;
+            // flex-wrap: nowrap;
         }
 
         &--even &__cell {
