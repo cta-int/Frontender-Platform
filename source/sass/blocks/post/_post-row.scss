@@ -36,6 +36,7 @@ Styleguide 4.8.3
   // color: $color-body;
   &--row {
     display: flex;
+    flex-wrap: wrap-reverse;
     .no-flexbox & {
       @include clearfix;
       display: block;
@@ -80,6 +81,18 @@ Styleguide 4.8.3
       // + p {
       //   margin-top: rhythm(1.5);
       // }
+    }
+  }
+  @include breakpoint($lt-small-desktop) {
+    &--row {
+      flex-wrap: wrap-reverse;
+    }
+    .layout--even &--row &__content,
+    .layout--even &--row &__image {
+      flex-basis: 100%;
+      .no-flexbox & {
+        width: 100%
+      }
     }
   }
 }
