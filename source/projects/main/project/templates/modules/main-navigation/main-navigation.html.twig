@@ -44,7 +44,7 @@
                 <li><a class="menu__item {{ is_active(route()) ? 'is-current' }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
             {% endif %}
             {% for link in main_menu.links %}
-                {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
+                {% set route = link.id|t(locales) ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
                 <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) ? ' is-current')}} %}</li>
             {% endfor %}
         </ul>
@@ -61,7 +61,7 @@
             </form>
             <ul class="list--inline  |  menu menu--secondary  |  site-navigation__menu">
                 {% for link in browse_menu.links %}
-                    {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
+                    {% set route = link.id|t(locales) ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
                     <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) ? ' is-current')}} %}</li>
                 {% endfor %}
             </ul>

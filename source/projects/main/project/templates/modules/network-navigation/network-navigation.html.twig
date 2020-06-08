@@ -34,7 +34,7 @@
         <ul class="fx menu menu--responsive">
             <li><a class="menu__item {{ is_current(route()) ? 'is-current' : '' }}" href="{{ route() }}">{{ 'Home'|i18n }}</a></li>
             {% for link in links.links %}
-                {% set route = link.id ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
+                {% set route = link.id|t(locales) ? route({'page': link.page|t(locales), 'slug': link.slug|default(link.page), 'id': link.id}) : route({'page': link.page|t(locales)})  %}
                 <li>{% include 'partials/menu-link.html.twig' with {link: link, config: {anchor_class: 'menu__item' ~ (is_active(route) or is_current(route) ? ' is-current')}} %}</li>
             {% endfor %}
         </ul>
