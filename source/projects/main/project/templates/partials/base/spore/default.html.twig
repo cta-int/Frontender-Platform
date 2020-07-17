@@ -161,29 +161,6 @@
             });
         </script>
         {{ renderAssets('script')|raw }}
-
-        {% if (not isPreview()) and (not isFrontender()) %}
-            <script>
-                (function(h,o,t,j,a,r){
-                    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                    h._hjSettings={hjid:188549,hjsv:6};
-                    a=o.getElementsByTagName('head')[0];
-                    r=o.createElement('script');r.async=1;
-                    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                    a.appendChild(r);
-                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-                window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty","resetIdentity"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
-                heap.load("2239804362");
-                if ('serviceWorker' in navigator) {
-                    window.addEventListener('load', () => {
-                        var serviceWorkerRegistration = navigator.serviceWorker.register('/service-worker.js');
-                        if(serviceWorkerRegistration && serviceWorkerRegistration.update) {
-                            serviceWorkerRegistration.update();
-                        }
-                    });
-                }
-            </script>
-        {% endif %}
     </head>
 
     <body{{ helper.class_attribute(config, model.theme.selector|default(''))|raw }}>
@@ -208,19 +185,6 @@
                 _sf_async_config.sections = 'events,projects,regions,topics,blogs,working-with-cta,press,youth,digitalisation,climate';  //CHANGE THIS
                 _sf_async_config.authors = 'Change this to your Author name';    //CHANGE THIS
                 /** CONFIGURATION END **/
-                (function(){
-                  function loadChartbeat() {
-                    window._sf_endpt=(new Date()).getTime();
-                    var e = document.createElement('script');
-                    e.setAttribute('language', 'javascript');
-                    e.setAttribute('type', 'text/javascript');
-                    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
-                    document.body.appendChild(e);
-                  }
-                  var oldonload = window.onload;
-                  window.onload = (typeof window.onload != 'function') ?
-                     loadChartbeat : function() { oldonload(); loadChartbeat(); };
-                })();
             </script>
         {% endif %}
         <noscript>{{ "This website needs JavaScript for some functionality. Please enable JavaScript."|i18n }}</noscript>
